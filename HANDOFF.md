@@ -1,6 +1,6 @@
 # Handoff
 
-Ultima actualizare: workspace unic
+Ultima actualizare: regula de branch
 Agent: setup
-Stare: ambele unelte folosesc `/home/dfh/workspace`.
-Următorul pas: primul task real.
+Stare: Codex și Claude Code lucrează în `/home/dfh/workspace`, doar pe `main`.
+Următorul pas: primul task real, commit și push pe `main`.
