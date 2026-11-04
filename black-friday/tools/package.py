@@ -5,7 +5,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 root = Path(__file__).resolve().parents[1]
 out = root / 'release/nmc-black-friday.zip'
 out.parent.mkdir(exist_ok=True)
-files = [root / name for name in ('index.html', 'polish.css', 'live-prices.js', 'overlay-bridge.js', 'homepage-overlay.js')]
+files = [root / name for name in ('index.html', 'polish.css', 'campaign.js', 'overlay-bridge.js', 'homepage-overlay.js')]
 files += sorted((root / 'assets').glob('*.jpg'))
 with ZipFile(out, 'w', ZIP_DEFLATED) as archive:
     for path in files:

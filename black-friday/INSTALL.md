@@ -6,7 +6,7 @@ Pachetul este pregătit pentru integrare statică pe domeniul magazinului. Nu a 
 
 1. Rulează `python3 black-friday/tools/package.py` din rădăcina repository-ului. Arhiva rezultată este `black-friday/release/nmc-black-friday.zip`.
 2. Extrage folderul `black-friday` în rădăcina publică a magazinului, pe același domeniu/protocol cu homepage-ul. Fișierele existente ale magazinului nu se înlocuiesc. Verifică accesul la `/black-friday/index.html` și la fotografii.
-3. Pentru suprapunere, politica `frame-src` a homepage-ului și `frame-ancestors`/`X-Frame-Options` ale landingului trebuie să permită încadrarea de pe același domeniu (nu `DENY`). Deschide landingul direct și verifică dacă prețurile se încarcă. Dacă există CSP, permite scripturile/stilurile existente ale landingului, resursele proprii (`script-src`, `style-src`, `img-src`, `connect-src 'self'`) și fonturile Google ori găzduiește fonturile local. Nu dezactiva global CSP. Pagina conține CSS și JavaScript inline; mută-le în fișiere sau autorizează hash-urile lor dacă politica site-ului o cere.
+3. Pentru suprapunere, politica `frame-src` a homepage-ului și `frame-ancestors`/`X-Frame-Options` ale landingului trebuie să permită încadrarea de pe același domeniu (nu `DENY`). Deschide landingul direct și verifică fotografiile, reducerile și navigarea. Dacă există CSP, permite scripturile/stilurile existente ale landingului, resursele proprii (`script-src`, `style-src`, `img-src`, `connect-src 'self'`) și fonturile Google ori găzduiește fonturile local. Nu dezactiva global CSP. Pagina conține CSS și JavaScript inline; mută-le în fișiere sau autorizează hash-urile lor dacă politica site-ului o cere.
 4. Adaugă o singură dată în homepage, înainte de `</body>`, prin template sau facilitatea de inserare HTML/script a magazinului:
 
 ```html
@@ -35,24 +35,20 @@ Linkurile către produse deschid magazinul în fereastra principală. Navigarea 
 
 Nu există calendar de activare presupus: campania începe când este inserat scriptul. Confirmă ofertele și perioada cu echipa comercială înainte de lansare.
 
-## Prețuri sincronizate
+## Campania fără prețuri
 
-`live-prices.js` citește HTML-ul paginilor celor 14 produse, pe același domeniu și cu sesiunea vizitatorului. Citește doar grupul principal `.product-price-group` din `#product-product .product-info`, inclusiv prețul anterior dacă magazinul îl afișează. Nu citește prețuri din produsele recomandate.
+Landingul afișează numai reducerile indicate de utilizator: exterior 20%, tapet 30% și interior până la 40%. Adezivii sunt prezentați ca produse complementare, fără reducere atribuită. Nu există prețuri, valori de rezervă, cereri de preț către magazin sau actualizări automate.
 
-Citirea se face la deschidere, revenire în filă și la fiecare 120 de secunde cât timp pagina este vizibilă, cu maximum trei cereri simultane și timeout de 10 secunde. Nu este o conexiune push: modificările apar la următoarea citire, în funcție și de cache-ul magazinului/CDN-ului. Estimarea minimă pe categorie apare doar dacă toate produsele categoriei au preț valid. Nu sunt presupuse reduceri procentuale sau stocuri.
-
-Dacă o pagină nu răspunde, structura ei se schimbă ori prețul nu este în lei, apare „Vezi prețul în magazin”. Valorile precedente sunt eliminate după o eroare; în orice caz expiră după maximum trei minute. Nu există fallback numeric din `catalog.json`. În browsere fără JavaScript rămân imaginile, produsele și linkurile, fără prețuri vechi.
-
-Acest mecanism nu necesită backend nou, însă implică până la 14 cereri de pagini la o reîmprospătare completă. Pentru trafic mare de Black Friday, soluția preferată este un endpoint de catalog în backend care returnează toate prețurile într-o singură cerere, respectând sesiunea și regulile comerciale. Acesta necesită acces la sursele magazinului. Verifică încărcarea pe staging înaintea activării; un timeout nu va afișa un preț vechi.
+`campaign.js` gestionează numai căutarea produselor și navigarea pe categorii. Fotografiile sunt locale. `catalog.json` păstrează denumirile, linkurile și proveniența imaginilor, fără valori numerice ale prețurilor; nu este necesar în pachetul de producție.
 
 ## Verificarea înainte de activare
 
-- Desktop și mobil: landingul se deschide; închiderea și Escape readuc homepage-ul fără scroll blocat; focusul revine la elementul anterior.
-- Pagini de produs/categorie/coș: suprapunerea nu se deschide.
-- Modifică un preț pe staging: acesta se schimbă în toate cardurile landingului la următoarea actualizare; prețul anterior dispare dacă oferta a fost retrasă.
-- Verifică prețul pentru vizitator și client autentificat; eventualele variante, cantități și discounturi din coș se confirmă la comandă.
-- Simulează o eroare de rețea: cardul invită la verificarea în magazin. Nu afișează valoarea veche.
-- Verifică CSP, protecția anti-bot, cache-ul și încărcarea cu utilizatori concurenți. Dacă magazinul modifică prețul prin alt script după încărcare, adaptează integrarea la sursa acelui preț înainte de lansare.
+- Desktop și mobil: verifică prezentarea reducerilor și fotografiilor.
+- Închiderea și Escape readuc homepage-ul fără scroll blocat; focusul revine la elementul anterior.
+- Suprapunerea nu apare pe paginile de produs/categorie/coș și rămâne închisă în sesiunea curentă după închidere.
+- Linkurile deschid produsele în magazin, în fereastra principală.
+- Confirmă configurarea efectivă a reducerilor de 20%, 30% și până la 40% în magazin și perioada campaniei. Landingul comunică ofertele; nu modifică prețurile sau reducerile din magazin.
+- Verifică politica CSP și permisiunea de încadrare pe același domeniu.
 
 ## Dezactivare
 
@@ -60,6 +56,6 @@ Elimină scriptul inserat sau setează `data-enabled="false"`, apoi golește cac
 
 ## Test local
 
-Rulează `python3 black-friday/tools/preview.py --port 8765` și deschide `http://127.0.0.1:8765/`. Homepage-ul este demonstrativ. Serverul de test citește numai paginile publice ale produselor din lista permisă; nu se publică pe site și nu accesează contul vizitatorului. Un server static simplu poate afișa designul, dar nu poate simula paginile magazinului pentru prețuri.
+Rulează `python3 black-friday/tools/preview.py --port 8765` și deschide `http://127.0.0.1:8765/`. Homepage-ul este demonstrativ. Serverul servește numai fișiere locale și nu se publică în magazin. Un server static simplu poate afișa de asemenea landingul.
 
 Testele automate necesită Node.js și dependențele de dezvoltare: din `black-friday`, rulează `npm ci` și `npm test`. Nu sunt necesare pe serverul magazinului.
