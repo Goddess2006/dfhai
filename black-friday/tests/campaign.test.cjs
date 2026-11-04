@@ -69,3 +69,15 @@ test('exterior, interior and wallpaper lead the campaign; adhesives are the fina
   assert.equal(catalog.products.filter(product => product.cat === 'int').length, 8);
   assert.equal(catalog.products.filter(product => product.cat === 'tapet').length, 18);
 });
+
+
+test('second visual variant uses the official logo and preserves the same product offers', () => {
+  const first = parseHTML(fs.readFileSync(path.join(root, 'index.html'), 'utf8')).document;
+  const second = parseHTML(fs.readFileSync(path.join(root, 'varianta-2/index.html'), 'utf8')).document;
+  const offers = document => [...document.querySelectorAll('[data-product-id]')].map(product => [product.dataset.productId, product.querySelector('.product__discount')?.textContent || '']);
+  assert.deepEqual(offers(second), offers(first));
+  assert.equal(second.querySelectorAll('img.nmc-real-logo').length, 2);
+  assert.equal(second.querySelector('.logo__mark'), null);
+  assert.equal(first.querySelector('.variant-band'), null);
+  assert.ok(second.querySelector('.variant-band'));
+});

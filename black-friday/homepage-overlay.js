@@ -7,7 +7,7 @@
   if (!home || (route && route !== 'common/home')) return;
   const campaign = script?.dataset.campaign || 'black-friday-2026';
   const storageKey = 'nmc:closed:' + campaign;
-  const source = new URL('./index.html?overlay=1', script.src);
+  const source = new URL(script?.dataset.variant === '2' ? './varianta-2/index.html?overlay=1' : './index.html?overlay=1', script.src);
   if (source.origin !== location.origin) return;
   let dialog, frame, previousFocus, previousOverflow;
   const wasClosed = () => { try { return sessionStorage.getItem(storageKey) === '1'; } catch { return false; } };

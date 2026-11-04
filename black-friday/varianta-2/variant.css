@@ -1,0 +1,51 @@
+/* Variant 2: Noir Glow. Real NMC mark, monochrome; stronger campaign edges. */
+.variant-two{--page:#0a080e;--panel:#1c1124;--pink:#f8a5d3;--accent:#e56eae;background:radial-gradient(ellipse at 50% 0,#52204c35,transparent 900px),#0a080e}
+.variant-two .logo{min-width:88px;letter-spacing:normal}
+.nmc-real-logo{width:89px;height:auto;display:block;filter:grayscale(1) brightness(.8) contrast(8);border-radius:9px;outline:1px solid #ffffff6b;outline-offset:2px;background:black}
+.variant-two .header__inner{height:84px}.variant-two .category-nav{top:84px}
+.variant-two .announcement{color:#dcc1de;background:linear-gradient(90deg,transparent,#ce66a615,transparent)}
+.variant-two .edge-word{font-size:48px;letter-spacing:.07em;font-weight:800;line-height:1;color:#d28cbd30;-webkit-text-stroke:1px #f0b4d885;text-shadow:0 0 25px #e779b326;animation:edge-glow 7s ease-in-out infinite}
+.variant-two .edge-word--left{left:8px}.variant-two .edge-word--right{right:8px;animation-delay:-3.5s}
+.variant-two .hero{padding-top:36px}
+.variant-two .hero-shell{border-color:#e3a1d35c;box-shadow:0 28px 65px -38px #d04c9b48,0 16px 70px -30px #000c;animation:soft-enter .85s cubic-bezier(.2,.7,.3,1) both}
+.variant-two .hero-shell:before{border-color:#f4c0e323;inset:9px;border-radius:14px}
+.variant-two .hero-shell:after{content:'';position:absolute;left:15%;right:15%;top:0;height:1px;background:linear-gradient(90deg,transparent,#ffcaed,transparent);pointer-events:none}
+.variant-two .hero-scene{width:73%;filter:saturate(.8) contrast(1.05)}
+.variant-two .hero-shade{background:linear-gradient(90deg,#100b17 0%,#1d0d23f5 29%,#32133296 54%,#240f3115 83%),linear-gradient(0deg,#1d0d2bc0,transparent 65%)}
+.variant-two .hero h1{letter-spacing:-.055em;text-shadow:0 2px 24px #0002}
+.variant-two .hero h1>span{background-image:linear-gradient(105deg,#fce3f2 5%,#f3a2d5 35%,#c799f2 65%,#fce3f2 95%);background-size:220% 100%;animation:title-light 12s ease-in-out infinite}
+.variant-two .hero__tagline{color:#ffecf8}.variant-two .eyebrow{color:#e7b6d5}
+.variant-two .button{background:linear-gradient(120deg,#e66bab,#a76bd8);border:1px solid #ffceea2e;box-shadow:0 9px 27px -12px #ed7abb70;transition:transform .25s,box-shadow .25s,filter .25s}
+.variant-two .button:hover{transform:translateY(-3px);box-shadow:0 15px 32px -12px #e57ab78c;filter:brightness(1.08)}
+.variant-two .campaign-deals>a{border-color:#df9dd338;background:linear-gradient(125deg,#361e3f,#1c1325);transition:transform .25s,border-color .25s,box-shadow .25s}
+.variant-two .campaign-deals>a:hover{transform:translateY(-4px);border-color:#f1b0d77a;box-shadow:0 12px 24px -18px #e78cbd5c}
+.variant-two .campaign-deals strong{color:#ffc1e4}
+.variant-band{overflow:hidden;margin-top:34px;border-block:1px solid #d588bf2e;background:linear-gradient(90deg,#3a1c38,#25162e,#3a1c38);padding-block:12px;contain:paint}
+.variant-band__track{display:flex;gap:0;width:max-content;animation:campaign-drift 44s linear infinite}
+.variant-band__track>span{display:flex;align-items:center;gap:23px;padding-right:46px;white-space:nowrap;font:700 11px var(--sans);letter-spacing:.14em;color:#eac4df}
+.variant-band__track i{font-style:normal;color:#f4a9d7;font-size:15px}
+.variant-band:hover .variant-band__track{animation-play-state:paused}
+.variant-two .curation{padding-top:38px}
+.variant-two .ambience-card{border-color:#d69ed645;box-shadow:0 16px 38px -24px #000a;transition:transform .35s,border-color .35s,box-shadow .35s}
+.variant-two .ambience-card:hover{transform:translateY(-5px);border-color:#edb1dc85;box-shadow:0 20px 40px -24px #bd6bb63d}
+.variant-two .ambience-card__offer>strong{color:#ffd1eb;text-shadow:0 5px 25px #0004}
+.variant-two .product{border-color:#d4a1d224;background:linear-gradient(145deg,#291b33,#1b1424)}
+.variant-two .product:hover{box-shadow:0 16px 34px -22px #db80bd50;border-color:#e4a6d76b}
+.variant-two .product__image img{transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+.variant-two .product:hover .product__image img{transform:scale(1.065)}
+.variant-two .product__discount{background:linear-gradient(120deg,#bd4d91,#8b51b6);border-color:#ffdbef40}
+.variant-two .collection{border-color:#d79dd331;background:linear-gradient(135deg,#22172c,#16101e)}
+.variant-two .collection:before{border-color:#e9b7e211}
+.variant-two .collection__annotation strong{color:#f7b6db}
+.variant-two .project{background:linear-gradient(120deg,#361e42,#1f1329);border-color:#dfa7d94a}
+.variant-two footer .logo{width:auto}
+.variant-two footer .nmc-real-logo{width:76px}
+@keyframes edge-glow{0%,100%{color:#d28cbd30;-webkit-text-stroke-color:#edadd375;text-shadow:0 0 20px #e779b31a}50%{color:#e59dce55;-webkit-text-stroke-color:#ffc3eab5;text-shadow:0 0 32px #e779b340}}
+@keyframes title-light{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes campaign-drift{to{transform:translateX(-50%)}}
+@keyframes soft-enter{from{opacity:.3;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1500px){.variant-two .edge-word{font-size:60px}.variant-two .edge-word--left{left:15px}.variant-two .edge-word--right{right:15px}}
+@media(max-width:1100px){.variant-two .edge-word{font-size:34px}.variant-two .edge-word--left{left:5px}.variant-two .edge-word--right{right:5px}}
+@media(max-width:800px){.variant-two .header__inner{height:76px}.variant-two .category-nav{top:76px}.nmc-real-logo{width:77px}.variant-two .hero-scene{width:90%}.variant-band{margin-top:25px}}
+@media(max-width:600px){.variant-two .header__inner{height:72px}.variant-two .category-nav{top:72px}.nmc-real-logo{width:72px;border-radius:7px}.variant-two .hero{padding-top:20px}.variant-two .hero-scene{width:100%}.variant-two .hero-shade{background:linear-gradient(90deg,#1b0d25ed,#2a1533b0 55%,#30163850),linear-gradient(0deg,#180b26d9,transparent 70%)}.variant-band{padding-block:10px;margin-top:23px}.variant-band__track>span{font-size:10px}.variant-two .curation{padding-top:30px}.variant-two footer .nmc-real-logo{width:68px}}
+@media(prefers-reduced-motion:reduce){.variant-two .edge-word,.variant-two .hero h1>span,.variant-two .hero-shell,.variant-band__track{animation:none!important}.variant-two .hero-shell{opacity:1;transform:none}}

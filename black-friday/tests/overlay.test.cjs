@@ -5,14 +5,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { parseHTML } = require('linkedom');
 const script = fs.readFileSync(path.join(__dirname, '../homepage-overlay.js'), 'utf8');
-function setup(url = 'https://www.nmcromania.ro/', storage = new Map(), enabled = true) {
+function setup(url = 'https://www.nmcromania.ro/', storage = new Map(), enabled = true, variant = '1') {
   const { document } = parseHTML('<html><body><button id="previous">Original homepage</button></body></html>');
   document.documentElement.style.overflow = 'auto';
   const previous = document.getElementById('previous');
   let focused = false; previous.focus = () => { focused = true; };
   Object.defineProperty(document, 'activeElement', { value: previous });
   Object.defineProperty(document, 'readyState', { value: 'complete' });
-  Object.defineProperty(document, 'currentScript', { value: { src: 'https://www.nmcromania.ro/black-friday/homepage-overlay.js', dataset: { enabled: String(enabled) } } });
+  Object.defineProperty(document, 'currentScript', { value: { src: 'https://www.nmcromania.ro/black-friday/homepage-overlay.js', dataset: { enabled: String(enabled), variant } } });
   const create = document.createElement.bind(document);
   document.createElement = tag => {
     const el = create(tag); el.focus = () => {};
@@ -63,4 +63,11 @@ test('Escape cancellation restores the homepage and dismisses the campaign', () 
   assert.equal(event.defaultPrevented, true);
   assert.equal(app.document.querySelector('dialog'), null);
   assert.equal(app.document.documentElement.style.overflow, 'auto');
+});
+
+
+test('variant 2 can be selected for the homepage overlay without changing the default', () => {
+  const app = setup(undefined, undefined, true, '2');
+  assert.match(app.document.querySelector('iframe').src, /black-friday\/varianta-2\/index.html\?overlay=1/);
+  assert.match(setup().document.querySelector('iframe').src, /black-friday\/index.html\?overlay=1/);
 });
