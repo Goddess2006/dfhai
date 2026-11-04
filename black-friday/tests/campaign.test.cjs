@@ -20,14 +20,20 @@ function setup() {
   vm.runInNewContext(fs.readFileSync(path.join(root, 'campaign.js'), 'utf8'), { document, window });
   return document;
 }
-test('only ADRO-FIX exterior 1.5 kg carries a product discount', () => {
+test('campaign discounts respect category, model and adhesive exceptions', () => {
   const document = setup();
-  const badges = document.querySelectorAll('.product__discount');
-  assert.equal(badges.length, 1);
-  assert.equal(badges[0].closest('[data-product-id]').dataset.productId, 'adeziv12');
-  assert.match(badges[0].textContent, /−30%/);
-  assert.ok([...document.querySelectorAll('.product:not([data-product-id="adeziv12"])')].every(p => !p.querySelector('.product__discount')));
-  assert.equal(document.querySelectorAll('[data-product-id="adeziv13"] .product__discount').length, 0);
+  const badge = id => document.querySelector(`[data-product-id="${id}"] .product__discount`);
+  assert.equal(document.querySelectorAll('.product__discount').length, 31);
+  for (const id of ['ext0', 'ext1', 'ext2', 'ext3']) assert.match(badge(id).textContent, /−20%/);
+  for (const model of ['z21', 'z11', 'wo2', 'wt25', 'fd3', 'fo1', 'l2', 'l5']) assert.match(badge('int-' + model).textContent, /până la −40%/);
+  document.querySelectorAll('#tapet .product').forEach(product => {
+    assert.match(product.querySelector('h3').textContent, /Carrara Best/);
+    assert.match(product.querySelector('.product__discount').textContent, /−30%/);
+    assert.match(product.querySelector('.product__note').textContent, /stocului/);
+  });
+  assert.match(badge('adeziv12').textContent, /−30%/);
+  assert.equal(badge('adeziv13'), null);
+  assert.match(document.querySelector('[data-product-id="adeziv13"] .product__note').textContent, /preț întreg/);
 });
 test('gallery arrows move the shelf and disable at both boundaries', () => {
   const document = setup(); const section = document.querySelector('.collection');

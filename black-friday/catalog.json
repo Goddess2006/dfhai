@@ -9,7 +9,7 @@
       "url": "https://www.nmcromania.ro/cornisa-decorativa-exterior-nc104-220x80x2000",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Cornise/NC104/cornisa-acoperis-exterior-nc104-web-400x400.jpg",
       "img": "assets/ext0.jpg",
-      "discountPercent": 0
+      "discountPercent": 20
     },
     {
       "id": "ext1",
@@ -18,7 +18,7 @@
       "url": "https://www.nmcromania.ro/cornisa-nc103",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Cornise/NC103/cornisa-acoperis-exterior-nc103-web-400x400.jpg",
       "img": "assets/ext1.jpg",
-      "discountPercent": 0
+      "discountPercent": 20
     },
     {
       "id": "ext2",
@@ -27,7 +27,7 @@
       "url": "https://www.nmcromania.ro/ancadrament-decorativ-na102",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Ancadramente/NA102/ancadrament-ferestre-exterior-na102-web-400x400.jpg",
       "img": "assets/ext2.jpg",
-      "discountPercent": 0
+      "discountPercent": 20
     },
     {
       "id": "ext3",
@@ -36,7 +36,7 @@
       "url": "https://www.nmcromania.ro/pervazsolbanc-ns111",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Solbancuri/NS111/solbanc-fereastra-exterior-ns111-web-400x400.jpg",
       "img": "assets/ext3.jpg",
-      "discountPercent": 0
+      "discountPercent": 20
     },
     {
       "name": "Plinta polimer dur FD3 100X20X2000",
@@ -50,7 +50,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-fd3.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Plinta polimer dur FO1 120X15X2000",
@@ -64,7 +65,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-fo1.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Scafa decorativa led tavan perete poliuretan Arstyl L2",
@@ -78,7 +80,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-l2.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Scafa decorativa led tavan perete poliuretan Arstyl L5",
@@ -92,7 +95,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-l5.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Brau polimer dur Wallstyl WO2 38X18X2000",
@@ -106,7 +110,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-wo2.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Cornisa decorativa polimer dur WT25 78X78X2000",
@@ -120,7 +125,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-wt25.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Cornisa decorativa Z11 148x69x2000",
@@ -134,7 +140,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-z11.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Cornisa decorativa poliuretan Z21 101x112x2000",
@@ -148,7 +155,8 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/int-z21.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "discountUpToPercent": 40
     },
     {
       "name": "Tapet Carrara Best - 82603",
@@ -161,7 +169,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82603.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82605",
@@ -174,7 +182,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82605.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82606",
@@ -187,7 +195,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82606.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82608",
@@ -200,7 +208,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82608.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82636",
@@ -213,7 +221,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82636.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82639",
@@ -226,7 +234,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82639.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82651",
@@ -239,7 +247,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82651.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82653",
@@ -253,7 +261,7 @@
       "stockCheckedAt": "2026-11-04",
       "stockEvidence": "product-stock in-stock; quantity positive",
       "img": "assets/tapet-82653.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82657",
@@ -266,7 +274,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82657.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82663",
@@ -280,7 +288,7 @@
       "stockCheckedAt": "2026-11-04",
       "stockEvidence": "product-stock in-stock; quantity positive",
       "img": "assets/tapet-82663.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82666",
@@ -293,7 +301,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82666.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82670",
@@ -306,7 +314,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82670.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82671",
@@ -319,7 +327,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82671.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 82672",
@@ -332,7 +340,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-82672.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 85604",
@@ -345,7 +353,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-85604.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 85606",
@@ -358,7 +366,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-85606.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 85607",
@@ -371,7 +379,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-85607.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "name": "Tapet Carrara Best - 85614",
@@ -384,7 +392,7 @@
       "inStock": true,
       "stockCheckedAt": "2026-11-04",
       "img": "assets/tapet-85614.jpg",
-      "discountPercent": 0
+      "discountPercent": 30
     },
     {
       "id": "adeziv12",
@@ -406,11 +414,25 @@
     }
   ],
   "eligibility": {
-    "discountedProductId": "adeziv12",
-    "discountedProductName": "ADRO-FIX exterior 1,5 kg",
-    "discountPercent": 30,
-    "otherProducts": "Toate celelalte produse sunt la preț întreg, inclusiv ADRO-FIX 4 kg, exterior, interior și tapet.",
-    "stockRule": "Stocul actual se confirmă în pagina produsului. Selecția verificată anterior este păstrată; fără sincronizare automată."
+    "exteriorDiscountPercent": 20,
+    "wallpaperCollection": "Carrara Best",
+    "wallpaperDiscountPercent": 30,
+    "interiorModels": [
+      "Z21",
+      "Z11",
+      "WO2",
+      "WT25",
+      "FD3",
+      "FO1",
+      "L2",
+      "L5"
+    ],
+    "interiorUpToPercent": 40,
+    "adhesives": {
+      "adeziv12": 30,
+      "adeziv13": 0
+    },
+    "stockRule": "Interior și Carrara Best: doar în limita stocului disponibil pe site. Selecție verificată la stockCheckedAt, fără sincronizare automată."
   },
   "excludedStockChecks": [
     {
