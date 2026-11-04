@@ -23,7 +23,7 @@ function setup() {
 test('campaign discounts respect category, model and adhesive exceptions', () => {
   const document = setup();
   const badge = id => document.querySelector(`[data-product-id="${id}"] .product__discount`);
-  assert.equal(document.querySelectorAll('.product__discount').length, 31);
+  assert.equal(document.querySelectorAll('.product__discount').length, 34);
   for (const id of ['ext0', 'ext1', 'ext2', 'ext3']) assert.match(badge(id).textContent, /−20%/);
   for (const model of ['z21', 'z11', 'wo2', 'wt25', 'fd3', 'fo1', 'l2', 'l5']) assert.match(badge('int-' + model).textContent, /până la −40%/);
   document.querySelectorAll('#tapet .product').forEach(product => {
@@ -49,9 +49,23 @@ test('search filters all shelves and resets their scroll position', () => {
   document.querySelector('.products').scrollLeft = 1000;
   input.value = 'Z11'; input.dispatchEvent(new Event('input'));
   const visible = [...document.querySelectorAll('.product')].filter(p => !p.hidden);
-  assert.equal(visible.length, 1); assert.equal(visible[0].dataset.productId, 'int-z11');
+  assert.equal(visible.length, 2); assert.ok(visible.every(product => product.dataset.productId === 'int-z11'));
   assert.equal(document.querySelector('.products').scrollLeft, 0);
   assert.match(document.getElementById('searchStatus').textContent, /1 produs/);
   input.value = ''; input.dispatchEvent(new Event('input'));
-  assert.equal([...document.querySelectorAll('.product')].filter(p => !p.hidden).length, 32);
+  assert.equal([...document.querySelectorAll('.product')].filter(p => !p.hidden).length, 35);
+});
+
+test('exterior, interior and wallpaper lead the campaign; adhesives are the final product section', () => {
+  const document = setup();
+  const featured = [...document.querySelectorAll('#vedete [data-product-id]')].map(p => p.dataset.productId);
+  assert.deepEqual(featured, ['ext0', 'int-z11', 'tapet-82671']);
+  assert.equal(document.querySelector('#oferta [href*="adeziv"]'), null);
+  assert.equal([...document.querySelectorAll('.collection')].at(-1).id, 'adeziv');
+  assert.equal(document.querySelectorAll('.ambience-card img').length, 3);
+  assert.match(document.querySelector('#exterior .collection__head').textContent, /Adezivii sunt excluși/);
+  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'catalog.json'), 'utf8'));
+  assert.ok(catalog.products.every(product => product.inStock === true));
+  assert.equal(catalog.products.filter(product => product.cat === 'int').length, 8);
+  assert.equal(catalog.products.filter(product => product.cat === 'tapet').length, 18);
 });

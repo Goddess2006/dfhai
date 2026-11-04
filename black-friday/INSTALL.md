@@ -37,13 +37,13 @@ Nu există calendar de activare presupus: campania începe când este inserat sc
 
 ## Campania fără prețuri
 
-Campania păstrează reducerile confirmate: **20% la întreaga gamă de profile exterior**, **30% la Carrara Best în stoc**, **până la 40% doar pentru Z21, Z11, WO2, WT25, FD3, FO1, L2 și L5**, în limita stocului disponibil. La adezivi: **30% doar la ADRO-FIX exterior 1,5 kg**; ADRO-FIX 4 kg rămâne la preț întreg. Nu sunt afișate prețuri numerice.
+Campania păstrează reducerile confirmate: **20% la toate profilele de exterior, cu excepția adezivilor**, **30% la Carrara Best în stoc**, **până la 40% doar pentru Z21, Z11, WO2, WT25, FD3, FO1, L2 și L5**, în limita stocului disponibil. Toate ofertele, inclusiv exteriorul și adezivul promoțional, sunt limitate de stocul disponibil pe site. La adezivi: **30% doar la ADRO-FIX exterior 1,5 kg**; ADRO-FIX 4 kg rămâne la preț întreg. Nu sunt afișate prețuri numerice.
 
-`catalog.json` declară reducerea pe fiecare produs. `tools/render.py` generează HTML-ul și expune etichetele pe produsele eligibile; interiorul folosește `discountUpToPercent`, păstrând calificativul „până la”. `campaign.js` gestionează căutarea, navigarea pe categorii și galeriile orizontale, cu săgeți și glisare pe mobil. `polish.css` definește tema bleumarin/alb cald/roz, contururile duble și umbrele.
+`catalog.json` declară reducerea pe fiecare produs. `tools/render.py` generează HTML-ul și expune etichetele pe produsele eligibile; interiorul folosește `discountUpToPercent`, păstrând calificativul „până la”. `campaign.js` gestionează căutarea, navigarea pe categorii și galeriile orizontale, cu săgeți și glisare pe mobil. `polish.css` definește tema neagră/mov închis/roz, inscripțiile Black Friday de pe margini, contururile duble discrete și umbrele selective.
 
 ## Verificarea înainte de activare
 
-- Verifică pe desktop/mobil hero-ul cu ADRO-FIX 1,5 kg și reducerile pe colecții. Cardul ADRO-FIX 4 kg trebuie să rămână fără badge de reducere.
+- Verifică pe desktop/mobil hero-ul și vedetele din exterior, interior și Carrara Best. Adezivul trebuie să apară în ultima secțiune de produse, iar ADRO-FIX 4 kg să rămână fără badge de reducere.
 - Verifică navigarea cu săgeți, glisarea pe mobil și căutarea produselor.
 - Închiderea și Escape trebuie să readucă homepage-ul cu scroll-ul/focusul restabilite. Overlay-ul nu apare pe pagini de produs/categorie/coș.
 - Confirmă toate reducerile și excepțiile în magazin, disponibilitatea produselor și perioada campaniei. Landingul comunică oferta; nu modifică prețurile magazinului.
@@ -64,3 +64,9 @@ Testele automate necesită Node.js și dependențele de dezvoltare: din `black-f
 Cele 32 de produse și fotografiile reale din selecția verificată la 4 noiembrie 2026 sunt păstrate ca prezentare de catalog. Reducerile respectă regulile de campanie de mai sus. Nu există sincronizare automată de stoc; disponibilitatea curentă se confirmă în pagina produsului.
 
 După actualizarea catalogului rulează `python3 black-friday/tools/render.py`, apoi `python3 black-friday/tools/package.py`. Nu atribui reduceri după categorie: acestea sunt declarate individual prin `discountPercent` sau, la interior, prin `discountUpToPercent`.
+
+## Imagini ambientale și ordinea prezentării
+
+Ambientele reale sunt din galeria Z11, galeria Carrara Best 82671 și bannerul de exterior al magazinului. Proveniența este în `catalog.json`, câmpul `ambientImages`. Din bannerul exterior se folosește prin CSS partea arhitecturală dreaptă, pentru a omite textul promoțional inclus în sursă. Fotografiile sunt salvate local și incluse în arhivă.
+
+Hero-ul, cele trei intrări ambientale și vedetele promovează exteriorul, interiorul și Carrara Best. Adezivii apar la final, după colecțiile principale și consultanță. Toate ofertele sunt în limita stocului de pe site; disponibilitatea nu se sincronizează automat. Stocurile pentru exemplele de exterior și cei doi adezivi au fost reverificate pe paginile lor la 04.11.2026.

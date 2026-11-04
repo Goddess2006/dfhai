@@ -26,7 +26,7 @@
       section.querySelector('.products').scrollLeft = 0;
       updateControls(section);
     });
-    document.getElementById('searchStatus').textContent = terms.length ? `${document.querySelectorAll('.product:not([hidden])').length} ${document.querySelectorAll('.product:not([hidden])').length === 1 ? 'produs găsit' : 'produse găsite'}` : '';
+    document.getElementById('searchStatus').textContent = terms.length ? `${document.querySelectorAll('.collection .product:not([hidden])').length} ${document.querySelectorAll('.collection .product:not([hidden])').length === 1 ? 'produs găsit' : 'produse găsite'}` : '';
   });
   if ('IntersectionObserver' in window) {
     const chips = [...document.querySelectorAll('.chip')];

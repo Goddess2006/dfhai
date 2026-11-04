@@ -9,7 +9,10 @@
       "url": "https://www.nmcromania.ro/cornisa-decorativa-exterior-nc104-220x80x2000",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Cornise/NC104/cornisa-acoperis-exterior-nc104-web-400x400.jpg",
       "img": "assets/ext0.jpg",
-      "discountPercent": 20
+      "discountPercent": 20,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     },
     {
       "id": "ext1",
@@ -18,7 +21,10 @@
       "url": "https://www.nmcromania.ro/cornisa-nc103",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Cornise/NC103/cornisa-acoperis-exterior-nc103-web-400x400.jpg",
       "img": "assets/ext1.jpg",
-      "discountPercent": 20
+      "discountPercent": 20,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     },
     {
       "id": "ext2",
@@ -27,7 +33,10 @@
       "url": "https://www.nmcromania.ro/ancadrament-decorativ-na102",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Ancadramente/NA102/ancadrament-ferestre-exterior-na102-web-400x400.jpg",
       "img": "assets/ext2.jpg",
-      "discountPercent": 20
+      "discountPercent": 20,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     },
     {
       "id": "ext3",
@@ -36,7 +45,10 @@
       "url": "https://www.nmcromania.ro/pervazsolbanc-ns111",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/produse/Solbancuri/NS111/solbanc-fereastra-exterior-ns111-web-400x400.jpg",
       "img": "assets/ext3.jpg",
-      "discountPercent": 20
+      "discountPercent": 20,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     },
     {
       "name": "Plinta polimer dur FD3 100X20X2000",
@@ -401,7 +413,10 @@
       "url": "https://www.nmcromania.ro/adeziv-lipire-adro-fix-15-kg",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/product/919-Adeziv-lipire-ADRo-fix-1.5-kg-400x400.jpg",
       "img": "assets/adeziv12.jpg",
-      "discountPercent": 30
+      "discountPercent": 30,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     },
     {
       "id": "adeziv13",
@@ -410,7 +425,10 @@
       "url": "https://www.nmcromania.ro/adeziv-lipire-adro-fix-4-kg",
       "sourceImg": "https://www.nmcromania.ro/image/cache/catalog/product/920-Adeziv-lipire-ADRo-fix-4-kg-400x400.jpg",
       "img": "assets/adeziv13.jpg",
-      "discountPercent": 0
+      "discountPercent": 0,
+      "stockCheckedAt": "2026-11-04",
+      "inStock": true,
+      "availability": "InStock"
     }
   ],
   "eligibility": {
@@ -432,7 +450,8 @@
       "adeziv12": 30,
       "adeziv13": 0
     },
-    "stockRule": "Interior și Carrara Best: doar în limita stocului disponibil pe site. Selecție verificată la stockCheckedAt, fără sincronizare automată."
+    "stockRule": "Toate ofertele sunt în limita stocului disponibil pe site; selecție verificată la stockCheckedAt, fără sincronizare automată.",
+    "exteriorScope": "Toate profilele exterior, exclusiv adezivi; numai în limita stocului disponibil."
   },
   "excludedStockChecks": [
     {
@@ -455,6 +474,23 @@
       "url": "https://www.nmcromania.ro/tapet-carrara-best-85615",
       "availability": "PreOrder",
       "stockCheckedAt": "2026-11-04"
+    }
+  ],
+  "ambientImages": [
+    {
+      "file": "assets/ambient-exterior.jpg",
+      "sourceUrl": "https://www.nmcromania.ro/image/cache/catalog/homepage/slide/desktop/exterior-1920x970h.jpg",
+      "sourcePage": "https://www.nmcromania.ro/"
+    },
+    {
+      "file": "assets/scene-interior.jpg",
+      "sourceUrl": "https://www.nmcromania.ro/image/cache/catalog/product/5265-Cornisa-tavan-decorativa-poliuretan-Arstyl-Z11-150x70x2m-800x800h.jpg",
+      "sourcePage": "https://www.nmcromania.ro/plinta-decorativa-tavan-arstyl-z11"
+    },
+    {
+      "file": "assets/scene-tapet.jpg",
+      "sourceUrl": "https://www.nmcromania.ro/image/cache/catalog/produse/Tapet/82671-1-800x800w.jpg",
+      "sourcePage": "https://www.nmcromania.ro/tapet-carrara-82671"
     }
   ]
 }
