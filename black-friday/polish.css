@@ -1,0 +1,43 @@
+/* Refined campaign layer; all selectors stay inside the landing iframe. */
+:root{--r-lg:20px;--r-xl:28px;--wrap:1360px;--muted:#b2b2bc}
+.header{background:rgba(9,9,10,.96)}
+.logo__mark{box-shadow:0 0 24px #ff2d3d25}
+.hero{padding-top:clamp(36px,5vw,72px)}
+.hero h1{font-size:clamp(74px,10.2vw,146px);letter-spacing:-.045em}
+.hero h1 .l2{-webkit-text-stroke:1.5px #fff}
+.hero__upto{padding-top:22px;border-top:1px solid var(--line-2);margin-top:26px;gap:24px}
+.hero__upto span{font-size:clamp(16px,1.8vw,23px);line-height:1.15}
+.hero__upto b{font-size:clamp(32px,4.5vw,62px);letter-spacing:-.04em}
+.hero__lead{font-size:17px;line-height:1.75;max-width:520px}
+.hero__cta .btn{border-radius:12px;height:54px}
+.domain{border-color:#ffffff15;padding:20px;min-height:224px}
+.domain__art{width:45%;height:112px;border-radius:10px}
+.domain__n{font-size:10px;letter-spacing:.2em}
+.domain__name{font-size:25px;margin-right:8px}
+.domain__pct{font-size:12px;max-width:50%;color:var(--c);font-weight:700;line-height:1.5;margin-top:14px}
+.domain__go{font-size:12px;color:var(--text)}
+.statement{background:#111113}.stat{padding:20px 14px}.stat span{font-size:12px}
+.sec-head h2{font-size:clamp(36px,5.2vw,68px);letter-spacing:-.025em}
+.stars-grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto}
+.hero-card,.star-card--wide{grid-row:auto;grid-column:auto;display:flex;flex-direction:column}
+.hero-card .card__media,.star-card.star-card--wide .card__media,.star-card .card__media{aspect-ratio:1;min-height:0;height:auto}
+.hero-card .card__name{font-family:var(--body);font-size:15px;line-height:1.4;font-weight:600;text-transform:none}
+.hero-card .price,.card .price{font-size:29px;line-height:1.3;letter-spacing:-.03em}
+.card__body{padding:20px;gap:10px}.card__name{min-height:42px;line-height:1.4}
+.card__media img{padding:22px}.card__spec{font-size:12px;line-height:1.6}
+.card .add{background:var(--hot);color:#fff;border-color:transparent;border-radius:10px;height:46px;margin-top:8px}
+.card .add:hover{background:#e41e30;box-shadow:0 6px 20px #ff2d3d30}
+.prices{min-height:70px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
+.price-old{font-size:13px;color:#b2b2bc}.price-unavailable{font-size:14px;color:var(--muted);font-weight:500;line-height:1.5}
+.price-sync{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);margin:-8px 0 20px}
+.price-sync:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--volt);flex-shrink:0}
+.bundle{background:linear-gradient(125deg,#301c13,#13151b 70%)}
+.bundle p{line-height:1.8}.bundle__items .bitem{padding:18px}.bitem b{line-height:1.5}
+.cat__band{border-radius:20px;background:linear-gradient(110deg,color-mix(in srgb,var(--c) 10%,#141417),#141417 70%)}
+.cat__band .sec-head h2{font-size:clamp(34px,4.5vw,60px)}
+.trust div{background:#111113}.trust span{line-height:1.7}.faq details p{line-height:1.8}
+.final{background:radial-gradient(65% 110% at 50% -20%,#a6192a80,transparent 80%),#141417}
+@media(max-width:1050px){.stars-grid,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero__grid{grid-template-columns:1fr}.hero__lead{max-width:680px}.domains{grid-template-columns:repeat(4,minmax(0,1fr))}.domain{padding:16px;min-height:245px}.domain__name{font-size:21px}.domain__art{width:62%;height:90px}.domain__go{max-width:35%;font-size:10px}.domain__pct{max-width:100%}}
+@media(max-width:720px){.domains{grid-template-columns:repeat(2,minmax(0,1fr))}.domain{min-height:206px}.domain__art{width:46%;height:88px}.hero h1{font-size:clamp(72px,19vw,116px)}.hero__lead{font-size:15px}.hero__upto{gap:16px}.hero__upto b{font-size:clamp(27px,7.5vw,46px)}.card__body{padding:14px}.card .price,.hero-card .price{font-size:24px}.card__name,.hero-card .card__name{font-size:14px;min-height:58px}.card .add{font-size:13px}.card__media img{padding:12px}.stat b{overflow-wrap:anywhere}}
+@media(max-width:390px){.stars-grid,.grid{grid-template-columns:1fr}.card__name,.hero-card .card__name{min-height:0}.hero__cta .btn{width:100%}.domain__name{font-size:19px}.domain__art{width:42%}.hero__upto b{font-size:28px}.price-sync{line-height:1.6}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker__track{animation:none}}
