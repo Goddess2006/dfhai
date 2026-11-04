@@ -492,5 +492,11 @@
       "sourceUrl": "https://www.nmcromania.ro/image/cache/catalog/produse/Tapet/82671-1-800x800w.jpg",
       "sourcePage": "https://www.nmcromania.ro/tapet-carrara-82671"
     }
-  ]
+  ],
+  "brandLogo": {
+    "file": "assets/nmc-logo-original.png",
+    "sourceUrl": "https://www.nmcromania.ro/image/cache/catalog/logo4-307x189.png",
+    "sourcePage": "https://www.nmcromania.ro/",
+    "treatment": "Logo real, prezentare monocromă în varianta 2 prin CSS; sursa originală păstrată."
+  }
 }

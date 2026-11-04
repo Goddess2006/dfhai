@@ -70,3 +70,18 @@ După actualizarea catalogului rulează `python3 black-friday/tools/render.py`, 
 Ambientele reale sunt din galeria Z11, galeria Carrara Best 82671 și bannerul de exterior al magazinului. Proveniența este în `catalog.json`, câmpul `ambientImages`. Din bannerul exterior se folosește prin CSS partea arhitecturală dreaptă, pentru a omite textul promoțional inclus în sursă. Fotografiile sunt salvate local și incluse în arhivă.
 
 Hero-ul, cele trei intrări ambientale și vedetele promovează exteriorul, interiorul și Carrara Best. Adezivii apar la final, după colecțiile principale și consultanță. Toate ofertele sunt în limita stocului de pe site; disponibilitatea nu se sincronizează automat. Stocurile pentru exemplele de exterior și cei doi adezivi au fost reverificate pe paginile lor la 04.11.2026.
+
+## Două variante vizuale
+
+Varianta 1 este păstrată la `/black-friday/`. Varianta 2 este la `/black-friday/varianta-2/`. Ambele folosesc aceeași selecție și aceleași reduceri. Arhiva include ambele variante și resursele comune; păstrează structura folderelor la instalare.
+
+Varianta 2 folosește sigla oficială preluată de pe homepage, păstrată local ca `assets/nmc-logo-original.png`. CSS-ul o afișează alb pe negru, fără portocaliu. Proveniența este în `catalog.json/brandLogo`. Are inscripții laterale mai vizibile, gradient discret animat în titlu și o bandă Black Friday cu mișcare lentă. Mișcarea este dezactivată pentru preferința `prefers-reduced-motion`.
+
+Pentru a folosi varianta 2 în suprapunerea homepage, adaugă `data-variant="2"` pe scriptul de instalare:
+
+```html
+<script defer src="/black-friday/homepage-overlay.js"
+        data-campaign="black-friday-2026" data-variant="2"></script>
+```
+
+În varianta de inserare JavaScript, adaugă `script.dataset.variant = '2'` înainte de inserarea scriptului. Fără această opțiune, suprapunerea folosește varianta 1. Redarea din `tools/render.py` regenerează ambele variante, fără a duplica regulile comerciale.

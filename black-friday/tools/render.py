@@ -85,3 +85,20 @@ html = f'''<!doctype html>
 </html>
 '''
 (ROOT / 'index.html').write_text(html)
+
+# Keep variant 1 intact. Both versions share the exact same campaign/catalog data.
+second = html.replace('<body>', '<body class="variant-two">')
+second = second.replace('href="polish.css"', 'href="../polish.css"')
+second = second.replace('src="assets/', 'src="../assets/')
+second = second.replace('src="campaign.js"', 'src="../campaign.js"')
+second = second.replace('src="overlay-bridge.js"', 'src="../overlay-bridge.js"')
+old_logo = '<span class="logo__mark">N</span><span>NMC<span class="logo__country">ROMÂNIA</span></span>'
+real_logo = '<img class="nmc-real-logo" src="../assets/nmc-logo-original.png" alt="NMC România" width="307" height="189">'
+second = second.replace(old_logo, real_logo)
+second = second.replace('>NMC ROMÂNIA</a>', '>' + real_logo + '</a>')
+second = second.replace('</head>', '<link rel="stylesheet" href="variant.css">\n</head>')
+band = '''<div class="variant-band" aria-hidden="true"><div class="variant-band__track">''' + ''.join('<span>BLACK FRIDAY <i>✦</i> NMC ROMÂNIA <i>✦</i> DETALII CARE TRANSFORMĂ <i>✦</i></span>' for _ in range(4)) + '</div></div>'
+second = second.replace('<section class="curation', band + '\n<section class="curation', 1)
+variant_dir = ROOT / 'varianta-2'
+variant_dir.mkdir(exist_ok=True)
+(variant_dir / 'index.html').write_text(second)
