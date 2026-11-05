@@ -8,13 +8,15 @@
 
 Tipăriți PDF-ul la **100% / Actual size**, A4, fără „Fit to page”. Patru etichete de 105 × 148,5 mm; tăiere pe liniile punctate. Elementele utile au margine de siguranță de 6 mm. Fundalul deschis poate fi limitat de marginile imprimantei. Fișierele nu includ bleed sau conversie CMYK; sunt potrivite pentru imprimare uzuală. Auriul este o culoare imprimată, nu finisaj metalizat.
 
-Sunt etichete pentru întreaga colecție, fără preț sau cod. Cele cinci secțiuni sunt forme ilustrative, nu desene tehnice ale unor modele comerciale. Mențiunea „Bară 2 m” a fost omisă până la confirmarea ei pentru toată colecția.
+Sunt etichete pentru întreaga colecție, fără preț sau cod. Compoziția combină un ambient de inspirație cu un singur detaliu de secțiune, ilustrativ, fără cote sau grilă de modele. Avantajele sunt scrise discret, fără pictograme.
 
-## Surse
+## Surse și conținut
 
-Sigla oficială și ilustrația SVG provin din eticheta lui Claude, în directorul părinte. Originalele au fost păstrate. QR-ul indică https://decoflair.ro/bagheta-polistiren și are zonă albă de protecție de patru module.
+Sigla oficială și QR-ul provin din eticheta lui Claude, în directorul părinte. Originalele au fost păstrate. QR-ul indică https://decoflair.ro/bagheta-polistiren și are zonă albă de protecție de patru module.
 
-Datele vânzătorului au fost consultate la 5 noiembrie 2026 la https://decoflair.ro/contact: Deco & Flair Hub SRL; telefon 0723 300 603; Str. Făurei nr. 1, sector 1, București; CUI RO 54681700; ONRC J2026031505008. Sediul social este folosit pentru a evita adresele neuniforme ale depozitului din aceeași pagină.
+`assets/ambient-interior.png` este un ambient conceptual generat cu OpenAI imagegen pentru această machetă, nu o fotografie a unui anumit model din catalog. Este marcat pe etichetă „Ambient de inspirație”. Detaliul tehnic este un SVG ilustrativ simplificat, inclus direct în generator.
+
+Conform cerinței utilizatorului, blocul de contact include exclusiv site-ul decoflair.ro, telefonul 0723 300 603 și mențiunea mai mică „Depozit: Chiajna-Ilfov”, alături de QR. Numele societății, sediul social, CUI și ONRC au fost eliminate de pe etichetele premium. Localizarea depozitului este furnizată explicit de utilizator.
 
 Fonturile Cormorant Garamond și Montserrat sunt salvate local de la Google Fonts. Licențele OFL sunt în `assets/`. Nu sunt necesare conexiuni externe pentru deschiderea etichetelor HTML.
 
@@ -29,4 +31,4 @@ npm run build
 npm run render
 ```
 
-`build.py` generează ambele HTML-uri din aceeași machetă și folosește QR-ul original din directorul părinte. `assets/artwork.js` păstrează ilustrația lui Claude, cu ID-uri SVG unice pentru fiecare etichetă. `render.cjs` produce PDF-urile și PNG-urile; verifică fonturile, imaginile, depășirile, numărul de etichete/pagini, decodarea QR și absența culorii în varianta mono. Păstrați structura de directoare: sigla este în directorul părinte.
+`build.py` generează ambele HTML-uri din aceeași machetă și folosește QR-ul original din directorul părinte. `render.cjs` produce PDF-urile și PNG-urile; verifică fonturile, imaginile, depășirile, numărul de etichete/pagini, decodarea QR și absența culorii în varianta mono. Păstrați structura de directoare: sigla este în directorul părinte.
