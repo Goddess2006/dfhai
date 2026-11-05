@@ -84,6 +84,16 @@ h1 b{color:#ed90bf}
 .f-link .cta{height:54px;padding:0 24px;font-size:19px}
 .f-link .terms{font-size:13px}
 .f-link .terms strong{font-size:17px}
+
+/* ---------- fără buton (?cta=0) ---------- */
+.no-cta .cta{display:none}
+.no-cta .terms{width:100%;display:flex;align-items:baseline;justify-content:space-between;text-align:left;border-top:1px solid #e3a1d340;padding-top:22px}
+.no-cta .terms strong{font-size:30px}
+.no-cta .deals{bottom:170px}
+.f-square.no-cta .deals{bottom:160px}
+.f-link.no-cta .deals{bottom:auto}
+.f-link.no-cta .terms{padding-top:16px}
+.f-link.no-cta .terms strong{font-size:22px}
 </style>
 </head>
 <body>
@@ -118,7 +128,7 @@ h1 b{color:#ed90bf}
 </div>
 <script>
   const f = new URLSearchParams(location.search).get('f') || 'portrait';
-  document.documentElement.className = 'f-' + f;
+  document.documentElement.className = 'f-' + f + (new URLSearchParams(location.search).get('cta') === '0' ? ' no-cta' : '');
 </script>
 </body>
 </html>
