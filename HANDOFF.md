@@ -1,5 +1,19 @@
 # Handoff
 
+Ultima actualizare: 2026-11-05
+Agent: Claude Code
+
+## Nou: etichete paletar mostre — baghete de tavan din polistiren (Deco&Flair)
+Folder: `etichete-mostre/`
+- `etichete-baghete-A4.pdf` — coala de tipar: 4 etichete A6 (105×148,5 mm) pe A4, linii punctate de tăiere. Tipar la 100% / „Actual size”.
+- `etichete-baghete-A4.html` — sursa (CSS + JS/SVG inline). Ilustrația camerei și secțiunile profilelor sunt generate în JS; fonturi Google (Cormorant Garamond, Montserrat).
+- `eticheta-preview.png` — previzualizare o etichetă; `logo-decoflair.png` — sigla oficială de pe decoflair.ro (450×173 px, sursa: https://decoflair.ro/image/cache/catalog/logo-deco-wide-450x173.png; rezoluție mică — de înlocuit cu vectorial dacă îl furnizează utilizatorul).
+Conținut: sigla, titlul „Baghete de tavan” + „din polistiren”, ilustrație desenată (cornișă de jur împrejur pe tavan, rozetă, lustră), 4 avantaje (Ultraușoare, Montaj rapid, Se vopsesc, Bară 2 m), „Secțiuni profile” cu 5 secțiuni generice (Concav, Clasic, Modern, Minimalist, Elegant), QR spre https://decoflair.ro/bagheta-polistiren și decoflair.ro.
+Cerințe utilizator: eticheta e pentru TOATĂ colecția — fără cod produs, fără preț. Secțiunile sunt forme tipice, nu copii ale modelelor din catalog. De confirmat cu utilizatorul: „Bară 2 m” (toate modelele văzute pe site au 2000 mm).
+Re-generare PDF: Playwright/Chromium → `page.pdf({format:'A4', printBackground:true, margin 0})`.
+
+## Context anterior (Codex — Black Friday NMC)
+
 Ultima actualizare: 2026-11-04
 Agent: Codex
 Stare: Reguli finale: −20% la toate PROFILELE de exterior, EXCLUSIV adezivi; −30% doar Carrara Best în stoc; interior până la −40% exclusiv Z21, Z11, WO2, WT25, FD3, FO1, L2, L5; ADRO-FIX exterior 1,5 kg −30%; ADRO-FIX 4 kg la preț întreg. Toate ofertele sunt în limita stocului disponibil pe site. Fără prețuri numerice.
