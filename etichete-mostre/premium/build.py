@@ -18,4 +18,7 @@ label=f'''<article class="label"><div class="frame">
 for theme,title in [('mono','Alb-negru'),('color','Color premium')]:
  html=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Baghete de tavan — {title} — Deco&amp;Flair</title><link rel="stylesheet" href="design.css"></head><body class="{theme}"><main class="sheet">{label*4}</main></body></html>'''
  (ROOT/f'etichete-{theme}-A4.html').write_text(html)
-print('Generated two A4 sheets, four labels each.')
+for theme,title in [('mono','Alb-negru'),('color','Color premium')]:
+ html=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Baghete de tavan — {title} — 2 pe A4 — Deco&amp;Flair</title><link rel="stylesheet" href="design.css"><link rel="stylesheet" href="a5.css"></head><body class="{theme}"><main class="sheet two">{label*2}</main></body></html>'''
+ (ROOT/f'etichete-{theme}-2xA4.html').write_text(html)
+print('Generated A4 sheets: four labels each (A6) and two labels each (A5).')

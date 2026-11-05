@@ -1,7 +1,10 @@
 # Handoff
 
 Ultima actualizare: 2026-11-05
-Agent: Codex
+Agent: Claude Code
+
+## Format nou: 2 etichete pe A4 — Claude Code, 2026-11-05
+La cererea utilizatorului, ultima machetă premium a lui Codex există acum și cu 2 etichete pe coală: `etichete-mostre/premium/etichete-color-2xA4.pdf` și `etichete-mono-2xA4.pdf` (A4 orizontal, 2 etichete A5 de 148,5 × 210 mm, tăiere pe linia punctată din mijloc). Conținut identic cu varianta de 4 pe A4; macheta e scalată ×√2 prin `a5.css` (`zoom` pe `.label`, `@page` 297 × 210 mm). `build.py` generează acum și `etichete-*-2xA4.html`; randare cu `node render-2xA4.cjs` (verifică 2 etichete, fără overflow, imagini încărcate). Previzualizări: `coala-*-2xA4.png`. Variantele 4/A4 rămân neschimbate.
 
 ## Adaptare grafică premium — Codex, 2026-11-05
 Livrare: `etichete-mostre/premium/`. Două variante finale independente: `etichete-mono-A4.pdf` și `etichete-color-A4.pdf`, fiecare cu 4 etichete de 105 × 148,5 mm pe o coală A4. Previzualizare alăturată: `comparatie.png`; surse HTML/CSS, fonturi locale și generator comun incluse. Originalele lui Claude sunt păstrate.
