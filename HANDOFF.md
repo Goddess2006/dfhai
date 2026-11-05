@@ -1,7 +1,12 @@
 # Handoff
 
 Ultima actualizare: 2026-11-05
-Agent: Claude Code
+Agent: Codex
+
+## Adaptare grafică premium — Codex, 2026-11-05
+Livrare: `etichete-mostre/premium/`. Două variante finale independente: `etichete-mono-A4.pdf` și `etichete-color-A4.pdf`, fiecare cu 4 etichete de 105 × 148,5 mm pe o coală A4. Previzualizare alăturată: `comparatie.png`; surse HTML/CSS, fonturi locale și generator comun incluse. Originalele lui Claude sunt păstrate.
+Design: tipografie editorială aliniată la stânga, sigla oficială păstrată, ilustrația SVG și cele cinci secțiuni generice preluate din original. Color: verde închis/ivoire/auriu; mono: exclusiv tonuri de gri, inclusiv sigla și ilustrația. Bloc vânzător distinct cu site, telefon, nume firmă, sediu, CUI și ONRC. Date preluate din https://decoflair.ro/contact la 05.11.2026. QR original păstrat, cu zonă albă de protecție adăugată. Fără preț sau cod produs; secțiunile sunt marcate „Forme ilustrative”. Mențiunea „Bară 2 m” omisă deoarece rămăsese neconfirmată pentru întreaga colecție.
+Verificare: Chromium/Playwright; ambele PDF-uri au exact o pagină A4; patru etichete fără overflow, fonturi locale încărcate, imagini încărcate. Ambele QR-uri decodate din PNG-ul etichetei spre https://decoflair.ro/bagheta-polistiren; scanare pixel cu pixel: zero pixeli colorați în varianta mono. Comparația vizuală inspectată. Reproducere în README.md din folderul premium; dependențe Node fixate în package-lock.json. PDF RGB pentru imprimare uzuală, fără bleed; accentele aurii sunt culoare imprimată, nu folie metalică. Tipar 100% / Actual size, fără ajustare la pagină.
 
 ## Nou: etichete paletar mostre — baghete de tavan din polistiren (Deco&Flair)
 Folder: `etichete-mostre/`
