@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-12
 Agent: Codex
 
+## Texte „Detalii de sezon” — Codex, 2026-11-12
+Livrare: `nmc-noiembrie/postari-detalii-de-sezon.txt`: 5 postări pentru FL12, IL11 negru, Arstyl L2, WO2 și A106, plus descrierea ultimului Reel `nmc-noiembrie/reel/nmc-noiembrie-reel.mp4`. Ton sezonier, orientat spre pregătirea casei pentru sărbători, cu CTA și linkuri din products.json. Fără prețuri, procente, Black Friday, termene de livrare sau afirmații că ambientul de vilă arată A106 montat. Textele LED nu promit surse de lumină incluse în pachet. Beneficiile folosite sunt cele din brief-ul creativelor. Creativele rămân neschimbate; nicio postare nu a fost publicată pe Facebook.
+
 ## Postere generice NMC noiembrie (fără preț) — Claude Code, 2026-11-12
 Folder: `nmc-noiembrie/`. 5 postere feed 1080×1350 (`01..05-*.png`) + 5 Story 1080×1920 (`story/*-story.png`), același stil ca Black Friday (ambient sus, produs în card alb, logo NMC, portocaliu #FF671F, Roboto), dar FĂRĂ preț/reducere: utilizatorul nu știe încă reducerea. În locul procentului, cercul portocaliu scoate în evidență un avantaj; dreapta sus „Inspirație de sezon”; jos „nmcromania.ro · Descoperă colecția”; 3 avantaje bifate, luate din fișele de produs.
 Produse (toate InStock la 12.11.2026): plintă FL12 (polimer dur), plintă LED IL11 neagră, scafă/cornișă LED Arstyl L2, brâu WO2 (chenare), accent 3D exterior A106 („Ultimul strop de eleganță înainte de sărbători”). Imagini de pe nmcromania.ro; ambientul A106 = vila de pe homepage (nu arată A106 montat). Cardurile cu secțiuni sunt decupate automat; ambientele FL12/IL11 au fost tăiate de benzile de umplutură.
