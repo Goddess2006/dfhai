@@ -3,6 +3,13 @@
 Ultima actualizare: 2026-11-12
 Agent: Codex
 
+## Creative Black Friday Deco&Flair (FB + IG) — Claude Code, 2026-11-12
+Folder: `decoflair-black-friday/`. 5 creative feed 1080×1350 (`01..05-*.png`) + 5 Story 1080×1920 (`story/`). Stil preluat din bannerele de pe decoflair.ro (inclusiv BF „masterpiece”): fundal întunecat, auriu #D6BC84, accent vișiniu #B42127, titluri serif majuscule (Playfair Display), text Jost (fontul site-ului), ramă aurie subțire, logo oficial auriu. Voce: emoțională, „casa frumoasă” („Lumina devine arhitectură.”, „Tavanul care spune o poveste.”, „Pereți cu ritm, proporție și eleganță.”, „Eleganța marmurei, acasă la tine.”, „Fațada pe care ți-ai dorit-o.”).
+Prețuri reale din https://decoflair.ro/oferte-speciale la 12.11.2026 (cu TVA, toate InStock; pe site: −30% interior premium + Carrara Best, −20% exterior, −10% rozete/panouri 3D): L5 585,36→409,75 (−30%); Z11 292,47→204,73 (−30%); WO2 66,03→46,22 (−30%); Carrara Best 82603 665,50→465,85/rolă (−30%); NA105 163,70→130,96 (−20%). Date în `products.json`.
+Ambient: L5 = slide homepage „Profile iluminare LED”; Z11 / WO2 / NA105 = părțile din dreapta (fără text) ale bannerelor de interior, BF și exterior de pe decoflair.ro — imagini de stil, nu arată neapărat exact SKU-ul. Carrara = poza de ambient a produsului. Cardul = poza de produs de pe site.
+Notă: bannerul BF de pe site spune „până la 40%”, dar în oferte-speciale reducerea maximă găsită este 30%; creativele folosesc doar reducerile reale.
+Reproducere: `python3 build.py && node render.cjs`.
+
 ## Texte „Detalii de sezon” — Codex, 2026-11-12
 Livrare: `nmc-noiembrie/postari-detalii-de-sezon.txt`: 5 postări pentru FL12, IL11 negru, Arstyl L2, WO2 și A106, plus descrierea ultimului Reel `nmc-noiembrie/reel/nmc-noiembrie-reel.mp4`. Ton sezonier, orientat spre pregătirea casei pentru sărbători, cu CTA și linkuri din products.json. Fără prețuri, procente, Black Friday, termene de livrare sau afirmații că ambientul de vilă arată A106 montat. Textele LED nu promit surse de lumină incluse în pachet. Beneficiile folosite sunt cele din brief-ul creativelor. Creativele rămân neschimbate; nicio postare nu a fost publicată pe Facebook.
 
