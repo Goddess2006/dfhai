@@ -1,0 +1,152 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>NMC Noiembrie — Reel</title><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:#161618;font-family:Roboto,sans-serif;color:#fff;overflow:hidden}
+.c{position:relative;width:1080px;height:1350px;background:#161618}
+.amb{position:absolute;left:0;top:0;width:1080px;height:860px;object-fit:cover}
+.shade{position:absolute;left:0;top:0;width:1080px;height:870px;
+ background:linear-gradient(180deg,rgba(22,22,24,.55) 0%,rgba(22,22,24,0) 22%,rgba(22,22,24,0) 50%,rgba(22,22,24,.92) 90%,#161618 100%)}
+.top{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:center}
+.logo{width:150px;height:auto;display:block;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.tag{font-weight:700;font-size:28px;letter-spacing:3px;text-transform:uppercase;background:rgba(0,0,0,.78);padding:16px 24px 14px;border-radius:8px;line-height:1;border-left:6px solid #FF671F}
+.head{position:absolute;left:56px;bottom:auto;top:auto;font-weight:900;font-size:64px;line-height:1.03;letter-spacing:-1px;text-shadow:0 4px 24px rgba(0,0,0,.5);max-width:640px}
+.badge{position:absolute;right:48px;top:500px;width:240px;height:240px;border-radius:50%;background:#FF671F;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.45);transform:rotate(-8deg);padding:20px}
+.badge span{font-weight:500;font-size:28px;line-height:1.1}
+.badge b{font-weight:900;font-size:40px;line-height:1.02;text-transform:uppercase;margin-top:4px}
+.card{position:absolute;left:56px;top:800px;width:400px;height:400px;background:#fff;border-radius:22px;overflow:hidden;
+ box-shadow:0 18px 50px rgba(0,0,0,.5);border:6px solid #fff}
+.card img{width:100%;height:100%;object-fit:contain}
+.info{position:absolute;left:500px;right:56px;top:828px}
+.kick{color:#FF671F;font-weight:700;font-size:25px;letter-spacing:2.2px;text-transform:uppercase}
+.name{font-weight:900;font-size:76px;line-height:1;margin-top:10px;letter-spacing:-1px}
+.dims{color:#b9bcc6;font-size:25px;margin-top:10px}
+ul{list-style:none;margin-top:26px}
+li{position:relative;padding-left:40px;font-size:28px;line-height:1.25;margin-top:14px;font-weight:500}
+li::before{content:"";position:absolute;left:0;top:7px;width:22px;height:22px;border-radius:50%;background:#FF671F}
+li::after{content:"";position:absolute;left:6px;top:11px;width:9px;height:5px;border-left:3px solid #fff;border-bottom:3px solid #fff;transform:rotate(-45deg)}
+.foot{position:absolute;left:0;right:0;bottom:0;height:86px;background:#FF671F;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
+.foot b{font-weight:900;font-size:36px;letter-spacing:.5px}
+.foot span{font-size:24px;font-weight:700;text-align:right;text-transform:uppercase;letter-spacing:1.5px}
+/* ---- Story 1080x1920: zone sigure sus ~200px si jos ~250px ---- */
+body.story,.story .c{height:1920px}
+.story .amb{height:1130px}.story .shade{height:1140px;background:linear-gradient(180deg,rgba(22,22,24,.6) 0%,rgba(22,22,24,0) 20%,rgba(22,22,24,0) 52%,rgba(22,22,24,.92) 90%,#161618 100%)}
+.story .top{top:200px}
+.story .badge{top:640px;width:270px;height:270px}
+.story .card{top:1060px;width:410px;height:410px}
+.story .info{top:1090px}
+.story .foot{bottom:250px;height:100px}.story .foot b{font-size:40px}
+.story .tail{position:absolute;left:0;right:0;bottom:0;height:250px;background:#161618}
+
+.sc{position:absolute;inset:0;opacity:0;overflow:hidden}
+.sc .c{position:absolute;inset:0;height:1920px}
+.amb{transform-origin:50% 100%}
+.intro,.outro{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#3a2014 0%,#161618 62%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.intro .lg,.outro .lg{width:260px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.intro h1{font-weight:900;font-size:150px;line-height:.9;letter-spacing:-2px;margin-top:70px;text-transform:uppercase}
+.intro h1 i{font-style:normal;color:#FF671F;display:block}
+.intro p{font-size:54px;font-weight:700;margin-top:56px}
+.intro p b{color:#FF671F;font-weight:900}
+.intro small{font-size:34px;color:#b9bcc6;margin-top:22px;letter-spacing:6px;text-transform:uppercase;font-weight:500}
+.outro p{font-size:46px;font-weight:500;margin-top:80px;color:#d8d9de}
+.outro h2{font-weight:900;font-size:104px;color:#FF671F;margin-top:14px;letter-spacing:-1px}
+.outro small{font-size:30px;color:#9a9ca6;margin-top:40px}
+</style></head><body class="story"><div class="c" style="position:relative"><div class="sc" data-k="intro"><div class="intro">
+<img class="lg" src="../assets/nmc-logo.png" alt="nmc">
+<h1>Detalii<i>de sezon</i></h1>
+<p>Pregătește casa <b>pentru sărbători</b></p>
+<small>Profile decorative NMC</small></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/fl12amb.jpg" style="object-position:50% 50%" alt="">
+<div class="shade"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="tag">Inspirație de sezon</div></div>
+<div class="head" style="top:888px">Finisajul curat<br>pe care îl vezi zilnic</div>
+<div class="badge"><span>Gata de</span><b>vopsit</b></div>
+<div class="card"><img src="../assets/sec-fl12.png" alt=""></div>
+<div class="info">
+ <div class="kick">Plintă decorativă · Wallstyl</div>
+ <div class="name">FL12</div>
+ <div class="dims">80 × 13 × 2000 mm · polimer dur</div>
+ <ul><li>Rezistentă la șocuri și umezeală</li><li>Montaj curat, fără praf sau șuruburi</li><li>Linii simple, moderne, atemporale</li></ul>
+</div>
+<div class="foot"><b>nmcromania.ro</b><span>Descoperă colecția</span></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/il11amb.jpg" style="object-position:60% 50%" alt="">
+<div class="shade"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="tag">Inspirație de sezon</div></div>
+<div class="head" style="top:888px">Lumină caldă<br>la nivelul podelei</div>
+<div class="badge"><span>Iluminat</span><b>indirect</b></div>
+<div class="card"><img src="../assets/sec-il11.png" alt=""></div>
+<div class="info">
+ <div class="kick">Plintă cu iluminat LED</div>
+ <div class="name">IL11 negru</div>
+ <div class="dims">80 × 20 × 2000 mm · RAL 7021</div>
+ <ul><li>Lumină ambientală discretă, la podea</li><li>Design modern, în negru mat</li><li>Rezistentă la șocuri și umezeală</li></ul>
+</div>
+<div class="foot"><b>nmcromania.ro</b><span>Descoperă colecția</span></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/l2a.jpg" style="object-position:50% 50%" alt="">
+<div class="shade"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="tag">Inspirație de sezon</div></div>
+<div class="head" style="top:888px">Tavanul devine<br>sursă de lumină</div>
+<div class="badge"><span>Pentru</span><b>LED & spoturi</b></div>
+<div class="card"><img src="../assets/sec-l2b.png" alt=""></div>
+<div class="info">
+ <div class="kick">Scafă / cornișă LED · Arstyl</div>
+ <div class="name">L2</div>
+ <div class="dims">200 × 250 × 2000 mm · poliuretan</div>
+ <ul><li>Integrează bandă LED sau spoturi</li><li>Ascunde cabluri și tubulaturi</li><li>Preamorsată, gata de vopsit</li></ul>
+</div>
+<div class="foot"><b>nmcromania.ro</b><span>Descoperă colecția</span></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/wo2a.jpg" style="object-position:50% 50%" alt="">
+<div class="shade"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="tag">Inspirație de sezon</div></div>
+<div class="head" style="top:888px">Chenare elegante<br>pe orice perete</div>
+<div class="badge"><span>Ideal pentru</span><b>chenare</b></div>
+<div class="card"><img src="../assets/sec-wo2b.png" alt=""></div>
+<div class="info">
+ <div class="kick">Brâu decorativ · Wallstyl</div>
+ <div class="name">WO2</div>
+ <div class="dims">38 × 18 × 2000 mm · polimer dur</div>
+ <ul><li>Rame decorative pe pereți și uși</li><li>Ușor de tăiat și îmbinat la 45°</li><li>Preamorsat, gata de vopsit</li></ul>
+</div>
+<div class="foot"><b>nmcromania.ro</b><span>Descoperă colecția</span></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/ambient-vila.jpg" style="object-position:50% 20%" alt="">
+<div class="shade"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="tag">Inspirație de sezon</div></div>
+<div class="head" style="top:822px">Ultimul strop<br>de eleganță<br>înainte de sărbători</div>
+<div class="badge"><span>Detaliu</span><b>de fațadă</b></div>
+<div class="card"><img src="../assets/a106.jpg" alt=""></div>
+<div class="info">
+ <div class="kick">Accent 3D exterior</div>
+ <div class="name">A106</div>
+ <div class="dims">600 × 450 × 55 mm · polistiren cu rășină</div>
+ <ul><li>Punctul de atracție al fațadei</li><li>Polistiren acoperit cu rășină</li><li>Se vopsește în orice culoare</li></ul>
+</div>
+<div class="foot"><b>nmcromania.ro</b><span>Descoperă colecția</span></div></div></div><div class="sc" data-k="outro"><div class="outro">
+<img class="lg" src="../assets/nmc-logo.png" alt="nmc">
+<p>Descoperă toată colecția pe</p>
+<h2>nmcromania.ro</h2>
+<small>Plinte · Cornișe LED · Brâuri · Accente 3D</small></div></div></div><script>
+const D={intro:2.4,p:3.8,outro:3.0}, X=0.4;
+const S=[...document.querySelectorAll('.sc')];
+let t0=0; S.forEach(s=>{s.t0=t0; s.d=D[s.dataset.k]; t0+=s.d-X;});
+window.TOTAL=t0+X;
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=v=>1-Math.pow(1-v,3);
+const back=v=>{const c=1.7;return 1+(c+1)*Math.pow(v-1,3)+c*Math.pow(v-1,2)};
+const seg=(u,a,b)=>cl((u-a)/(b-a));
+function q(s,sel){return s.querySelector(sel)}
+window.setT=function(t){
+ S.forEach((s,i)=>{const u=t-s.t0;
+  let o=0; if(u>=0&&u<=s.d){o=1; if(i>0&&u<X)o=u/X; if(i<S.length-1&&u>s.d-X)o=Math.min(o,1);}
+  if(i<S.length-1&&u>s.d){o=0}
+  s.style.opacity=o; s.style.display=o>0?'block':'none'; if(!o)return;
+  const k=s.dataset.k;
+  if(k==='p'){
+   q(s,'.amb').style.transform=`scale(${1.14-0.10*cl(u/s.d)})`;
+   const h=ease(seg(u,.15,.65)); {const e=q(s,'.head');e.style.opacity=h;e.style.transform=`translateY(${(1-h)*50}px)`;}
+   const b=seg(u,.45,.95); q(s,'.badge').style.transform=`rotate(-8deg) scale(${b?back(b):0})`;
+   const pr=q(s,'.card'); const c=ease(seg(u,.3,.85)); pr.style.transform=`translateX(${(1-c)*-560}px)`;
+   const f=ease(seg(u,.65,1.15)); q(s,'.info').style.cssText=`opacity:${f};transform:translateY(${(1-f)*60}px)`;
+   [...s.querySelectorAll('li')].forEach((e,j)=>{const v=ease(seg(u,1.1+j*.22,1.5+j*.22)); e.style.cssText=`opacity:${v};transform:translateX(${(1-v)*40}px)`;});
+  } else {
+   const a=ease(seg(u,0,.6)); const lg=q(s,'.lg'); lg.style.cssText=`opacity:${a};transform:translateY(${(1-a)*-40}px)`;
+   const h=q(s,'h1')||q(s,'h2'); const hb=seg(u,.2,.75); h.style.transform=`scale(${hb?back(hb):0})`;
+   [...s.querySelectorAll('p,small')].forEach((e,j)=>{const v=ease(seg(u,.6+j*.25,1.1+j*.25)); e.style.cssText=`opacity:${v};transform:translateY(${(1-v)*30}px)`;});
+  }
+ });
+};
+setT(0);
+</script></body></html>

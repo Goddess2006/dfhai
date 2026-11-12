@@ -6,6 +6,7 @@ Agent: Codex
 ## Postere generice NMC noiembrie (fără preț) — Claude Code, 2026-11-12
 Folder: `nmc-noiembrie/`. 5 postere feed 1080×1350 (`01..05-*.png`) + 5 Story 1080×1920 (`story/*-story.png`), același stil ca Black Friday (ambient sus, produs în card alb, logo NMC, portocaliu #FF671F, Roboto), dar FĂRĂ preț/reducere: utilizatorul nu știe încă reducerea. În locul procentului, cercul portocaliu scoate în evidență un avantaj; dreapta sus „Inspirație de sezon”; jos „nmcromania.ro · Descoperă colecția”; 3 avantaje bifate, luate din fișele de produs.
 Produse (toate InStock la 12.11.2026): plintă FL12 (polimer dur), plintă LED IL11 neagră, scafă/cornișă LED Arstyl L2, brâu WO2 (chenare), accent 3D exterior A106 („Ultimul strop de eleganță înainte de sărbători”). Imagini de pe nmcromania.ro; ambientul A106 = vila de pe homepage (nu arată A106 montat). Cardurile cu secțiuni sunt decupate automat; ambientele FL12/IL11 au fost tăiate de benzile de umplutură.
+Reel: `nmc-noiembrie/reel/nmc-noiembrie-reel.mp4` (1080×1920, H.264, 30 fps, 22 s, fără sunet): intro „Detalii de sezon — Pregătește casa pentru sărbători” → 5 produse animate (avantajele apar pe rând) → final „Descoperă toată colecția pe nmcromania.ro”. Sursă: `reel_build.py` + `reel_render.cjs` (`python3 reel_build.py && node reel_render.cjs`).
 Reproducere: `python3 build.py && node render.cjs`. Pentru o reducere ulterioară se poate readuce blocul de preț din `black-friday/facebook/build.py`.
 
 ## Texte Facebook pentru creative — Codex, 2026-11-12
