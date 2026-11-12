@@ -1,0 +1,106 @@
+{
+ "checkedAt": "2026-11-12",
+ "source": "https://www.nmcromania.ro/",
+ "products": [
+  {
+   "slug": "01-plinta-fl12",
+   "kicker": "Plintă decorativă · Wallstyl",
+   "name": "FL12",
+   "dims": "80 × 13 × 2000 mm · polimer dur",
+   "headline": "Finisajul curat<br>pe care îl vezi zilnic",
+   "ambient": "fl12amb.jpg",
+   "amb_pos": "50% 50%",
+   "product": "sec-fl12.png",
+   "badge": [
+    "Gata de",
+    "vopsit"
+   ],
+   "points": [
+    "Rezistentă la șocuri și umezeală",
+    "Montaj curat, fără praf sau șuruburi",
+    "Linii simple, moderne, atemporale"
+   ],
+   "url": "https://www.nmcromania.ro/plinta-polimer-dur-fl12"
+  },
+  {
+   "slug": "02-plinta-led-il11",
+   "kicker": "Plintă cu iluminat LED",
+   "name": "IL11 negru",
+   "dims": "80 × 20 × 2000 mm · RAL 7021",
+   "headline": "Lumină caldă<br>la nivelul podelei",
+   "ambient": "il11amb.jpg",
+   "amb_pos": "60% 50%",
+   "product": "sec-il11.png",
+   "badge": [
+    "Iluminat",
+    "indirect"
+   ],
+   "points": [
+    "Lumină ambientală discretă, la podea",
+    "Design modern, în negru mat",
+    "Rezistentă la șocuri și umezeală"
+   ],
+   "url": "https://www.nmcromania.ro/plinta-decorativa-il11-neagra-80x20x2000"
+  },
+  {
+   "slug": "03-scafa-led-arstyl-l2",
+   "kicker": "Scafă / cornișă LED · Arstyl",
+   "name": "L2",
+   "dims": "200 × 250 × 2000 mm · poliuretan",
+   "headline": "Tavanul devine<br>sursă de lumină",
+   "ambient": "l2a.jpg",
+   "amb_pos": "50% 50%",
+   "product": "sec-l2b.png",
+   "badge": [
+    "Pentru",
+    "LED & spoturi"
+   ],
+   "points": [
+    "Integrează bandă LED sau spoturi",
+    "Ascunde cabluri și tubulaturi",
+    "Preamorsată, gata de vopsit"
+   ],
+   "url": "https://www.nmcromania.ro/l2-arstyl"
+  },
+  {
+   "slug": "04-brau-chenare-wo2",
+   "kicker": "Brâu decorativ · Wallstyl",
+   "name": "WO2",
+   "dims": "38 × 18 × 2000 mm · polimer dur",
+   "headline": "Chenare elegante<br>pe orice perete",
+   "ambient": "wo2a.jpg",
+   "amb_pos": "50% 50%",
+   "product": "sec-wo2b.png",
+   "badge": [
+    "Ideal pentru",
+    "chenare"
+   ],
+   "points": [
+    "Rame decorative pe pereți și uși",
+    "Ușor de tăiat și îmbinat la 45°",
+    "Preamorsat, gata de vopsit"
+   ],
+   "url": "https://www.nmcromania.ro/brau-decorativwo2-wallstyl"
+  },
+  {
+   "slug": "05-accent-3d-exterior-a106",
+   "kicker": "Accent 3D exterior",
+   "name": "A106",
+   "dims": "600 × 450 × 55 mm · polistiren cu rășină",
+   "headline": "Ultimul strop<br>de eleganță<br>înainte de sărbători",
+   "ambient": "ambient-vila.jpg",
+   "amb_pos": "50% 20%",
+   "product": "a106.jpg",
+   "badge": [
+    "Detaliu",
+    "de fațadă"
+   ],
+   "points": [
+    "Punctul de atracție al fațadei",
+    "Polistiren acoperit cu rășină",
+    "Se vopsește în orice culoare"
+   ],
+   "url": "https://www.nmcromania.ro/accent-3d-a106-600x450x55"
+  }
+ ]
+}

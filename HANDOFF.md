@@ -3,6 +3,11 @@
 Ultima actualizare: 2026-11-12
 Agent: Codex
 
+## Postere generice NMC noiembrie (fără preț) — Claude Code, 2026-11-12
+Folder: `nmc-noiembrie/`. 5 postere feed 1080×1350 (`01..05-*.png`) + 5 Story 1080×1920 (`story/*-story.png`), același stil ca Black Friday (ambient sus, produs în card alb, logo NMC, portocaliu #FF671F, Roboto), dar FĂRĂ preț/reducere: utilizatorul nu știe încă reducerea. În locul procentului, cercul portocaliu scoate în evidență un avantaj; dreapta sus „Inspirație de sezon”; jos „nmcromania.ro · Descoperă colecția”; 3 avantaje bifate, luate din fișele de produs.
+Produse (toate InStock la 12.11.2026): plintă FL12 (polimer dur), plintă LED IL11 neagră, scafă/cornișă LED Arstyl L2, brâu WO2 (chenare), accent 3D exterior A106 („Ultimul strop de eleganță înainte de sărbători”). Imagini de pe nmcromania.ro; ambientul A106 = vila de pe homepage (nu arată A106 montat). Cardurile cu secțiuni sunt decupate automat; ambientele FL12/IL11 au fost tăiate de benzile de umplutură.
+Reproducere: `python3 build.py && node render.cjs`. Pentru o reducere ulterioară se poate readuce blocul de preț din `black-friday/facebook/build.py`.
+
 ## Texte Facebook pentru creative — Codex, 2026-11-12
 Livrare: `black-friday/facebook/postari-facebook.txt` — 5 postări de feed, asociate imaginilor lui Claude în ordinea 01–05, plus o descriere pentru Reel. Fiecare text include produsul, procentul din creativ, CTA, URL-ul furnizat în products.json și limita stocului. Procente: NCL113/FUGA PANEL 1/NC104 −20%, Z11 −40%, Carrara Best 82671 −30%. Nu s-au modificat creativele și nu s-au publicat postări pe Facebook. Textele nu repetă prețurile numerice din imagini, nu adaugă termene de campanie, stocuri cantitative sau beneficii tehnice neconfirmate. Pentru Story se pot folosi hook-urile scurte ale postărilor împreună cu stickerul de link la produs.
 
