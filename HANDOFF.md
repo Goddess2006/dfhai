@@ -1,7 +1,14 @@
 # Handoff
 
-Ultima actualizare: 2026-11-05
+Ultima actualizare: 2026-11-12
 Agent: Claude Code
+
+## Creative Facebook Black Friday NMC — Claude Code, 2026-11-12
+Folder: `black-friday/facebook/`. 5 imagini PNG 1080×1350 (4:5, feed Facebook), fără butoane: `01-coltar-ncl113.png`, `02-termosistem-fuga-panel-1.png`, `03-cornisa-exterior-nc104.png`, `04-cornisa-interior-z11.png`, `05-tapet-carrara-best-82671.png`.
+Compoziție: ambient sus, produsul lângă (card alb sau decupaj PNG la NCL113), badge portocaliu cu procentul, preț vechi tăiat + preț nou mare portocaliu, unitate + „TVA inclus”, bandă jos nmcromania.ro + „în limita stocului disponibil”. Brand: logo oficial NMC (logo4.png), portocaliu #FF671F, grafit #29292B, font Roboto (ca pe site).
+Prețuri citite live pe nmcromania.ro la 12.11.2026, cu TVA (reducerile erau deja active pe site): NCL113 223,29→178,63 lei/buc (−20%); FUGA PANEL 1 219,57→175,65 lei/buc (−20%); NC104 194,74→155,79 lei/bară 2 m (−20%); Z11 292,47→175,48 lei/bară (−40%); Carrara Best 82671 665,50→465,85 lei/rolă 10,65 mp (−30%). Toate InStock. Date în `products.json`.
+Imagini: toate de pe nmcromania.ro (pagini de produs + homepage `exterior-1200x1200h.jpg` ca ambient la NCL113 — vila nu arată neapărat NCL113, e ambient de brand). Reproducere: `python3 build.py && node render.cjs` (Playwright, fonturi Google).
+De verificat înainte de postare: prețurile, dacă se schimbă până la publicare.
 
 ## Format nou: 2 etichete pe A4 — Claude Code, 2026-11-05
 La cererea utilizatorului, ultima machetă premium a lui Codex există acum și cu 2 etichete pe coală: `etichete-mostre/premium/etichete-color-2xA4.pdf` și `etichete-mono-2xA4.pdf` (A4 orizontal, 2 etichete A5 de 148,5 × 210 mm, tăiere pe linia punctată din mijloc). Conținut identic cu varianta de 4 pe A4; macheta e scalată ×√2 prin `a5.css` (`zoom` pe `.label`, `@page` 297 × 210 mm). `build.py` generează acum și `etichete-*-2xA4.html`; randare cu `node render-2xA4.cjs` (verifică 2 etichete, fără overflow, imagini încărcate). Previzualizări: `coala-*-2xA4.png`. Variantele 4/A4 rămân neschimbate.
