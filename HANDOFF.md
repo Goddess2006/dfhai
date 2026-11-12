@@ -9,6 +9,7 @@ Prețuri reale din https://decoflair.ro/oferte-speciale la 12.11.2026 (cu TVA, t
 Ambient: L5 = slide homepage „Profile iluminare LED”; Z11 / WO2 / NA105 = părțile din dreapta (fără text) ale bannerelor de interior, BF și exterior de pe decoflair.ro — imagini de stil, nu arată neapărat exact SKU-ul. Carrara = poza de ambient a produsului. Cardul = poza de produs de pe site.
 Notă: bannerul BF de pe site spune „până la 40%”, dar în oferte-speciale reducerea maximă găsită este 30%; creativele folosesc doar reducerile reale.
 Reproducere: `python3 build.py && node render.cjs`.
+Reel: `decoflair-black-friday/reel/decoflair-black-friday-reel.mp4` (1080×1920, H.264, 30 fps, 20,8 s, fără sunet): intro „Black Friday — Reduceri de până la −30%” → 5 produse animate (zoom ambient, card din stânga, medalion pop, prețul pulsează) → final „Casa pe care o visezi începe cu un detaliu. decoflair.ro”. Sursă: `reel_build.py` + `reel_render.cjs`.
 
 ## Texte „Detalii de sezon” — Codex, 2026-11-12
 Livrare: `nmc-noiembrie/postari-detalii-de-sezon.txt`: 5 postări pentru FL12, IL11 negru, Arstyl L2, WO2 și A106, plus descrierea ultimului Reel `nmc-noiembrie/reel/nmc-noiembrie-reel.mp4`. Ton sezonier, orientat spre pregătirea casei pentru sărbători, cu CTA și linkuri din products.json. Fără prețuri, procente, Black Friday, termene de livrare sau afirmații că ambientul de vilă arată A106 montat. Textele LED nu promit surse de lumină incluse în pachet. Beneficiile folosite sunt cele din brief-ul creativelor. Creativele rămân neschimbate; nicio postare nu a fost publicată pe Facebook.
