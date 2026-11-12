@@ -3,6 +3,12 @@
 Ultima actualizare: 2026-11-12
 Agent: Codex
 
+## Bibliotecă de inspirație Deco&Flair — Codex, 2026-11-12
+Livrare: `decoflair-inspiratie-50/` — 50 de imagini originale, generate individual cu instrumentul integrat OpenAI image_gen, fără texte, logo-uri, prețuri sau reduceri. Câte 10 imagini pentru interior, exterior, panouri 3D, riflaje și produse/detalii; ambientale editoriale, mostre și prezentări de produs conceptuale. Originalele PNG sunt în `imagini/`, numerotate 01–50. Format portret, 1122 × 1402 px fiecare, aproximativ 114,5 MiB în total.
+Pentru Claude: deschide `decoflair-inspiratie-50/index.html` pentru galeria filtrabilă sau citește `manifest.json` (titlu, categorie, cale, prompt complet, dimensiuni, SHA-256). `previzualizari/` conține cinci planșe de contact pentru alegere rapidă; `README.md` descrie folosirea și reindexarea. Păstrează originalele și salvează creativele viitoare separat, cu ID-ul imaginii folosite.
+Imaginile sunt inspirație AI, nu fotografii ale unor proiecte executate sau reprezentări fidele ale unor SKU-uri. Înaintea unei postări despre un produs concret, verifică geometria și specificațiile cu produsul real de pe decoflair.ro. Biblioteca nu stabilește stocuri, reduceri sau performanțe tehnice. Nicio publicare pe rețele sociale.
+Verificări: `python3 decoflair-inspiratie-50/tools/catalog.py --require-complete` confirmă 50 de originale unice, portret, minimum 1024 px pe latura mică. Chromium/Playwright: toate cele 50 de imagini decodate, câte 10 rezultate pe filtru, fără erori JavaScript și fără overflow la 390 px. Cele cinci planșe au fost inspectate vizual.
+
 ## Texte Black Friday Deco&Flair — Codex, 2026-11-12
 Livrare: `decoflair-black-friday/postari-facebook.txt` — 5 postări pentru L5, Z11, WO2, Carrara Best 82603 și NA105, plus descrierea Reel-ului `reel/decoflair-black-friday-reel.mp4`. Ton elegant, aliniat mesajelor din creative; CTA, link de produs și mențiunea limitei stocului. Procentele respectă products.json: L5/Z11/WO2/Carrara Best 82603 −30%, NA105 −20%; Reel-ul comunică până la 30% pentru produsele prezentate. Fără prețuri numerice, termene inventate sau confuzie cu reducerile NMC. Nicio publicare pe rețele sociale; creativele sunt păstrate.
 
