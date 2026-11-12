@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-12
 Agent: Codex
 
+## Texte Black Friday Deco&Flair — Codex, 2026-11-12
+Livrare: `decoflair-black-friday/postari-facebook.txt` — 5 postări pentru L5, Z11, WO2, Carrara Best 82603 și NA105, plus descrierea Reel-ului `reel/decoflair-black-friday-reel.mp4`. Ton elegant, aliniat mesajelor din creative; CTA, link de produs și mențiunea limitei stocului. Procentele respectă products.json: L5/Z11/WO2/Carrara Best 82603 −30%, NA105 −20%; Reel-ul comunică până la 30% pentru produsele prezentate. Fără prețuri numerice, termene inventate sau confuzie cu reducerile NMC. Nicio publicare pe rețele sociale; creativele sunt păstrate.
+
 ## Creative Black Friday Deco&Flair (FB + IG) — Claude Code, 2026-11-12
 Folder: `decoflair-black-friday/`. 5 creative feed 1080×1350 (`01..05-*.png`) + 5 Story 1080×1920 (`story/`). Stil preluat din bannerele de pe decoflair.ro (inclusiv BF „masterpiece”): fundal întunecat, auriu #D6BC84, accent vișiniu #B42127, titluri serif majuscule (Playfair Display), text Jost (fontul site-ului), ramă aurie subțire, logo oficial auriu. Voce: emoțională, „casa frumoasă” („Lumina devine arhitectură.”, „Tavanul care spune o poveste.”, „Pereți cu ritm, proporție și eleganță.”, „Eleganța marmurei, acasă la tine.”, „Fațada pe care ți-ai dorit-o.”).
 Prețuri reale din https://decoflair.ro/oferte-speciale la 12.11.2026 (cu TVA, toate InStock; pe site: −30% interior premium + Carrara Best, −20% exterior, −10% rozete/panouri 3D): L5 585,36→409,75 (−30%); Z11 292,47→204,73 (−30%); WO2 66,03→46,22 (−30%); Carrara Best 82603 665,50→465,85/rolă (−30%); NA105 163,70→130,96 (−20%). Date în `products.json`.
