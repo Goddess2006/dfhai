@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 
 ROOT = Path(__file__).resolve().parent
+(ROOT / "story").mkdir(exist_ok=True)
 
 PRODUCTS = [
     dict(slug="01-coltar-ncl113", kicker="Colțar exterior decorativ", name="NCL113",
@@ -69,18 +70,27 @@ html,body{width:1080px;height:1350px;background:#161618;font-family:Roboto,sans-
 .foot{position:absolute;left:0;right:0;bottom:0;height:86px;background:#FF671F;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
 .foot b{font-weight:900;font-size:36px;letter-spacing:.5px}
 .foot span{font-size:21px;font-weight:500;text-align:right;line-height:1.25}
+
+/* ---- Story / Reel 1080x1920: zone sigure sus ~200px si jos ~250px ---- */
+body.story,.story .c{height:1920px}
+.story .amb{height:1130px}.story .shade{height:1140px;background:linear-gradient(180deg,rgba(22,22,24,.6) 0%,rgba(22,22,24,0) 20%,rgba(22,22,24,0) 58%,rgba(22,22,24,.92) 92%,#161618 100%)}
+.story .top{top:200px}
+.story .head{top:770px;font-size:78px;max-width:660px}
+.story .badge{top:630px;width:300px;height:300px}.story .badge b{font-size:124px}
+.story .card{top:1060px;width:410px;height:410px}
+.story .cut{top:910px;height:620px}
+.story .info{top:1090px}
+.story .foot{bottom:250px;height:100px}.story .foot b{font-size:40px}
+.story .tail{position:absolute;left:0;right:0;bottom:0;height:250px;background:#161618}
 """
 
-def html(p):
+def scene(p):
     i, d = p["new"].split(",")
     if p["cutout"]:
         prod = f'<div class="cut"><img src="assets/{p["product"]}" alt=""></div>'
     else:
         prod = f'<div class="card"><img src="assets/{p["product"]}" alt=""></div>'
-    return f"""<!doctype html><html lang="ro"><head><meta charset="utf-8">
-<title>NMC Black Friday — {p['kicker']} {p['name']}</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>{CSS}</style></head><body><div class="c">
+    return f"""
 <img class="amb" src="assets/{p['ambient']}" style="object-position:{p['amb_pos']}" alt="">
 <div class="shade"></div>
 <div class="top"><img class="logo" src="assets/nmc-logo.png" alt="nmc"><div class="bf">Black <i>Friday</i></div></div>
@@ -95,11 +105,21 @@ def html(p):
  <div class="new"><span class="i">{i}</span><span class="d">,{d}</span></div>
  <div class="unit">{p['unit']} · TVA inclus</div>
 </div>
-<div class="foot"><b>nmcromania.ro</b><span>Ofertă valabilă în limita<br>stocului disponibil</span></div>
-</div></body></html>"""
+<div class="foot"><b>nmcromania.ro</b><span>Ofertă valabilă în limita<br>stocului disponibil</span></div>"""
+
+HEAD = ('<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>{t}</title>'
+ '<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">'
+ '<style>' + CSS + '</style></head>')
+
+def page(p, story=False):
+    t = f"NMC Black Friday — {p['kicker']} {p['name']}" + (" — Story" if story else "")
+    cls = ' class="story"' if story else ''
+    tail = '<div class="tail"></div>' if story else ''
+    return HEAD.replace('{t}', t) + f'<body{cls}><div class="c">' + scene(p) + tail + '</div></body></html>'
 
 for p in PRODUCTS:
-    (ROOT / f"{p['slug']}.html").write_text(html(p))
+    (ROOT / f"{p['slug']}.html").write_text(page(p))
+    (ROOT / "story" / f"{p['slug']}-story.html").write_text(page(p, True).replace('src="assets/', 'src="../assets/'))
 (ROOT / "products.json").write_text(json.dumps(
     {"pricesCheckedAt": "2026-11-12", "source": "https://www.nmcromania.ro/", "products": PRODUCTS},
     ensure_ascii=False, indent=1))
