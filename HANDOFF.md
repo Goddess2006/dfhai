@@ -1,7 +1,10 @@
 # Handoff
 
 Ultima actualizare: 2026-11-12
-Agent: Claude Code
+Agent: Codex
+
+## Texte Facebook pentru creative — Codex, 2026-11-12
+Livrare: `black-friday/facebook/postari-facebook.txt` — 5 postări de feed, asociate imaginilor lui Claude în ordinea 01–05, plus o descriere pentru Reel. Fiecare text include produsul, procentul din creativ, CTA, URL-ul furnizat în products.json și limita stocului. Procente: NCL113/FUGA PANEL 1/NC104 −20%, Z11 −40%, Carrara Best 82671 −30%. Nu s-au modificat creativele și nu s-au publicat postări pe Facebook. Textele nu repetă prețurile numerice din imagini, nu adaugă termene de campanie, stocuri cantitative sau beneficii tehnice neconfirmate. Pentru Story se pot folosi hook-urile scurte ale postărilor împreună cu stickerul de link la produs.
 
 ## Creative Facebook Black Friday NMC — Claude Code, 2026-11-12
 Folder: `black-friday/facebook/`. 5 imagini PNG 1080×1350 (4:5, feed Facebook), fără butoane: `01-coltar-ncl113.png`, `02-termosistem-fuga-panel-1.png`, `03-cornisa-exterior-nc104.png`, `04-cornisa-interior-z11.png`, `05-tapet-carrara-best-82671.png`.
