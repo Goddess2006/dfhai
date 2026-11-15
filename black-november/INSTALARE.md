@@ -2,6 +2,11 @@
 
 Landing page static: `index.html` + `bn.css` + `bn.js` + `assets/` (59 imagini, ~3,3 MB). Nu are nevoie de bază de date, OCMOD sau modificări în temă.
 
+## Conținutul arhivei
+- `black-november/`: se urcă în rădăcina magazinului, lângă `index.php`. Conține landing-ul, scriptul pentru homepage și imaginile.
+- `cod-homepage.html` / `cod-homepage.js`: linia de cod pentru homepage (varianta HTML, respectiv doar JavaScript).
+- `sursa/`: generatorul paginii, pentru modificări ulterioare. NU se urcă pe server.
+
 ## Publicare
 1. Dezarhivează `nmc-black-november.zip` în rădăcina publică a magazinului (lângă `index.php`), ca să obții `https://www.nmcromania.ro/black-november/`.
 2. Deschide pagina pe desktop și pe mobil. Pune un link din meniu, din slider-ul de pe homepage sau din bannere către `/black-november/`.
