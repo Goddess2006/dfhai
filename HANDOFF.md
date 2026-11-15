@@ -3,6 +3,13 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
+## Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 produse de nișă — Claude Code, 2026-11-15
+Folder: `decoflair-trend-2027/`. 8 feed 1080×1350 + 8 Story 1080×1920 (`story/`), fără prețuri. Cererea: produse mai puțin vândute dar spectaculoase ca forme; poziționare de trend-setter; estetică Japonia/Singapore 2027–2028; fiecare postare = PROBLEMA → SOLUȚIA (produsul) → REZULTATUL; imagini vii.
+NOTĂ: nu am avut date de vânzări (Platforma DecoFlair indisponibilă) — selecția e după formă/detaliu + InStock pe decoflair.ro la 15.11.2026: riflaj acustic stejar deschis, panouri 3D CANELÉ L (design Bertrand Lejoly), WAVE, WING, RAY, ICON, PUZZLE 3D, cornișă LED IL18. Excluse (PreOrder): BUMP, CORAL, PYRAMID, DOMINO, riflaj alb cenușă.
+Aspect: hârtie washi (#F4F1EA), cerneală, accent de culoare extras din fiecare fotografie, kanji vertical (静 liniște, 線 linie, 波 val, 翼 aripă, 光 lumină, 形 formă, 遊 joc, 灯 lumină caldă — Noto Serif JP subset), cerc ensō în jurul produsului, sigiliu hanko „D&F”, etichetă „No.0X · Trend 2027”, CTA text „Descoperă-l pe decoflair.ro”, „Ales cu grijă · Pentru orice buget · Reduceri de sezon”.
+Afirmații din fișe: riflaj 3,1 kg, montaj fără scule speciale, acustică îmbunătățită cu până la 25%; CANELÉ L 300 mm × 2 m, amorsat; IL18 maschează șina de perdea + spațiu pentru bandă LED.
+Reproducere: `python3 build.py && node render.cjs`.
+
 ## Deco&Flair „Idei 2027” — refacere FĂRĂ prețuri (înlocuiește seriile cu preț) — Claude Code, 2026-11-15
 Folder: `decoflair-idei-2027/`. La cererea utilizatorului, toate creativele Deco&Flair refăcute fără preț/preț tăiat (prețul final nu e stabilit). Seriile `decoflair-black-friday/` și `decoflair-lux-2027/` (cu prețuri BF) rămân ca arhivă — NU se mai folosesc.
 Conținut: `00-manifest` + 10 „idei” (aceleași produse ca Lux 2027: Carrara 82603/82671, L5, Z11, Z21, WO2, FD3, WT25, NA105, NCL106), feed 1080×1350 + Story 1080×1920 (`story/`) + Reel `reel/decoflair-idei-2027-reel.mp4` (38 s, 1080×1920, fără sunet).
