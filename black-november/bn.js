@@ -6,6 +6,24 @@
   'use strict';
   var d = document, root = d.documentElement;
   root.classList.add('js');
+
+  /* ---------- afișare peste homepage (iframe pe același domeniu, vezi homepage-overlay.js) ---------- */
+  var inOverlay = false;
+  try { inOverlay = window.parent !== window && window.parent.location.origin === location.origin; } catch (e) { inOverlay = false; }
+  var tell = function (m) { if (inOverlay) try { window.parent.postMessage(m, location.origin); } catch (e) {} };
+  if (inOverlay) {
+    root.classList.add('in-overlay');
+    d.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') tell('nmc:bn:close'); });
+    // orice link spre magazin se deschide în fereastra principală; ancorele #secțiune rămân în landing
+    d.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a[href]'); if (!a) return;
+      var u = new URL(a.href, location.href);
+      if (u.origin === location.origin && u.pathname === location.pathname && u.hash) return;
+      if (!/^https?:$/.test(u.protocol)) return; // tel:, mailto:
+      ev.preventDefault(); tell('nmc:bn:navigate');
+      window.top.location.href = u.href;
+    });
+  }
   var $$ = function (s, r) { return Array.prototype.slice.call((r || d).querySelectorAll(s)); };
   var norm = function (t) { return (t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[șş]/g, 's').replace(/[țţ]/g, 't').toLowerCase(); };
 
@@ -119,7 +137,7 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (j && j.success) {
-          say('✓ Produs adăugat în coș <a href="/cos-cumparaturi">Vezi coșul →</a>');
+          say('✓ Produs adăugat în coș <a href="/cos-cumparaturi" target="_top">Vezi coșul →</a>'); tell('nmc:bn:cart');
           var c = d.getElementById('bn-cart'); if (c) { c.hidden = false; c.textContent = String((parseInt(c.textContent, 10) || 0) + 1); }
           btn.textContent = '✓ Adăugat';
         } else { location.href = url; } // produs cu opțiuni / minim de comandă: alegerea se face pe pagina produsului

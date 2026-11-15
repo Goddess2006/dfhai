@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
+## Black November — script peste homepage — Claude Code, 2026-11-15
+Lipsea din pachet: adăugat `black-november/homepage-overlay.js` (inclus în zip). Se pune o dată pe homepage: `<script defer src="/black-november/homepage-overlay.js"></script>`. Afișează landing-ul pe tot ecranul (iframe același domeniu), doar pe homepage, o dată pe sesiune (`data-frequency` session|day|always), oprit automat după 1.12.2026 (`data-ends`), `?bn=1` forțează afișarea, „Intră în magazin ×”/Escape închid. bn.js: în iframe, linkurile spre magazin navighează fereastra principală, Escape trimite închiderea, coșul funcționează. Testat cu Playwright pe un homepage simulat pe domeniul nmcromania.ro: apariție, închidere, memorare la reîncărcare, ?bn=1, Escape, navigare la produs; desktop + mobil. Detalii în `black-november/INSTALARE.md`.
+
 ## Landing Black November NMC — v2 „lux întunecat” — Claude Code, 2026-11-15
 La cererea utilizatorului: FĂRĂ „preț special”, prețuri sau procente pe produse; „prețuri speciale” apare doar în mesajele generale (hero, USP, benzi, manifest, final). bn.js nu mai afișează prețuri (doar stoc live + „Adaugă în coș”). Stil nou: negru, verde forest (#123A2A–#2E7A57), roz-mov închis (#4A1440–#B4407F), serif Cormorant Garamond + Inter, granulație fină, rame subțiri, carduri întunecate cu imaginea pe fundal ivoriu. Secțiuni noi: manifest „O singură lună în care calitatea premium are prețuri speciale” și final „Black November”. build.py se oprește dacă apare „lei” în HTML.
 

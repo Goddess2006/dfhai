@@ -327,3 +327,8 @@ em{font-style:italic}
   .banner--forest::after,.banner--plum::after{background:linear-gradient(0deg,#070A09 0%,#070A09e6 45%,#070A0966 75%,#070A0933 100%)}
   .banner__promise span{padding:8px 10px;font-size:9.5px;letter-spacing:.12em}
 }
+
+/* ---------- când landing-ul e afișat peste homepage ---------- */
+.in-overlay .hdr__shop{display:none}
+@media (min-width:861px){.in-overlay .hdr__row{padding-right:190px}}
+@media (max-width:860px){.in-overlay .hdr__row{padding-right:52px}}
