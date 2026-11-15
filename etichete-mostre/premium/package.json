@@ -1,0 +1,14 @@
+{
+  "name": "decoflair-etichete-premium",
+  "private": true,
+  "scripts": {
+    "build": "python3 build.py",
+    "render": "node render.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "pdf-lib": "1.17.1",
+    "jsqr": "1.4.0",
+    "pngjs": "7.0.0"
+  }
+}
