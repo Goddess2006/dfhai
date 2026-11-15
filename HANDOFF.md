@@ -3,7 +3,10 @@
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
-## Landing Black November NMC — Claude Code, 2026-11-15
+## Landing Black November NMC — v2 „lux întunecat” — Claude Code, 2026-11-15
+La cererea utilizatorului: FĂRĂ „preț special”, prețuri sau procente pe produse; „prețuri speciale” apare doar în mesajele generale (hero, USP, benzi, manifest, final). bn.js nu mai afișează prețuri (doar stoc live + „Adaugă în coș”). Stil nou: negru, verde forest (#123A2A–#2E7A57), roz-mov închis (#4A1440–#B4407F), serif Cormorant Garamond + Inter, granulație fină, rame subțiri, carduri întunecate cu imaginea pe fundal ivoriu. Secțiuni noi: manifest „O singură lună în care calitatea premium are prețuri speciale” și final „Black November”. build.py se oprește dacă apare „lei” în HTML.
+
+## Landing Black November NMC (v1) — Claude Code, 2026-11-15
 Folder: `black-november/` (înlocuiește tematic landing-ul Black Friday; activ până pe 30.11.2026). Pagină statică în stil marketplace (eMAG/Trendyol): negru, verde, mov, roșu și degradeuri. Conține: ticker, header cu căutare, hero „BLACK NOVEMBER” cu countdown, USP-uri, cercuri de categorii, 4 vedete exterior (FUGA PANEL 1, SIDDING PANEL 3, NCL107, NC158), exterior 16 produse cu filtre, bandă „Stocuri mari · livrare imediată”, interior 10 produse + spot kit Linea, riflaje (stejar deschis/închis, fără alb cenușă), tapet (Carrara Best 82671, Roberto Cavalli 19070), articole de blog, consultanță și FAQ.
 Date: 30 de produse, linkuri și imagini de pe nmcromania.ro (15.11.2026); ambientele vin din blog și homepage. Stoc la 15.11: NP27, NFC112, A114 și Linea sunt fără stoc → „Disponibil la comandă”. Fără prețuri statice: utilizatorul încă nu a stabilit promoțiile.
 bn.js pe nmcromania.ro: preț live din JSON-LD sau `.product-price-new/old` (procent calculat automat când există special), stoc live, „Adaugă în coș” prin `checkout/cart/add` (doar pentru produse fără opțiuni). Testat cu paginile reale (rute Playwright), cu coșul simulat.

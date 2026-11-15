@@ -7,15 +7,17 @@ Landing page static: `index.html` + `bn.css` + `bn.js` + `assets/` (59 imagini, 
 2. Deschide pagina pe desktop și pe mobil. Pune un link din meniu, din slider-ul de pe homepage sau din bannere către `/black-november/`.
 3. Golește cache-ul Journal 3 sau al CDN-ului, dacă există.
 
+## Regula campaniei: fără prețuri pe produse
+„Prețuri speciale” apare doar în mesajele generale (hero, benzi, secțiuni). Pe produse nu se afișează prețuri, procente sau alte cifre. Clientul vede prețul special pe pagina produsului din magazin. `build.py` refuză să genereze pagina dacă apare „lei” în HTML.
+
 ## Ce face scriptul `bn.js` pe domeniul magazinului
 Când pagina rulează pe `nmcromania.ro`, scriptul citește pagina fiecărui produs (aceeași origine, fără API):
-- **Prețul curent.** Dacă produsul are reducere setată în OpenCart (preț „Special”), afișează și prețul vechi tăiat și calculează automat procentul în badge. Ca să apară reducerile pe landing, ajunge să setezi prețurile speciale în admin.
 - **Stocul.** Produsele fără stoc apar cu „Disponibil la comandă”.
-- **Butonul „Adaugă în coș”.** Folosește `index.php?route=checkout/cart/add`. Pentru produsele cu opțiuni, butonul duce la pagina produsului.
+- **Butonul „Adaugă în coș”.** Folosește `index.php?route=checkout/cart/add` și apare doar la produsele în stoc, fără opțiuni.
 
 Testat cu paginile reale ale produselor, cu răspunsul coșului simulat. Butonul de coș nu a fost testat cu un coș real.
 
-Fără JavaScript, sau deschisă pe alt domeniu, pagina rămâne complet funcțională. În locul prețului apare „Preț special”, iar butoanele duc la produs.
+Fără JavaScript, sau deschisă pe alt domeniu, pagina rămâne complet funcțională: butoanele duc la pagina produsului.
 
 ## Modificări
 Textele, produsele, linkurile și imaginile sunt în `tools/build.py` (CAMPANIE, PRODUSE, BLOG, CERCURI).

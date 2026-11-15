@@ -73,40 +73,30 @@
     $$('.card, .star, .banner, .post, .wp, .spot').forEach(function (el) { el.classList.add('rv'); rv.observe(el); });
   }
 
-  /* ---------- preț + stoc live (doar pe același domeniu cu magazinul) ---------- */
+  /* ---------- stoc live + „Adaugă în coș” (doar pe același domeniu cu magazinul) ----------
+     Regulă de campanie: pe produse NU se afișează prețuri sau procente. */
   var LIVE = /(^|\.)nmcromania\.ro$/.test(location.hostname);
   if (!LIVE) return;
-  var fmt = function (n) { return n.toLocaleString('ro-RO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-  var parseLei = function (t) { var m = (t || '').replace(/\s/g, '').match(/\d[\d.,]*/); if (!m) return 0; var v = m[0].replace(/[.,]$/, ''); var i = Math.max(v.lastIndexOf('.'), v.lastIndexOf(',')); if (i > -1 && v.length - i - 1 === 2) v = v.slice(0, i).replace(/[.,]/g, '') + '.' + v.slice(i + 1); else v = v.replace(/[.,]/g, ''); return parseFloat(v) || 0; };
   var cache = {};
   function info(url) {
     if (!cache[url]) cache[url] = fetch(url, { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); }).then(function (html) {
-      var doc = new DOMParser().parseFromString(html, 'text/html'), price = 0;
-      $$('script[type="application/ld+json"]', doc).forEach(function (s) { try { var j = JSON.parse(s.textContent); if (j['@type'] === 'Product' && j.offers) price = parseFloat(j.offers.price) || 0; } catch (e) {} });
-      var oldEl = doc.querySelector('.product-price-old'), newEl = doc.querySelector('.product-price-new');
-      var stockEl = doc.querySelector('.product-stock'), pid = doc.querySelector('input[name="product_id"]');
-      var hasOptions = !!doc.querySelector('#product .product-options .form-group, #product [name^="option["]');
-      return { price: newEl ? parseLei(newEl.textContent) || price : price, old: oldEl ? parseLei(oldEl.textContent) : 0,
-        inStock: stockEl ? stockEl.classList.contains('in-stock') : null, pid: pid ? pid.value : '', options: hasOptions };
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var stockEl = doc.querySelector('.product-info .product-stock') || doc.querySelector('.product-stock');
+      var pid = doc.querySelector('input[name="product_id"]');
+      var hasOptions = !!doc.querySelector('#product [name^="option["]');
+      return { inStock: stockEl ? stockEl.classList.contains('in-stock') : null, pid: pid ? pid.value : '', options: hasOptions };
     });
     return cache[url];
   }
   function render(el, x) {
-    var box = el.querySelector('[data-price]');
-    if (box && x.price > 0) {
-      var p = x.price.toFixed(2).split('.');
-      box.innerHTML = (x.old > x.price ? '<span class="price__old">' + fmt(x.old) + ' lei</span>' : '') +
-        '<span class="price__now">' + Number(p[0]).toLocaleString('ro-RO') + '<sup>' + p[1] + '</sup><small>lei</small></span>';
-      if (x.old > x.price) { var b = el.querySelector('.badge'); if (b) { b.textContent = '−' + Math.round((1 - x.price / x.old) * 100) + '%'; b.classList.add('is-pct'); } }
-    } else if (box && x.price === 0) { box.innerHTML = '<span class="price__ph">Preț la cerere</span>'; }
     var st = el.querySelector('[data-stock]');
     if (st && x.inStock === false) { st.classList.add('is-out'); st.innerHTML = '<i></i>Disponibil la comandă'; }
+    if (st && x.inStock === true) { st.classList.remove('is-out'); st.innerHTML = '<i></i>În stoc · livrare imediată'; }
     var acts = el.querySelector('.card__actions');
-    if (acts && x.pid && !x.options && x.inStock !== false && !acts.querySelector('.btn--cart')) {
+    if (acts && x.pid && !x.options && x.inStock === true && !acts.querySelector('.btn--cart')) {
       var btn = d.createElement('button'); btn.type = 'button'; btn.className = 'btn btn--cart'; btn.textContent = 'Adaugă în coș';
       btn.addEventListener('click', function () { addToCart(x.pid, el.getAttribute('data-url'), btn); });
       acts.insertBefore(btn, acts.firstChild);
-      var cta = acts.querySelector('[data-cta]'); if (cta) { cta.innerHTML = 'Vezi detalii'; cta.classList.add('btn--ghostdark'); }
     }
   }
   var queue = $$('[data-url]'), running = 0;
