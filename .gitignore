@@ -11,3 +11,4 @@ __pycache__/
 # Generated deployment package
 black-friday/release/
 black-november/release/
+decoflair-landing/release/
