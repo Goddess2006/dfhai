@@ -3,6 +3,13 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
+## Deco&Flair „Lux 2027” — 10 creative know-how + cumpărare — Claude Code, 2026-11-15
+Folder: `decoflair-lux-2027/`. 10 feed 1080×1350 + 10 Story 1080×1920 (`story/`). Ton decoflair.ro (întunecat, auriu #D6BC84, vișiniu #B42127) într-un aspect modern-futurist: colțuri HUD aurii, grilă fină, etichete monospace (Space Mono) „Know-how 0X/10 · Holiday Edition”, aură vișiniu-aurie, panou de sticlă (glassmorphism) cu produsul, titlu Jost majuscule + Playfair Display italic auriu, CTA text „Comandă … pe decoflair.ro” (fără butoane).
+Fiecare creativ: mesaj de cumpărare/emoție + sfat KNOW-HOW + produs + preț. Produse (toate InStock, prețuri live 15.11.2026 cu TVA, în perioada reducerilor BF): tapet Carrara 82603 / 82671 465,85 lei/rolă; scafă LED L5 409,75; cornișe Z11 204,73, Z21 205,02, WT25 150,93; brâu WO2 46,22 („Lux de 5 stele, cu bani puțini”); plintă FD3 84,79; ancadrament NA105 130,96; colțar NCL106 178,63 lei/buc.
+ATENȚIE: prețurile sunt cele reduse de Black Friday; după încheierea campaniei trebuie actualizate (`products.json` / `build.py`) și re-randate.
+Ambient: bannerele decoflair.ro (LED, interior, BF/chenare, tapet evergreen, exterior — decupaje fără text) + pozele de ambient Carrara. Panourile 3D și rozetele au fost excluse (PreOrder).
+Reproducere: `python3 build.py && node render.cjs`.
+
 ## NMC „Povești de casă” — 5 creative separate, eleganță + mister — Claude Code, 2026-11-15
 Folder: `nmc-povesti/`. 5 feed 1080×1350 + 5 Story 1080×1920 (`story/`), fără preț. Abordare nouă la cererea utilizatorului: mai elegantă, centrată pe nevoia clientului, „poveste” → produs ca răspuns → nmcromania.ro. Ambient pe tot ecranul cu tentă misterioasă (albastru-noapte / violet / prună, vignetă, reflex cald), produsul într-o „lupă” rotundă cu inel portocaliu NMC, capitole numerotate (01 Atmosferă, 02 Ordine, 03 Eleganță, 04 Prima impresie, 05 Caracter). Tipografie: întrebarea/nevoia în Cormorant Garamond italic, restul Roboto (fontul NMC).
 Reel: `nmc-povesti/reel/nmc-povesti-de-casa-reel.mp4` (1080×1920, H.264, 30 fps, 24,8 s, fără sunet), ritm lent: intro „NMC prezintă — Povești de casă” → 5 povești (zoom lent, întrebarea apare, apoi răspunsul, lupa cu produsul, CTA) → final „Care e povestea casei tale? nmcromania.ro”. Sursă: `reel_build.py` + `reel_render.cjs`.
