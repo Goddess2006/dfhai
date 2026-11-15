@@ -5,6 +5,7 @@ Agent: Codex
 
 ## NMC „Povești de casă” — 5 creative separate, eleganță + mister — Claude Code, 2026-11-15
 Folder: `nmc-povesti/`. 5 feed 1080×1350 + 5 Story 1080×1920 (`story/`), fără preț. Abordare nouă la cererea utilizatorului: mai elegantă, centrată pe nevoia clientului, „poveste” → produs ca răspuns → nmcromania.ro. Ambient pe tot ecranul cu tentă misterioasă (albastru-noapte / violet / prună, vignetă, reflex cald), produsul într-o „lupă” rotundă cu inel portocaliu NMC, capitole numerotate (01 Atmosferă, 02 Ordine, 03 Eleganță, 04 Prima impresie, 05 Caracter). Tipografie: întrebarea/nevoia în Cormorant Garamond italic, restul Roboto (fontul NMC).
+Reel: `nmc-povesti/reel/nmc-povesti-de-casa-reel.mp4` (1080×1920, H.264, 30 fps, 24,8 s, fără sunet), ritm lent: intro „NMC prezintă — Povești de casă” → 5 povești (zoom lent, întrebarea apare, apoi răspunsul, lupa cu produsul, CTA) → final „Care e povestea casei tale? nmcromania.ro”. Sursă: `reel_build.py` + `reel_render.cjs`.
 Produse: interior — plintă LED IL11, scafă LED L2, cornișă Z11; exterior — ancadrament NA105, colțar NCL113. Ambient: IL11/L2 = poze NMC de produs; Z11 = banner interior decoflair.ro; NA105 = vila homepage NMC; NCL113 = banner exterior decoflair.ro (imagini de stil, nu neapărat SKU-ul exact).
 Reproducere: `python3 build.py && node render.cjs`.
 
