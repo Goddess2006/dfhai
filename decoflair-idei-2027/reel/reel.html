@@ -1,0 +1,322 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Deco&Flair — Ghidul de idei — Reel</title><link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9A869;--gold2:#D6BC84;--red:#9E1F2A;--onyx:#121115;--cream:#F3EDE3;--ink:#1d1a1a}
+html,body{width:1080px;height:1350px;font-family:Jost,sans-serif;overflow:hidden}
+.c{position:relative;width:1080px;height:1350px;overflow:hidden}
+.light .c{background:var(--cream);color:var(--ink)}
+.dark .c{background:var(--onyx);color:var(--cream)}
+.aura{position:absolute;width:900px;height:900px;right:-380px;top:-380px;border-radius:50%;
+ background:radial-gradient(circle,rgba(158,31,42,.35),transparent 65%)}
+.light .aura{background:radial-gradient(circle,rgba(201,168,105,.45),transparent 65%)}
+.grain{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(#000 1px,transparent 1px);background-size:4px 4px}
+.top{position:absolute;left:70px;right:70px;top:54px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.logo{width:190px}
+.light .logo{filter:brightness(.82) contrast(1.15)}
+.mono{font-family:'Space Mono',monospace;font-size:17px;letter-spacing:3px;text-transform:uppercase}
+.top .mono{text-align:right;line-height:1.6}
+.top .mono b{color:var(--red)}
+.dark .top .mono b{color:var(--gold2)}
+.arch{position:absolute;left:150px;right:70px;top:150px;height:690px;border-radius:430px 430px 26px 26px;overflow:hidden;
+ box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.dark .arch{box-shadow:0 0 0 1px rgba(214,188,132,.4),0 30px 90px rgba(0,0,0,.6)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.25))}
+.side{position:absolute;left:84px;top:160px;height:680px;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:space-between}
+.side .mono{font-size:15px;letter-spacing:5px;opacity:.75}
+.side i{display:block;width:1px;flex:1;margin:18px 0;background:currentColor;opacity:.3}
+.room{position:absolute;left:190px;top:770px;z-index:2;background:rgba(255,255,255,.88);color:var(--ink);padding:10px 18px 8px;border-radius:30px}
+.dark .room{background:rgba(18,17,21,.82);color:var(--gold2)}
+.medal{position:absolute;right:96px;top:700px;width:250px;height:250px;border-radius:50%;overflow:hidden;z-index:2;background:#fff;
+ box-shadow:0 0 0 3px var(--gold),0 0 0 14px rgba(201,168,105,.18),0 24px 60px rgba(0,0,0,.35)}
+.medal img{width:100%;height:100%;object-fit:cover}
+.h{position:absolute;left:70px;right:340px;top:872px;font-family:'Playfair Display',serif;font-weight:500;font-size:54px;line-height:1.06}
+.h i{color:var(--red);font-weight:600}
+.dark .h i{color:var(--gold2)}
+.prod{position:absolute;right:70px;top:970px;width:270px;text-align:center}
+.prod .mono{font-size:14px;letter-spacing:2px;opacity:.75}
+.prod b{display:block;font-weight:600;font-size:30px;margin-top:6px;line-height:1.1}
+.idea{position:absolute;left:70px;right:70px;top:1090px;display:flex;gap:18px;align-items:flex-start}
+.idea .mono{flex:none;font-size:14px;font-weight:700;letter-spacing:2.5px;padding:8px 12px 6px;border:1.5px solid currentColor;border-radius:4px;margin-top:5px}
+.idea span{font-weight:300;font-size:27px;line-height:1.4}
+.foot{position:absolute;left:70px;right:70px;bottom:44px;border-top:1px solid rgba(128,110,80,.45);padding-top:18px;display:flex;justify-content:space-between;align-items:center}
+.foot .go{font-weight:300;font-size:24px}
+.foot .go b{font-family:'Playfair Display',serif;font-weight:600;font-size:36px;margin-left:8px}
+.foot .go em{font-style:normal;color:var(--red);margin-left:10px;font-size:30px}
+.dark .foot .go em{color:var(--gold2)}
+.foot .sale{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;background:var(--red);color:#fff;padding:10px 16px 8px;border-radius:30px}
+.proof{position:absolute;left:70px;right:70px;bottom:118px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:1.6px;text-transform:uppercase;opacity:.7}
+/* manifest */
+.man .arches{position:absolute;left:70px;right:70px;top:150px;height:560px;display:flex;gap:28px}
+.man .arches div{flex:1;border-radius:300px 300px 22px 22px;overflow:hidden;position:relative}
+.man .arches img{width:100%;height:100%;object-fit:cover}
+.man .arches span{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);white-space:nowrap}
+.man .q{position:absolute;left:70px;right:70px;top:760px;font-family:'Playfair Display',serif;font-size:40px;font-style:italic;opacity:.6;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.man .h{top:815px;right:70px;font-size:56px}
+.man .idea{top:1060px}
+/* ---- Story 1080x1920 ---- */
+body.story,.story .c{height:1920px}
+.story .top{top:210px}
+.story .arch{top:320px;height:860px}
+.story .side{top:330px;height:850px}
+.story .room{top:1110px}
+.story .medal{top:1040px}
+.story .h{top:1230px}
+.story .prod{top:1310px}
+.story .idea{top:1420px}
+.story .proof{bottom:360px}
+.story .foot{bottom:290px}
+.story.man .arches{top:320px;height:760px}
+.story.man .q{top:1110px}.story.man .h{top:1180px}.story.man .idea{top:1420px}
+
+.cv .c{background:radial-gradient(ellipse at 50% 42%,#fff8ea 0%,var(--cream) 45%,#e6dccb 100%);color:var(--ink)}
+.cv .dust{position:absolute;inset:0;background-image:
+ radial-gradient(circle at 18% 22%,rgba(201,168,105,.9) 0 2px,transparent 3px),radial-gradient(circle at 82% 30%,rgba(201,168,105,.8) 0 2px,transparent 3px),
+ radial-gradient(circle at 12% 62%,rgba(201,168,105,.7) 0 1.5px,transparent 3px),radial-gradient(circle at 90% 70%,rgba(201,168,105,.8) 0 2px,transparent 3px),
+ radial-gradient(circle at 70% 12%,rgba(201,168,105,.6) 0 1.5px,transparent 3px),radial-gradient(circle at 28% 84%,rgba(201,168,105,.6) 0 1.5px,transparent 3px)}
+.cv .halo{position:absolute;left:50%;top:640px;width:1100px;height:1100px;transform:translate(-50%,-50%);border-radius:50%;
+ background:radial-gradient(circle,rgba(214,188,132,.55),rgba(214,188,132,0) 60%)}
+.cv .ring{position:absolute;left:50%;transform:translateX(-50%);border:1.5px solid rgba(201,168,105,.55);border-bottom:none}
+.cv .r1{top:150px;width:700px;height:760px;border-radius:350px 350px 0 0}
+.cv .r2{top:110px;width:800px;height:800px;border-radius:400px 400px 0 0;opacity:.6}
+.cv .r3{top:70px;width:900px;height:840px;border-radius:450px 450px 0 0;opacity:.3}
+.cv .door{position:absolute;left:50%;top:190px;width:620px;height:720px;transform:translateX(-50%);border-radius:310px 310px 18px 18px;overflow:hidden;
+ box-shadow:0 0 0 3px var(--gold),0 40px 100px rgba(60,30,10,.35)}
+.cv .door img{width:100%;height:100%;object-fit:cover;object-position:45% 30%}
+.cv .door::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(255,220,160,.25),transparent 60%),linear-gradient(180deg,transparent 65%,rgba(0,0,0,.35))}
+.cv .leaf{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(90deg,#1a1416,#2a1d1f);border:1px solid rgba(214,188,132,.5)}
+.cv .leaf.l{left:0;transform-origin:left center}.cv .leaf.r{right:0;transform-origin:right center}
+.cv .leaf i{position:absolute;top:50%;width:10px;height:70px;border-radius:5px;background:var(--gold)}
+.cv .leaf.l i{right:24px}.cv .leaf.r i{left:24px}
+.cv .pre{position:absolute;left:0;right:0;top:66px;text-align:center}
+.cv .pre .logo{width:210px;filter:brightness(.82) contrast(1.15)}
+.cv .ttl{position:absolute;left:0;right:0;top:935px;text-align:center}
+.cv .ttl .mono{color:var(--red);font-weight:700}
+.cv .ttl h1{font-family:'Playfair Display',serif;font-weight:500;font-size:112px;line-height:1;margin-top:12px;letter-spacing:-1px}
+.cv .ttl h1 i{color:var(--red);font-weight:600}
+.cv .ttl p{font-family:'Playfair Display',serif;font-style:italic;font-size:38px;margin-top:16px;color:#4a3c33}
+.cv .chap{position:absolute;left:70px;right:70px;top:1185px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 14px}
+.cv .chap span{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(29,26,26,.35);border-radius:30px;padding:8px 14px 6px}
+.cv .bot{position:absolute;left:70px;right:70px;bottom:44px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(128,110,80,.45);padding-top:16px}
+.cv .bot .mono{font-size:15px}
+.cv .bot b{font-family:'Playfair Display',serif;font-weight:600;font-size:34px}
+.cv .bot em{font-style:normal;color:var(--red)}
+/* story */
+.cv.story .pre{top:190px}
+.cv.story .r1{top:370px;height:840px}.cv.story .r2{top:330px;height:880px}.cv.story .r3{top:290px;height:920px}
+.cv.story .door{top:400px;height:800px}
+.cv.story .halo{top:800px}
+.cv.story .ttl{top:1235px}
+.cv.story .chap{top:1530px}
+.cv.story .bot{bottom:290px}
+
+.sc{position:absolute;inset:0;opacity:0;overflow:hidden;box-shadow:-40px 0 80px rgba(0,0,0,.35)}
+.sc .c{position:absolute;inset:0;height:1920px}
+.arch img{transform-origin:50% 60%}
+.tz{position:absolute;inset:0;z-index:20;overflow:hidden}
+.tz img{position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);object-fit:cover;filter:blur(18px) brightness(.45) saturate(.9)}
+.tz .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--cream);padding:0 80px}
+.tz .mono{color:var(--gold2);font-weight:700;font-size:22px;letter-spacing:6px}
+.tz .qq{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:96px;line-height:1.08;margin-top:26px}
+.tz .ln{width:120px;height:2px;background:var(--gold2);margin-top:40px}
+.prog{position:absolute;left:60px;right:60px;top:120px;display:flex;gap:8px;z-index:50}
+.prog i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.35);overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.prog i b{display:block;height:100%;width:0;background:var(--gold2)}
+.save{position:absolute;right:60px;top:360px;z-index:60;background:var(--red);color:#fff;border-radius:40px;padding:18px 28px 16px;
+ font-family:'Space Mono',monospace;font-weight:700;font-size:22px;letter-spacing:2px;text-transform:uppercase;box-shadow:0 14px 40px rgba(0,0,0,.4);opacity:0}
+.out{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(158,31,42,.5),transparent 55%),radial-gradient(circle at 50% 100%,rgba(201,168,105,.25),transparent 50%),var(--onyx);
+ color:var(--cream);display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:300px}
+.out .lg{width:420px}
+.out .k{font-family:'Playfair Display',serif;font-style:italic;font-size:58px;margin-top:60px;line-height:1.1}
+.out .site{font-family:'Playfair Display',serif;font-weight:600;font-size:110px;margin-top:20px;color:#fff}
+.out .qr{margin-top:46px;width:250px;height:250px;background:var(--cream);padding:18px;border-radius:16px;box-shadow:0 0 0 3px var(--gold2),0 0 60px rgba(214,188,132,.35)}
+.out .qr svg{width:100%;height:100%;display:block}
+.out .scan{margin-top:20px;color:var(--gold2)}
+.out .ct{margin-top:46px;display:flex;flex-direction:column;gap:14px;font-size:32px;font-weight:300}
+.out .ct b{font-weight:600}
+.out .ct span{color:var(--gold2);font-family:'Space Mono',monospace;font-size:20px;letter-spacing:3px;text-transform:uppercase;margin-right:14px}
+</style></head><body class="story"><div class="c" style="position:relative;overflow:hidden"><div class="sc cv" data-k="cover"><div class="c"><div class="halo"></div><div class="dust"></div>
+<div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+<div class="door"><img src="../assets/amb-interior.jpg" alt=""><div class="leaf l"><i></i></div><div class="leaf r"><i></i></div></div>
+<div class="pre"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono" style="margin-top:6px">prezintă</div></div>
+<div class="ttl"><div class="mono">Ediția de sărbători · 2026</div><h1>Ghidul <i>de idei</i></h1>
+<p>10 idei pentru o casă care întoarce privirile</p></div>
+<div class="chap"><span>Tapet</span><span>Lumină</span><span>Cornișe</span><span>Chenare</span><span>Plinte</span><span>Fațade</span></div>
+<div class="bot"><span class="mono">Ales cu grijă · Know-how · Pentru orice buget</span><span>Deschide ghidul pe <b>decoflair.ro</b> <em>→</em></span></div></div></div><div class="sc light man story" data-k="p"><div class="tz"><img src="../assets/amb-interior.jpg" style="object-position:45% 30%" alt=""><div class="in"><div class="mono">Manifest</div><div class="qq">„Pe afară vopsit gardul,<br>înăuntru leopardul”?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Manifest<br>Holiday 2026</div></div>
+<div class="arches"><div><img src="../assets/amb-exterior.jpg" style="object-position:45% 45%" alt=""><span class="room mono" style="position:absolute;left:50%;top:auto">Pe afară</span></div>
+<div><img src="../assets/amb-interior.jpg" style="object-position:45% 30%" alt=""><span class="room mono" style="position:absolute;left:50%;top:auto">Înăuntru</span></div></div>
+<div class="q">„Pe afară vopsit gardul, înăuntru leopardul.”</div>
+<div class="h">La noi e invers:<br><i>fațade impecabile, interioare premium.</i></div>
+<div class="idea"><span class="mono">Promisiunea</span><span>Nu ai idei de amenajare? Avem noi — și idei, și produsele potrivite. Pentru orice buget.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc light" data-k="p"><div class="tz"><img src="../assets/t03b.jpg" style="object-position:50% 45%" alt=""><div class="in"><div class="mono">Ideea 01</div><div class="qq">Pereți fără<br>personalitate?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>01</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/t03b.jpg" style="object-position:50% 45%" alt=""></div>
+<div class="room mono">Living</div>
+<div class="medal"><img src="../assets/t03.jpg" alt=""></div>
+<div class="h">Pereți pe care<br><i>îi fotografiază musafirii.</i></div>
+<div class="prod"><div class="mono">Tapet premium</div><b>Carrara Best 82603</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Un singur perete accent cu tapet efect marmură — și camera arată ca un lounge de hotel de lux.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc dark" data-k="p"><div class="tz"><img src="../assets/t71b.jpg" style="object-position:50% 45%" alt=""><div class="in"><div class="mono">Ideea 02</div><div class="qq">Un dormitor<br>prea obișnuit?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>02</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/t71b.jpg" style="object-position:50% 45%" alt=""></div>
+<div class="room mono">Dormitor</div>
+<div class="medal"><img src="../assets/t71.jpg" alt=""></div>
+<div class="h">Dormitorul care arată<br><i>ca în reviste.</i></div>
+<div class="prod"><div class="mono">Tapet premium</div><b>Carrara Best 82671</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Tapetul din spatele patului devine tăblie, artă și punct focal. Fără renovare, fără praf.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc light" data-k="p"><div class="tz"><img src="../assets/amb-led.jpg" style="object-position:60% 30%" alt=""><div class="in"><div class="mono">Ideea 03</div><div class="qq">Tavanul pare<br>prea jos?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>03</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-led.jpg" style="object-position:60% 30%" alt=""></div>
+<div class="room mono">Tavan</div>
+<div class="medal"><img src="../assets/l5a.jpg" alt=""></div>
+<div class="h">Lumina care face<br><i>tavanul să plutească.</i></div>
+<div class="prod"><div class="mono">Scafă LED · Arstyl</div><b>L5</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Scafa ascunde banda LED: camera pare mai înaltă, iar seara devine o scenă.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc dark" data-k="p"><div class="tz"><img src="../assets/amb-interior.jpg" style="object-position:45% 20%" alt=""><div class="in"><div class="mono">Ideea 04</div><div class="qq">Vrei să-i lași<br>fără cuvinte?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>04</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-interior.jpg" style="object-position:45% 20%" alt=""></div>
+<div class="room mono">Salon</div>
+<div class="medal"><img src="../assets/z11a.jpg" alt=""></div>
+<div class="h">„Vai, ce casă<br><i>frumoasă aveți!”</i></div>
+<div class="prod"><div class="mono">Cornișă ornamentală · Arstyl</div><b>Z11</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Cornișa ornamentată e primul detaliu pe care îl observă musafirii. Se montează lipit, fără praf.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc light" data-k="p"><div class="tz"><img src="../assets/amb-led-window.jpg" style="object-position:50% 30%" alt=""><div class="in"><div class="mono">Ideea 05</div><div class="qq">Sărbători într-o<br>casă banală?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>05</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-led-window.jpg" style="object-position:50% 30%" alt=""></div>
+<div class="room mono">Sufragerie</div>
+<div class="medal"><img src="../assets/z21a.jpg" alt=""></div>
+<div class="h">Tavane de film,<br><i>înainte de sărbători.</i></div>
+<div class="prod"><div class="mono">Cornișă de tavan · Arstyl</div><b>Z21</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>La tavanele înalte alege o cornișă generoasă: proporția face diferența dintre simplu și spectaculos.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc dark" data-k="p"><div class="tz"><img src="../assets/amb-chenare.jpg" style="object-position:40% 40%" alt=""><div class="in"><div class="mono">Ideea 06</div><div class="qq">Lux pe pereți,<br>cu buget mic?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>06</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-chenare.jpg" style="object-position:40% 40%" alt=""></div>
+<div class="room mono">Pereți</div>
+<div class="medal"><img src="../assets/wo2a.jpg" alt=""></div>
+<div class="h">Boiserie de palat,<br><i>la buget de apartament.</i></div>
+<div class="prod"><div class="mono">Brâu pentru chenare · Wallstyl</div><b>WO2</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Chenarele din brâu transformă orice perete plat într-unul de lux. Arată scump, costă puțin.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc light" data-k="p"><div class="tz"><img src="../assets/amb-led-floor.jpg" style="object-position:40% 70%" alt=""><div class="in"><div class="mono">Ideea 07</div><div class="qq">Ce lipsește<br>jos de tot?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>07</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-led-floor.jpg" style="object-position:40% 70%" alt=""></div>
+<div class="room mono">Pardoseală</div>
+<div class="medal"><img src="../assets/fd3a.jpg" alt=""></div>
+<div class="h">Luxul<br><i>începe de jos.</i></div>
+<div class="prod"><div class="mono">Plintă decorativă · Wallstyl</div><b>FD3</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>O plintă înaltă și albă face pardoseala să pară mai scumpă și ascunde elegant cablurile.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc dark" data-k="p"><div class="tz"><img src="../assets/amb-tapet.jpg" style="object-position:50% 30%" alt=""><div class="in"><div class="mono">Ideea 08</div><div class="qq">Minimalist,<br>dar nu rece?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>08</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-tapet.jpg" style="object-position:50% 30%" alt=""></div>
+<div class="room mono">Interior modern</div>
+<div class="medal"><img src="../assets/wt25a.jpg" alt=""></div>
+<div class="h">Minimalism care<br><i>nu trece neobservat.</i></div>
+<div class="prod"><div class="mono">Cornișă modernă · Wallstyl</div><b>WT25</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Profilul simplu al cornișei păstrează liniile curate ale unui interior contemporan.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc light" data-k="p"><div class="tz"><img src="../assets/amb-exterior.jpg" style="object-position:45% 45%" alt=""><div class="in"><div class="mono">Ideea 09</div><div class="qq">Cum arată casa ta<br>din stradă?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>09</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-exterior.jpg" style="object-position:45% 45%" alt=""></div>
+<div class="room mono">Fațadă</div>
+<div class="medal"><img src="../assets/na105f.jpg" alt=""></div>
+<div class="h">Prima impresie<br><i>începe din stradă.</i></div>
+<div class="prod"><div class="mono">Ancadrament fereastră · exterior</div><b>NA105</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Ancadramentele dau ferestrelor proporții de vilă clasică. Fațada devine carte de vizită.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc dark" data-k="p"><div class="tz"><img src="../assets/amb-exterior.jpg" style="object-position:92% 40%" alt=""><div class="in"><div class="mono">Ideea 10</div><div class="qq">Și seara,<br>la lumina felinarelor?</div><div class="ln"></div></div></div><div class="c"><div class="aura"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Ideea <b>10</b>/10<br>Holiday 2026</div></div>
+<div class="side"><span class="mono">Ales cu grijă</span><i></i><span class="mono">Know-how</span><i></i><span class="mono">decoflair.ro</span></div>
+<div class="arch"><img src="../assets/amb-exterior.jpg" style="object-position:92% 40%" alt=""></div>
+<div class="room mono">Fațadă</div>
+<div class="medal"><img src="../assets/ncl106.jpg" alt=""></div>
+<div class="h">Înăuntru premium.<br><i>Pe afară, la fel.</i></div>
+<div class="prod"><div class="mono">Colțar exterior</div><b>NCL106</b></div>
+<div class="idea"><span class="mono">Ideea noastră</span><span>Colțarii dau relief fațadei: seara, umbrele lor desenează arhitectura casei.</span></div>
+<div class="proof">Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget</div><div class="foot"><div class="go">Vezi ideea completă pe<b>decoflair.ro</b><em>→</em></div><div class="sale">Reduceri de sezon</div></div></div></div><div class="sc" data-k="out"><div class="out">
+<img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
+<div class="k">Ideile complete te așteaptă pe</div>
+<div class="site">decoflair.ro</div>
+<div class="qr"><svg viewBox="0 0 25 25"><path d="M0,0H1V1H0zM1,0H2V1H1zM2,0H3V1H2zM3,0H4V1H3zM4,0H5V1H4zM5,0H6V1H5zM6,0H7V1H6zM8,0H9V1H8zM10,0H11V1H10zM11,0H12V1H11zM14,0H15V1H14zM16,0H17V1H16zM18,0H19V1H18zM19,0H20V1H19zM20,0H21V1H20zM21,0H22V1H21zM22,0H23V1H22zM23,0H24V1H23zM24,0H25V1H24zM0,1H1V2H0zM6,1H7V2H6zM8,1H9V2H8zM10,1H11V2H10zM18,1H19V2H18zM24,1H25V2H24zM0,2H1V3H0zM2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM6,2H7V3H6zM8,2H9V3H8zM9,2H10V3H9zM11,2H12V3H11zM12,2H13V3H12zM13,2H14V3H13zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM24,2H25V3H24zM0,3H1V4H0zM2,3H3V4H2zM3,3H4V4H3zM4,3H5V4H4zM6,3H7V4H6zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM18,3H19V4H18zM20,3H21V4H20zM21,3H22V4H21zM22,3H23V4H22zM24,3H25V4H24zM0,4H1V5H0zM2,4H3V5H2zM3,4H4V5H3zM4,4H5V5H4zM6,4H7V5H6zM8,4H9V5H8zM9,4H10V5H9zM10,4H11V5H10zM16,4H17V5H16zM18,4H19V5H18zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM0,5H1V6H0zM6,5H7V6H6zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM18,5H19V6H18zM24,5H25V6H24zM0,6H1V7H0zM1,6H2V7H1zM2,6H3V7H2zM3,6H4V7H3zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM19,6H20V7H19zM20,6H21V7H20zM21,6H22V7H21zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM9,7H10V8H9zM11,7H12V8H11zM12,7H13V8H12zM13,7H14V8H13zM14,7H15V8H14zM0,8H1V9H0zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM11,8H12V9H11zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM17,8H18V9H17zM20,8H21V9H20zM22,8H23V9H22zM23,8H24V9H23zM24,8H25V9H24zM0,9H1V10H0zM1,9H2V10H1zM4,9H5V10H4zM5,9H6V10H5zM7,9H8V10H7zM8,9H9V10H8zM9,9H10V10H9zM11,9H12V10H11zM13,9H14V10H13zM14,9H15V10H14zM15,9H16V10H15zM19,9H20V10H19zM20,9H21V10H20zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM0,10H1V11H0zM2,10H3V11H2zM3,10H4V11H3zM5,10H6V11H5zM6,10H7V11H6zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM13,10H14V11H13zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM20,10H21V11H20zM21,10H22V11H21zM24,10H25V11H24zM1,11H2V12H1zM2,11H3V12H2zM5,11H6V12H5zM7,11H8V12H7zM10,11H11V12H10zM14,11H15V12H14zM16,11H17V12H16zM18,11H19V12H18zM19,11H20V12H19zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM24,11H25V12H24zM0,12H1V13H0zM1,12H2V13H1zM3,12H4V13H3zM4,12H5V13H4zM6,12H7V13H6zM7,12H8V13H7zM11,12H12V13H11zM13,12H14V13H13zM14,12H15V13H14zM15,12H16V13H15zM16,12H17V13H16zM18,12H19V13H18zM19,12H20V13H19zM24,12H25V13H24zM0,13H1V14H0zM1,13H2V14H1zM4,13H5V14H4zM9,13H10V14H9zM10,13H11V14H10zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM20,13H21V14H20zM23,13H24V14H23zM0,14H1V15H0zM1,14H2V15H1zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM14,14H15V15H14zM15,14H16V15H15zM16,14H17V15H16zM18,14H19V15H18zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM0,15H1V16H0zM2,15H3V16H2zM5,15H6V16H5zM7,15H8V16H7zM10,15H11V16H10zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM17,15H18V16H17zM19,15H20V16H19zM21,15H22V16H21zM22,15H23V16H22zM24,15H25V16H24zM0,16H1V17H0zM3,16H4V17H3zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM10,16H11V17H10zM11,16H12V17H11zM12,16H13V17H12zM16,16H17V17H16zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM22,16H23V17H22zM23,16H24V17H23zM8,17H9V18H8zM9,17H10V18H9zM11,17H12V18H11zM16,17H17V18H16zM20,17H21V18H20zM22,17H23V18H22zM23,17H24V18H23zM0,18H1V19H0zM1,18H2V19H1zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM8,18H9V19H8zM9,18H10V19H9zM10,18H11V19H10zM12,18H13V19H12zM13,18H14V19H13zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM24,18H25V19H24zM0,19H1V20H0zM6,19H7V20H6zM8,19H9V20H8zM11,19H12V20H11zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM20,19H21V20H20zM24,19H25V20H24zM0,20H1V21H0zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM8,20H9V21H8zM10,20H11V21H10zM11,20H12V21H11zM13,20H14V21H13zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM23,20H24V21H23zM24,20H25V21H24zM0,21H1V22H0zM2,21H3V22H2zM3,21H4V22H3zM4,21H5V22H4zM6,21H7V22H6zM8,21H9V22H8zM9,21H10V22H9zM10,21H11V22H10zM12,21H13V22H12zM13,21H14V22H13zM17,21H18V22H17zM18,21H19V22H18zM23,21H24V22H23zM24,21H25V22H24zM0,22H1V23H0zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM6,22H7V23H6zM9,22H10V23H9zM11,22H12V23H11zM13,22H14V23H13zM17,22H18V23H17zM20,22H21V23H20zM21,22H22V23H21zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM0,23H1V24H0zM6,23H7V24H6zM10,23H11V24H10zM11,23H12V24H11zM12,23H13V24H12zM13,23H14V24H13zM19,23H20V24H19zM20,23H21V24H20zM22,23H23V24H22zM23,23H24V24H23zM24,23H25V24H24zM0,24H1V25H0zM1,24H2V25H1zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM11,24H12V25H11zM12,24H13V25H12zM13,24H14V25H13zM16,24H17V25H16zM21,24H22V25H21zM24,24H25V25H24z" fill="#121115"/></svg></div>
+<div class="scan mono">Scanează și intră în ghid</div>
+<div class="ct"><div><span>Consultanță</span><b>0723 300 603</b></div>
+<div><span>E-mail</span>office@decoflair.ro</div>
+<div><span>Program</span>Luni – Vineri · 07:30 – 16:00</div>
+<div><span>Instagram</span>@decoflairhub</div></div></div></div><div class="prog"></div><div class="save">🔖 Salvează ghidul</div></div><script>
+const D={cover:4.4,p:3.9,out:5.2}, X=0.55;
+const S=[...document.querySelectorAll('.sc')];
+let t0=0; S.forEach(s=>{s.t0=t0; s.d=D[s.dataset.k]; t0+=s.d-X;});
+window.TOTAL=t0+X;
+const P=S.filter(s=>s.dataset.k==='p');
+const prog=document.querySelector('.prog'); P.forEach(()=>{const i=document.createElement('i');i.appendChild(document.createElement('b'));prog.appendChild(i);});
+const bars=[...prog.querySelectorAll('b')]; const save=document.querySelector('.save');
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=v=>1-Math.pow(1-v,3);
+const eio=v=>v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2;
+const back=v=>{const c=1.6;return 1+(c+1)*Math.pow(v-1,3)+c*Math.pow(v-1,2)};
+const seg=(u,a,b)=>cl((u-a)/(b-a));
+const qa=(s,sel)=>[...s.querySelectorAll(sel)];
+function fade(e,v,dx,dy){if(!e)return;e.style.opacity=v;e.style.transform=`translate(${(1-v)*dx}px,${(1-v)*dy}px)`;}
+const R=1.25; // momentul dezvăluirii în fiecare idee
+window.setT=function(t){
+ S.forEach((s,i)=>{const u=t-s.t0;
+  let vis=u>=0&&u<=s.d+X; if(!vis){s.style.display='none';return;}
+  s.style.display='block'; s.style.opacity=1;
+  // tranziție tip pagină: intră din dreapta
+  const sl=i>0?eio(seg(u,0,X)):1; s.style.transform=`translateX(${(1-sl)*100}%)`; s.style.zIndex=i;
+  const k=s.dataset.k;
+  if(k==='cover'){
+   qa(s,'.ring').forEach((e,j)=>{const v=ease(seg(u,.1+j*.15,.9+j*.15)); e.style.opacity=v; e.style.transform=`translateX(-50%) scale(${.85+.15*v})`;});
+   const h=ease(seg(u,0,1.2)); s.querySelector('.halo').style.opacity=h;
+   fade(s.querySelector('.pre'),ease(seg(u,.2,.9)),0,-30);
+   const op=eio(seg(u,1.0,2.2));
+   s.querySelector('.leaf.l').style.transform=`perspective(1400px) rotateY(${-100*op}deg)`;
+   s.querySelector('.leaf.r').style.transform=`perspective(1400px) rotateY(${100*op}deg)`;
+   s.querySelector('.door img').style.transform=`scale(${1.25-.25*op})`;
+   const tt=s.querySelector('.ttl'); fade(tt.querySelector('.mono'),ease(seg(u,1.6,2.1)),0,20);
+   const h1=tt.querySelector('h1'); const hv=ease(seg(u,1.8,2.5)); h1.style.opacity=hv; h1.style.letterSpacing=`${(1-hv)*30-1}px`;
+   fade(tt.querySelector('p'),ease(seg(u,2.3,2.9)),0,20);
+   qa(s,'.chap span').forEach((e,j)=>{const v=seg(u,2.6+j*.08,3.0+j*.08); e.style.opacity=v; e.style.transform=`scale(${v?back(v):0})`;});
+   fade(s.querySelector('.bot'),ease(seg(u,3.0,3.5)),0,20);
+  } else if(k==='p'){
+   // teaser
+   const tz=s.querySelector('.tz'); const tv=ease(seg(u,R,R+.45));
+   tz.style.opacity=1-tv; tz.querySelector('.in').style.transform=`scale(${1+.25*tv})`;
+   tz.querySelector('img').style.transform=`scale(${1+.08*seg(u,0,R)})`;
+   fade(tz.querySelector('.mono'),ease(seg(u,.35,.75)),0,20);
+   const qq=tz.querySelector('.qq'); const qv=ease(seg(u,.45,1.0)); qq.style.opacity=qv; qq.style.transform=`translateY(${(1-qv)*40}px)`;
+   tz.querySelector('.ln').style.width=`${120*ease(seg(u,.6,1.1))}px`;
+   // creativul
+   const w=u-R+.2;
+   qa(s,'.arch,.arches div').forEach((e,j)=>{const v=ease(seg(w,j*.1,.6+j*.1)); e.style.opacity=v; e.style.transform=`translateY(${(1-v)*60}px)`;});
+   qa(s,'.arch img,.arches img').forEach(e=>e.style.transform=`scale(${1.15-.13*cl(w/(s.d-R))})`);
+   const m=seg(w,.35,.8); const me=s.querySelector('.medal'); if(me){me.style.transform=`scale(${m?back(m):0}) rotate(${(1-cl(m))*-40}deg)`;}
+   fade(s.querySelector('.room'),ease(seg(w,.3,.7)),-30,0);
+   fade(s.querySelector('.q'),ease(seg(w,.3,.7)),0,20);
+   fade(s.querySelector('.h'),ease(seg(w,.45,1.0)),0,40);
+   fade(s.querySelector('.prod'),ease(seg(w,.7,1.1)),0,20);
+   fade(s.querySelector('.idea'),ease(seg(w,.85,1.35)),0,24);
+   fade(s.querySelector('.proof'),ease(seg(w,1.1,1.5)),0,10);
+   const ft=s.querySelector('.foot'); fade(ft,ease(seg(w,1.2,1.6)),0,16);
+   const sale=ft.querySelector('.sale'); const sv=seg(w,1.6,2.0); sale.style.transform=`scale(${1+.12*Math.sin(Math.PI*sv)})`;
+   fade(s.querySelector('.side'),ease(seg(w,0,.6)),0,0);
+   fade(s.querySelector('.top'),ease(seg(w,0,.5)),0,-16);
+  } else {
+   qa(s,'.lg,.k,.site,.qr,.scan,.ct div').forEach((e,j)=>{const v=ease(seg(u,.2+j*.22,.8+j*.22)); e.style.opacity=v; e.style.transform=`translateY(${(1-v)*30}px)${e.classList.contains('qr')?` scale(${.8+.2*v})`:''}`;});
+  }
+ });
+ // bară de progres
+ const first=P[0].t0, last=P[P.length-1];
+ prog.style.opacity=(t>=first&&t<=last.t0+last.d)?1:0;
+ P.forEach((s,j)=>{bars[j].style.width=`${100*cl((t-s.t0)/(s.d-X))}%`;});
+ // „Salvează ghidul” — apare la ideea 05
+ const sv=P[5]; const su=t-sv.t0-R-.6; const so=seg(su,0,.4)*(1-seg(su,2.6,3.0));
+ save.style.opacity=so; save.style.transform=`scale(${so?back(seg(su,0,.4)):0})`;
+};
+setT(0);
+</script></body></html>
