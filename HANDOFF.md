@@ -3,6 +3,13 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
+## Deco&Flair „Idei 2027” — refacere FĂRĂ prețuri (înlocuiește seriile cu preț) — Claude Code, 2026-11-15
+Folder: `decoflair-idei-2027/`. La cererea utilizatorului, toate creativele Deco&Flair refăcute fără preț/preț tăiat (prețul final nu e stabilit). Seriile `decoflair-black-friday/` și `decoflair-lux-2027/` (cu prețuri BF) rămân ca arhivă — NU se mai folosesc.
+Conținut: `00-manifest` + 10 „idei” (aceleași produse ca Lux 2027: Carrara 82603/82671, L5, Z11, Z21, WO2, FD3, WT25, NA105, NCL106), feed 1080×1350 + Story 1080×1920 (`story/`) + Reel `reel/decoflair-idei-2027-reel.mp4` (38 s, 1080×1920, fără sunet).
+Concept: pe decoflair.ro nu cumperi doar produsul — cumperi selecție atentă din mulți furnizori, know-how, frumusețe, imaginea casei, privirea musafirului. Manifest: zicala „Pe afară vopsit gardul, înăuntru leopardul” tăiată → „La noi e invers: fațade impecabile, interioare premium” + „Nu ai idei de amenajare? Avem noi — și idei, și produsele potrivite. Pentru orice buget.”
+Aspect 2027: alternanță lumină (crem #F3EDE3) / întuneric (onix #121115), ambient în arcadă arhitecturală, produs în medalion auriu, text vertical „Ales cu grijă · Know-how · decoflair.ro”, etichete Space Mono, titluri Playfair Display (italic vișiniu/auriu), text Jost. Pe fiecare: „Ideea noastră” (sfat), bandă „Selecție atentă din mulți furnizori · Idei + produse · Soluții pentru orice buget”, CTA text „Vezi ideea completă pe decoflair.ro →” și pastila „Reduceri de sezon” (fără cifre).
+Reproducere: `python3 build.py && node render.cjs`; reel: `python3 reel_build.py && node reel_render.cjs`.
+
 ## Deco&Flair „Lux 2027” — 10 creative know-how + cumpărare — Claude Code, 2026-11-15
 Folder: `decoflair-lux-2027/`. 10 feed 1080×1350 + 10 Story 1080×1920 (`story/`). Ton decoflair.ro (întunecat, auriu #D6BC84, vișiniu #B42127) într-un aspect modern-futurist: colțuri HUD aurii, grilă fină, etichete monospace (Space Mono) „Know-how 0X/10 · Holiday Edition”, aură vișiniu-aurie, panou de sticlă (glassmorphism) cu produsul, titlu Jost majuscule + Playfair Display italic auriu, CTA text „Comandă … pe decoflair.ro” (fără butoane).
 Fiecare creativ: mesaj de cumpărare/emoție + sfat KNOW-HOW + produs + preț. Produse (toate InStock, prețuri live 15.11.2026 cu TVA, în perioada reducerilor BF): tapet Carrara 82603 / 82671 465,85 lei/rolă; scafă LED L5 409,75; cornișe Z11 204,73, Z21 205,02, WT25 150,93; brâu WO2 46,22 („Lux de 5 stele, cu bani puțini”); plintă FD3 84,79; ancadrament NA105 130,96; colțar NCL106 178,63 lei/buc.

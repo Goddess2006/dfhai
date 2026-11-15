@@ -1,0 +1,126 @@
+{
+ "createdAt": "2026-11-15",
+ "prices": "fără prețuri (la cererea clientului)",
+ "products": [
+  {
+   "slug": "01-tapet-carrara-82603",
+   "theme": "light",
+   "room": "Living",
+   "cat": "Tapet premium",
+   "name": "Carrara Best 82603",
+   "h": "Pereți pe care<br><i>îi fotografiază musafirii.</i>",
+   "idea": "Un singur perete accent cu tapet efect marmură — și camera arată ca un lounge de hotel de lux.",
+   "amb": "t03b.jpg",
+   "pos": "50% 45%",
+   "img": "t03.jpg"
+  },
+  {
+   "slug": "02-tapet-carrara-82671",
+   "theme": "dark",
+   "room": "Dormitor",
+   "cat": "Tapet premium",
+   "name": "Carrara Best 82671",
+   "h": "Dormitorul care arată<br><i>ca în reviste.</i>",
+   "idea": "Tapetul din spatele patului devine tăblie, artă și punct focal. Fără renovare, fără praf.",
+   "amb": "t71b.jpg",
+   "pos": "50% 45%",
+   "img": "t71.jpg"
+  },
+  {
+   "slug": "03-scafa-led-l5",
+   "theme": "light",
+   "room": "Tavan",
+   "cat": "Scafă LED · Arstyl",
+   "name": "L5",
+   "h": "Lumina care face<br><i>tavanul să plutească.</i>",
+   "idea": "Scafa ascunde banda LED: camera pare mai înaltă, iar seara devine o scenă.",
+   "amb": "amb-led.jpg",
+   "pos": "60% 30%",
+   "img": "l5a.jpg"
+  },
+  {
+   "slug": "04-cornisa-z11",
+   "theme": "dark",
+   "room": "Salon",
+   "cat": "Cornișă ornamentală · Arstyl",
+   "name": "Z11",
+   "h": "„Vai, ce casă<br><i>frumoasă aveți!”</i>",
+   "idea": "Cornișa ornamentată e primul detaliu pe care îl observă musafirii. Se montează lipit, fără praf.",
+   "amb": "amb-interior.jpg",
+   "pos": "45% 20%",
+   "img": "z11a.jpg"
+  },
+  {
+   "slug": "05-cornisa-z21",
+   "theme": "light",
+   "room": "Sufragerie",
+   "cat": "Cornișă de tavan · Arstyl",
+   "name": "Z21",
+   "h": "Tavane de film,<br><i>înainte de sărbători.</i>",
+   "idea": "La tavanele înalte alege o cornișă generoasă: proporția face diferența dintre simplu și spectaculos.",
+   "amb": "amb-led-window.jpg",
+   "pos": "50% 30%",
+   "img": "z21a.jpg"
+  },
+  {
+   "slug": "06-brau-chenare-wo2",
+   "theme": "dark",
+   "room": "Pereți",
+   "cat": "Brâu pentru chenare · Wallstyl",
+   "name": "WO2",
+   "h": "Boiserie de palat,<br><i>la buget de apartament.</i>",
+   "idea": "Chenarele din brâu transformă orice perete plat într-unul de lux. Arată scump, costă puțin.",
+   "amb": "amb-chenare.jpg",
+   "pos": "40% 40%",
+   "img": "wo2a.jpg"
+  },
+  {
+   "slug": "07-plinta-fd3",
+   "theme": "light",
+   "room": "Pardoseală",
+   "cat": "Plintă decorativă · Wallstyl",
+   "name": "FD3",
+   "h": "Luxul<br><i>începe de jos.</i>",
+   "idea": "O plintă înaltă și albă face pardoseala să pară mai scumpă și ascunde elegant cablurile.",
+   "amb": "amb-led-floor.jpg",
+   "pos": "40% 70%",
+   "img": "fd3a.jpg"
+  },
+  {
+   "slug": "08-cornisa-wt25",
+   "theme": "dark",
+   "room": "Interior modern",
+   "cat": "Cornișă modernă · Wallstyl",
+   "name": "WT25",
+   "h": "Minimalism care<br><i>nu trece neobservat.</i>",
+   "idea": "Profilul simplu al cornișei păstrează liniile curate ale unui interior contemporan.",
+   "amb": "amb-tapet.jpg",
+   "pos": "50% 30%",
+   "img": "wt25a.jpg"
+  },
+  {
+   "slug": "09-ancadrament-na105",
+   "theme": "light",
+   "room": "Fațadă",
+   "cat": "Ancadrament fereastră · exterior",
+   "name": "NA105",
+   "h": "Prima impresie<br><i>începe din stradă.</i>",
+   "idea": "Ancadramentele dau ferestrelor proporții de vilă clasică. Fațada devine carte de vizită.",
+   "amb": "amb-exterior.jpg",
+   "pos": "45% 45%",
+   "img": "na105f.jpg"
+  },
+  {
+   "slug": "10-coltar-ncl106",
+   "theme": "dark",
+   "room": "Fațadă",
+   "cat": "Colțar exterior",
+   "name": "NCL106",
+   "h": "Înăuntru premium.<br><i>Pe afară, la fel.</i>",
+   "idea": "Colțarii dau relief fațadei: seara, umbrele lor desenează arhitectura casei.",
+   "amb": "amb-exterior.jpg",
+   "pos": "92% 40%",
+   "img": "ncl106.jpg"
+  }
+ ]
+}
