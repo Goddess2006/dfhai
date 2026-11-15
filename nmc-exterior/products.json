@@ -1,0 +1,95 @@
+{
+ "checkedAt": "2026-11-15",
+ "source": "https://www.nmcromania.ro/",
+ "products": [
+  {
+   "slug": "01-termosistem-fuga-panel-1",
+   "kicker": "Termosistem decorativ ADRo",
+   "name": "FUGA PANEL 1",
+   "dims": "500 × 40 × 2000 mm",
+   "h1": "Fațadă nouă,",
+   "h2": "făcută să reziste.",
+   "ambient": "fuga1fer.jpg",
+   "amb_pos": "50% 45%",
+   "cards": [
+    [
+     "fuga1.jpg",
+     ""
+    ]
+   ],
+   "chips": [
+    "Finisaj decorativ + izolație",
+    "Se vopsește în orice culoare RAL"
+   ],
+   "url": "https://www.nmcromania.ro/termosistem-decorativ-fuga-panel-1-de-4-cm-500x40x2000"
+  },
+  {
+   "slug": "02-termosistem-sidding-panel-3",
+   "kicker": "Termosistem decorativ ADRo",
+   "name": "SIDDING PANEL 3",
+   "dims": "500 × 40 × 2000 mm",
+   "h1": "Durabilitate",
+   "h2": "fără compromis.",
+   "ambient": "sid3fer.jpg",
+   "amb_pos": "50% 45%",
+   "cards": [
+    [
+     "sid3.jpg",
+     ""
+    ]
+   ],
+   "chips": [
+    "Aspect de lambriu orizontal",
+    "Montaj rapid, prin lipire"
+   ],
+   "url": "https://www.nmcromania.ro/termosistem-decorativ-sidding-panel-3-500x40x2000"
+  },
+  {
+   "slug": "03-coltar-ncl107",
+   "kicker": "Colțar exterior decorativ ADRo",
+   "name": "NCL107",
+   "dims": "300/300 × 30 × 1000 mm",
+   "h1": "Colțuri puternice,",
+   "h2": "case care durează.",
+   "ambient": "ambient-casa.jpg",
+   "amb_pos": "62% 45%",
+   "cards": [
+    [
+     "ncl107.jpg",
+     ""
+    ]
+   ],
+   "chips": [
+    "Strat de rășină + nisip cuarțos",
+    "Vopsibil cu vopsea acrilică"
+   ],
+   "url": "https://www.nmcromania.ro/coltar-exterior-decorativ-polistiren-ncl107-1000x30x300"
+  },
+  {
+   "slug": "04-gama-exterior-adro",
+   "kicker": "Gama de exterior ADRo",
+   "name": "Fațada completă",
+   "dims": "Ancadramente · Cornișe · Solbancuri · Colțare",
+   "h1": "Fațada completă,",
+   "h2": "produsă în România.",
+   "ambient": "ambient-vila.jpg",
+   "amb_pos": "50% 30%",
+   "cards": [
+    [
+     "na105f.jpg",
+     "Ancadrament NA105"
+    ],
+    [
+     "nc104.jpg",
+     "Cornișă NC104"
+    ],
+    [
+     "ns111.jpg",
+     "Solbanc NS111"
+    ]
+   ],
+   "chips": [],
+   "url": "https://www.nmcromania.ro/profile-decorative-exterior"
+  }
+ ]
+}

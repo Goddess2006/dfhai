@@ -1,7 +1,14 @@
 # Handoff
 
-Ultima actualizare: 2026-11-12
+Ultima actualizare: 2026-11-15
 Agent: Codex
+
+## NMC exterior — 4 creative de vânzare (fără preț) — Claude Code, 2026-11-15
+Folder: `nmc-exterior/`. 4 feed 1080×1350 + 4 Story 1080×1920 (`story/`): FUGA PANEL 1, SIDDING PANEL 3, colțar NCL107, gama de exterior (ancadrament NA105, cornișă NC104, solbanc NS111). Stil NMC (Roboto, portocaliu #FF671F, fundal grafit), ambient sus + card produs cu banda „Made in Romania” (steag RO).
+Mesaj: încredere + vânzare. Sus „Lider de piață · peste 20 de ani de experiență”; cerc „Prețuri speciale — calitate fără compromis” (FĂRĂ cifre: reducerea nu e stabilită); bandă de încredere: „Producție proprie în România” · „Rășină brevetată ADRo® + cuarț” · „Rezistent la UV, ger și umezeală”; jos „Descoperă prețurile speciale”.
+Surse afirmații: nmcromania.ro/despre-noi (peste 20 ani, lider de piață, linie de producție proprie) și fișele produselor (rășină + nisip cuarțos, rezistență UV/umiditate/îngheț-dezgheț, vopsibil). „Rășină brevetată” vine de la utilizator — NU apare pe site, de confirmat (număr brevet) înainte de publicare. Am evitat superlative absolute („cele mai rezistente din România”) fără dovadă.
+Ambient: Fuga/Sidding = randările cu fereastră de pe paginile produselor; NCL107 = bannerul de exterior de pe decoflair.ro (partea fără text); gama = vila de pe homepage NMC.
+Reproducere: `python3 build.py && node render.cjs`.
 
 ## Bibliotecă de inspirație Deco&Flair — Codex, 2026-11-12
 Livrare: `decoflair-inspiratie-50/` — 50 de imagini originale, generate individual cu instrumentul integrat OpenAI image_gen, fără texte, logo-uri, prețuri sau reduceri. Câte 10 imagini pentru interior, exterior, panouri 3D, riflaje și produse/detalii; ambientale editoriale, mostre și prezentări de produs conceptuale. Originalele PNG sunt în `imagini/`, numerotate 01–50. Format portret, 1122 × 1402 px fiecare, aproximativ 114,5 MiB în total.
