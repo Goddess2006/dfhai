@@ -4,7 +4,7 @@
  "products": [
   {
    "slug": "01-riflaj-acustic-stejar",
-   "kanji": "静",
+   "brand": "NMC® · Belgia",
    "jp": "liniște",
    "accent": "#8a6a3f",
    "name": "Riflaj acustic 3D",
@@ -21,7 +21,7 @@
   },
   {
    "slug": "02-panou-3d-canele-l",
-   "kanji": "線",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "linie",
    "accent": "#3f6b55",
    "name": "Panou 3D CANELÉ L",
@@ -38,7 +38,7 @@
   },
   {
    "slug": "03-panou-3d-wave",
-   "kanji": "波",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "val",
    "accent": "#5d7c8c",
    "name": "Panou 3D WAVE",
@@ -55,7 +55,7 @@
   },
   {
    "slug": "04-panou-3d-wing",
-   "kanji": "翼",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "aripă",
    "accent": "#1f6b4a",
    "name": "Panou 3D WING",
@@ -72,7 +72,7 @@
   },
   {
    "slug": "05-panou-3d-ray",
-   "kanji": "光",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "lumină",
    "accent": "#1f4f7a",
    "name": "Panou 3D RAY",
@@ -89,7 +89,7 @@
   },
   {
    "slug": "06-panou-3d-icon",
-   "kanji": "形",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "formă",
    "accent": "#b8862a",
    "name": "Panou 3D ICON",
@@ -106,7 +106,7 @@
   },
   {
    "slug": "07-panou-puzzle-3d",
-   "kanji": "遊",
+   "brand": "ARSTYL® · NMC Belgia",
    "jp": "joc",
    "accent": "#b5603a",
    "name": "Panou PUZZLE 3D",
@@ -123,7 +123,7 @@
   },
   {
    "slug": "08-cornisa-led-il18",
-   "kanji": "灯",
+   "brand": "WALLSTYL® · NMC Belgia",
    "jp": "lumină caldă",
    "accent": "#9c7a45",
    "name": "Cornișă LED IL18",

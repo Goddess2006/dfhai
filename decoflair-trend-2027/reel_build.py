@@ -1,5 +1,5 @@
 """Reel Deco&Flair „Trend 2027 · Tokyo × Singapore” — reel/reel.html (1080x1920).
-Intro (kanji 新, sigiliu hanko care „ștampilează”) → 8 produse: teaser (kanji + întrebarea pe fotografie vie) →
+Intro (cerc desenat + 2027, sigiliu D&F care „ștampilează”) → 8 produse: teaser (cuvântul-cheie + întrebarea pe fotografie vie), mesaje scurte între produse, ritm lent →
 dezvăluire (cerc ensō desenat, pașii Problemă → Soluție → Rezultat pe rând), tranziție tip pagină, bară de progres →
 final cu logo, site, QR și contact. Rulare: python3 build.py && python3 reel_build.py && node reel_render.cjs
 """
@@ -12,7 +12,7 @@ import build  # noqa: E402
 (ROOT / "reel").mkdir(exist_ok=True)
 vb, qd = (ROOT / "assets" / "qr-decoflair.txt").read_text().split("\n", 1)
 
-HEAD = build.HEAD.replace('&text=%E9%9D%99', '&text=%E6%96%B0%E9%9D%99')  # + 新
+HEAD = build.HEAD
 
 EXTRA = """
 .sc{position:absolute;inset:0;overflow:hidden;box-shadow:-40px 0 80px rgba(0,0,0,.3)}
@@ -21,15 +21,15 @@ EXTRA = """
 .tz{position:absolute;inset:0;z-index:30;overflow:hidden;background:#111}
 .tz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.15) brightness(.62)}
 .tz .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 80px}
-.tz .kj{font-family:'Noto Serif JP',serif;font-size:300px;line-height:1;text-shadow:0 10px 60px rgba(0,0,0,.5)}
-.tz .jp{font-family:'Space Mono',monospace;font-size:24px;letter-spacing:12px;text-transform:uppercase;margin-top:10px;opacity:.9}
-.tz .qq{font-weight:400;font-size:76px;line-height:1.08;margin-top:60px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.tz .jp{font-family:'Space Mono',monospace;font-size:30px;letter-spacing:16px;text-transform:uppercase;opacity:.95;padding:14px 26px;border:1.5px solid rgba(255,255,255,.7);border-radius:40px}
+.tz .ln{width:0;height:2px;background:#fff;margin-top:50px}
+.tz .qq{font-weight:400;font-size:82px;line-height:1.08;margin-top:56px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
 .tz .no{position:absolute;top:240px;left:0;right:0;text-align:center}
 .prog{position:absolute;left:60px;right:60px;top:120px;display:flex;gap:8px;z-index:80}
 .prog i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.4);overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
 .prog i b{display:block;height:100%;width:0;background:#C8392B}
 .io{position:absolute;inset:0;background:var(--washi);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--ink)}
-.io .big{font-family:'Noto Serif JP',serif;font-size:420px;line-height:1;color:var(--ink)}
+.io .big{position:relative;width:400px;height:400px;margin-top:40px}.io .big svg{position:absolute;inset:0}.io .big span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:600;font-size:118px}
 .io .stamp{position:absolute;width:190px;height:190px;background:var(--hanko);color:#fff;border-radius:18px;display:flex;align-items:center;justify-content:center;
  font-family:'Playfair Display',serif;font-weight:600;font-size:64px;line-height:.9;text-align:center;box-shadow:inset 0 0 0 8px rgba(255,255,255,.35)}
 .io .t1{font-weight:300;font-size:64px;letter-spacing:10px;text-transform:uppercase;margin-top:60px}
@@ -43,20 +43,26 @@ EXTRA = """
 .io .ct{margin-top:40px;display:flex;flex-direction:column;gap:12px;font-size:31px;font-weight:300}
 .io .ct span{font-family:'Space Mono',monospace;font-size:19px;letter-spacing:3px;text-transform:uppercase;color:var(--hanko);margin-right:12px}
 .io .ct b{font-weight:600}
+.msg .mt{font-family:'Playfair Display',serif;font-weight:500;font-size:84px;line-height:1.12;margin-top:40px;padding:0 80px}
+.msg .mt i{color:var(--hanko);font-weight:600}
+.msg .ml{width:0;height:2px;background:var(--ink);margin-top:56px}
 """
 
 scenes = ["""<div class="sc" data-k="intro"><div class="io"><div class="fiber" style="position:absolute;inset:0"></div>
 <img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
-<div class="big">新</div>
-<div class="stamp" style="right:170px;top:760px">D<br>&amp;F</div>
+<div class="big"><svg viewBox="0 0 400 400" width="400" height="400"><circle cx="200" cy="200" r="180" fill="none" stroke="#1B1B1F" stroke-width="9" stroke-linecap="round"/></svg><span>2027</span></div>
+<div class="stamp" style="right:190px;top:900px">D<br>&amp;F</div>
 <div class="t1">Trend 2027</div>
 <div class="t2">Tokyo × Singapore</div>
 <div class="mono">8 forme care schimbă o casă</div></div></div>"""]
+MSG = ['Liniștea, rezolvată.<br><i>Acum, ritmul.</i>', 'Un singur detaliu<br><i>schimbă o cameră întreagă.</i>', 'Culoarea are nevoie<br><i>de formă.</i>', 'Restul îl face<br><i>lumina.</i>', 'Acasă poate arăta<br><i>ca un hotel boutique.</i>', 'Unic înseamnă<br><i>al tău.</i>', 'Ultimul detaliu:<br><i>lumina caldă.</i>']
 for i, p in enumerate(build.P, 1):
+    if i > 1:
+        scenes.append(f'<div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">{MSG[i-2]}</div><div class="ml"></div></div></div>')
     inner = build.scene(p, i).replace('src="assets/', 'src="../assets/')
     tz = (f'<div class="tz"><img src="../assets/{p["amb"]}" style="object-position:{p["pos"]}" alt="">'
           f'<div class="no mono" style="color:#fff">No.{i:02d}</div>'
-          f'<div class="in"><div class="kj">{p["kanji"]}</div><div class="jp">{p["jp"]}</div><div class="qq">{p["q"]}</div></div></div>')
+          f'<div class="in"><div class="jp">{p["jp"]}</div><div class="qq">{p["q"]}</div><div class="ln"></div></div></div>')
     scenes.append(f'<div class="sc" data-k="p" style="--acc:{p["accent"]}">{tz}<div class="c">{inner}</div></div>')
 scenes.append(f"""<div class="sc" data-k="out"><div class="io"><div class="fiber" style="position:absolute;inset:0"></div>
 <img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
@@ -69,7 +75,7 @@ scenes.append(f"""<div class="sc" data-k="out"><div class="io"><div class="fiber
 <div><span>Instagram</span>@decoflairhub</div></div></div></div>""")
 
 JS = r"""
-const D={intro:3.6,p:4.6,out:5.2}, X=0.55, R=1.45;
+const D={intro:4.6,p:7.8,msg:3.0,out:6.5}, X=0.9, R=2.2;
 const S=[...document.querySelectorAll('.sc')];
 let t0=0; S.forEach(s=>{s.t0=t0; s.d=D[s.dataset.k]; t0+=s.d-X;});
 window.TOTAL=t0+X;
@@ -93,35 +99,39 @@ window.setT=function(t){
   const k=s.dataset.k;
   if(k==='intro'){
    fade(s.querySelector('.lg'),ease(seg(u,.1,.6)),0,-30);
-   const b=s.querySelector('.big'); const bv=ease(seg(u,.3,1.2)); b.style.opacity=bv; b.style.transform=`scale(${1.4-.4*bv})`; b.style.filter=`blur(${(1-bv)*14}px)`;
-   const st=s.querySelector('.stamp'); const sv=seg(u,1.2,1.5); st.style.opacity=sv?1:0; st.style.transform=`rotate(-8deg) scale(${sv?2.2-1.2*ease(sv):0})`;
-   fade(s.querySelector('.t1'),ease(seg(u,1.5,2.0)),0,30);
-   fade(s.querySelector('.t2'),ease(seg(u,1.8,2.3)),0,30);
-   fade(s.querySelector('.mono'),ease(seg(u,2.1,2.6)),0,20);
+   const b=s.querySelector('.big'); const c=b.querySelector('circle'); const L=2*Math.PI*180; c.style.strokeDasharray=`${L*.9} ${L}`; c.style.strokeDashoffset=`${L*.9*(1-ease(seg(u,.3,1.8)))}`; c.style.transform='rotate(-80deg)'; c.style.transformOrigin='200px 200px'; const yv=ease(seg(u,1.2,2.0)); b.querySelector('span').style.opacity=yv; b.querySelector('span').style.transform=`scale(${1.2-.2*yv})`;
+   const st=s.querySelector('.stamp'); const sv=seg(u,2.0,2.3); st.style.opacity=sv?1:0; st.style.transform=`rotate(-8deg) scale(${sv?2.2-1.2*ease(sv):0})`;
+   fade(s.querySelector('.t1'),ease(seg(u,2.4,3.0)),0,30);
+   fade(s.querySelector('.t2'),ease(seg(u,2.8,3.4)),0,30);
+   fade(s.querySelector('.mono'),ease(seg(u,3.2,3.8)),0,20);
   } else if(k==='p'){
-   const tz=s.querySelector('.tz'); const tv=ease(seg(u,R,R+.5));
+   const tz=s.querySelector('.tz'); const tv=eio(seg(u,R,R+.9));
    tz.style.clipPath=`inset(0 0 ${tv*100}% 0)`;  // cortina urcă
    tz.querySelector('img').style.transform=`scale(${1.05+.08*seg(u,0,R)})`;
-   const kj=tz.querySelector('.kj'); const kv=ease(seg(u,.25,.85)); kj.style.opacity=kv; kj.style.transform=`scale(${1.3-.3*kv})`; kj.style.filter=`blur(${(1-kv)*10}px)`;
-   fade(tz.querySelector('.jp'),ease(seg(u,.6,1.0)),0,16);
-   fade(tz.querySelector('.qq'),ease(seg(u,.7,1.2)),0,40);
+      fade(tz.querySelector('.jp'),ease(seg(u,.5,1.1)),0,16);
+   fade(tz.querySelector('.qq'),ease(seg(u,.8,1.5)),0,40);
+   tz.querySelector('.ln').style.width=`${140*ease(seg(u,1.2,1.9))}px`;
    fade(tz.querySelector('.no'),ease(seg(u,.3,.7)),0,-16);
    const w=u-R;
    s.querySelector('.photo img').style.transform=`scale(${1.12-.1*cl(w/(s.d-R))})`;
-   fade(s.querySelector('.top'),ease(seg(w,0,.5)),0,-20);
-   const ta=s.querySelector('.tate'); const tav=ease(seg(w,.2,.7)); ta.style.opacity=tav; ta.style.transform=`translateY(${(1-tav)*-60}px)`;
+   fade(s.querySelector('.top'),ease(seg(w,0,.8)),0,-20);
+   const ta=s.querySelector('.tate'); const tav=ease(seg(w,.3,1.0)); ta.style.opacity=tav; ta.style.transform=`translateY(${(1-tav)*-60}px)`;
    // ensō desenat
-   const e=s.querySelector('.enso'); const ev=seg(w,.25,1.0); e.style.opacity=ev?1:0;
+   const e=s.querySelector('.enso'); const ev=seg(w,.4,1.6); e.style.opacity=ev?1:0;
    e.querySelectorAll('circle').forEach((c,j)=>{const L=+c.dataset.L; if(j===0){c.style.strokeDashoffset=`${L*(1-ease(ev))}`;} else c.style.opacity=.9*ease(ev);});
-   const pic=e.querySelector('.pic'); const pv=seg(w,.35,.8); pic.style.transform=`scale(${pv?back(pv):0})`;
-   fade(s.querySelector('.q'),ease(seg(w,.4,.9)),-40,0);
-   fade(s.querySelector('.a'),ease(seg(w,.7,1.2)),40,0);
-   qa(s,'.st').forEach((el,j)=>{const v=ease(seg(w,1.0+j*.35,1.45+j*.35)); el.style.opacity=v; el.style.transform=`translateY(${(1-v)*40}px)`;});
-   const h=s.querySelector('.hanko'); const hv=seg(w,2.1,2.35); h.style.transform=`rotate(-4deg) scale(${hv?2-ease(hv):0})`;
-   fade(s.querySelector('.foot .go'),ease(seg(w,2.2,2.6)),20,0);
-   fade(s.querySelector('.foot .mono'),ease(seg(w,2.3,2.7)),0,0);
+   const pic=e.querySelector('.pic'); const pv=seg(w,.6,1.2); pic.style.transform=`scale(${pv?back(pv):0})`;
+   fade(s.querySelector('.q'),ease(seg(w,.6,1.3)),-40,0);
+   fade(s.querySelector('.a'),ease(seg(w,1.0,1.7)),40,0);
+   qa(s,'.st').forEach((el,j)=>{const v=ease(seg(w,1.6+j*.6,2.3+j*.6)); el.style.opacity=v; el.style.transform=`translateY(${(1-v)*40}px)`;});
+   const h=s.querySelector('.hanko'); const hv=seg(w,3.4,3.7); h.style.transform=`rotate(-4deg) scale(${hv?2-ease(hv):0})`;
+   fade(s.querySelector('.foot .go'),ease(seg(w,3.5,4.0)),20,0);
+   fade(s.querySelector('.foot .mono'),ease(seg(w,3.6,4.1)),0,0);
+  } else if(k==='msg'){
+   fade(s.querySelector('.mono'),ease(seg(u,.3,.9)),0,-20);
+   fade(s.querySelector('.mt'),ease(seg(u,.5,1.4)),0,40);
+   s.querySelector('.ml').style.width=`${160*ease(seg(u,1.0,1.8))}px`;
   } else {
-   qa(s,'.lg,.k,.site,.qr,.ct div').forEach((e,j)=>{const v=ease(seg(u,.2+j*.22,.8+j*.22)); e.style.opacity=v; e.style.transform=`translateY(${(1-v)*30}px)`;});
+   qa(s,'.lg,.k,.site,.qr,.ct div').forEach((e,j)=>{const v=ease(seg(u,.3+j*.35,1.1+j*.35)); e.style.opacity=v; e.style.transform=`translateY(${(1-v)*30}px)`;});
   }
  });
  const first=P[0].t0,last=P[P.length-1];

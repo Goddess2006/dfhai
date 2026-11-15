@@ -3,13 +3,13 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
-## Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 produse de nișă — Claude Code, 2026-11-15
-Folder: `decoflair-trend-2027/`. 8 feed 1080×1350 + 8 Story 1080×1920 (`story/`), fără prețuri. Cererea: produse mai puțin vândute dar spectaculoase ca forme; poziționare de trend-setter; estetică Japonia/Singapore 2027–2028; fiecare postare = PROBLEMA → SOLUȚIA (produsul) → REZULTATUL; imagini vii.
-NOTĂ: nu am avut date de vânzări (Platforma DecoFlair indisponibilă) — selecția e după formă/detaliu + InStock pe decoflair.ro la 15.11.2026: riflaj acustic stejar deschis, panouri 3D CANELÉ L (design Bertrand Lejoly), WAVE, WING, RAY, ICON, PUZZLE 3D, cornișă LED IL18. Excluse (PreOrder): BUMP, CORAL, PYRAMID, DOMINO, riflaj alb cenușă.
-Aspect: hârtie washi (#F4F1EA), cerneală, accent de culoare extras din fiecare fotografie, kanji vertical (静 liniște, 線 linie, 波 val, 翼 aripă, 光 lumină, 形 formă, 遊 joc, 灯 lumină caldă — Noto Serif JP subset), cerc ensō în jurul produsului, sigiliu hanko „D&F”, etichetă „No.0X · Trend 2027”, CTA text „Descoperă-l pe decoflair.ro”, „Ales cu grijă · Pentru orice buget · Reduceri de sezon”.
-Afirmații din fișe: riflaj 3,1 kg, montaj fără scule speciale, acustică îmbunătățită cu până la 25%; CANELÉ L 300 mm × 2 m, amorsat; IL18 maschează șina de perdea + spațiu pentru bandă LED.
-Reel: `decoflair-trend-2027/reel/decoflair-trend-2027-reel.mp4` (1080×1920, 30 fps, 40,6 s, fără sunet): intro (kanji 新 + sigiliu D&F „ștampilat”, „Trend 2027 · Tokyo × Singapore”) → 8 produse: teaser cu kanji mare și întrebarea pe fotografia vie, cortina urcă, cercul ensō se desenează, pașii Problemă/Soluție/Rezultat apar pe rând, sigiliul se aplică; tranziții tip pagină + bară de progres → final: logo, „Fii primul care le are acasă.”, decoflair.ro, QR, contact. Sursă: `reel_build.py` + `reel_render.cjs`.
-Reproducere: `python3 build.py && node render.cjs`.
+## Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 produse de nișă — Claude Code, 2026-11-15 (revizuit)
+Folder: `decoflair-trend-2027/`. 8 feed 1080×1350 + 8 Story 1080×1920 (`story/`) + Reel `reel/decoflair-trend-2027-reel.mp4` (80,1 s, 1080×1920, 30 fps, fără sunet). Fără prețuri. Structură pe fiecare postare: PROBLEMA → SOLUȚIA (produsul) → REZULTATUL.
+REVIZIE la cererea clientului: ELIMINAT orice scris japonez (kanji) din imagini și din reel — risc de percepție „produse din China”. În loc: cuvânt românesc vertical (liniște, linie, val…) și marca reală sub numele produsului: „ARSTYL® · NMC Belgia”, „WALLSTYL® · NMC Belgia”, „NMC® · Belgia” (mărcile din fișele decoflair.ro; NMC România = importator unic NMC Belgia, conform nmcromania.ro/despre-noi). NU reintroduce kanji.
+Selecție (fără date de vânzări — Platforma DecoFlair indisponibilă): riflaj acustic stejar deschis, CANELÉ L (design Bertrand Lejoly), WAVE, WING, RAY, ICON, PUZZLE 3D, cornișă LED IL18; toate InStock la 15.11.2026.
+Aspect: hârtie washi, cerneală, accent de culoare din fiecare fotografie, cerc ensō în jurul produsului, sigiliu „D&F”, „No.0X · Trend 2027”, CTA text „Descoperă-l pe decoflair.ro”.
+Reel (ritm lent, cerut de client): intro cerc desenat + „2027” + sigiliu D&F → 8 produse (teaser ~2 s: cuvânt-cheie + întrebare pe fotografie; apoi cortina urcă și creativul se construiește lent: ensō, întrebare, răspuns, pașii 01/02/03, sigiliu) cu 7 mesaje scurte între produse („Liniștea, rezolvată. Acum, ritmul.” etc.) → final logo, „Fii primul care le are acasă.”, decoflair.ro, QR, contact (0723 300 603, office@decoflair.ro, L–V 07:30–16:00, @decoflairhub).
+Reproducere: `python3 build.py && node render.cjs`; reel: `python3 reel_build.py && node reel_render.cjs`.
 
 ## Deco&Flair „Idei 2027” — refacere FĂRĂ prețuri (înlocuiește seriile cu preț) — Claude Code, 2026-11-15
 Folder: `decoflair-idei-2027/`. La cererea utilizatorului, toate creativele Deco&Flair refăcute fără preț/preț tăiat (prețul final nu e stabilit). Seriile `decoflair-black-friday/` și `decoflair-lux-2027/` (cu prețuri BF) rămân ca arhivă — NU se mai folosesc.

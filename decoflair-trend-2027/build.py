@@ -1,6 +1,6 @@
 """Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 creative cu produse de nișă, cu forme spectaculoase.
 Structură: PROBLEMA → SOLUȚIA (produsul) → REZULTATUL. Fără prețuri. Imagini vii (ambient pe produs),
-estetică japoneză/singaporeză: hârtie washi, cerneală, jad, sigiliu hanko, text vertical, cerc ensō, kanji.
+estetică minimalistă Tokyo × Singapore: hârtie washi, cerneală, sigiliu D&F, text vertical, cerc ensō (FĂRĂ scriere japoneză, la cererea clientului).
 Feed 1080x1350 + Story 1080x1920. Rulare: python3 build.py && node render.cjs
 Afirmații tehnice luate din fișele de pe decoflair.ro (15.11.2026); toate produsele InStock.
 """
@@ -11,49 +11,49 @@ ROOT = Path(__file__).resolve().parent
 (ROOT / "story").mkdir(exist_ok=True)
 
 P = [
-    dict(slug="01-riflaj-acustic-stejar", kanji="静", jp="liniște", accent="#8a6a3f", name="Riflaj acustic 3D", var="stejar deschis",
+    dict(slug="01-riflaj-acustic-stejar", brand="NMC® · Belgia", jp="liniște", accent="#8a6a3f", name="Riflaj acustic 3D", var="stejar deschis",
          q="Livingul tău sună<br>a sală goală?", a="Liniștea are o formă nouă.",
          prob="Ecou, voci care răsună, pereți reci.",
          sol="Panouri riflaj acustic de doar 3,1 kg, montaj fără scule speciale.",
          res="Acustică mai bună cu până la 25% și un perete cald, japandi.",
          amb="riflaj-amb.jpg", pos="50% 50%", img="riflaj.jpg", url="https://decoflair.ro/riflaj-acustic-panou-3d-stejar-deschis"),
-    dict(slug="02-panou-3d-canele-l", kanji="線", jp="linie", accent="#3f6b55", name="Panou 3D CANELÉ L", var="design Bertrand Lejoly",
+    dict(slug="02-panou-3d-canele-l", brand="ARSTYL® · NMC Belgia", jp="linie", accent="#3f6b55", name="Panou 3D CANELÉ L", var="design Bertrand Lejoly",
          q="Un perete plat,<br>fără personalitate?", a="Dă-i ritm.",
          prob="Pereți goi care nu spun nimic despre tine.",
          sol="Caneluri sculptate, semnate de designerul belgian Bertrand Lejoly. 30 cm × 2 m.",
          res="Linii verticale care înalță camera. Se vopsește în orice culoare.",
          amb="canele-amb.jpg", pos="55% 50%", img="canele.jpg", url="https://decoflair.ro/panou-decorativ-canelel"),
-    dict(slug="03-panou-3d-wave", kanji="波", jp="val", accent="#5d7c8c", name="Panou 3D WAVE", var="Wallstyl · alb mat",
+    dict(slug="03-panou-3d-wave", brand="ARSTYL® · NMC Belgia", jp="val", accent="#5d7c8c", name="Panou 3D WAVE", var="Wallstyl · alb mat",
          q="Dormitorul tău arată<br>ca toate celelalte?", a="Fă-l să curgă.",
          prob="Un perete de pat banal, uitat după montaj.",
          sol="Valuri sculptate în relief, preamorsate, gata de vopsit.",
          res="Lumina laterală desenează umbre vii, de dimineața până seara.",
          amb="wave-amb.jpg", pos="50% 50%", img="wave.jpg", url="https://decoflair.ro/panou-decorativ-3d-wave"),
-    dict(slug="04-panou-3d-wing", kanji="翼", jp="aripă", accent="#1f6b4a", name="Panou 3D WING", var="Arstyl · 175 × 250 mm",
+    dict(slug="04-panou-3d-wing", brand="ARSTYL® · NMC Belgia", jp="aripă", accent="#1f6b4a", name="Panou 3D WING", var="Arstyl · 175 × 250 mm",
          q="Vrei culoare,<br>dar fără tapet?", a="Dă-i aripi peretelui.",
          prob="Vopseaua singură arată plat și previzibil.",
          sol="Module mici WING, din poliuretan, combinate liber pe perete.",
          res="Un perete-sculptură, în culoarea ta preferată.",
          amb="wing-amb.jpg", pos="50% 50%", img="wing.jpg", url="https://decoflair.ro/panou-decorativ3d-wing-arstyl"),
-    dict(slug="05-panou-3d-ray", kanji="光", jp="lumină", accent="#1f4f7a", name="Panou 3D RAY", var="Arstyl · 320 × 550 mm",
+    dict(slug="05-panou-3d-ray", brand="ARSTYL® · NMC Belgia", jp="lumină", accent="#1f4f7a", name="Panou 3D RAY", var="Arstyl · 320 × 550 mm",
          q="Un dining care<br>nu impresionează?", a="Lasă lumina să lucreze.",
          prob="Masa e frumoasă. Peretele din spate, nu.",
          sol="Romburi cu raze în relief, care prind lumina din fiecare unghi.",
          res="Un fundal de restaurant de lux, la tine acasă.",
          amb="ray-amb.jpg", pos="50% 50%", img="ray.jpg", url="https://decoflair.ro/panou-decorativ-3d-ray-arstyl"),
-    dict(slug="06-panou-3d-icon", kanji="形", jp="formă", accent="#b8862a", name="Panou 3D ICON", var="Wallstyl · forme rotunjite",
+    dict(slug="06-panou-3d-icon", brand="ARSTYL® · NMC Belgia", jp="formă", accent="#b8862a", name="Panou 3D ICON", var="Wallstyl · forme rotunjite",
          q="Biroul de acasă<br>arată a birou?", a="Fă-l iconic.",
          prob="Un colț de lucru fără inspirație, care se vede în fiecare call.",
          sol="Forme rotunjite, retro-futuriste, preamorsate pentru orice culoare.",
          res="Un fundal la care toți te vor întreba: „Unde l-ai găsit?”",
          amb="icon-amb.jpg", pos="50% 30%", img="icon.jpg", url="https://decoflair.ro/panou-decorativ-3d-icon"),
-    dict(slug="07-panou-puzzle-3d", kanji="遊", jp="joc", accent="#b5603a", name="Panou PUZZLE 3D", var="380 × 380 mm · poliuretan",
+    dict(slug="07-panou-puzzle-3d", brand="ARSTYL® · NMC Belgia", jp="joc", accent="#b5603a", name="Panou PUZZLE 3D", var="380 × 380 mm · poliuretan",
          q="Același perete,<br>de ani de zile?", a="Joacă-te cu umbrele.",
          prob="Pereți monotoni, pe care nu-i mai vezi.",
          sol="Piese 3D pe care le rotești ca să compui modele diferite.",
          res="Un perete unic, care nu seamănă cu al nimănui.",
          amb="puzzle-amb.jpg", pos="60% 45%", img="puzzle.jpg", url="https://decoflair.ro/panou-decorativ-3d-interior-poliuretan-puzzle-3d"),
-    dict(slug="08-cornisa-led-il18", kanji="灯", jp="lumină caldă", accent="#9c7a45", name="Cornișă LED IL18", var="Wallstyl · 121 × 90 mm",
+    dict(slug="08-cornisa-led-il18", brand="WALLSTYL® · NMC Belgia", jp="lumină caldă", accent="#9c7a45", name="Cornișă LED IL18", var="Wallstyl · 121 × 90 mm",
          q="Șina de perdea<br>se vede urât?", a="Ascunde-o în lumină.",
          prob="Șine la vedere și lumină rece de plafon.",
          sol="IL18 maschează șina de perdea și are spațiu pentru banda LED.",
@@ -81,7 +81,8 @@ html,body{width:1080px;height:1350px;font-family:Jost,sans-serif;overflow:hidden
 .tag b{color:var(--gold)}
 .tate{position:absolute;right:64px;top:150px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:16px;
  background:rgba(244,241,234,.9);padding:22px 14px;border-radius:40px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.tate .kj{font-family:'Noto Serif JP',serif;font-size:64px;line-height:1;color:var(--acc)}
+.tate .dot{width:16px;height:16px;border-radius:50%;background:var(--acc)}
+.tate .v{font-size:17px!important}
 .tate .v{writing-mode:vertical-rl;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:6px;text-transform:uppercase}
 .enso{position:absolute;right:70px;top:610px;width:300px;height:300px;z-index:6}
 .enso .ring{position:absolute;inset:-18px}
@@ -96,6 +97,7 @@ html,body{width:1080px;height:1350px;font-family:Jost,sans-serif;overflow:hidden
 .st .mono{font-size:13px;letter-spacing:2.5px;font-weight:700}
 .st.s2 .mono{color:var(--acc)}
 .st p{font-size:21px;line-height:1.35;margin-top:8px;font-weight:400}
+.st .br{display:block;font-style:normal;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:1.5px;color:var(--mut);margin-bottom:6px}
 .st.s2 p b{display:block;font-size:24px;font-weight:600;margin-bottom:2px}
 .foot{position:absolute;left:64px;right:64px;bottom:40px;display:flex;align-items:center;gap:20px}
 .hanko{width:62px;height:62px;flex:none;background:var(--hanko);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;
@@ -118,7 +120,6 @@ body.story,.story .c{height:1920px}
 HEAD = ('<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>{t}</title>'
         '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600'
         '&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">'
-        '<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&text=%E9%9D%99%E7%B7%9A%E6%B3%A2%E7%BF%BC%E5%85%89%E5%BD%A2%E9%81%8A%E7%81%AF&display=swap" rel="stylesheet">'
         '<style>' + CSS + '</style></head>')
 
 ENSO = ('<svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" '
@@ -131,12 +132,12 @@ def scene(p, i):
 <div class="photo"><img src="assets/{p['amb']}" style="object-position:{p['pos']}" alt=""></div>
 <div class="grid"></div>
 <div class="top"><div class="chip"><img src="assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>{i:02d}</b> · Trend 2027</div></div>
-<div class="tate"><span class="kj">{p['kanji']}</span><span class="v">{p['jp']}</span></div>
+<div class="tate"><span class="dot"></span><span class="v">{p['jp']}</span></div>
 <div class="enso">{ENSO}<div class="pic"><img src="assets/{p['img']}" alt=""></div></div>
 <div class="panel"><div class="q">{p['q']}</div><div class="a">{p['a']}</div></div>
 <div class="steps">
  <div class="st"><div class="mono">01 · Problema</div><p>{p['prob']}</p></div>
- <div class="st s2"><div class="mono">02 · Soluția</div><p><b>{p['name']}</b>{p['sol']}</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>{p['name']}</b><em class="br">{p['brand']}</em>{p['sol']}</p></div>
  <div class="st"><div class="mono">03 · Rezultatul</div><p>{p['res']}</p></div>
 </div>
 <div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
