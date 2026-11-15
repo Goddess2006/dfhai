@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Generează decoflair-landing/index.html — „Selecția Premium 2027” · Deco&Flair.
+"""Generează decoflair-landing/index.html — „Selecția Premium” (atemporal, fără date sau campanii) · Deco&Flair.
 
 Rulare:  python3 decoflair-landing/tools/build.py
 
-Regula campaniei: pe produse nu apar prețuri, procente sau alte cifre de preț.
-„Prețuri speciale” se comunică doar general (hero, benzi, final).
+Landing atemporal: fără date, countdown sau campanii. Pe produse nu apar prețuri sau procente.
 Tot ce se schimbă des e în CAMPANIE, CAPITOLE (produse), SERVICII și BLOG.
 """
 from html import escape as e
@@ -15,9 +14,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://decoflair.ro/"
 
 CAMPANIE = {
-    "eticheta": "Black November · Ediția 2027",
-    "sfarsit": "2026-11-30T23:59:59+02:00",   # countdown; după dată banda de campanie dispare (vezi df.js)
-    "sfarsit_text": "30 noiembrie",
     "telefon": "0723 300 603",
     "telefon_link": "tel:+40723300603",
     "email": "office@decoflair.ro",
@@ -28,7 +24,7 @@ CAMPANIE = {
 BRANDURI = ["Arstyl®", "Wallstyl®", "Nomastyl®", "ADRo®", "NMC®", "Carrara Best", "Roberto Cavalli", "Noël & Marquet"]
 
 P = lambda **k: k
-# Fiecare capitol: ambient + produse (toate verificate „în stoc” pe decoflair.ro la 15.11.2026)
+# Fiecare capitol: ambient + produse (stocul se citește live pe decoflair.ro)
 CAPITOLE = [
     dict(id="lumina", n="01", nume="Lumină", titlu="Lumina devine<br><em>arhitectură.</em>",
          text="Scafe și cornișe pentru bandă LED: lumină indirectă, caldă, fără corpuri de iluminat la vedere. Detaliul care schimbă complet atmosfera unei camere.",
@@ -43,7 +39,7 @@ CAPITOLE = [
          text="Panouri decorative 3D din poliuretan: valuri, canelură, forme organice. Se vopsesc în orice culoare și transformă un perete simplu într-o piesă de design.",
          amb="wave-amb", know="Pe un perete texturat, lumina laterală (aplică sau LED) dublează adâncimea reliefului.",
          produse=[
-            P(id="wave", brand="Arstyl®", name="Panou 3D WAVE", spec="Relief în valuri · poliuretan", url="panou-decorativ-3d-wave", img="wave", hover="wave-amb", tag="Tendință 2027"),
+            P(id="wave", brand="Arstyl®", name="Panou 3D WAVE", spec="Relief în valuri · poliuretan", url="panou-decorativ-3d-wave", img="wave", hover="wave-amb", tag="Tendință"),
             P(id="canele", brand="Arstyl®", name="Panou 3D CANELE L", spec="Canelură verticală fină", url="panou-decorativ-canelel", img="canele", hover="canele-amb"),
             P(id="liquid", brand="Arstyl®", name="Panou 3D LIQUID", spec="Forme fluide, organice", url="panou-decorativ-3d-liquid", img="liquid", hover="liquid-amb"),
             P(id="icon", brand="Arstyl®", name="Panou 3D ICON", spec="Module rotunjite, ritm grafic", url="panou-decorativ-3d-icon", img="icon", hover="icon-amb"),
@@ -173,10 +169,10 @@ def page():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Selecția Premium 2027 · Deco&amp;Flair — design premium, accesibil</title>
-<meta name="description" content="Selecția Premium Deco&amp;Flair: profile decorative cu LED, panouri 3D, cornișe, rozete, riflaje acustice, tapet de designer și elemente de fațadă. Know-how, inovație și prețuri speciale în noiembrie.">
+<title>Selecția Premium · Deco&amp;Flair — design premium, accesibil</title>
+<meta name="description" content="Selecția Premium Deco&amp;Flair: profile decorative cu LED, panouri 3D, cornișe, rozete, riflaje acustice, tapet de designer și elemente de fațadă. Know-how și inovație, la prețuri accesibile.">
 <meta name="theme-color" content="#F4EEE6">
-<meta property="og:title" content="Selecția Premium 2027 · Deco&amp;Flair">
+<meta property="og:title" content="Selecția Premium · Deco&amp;Flair">
 <meta property="og:description" content="Lux liniștit, accesibil. Produse premium alese cu know-how.">
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,8 +183,6 @@ def page():
 <body>
 <a class="skip" href="#lumina">Sari la produse</a>
 <div class="aura" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
-
-<div class="topline" data-campaign><span>{e(C["eticheta"])}</span><span class="dot"></span><span>Prețuri speciale până pe {C["sfarsit_text"]}</span><span class="dot"></span><span class="topline__cd">Încă <b data-cd-mini>--</b></span></div>
 
 <header class="hdr">
   <div class="wrap hdr__row">
@@ -203,23 +197,22 @@ def page():
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__copy">
-      <span class="label"><b>Deco&amp;Flair</b> · Selecția Premium 2027</span>
+      <span class="label"><b>Deco&amp;Flair</b> · Selecția Premium</span>
       <h1>Lux liniștit.<br><em>Pentru fiecare casă.</em></h1>
       <p class="hero__lead">Profile decorative, panouri 3D, lumină indirectă și tapet de designer, alese cu know-how de la producători de renume. Design premium, la prețuri accesibile.</p>
       <div class="hero__cta">
         <a class="btn btn--ink" href="#lumina">Explorează selecția {ico("arrow", 16)}</a>
         <a class="btn btn--ghost" href="#servicii">Consultanță premium</a>
       </div>
-      <div class="hero__meta" data-campaign>
-        <span class="pill"><i></i>{e(C["eticheta"])}</span>
-        <span class="hero__cd" role="timer" data-cd="{C["sfarsit"]}"><span><b data-d>--</b>zile</span><span><b data-h>--</b>ore</span><span><b data-m>--</b>min</span></span>
+      <div class="hero__meta">
+        <span class="pill"><i></i>Ales cu know-how · producători de renume</span>
       </div>
     </div>
     <div class="hero__visual">
       <div class="arch arch--hero"><img src="{A("hero")}" alt="Perete cu panouri 3D WAVE într-un dining luminos" fetchpriority="high"></div>
       <div class="ring" aria-hidden="true"></div>
       <div class="glass glass--a"><small>Inovație</small><b>Panouri 3D &amp; LED</b></div>
-      <div class="glass glass--b"><small>{n} produse</small><b>în stoc acum</b></div>
+      <div class="glass glass--b"><small>Know-how</small><b>Selecție curatoriată</b></div>
       <span class="vert" aria-hidden="true">Elevate your space · Define your style</span>
     </div>
   </div>
@@ -268,7 +261,7 @@ def page():
   <div class="wrap faq__grid">
     <div><span class="label"><b>FAQ</b></span><h2>Bine de<br><em>știut.</em></h2></div>
     <div>
-      <details><summary>Sunt produsele cu adevărat accesibile?</summary><p>Da. Selecția acoperă de la brâuri și plinte pentru orice buget până la piese statement. În noiembrie, produsele din campanie au prețuri speciale, afișate pe pagina fiecărui produs.</p></details>
+      <details><summary>Sunt produsele cu adevărat accesibile?</summary><p>Da. Selecția acoperă de la brâuri și plinte pentru orice buget până la piese statement. Prețul actual al fiecărui produs îl găsești pe pagina lui din magazin.</p></details>
       <details><summary>Cât de repede primesc comanda?</summary><p>Produsele din această selecție sunt în stoc. Disponibilitatea apare pe pagina fiecărui produs; costul și termenul de livrare se văd în coș.</p></details>
       <details><summary>Se pot vopsi profilele și panourile 3D?</summary><p>Da. Profilele din poliuretan și polimer dur sunt preamorsate sau gata de vopsit, iar elementele de exterior ADRo® se vopsesc cu vopsea acrilică de exterior.</p></details>
       <details><summary>Mă ajutați să aleg și să calculez necesarul?</summary><p>Da. Sună la <a href="{C["telefon_link"]}">{C["telefon"]}</a> ({e(C["program"])}) sau scrie la <a href="mailto:{C["email"]}">{C["email"]}</a>. Pentru proiecte mari oferim și randare 3D.</p></details>
@@ -280,7 +273,7 @@ def page():
   <div class="wrap closing__in">
     <span class="label"><b>Deco&amp;Flair</b></span>
     <h2>Elevate your space.<br><em>Define your style.</em></h2>
-    <p data-campaign>Prețuri speciale până pe {C["sfarsit_text"]}, în limita stocului disponibil.</p>
+    <p>Produse premium, alese cu know-how. Pentru fiecare casă.</p>
     <a class="btn btn--ink" href="#lumina">Începe cu lumina {ico("arrow", 16)}</a>
   </div>
 </section>

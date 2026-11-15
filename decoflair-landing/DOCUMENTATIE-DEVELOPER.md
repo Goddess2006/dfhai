@@ -1,6 +1,6 @@
-# Selecția Premium 2027 · Deco&Flair — documentație pentru developer
+# Selecția Premium · Deco&Flair — documentație pentru developer
 
-Landing page static pentru **decoflair.ro** (OpenCart 3 + tema Journal 3). Poate fi folosit în două feluri:
+Landing page static și **atemporal** (fără date, countdown sau campanii) pentru **decoflair.ro** (OpenCart 3 + tema Journal 3). Poate fi folosit în două feluri:
 - ca pagină de sine stătătoare: `https://decoflair.ro/selectia-premium/`;
 - afișat peste homepage, înainte ca vizitatorul să intre în magazin.
 
@@ -14,7 +14,7 @@ Nu are nevoie de bază de date, OCMOD, extensii, API sau build pe server.
 |---|---|---|
 | `selectia-premium/index.html` | Landing-ul (HTML static, generat) | **da** |
 | `selectia-premium/df.css` | Stilurile (izolate, nu ating tema) | **da** |
-| `selectia-premium/df.js` | Interacțiuni: countdown, căutare, animații, stoc live, coș, punte cu overlay-ul | **da** |
+| `selectia-premium/df.js` | Interacțiuni: căutare, animații, stoc live, coș, punte cu overlay-ul | **da** |
 | `selectia-premium/homepage-overlay.js` | Scriptul care afișează landing-ul peste homepage | **da** |
 | `selectia-premium/assets/` | 58 de imagini optimizate (≈4 MB): ambient, produse, logo | **da** |
 | `cod-homepage.html` | Linia de pus pe homepage (varianta HTML) | nu, se copiază în temă |
@@ -66,7 +66,7 @@ Adaugă **o singură dată** pe homepage, înainte de `</body>`:
 |---|---|---|
 | `data-enabled` | `false` = oprit complet | activ |
 | `data-frequency` | `session` (o dată pe sesiune), `day` (o dată la 24 h), `always` (test) | `session` |
-| `data-ends` | data după care nu mai apare, ex. `2026-12-01T00:00:00+02:00` | 1 decembrie 2026, 00:00 |
+| `data-ends` | opțional, data după care nu mai apare, ex. `2027-03-01T00:00:00+02:00` | fără dată de final |
 | `data-delay` | întârzierea afișării, în ms | `400` |
 
 Exemplu: `<script defer src="/selectia-premium/homepage-overlay.js" data-frequency="day"></script>`
@@ -94,23 +94,21 @@ Când pagina rulează pe `decoflair.ro`, scriptul citește pagina fiecărui prod
 - **Stoc live:** produsele fără stoc apar „Disponibil la comandă”, cu punct gri.
 - **„Adaugă în coș”:** apare doar la produsele în stoc și fără opțiuni obligatorii. Folosește endpoint-ul standard OpenCart `index.php?route=checkout/cart/add` (POST `product_id`, `quantity=1`). Pentru produsele cu opțiuni sau cu cantitate minimă, butonul duce la pagina produsului.
 - **Încărcare:** maximum 4 cereri în paralel; rezultatele se păstrează în memorie.
-- **Countdown:** campania „Black November” afișează timpul rămas până la data din `CAMPANIE["sfarsit"]`. După această dată, toate elementele marcate `data-campaign` dispar automat (bandă, pastilă, countdown, mesajul din final), iar landing-ul rămâne valabil ca prezentare a selecției premium.
 - **Căutare fără diacritice:** „cornisa”, „wave”, „led”, „z11”.
 
 Testat cu paginile reale ale produselor. Coșul a fost testat cu răspuns simulat, nu pe un coș real.
 
-**Regulă de campanie:** pe produse NU se afișează prețuri, procente sau alte cifre de preț. „Prețuri speciale” apare doar în mesajele generale. Clientul vede prețul pe pagina produsului din magazin. `build.py` refuză să genereze pagina dacă apare „lei” în HTML.
+**Landing atemporal:** fără date, countdown sau mesaje de campanie, și fără prețuri sau procente pe produse. Clientul vede prețul actual pe pagina produsului din magazin. Pagina poate rămâne publicată oricât. `build.py` refuză să genereze pagina dacă apare „lei” în HTML.
 
 ---
 
 ## 5. Structura paginii
 
-1. Bandă de campanie (Black November · countdown)
-2. Header: logo, cele 7 capitole, căutare, coș
-3. Hero: „Lux liniștit. Pentru fiecare casă.”, imagine în arcadă, carduri de sticlă, CTA
-4. Banda de branduri: Arstyl®, Wallstyl®, Nomastyl®, ADRo®, NMC®, Carrara Best, Roberto Cavalli, Noël & Marquet
-5. Manifest („curatori de tendințe”) + 3 piloni: Premium · Inovație · Know-how + cuprins
-6. **7 capitole**, fiecare cu imagine ambientală în arcadă, text, sfat „Know-how Deco&Flair” și produse:
+1. Header: logo, cele 7 capitole, căutare, coș
+2. Hero: „Lux liniștit. Pentru fiecare casă.”, imagine în arcadă, carduri de sticlă, CTA
+3. Banda de branduri: Arstyl®, Wallstyl®, Nomastyl®, ADRo®, NMC®, Carrara Best, Roberto Cavalli, Noël & Marquet
+4. Manifest („curatori de tendințe”) + 3 piloni: Premium · Inovație · Know-how + cuprins
+5. **7 capitole**, fiecare cu imagine ambientală în arcadă, text, sfat „Know-how Deco&Flair” și produse:
    - 01 Lumină: L5, L2, IL18, IL11
    - 02 Texturi 3D: WAVE, CANELE L, LIQUID, ICON
    - 03 Tavan: Z11, Z21, WT25, R12
@@ -118,22 +116,22 @@ Testat cu paginile reale ale produselor. Coșul a fost testat cu răspuns simula
    - 05 Riflaje: stejar deschis, stejar închis
    - 06 Tapet: Carrara Best 82603, 82671, Roberto Cavalli 19070
    - 07 Fațadă: NA105, NCL106, A113
-7. Servicii: Consultanță premium · Randare 3D · Produse personalizate + contact (0723 300 603, office@decoflair.ro, @decoflairhub)
-8. Jurnal: 4 articole din blogul decoflair.ro
-9. Întrebări frecvente
-10. Final „Elevate your space. Define your style.” + footer
+6. Servicii: Consultanță premium · Randare 3D · Produse personalizate + contact (0723 300 603, office@decoflair.ro, @decoflairhub)
+7. Jurnal: 4 articole din blogul decoflair.ro
+8. Întrebări frecvente
+9. Final „Elevate your space. Define your style.” + footer
 
-Toate cele 25 de produse au fost verificate „în stoc” pe decoflair.ro la 15.11.2026. Toate linkurile (produse, servicii, blog) răspund HTTP 200.
+Toate cele 25 de produse erau în stoc la publicare; stocul se actualizează live pe pagină. Toate linkurile (produse, servicii, blog) răspund HTTP 200.
 
 ---
 
 ## 6. Sistemul vizual
 
-**Direcție:** „quiet luxury” 2027, cu aer Tokyo 2027 / Singapore 2030: aerisit, mult spațiu alb, linii fine, arcade (formă semnătură), carduri de sticlă (glassmorphism), aure difuze de culoare, text vertical, numere de capitol în contur.
+**Direcție:** „quiet luxury”, cu aer Tokyo / Singapore contemporan: aerisit, mult spațiu alb, linii fine, arcade (formă semnătură), carduri de sticlă (glassmorphism), aure difuze de culoare, text vertical, numere de capitol în contur.
 
 **Fonturi:**
 - **Jost** pentru texte și etichete: fontul folosit pe decoflair.ro.
-- **Instrument Serif** pentru titluri: un serif editorial condensat, cu italic, de tendință 2026–2027.
+- **Instrument Serif** pentru titluri: un serif editorial condensat, cu italic.
 - Ambele de la Google Fonts.
 
 **Culori** (tokeni CSS în `:root` din `df.css`):
@@ -171,7 +169,7 @@ Toate cele 25 de produse au fost verificate „în stoc” pe decoflair.ro la 15
 ## 7. Modificări ulterioare
 
 Toate textele, produsele și imaginile sunt în `sursa/tools/build.py`:
-- **`CAMPANIE`:** eticheta campaniei, data de final, telefonul, emailul, programul;
+- **`CAMPANIE`:** telefonul, emailul, programul, Instagram;
 - **`CAPITOLE`:** titlurile, textele, sfaturile know-how, imaginea ambientală și produsele fiecărui capitol;
 - **`SERVICII`, `BLOG`, `BRANDURI`.**
 
@@ -188,7 +186,7 @@ python3 tools/package.py
 ```
 și urci din nou fișierele din `selectia-premium/`.
 
-**Oprirea campaniei fără să modifici nimic:** după data din `CAMPANIE["sfarsit"]` elementele de campanie dispar automat, iar overlay-ul nu mai apare după `data-ends`.
+**Fără dată de expirare:** pagina și overlay-ul rămân active până le dezactivezi. Dacă vrei totuși ca overlay-ul să se oprească singur la o dată, pune `data-ends` pe tag.
 
 ---
 

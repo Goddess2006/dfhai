@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
+## Deco&Flair „Selecția Premium” — făcut ATEMPORAL — Claude Code, 2026-11-15
+La cererea utilizatorului: eliminate toate datele și elementele de campanie (banda Black November, countdown, „2027” din titluri, „prețuri speciale până pe 30 noiembrie”, mențiunea din FAQ, „25 produse în stoc acum”). homepage-overlay.js nu mai are dată implicită de final (`data-ends` doar opțional). Documentația actualizată. Rămâne doar slug-ul unui articol de blog care conține „2026” în URL (invizibil).
+
 ## Deco&Flair „Selecția Premium 2027” — landing + overlay homepage — Claude Code, 2026-11-15
 Folder: `decoflair-landing/` (pe server: `/selectia-premium/`). Același tip de landing ca Black November NMC, cu identitate Deco&Flair: quiet luxury 2027, aer Tokyo/Singapore — crem #F4EEE6, nude, negru-cerneală #141214, mov șters #A6919F, degradeuri verde forest #2F4A3C→#A9BBAA și roz pudră #EBCFCB; Jost (fontul decoflair.ro) + Instrument Serif; arcade, sticlă, aure difuze, text vertical, numere de capitol în contur.
 Conținut: hero „Lux liniștit. Pentru fiecare casă.”, branduri, manifest „curatori de tendințe” (din /despre-noi) + piloni Premium/Inovație/Know-how, 7 capitole cu ambient + sfat know-how + 25 produse (toate în stoc la 15.11.2026): LED L5, L2, IL18, IL11; panouri 3D WAVE, CANELE L, LIQUID, ICON; Z11, Z21, WT25, R12; WO2, Z1360, WL6, FD3, FD21; riflaje stejar deschis/închis; tapet Carrara 82603, 82671, Roberto Cavalli 19070; NA105, NCL106, A113. Servicii (consultanță premium, randare 3D, produse personalizate), contact 0723 300 603 / office@decoflair.ro, 4 articole blog, FAQ. Fără prețuri pe produse; „prețuri speciale” doar general; elementele data-campaign dispar automat după 30.11.

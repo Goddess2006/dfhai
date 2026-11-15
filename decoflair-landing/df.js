@@ -1,5 +1,5 @@
-/* Selecția Premium 2027 · Deco&Flair — df.js
-   - countdown campanie (dispare automat după dată), căutare fără diacritice, navigare activă, animații la derulare;
+/* Selecția Premium · Deco&Flair — df.js
+   - căutare fără diacritice, navigare activă, animații la derulare;
    - pe decoflair.ro (același domeniu): stoc live din pagina produsului + „Adaugă în coș” (fără prețuri pe landing);
    - când rulează în iframe peste homepage (homepage-overlay.js): Escape închide, linkurile spre magazin deschid fereastra principală.
    Pagina rămâne complet funcțională fără acest script. */

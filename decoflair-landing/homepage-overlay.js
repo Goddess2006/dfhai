@@ -10,7 +10,7 @@
  *   data-frequency="session"      session (implicit) = o dată pe sesiune de navigare
  *                                 day     = o dată la 24 de ore
  *                                 always  = la fiecare intrare pe homepage (pentru test)
- *   data-ends="2026-12-01T00:00:00+02:00"  după această dată nu mai apare (implicit 1 dec. 2026)
+ *   data-ends="AAAA-LL-ZZT00:00:00+02:00"  opțional: după această dată nu mai apare (implicit: fără dată de final)
  *   data-delay="400"              întârziere în ms înainte de afișare
  *
  * Pentru test pe site: adaugă ?df=1 la homepage (ex. https://www.decoflair.ro/?df=1)
@@ -31,14 +31,14 @@
   var isHome = /^\/([a-z]{2}\/)?(index\.php)?$/.test(path) && (!route || route === 'common/home');
   if (!isHome && !force) return;
 
-  var ends = Date.parse(script.dataset.ends || '2026-12-01T00:00:00+02:00');
+  var ends = script.dataset.ends ? Date.parse(script.dataset.ends) : 0;
   if (!force && ends && Date.now() > ends) return;
 
   var src = new URL('index.html?overlay=1', script.src);
   if (src.origin !== location.origin) return; // landing-ul trebuie să fie pe același domeniu
 
   var freq = script.dataset.frequency || 'session';
-  var KEY = 'decoflair:premium:2026';
+  var KEY = 'decoflair:selectia-premium';
   function seen() {
     try {
       if (freq === 'always') return false;
@@ -94,7 +94,7 @@
 
     var btn = d.createElement('button');
     btn.type = 'button'; btn.className = 'df-x';
-    btn.setAttribute('aria-label', 'Închide Black November și intră în magazin');
+    btn.setAttribute('aria-label', 'Închide Selecția Premium și intră în magazin');
     btn.innerHTML = '<span>Intră în magazin</span><b aria-hidden="true">×</b>';
     btn.addEventListener('click', close);
 
