@@ -1,0 +1,77 @@
+{
+ "createdAt": "2026-11-15",
+ "products": [
+  {
+   "slug": "01-atmosfera-plinta-led-il11",
+   "chapter": "Atmosferă",
+   "n": "01",
+   "need": "Vrei ca serile acasă<br>să fie mai liniștite?",
+   "answer": "Plinta <b>IL11</b> ascunde o bandă LED și desenează o linie de lumină caldă la nivelul podelei. Fără lustre, fără umbre dure.",
+   "ambient": "il11amb.jpg",
+   "amb_pos": "12% 60%",
+   "lens": "sec-il11.png",
+   "lens_fit": "contain",
+   "lens_bg": "#fff",
+   "label": "IL11 · Plintă cu iluminat LED",
+   "tone": "teal",
+   "bright": 1.35
+  },
+  {
+   "slug": "02-ordine-scafa-led-l2",
+   "chapter": "Ordine",
+   "n": "02",
+   "need": "Cabluri, țevi, tubulaturi?<br>Tavanul le poate ascunde.",
+   "answer": "Scafa <b>L2</b> acoperă ce nu vrei să vezi și găzduiește spoturi sau bandă LED. În cameră rămâne doar lumina.",
+   "ambient": "l2a.jpg",
+   "amb_pos": "50% 50%",
+   "lens": "sec-l2b.png",
+   "lens_fit": "contain",
+   "lens_bg": "#fff",
+   "label": "L2 · Scafă LED pentru tavan",
+   "tone": "violet",
+   "bright": 1.05
+  },
+  {
+   "slug": "03-eleganta-cornisa-z11",
+   "chapter": "Eleganță",
+   "n": "03",
+   "need": "Un tavan simplu<br>poate spune o poveste.",
+   "answer": "Cornișa <b>Z11</b>, cu motiv floral clasic, transformă îmbinarea dintre perete și tavan într-un detaliu care se privește.",
+   "ambient": "ambient-interior.jpg",
+   "amb_pos": "55% 30%",
+   "lens": "z11a.jpg",
+   "lens_fit": "cover",
+   "lens_bg": "#ddd",
+   "label": "Z11 · Cornișă decorativă",
+   "tone": "plum"
+  },
+  {
+   "slug": "04-prima-impresie-ancadrament-na105",
+   "chapter": "Prima impresie",
+   "n": "04",
+   "need": "Casa ta e prima poveste<br>pe care o vede strada.",
+   "answer": "Ancadramentele <b>NA105</b> conturează ferestrele cu linii clasice și dau fațadei proporție. Rezistente la UV, ger și umezeală.",
+   "ambient": "ambient-vila.jpg",
+   "amb_pos": "50% 25%",
+   "lens": "na105f.jpg",
+   "lens_fit": "cover",
+   "lens_bg": "#fff",
+   "label": "NA105 · Ancadrament fereastră",
+   "tone": "night"
+  },
+  {
+   "slug": "05-caracter-coltar-ncl113",
+   "chapter": "Caracter",
+   "n": "05",
+   "need": "Când se aprind luminile,<br>fiecare colț contează.",
+   "answer": "Colțarul <b>NCL113</b> dă fațadei relief și umbre adânci. Strat de rășină și nisip cuarțos, gata de vopsit în orice culoare.",
+   "ambient": "ambient-casa.jpg",
+   "amb_pos": "62% 50%",
+   "lens": "ncl113.png",
+   "lens_fit": "contain",
+   "lens_bg": "radial-gradient(circle at 50% 40%,#3a3550,#11131c)",
+   "label": "NCL113 · Colțar exterior",
+   "tone": "violet"
+  }
+ ]
+}

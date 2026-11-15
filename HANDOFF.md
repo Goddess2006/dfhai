@@ -3,6 +3,11 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
+## NMC „Povești de casă” — 5 creative separate, eleganță + mister — Claude Code, 2026-11-15
+Folder: `nmc-povesti/`. 5 feed 1080×1350 + 5 Story 1080×1920 (`story/`), fără preț. Abordare nouă la cererea utilizatorului: mai elegantă, centrată pe nevoia clientului, „poveste” → produs ca răspuns → nmcromania.ro. Ambient pe tot ecranul cu tentă misterioasă (albastru-noapte / violet / prună, vignetă, reflex cald), produsul într-o „lupă” rotundă cu inel portocaliu NMC, capitole numerotate (01 Atmosferă, 02 Ordine, 03 Eleganță, 04 Prima impresie, 05 Caracter). Tipografie: întrebarea/nevoia în Cormorant Garamond italic, restul Roboto (fontul NMC).
+Produse: interior — plintă LED IL11, scafă LED L2, cornișă Z11; exterior — ancadrament NA105, colțar NCL113. Ambient: IL11/L2 = poze NMC de produs; Z11 = banner interior decoflair.ro; NA105 = vila homepage NMC; NCL113 = banner exterior decoflair.ro (imagini de stil, nu neapărat SKU-ul exact).
+Reproducere: `python3 build.py && node render.cjs`.
+
 ## NMC exterior — 4 creative de vânzare (fără preț) — Claude Code, 2026-11-15
 Folder: `nmc-exterior/`. 4 feed 1080×1350 + 4 Story 1080×1920 (`story/`): FUGA PANEL 1, SIDDING PANEL 3, colțar NCL107, gama de exterior (ancadrament NA105, cornișă NC104, solbanc NS111). Stil NMC (Roboto, portocaliu #FF671F, fundal grafit), ambient sus + card produs cu banda „Made in Romania” (steag RO).
 Mesaj: încredere + vânzare. Sus „Lider de piață · peste 20 de ani de experiență”; cerc „Prețuri speciale — calitate fără compromis” (FĂRĂ cifre: reducerea nu e stabilită); bandă de încredere: „Producție proprie în România” · „Rășină brevetată ADRo® + cuarț” · „Rezistent la UV, ger și umezeală”; jos „Descoperă prețurile speciale”.
