@@ -1,0 +1,188 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Deco&Flair Lux 2027 — Reel</title><link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Playfair+Display:ital,wght@1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#D6BC84;--red:#B42127;--ink:#0b0a0c;--cream:#f5efe4;--mut:#b9b0a4}
+html,body{width:1080px;height:1350px;background:var(--ink);font-family:Jost,sans-serif;color:#fff;overflow:hidden}
+.c{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--ink)}
+.amb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.85) contrast(1.06)}
+.grade{position:absolute;inset:0;background:
+ linear-gradient(180deg,rgba(11,10,12,.80) 0%,rgba(11,10,12,.10) 16%,rgba(11,10,12,0) 36%,rgba(11,10,12,.70) 56%,rgba(11,10,12,.97) 78%,var(--ink) 100%)}
+.aura{position:absolute;left:-200px;right:-200px;bottom:-260px;height:760px;
+ background:radial-gradient(ellipse at 30% 60%,rgba(180,33,39,.38),transparent 55%),radial-gradient(ellipse at 80% 70%,rgba(214,188,132,.22),transparent 55%);filter:blur(10px)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(214,188,132,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(214,188,132,.06) 1px,transparent 1px);background-size:90px 90px;
+ -webkit-mask:linear-gradient(180deg,transparent 45%,#000 75%)}
+.hud{position:absolute;inset:34px;pointer-events:none}
+.hud i{position:absolute;width:42px;height:42px;border:0 solid var(--gold)}
+.hud i:nth-child(1){left:0;top:0;border-left-width:2px;border-top-width:2px}
+.hud i:nth-child(2){right:0;top:0;border-right-width:2px;border-top-width:2px}
+.hud i:nth-child(3){left:0;bottom:0;border-left-width:2px;border-bottom-width:2px}
+.hud i:nth-child(4){right:0;bottom:0;border-right-width:2px;border-bottom-width:2px}
+.top{position:absolute;left:70px;right:70px;top:66px;display:flex;justify-content:space-between;align-items:center}
+.logo{width:200px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.6))}
+.mono{font-family:'Space Mono',monospace;font-size:17px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.top .mono{text-align:right;line-height:1.6}
+.top .mono span{color:rgba(255,255,255,.7)}
+.head{position:absolute;left:70px;right:70px;top:560px}
+.l1{display:block;font-weight:300;font-size:50px;letter-spacing:4px;text-transform:uppercase;line-height:1.1;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.l2{display:block;font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:76px;line-height:1.05;color:var(--gold);margin-top:6px;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.tip{position:absolute;left:70px;right:70px;top:790px;display:flex;gap:18px;align-items:flex-start}
+.tip b{flex:none;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:3px;background:var(--red);padding:9px 12px 7px;border-radius:3px;margin-top:4px}
+.tip span{font-weight:300;font-size:27px;line-height:1.4;color:rgba(255,255,255,.92)}
+.glass{position:absolute;left:70px;right:70px;top:940px;height:300px;display:flex;gap:30px;align-items:center;padding:26px;
+ background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(214,188,132,.45);border-radius:22px;
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.glass .ph{flex:none;width:248px;height:248px;border-radius:14px;overflow:hidden;background:var(--cream);box-shadow:0 0 0 1px rgba(214,188,132,.6)}
+.glass .ph img{width:100%;height:100%;object-fit:cover}
+.glass .tx{flex:1;min-width:0}
+.name{font-weight:600;font-size:46px;line-height:1.05;margin-top:8px}
+.spec{font-size:21px;color:var(--mut);margin-top:8px;font-weight:300}
+.price{display:flex;align-items:baseline;gap:12px;margin-top:16px}
+.price b{font-weight:600;font-size:64px;color:var(--gold);letter-spacing:-1px;line-height:1}
+.price span{font-size:21px;color:#fff;font-weight:300}
+.buy{position:absolute;left:70px;right:70px;bottom:58px;display:flex;align-items:center;justify-content:space-between}
+.buy .t{font-weight:300;font-size:26px;letter-spacing:1px}
+.buy .t b{font-family:'Playfair Display',serif;font-weight:600;font-size:40px;color:var(--cream);margin-left:10px;letter-spacing:.5px}
+.buy .line{flex:1;height:1px;margin-left:28px;background:linear-gradient(90deg,var(--gold),transparent);position:relative}
+/* ---- Story 1080x1920 ---- */
+body.story,.story .c{height:1920px}
+.story .top{top:220px}
+.story .grade{background:linear-gradient(180deg,rgba(11,10,12,.85) 0%,rgba(11,10,12,.55) 14%,rgba(11,10,12,0) 30%,rgba(11,10,12,.65) 48%,rgba(11,10,12,.97) 68%,var(--ink) 100%)}
+.story .head{top:880px}
+.story .tip{top:1120px}
+.story .glass{top:1270px}
+.story .buy{bottom:290px}
+.story .hud{top:180px;bottom:220px}
+
+.sc{position:absolute;inset:0;opacity:0;overflow:hidden}
+.sc .c{position:absolute;inset:0;height:1920px}
+.amb{transform-origin:50% 40%}
+.io{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a1418 0%,#140d10 50%,#0b0a0c 85%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 90px}
+.io::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(214,188,132,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(214,188,132,.06) 1px,transparent 1px);background-size:90px 90px}
+.io .lg{width:380px;position:relative;z-index:1}
+.io .mono{margin-top:60px;position:relative;z-index:1}
+.io .t1{font-weight:300;font-size:58px;letter-spacing:8px;text-transform:uppercase;margin-top:40px;position:relative;z-index:1}
+.io .t2{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:96px;color:var(--gold);line-height:1.05;margin-top:10px;position:relative;z-index:1}
+.io .ln{width:140px;height:2px;background:var(--red);margin:50px 0 40px;position:relative;z-index:1}
+.io p{font-weight:300;font-size:36px;line-height:1.45;color:rgba(255,255,255,.88);position:relative;z-index:1}
+.io b.site{font-family:'Playfair Display',serif;font-weight:600;font-size:76px;color:var(--cream);margin-top:18px;display:block;position:relative;z-index:1}
+</style></head><body class="story"><div class="c" style="position:relative"><div class="sc" data-k="io"><div class="io">
+<img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
+<div class="mono">Holiday Edition · 10 detalii</div>
+<div class="t1">Case ca în filme</div>
+<div class="t2">înainte de sărbători.</div>
+<div class="ln"></div>
+<p>Lux real, la prețuri reale.</p></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/t03b.jpg" style="object-position:50% 45%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 01/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Pereți care arată</span><span class="l2">a marmură italiană.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Un singur perete accent cu tapet texturat schimbă complet camera — fără renovare.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/t03.jpg" alt=""></div><div class="tx">
+ <div class="mono">Tapet premium</div><div class="name">Carrara Best 82603</div><div class="spec">rolă 1,06 × 10,05 m · 10,65 mp</div>
+ <div class="price"><b>465,85</b><span>lei / rolă</span></div></div></div>
+<div class="buy"><div class="t">Comandă tapetul pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/t71b.jpg" style="object-position:50% 45%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 02/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Dormitor de hotel 5 stele,</span><span class="l2">acasă la tine.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Tapetul din spatele patului devine punctul focal al camerei, ca o tăblie generoasă.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/t71.jpg" alt=""></div><div class="tx">
+ <div class="mono">Tapet premium</div><div class="name">Carrara Best 82671</div><div class="spec">rolă 1,06 × 10,05 m · 10,65 mp</div>
+ <div class="price"><b>465,85</b><span>lei / rolă</span></div></div></div>
+<div class="buy"><div class="t">Comandă tapetul pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-led.jpg" style="object-position:60% 30%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 03/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Lumina care face</span><span class="l2">camera să pară mai înaltă.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Lumina indirectă spre tavan ridică optic plafonul și elimină umbrele dure.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/l5a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Scafă LED · Arstyl</div><div class="name">L5</div><div class="spec">200 × 200 × 2000 mm · poliuretan</div>
+ <div class="price"><b>409,75</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă scafa pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-interior.jpg" style="object-position:45% 20%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 04/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">„Vai, ce casă</span><span class="l2">frumoasă aveți!”</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Cornișa ornamentată e primul detaliu pe care îl observă musafirii. Se montează lipit, fără praf.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/z11a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Cornișă ornamentală · Arstyl</div><div class="name">Z11</div><div class="spec">148 × 69 × 2000 mm · poliuretan</div>
+ <div class="price"><b>204,73</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă cornișa pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-led-window.jpg" style="object-position:50% 30%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 05/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Tavane ca în filmele</span><span class="l2">de Crăciun.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>La tavane înalte, alege o cornișă mai generoasă: proporția face diferența dintre simplu și spectaculos.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/z21a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Cornișă de tavan · Arstyl</div><div class="name">Z21</div><div class="spec">101 × 112 × 2000 mm · poliuretan</div>
+ <div class="price"><b>205,02</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă cornișa pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-chenare.jpg" style="object-position:40% 40%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 06/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Lux de 5 stele,</span><span class="l2">cu bani puțini.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Chenarele din brâu dau pereților aspect de boiserie clasică, la o fracțiune din cost.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/wo2a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Brâu pentru chenare · Wallstyl</div><div class="name">WO2</div><div class="spec">38 × 18 × 2000 mm · polimer dur</div>
+ <div class="price"><b>46,22</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă brâul pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-led-floor.jpg" style="object-position:40% 70%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 07/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Detaliul de jos</span><span class="l2">care ridică tot interiorul.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>O plintă înaltă și albă face pardoseala să pară mai scumpă și ascunde cablurile.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/fd3a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Plintă decorativă · Wallstyl</div><div class="name">FD3</div><div class="spec">100 × 20 × 2000 mm · polimer dur</div>
+ <div class="price"><b>84,79</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă plinta pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-tapet.jpg" style="object-position:50% 30%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 08/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Linii curate,</span><span class="l2">eleganță contemporană.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>În interioarele minimaliste, profilul simplu al cornișei păstrează liniile curate și arată modern.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/wt25a.jpg" alt=""></div><div class="tx">
+ <div class="mono">Cornișă modernă · Wallstyl</div><div class="name">WT25</div><div class="spec">78 × 78 × 2000 mm · polimer dur</div>
+ <div class="price"><b>150,93</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă cornișa pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-exterior.jpg" style="object-position:45% 45%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 09/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Fațade care</span><span class="l2">întorc toate privirile.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Ancadramentele pun ferestrele în valoare și dau casei proporții de vilă clasică.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/na105f.jpg" alt=""></div><div class="tx">
+ <div class="mono">Ancadrament fereastră · exterior</div><div class="name">NA105</div><div class="spec">175 × 40 × 2000 mm · polistiren cu rășină</div>
+ <div class="price"><b>130,96</b><span>lei / bară 2 m</span></div></div></div>
+<div class="buy"><div class="t">Comandă ancadramentele pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="p"><div class="c"><img class="amb" src="../assets/amb-exterior.jpg" style="object-position:92% 40%" alt="">
+<div class="grade"></div><div class="aura"></div><div class="grid"></div><div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="top"><img class="logo" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"><div class="mono">Know-how 10/10<br><span>Holiday Edition</span></div></div>
+<div class="head"><span class="l1">Exterior de excepție,</span><span class="l2">colț cu colț.</span></div>
+<div class="tip"><b>KNOW-HOW</b><span>Colțarii dau relief fațadei: seara, umbrele lor desenează arhitectura casei.</span></div>
+<div class="glass"><div class="ph"><img src="../assets/ncl106.jpg" alt=""></div><div class="tx">
+ <div class="mono">Colțar exterior</div><div class="name">NCL106</div><div class="spec">250/250 × 30 × 1000 mm · rășină + cuarț</div>
+ <div class="price"><b>178,63</b><span>lei / buc</span></div></div></div>
+<div class="buy"><div class="t">Comandă colțarii pe<b>decoflair.ro</b></div><div class="line"></div></div></div></div><div class="sc" data-k="io"><div class="io">
+<img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
+<div class="t1">Fă-i să spună</div>
+<div class="t2">„Vai, ce casă frumoasă!”</div>
+<div class="ln"></div>
+<p>Comandă detaliile pe</p>
+<b class="site">decoflair.ro</b></div></div></div><script>
+const D={io:2.8,p:3.5}, X=0.45;
+const S=[...document.querySelectorAll('.sc')];
+let t0=0; S.forEach(s=>{s.t0=t0; s.d=D[s.dataset.k]; t0+=s.d-X;});
+window.TOTAL=t0+X;
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=v=>1-Math.pow(1-v,3);
+const seg=(u,a,b)=>cl((u-a)/(b-a));
+const q=(s,sel)=>s.querySelector(sel);
+function fade(e,v,dx,dy){if(!e)return;e.style.opacity=v;e.style.transform=`translate(${(1-v)*dx}px,${(1-v)*dy}px)`;}
+window.setT=function(t){
+ S.forEach((s,i)=>{const u=t-s.t0;
+  let o=0; if(u>=0&&u<=s.d){o=1; if(i>0&&u<X)o=u/X;}
+  s.style.opacity=o; s.style.display=o>0?'block':'none'; if(!o)return;
+  if(s.dataset.k==='p'){
+   q(s,'.amb').style.transform=`scale(${1.13-0.09*cl(u/s.d)})`;
+   const h=ease(seg(u,.1,.7)); q(s,'.hud').style.opacity=h; q(s,'.hud').style.transform=`scale(${1.06-.06*h})`;
+   fade(q(s,'.l1'),ease(seg(u,.2,.75)),-40,0);
+   fade(q(s,'.l2'),ease(seg(u,.4,1.0)),40,0);
+   fade(q(s,'.tip'),ease(seg(u,.9,1.4)),0,24);
+   fade(q(s,'.glass'),ease(seg(u,.6,1.2)),0,120);
+   const pr=seg(u,1.3,1.8); q(s,'.price b').style.cssText=`display:inline-block;transform:scale(${1+.12*Math.sin(Math.PI*pr)});transform-origin:0 70%`;
+   fade(q(s,'.buy'),ease(seg(u,1.5,2.0)),0,16);
+  } else {
+   [...s.querySelectorAll('.lg,.mono,.t1,.t2,.ln,p,.site')].forEach((e,j)=>fade(e,ease(seg(u,.15+j*.22,.8+j*.22)),0,30));
+  }
+ });
+};
+setT(0);
+</script></body></html>
