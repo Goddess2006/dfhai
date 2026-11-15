@@ -3,6 +3,11 @@
 Ultima actualizare: 2026-11-15
 Agent: Codex
 
+## Reel promovare blog Deco&Flair (decoflair.ro/blog) — Claude Code, 2026-11-15
+Folder: `decoflair-blog-reel/`. Reel `reel/decoflair-blog-reel.mp4` (1080×1920, 30 fps, 50,4 s, fără sunet), stil revistă „Jurnalul Deco&Flair”: intro („Ai idei pentru casă, dar nu știi de unde să începi?” → „Blogul care îți face casa frumoasă.”) → 7 articole reale, fiecare cu imaginea principală a articolului (og:image, original) + categorie + titlu + „ce afli” + „Citește pe decoflair.ro/blog”, bară de progres 7 segmente, tranziție tip pagină → final „Citește. Alege. Transformă.”, QR spre https://decoflair.ro/blog, contact.
+Articole: 10 detalii arhitecturale care cresc valoarea percepută; apartament nou care nu arată ca toate celelalte; chenare decorative (proporții); cornișă LED iluminare indirectă; ușă simplă → element arhitectural (journal_blog_post_id=31); cele mai frumoase fațade; idei de gard. Interpretare: „acest blog” = blogul decoflair.ro (de confirmat cu utilizatorul).
+Reproducere: `python3 reel_build.py && node reel_render.cjs`.
+
 ## Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 produse de nișă — Claude Code, 2026-11-15 (revizuit)
 Folder: `decoflair-trend-2027/`. 8 feed 1080×1350 + 8 Story 1080×1920 (`story/`) + Reel `reel/decoflair-trend-2027-reel.mp4` (80,1 s, 1080×1920, 30 fps, fără sunet). Fără prețuri. Structură pe fiecare postare: PROBLEMA → SOLUȚIA (produsul) → REZULTATUL.
 REVIZIE la cererea clientului: ELIMINAT orice scris japonez (kanji) din imagini și din reel — risc de percepție „produse din China”. În loc: cuvânt românesc vertical (liniște, linie, val…) și marca reală sub numele produsului: „ARSTYL® · NMC Belgia”, „WALLSTYL® · NMC Belgia”, „NMC® · Belgia” (mărcile din fișele decoflair.ro; NMC România = importator unic NMC Belgia, conform nmcromania.ro/despre-noi). NU reintroduce kanji.
