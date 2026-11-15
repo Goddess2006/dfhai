@@ -3,6 +3,12 @@
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
+## Deco&Flair blog „Casa de sărbători” — ghid de design — Claude Code, 2026-11-15
+Folder: `decoflair-blog-sarbatori/`. Articol premium (~2.400 cuvinte, 9 capitole) în stilul landing-ului Selecția Premium (crem, forest, roz pudră, mov șters; Jost + Instrument Serif; arcade). Conținut: peretele din spatele mesei ca „scenă”, paleta 2027 (recomandare editorială, nu „culoarea oficială”), plan 4 săptămâni, 6 rețete de perete (chenare forest, tavan cu rozetă, relief 3D, lumină LED, riflaj, tapet Carrara) cu pași + produse, 3 niveluri de buget, styling masă, greșeli, checklist, 17 produse cu link, FAQ, CTA. Fără prețuri, fără date.
+`articol.html` = fragment de lipit în Journal Blog (CSS izolat `.dfb`, imagini în /image/catalog/blog/casa-de-sarbatori/); `previzualizare.html` local; `PUBLICARE-SI-SEO.md` (meta, slug, pași); `PROMPTURI-IMAGINI.md`.
+IMAGINI: nu existau fotografii cu mese de Crăciun și sesiunea Claude nu are generator de imagini; s-au folosit dining-uri/pereți din `decoflair-inspiratie-50` (fără decor festiv). PROMPTURI-IMAGINI.md conține 9 brief-uri cu aceleași nume de fișier — Codex (image_gen) le poate genera și înlocui fără să modifice articolul.
+Reproducere: `python3 decoflair-blog-sarbatori/tools/build.py`. Linkuri verificate HTTP 200; produse în stoc la 15.11.2026.
+
 ## Deco&Flair „Selecția Premium” — făcut ATEMPORAL — Claude Code, 2026-11-15
 La cererea utilizatorului: eliminate toate datele și elementele de campanie (banda Black November, countdown, „2027” din titluri, „prețuri speciale până pe 30 noiembrie”, mențiunea din FAQ, „25 produse în stoc acum”). homepage-overlay.js nu mai are dată implicită de final (`data-ends` doar opțional). Documentația actualizată. Rămâne doar slug-ul unui articol de blog care conține „2026” în URL (invizibil).
 
