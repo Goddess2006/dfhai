@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Reel Black November · NMC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--night:#070A09;--ivory:#F2ECE3;--sage:#9CC3AC;--blush:#E3A6C6;--muted:#B5AEA4;
+  --g-title:linear-gradient(100deg,#F2D3E4 0%,#D58AB4 35%,#9C3F7E 70%,#C77AA6 100%);
+  --g-rose:linear-gradient(120deg,#5A1546 0%,#8E2A6B 50%,#A8336F 100%);
+  --serif:"Cormorant Garamond",serif;--sans:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--night)}
+body{font-family:var(--sans);color:var(--ivory);font-variant-numeric:lining-nums}
+.stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(70% 50% at 0% 100%,#123A2Aaa,transparent 70%),radial-gradient(60% 45% at 100% 0%,#4A144088,transparent 70%),var(--night)}
+.scene{position:absolute;inset:0;opacity:0}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+.shade{position:absolute;inset:0}
+.grain{position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.frame{position:absolute;inset:36px;border:1px solid #ffffff1f;border-radius:34px;z-index:40;pointer-events:none}
+.frame::before{content:"";position:absolute;inset:12px;border:1px solid #ffffff0d;border-radius:24px}
+.kick{font:500 26px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--sage);display:flex;align-items:center;gap:20px}
+.kick::before{content:"";width:56px;height:1.5px;background:currentColor;opacity:.8}
+.kick.c{justify-content:center}.kick.c::after{content:"";width:56px;height:1.5px;background:currentColor;opacity:.8}
+.serif{font-family:var(--serif)}
+.em{font-style:italic;font-weight:500;background:var(--g-title);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.logo{position:absolute;top:120px;left:0;right:0;display:flex;justify-content:center;z-index:45}
+.logo img{height:64px}
+.w{position:absolute;left:96px;right:96px}
+.chip{display:inline-flex;align-items:center;gap:14px;padding:16px 28px;border:1px solid #ffffff33;border-radius:999px;font:500 24px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;background:#070A09aa}
+.chip i{width:12px;height:12px;border-radius:50%;background:#4FBF8A;box-shadow:0 0 0 6px #4FBF8A22}
+.btn{display:inline-flex;align-items:center;gap:18px;padding:0 48px;height:104px;border-radius:999px;background:var(--g-rose);font:500 30px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;box-shadow:0 30px 60px -24px #8E2A6Bcc,inset 0 1px 0 #ffffff33}
+/* scena 1 */
+#s1 .t1{top:620px;text-align:center}
+#s1 h1{font:600 230px/.86 var(--serif);text-transform:uppercase;letter-spacing:.02em;text-align:center}
+#s1 h1 .em{display:block;text-transform:none;font-size:250px;letter-spacing:-.01em}
+#s1 .sub{top:1330px;text-align:center;font:300 40px/1.35 var(--sans);color:#DCD4CB}
+/* scena 2 */
+#s2 .shade{background:linear-gradient(180deg,#070A09 0%,#070A09bb 30%,#0B1A1440 55%,#070A09ee 82%,#070A09 100%)}
+#s2 .txt{top:360px}
+#s2 h2{font:600 112px/1 var(--serif);margin-top:30px}
+#s2 .bottom{top:1270px}
+#s2 .bottom p{font:300 40px/1.4 var(--sans);color:#E2DBD2}
+#s2 .bottom b{font-weight:600;color:var(--ivory)}
+/* scena produse */
+.prod .shade{background:linear-gradient(180deg,#070A09e6 0%,#070A0955 26%,transparent 45%,#070A09cc 70%,#070A09 100%)}
+.prod .num{top:300px;font:500 26px/1 var(--sans);letter-spacing:.34em;color:var(--blush);text-transform:uppercase}
+.prod .medal{position:absolute;right:120px;top:880px;width:270px;height:270px;border-radius:50%;background:var(--ivory);padding:30px;box-shadow:0 40px 80px -30px #000;border:6px solid #070A09}
+.prod .medal img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.prod .info{top:1190px}
+.prod h3{font:600 92px/1.02 var(--serif);margin:22px 0 18px}
+.prod .pitch{font:italic 500 46px/1.25 var(--serif);color:var(--sage)}
+.prod .meta{margin-top:30px}
+/* scena interior */
+#s7 .shade{background:linear-gradient(180deg,#070A09f0 0%,#1A071580 30%,transparent 50%,#070A09dd 72%,#070A09 100%)}
+#s7 .txt{top:300px}
+#s7 h2{font:600 112px/1 var(--serif);margin-top:30px}
+#s7 .strip{position:absolute;left:96px;right:96px;top:1230px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+#s7 .strip div{aspect-ratio:1;border-radius:24px;background:var(--ivory);padding:18px;border:1px solid #ffffff22;box-shadow:0 30px 50px -30px #000}
+#s7 .strip img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;border-radius:12px}
+#s7 .strip span{display:block;margin-top:14px;text-align:center;font:500 20px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#s7 .cap{top:1560px;font:300 34px/1.4 var(--sans);color:#DCD4CB}
+/* scena telefon */
+#s8 .txt{top:230px;text-align:center}
+#s8 h2{font:600 96px/1 var(--serif);margin-top:26px}
+.phone{position:absolute;left:50%;top:560px;width:560px;height:1150px;margin-left:-280px;border-radius:70px;background:#0c0c0c;padding:20px;box-shadow:0 0 0 2px #2a2a2a,0 60px 120px -40px #000,0 0 120px -30px #8E2A6B88}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:52px;overflow:hidden;background:#070A09}
+.phone .scr img{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.phone .notch{position:absolute;left:50%;top:34px;width:150px;height:34px;margin-left:-75px;border-radius:20px;background:#000;z-index:2}
+#s8 .url{position:absolute;left:0;right:0;top:1760px;text-align:center;font:500 30px/1 var(--sans);letter-spacing:.2em;color:var(--blush)}
+/* final */
+#s9 .t1{top:470px;text-align:center}
+#s9 h2{font:600 190px/.88 var(--serif);text-transform:uppercase;text-align:center;margin-top:40px}
+#s9 h2 .em{display:block;text-transform:none;font-size:210px}
+#s9 .p{top:1130px;text-align:center;font:300 42px/1.4 var(--sans);color:#E2DBD2}
+#s9 .p b{font-weight:600;color:var(--ivory)}
+#s9 .chips{top:1330px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+#s9 .cta{top:1470px;display:flex;justify-content:center}
+h1,h2,h3,.pitch,.serif,h1 *,h2 *{font-variant-numeric:lining-nums!important;font-feature-settings:"lnum" 1!important}
+#s7 .shade{background:linear-gradient(180deg,#070A09f5 0%,#070A09d0 22%,#1A071599 40%,#070A09bb 60%,#070A09f0 75%,#070A09 100%)!important}
+#s7 .strip{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- 1 · titlu -->
+  <section class="scene" id="s1">
+    <div class="w t1"><div class="kick c" id="s1k">Ediție limitată · 1–30 noiembrie</div></div>
+    <div class="w" style="top:760px"><h1 id="s1h"><span id="s1a">Black</span><span class="em" id="s1b">November</span></h1></div>
+    <p class="w sub" id="s1s">Prețuri speciale la profile decorative.<br>O singură lună.</p>
+  </section>
+
+  <!-- 2 · vila -->
+  <section class="scene" id="s2">
+    <img class="bg" id="s2bg" src="../assets/hero-vila.jpg" alt="">
+    <div class="shade"></div>
+    <div class="w txt"><div class="kick">Colecția Exterior · ADRo®</div><h2>Fațade care<br><span class="em">cresc valoarea casei.</span></h2></div>
+    <div class="w bottom"><p>Profile decorative rezistente la UV, ploaie și îngheț.<br><b>Gata de vopsit în orice culoare.</b></p></div>
+  </section>
+
+  <!-- 3–6 · vedete -->
+  <section class="scene prod" id="s3"><img class="bg" src="../assets/fuga1-amb.jpg" alt=""><div class="shade"></div>
+    <div class="w num">N° 01 · Vedeta lunii</div><div class="medal"><img src="../assets/fuga1.jpg" alt=""></div>
+    <div class="w info"><div class="kick">Termosistem decorativ</div><h3>FUGA PANEL 1</h3><p class="pitch">Fațadă nouă, cu izolație inclusă.</p><div class="meta"><span class="chip"><i></i>În stoc · livrare imediată</span></div></div></section>
+  <section class="scene prod" id="s4"><img class="bg" src="../assets/sid3-amb.jpg" alt=""><div class="shade"></div>
+    <div class="w num">N° 02 · Vedeta lunii</div><div class="medal"><img src="../assets/sid3.jpg" alt=""></div>
+    <div class="w info"><div class="kick">Termosistem decorativ</div><h3>SIDDING PANEL 3</h3><p class="pitch">Aspect de lemn, fără întreținerea lemnului.</p><div class="meta"><span class="chip"><i></i>În stoc · livrare imediată</span></div></div></section>
+  <section class="scene prod" id="s5"><img class="bg" src="../assets/ext-vila-patrat.jpg" alt=""><div class="shade"></div>
+    <div class="w num">N° 03 · Vedeta lunii</div><div class="medal"><img src="../assets/ncl107.jpg" alt=""></div>
+    <div class="w info"><div class="kick">Colțar exterior</div><h3>NCL107</h3><p class="pitch">Colțuri puternice, fațadă cu caracter.</p><div class="meta"><span class="chip"><i></i>În stoc · livrare imediată</span></div></div></section>
+  <section class="scene prod" id="s6"><img class="bg" src="../assets/ext-vila-seara.jpg" alt=""><div class="shade"></div>
+    <div class="w num">N° 04 · Vedeta lunii</div><div class="medal"><img src="../assets/nc158.jpg" alt=""></div>
+    <div class="w info"><div class="kick">Cornișă decorativă exterior</div><h3>NC158</h3><p class="pitch">Linia de acoperiș care se vede de departe.</p><div class="meta"><span class="chip"><i></i>În stoc · livrare imediată</span></div></div></section>
+
+  <!-- 7 · interior -->
+  <section class="scene" id="s7"><img class="bg" id="s7bg" src="../assets/int-dining.jpg" alt=""><div class="shade"></div>
+    <div class="w txt"><div class="kick">Colecția Interior</div><h2>Detaliile care<br><span class="em">schimbă camera.</span></h2></div>
+    <div class="strip">
+      <div id="i1"><img src="../assets/il11.jpg" alt=""><span>Plintă LED</span></div>
+      <div id="i2"><img src="../assets/z19.jpg" alt=""><span>Cornișe</span></div>
+      <div id="i3"><img src="../assets/r8.jpg" alt=""><span>Rozete</span></div>
+      <div id="i4"><img src="../assets/riflaj-inchis.jpg" alt=""><span>Riflaje</span></div>
+    </div>
+    <p class="w cap" id="s7c">Plus kitul Linea pentru o cameră întreagă și tapet de designer în stoc.</p>
+  </section>
+
+  <!-- 8 · landing pe telefon -->
+  <section class="scene" id="s8">
+    <div class="w txt"><div class="kick c">Toată colecția online</div><h2>Descoperă<br><span class="em">Black November.</span></h2></div>
+    <div class="phone" id="phone"><div class="notch"></div><div class="scr"><img id="scr" src="landing-mobil.jpg" alt=""></div></div>
+    <div class="url">nmcromania.ro</div>
+  </section>
+
+  <!-- 9 · final -->
+  <section class="scene" id="s9">
+    <div class="w t1"><div class="kick c">Ultimele zile</div></div>
+    <div class="w" style="top:530px"><h2><span>Black</span><span class="em">November</span></h2></div>
+    <p class="w p">Prețuri speciale până pe <b>30 noiembrie</b>.<br>În limita stocului disponibil.</p>
+    <div class="w chips"><span class="chip"><i></i>Stocuri mari</span><span class="chip"><i></i>Livrare imediată</span></div>
+    <div class="w cta"><span class="btn" id="cta">nmcromania.ro →</span></div>
+  </section>
+
+  <div class="logo" id="logo"><img src="../assets/nmc-logo-alb.png" alt="NMC"></div>
+  <div class="frame"></div>
+  <div class="grain"></div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const inOut = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+// [id, start, end] — tranziții încrucișate de 0,5 s
+const S = [['s1', 0, 3.3], ['s2', 3.0, 6.6], ['s3', 6.3, 8.6], ['s4', 8.3, 10.6], ['s5', 10.3, 12.6], ['s6', 12.3, 14.6], ['s7', 14.3, 18.0], ['s8', 17.7, 21.6], ['s9', 21.3, 25.5]];
+window.TOTAL = 25.5;
+const X = .45;
+function sceneAlpha(t, a, b) { if (a === 0) return t < b - X ? 1 : 1 - prog(t, b - X, b); return Math.min(prog(t, a, a + X), t > b - X && b < TOTAL ? 1 - prog(t, b - X, b) : 1); }
+function rise(el, p, d = 50) { el.style.opacity = ease(p); el.style.transform = `translateY(${(1 - ease(p)) * d}px)`; }
+function blur(el, p) { el.style.opacity = ease(p); el.style.filter = `blur(${(1 - ease(p)) * 18}px)`; el.style.transform = `scale(${1.06 - .06 * ease(p)})`; }
+window.setT = function (t) {
+  for (const [id, a, b] of S) { const el = $(id); const v = t >= a && t <= b ? sceneAlpha(t, a, b) : 0; el.style.opacity = v; el.style.visibility = v > 0 ? 'visible' : 'hidden'; }
+  // 1
+  rise($('s1k'), prog(t, 0, .6), 30); blur($('s1a'), prog(t, .15, .9)); blur($('s1b'), prog(t, .45, 1.3)); rise($('s1s'), prog(t, 1.2, 1.9), 30);
+  // 2
+  $('s2bg').style.transform = `scale(${1.18 - .12 * inOut(prog(t, 3.0, 6.6))}) translateX(${-40 * prog(t, 3, 6.6)}px)`;
+  [...document.querySelectorAll('#s2 .txt, #s2 .bottom')].forEach((el, i) => rise(el, prog(t, 3.3 + i * .6, 4.0 + i * .6)));
+  // 3–6
+  ['s3', 's4', 's5', 's6'].forEach(id => {
+    const [, a, b] = S.find(s => s[0] === id); const p = prog(t, a, b);
+    const root = $(id); root.querySelector('.bg').style.transform = `scale(${1.14 - .1 * p})`;
+    const m = root.querySelector('.medal'); const pm = ease(prog(t, a + .25, a + .8)); m.style.opacity = pm; m.style.transform = `scale(${.6 + .4 * pm}) rotate(${(1 - pm) * -20}deg)`;
+    rise(root.querySelector('.num'), prog(t, a + .15, a + .6), 20); rise(root.querySelector('.info'), prog(t, a + .35, a + .95), 60);
+  });
+  // 7
+  $('s7bg').style.transform = `scale(${1.12 - .08 * prog(t, 14.3, 18)})`;
+  rise(document.querySelector('#s7 .txt'), prog(t, 14.6, 15.3));
+  ['i1', 'i2', 'i3', 'i4'].forEach((id, i) => rise($(id), prog(t, 15.3 + i * .22, 15.9 + i * .22), 80));
+  rise($('s7c'), prog(t, 16.4, 17.0), 30);
+  // 8 — derulare landing pe telefon
+  rise(document.querySelector('#s8 .txt'), prog(t, 17.9, 18.5));
+  const pp = ease(prog(t, 18.0, 18.8)); $('phone').style.opacity = pp; $('phone').style.transform = `translateY(${(1 - pp) * 160}px)`;
+  const scr = $('scr'); const maxY = scr.naturalHeight ? scr.clientHeight - 1110 : 0;
+  scr.style.transform = `translateY(${-Math.min(maxY, 5200) * inOut(prog(t, 18.9, 21.4))}px)`;
+  // 9
+  rise(document.querySelector('#s9 .t1'), prog(t, 21.5, 22.0), 20); blur(document.querySelector('#s9 h2 span:first-child'), prog(t, 21.6, 22.4));
+  blur(document.querySelector('#s9 h2 .em'), prog(t, 21.9, 22.8)); rise(document.querySelector('#s9 .p'), prog(t, 22.6, 23.2));
+  rise(document.querySelector('#s9 .chips'), prog(t, 23.0, 23.6)); rise(document.querySelector('#s9 .cta'), prog(t, 23.3, 23.9));
+  const pulse = t > 24 ? 1 + .03 * Math.sin((t - 24) * 6) : 1; $('cta').style.transform = `scale(${pulse})`;
+  // logo: vizibil cu excepția scenei telefon
+  const lo = t < 17.8 ? 1 : t < 18.2 ? 1 - prog(t, 17.8, 18.2) : t > 21.4 ? prog(t, 21.4, 21.9) : 0; $('logo').style.opacity = lo * ease(prog(t, 0, .6));
+};
+window.setT(0);
+</script>
+</body>
+</html>
