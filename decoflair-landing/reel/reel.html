@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Reel Selecția Premium · Deco&Flair</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F4EEE6;--paper:#FBF8F3;--nude:#E6D7C8;--ink:#141214;--ink2:#2A2629;--muted:#7B7176;--mauve:#A6919F;--forest:#2F4A3C;--forest2:#5E7F6B;--powder:#EBCFCB;
+  --g-text:linear-gradient(100deg,#2F4A3C 0%,#5E7F6B 35%,#A6919F 70%,#C79C98 100%);--serif:"Instrument Serif",serif;--sans:"Jost",sans-serif}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:var(--sans);color:var(--ink);font-variant-numeric:lining-nums}
+.stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+.aura{position:absolute;inset:0;z-index:0;pointer-events:none}
+.aura i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.7}
+.aura .a1{width:760px;height:760px;left:-260px;top:-200px;background:#EBCFCB}
+.aura .a2{width:700px;height:700px;right:-300px;top:700px;background:#C9D4C6}
+.aura .a3{width:620px;height:620px;left:200px;bottom:-320px;background:#E8DEE4}
+.scene{position:absolute;inset:0;z-index:2;opacity:0}
+.label{display:flex;align-items:center;gap:18px;font:400 25px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.label b{font-weight:500;color:var(--ink)}
+.label::before{content:"";width:54px;height:1.5px;background:currentColor}
+.label.c{justify-content:center}.label.c::after{content:"";width:54px;height:1.5px;background:currentColor}
+.em{font-style:italic;background:var(--g-text);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+.w{position:absolute;left:96px;right:96px}
+.arch{position:absolute;overflow:hidden;border-radius:999px 999px 40px 40px;background:var(--nude);box-shadow:0 80px 140px -80px #2F4A3Caa}
+.arch img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.ring{position:absolute;border-radius:50%;border:1.5px solid #2F4A3C40}
+.glass{position:absolute;padding:24px 32px;border-radius:30px;background:#FBF8F3c4;border:1px solid #fff;backdrop-filter:blur(16px);box-shadow:0 40px 80px -40px #14121466}
+.glass small{display:block;font:400 20px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--forest2);margin-bottom:10px}
+.glass b{font:400 46px/1.05 var(--serif)}
+.logo{position:absolute;top:110px;left:0;right:0;display:flex;justify-content:center;z-index:5}
+.logo img{height:92px}
+.frame{position:absolute;inset:34px;border:1px solid #14121418;border-radius:40px;z-index:6;pointer-events:none}
+.vert{position:absolute;right:62px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:400 20px/1 var(--sans);letter-spacing:.36em;text-transform:uppercase;color:var(--muted);z-index:6}
+/* 1 */
+#s1 .t{top:640px;text-align:center}
+#s1 h1{font-size:200px;line-height:.92;text-align:center}
+#s1 .sub{top:1330px;text-align:center;font:300 40px/1.4 var(--sans);color:var(--ink2)}
+/* capitole */
+.ch .arch{left:150px;top:300px;width:780px;height:960px}
+.ch .ring{left:70px;top:230px;width:420px;height:420px}
+.ch .num{position:absolute;right:110px;top:1080px;font:italic 400 300px/1 var(--serif);color:transparent;-webkit-text-stroke:2px #2F4A3C55}
+.ch .info{top:1340px}
+.ch h2{font-size:110px;line-height:1;margin-top:26px}
+.ch .glass{right:90px;top:960px;display:flex;align-items:center;gap:22px;padding:18px 28px 18px 18px}
+.ch .glass img{width:120px;height:120px;border-radius:20px;object-fit:contain;background:#fff;padding:8px}
+.ch .know{top:1640px;font:300 32px/1.4 var(--sans);color:var(--ink2)}
+.ch .know b{font-weight:500;color:var(--forest)}
+/* piloni */
+#s7 .t{top:300px}
+#s7 h2{font-size:104px;line-height:1.02;margin-top:30px}
+.pil{position:absolute;left:96px;right:96px;display:flex;gap:34px;align-items:center;padding:40px 0;border-top:1.5px solid #14121420}
+.pil span{flex:none;display:grid;place-items:center;width:110px;height:110px;border-radius:50%;font:italic 400 44px/1 var(--serif);color:var(--forest)}
+.pil b{display:block;font:400 76px/1 var(--serif)}
+.pil p{margin-top:10px;font:300 30px/1.35 var(--sans);color:var(--ink2)}
+#p1{top:760px}#p1 span{background:#FBF8F3}#p2{top:1060px}#p2 span{background:#F3DFDB}#p3{top:1360px}#p3 span{background:#E8DEE4}
+/* telefon */
+#s8 .t{top:230px;text-align:center}
+#s8 h2{font-size:100px;line-height:1;margin-top:26px}
+.phone{position:absolute;left:50%;top:560px;width:560px;height:1150px;margin-left:-280px;border-radius:70px;background:#141214;padding:18px;box-shadow:0 70px 140px -50px #2F4A3C99,0 0 0 2px #2A2629}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:54px;overflow:hidden;background:var(--cream)}
+.phone .scr img{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.phone .notch{position:absolute;left:50%;top:32px;width:150px;height:34px;margin-left:-75px;border-radius:20px;background:#000;z-index:2}
+#s8 .url{position:absolute;left:0;right:0;top:1770px;text-align:center;font:400 30px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--forest)}
+/* final */
+#s9 .t{top:540px;text-align:center}
+#s9 h2{font-size:118px;line-height:1;text-align:center;margin-top:40px}
+#s9 .p{top:1130px;text-align:center;font:300 40px/1.4 var(--sans);color:var(--ink2)}
+#s9 .cta{top:1330px;display:flex;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:18px;height:110px;padding:0 56px;border-radius:999px;background:var(--ink);color:var(--cream);font:500 32px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;box-shadow:0 30px 60px -30px #141214}
+#s9 .contact{top:1530px;text-align:center;font:400 30px/1.6 var(--sans);letter-spacing:.06em;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="aura"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+
+  <section class="scene" id="s1">
+    <div class="w t"><div class="label c" id="s1k"><b>Deco&amp;Flair</b>&nbsp;· Selecția Premium</div></div>
+    <div class="w" style="top:760px"><h1 class="serif"><span id="s1a" style="display:block">Lux liniștit.</span><span class="em" id="s1b" style="display:block">Pentru fiecare casă.</span></h1></div>
+    <p class="w sub" id="s1s">Design premium, ales cu know-how.<br>La prețuri accesibile.</p>
+  </section>
+
+  <section class="scene ch" id="s2"><div class="ring"></div><div class="arch"><img src="../assets/living-led.jpg" alt=""></div><span class="num">01</span>
+    <div class="glass"><img src="../assets/l5.jpg" alt=""><div><small>Arstyl® · L5</small><b>Scafă LED</b></div></div>
+    <div class="w info"><div class="label"><b>01</b>&nbsp;/ 07 · Lumină</div><h2 class="serif">Lumina devine <span class="em">arhitectură.</span></h2></div></section>
+  <section class="scene ch" id="s3"><div class="ring"></div><div class="arch"><img src="../assets/hero.jpg" alt=""></div><span class="num">02</span>
+    <div class="glass"><img src="../assets/wave.jpg" alt=""><div><small>Arstyl® · 3D</small><b>Panou WAVE</b></div></div>
+    <div class="w info"><div class="label"><b>02</b>&nbsp;/ 07 · Texturi 3D</div><h2 class="serif">Pereți care <span class="em">se simt.</span></h2></div></section>
+  <section class="scene ch" id="s4"><div class="ring"></div><div class="arch"><img src="../assets/living-nude.jpg" alt=""></div><span class="num">03</span>
+    <div class="glass"><img src="../assets/z11.jpg" alt=""><div><small>Arstyl® · Z11</small><b>Cornișă</b></div></div>
+    <div class="w info"><div class="label"><b>03</b>&nbsp;/ 07 · Tavan</div><h2 class="serif">Tavanul care <span class="em">spune o poveste.</span></h2></div></section>
+  <section class="scene ch" id="s5"><div class="ring"></div><div class="arch"><img src="../assets/hol-riflaj.jpg" alt=""></div><span class="num">05</span>
+    <div class="glass"><img src="../assets/rif-deschis.jpg" alt=""><div><small>Acustic 3D</small><b>Riflaj stejar</b></div></div>
+    <div class="w info"><div class="label"><b>05</b>&nbsp;/ 07 · Riflaje</div><h2 class="serif">Textura lemnului, <span class="em">liniștea unui studio.</span></h2></div></section>
+  <section class="scene ch" id="s6"><div class="ring"></div><div class="arch"><img src="../assets/c82671-amb.jpg" alt=""></div><span class="num">06</span>
+    <div class="glass"><img src="../assets/c82671.jpg" alt=""><div><small>Carrara Best</small><b>Tapet marmură</b></div></div>
+    <div class="w info"><div class="label"><b>06</b>&nbsp;/ 07 · Tapet</div><h2 class="serif">Marmură, mătase, <span class="em">semnătură de designer.</span></h2></div></section>
+
+  <section class="scene" id="s7">
+    <div class="w t"><div class="label">Curatori de tendințe</div><h2 class="serif">Nu doar un magazin.<br><span class="em">Know-how.</span></h2></div>
+    <div class="pil" id="p1"><span>01</span><div><b>Premium</b><p>Producători de renume internațional.</p></div></div>
+    <div class="pil" id="p2"><span>02</span><div><b>Inovație</b><p>Lumină integrată, texturi 3D, riflaje acustice.</p></div></div>
+    <div class="pil" id="p3"><span>03</span><div><b>Know-how</b><p>Produsul, finisajul și culoarea potrivite.</p></div></div>
+  </section>
+
+  <section class="scene" id="s8">
+    <div class="w t"><div class="label c">Toată selecția online</div><h2 class="serif">Descoperă <span class="em">Selecția Premium.</span></h2></div>
+    <div class="phone" id="phone"><div class="notch"></div><div class="scr"><img id="scr" src="landing-mobil.jpg" alt=""></div></div>
+    <div class="url">decoflair.ro</div>
+  </section>
+
+  <section class="scene" id="s9">
+    <div class="w t"><div class="label c"><b>Deco&amp;Flair</b></div></div>
+    <div class="w" style="top:600px"><h2 class="serif"><span style="display:block" id="f1">Elevate your space.</span><span class="em" style="display:block" id="f2">Define your style.</span></h2></div>
+    <p class="w p" id="f3">Produse premium, alese cu know-how.<br>Pentru fiecare casă.</p>
+    <div class="w cta" id="f4"><span class="btn" id="cta">decoflair.ro →</span></div>
+    <p class="w contact" id="f5">Consultanță 0723 300 603 · @decoflairhub</p>
+  </section>
+
+  <div class="logo" id="logo"><img src="../assets/logo-ink.png" alt="Deco&Flair"></div>
+  <span class="vert">Elevate your space · Define your style</span>
+  <div class="frame"></div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const inOut = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const S = [['s1', 0, 3.6], ['s2', 3.3, 6.3], ['s3', 6.0, 9.0], ['s4', 8.7, 11.7], ['s5', 11.4, 14.4], ['s6', 14.1, 17.1], ['s7', 16.8, 20.6], ['s8', 20.3, 24.4], ['s9', 24.1, 28.5]];
+window.TOTAL = 28.5; const X = .5;
+const alpha = (t, a, b) => a === 0 ? (t < b - X ? 1 : 1 - prog(t, b - X, b)) : Math.min(prog(t, a, a + X), b < TOTAL && t > b - X ? 1 - prog(t, b - X, b) : 1);
+function rise(el, p, d = 50) { el.style.opacity = ease(p); el.style.transform = `translateY(${(1 - ease(p)) * d}px)`; }
+function soft(el, p) { el.style.opacity = ease(p); el.style.filter = `blur(${(1 - ease(p)) * 16}px)`; }
+window.setT = function (t) {
+  for (const [id, a, b] of S) { const el = $(id); const v = t >= a && t <= b ? alpha(t, a, b) : 0; el.style.opacity = v; el.style.visibility = v > 0 ? 'visible' : 'hidden'; }
+  rise($('s1k'), prog(t, 0, .7), 24); soft($('s1a'), prog(t, .2, 1.1)); soft($('s1b'), prog(t, .6, 1.6)); rise($('s1s'), prog(t, 1.5, 2.2), 30);
+  ['s2', 's3', 's4', 's5', 's6'].forEach(id => {
+    const [, a, b] = S.find(s => s[0] === id), r = $(id);
+    const pa = ease(prog(t, a, a + .9)); const arch = r.querySelector('.arch');
+    arch.style.clipPath = `inset(${(1 - pa) * 100}% 0 0 0 round 999px 999px 40px 40px)`;
+    arch.querySelector('img').style.transform = `scale(${1.16 - .1 * prog(t, a, b)})`;
+    r.querySelector('.ring').style.transform = `scale(${.8 + .2 * ease(prog(t, a + .2, a + 1.2))}) rotate(${prog(t, a, b) * 30}deg)`;
+    r.querySelector('.ring').style.opacity = ease(prog(t, a + .2, a + 1));
+    rise(r.querySelector('.glass'), prog(t, a + .7, a + 1.3), 70);
+    rise(r.querySelector('.info'), prog(t, a + .5, a + 1.2), 60);
+    r.querySelector('.num').style.opacity = .9 * ease(prog(t, a + .4, a + 1.2));
+  });
+  rise(document.querySelector('#s7 .t'), prog(t, 17.0, 17.7));
+  ['p1', 'p2', 'p3'].forEach((id, i) => rise($(id), prog(t, 17.6 + i * .45, 18.3 + i * .45), 60));
+  rise(document.querySelector('#s8 .t'), prog(t, 20.5, 21.1));
+  const pp = ease(prog(t, 20.6, 21.4)); $('phone').style.opacity = pp; $('phone').style.transform = `translateY(${(1 - pp) * 160}px)`;
+  const scr = $('scr'); const maxY = scr.clientHeight ? scr.clientHeight - 1114 : 0;
+  scr.style.transform = `translateY(${-Math.min(maxY, 5600) * inOut(prog(t, 21.5, 24.2))}px)`;
+  rise(document.querySelector('#s9 .t'), prog(t, 24.3, 24.8), 20); soft($('f1'), prog(t, 24.4, 25.2)); soft($('f2'), prog(t, 24.8, 25.7));
+  rise($('f3'), prog(t, 25.4, 26.0)); rise($('f4'), prog(t, 25.8, 26.4)); rise($('f5'), prog(t, 26.1, 26.7), 20);
+  $('cta').style.transform = `scale(${t > 26.6 ? 1 + .03 * Math.sin((t - 26.6) * 6) : 1})`;
+  $('logo').style.opacity = t < 20.4 ? ease(prog(t, 0, .6)) : t < 20.8 ? 1 - prog(t, 20.4, 20.8) : t > 24.2 ? prog(t, 24.2, 24.7) : 0;
+  document.querySelectorAll('.aura i').forEach((el, i) => el.style.transform = `translate(${Math.sin(t / 5 + i * 2) * 60}px, ${Math.cos(t / 6 + i) * 50}px)`);
+};
+window.setT(0);
+</script>
+</body>
+</html>
