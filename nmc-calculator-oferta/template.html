@@ -1,7 +1,7 @@
-<title>Calculator ofertă NMC</title>
+<title>Calculator ofertă NMC · Deco&amp;Flair</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@500;700&family=Roboto+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap">
 <style>
 /* Layout: o foaie de ofertă (A4) pe un fundal grafit-cald; antet cu logo, apoi client, produse, totaluri, mențiuni. */
 :root{
@@ -17,7 +17,18 @@
 :root[data-theme="dark"]{
   --bg:#141518; --paper:#1D1F23; --ink:#ECEBE8; --muted:#A3A6AD; --line:#34373D; --soft:#25272C;
   --accent:#FF7A38; --accent-ink:#FF9A66; --accent-soft:#3A2418; --good:#4CC27F; --bad:#FF6B6B; color-scheme:dark}
+/* a doua foaie: Deco&Flair (auriu + vișiniu, titluri Playfair) */
+:root[data-brand="df"]{--accent:#A9834A;--accent-ink:#8E2329;--accent-soft:#F6EFE3;--f-head:"Playfair Display",Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme: dark){:root[data-brand="df"]:not([data-theme="light"]){--accent:#C6A468;--accent-ink:#E2BF86;--accent-soft:#2D2619}}
+:root[data-theme="dark"][data-brand="df"]{--accent:#C6A468;--accent-ink:#E2BF86;--accent-soft:#2D2619}
 *{box-sizing:border-box}
+.tabs{display:flex;gap:4px;align-items:flex-end;border-bottom:2px solid var(--line);overflow-x:auto}
+.tabs button{border:1px solid var(--line);border-bottom:0;background:var(--soft);color:var(--muted);border-radius:8px 8px 0 0;padding:9px 18px 8px;font:500 14px var(--f-body);cursor:pointer;display:flex;gap:8px;align-items:center;white-space:nowrap;margin-bottom:-2px}
+.tabs button i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--line);border-bottom:2px solid var(--paper);font-weight:700}
+.tabs .t-nmc i{background:#FF671F}.tabs .t-df i{background:#B08A4E;box-shadow:inset 0 0 0 2px #8E2329}
+.tabs .hint{margin-left:auto;align-self:center;color:var(--muted);font-size:12px;padding:0 4px 6px;white-space:nowrap}
+.logo.df{width:170px}
 [hidden]{display:none!important}
 .sheet>*,.wrap>*{min-width:0}
 #info{width:100%;font:14px/1.5 var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
@@ -51,9 +62,11 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .head{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:start;border-bottom:3px solid var(--accent);padding-bottom:20px}
 .logo{width:118px;height:auto;display:block}
 .issuer{font-size:12.5px;color:var(--muted);line-height:1.55}
+:root[data-brand="df"] .issuer{font-size:12px;line-height:1.5}
 .issuer b{color:var(--ink);font-weight:500}
 .doc{text-align:right;display:grid;gap:8px;justify-items:end}
 .doc h1{font:700 30px/1 var(--f-head);letter-spacing:.06em;text-transform:uppercase;margin:0}
+:root[data-brand="df"] .doc h1{letter-spacing:.02em;text-transform:none;font-size:32px}
 .meta{display:grid;grid-template-columns:auto auto;gap:4px 10px;align-items:center;font-size:13px}
 .meta label{color:var(--muted);text-align:right}
 .meta input{font:500 13px var(--f-num);color:var(--ink);border:1px solid var(--line);background:var(--soft);border-radius:6px;padding:4px 7px;width:170px;text-align:right}
@@ -159,6 +172,11 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 </style>
 
 <div class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Foaie">
+    <button type="button" role="tab" class="t-nmc" data-brand="nmc" id="tab_nmc" aria-selected="true"><i></i>NMC România</button>
+    <button type="button" role="tab" class="t-df" data-brand="df" id="tab_df" aria-selected="false"><i></i>Deco&amp;Flair</button>
+    <span class="hint">Fiecare foaie are catalogul, numerotarea și oferta ei.</span>
+  </nav>
   <div class="toolbar">
     <div class="grp">
       <div class="seg" role="group" aria-label="Moneda">
@@ -189,7 +207,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     </div>
     <small class="mailhint">Se descarcă automat PDF-ul ofertei și se deschide un e-mail completat cu destinatarul, subiectul și rezumatul ofertei. Atașează PDF-ul din folderul Descărcări (Downloads) și apasă Trimite.</small>
   </div>
-  <div class="notice" id="framedNote" hidden><span>Exportul în PDF/Word și trimiterea pe e-mail funcționează în varianta de desktop (fișierul <b>Calculator-Oferta-NMC.html</b>).</span></div>
+  <div class="notice" id="framedNote" hidden><span>Exportul în PDF/Word și trimiterea pe e-mail funcționează în varianta de desktop (fișierul <b>Calculator-Oferta.html</b>).</span></div>
   <div class="notice" id="confirmNew" hidden>
     <span>Golești oferta curentă și pornești o ofertă nouă cu număr nou?</span>
     <span class="confirm"><button type="button" class="btn danger" id="newYes">Da, ofertă nouă</button><button type="button" class="btn" id="newNo">Renunț</button></span>
@@ -200,12 +218,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 
   <main class="sheet" id="sheet">
     <header class="head">
-      <img class="logo" src="__LOGO__" alt="NMC România">
-      <div class="issuer">
-        <b>NMC România</b> · profile decorative interior și exterior<br>
-        www.nmcromania.ro · Consiliere clienți: 0213 193 535<br>
-        Program: L–V 07:30–16:00
-      </div>
+      <img class="logo" id="logo" src="" alt="">
+      <div class="issuer" id="issuer"></div>
       <div class="doc">
         <h1>Ofertă de preț</h1>
         <div class="meta">
@@ -256,7 +270,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
         <div>
           <h2>Transport</h2>
           <div class="ship" id="ship">
-            <label><input type="radio" name="ship" value="242" id="sh_flota" checked><span>Transport flotă NMC<small>profile exterior · 3–5 zile lucrătoare</small></span><span class="pr" id="pr_flota"></span></label>
+            <label><input type="radio" name="ship" value="242" id="sh_flota" checked><span><span id="fleetName">Transport flotă</span><small>profile exterior · 3–5 zile lucrătoare</small></span><span class="pr" id="pr_flota"></span></label>
             <label><input type="radio" name="ship" value="150" id="sh_curier"><span>Curier<small>Fan Courier · profile interior · 1–2 zile lucrătoare</small></span><span class="pr" id="pr_curier"></span></label>
             <label class="noprint"><input type="radio" name="ship" value="0" id="sh_none"><span>Fără transport<small>ridicare de la depozit</small></span><span class="pr" id="pr_none"></span></label>
           </div>
@@ -283,7 +297,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 
     <div class="sign printonly"><div>Întocmit,</div><div>Client,</div></div>
     <div class="foot">
-      <span>Prețurile și codurile produselor sunt preluate de pe nmcromania.ro la data de __DATA_PRETURI__. Toate prețurile includ TVA 21%.</span>
+      <span id="footNote"></span>
       <span id="footRate"></span>
     </div>
   </main>
@@ -292,19 +306,33 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 
 __LIBS__
 <script>
-const CATALOG = __CATALOG__;
-const TVA = 0.21, SITE = "https://www.nmcromania.ro/";
-const SHIP = {"242":{name:"Transport flotă NMC",ron:242},"150":{name:"Curier Fan Courier",ron:150},"0":{name:"Fără transport (ridicare de la depozit)",ron:0}};
-const EXAMPLE = ["NA102 1.25","Z11","NCL113"];
+const BRANDS = {
+  nmc:{id:"nmc",name:"NMC România",prefix:"NMC",site:"https://www.nmcromania.ro/",domain:"nmcromania.ro",date:"__DATE_NMC__",
+    catalog:__CATALOG_NMC__, logo:"__LOGO_NMC__", logoMM:[27,16.6], logoClass:"",
+    issuer:[["NMC România"," · profile decorative interior și exterior"],["","www.nmcromania.ro · Consiliere clienți: 0213 193 535"],["","Program: L–V 07:30–16:00"]],
+    fleet:"Transport flotă NMC", example:[["NA102 1.25",8],["Z11",5],["NCL113",1]],
+    sign:["NMC România","Consiliere clienți: 0213 193 535 · www.nmcromania.ro"],
+    rgb:[255,103,31], rgbInk:[194,71,11], hex:"FF671F", hexInk:"C2470B"},
+  df:{id:"df",name:"Deco&Flair",prefix:"DF",site:"https://decoflair.ro/",domain:"decoflair.ro",date:"__DATE_DF__",
+    catalog:__CATALOG_DF__, logo:"__LOGO_DF__", logoMM:[40,15.4], logoClass:"df",
+    issuer:[["Deco & Flair Hub SRL",""],["","CUI RO 54681700 · Reg. Com. J2026031505008"],["","Sediu: Str. Faurei nr. 1, Sector 1, București"],["","Depozit: Str. Comerțului nr. 3, Domnești, Ilfov"],["","0723 300 603 · office@decoflair.ro · decoflair.ro"],["","IBAN RO95 INGB 0000 9999 1984 0357 (ING Bank)"]],
+    fleet:"Transport flotă Deco&Flair", example:[["L5",4],["Z11",6],["IL10",5]],
+    sign:["Echipa Deco&Flair","0723 300 603 · office@decoflair.ro · decoflair.ro"],
+    rgb:[169,131,74], rgbInk:[142,35,41], hex:"A9834A", hexInk:"8E2329"}
+};
+let B = BRANDS.nmc;
+const TVA = 0.21;
+const SHIP = {"242":{ron:242},"150":{name:"Curier Fan Courier",ron:150},"0":{name:"Fără transport (ridicare de la depozit)",ron:0}};
+const shipName = k => k==="242" ? B.fleet : SHIP[k].name;
 const $ = id => document.getElementById(id);
 const store = { get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}} };
 
 let S; // starea ofertei; toate sumele interne sunt în RON cu TVA
 function todayISO(){const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
 function nextNr(){
-  const y=new Date().getFullYear(); let c=store.get("nmc_oferta_counter")||{y,n:0};
-  if(c.y!==y)c={y,n:0}; c.n++; store.set("nmc_oferta_counter",c);
-  return "NMC-"+y+"-"+String(c.n).padStart(4,"0");
+  const key=B.id+"_oferta_counter", y=new Date().getFullYear(); let c=store.get(key)||{y,n:0};
+  if(c.y!==y)c={y,n:0}; c.n++; store.set(key,c);
+  return B.prefix+"-"+y+"-"+String(c.n).padStart(4,"0");
 }
 function blank(){return {nr:nextNr(),data:todayISO(),cur:"RON",rate:5.09,ship:"242",disc:0,dType:"pct",client:{},info:"",lines:[],example:false}}
 function lineFrom(p){return {c:p.c,n:p.n,u:p.u,l:p.l,q:1,p:p.p,base:p.p,o:p.o}}
@@ -318,10 +346,10 @@ const fmtN = v => new Intl.NumberFormat("ro-RO",{minimumFractionDigits:2,maximum
 const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 function load(){
-  S = store.get("nmc_oferta_draft");
-  if(!S){ S=blank(); S.example=true; EXAMPLE.forEach(c=>{const p=CATALOG.find(x=>x.c===c); if(p)S.lines.push(lineFrom(p))}); if(S.lines[0])S.lines[0].q=8; if(S.lines[1])S.lines[1].q=5; }
+  S = store.get(B.id+"_oferta_draft");
+  if(!S){ S=blank(); S.example=true; B.example.forEach(([c,q])=>{const p=B.catalog.find(x=>x.c===c); if(p){const l=lineFrom(p);l.q=q;S.lines.push(l)}}) }
 }
-function save(){ store.set("nmc_oferta_draft",S) }
+function save(){ store.set(B.id+"_oferta_draft",S) }
 
 function calc(){
   const gross = S.lines.reduce((a,l)=>a+round2(l.q*l.p),0);
@@ -335,7 +363,7 @@ function renderRows(){
   if(!S.lines.length){tb.innerHTML='<tr class="emptyrow"><td colspan="9">Niciun produs încă. Caută după cod sau denumire în câmpul de mai sus.</td></tr>';return}
   tb.innerHTML=S.lines.map((l,i)=>{
     const changed = l.base!=null && Math.abs(l.p-l.base)>0.004;
-    const name = l.l ? `<a href="${SITE+esc(l.l)}" target="_blank" rel="noopener">${esc(l.n)}</a>` : `<input class="free" data-i="${i}" data-k="n" value="${esc(l.n)}" placeholder="Denumire produs / serviciu" style="width:100%;text-align:left;font-family:var(--f-body)">`;
+    const name = l.l ? `<a href="${B.site+esc(l.l)}" target="_blank" rel="noopener">${esc(l.n)}</a>` : `<input class="free" data-i="${i}" data-k="n" value="${esc(l.n)}" placeholder="Denumire produs / serviciu" style="width:100%;text-align:left;font-family:var(--f-body)">`;
     const code = l.l ? esc(l.c) : `<input data-i="${i}" data-k="c" value="${esc(l.c)}" placeholder="Cod" style="width:80px;text-align:left">`;
     return `<tr>
       <td class="um">${i+1}</td>
@@ -355,7 +383,7 @@ function renderTotals(){
   $("totals").innerHTML=`
     <div><span>Valoare produse (cu TVA)</span><span>${fmt(conv(t.gross))}</span></div>
     ${t.disc>0?`<div class="neg"><span>${dl}</span><span>− ${fmt(conv(t.disc))}</span></div><div class="sub"><span>Produse după discount</span><span>${fmt(conv(t.prod))}</span></div>`:""}
-    <div><span>${esc(SHIP[S.ship].name)}</span><span>${fmt(conv(t.ship))}</span></div>
+    <div><span>${esc(shipName(S.ship))}</span><span>${fmt(conv(t.ship))}</span></div>
     <div><span>Total fără TVA</span><span>${fmt(conv(t.net))}</span></div>
     <div><span>TVA 21%</span><span>${fmt(conv(t.tva))}</span></div>
     <div class="grand"><span>Total de plată</span><span>${fmt(conv(t.total))}</span></div>
@@ -378,15 +406,15 @@ function fillForm(){
 
 /* căutare */
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g," ");
-CATALOG.forEach(p=>{p._c=norm(p.c).replace(/[\s.]/g,""); p._t=norm(p.c+" "+p.n+" "+p.k)});
-[...new Set(CATALOG.map(p=>p.k))].sort((a,b)=>a.localeCompare(b,"ro")).forEach(k=>{const o=document.createElement("option");o.value=o.textContent=k;$("cat").append(o)});
+Object.values(BRANDS).forEach(b=>b.catalog.forEach(p=>{p._c=norm(p.c).replace(/[\s.]/g,""); p._t=norm(p.c+" "+p.n+" "+p.k)}));
+function fillCats(){ const sel=$("cat"); sel.length=1; [...new Set(B.catalog.map(p=>p.k))].sort((a,b)=>a.localeCompare(b,"ro")).forEach(k=>{const o=document.createElement("option");o.value=o.textContent=k;sel.append(o)}) }
 let hits=[], sel=0;
 function search(){
   const q=norm($("q").value.trim()), k=$("cat").value, qc=q.replace(/[\s.]/g,"");
   if(!q && !k){$("res").hidden=true;$("q").setAttribute("aria-expanded","false");return}
   const words=q.split(" ").filter(Boolean);
-  hits=CATALOG.filter(p=>(!k||p.k===k)&&words.every(w=>p._t.includes(w)||p._c.includes(w.replace(/[.]/g,""))))
-    .map(p=>({p,s:(p._c===qc?0:p._c.startsWith(qc)?1:2)})).sort((a,b)=>a.s-b.s||a.p.c.localeCompare(b.p.c,"ro",{numeric:true})).slice(0,60).map(x=>x.p);
+  hits=B.catalog.filter(p=>(!k||p.k===k)&&words.every(w=>p._t.includes(w)||p._c.includes(w.replace(/[.]/g,""))))
+    .map(p=>({p,s:(p._c===qc?0:p._c.startsWith(qc)?1:2)+(p.k==="Mostre tapet"?.5:0)})).sort((a,b)=>a.s-b.s||a.p.c.localeCompare(b.p.c,"ro",{numeric:true})).slice(0,60).map(x=>x.p);
   sel=0; drawHits();
 }
 function drawHits(){
@@ -453,13 +481,13 @@ $("newNo").onclick=()=>{$("confirmNew").hidden=true};
 $("newYes").onclick=()=>{const keep={cur:S.cur,rate:S.rate}; S=blank(); Object.assign(S,keep); $("confirmNew").hidden=true; fillForm(); renderAll(); toast("Ofertă nouă: "+S.nr)};
 function asText(){
   const t=calc(), c=S.client, d=S.data?S.data.split("-").reverse().join("."):"";
-  const L=[`OFERTĂ DE PREȚ – NMC România`,`Nr. comandă: ${S.nr}    Data: ${d}    Moneda: ${S.cur}${S.cur==="EUR"?` (1 EUR = ${S.rate} lei)`:""}`,""];
+  const L=[`OFERTĂ DE PREȚ – ${B.name}`,`Nr. comandă: ${S.nr}    Data: ${d}    Moneda: ${S.cur}${S.cur==="EUR"?` (1 EUR = ${S.rate} lei)`:""}`,""];
   const cl=[["Client",c.c_nume],["CUI/CNP",c.c_cui],["Reg. Com.",c.c_reg],["Contact",c.c_pers],["Telefon",c.c_tel],["E-mail",c.c_email],["Adresă facturare",c.c_adr],["Adresă livrare",c.c_livr]].filter(x=>x[1]);
   cl.forEach(x=>L.push(x[0]+": "+x[1])); if(cl.length)L.push("");
   S.lines.forEach((l,i)=>L.push(`${i+1}. ${l.c} – ${l.n} | ${fmtN(l.q)} ${l.u} x ${fmt(conv(l.p))} = ${fmt(conv(l.q*l.p))}`));
   L.push("",`Valoare produse (cu TVA): ${fmt(conv(t.gross))}`);
   if(t.disc>0)L.push(`Discount${S.dType==="pct"?" "+S.disc+"%":""}: -${fmt(conv(t.disc))}`);
-  L.push(`${SHIP[S.ship].name}: ${fmt(conv(t.ship))}`,`Total fără TVA: ${fmt(conv(t.net))}`,`TVA 21%: ${fmt(conv(t.tva))}`,`TOTAL DE PLATĂ: ${fmt(conv(t.total))}`);
+  L.push(`${shipName(S.ship)}: ${fmt(conv(t.ship))}`,`Total fără TVA: ${fmt(conv(t.net))}`,`TVA 21%: ${fmt(conv(t.tva))}`,`TOTAL DE PLATĂ: ${fmt(conv(t.total))}`);
   if(S.info.trim())L.push("","Informații suplimentare:",S.info.trim());
   return L.join("\n");
 }
@@ -470,5 +498,21 @@ $("copyBtn").onclick=()=>{const txt=asText();
 let tt; function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,1800)}
 
 /*__EXPORT__*/
-load(); fillForm(); renderAll();
+/* foi (NMC / Deco&Flair) */
+function applyBrand(id){
+  B=BRANDS[id]||BRANDS.nmc; document.documentElement.dataset.brand=B.id;
+  document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.setAttribute("aria-selected",t.dataset.brand===B.id));
+  const lg=$("logo"); lg.src=B.logo; lg.alt=B.name; lg.className="logo "+B.logoClass;
+  $("issuer").innerHTML=B.issuer.map(([b,t])=>(b?`<b>${esc(b)}</b>`:"")+esc(t)).join("<br>");
+  $("fleetName").textContent=B.fleet;
+  $("footNote").textContent=`Prețurile și codurile produselor sunt preluate de pe ${B.domain} la data de ${B.date}. Toate prețurile includ TVA 21%.`;
+  $("q").placeholder = B.id==="df" ? "Caută după cod sau denumire (ex. L5, Z11, IL10, tapet Carrara)…" : "Caută după cod sau denumire (ex. NA102, Z11, plintă, tapet)…";
+  fillCats(); $("q").value=""; $("res").hidden=true; $("mailBox").hidden=true; $("confirmNew").hidden=true;
+  store.set("oferta_brand",B.id);
+  if(location.hash!=="#"+(B.id==="df"?"decoflair":"nmc")) history.replaceState(null,"","#"+(B.id==="df"?"decoflair":"nmc"));
+  load(); fillForm(); renderAll();
+}
+document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.addEventListener("click",()=>{ if(t.dataset.brand!==B.id){ save(); applyBrand(t.dataset.brand) } }));
+window.addEventListener("hashchange",()=>{const id=location.hash==="#decoflair"?"df":location.hash==="#nmc"?"nmc":null; if(id&&id!==B.id){save();applyBrand(id)}});
+applyBrand(location.hash==="#decoflair"?"df":location.hash==="#nmc"?"nmc":(store.get("oferta_brand")||"nmc"));
 </script>

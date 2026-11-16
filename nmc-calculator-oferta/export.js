@@ -1,8 +1,8 @@
 /* Export ofertă: PDF (jsPDF + autotable, font Roboto cu diacritice), Word (.docx generat local) și e-mail.
    Inserat de build.py în index.html; folosește S, calc(), conv(), fmt(), fmtN(), SHIP, TVA din pagină. */
-const C_OR=[255,103,31], C_INK=[34,37,42], C_MU=[108,111,118], C_LINE=[222,219,214], C_SOFT=[246,244,241];
+const C_INK=[34,37,42], C_MU=[108,111,118], C_LINE=[222,219,214], C_SOFT=[246,244,241];
 const CLIENT_FIELDS=[["c_nume","Nume / Denumire firmă"],["c_cui","CUI / CNP"],["c_reg","Nr. Reg. Com."],["c_pers","Persoană de contact"],["c_tel","Telefon"],["c_email","E-mail"],["c_adr","Adresă facturare"],["c_livr","Adresă livrare"]];
-const ISSUER=["NMC România · profile decorative interior și exterior","www.nmcromania.ro · Consiliere clienți: 0213 193 535","Program: L–V 07:30–16:00"];
+const issuerLines=()=>B.issuer.map(([b,t])=>b+t);
 
 function offer(){
   const t=calc();
@@ -10,24 +10,23 @@ function offer(){
   const lines=S.lines.map((l,i)=>[String(i+1),l.c||"",l.n||"",l.u||"",fmtN(l.q).replace(/,00$/,""),fmtN(conv(l.p/(1+TVA))),fmtN(conv(l.p)),fmtN(conv(l.q*l.p))]);
   const totals=[["Valoare produse (cu TVA)",fmt(conv(t.gross))]];
   if(t.disc>0){totals.push([S.dType==="pct"?`Discount ${String(S.disc).replace(".",",")}%`:"Discount","− "+fmt(conv(t.disc))]);totals.push(["Produse după discount",fmt(conv(t.prod))])}
-  totals.push([SHIP[S.ship].name,fmt(conv(t.ship))],["Total fără TVA",fmt(conv(t.net))],["TVA 21%",fmt(conv(t.tva))]);
+  totals.push([shipName(S.ship),fmt(conv(t.ship))],["Total fără TVA",fmt(conv(t.net))],["TVA 21%",fmt(conv(t.tva))]);
   const other=S.cur==="RON"?"EUR":"RON", otherVal=other==="EUR"?t.total/(S.rate||1):t.total;
   return {t,dateRo,lines,totals,grand:fmt(conv(t.total)),
     alt:`Echivalent ${other} (1 EUR = ${String(S.rate).replace(".",",")} lei): ${fmt(otherVal,other)}`,
     client:CLIENT_FIELDS.map(([k,l])=>[l,(S.client[k]||"").trim()]).filter(x=>x[1]),
     meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",S.cur==="EUR"?`EUR (curs ${String(S.rate).replace(".",",")} lei)`:"RON (lei)"]],
     info:(S.info||"").trim(),
-    note:`Prețurile și codurile produselor sunt preluate de pe nmcromania.ro. Toate prețurile includ TVA 21%.`};
+    note:`Prețurile și codurile produselor sunt preluate de pe ${B.domain}. Toate prețurile includ TVA 21%.`};
 }
 function fileBase(){
   const c=(S.client.c_nume||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40);
-  return "Oferta-"+(S.nr||"NMC").replace(/[^\w-]+/g,"-")+(c?"-"+c:"");
+  return "Oferta-"+(S.nr||B.prefix).replace(/[^\w-]+/g,"-")+(c?"-"+c:"");
 }
 function download(blob,name){
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.append(a); a.click(); a.remove();
   setTimeout(()=>URL.revokeObjectURL(a.href),4000);
 }
-const LOGO_URI=document.querySelector(".logo").src;
 function b64bytes(b64){const s=atob(b64),u=new Uint8Array(s.length);for(let i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u}
 
 /* ---------- PDF ---------- */
@@ -37,12 +36,12 @@ function makePDF(){
   d.addFileToVFS("Roboto-Bold.ttf",FONT_B); d.addFont("Roboto-Bold.ttf","Roboto","bold");
   const W=210,M=14,R=W-M; let y;
   const txt=(s,x,yy,o={})=>{d.setFont("Roboto",o.b?"bold":"normal");d.setFontSize(o.s||9);d.setTextColor(...(o.c||C_INK));d.text(String(s),x,yy,o.a?{align:o.a}:undefined)};
-  const head=(label,yy)=>{txt(label.toUpperCase(),M,yy,{b:1,s:8.5,c:[194,71,11]});const w=d.getTextWidth(label.toUpperCase());d.setDrawColor(...C_LINE);d.setLineWidth(.2);d.line(M+w+3,yy-1.1,R,yy-1.1)};
-  d.addImage(LOGO_URI,"PNG",M,12,27,16.6);
-  ISSUER.forEach((l,i)=>txt(l,M+31,16+i*4.4,{s:8,c:i?C_MU:C_INK}));
+  const head=(label,yy)=>{txt(label.toUpperCase(),M,yy,{b:1,s:8.5,c:B.rgbInk});const w=d.getTextWidth(label.toUpperCase());d.setDrawColor(...C_LINE);d.setLineWidth(.2);d.line(M+w+3,yy-1.1,R,yy-1.1)};
+  const [lw,lh]=B.logoMM; d.addImage(B.logo,"PNG",M,12+(16.6-lh)/2,lw,lh);
+  issuerLines().forEach((l,i,a)=>{const k=a.length>3, yy=(k?13.6:16)+i*(k?3.75:4.4); d.setFont("Roboto",i?"normal":"bold");d.setFontSize(k?7.3:8);d.setTextColor(...(i?C_MU:C_INK));d.text(l,M+lw+4,yy)});
   txt("OFERTĂ DE PREȚ",R,18,{b:1,s:17,a:"right"});
   O.meta.forEach(([k,v],i)=>{txt(k,R-46,25+i*4.8,{s:8.5,c:C_MU,a:"right"});txt(v,R,25+i*4.8,{b:1,s:8.5,a:"right"})});
-  d.setFillColor(...C_OR); d.rect(M,38,W-2*M,.9,"F");
+  d.setFillColor(...B.rgb); d.rect(M,38,W-2*M,.9,"F");
   y=46;
   if(O.client.length){
     head("Date client",y); y+=5.5;
@@ -58,7 +57,7 @@ function makePDF(){
     body:O.lines.length?O.lines:[["","","Niciun produs","","","","",""]],
     styles:{font:"Roboto",fontSize:8.3,textColor:C_INK,cellPadding:{top:1.8,bottom:1.8,left:1.6,right:1.6},lineColor:C_LINE,lineWidth:{bottom:.2}},
     headStyles:{fillColor:C_SOFT,textColor:C_MU,fontStyle:"normal",fontSize:7,valign:"middle"},
-    columnStyles:{0:{cellWidth:7,textColor:C_MU},1:{cellWidth:22,textColor:[194,71,11],fontStyle:"bold"},3:{cellWidth:17,textColor:C_MU},4:{cellWidth:12,halign:"right"},5:{cellWidth:20,halign:"right"},6:{cellWidth:20,halign:"right"},7:{cellWidth:23,halign:"right",fontStyle:"bold"}},
+    columnStyles:{0:{cellWidth:7,textColor:C_MU},1:{cellWidth:22,textColor:B.rgbInk,fontStyle:"bold"},3:{cellWidth:17,textColor:C_MU},4:{cellWidth:12,halign:"right"},5:{cellWidth:20,halign:"right"},6:{cellWidth:20,halign:"right"},7:{cellWidth:23,halign:"right",fontStyle:"bold"}},
     didParseCell:c=>{if(c.section==="head"&&c.column.index>=4)c.cell.styles.halign="right"},
     theme:"plain"});
   y=d.lastAutoTable.finalY+7;
@@ -67,7 +66,7 @@ function makePDF(){
   O.totals.forEach(([k,v],i)=>{const yy=y+i*rowH; d.setDrawColor(...C_LINE);d.setLineWidth(.2);d.line(bx,yy+rowH,R,yy+rowH);
     txt(k,bx+2.5,yy+4.3,{s:8.8}); txt(v.replace("−","-"),R-2.5,yy+4.3,{s:8.8,b:1,a:"right",c:k.startsWith("Discount")?[30,142,78]:C_INK})});
   let gy=y+O.totals.length*rowH;
-  d.setFillColor(...C_OR); d.rect(bx,gy,boxW,rowH+2.4,"F");
+  d.setFillColor(...B.rgb); d.rect(bx,gy,boxW,rowH+2.4,"F");
   txt("TOTAL DE PLATĂ",bx+2.5,gy+5.6,{b:1,s:10,c:[255,255,255]}); txt(O.grand,R-2.5,gy+5.8,{b:1,s:12.5,c:[255,255,255],a:"right"});
   txt(O.alt,R-2.5,gy+rowH+7,{s:7.5,c:C_MU,a:"right"});
   y=gy+rowH+15;
@@ -89,7 +88,7 @@ function makePDF(){
 const X=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 function run(t,o={}){const pr=`<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>${o.b?"<w:b/>":""}<w:color w:val="${o.c||"22252A"}"/><w:sz w:val="${Math.round((o.s||10)*2)}"/></w:rPr>`;
   return String(t).split("\n").map((p,i)=>(i?"<w:r><w:br/></w:r>":"")+`<w:r>${pr}<w:t xml:space="preserve">${X(p)}</w:t></w:r>`).join("")}
-function para(t,o={}){return `<w:p><w:pPr><w:spacing w:before="${o.before||0}" w:after="${o.after??0}"/>${o.a?`<w:jc w:val="${o.a}"/>`:""}${o.border?`<w:pBdr><w:bottom w:val="single" w:sz="${o.border}" w:space="4" w:color="${o.bc||"FF671F"}"/></w:pBdr>`:""}</w:pPr>${t?run(t,o):""}</w:p>`}
+function para(t,o={}){return `<w:p><w:pPr><w:spacing w:before="${o.before||0}" w:after="${o.after??0}"/>${o.a?`<w:jc w:val="${o.a}"/>`:""}${o.border?`<w:pBdr><w:bottom w:val="single" w:sz="${o.border}" w:space="4" w:color="${o.bc||B.hex}"/></w:pBdr>`:""}</w:pPr>${t?run(t,o):""}</w:p>`}
 function cell(content,w,o={}){return `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/>${o.fill?`<w:shd w:val="clear" w:color="auto" w:fill="${o.fill}"/>`:""}${o.span?`<w:gridSpan w:val="${o.span}"/>`:""}<w:vAlign w:val="center"/></w:tcPr>${content}</w:tc>`}
 function cp(t,o={}){return para(t,{...o,after:0})}
 function table(widths,rows,o={}){
@@ -98,13 +97,13 @@ function table(widths,rows,o={}){
   return `<w:tbl><w:tblPr><w:tblW w:w="${widths.reduce((a,b)=>a+b,0)}" w:type="dxa"/>${o.jc?`<w:jc w:val="${o.jc}"/>`:""}${b}<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="50" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="50" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${widths.map(w=>`<w:gridCol w:w="${w}"/>`).join("")}</w:tblGrid>${rows.join("")}</w:tbl>`;
 }
 const tr=(cells,head)=>`<w:tr>${head?'<w:trPr><w:tblHeader/></w:trPr>':'<w:trPr><w:cantSplit/></w:trPr>'}${cells}</w:tr>`;
-function heading(t){return para(t.toUpperCase(),{b:1,s:9,c:"C2470B",before:240,after:80,border:4,bc:"DEDBD6"})}
+function heading(t){return para(t.toUpperCase(),{b:1,s:9,c:B.hexInk,before:240,after:80,border:4,bc:"DEDBD6"})}
 function makeDOCX(){
-  const O=offer(), FULL=10466;
-  const logo=`<w:p><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="972000" cy="598000"/><wp:docPr id="1" name="Logo NMC"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="1" name="logo.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdLogo"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="972000" cy="598000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
+  const O=offer(), FULL=10466, cx=Math.round(B.logoMM[0]*36000), cy=Math.round(B.logoMM[1]*36000), lcol=B.id==="df"?2300:1500;
+  const logo=`<w:p><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="1" name="Logo NMC"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="1" name="logo.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdLogo"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
   let body="";
-  body+=table([1500,4466,4500],[tr(
-    cell(logo,1500)+cell(ISSUER.map((l,i)=>cp(l,{s:8.5,c:i?"6C6F76":"22252A",b:!i})).join(""),4466)+
+  body+=table([lcol,5966-lcol,4500],[tr(
+    cell(logo,lcol)+cell(issuerLines().map((l,i)=>cp(l,{s:B.issuer.length>3?7.5:8.5,c:i?"6C6F76":"22252A",b:!i})).join(""),5966-lcol)+
     cell(cp("OFERTĂ DE PREȚ",{b:1,s:18,a:"right"})+O.meta.map(([k,v])=>`<w:p><w:pPr><w:jc w:val="right"/></w:pPr>${run(k+":  ",{s:9,c:"6C6F76"})}${run(v,{s:9,b:1})}</w:p>`).join(""),4500))],{noBorder:1});
   body+=para("",{border:18,after:120});
   if(O.client.length){
@@ -117,11 +116,11 @@ function makeDOCX(){
   const W=[400,1250,3866,950,700,1100,1100,1100];
   const H=["#","Cod","Produs","UM","Cant.","Preț unitar fără TVA","Preț unitar cu TVA","Valoare cu TVA"];
   const rows=[tr(H.map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:i>=4?"right":undefined}),W[i],{fill:"F6F4F1"})).join(""),1)];
-  O.lines.forEach(r=>rows.push(tr(r.map((v,i)=>cell(cp(v,{s:8.5,a:i>=4?"right":undefined,b:i===1||i===7,c:i===1?"C2470B":i===0||i===3?"6C6F76":undefined}),W[i])).join(""))));
+  O.lines.forEach(r=>rows.push(tr(r.map((v,i)=>cell(cp(v,{s:8.5,a:i>=4?"right":undefined,b:i===1||i===7,c:i===1?B.hexInk:i===0||i===3?"6C6F76":undefined}),W[i])).join(""))));
   body+=table(W,rows);
   body+=para("",{after:160});
   const TW=[3000,1900], trs=O.totals.map(([k,v])=>tr(cell(cp(k,{s:9.5}),TW[0])+cell(cp(v,{s:9.5,b:1,a:"right",c:k.startsWith("Discount")?"1E8E4E":undefined}),TW[1])));
-  trs.push(tr(cell(cp("TOTAL DE PLATĂ",{s:11,b:1,c:"FFFFFF"}),TW[0],{fill:"FF671F"})+cell(cp(O.grand,{s:13,b:1,c:"FFFFFF",a:"right"}),TW[1],{fill:"FF671F"})));
+  trs.push(tr(cell(cp("TOTAL DE PLATĂ",{s:11,b:1,c:"FFFFFF"}),TW[0],{fill:B.hex})+cell(cp(O.grand,{s:13,b:1,c:"FFFFFF",a:"right"}),TW[1],{fill:B.hex})));
   trs.push(tr(cell(cp(O.alt,{s:8,c:"6C6F76",a:"right"}),TW[0]+TW[1],{span:2})));
   body+=table(TW,trs,{jc:"right"});
   if(O.info){body+=heading("Informații / date suplimentare");body+=para(O.info,{s:10})}
@@ -136,7 +135,7 @@ function makeDOCX(){
     ["word/_rels/document.xml.rels",`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdLogo" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/></Relationships>`],
     ["word/document.xml",doc]
   ].map(([n,c])=>({name:n,data:enc.encode(c)}));
-  files.push({name:"word/media/logo.png",data:b64bytes(LOGO_URI.split(",")[1])});
+  files.push({name:"word/media/logo.png",data:b64bytes(B.logo.split(",")[1])});
   return zipStore(files,"application/vnd.openxmlformats-officedocument.wordprocessingml.document");
 }
 function crc32(u){let t=crc32.t;if(!t){t=crc32.t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}}
@@ -156,15 +155,15 @@ function zipStore(files,type){
 /* ---------- e-mail ---------- */
 function mailBody(){
   const O=offer(), c=S.client;
-  const L=[`Bună ziua${c.c_pers?" "+c.c_pers:c.c_nume?" "+c.c_nume:""},`,"",`Vă transmitem oferta NMC România nr. ${S.nr} din data de ${O.dateRo}.`,""];
+  const L=[`Bună ziua${c.c_pers?" "+c.c_pers:c.c_nume?" "+c.c_nume:""},`,"",`Vă transmitem oferta ${B.name} nr. ${S.nr} din data de ${O.dateRo}.`,""];
   O.lines.forEach(r=>L.push(`• ${r[1]} – ${r[2]}: ${r[4]} ${r[3]} x ${r[6]} = ${r[7]} ${S.cur==="EUR"?"€":"lei"}`));
   if(O.lines.length)L.push("");
   O.totals.forEach(([k,v])=>L.push(`${k}: ${v}`)); L.push(`TOTAL DE PLATĂ: ${O.grand} (TVA inclus)`);
   if(O.info)L.push("",O.info);
-  L.push("","Oferta completă este atașată în format PDF.","","Cu stimă,","NMC România","Consiliere clienți: 0213 193 535 · www.nmcromania.ro");
+  L.push("","Oferta completă este atașată în format PDF.","","Cu stimă,",...B.sign);
   let b=L.join("\n");
   if(b.length>1700){ // limita practică a link-urilor mailto
-    const short=[L[0],"",L[2],"",`TOTAL DE PLATĂ: ${O.grand} (TVA inclus)`,"","Oferta completă (toate produsele) este atașată în format PDF.","","Cu stimă,","NMC România","Consiliere clienți: 0213 193 535 · www.nmcromania.ro"];
+    const short=[L[0],"",L[2],"",`TOTAL DE PLATĂ: ${O.grand} (TVA inclus)`,"","Oferta completă (toate produsele) este atașată în format PDF.","","Cu stimă,",...B.sign];
     b=short.join("\n");
   }
   return b;
@@ -175,7 +174,7 @@ $("pdfBtn").onclick=()=>{ if(!saveWarn())return; download(makePDF(),pdfName()); 
 $("docBtn").onclick=()=>{ if(!saveWarn())return; const n=fileBase()+".docx"; download(makeDOCX(),n); toast("Word descărcat: "+n) };
 $("mailBtn").onclick=()=>{
   const box=$("mailBox"), open=box.hidden; box.hidden=!open; $("mailBtn").setAttribute("aria-expanded",open);
-  if(open){ $("mailTo").value=S.client.c_email||$("mailTo").value; $("mailSubj").value=`Ofertă NMC România nr. ${S.nr}`+(S.client.c_nume?` – ${S.client.c_nume}`:""); $("mailTo").focus() }
+  if(open){ $("mailTo").value=S.client.c_email||$("mailTo").value; $("mailSubj").value=`Ofertă ${B.name} nr. ${S.nr}`+(S.client.c_nume?` – ${S.client.c_nume}`:""); $("mailTo").focus() }
 };
 $("mailClose").onclick=()=>{$("mailBox").hidden=true;$("mailBtn").setAttribute("aria-expanded","false")};
 try{ const probe=new File([new Blob(["x"],{type:"application/pdf"})],"t.pdf",{type:"application/pdf"}); if(navigator.canShare&&navigator.canShare({files:[probe]})) $("mailShare").hidden=false }catch(e){}
