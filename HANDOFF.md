@@ -6,6 +6,10 @@ Agent: Codex
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
+## NMC blog „Galeria NMC” — ghid interior + exterior — Claude Code, 2026-11-16
+Folder: `nmc-blog-galerie/`. Articol (~2.100 cuvinte) gata de publicat pe blogul nmcromania.ro: tur de galerie de artă (ramă albă, plăcuță de muzeu, săli I–V: Fațada, Lumina, Tavanul, Pereții, Textura), 11 „opere” cu „Problema pe care nu știi că o ai” + „Soluția NMC” + exponate (23 produse, în stoc la 16.11.2026). Plus 5 reguli ale galeriei, tabel probleme→soluții, tendințe care rămân/trec, 3 stiluri curatoriate, FAQ, CTA 021 319 35 35. Stil scandinav luminos: alb cald/piatră/stejar, Cormorant Garamond + Roboto (fontul NMC), punct portocaliu NMC. Imagini doar de pe nmcromania.ro (din black-november/assets + blog). Fără prețuri/date. CSS izolat `.nmg`.
+Fișiere: articol.html, previzualizare.html, PUBLICARE-SI-SEO.md, img/ (47). Reproducere: `python3 nmc-blog-galerie/tools/build.py`; arhivă release/ (ignorată).
+
 ## Deco&Flair blog „Casa de sărbători” — ghid de design — Claude Code, 2026-11-15
 Folder: `decoflair-blog-sarbatori/`. Articol premium (~2.400 cuvinte, 9 capitole) în stilul landing-ului Selecția Premium (crem, forest, roz pudră, mov șters; Jost + Instrument Serif; arcade). Conținut: peretele din spatele mesei ca „scenă”, paleta 2027 (recomandare editorială, nu „culoarea oficială”), plan 4 săptămâni, 6 rețete de perete (chenare forest, tavan cu rozetă, relief 3D, lumină LED, riflaj, tapet Carrara) cu pași + produse, 3 niveluri de buget, styling masă, greșeli, checklist, 17 produse cu link, FAQ, CTA. Fără prețuri, fără date.
 `articol.html` = fragment de lipit în Journal Blog (CSS izolat `.dfb`, imagini în /image/catalog/blog/casa-de-sarbatori/); `previzualizare.html` local; `PUBLICARE-SI-SEO.md` (meta, slug, pași); `PROMPTURI-IMAGINI.md`.
