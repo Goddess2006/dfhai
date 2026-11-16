@@ -1,125 +1,134 @@
 <!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Previzualizare · Galeria NMC</title><style>body{margin:0;background:#fff;font-family:Roboto,sans-serif} .pg{max-width:1240px;margin:24px auto;padding:0 12px} .pg>h1{font:500 28px Roboto,sans-serif;margin:0 0 16px;color:#29292B}</style></head>
-<body><div class="pg"><h1>Galeria NMC: ghid de amenajare interioară și exterioară, ca într-o galerie de artă</h1><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<body><div class="pg"><h1>Galeria NMC: ghid de amenajare interioară și exterioară, ca într-o galerie de artă</h1><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-.nmg{--wall:#FAF8F4;--wall2:#F1EEE8;--stone:#E4DFD6;--oak:#C9A57E;--ink:#29292B;--ink2:#4A4A4F;--muted:#8A8580;--line:#29292B1a;--orange:#FF671F;
- --serif:"Cormorant Garamond",Georgia,serif;--sans:"Roboto",system-ui,sans-serif;
- font:300 17.5px/1.8 var(--sans);color:var(--ink2);background:var(--wall);border-radius:6px;overflow:hidden}
+.nmg{--ink:#16151C;--ink2:#3C3A46;--muted:#77737F;--line:#16151C14;--orange:#FF671F;--orange2:#FF9A5C;
+ --g-hero:linear-gradient(125deg,#FFE3D3 0%,#F6D3E6 28%,#D9D4F7 58%,#CDE9F2 100%);
+ --g-brand:linear-gradient(100deg,#FF671F 0%,#F2459B 45%,#7B5CF5 100%);
+ --display:"Space Grotesk",system-ui,sans-serif;--sans:"Roboto",system-ui,sans-serif;
+ font:300 17.5px/1.8 var(--sans);color:var(--ink2);background:#FBFAFD;border-radius:28px;overflow:hidden;position:relative}
 .nmg *{box-sizing:border-box}.nmg img{display:block;max-width:100%;height:auto}.nmg a{color:inherit;text-decoration:none}
 .nmg p{margin:0 0 1em}.nmg strong{font-weight:500;color:var(--ink)}
-.nmg h2,.nmg h3{font-family:var(--serif);font-weight:500;color:var(--ink);letter-spacing:-.005em;margin:0}
-.nmg h2{font-size:clamp(38px,4.4vw,62px);line-height:1.05;margin-bottom:20px}
-.nmg h3{font-size:clamp(30px,3vw,42px);line-height:1.1;margin-bottom:12px}
-.nmg h2 em,.nmg h3 em{font-style:italic;font-weight:400;color:#8B6B4A}
+.nmg h2,.nmg h3{font-family:var(--display);font-weight:500;color:var(--ink);letter-spacing:-.035em;margin:0}
+.nmg h2{font-size:clamp(36px,4.6vw,64px);line-height:1.02;margin-bottom:20px}
+.nmg h3{font-size:clamp(26px,2.6vw,36px);line-height:1.1;margin-bottom:12px}
+.nmg h2 em,.nmg h3 em{font-style:normal;background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nmg-in{max-width:860px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 .nmg-wide{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
-.nmg-kick{display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;font:400 11.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg-kick::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.nmg-kick{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 14px;border-radius:999px;background:#ffffffb3;border:1px solid #ffffff;backdrop-filter:blur(10px);font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.nmg-kick::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--g-brand)}
 .nmg-sec{padding:clamp(56px,7vw,110px) 0 0}
-/* ramă de galerie */
-.nmg-frame{background:#fff;padding:clamp(10px,1.6vw,22px);box-shadow:0 1px 0 #0000000a,0 30px 60px -36px #29292B66,0 10px 18px -12px #29292B33;border:1px solid #29292B12}
+/* „rama” = ecran de expoziție digitală */
+.nmg-frame{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -40px #3B2A6E66,0 0 0 1px #ffffff}
+.nmg-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #ffffff66;pointer-events:none}
 .nmg-frame img{width:100%;object-fit:cover}
-.nmg-frame--dark{background:#1d1d1f;border-color:#1d1d1f}
 /* hero */
-.nmg-hero{padding:clamp(48px,7vw,100px) 0 clamp(36px,4vw,60px);background:linear-gradient(180deg,#FFFFFF 0%,var(--wall) 100%);text-align:center}
-.nmg h2,.nmg h3,.nmg-label b,.nmg-plan b,.nmg summary,.nmg-table td{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
-.nmg-hero h2{font-size:clamp(48px,6.6vw,96px);line-height:.98;margin:16px 0 22px}
+.nmg-hero{position:relative;padding:clamp(56px,8vw,120px) 0 clamp(40px,5vw,70px);text-align:center;background:var(--g-hero);overflow:hidden}
+.nmg-hero::before,.nmg-hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.8;pointer-events:none}
+.nmg-hero::before{width:520px;height:520px;left:-140px;top:-120px;background:#FFB48A}
+.nmg-hero::after{width:560px;height:560px;right:-160px;bottom:-200px;background:#9DB8FF}
+.nmg-hero>*{position:relative;z-index:1}
+.nmg-hero h2{font-size:clamp(46px,7vw,104px);line-height:.95;margin:18px 0 24px}
 .nmg .nmg-lead{max-width:680px;margin:0 auto;font-size:19.5px;color:var(--ink2)}
-.nmg-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 24px;margin-top:22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.nmg-hero .nmg-frame{max-width:980px;margin:clamp(36px,5vw,64px) auto 0}
+.nmg-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 10px;margin-top:24px}
+.nmg-meta span{padding:7px 14px;border-radius:999px;background:#ffffff80;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.nmg-hero .nmg-frame{max-width:1000px;margin:clamp(36px,5vw,64px) auto 0}
 .nmg-hero .nmg-frame img{aspect-ratio:16/9}
-.nmg-label{display:inline-block;margin-top:14px;padding:10px 16px;background:#fff;border:1px solid var(--line);text-align:left;font-size:12.5px;line-height:1.5;color:var(--muted)}
-.nmg-label b{display:block;font:italic 500 17px/1.2 var(--serif);color:var(--ink)}
-/* cuprins (plan muzeu) */
-.nmg-plan{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.nmg-plan a{padding:22px 16px;border-left:1px solid var(--line);text-align:center;transition:background .3s}
-.nmg-plan a:first-child{border-left:0}.nmg-plan a:hover{background:#fff}
-.nmg-plan b{display:block;font:400 34px/1 var(--serif);color:var(--ink)}
-.nmg-plan span{display:block;margin-top:8px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:760px){.nmg-plan{grid-template-columns:1fr 1fr}.nmg-plan a:nth-child(odd){border-left:0}.nmg-plan a{border-top:1px solid var(--line)}}
+.nmg-label{display:inline-flex;flex-direction:column;margin-top:12px;padding:10px 16px;border-radius:14px;background:#ffffffcc;border:1px solid #fff;backdrop-filter:blur(10px);text-align:left;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.nmg-label b{font:500 15px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+/* harta expoziției */
+.nmg-plan{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:clamp(36px,4vw,56px)}
+.nmg-plan a{padding:20px 14px;border-radius:18px;background:var(--g);color:#fff;text-align:left;transition:transform .3s}
+.nmg-plan a:hover{transform:translateY(-4px)}
+.nmg-plan b{display:block;font:500 32px/1 var(--display);letter-spacing:-.03em}
+.nmg-plan span{display:block;margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.9}
+@media (max-width:760px){.nmg-plan{grid-template-columns:1fr 1fr}}
 /* reguli */
-.nmg-rules{counter-reset:r;margin:22px 0 0;padding:0;list-style:none}
-.nmg-rules li{counter-increment:r;display:grid;grid-template-columns:70px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
-.nmg-rules li::before{content:counter(r,upper-roman);font:italic 400 30px/1 var(--serif);color:var(--oak)}
-.nmg-rules b{display:block;font:500 24px/1.2 var(--serif);color:var(--ink);margin-bottom:4px}
-/* sală */
-.nmg-room{padding:clamp(70px,9vw,140px) 0 0}
-.nmg-room__head{text-align:center;max-width:760px;margin:0 auto}
-.nmg-room__nr{display:block;font:italic 400 clamp(70px,9vw,130px)/.9 var(--serif);color:transparent;-webkit-text-stroke:1px #8B6B4A88}
-.nmg-room__head h2{margin-top:6px}
-.nmg-room__head .sub{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg .nmg-room__head p{margin-top:18px}
-/* operă */
-.nmg-work{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:start;padding:clamp(48px,6vw,90px) 0 0}
+.nmg-rules{counter-reset:r;margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.nmg-rules li{counter-increment:r;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:18px 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.nmg-rules li::before{content:"0" counter(r);font:500 22px/1 var(--display);background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nmg-rules b{display:block;font:500 20px/1.25 var(--display);color:var(--ink);margin-bottom:4px;letter-spacing:-.01em}
+/* sală = încăpere a expoziției, cu degradeul ei */
+.nmg-room{margin-top:clamp(56px,7vw,100px);padding:clamp(56px,7vw,100px) 0;background:var(--g);position:relative}
+.nmg-room::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 0%,#ffffff55,transparent 70%),linear-gradient(180deg,transparent 60%,#FBFAFD 100%);pointer-events:none}
+.nmg-room>*{position:relative}
+.nmg-room__head{text-align:left;max-width:760px}
+.nmg-room__nr{display:block;margin-bottom:12px;font:500 clamp(64px,8vw,120px)/.9 var(--display);letter-spacing:-.05em;color:#ffffffd9}
+.nmg-room__head h2{margin-top:4px;color:#fff}
+.nmg-room__head .sub{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff33;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.nmg .nmg-room__head p{margin-top:18px;color:#ffffffe6;font-size:18.5px}
+.nmg-work{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(36px,4vw,60px);padding:clamp(18px,2.4vw,30px);border-radius:28px;background:#ffffffd9;backdrop-filter:blur(16px);border:1px solid #ffffff;box-shadow:0 40px 80px -50px #1d123d55}
 .nmg-work:nth-child(even) .nmg-work__art{order:2}
 .nmg-work__art .nmg-frame img{aspect-ratio:4/3}
-.nmg-work__nr{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg-pb{margin:18px 0;padding:18px 20px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--orange)}
-.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
-.nmg-sol{padding:0 0 0 23px}
-.nmg-sol small{color:#8B6B4A}
-@media (max-width:560px){.nmg-pieces{grid-template-columns:1fr 1fr;gap:10px}.nmg-piece .nmg-label{font-size:10.5px}.nmg-piece .nmg-label b{font-size:15px}}
+.nmg-work__nr{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--g);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.nmg-work h3{margin-top:12px}
+.nmg-pb{margin:16px 0;padding:16px 18px;border-radius:16px;background:#FFF2EA;border:1px solid #FFD9C4}
+.nmg-sol{padding:16px 18px;border-radius:16px;background:#F2F0FF;border:1px solid #DCD6FF}
+.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.nmg-sol small{color:#6A4FE0}
 @media (max-width:860px){.nmg-work{grid-template-columns:1fr}.nmg-work:nth-child(even) .nmg-work__art{order:0}}
-/* exponate (produse) cu plăcuță de muzeu */
-.nmg-pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;margin-top:22px}
-.nmg-piece{display:block}
-.nmg-piece .nmg-frame{padding:10px}
-.nmg-piece .nmg-frame img{aspect-ratio:1;object-fit:contain;background:#fff}
-.nmg-piece .nmg-label{display:block;margin-top:10px;font-size:11.5px}
-.nmg-piece .nmg-label b{font-size:18px}
-.nmg-piece .nmg-label i{display:inline-block;margin-top:6px;font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
-.nmg-piece:hover .nmg-frame{transform:translateY(-3px)}.nmg-piece .nmg-frame{transition:transform .4s}
-/* tabel probleme */
-.nmg-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:15.5px;background:#fff}
+/* exponate */
+.nmg-pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:18px}
+.nmg-piece{display:flex;flex-direction:column;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.nmg-piece:hover{transform:translateY(-4px);box-shadow:0 24px 40px -26px #3B2A6E88}
+.nmg-piece .nmg-frame{border-radius:0;box-shadow:none;padding:8px}
+.nmg-piece .nmg-frame::after{display:none}
+.nmg-piece .nmg-frame img{aspect-ratio:1;object-fit:contain;border-radius:12px}
+.nmg-piece .nmg-label{display:block;margin:0;border:0;border-radius:0;background:transparent;padding:4px 12px 14px;font-size:11.5px;backdrop-filter:none}
+.nmg-piece .nmg-label b{display:block;font-size:15px}
+.nmg-piece .nmg-label i{display:inline-block;margin-top:6px;font-style:normal;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:560px){.nmg-pieces{grid-template-columns:1fr 1fr;gap:8px}}
+/* tabel */
+.nmg-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:24px;font-size:15.5px;background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line)}
 .nmg-table th,.nmg-table td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.nmg-table th{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--wall2)}
-.nmg-table td:first-child{font:500 19px/1.3 var(--serif);color:var(--ink);width:30%}
-.nmg-table a{color:#8B6B4A;text-decoration:underline;text-underline-offset:3px}
+.nmg-table th{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:500;background:var(--g-brand)}
+.nmg-table td:first-child{font:500 16.5px/1.3 var(--display);color:var(--ink);width:30%}
+.nmg-table a{color:#6A4FE0;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:640px){.nmg-table,.nmg-table tbody,.nmg-table tr,.nmg-table td{display:block;width:100%!important}.nmg-table thead{display:none}.nmg-table tr{border-bottom:1px solid var(--line)}.nmg-table td{border:0;padding:6px 14px}}
-/* tendințe */
-.nmg-trend{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.nmg-trend div{padding:26px;background:#fff;border:1px solid var(--line)}
-.nmg-trend b{display:block;font:500 30px/1 var(--serif);color:var(--ink);margin-bottom:12px}
-.nmg-trend ul{margin:0;padding:0;list-style:none}.nmg-trend li{padding:8px 0;border-top:1px solid var(--line)}
-.nmg-trend div:first-child li::before{content:"✓";color:#5E7F6B;margin-right:10px}
-.nmg-trend div:last-child li::before{content:"×";color:var(--orange);margin-right:10px}
+/* tendințe + stiluri */
+.nmg-trend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.nmg-trend div{padding:26px;border-radius:24px;color:#fff}
+.nmg-trend div:first-child{background:linear-gradient(135deg,#1FA38A,#5BC6E8)}
+.nmg-trend div:last-child{background:linear-gradient(135deg,#8A8796,#C9C6D3)}
+.nmg-trend b{display:block;font:500 30px/1 var(--display);margin-bottom:12px;letter-spacing:-.03em}
+.nmg-trend ul{margin:0;padding:0;list-style:none}.nmg-trend li{padding:8px 0;border-top:1px solid #ffffff40}
+.nmg-trend div:first-child li::before{content:"✓";margin-right:10px}
+.nmg-trend div:last-child li::before{content:"×";margin-right:10px}
 @media (max-width:640px){.nmg-trend{grid-template-columns:1fr}}
-/* stiluri */
-.nmg-styles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
-.nmg-styles>div{padding:24px;background:#fff;border:1px solid var(--line)}
-.nmg-styles b{display:block;font:500 28px/1 var(--serif);color:var(--ink)}
+.nmg-styles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.nmg-styles>div{padding:24px;border-radius:24px;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden}
+.nmg-styles>div::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--g)}
+.nmg-styles b{display:block;font:500 24px/1.1 var(--display);color:var(--ink);letter-spacing:-.02em}
 .nmg-styles p{margin:8px 0 12px;font-size:15px}
 .nmg-styles ul{margin:0;padding:0;list-style:none;font-size:14.5px}
 .nmg-styles li a{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--line)}
 .nmg-styles li a:hover{color:var(--orange)}
 @media (max-width:820px){.nmg-styles{grid-template-columns:1fr}}
-/* citat */
-.nmg .nmg-quote{padding:0 20px;margin:clamp(50px,6vw,90px) auto 0;max-width:820px;text-align:center;font:italic 400 clamp(28px,3.4vw,44px)/1.25 var(--serif);color:var(--ink)}
-.nmg-quote span{display:block;margin-top:14px;font:400 11.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-style:normal}
-/* faq */
-.nmg details{border-bottom:1px solid #29292B26}.nmg details:first-of-type{border-top:1px solid #29292B26}
-.nmg summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font:500 23px/1.25 var(--serif);color:var(--ink)}
-.nmg summary::-webkit-details-marker{display:none}.nmg summary::after{content:"+";font:300 24px/1 var(--sans);color:var(--orange)}
+.nmg .nmg-quote{margin:clamp(50px,6vw,90px) auto 0;max-width:900px;padding:clamp(30px,4vw,56px);border-radius:28px;background:var(--g-hero);text-align:center;font:500 clamp(24px,3vw,38px)/1.25 var(--display);letter-spacing:-.025em;color:var(--ink)}
+.nmg-quote span{display:block;margin-top:14px;font:500 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.nmg details{margin-bottom:10px;padding:0 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.nmg summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font:500 19px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+.nmg summary::-webkit-details-marker{display:none}.nmg summary::after{content:"+";font:400 22px/1 var(--sans);color:var(--orange)}
 .nmg details[open] summary::after{content:"–"}
-/* cta */
-.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(48px,7vw,96px) clamp(20px,4vw,60px);text-align:center;background:#fff;border-top:1px solid var(--line)}
-.nmg-cta h2{font-size:clamp(40px,5vw,70px)}
+.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(56px,8vw,110px) clamp(20px,4vw,60px);text-align:center;background:linear-gradient(125deg,#FF671F 0%,#F2459B 50%,#7B5CF5 100%);color:#fff}
+.nmg-cta h2,.nmg-cta h2 em{color:#fff;-webkit-text-fill-color:#fff;background:none}
+.nmg-cta .nmg-kick{color:var(--ink)}
 .nmg-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
-.nmg-btn{display:inline-flex;align-items:center;height:54px;padding:0 30px;font:500 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:#fff!important;transition:background .3s}
-.nmg-btn:hover{background:var(--orange)}
-.nmg-btn--ghost{background:transparent;color:var(--ink)!important;border:1px solid #29292B40}
-.nmg-btn--ghost:hover{background:var(--ink);color:#fff!important}
-.nmg-note{margin-top:28px;font-size:13px;color:var(--muted)}
+.nmg-btn{display:inline-flex;align-items:center;height:54px;padding:0 28px;border-radius:999px;font:500 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;background:#fff;color:var(--ink)!important;transition:transform .2s}
+.nmg-btn:hover{transform:translateY(-2px)}
+.nmg-btn--ghost{background:#ffffff26;color:#fff!important;border:1px solid #ffffff80}
+.nmg-note{margin-top:28px;font-size:13px;opacity:.85}
+.nmg h2,.nmg h3,.nmg-label b,.nmg-plan b,.nmg summary,.nmg-table td{font-variant-numeric:lining-nums}
 </style>
 <div class="nmg">
 <header class="nmg-hero"><div class="nmg-wide">
-<span class="nmg-kick">Ghid NMC · amenajare interioară și exterioară</span>
+<span class="nmg-kick">NMC prezintă · Expoziția virtuală a casei</span>
 <h2>Galeria NMC:<br><em>casa ta, expusă ca o operă de artă.</em></h2>
 <p class="nmg-lead">Un tur ghidat prin cinci săli: fațada, lumina, tavanul, pereții și textura. Pentru fiecare, problema pe care probabil nu știi că o ai și soluția care o transformă în detaliu de arhitectură.</p>
-<div class="nmg-meta"><span>Timp de citire · 12 min</span><span>Stil · scandinav luminos</span><span>Interior + exterior</span></div>
+<div class="nmg-meta"><span>Timp de citire · 12 min</span><span>5 săli · 11 opere</span><span>Interior + exterior</span></div>
 <div class="nmg-frame"><img src="img/vila-alba.jpg" alt="Vilă albă cu ancadramente și cornișe decorative" loading="eager"></div>
 <span class="nmg-label"><b>„Casa albă”</b>Fațadă cu ancadramente, cornișă și solbancuri · Profile decorative NMC</span>
-<nav class="nmg-plan" aria-label="Planul galeriei"><a href="#fatada"><b>I</b><span>Fațada</span></a><a href="#lumina"><b>II</b><span>Lumina</span></a><a href="#tavan"><b>III</b><span>Tavanul</span></a><a href="#pereti"><b>IV</b><span>Pereții</span></a><a href="#textura"><b>V</b><span>Textura</span></a></nav></div></header>
+<nav class="nmg-plan" aria-label="Planul galeriei"><a href="#fatada" style="--g:linear-gradient(135deg,#FF9A6B 0%,#F27BAE 50%,#9C8CF2 100%)"><b>I</b><span>Fațada</span></a><a href="#lumina" style="--g:linear-gradient(135deg,#FFB547 0%,#FF7A59 55%,#E8507E 100%)"><b>II</b><span>Lumina</span></a><a href="#tavan" style="--g:linear-gradient(135deg,#6C7CF7 0%,#9A6DF0 50%,#D27BEA 100%)"><b>III</b><span>Tavanul</span></a><a href="#pereti" style="--g:linear-gradient(135deg,#2BB5A0 0%,#57C5D8 50%,#7E9CF4 100%)"><b>IV</b><span>Pereții</span></a><a href="#textura" style="--g:linear-gradient(135deg,#C98A63 0%,#D9798F 50%,#8F7BD6 100%)"><b>V</b><span>Textura</span></a></nav></div></header>
 <section class="nmg-sec"><div class="nmg-in"><span class="nmg-kick">Înainte de tur</span>
 <h2>De ce privim altfel<br><em>o galerie de artă?</em></h2>
 <p>Când intri într-un muzeu precum Luvrul, nu te întrebi din ce sunt făcute ramele sau cum e montată lumina. Simți doar că totul este <strong>la locul lui</strong>: proporții calme, lumină care pune în valoare, spațiu care te lasă să respiri.</p>
@@ -127,7 +136,7 @@
 <p>În acest ghid te luăm într-un tur prin cinci săli ale casei. Fiecare operă are o <strong>problemă ascunsă</strong>, una pe care majoritatea oamenilor o observă abia după ce au rezolvat-o, și o <strong>soluție NMC</strong>, prezentată ca un exponat, cu plăcuța lui de muzeu.</p>
 <h3 style="margin-top:44px">Cele cinci reguli ale galeriei</h3>
 <ol class="nmg-rules"><li><div><b>Lumina naturală e prima operă</b>Nu o bloca. Alege tonuri deschise, calde, care o reflectă: alb cald, gresie, nisip, gri perlat.</div></li><li><div><b>Rama face opera</b>Ferestre, uși, tavane și pereți arată „scump” doar când sunt încadrați: ancadramente, cornișe, chenare.</div></li><li><div><b>Spațiul gol e un lux</b>Mai puține obiecte, mai bine alese. Lasă aer între chenare, între mobile, între decorațiuni.</div></li><li><div><b>Lemnul și albul cald</b>Combinația scandinavă care nu se demodează: profile albe, riflaj din stejar, textile naturale.</div></li><li><div><b>Detaliul se vede de aproape</b>Îmbinări curate, chit fin, vopsea uniformă. Galeriile sunt perfecte la un pas distanță.</div></li></ol></div></section>
-<section class="nmg-room" id="fatada"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">I</span><span class="sub">Sala I · Prima impresie, de la poartă</span><h2>Fațada</h2><p>Musafirii îți „citesc” casa în primele secunde, de la poartă. Nu analizează materialele: simt proporția, umbra și finisajul. O fațadă fără detalii arhitecturale pare neterminată, oricât de scump a fost construită.</p></div>
+<section class="nmg-room" id="fatada" style="--g:linear-gradient(135deg,#FF9A6B 0%,#F27BAE 50%,#9C8CF2 100%)"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">I</span><span class="sub">Sala I · Prima impresie, de la poartă</span><h2>Fațada</h2><p>Musafirii îți „citesc” casa în primele secunde, de la poartă. Nu analizează materialele: simt proporția, umbra și finisajul. O fațadă fără detalii arhitecturale pare neterminată, oricât de scump a fost construită.</p></div>
 <article class="nmg-work"><div class="nmg-work__art"><div class="nmg-frame"><img src="img/ext-ferestre.jpg" alt="Fereastra care nu are ramă" loading="lazy"></div>
 <span class="nmg-label"><b>„Fereastra care nu are ramă”</b>Sala I · Fațada · imagine de inspirație</span></div>
 <div><span class="nmg-work__nr">Opera I.1</span><h3>Fereastra care nu are ramă</h3>
@@ -157,7 +166,7 @@
 <div class="nmg-pieces"><a class="nmg-piece" href="https://www.nmcromania.ro/termosistem-decorativ-fuga-panel-1-de-4-cm-500x40x2000"><div class="nmg-frame"><img src="img/fuga1.jpg" alt="Termosistem FUGA PANEL 1" loading="lazy"></div>
 <span class="nmg-label"><b>Termosistem FUGA PANEL 1</b>Termosistem decorativ ADRo®<br>500 × 40 × 2000 mm<br><i>Vezi exponatul →</i></span></a><a class="nmg-piece" href="https://www.nmcromania.ro/termosistem-decorativ-sidding-panel-3-500x40x2000"><div class="nmg-frame"><img src="img/sid3.jpg" alt="Termosistem SIDDING PANEL 3" loading="lazy"></div>
 <span class="nmg-label"><b>Termosistem SIDDING PANEL 3</b>Termosistem decorativ ADRo®<br>500 × 40 × 2000 mm<br><i>Vezi exponatul →</i></span></a></div></div></article></div></section>
-<section class="nmg-room" id="lumina"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">II</span><span class="sub">Sala II · Arta luminii indirecte</span><h2>Lumina</h2><p>Într-o galerie nu vezi niciodată becul, vezi doar opera. Lumina indirectă face același lucru acasă: pune în valoare pereții și ascunde sursa.</p></div>
+<section class="nmg-room" id="lumina" style="--g:linear-gradient(135deg,#FFB547 0%,#FF7A59 55%,#E8507E 100%)"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">II</span><span class="sub">Sala II · Arta luminii indirecte</span><h2>Lumina</h2><p>Într-o galerie nu vezi niciodată becul, vezi doar opera. Lumina indirectă face același lucru acasă: pune în valoare pereții și ascunde sursa.</p></div>
 <article class="nmg-work"><div class="nmg-work__art"><div class="nmg-frame"><img src="img/int-led.jpg" alt="Lumina care obosește" loading="lazy"></div>
 <span class="nmg-label"><b>„Lumina care obosește”</b>Sala II · Lumina · imagine de inspirație</span></div>
 <div><span class="nmg-work__nr">Opera II.1</span><h3>Lumina care obosește</h3>
@@ -165,7 +174,7 @@
 <div class="nmg-sol"><small>Soluția NMC</small>O plintă cu LED trasează o linie fină de lumină la nivelul podelei. Ghidează pașii noaptea, alungește vizual camera și creează atmosfera unui hotel boutique.</div>
 <div class="nmg-pieces"><a class="nmg-piece" href="https://www.nmcromania.ro/plinta-decorativa-il11-neagra-80x20x2000"><div class="nmg-frame"><img src="img/il11.jpg" alt="Plintă LED IL11 neagră" loading="lazy"></div>
 <span class="nmg-label"><b>Plintă LED IL11 neagră</b>Polimer dur · Noël &amp; Marquet<br>80 × 20 × 2000 mm<br><i>Vezi exponatul →</i></span></a></div></div></article></div></section>
-<section class="nmg-room" id="tavan"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">III</span><span class="sub">Sala III · A cincea fațadă a camerei</span><h2>Tavanul</h2><p>Tavanul este suprafața pe care o vedem cel mai puțin și cea care schimbă cel mai mult proporțiile. Galeriile clasice știu asta de secole.</p></div>
+<section class="nmg-room" id="tavan" style="--g:linear-gradient(135deg,#6C7CF7 0%,#9A6DF0 50%,#D27BEA 100%)"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">III</span><span class="sub">Sala III · A cincea fațadă a camerei</span><h2>Tavanul</h2><p>Tavanul este suprafața pe care o vedem cel mai puțin și cea care schimbă cel mai mult proporțiile. Galeriile clasice știu asta de secole.</p></div>
 <article class="nmg-work"><div class="nmg-work__art"><div class="nmg-frame"><img src="img/z19-amb.jpg" alt="Fisura pe care o tot vopsești" loading="lazy"></div>
 <span class="nmg-label"><b>„Fisura pe care o tot vopsești”</b>Sala III · Tavanul · imagine de inspirație</span></div>
 <div><span class="nmg-work__nr">Opera III.1</span><h3>Fisura pe care o tot vopsești</h3>
@@ -181,7 +190,7 @@
 <div class="nmg-sol"><small>Soluția NMC</small>Rozeta din poliuretan creează un punct focal deasupra mesei sau a canapelei și ascunde imperfecțiunile din jurul prinderii.</div>
 <div class="nmg-pieces"><a class="nmg-piece" href="https://www.nmcromania.ro/rozeta-decorativar8-arstyl"><div class="nmg-frame"><img src="img/r8.jpg" alt="Rozetă R8" loading="lazy"></div>
 <span class="nmg-label"><b>Rozetă R8</b>Poliuretan · Arstyl<br>Ø 495 mm<br><i>Vezi exponatul →</i></span></a></div></div></article></div></section>
-<section class="nmg-room" id="pereti"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">IV</span><span class="sub">Sala IV · Simezele casei tale</span><h2>Pereții</h2><p>Un perete gol nu este minimalist, este neterminat. În stil scandinav, pereții au structură discretă: chenare fine, plinte curate, totul în tonuri calde și luminoase.</p></div>
+<section class="nmg-room" id="pereti" style="--g:linear-gradient(135deg,#2BB5A0 0%,#57C5D8 50%,#7E9CF4 100%)"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">IV</span><span class="sub">Sala IV · Simezele casei tale</span><h2>Pereții</h2><p>Un perete gol nu este minimalist, este neterminat. În stil scandinav, pereții au structură discretă: chenare fine, plinte curate, totul în tonuri calde și luminoase.</p></div>
 <article class="nmg-work"><div class="nmg-work__art"><div class="nmg-frame"><img src="img/sala-perete-chenare.jpg" alt="Peretele care nu „ține” mobila" loading="lazy"></div>
 <span class="nmg-label"><b>„Peretele care nu „ține” mobila”</b>Sala IV · Pereții · imagine de inspirație</span></div>
 <div><span class="nmg-work__nr">Opera IV.1</span><h3>Peretele care nu „ține” mobila</h3>
@@ -197,7 +206,7 @@
 <div class="nmg-pieces"><a class="nmg-piece" href="https://www.nmcromania.ro/plintafl2-wallstyl"><div class="nmg-frame"><img src="img/fl2.jpg" alt="Plintă FL2" loading="lazy"></div>
 <span class="nmg-label"><b>Plintă FL2</b>Polimer dur · Wallstyl<br>120 × 15 × 2000 mm<br><i>Vezi exponatul →</i></span></a><a class="nmg-piece" href="https://www.nmcromania.ro/plinta-decorativa-ft2-neagra-58x13x2000"><div class="nmg-frame"><img src="img/ft2.jpg" alt="Plintă FT2 neagră" loading="lazy"></div>
 <span class="nmg-label"><b>Plintă FT2 neagră</b>Polimer dur · Noël &amp; Marquet<br>58 × 13 × 2000 mm<br><i>Vezi exponatul →</i></span></a></div></div></article></div></section>
-<section class="nmg-room" id="textura"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">V</span><span class="sub">Sala V · Liniște, lemn și marmură</span><h2>Textura</h2><p>Ultima sală este despre simțuri: cum sună camera și ce simți când atingi peretele. Aici stă diferența dintre o casă frumoasă și una în care te simți bine.</p></div>
+<section class="nmg-room" id="textura" style="--g:linear-gradient(135deg,#C98A63 0%,#D9798F 50%,#8F7BD6 100%)"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">V</span><span class="sub">Sala V · Liniște, lemn și marmură</span><h2>Textura</h2><p>Ultima sală este despre simțuri: cum sună camera și ce simți când atingi peretele. Aici stă diferența dintre o casă frumoasă și una în care te simți bine.</p></div>
 <article class="nmg-work"><div class="nmg-work__art"><div class="nmg-frame"><img src="img/int-living.jpg" alt="Ecoul din open-space" loading="lazy"></div>
 <span class="nmg-label"><b>„Ecoul din open-space”</b>Sala V · Textura · imagine de inspirație</span></div>
 <div><span class="nmg-work__nr">Opera V.1</span><h3>Ecoul din open-space</h3>
@@ -222,7 +231,7 @@
 <p>Modele vin și pleacă. Proporția, lumina și materialele naturale rămân. Iată ce recomandăm pentru o casă care arată la fel de bine și peste zece ani:</p>
 <div class="nmg-trend"><div><b>Rămân</b><ul><li>Profile albe vopsite ton-pe-ton</li><li>Lumină indirectă, caldă</li><li>Lemn natural și riflaj</li><li>Chenare fine, proporționate</li><li>Fațade albe/nisip cu ancadramente</li></ul></div><div><b>Trec</b><ul><li>Tavane false cu multe spoturi</li><li>Gri rece pe toate suprafețele</li><li>Plinte joase din PVC</li><li>Pereți de accent în culori stridente</li><li>Fațade fără nicio umbră</li></ul></div></div>
 <h3 style="margin-top:56px">Ghidul curatorului: trei stiluri, patru exponate</h3>
-<div class="nmg-styles"><div><b>Scandinav cald</b><p>Alb cald, stejar, in și lână.</p><ul><li><a href='https://www.nmcromania.ro/profil-decorativ-wl11'>Profil WL11<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plintafl2-wallstyl'>Plintă FL2<span>→</span></a></li><li><a href='https://www.nmcromania.ro/riflaj-acustic-panou-3d-stejar-deschis'>Riflaj acustic · stejar deschis<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plinta-decorativa-tavan-arstyl-z19'>Cornișă Z19<span>→</span></a></li></ul></div><div><b>Clasic parizian</b><p>Chenare mari, cornișă, rozetă, parchet în spic.</p><ul><li><a href='https://www.nmcromania.ro/brau-z1360'>Brâu Z1360<span>→</span></a></li><li><a href='https://www.nmcromania.ro/cornisa-decorativa-wt17'>Cornișă WT17<span>→</span></a></li><li><a href='https://www.nmcromania.ro/rozeta-decorativar8-arstyl'>Rozetă R8<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plintafl2-wallstyl'>Plintă FL2<span>→</span></a></li></ul></div><div><b>Minimal contemporan</b><p>Linii negre, lumină ascunsă, contrast grafic.</p><ul><li><a href='https://www.nmcromania.ro/plinta-decorativa-ft2-neagra-58x13x2000'>Plintă FT2 neagră<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plinta-decorativa-il11-neagra-80x20x2000'>Plintă LED IL11 neagră<span>→</span></a></li><li><a href='https://www.nmcromania.ro/cornisa-decorativawt10-wallstyl'>Cornișă WT10<span>→</span></a></li><li><a href='https://www.nmcromania.ro/riflaj-acustic-panou-3d-stejar-inchis'>Riflaj acustic · stejar închis<span>→</span></a></li></ul></div></div></div></section>
+<div class="nmg-styles"><div style="--g:linear-gradient(90deg,#57C5D8,#7E9CF4)"><b>Scandinav cald</b><p>Alb cald, stejar, in și lână.</p><ul><li><a href='https://www.nmcromania.ro/profil-decorativ-wl11'>Profil WL11<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plintafl2-wallstyl'>Plintă FL2<span>→</span></a></li><li><a href='https://www.nmcromania.ro/riflaj-acustic-panou-3d-stejar-deschis'>Riflaj acustic · stejar deschis<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plinta-decorativa-tavan-arstyl-z19'>Cornișă Z19<span>→</span></a></li></ul></div><div style="--g:linear-gradient(90deg,#FF9A6B,#F27BAE)"><b>Clasic parizian</b><p>Chenare mari, cornișă, rozetă, parchet în spic.</p><ul><li><a href='https://www.nmcromania.ro/brau-z1360'>Brâu Z1360<span>→</span></a></li><li><a href='https://www.nmcromania.ro/cornisa-decorativa-wt17'>Cornișă WT17<span>→</span></a></li><li><a href='https://www.nmcromania.ro/rozeta-decorativar8-arstyl'>Rozetă R8<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plintafl2-wallstyl'>Plintă FL2<span>→</span></a></li></ul></div><div style="--g:linear-gradient(90deg,#6C7CF7,#D27BEA)"><b>Minimal contemporan</b><p>Linii negre, lumină ascunsă, contrast grafic.</p><ul><li><a href='https://www.nmcromania.ro/plinta-decorativa-ft2-neagra-58x13x2000'>Plintă FT2 neagră<span>→</span></a></li><li><a href='https://www.nmcromania.ro/plinta-decorativa-il11-neagra-80x20x2000'>Plintă LED IL11 neagră<span>→</span></a></li><li><a href='https://www.nmcromania.ro/cornisa-decorativawt10-wallstyl'>Cornișă WT10<span>→</span></a></li><li><a href='https://www.nmcromania.ro/riflaj-acustic-panou-3d-stejar-inchis'>Riflaj acustic · stejar închis<span>→</span></a></li></ul></div></div></div></section>
 <section class="nmg-sec" id="intrebari"><div class="nmg-in"><span class="nmg-kick">Întrebări frecvente</span><h2>Bine de<br><em>știut.</em></h2><details><summary>Profilele de exterior rezistă în timp?</summary><p>Profilele ADRo® sunt realizate din polistiren de înaltă densitate, protejat cu un strat mineral, și sunt rezistente la șocuri, radiații UV, îngheț și umezeală. Se vopsesc cu vopsea acrilică de exterior, în orice culoare.</p></details><details><summary>Pot monta singur profilele de interior?</summary><p>Da. Profilele de interior se lipesc cu adeziv, se taie cu un fierăstrău fin și o cutie de îmbinări, apoi se chituiesc îmbinările și se vopsesc. Pentru fațade și termosisteme recomandăm o echipă de montaj.</p></details><details><summary>Cum aleg dimensiunea potrivită?</summary><p>Regula de bază: profilul trebuie să fie proporțional cu suprafața. Pe tavane înalte și fațade mari alege secțiuni generoase; în camere mici, profile fine. Echipa NMC te ajută gratuit cu alegerea și cu necesarul.</p></details><details><summary>Cât de repede primesc produsele?</summary><p>NMC menține stocuri mari, iar produsele aflate în stoc se pregătesc imediat pentru livrare. Disponibilitatea apare pe pagina fiecărui produs.</p></details><details><summary>Se potrivesc profilele într-un apartament?</summary><p>Absolut. Tocmai în spațiile standard, o cornișă, o plintă înaltă sau câteva chenare fac cea mai mare diferență, fără lucrări de construcție.</p></details></div></section>
 <section class="nmg-cta"><span class="nmg-kick">Consultanță gratuită</span>
 <h2>Vrei ca și casa ta<br><em>să arate ca o galerie?</em></h2>

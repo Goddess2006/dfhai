@@ -44,6 +44,14 @@ PR = {p["id"]: p for p in [
 ]}
 
 # Fiecare „sală” are opere (exponate): imagine + problema ascunsă + soluția + produsele
+GRAD = {
+    "fatada": "linear-gradient(135deg,#FF9A6B 0%,#F27BAE 50%,#9C8CF2 100%)",
+    "lumina": "linear-gradient(135deg,#FFB547 0%,#FF7A59 55%,#E8507E 100%)",
+    "tavan": "linear-gradient(135deg,#6C7CF7 0%,#9A6DF0 50%,#D27BEA 100%)",
+    "pereti": "linear-gradient(135deg,#2BB5A0 0%,#57C5D8 50%,#7E9CF4 100%)",
+    "textura": "linear-gradient(135deg,#C98A63 0%,#D9798F 50%,#8F7BD6 100%)",
+}
+
 SALI = [
     dict(id="fatada", nr="I", nume="Fațada", sub="Prima impresie, de la poartă", intro=
          "Musafirii îți „citesc” casa în primele secunde, de la poartă. Nu analizează materialele: simt proporția, umbra și finisajul. O fațadă fără detalii arhitecturale pare neterminată, oricât de scump a fost construită.",
@@ -128,114 +136,123 @@ FAQ = [
 ]
 
 CSS = r"""
-.nmg{--wall:#FAF8F4;--wall2:#F1EEE8;--stone:#E4DFD6;--oak:#C9A57E;--ink:#29292B;--ink2:#4A4A4F;--muted:#8A8580;--line:#29292B1a;--orange:#FF671F;
- --serif:"Cormorant Garamond",Georgia,serif;--sans:"Roboto",system-ui,sans-serif;
- font:300 17.5px/1.8 var(--sans);color:var(--ink2);background:var(--wall);border-radius:6px;overflow:hidden}
+.nmg{--ink:#16151C;--ink2:#3C3A46;--muted:#77737F;--line:#16151C14;--orange:#FF671F;--orange2:#FF9A5C;
+ --g-hero:linear-gradient(125deg,#FFE3D3 0%,#F6D3E6 28%,#D9D4F7 58%,#CDE9F2 100%);
+ --g-brand:linear-gradient(100deg,#FF671F 0%,#F2459B 45%,#7B5CF5 100%);
+ --display:"Space Grotesk",system-ui,sans-serif;--sans:"Roboto",system-ui,sans-serif;
+ font:300 17.5px/1.8 var(--sans);color:var(--ink2);background:#FBFAFD;border-radius:28px;overflow:hidden;position:relative}
 .nmg *{box-sizing:border-box}.nmg img{display:block;max-width:100%;height:auto}.nmg a{color:inherit;text-decoration:none}
 .nmg p{margin:0 0 1em}.nmg strong{font-weight:500;color:var(--ink)}
-.nmg h2,.nmg h3{font-family:var(--serif);font-weight:500;color:var(--ink);letter-spacing:-.005em;margin:0}
-.nmg h2{font-size:clamp(38px,4.4vw,62px);line-height:1.05;margin-bottom:20px}
-.nmg h3{font-size:clamp(30px,3vw,42px);line-height:1.1;margin-bottom:12px}
-.nmg h2 em,.nmg h3 em{font-style:italic;font-weight:400;color:#8B6B4A}
+.nmg h2,.nmg h3{font-family:var(--display);font-weight:500;color:var(--ink);letter-spacing:-.035em;margin:0}
+.nmg h2{font-size:clamp(36px,4.6vw,64px);line-height:1.02;margin-bottom:20px}
+.nmg h3{font-size:clamp(26px,2.6vw,36px);line-height:1.1;margin-bottom:12px}
+.nmg h2 em,.nmg h3 em{font-style:normal;background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nmg-in{max-width:860px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 .nmg-wide{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
-.nmg-kick{display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;font:400 11.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg-kick::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.nmg-kick{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 14px;border-radius:999px;background:#ffffffb3;border:1px solid #ffffff;backdrop-filter:blur(10px);font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.nmg-kick::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--g-brand)}
 .nmg-sec{padding:clamp(56px,7vw,110px) 0 0}
-/* ramă de galerie */
-.nmg-frame{background:#fff;padding:clamp(10px,1.6vw,22px);box-shadow:0 1px 0 #0000000a,0 30px 60px -36px #29292B66,0 10px 18px -12px #29292B33;border:1px solid #29292B12}
+/* „rama” = ecran de expoziție digitală */
+.nmg-frame{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -40px #3B2A6E66,0 0 0 1px #ffffff}
+.nmg-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #ffffff66;pointer-events:none}
 .nmg-frame img{width:100%;object-fit:cover}
-.nmg-frame--dark{background:#1d1d1f;border-color:#1d1d1f}
 /* hero */
-.nmg-hero{padding:clamp(48px,7vw,100px) 0 clamp(36px,4vw,60px);background:linear-gradient(180deg,#FFFFFF 0%,var(--wall) 100%);text-align:center}
-.nmg h2,.nmg h3,.nmg-label b,.nmg-plan b,.nmg summary,.nmg-table td{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
-.nmg-hero h2{font-size:clamp(48px,6.6vw,96px);line-height:.98;margin:16px 0 22px}
+.nmg-hero{position:relative;padding:clamp(56px,8vw,120px) 0 clamp(40px,5vw,70px);text-align:center;background:var(--g-hero);overflow:hidden}
+.nmg-hero::before,.nmg-hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.8;pointer-events:none}
+.nmg-hero::before{width:520px;height:520px;left:-140px;top:-120px;background:#FFB48A}
+.nmg-hero::after{width:560px;height:560px;right:-160px;bottom:-200px;background:#9DB8FF}
+.nmg-hero>*{position:relative;z-index:1}
+.nmg-hero h2{font-size:clamp(46px,7vw,104px);line-height:.95;margin:18px 0 24px}
 .nmg .nmg-lead{max-width:680px;margin:0 auto;font-size:19.5px;color:var(--ink2)}
-.nmg-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 24px;margin-top:22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.nmg-hero .nmg-frame{max-width:980px;margin:clamp(36px,5vw,64px) auto 0}
+.nmg-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 10px;margin-top:24px}
+.nmg-meta span{padding:7px 14px;border-radius:999px;background:#ffffff80;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.nmg-hero .nmg-frame{max-width:1000px;margin:clamp(36px,5vw,64px) auto 0}
 .nmg-hero .nmg-frame img{aspect-ratio:16/9}
-.nmg-label{display:inline-block;margin-top:14px;padding:10px 16px;background:#fff;border:1px solid var(--line);text-align:left;font-size:12.5px;line-height:1.5;color:var(--muted)}
-.nmg-label b{display:block;font:italic 500 17px/1.2 var(--serif);color:var(--ink)}
-/* cuprins (plan muzeu) */
-.nmg-plan{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.nmg-plan a{padding:22px 16px;border-left:1px solid var(--line);text-align:center;transition:background .3s}
-.nmg-plan a:first-child{border-left:0}.nmg-plan a:hover{background:#fff}
-.nmg-plan b{display:block;font:400 34px/1 var(--serif);color:var(--ink)}
-.nmg-plan span{display:block;margin-top:8px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:760px){.nmg-plan{grid-template-columns:1fr 1fr}.nmg-plan a:nth-child(odd){border-left:0}.nmg-plan a{border-top:1px solid var(--line)}}
+.nmg-label{display:inline-flex;flex-direction:column;margin-top:12px;padding:10px 16px;border-radius:14px;background:#ffffffcc;border:1px solid #fff;backdrop-filter:blur(10px);text-align:left;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.nmg-label b{font:500 15px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+/* harta expoziției */
+.nmg-plan{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:clamp(36px,4vw,56px)}
+.nmg-plan a{padding:20px 14px;border-radius:18px;background:var(--g);color:#fff;text-align:left;transition:transform .3s}
+.nmg-plan a:hover{transform:translateY(-4px)}
+.nmg-plan b{display:block;font:500 32px/1 var(--display);letter-spacing:-.03em}
+.nmg-plan span{display:block;margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.9}
+@media (max-width:760px){.nmg-plan{grid-template-columns:1fr 1fr}}
 /* reguli */
-.nmg-rules{counter-reset:r;margin:22px 0 0;padding:0;list-style:none}
-.nmg-rules li{counter-increment:r;display:grid;grid-template-columns:70px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
-.nmg-rules li::before{content:counter(r,upper-roman);font:italic 400 30px/1 var(--serif);color:var(--oak)}
-.nmg-rules b{display:block;font:500 24px/1.2 var(--serif);color:var(--ink);margin-bottom:4px}
-/* sală */
-.nmg-room{padding:clamp(70px,9vw,140px) 0 0}
-.nmg-room__head{text-align:center;max-width:760px;margin:0 auto}
-.nmg-room__nr{display:block;font:italic 400 clamp(70px,9vw,130px)/.9 var(--serif);color:transparent;-webkit-text-stroke:1px #8B6B4A88}
-.nmg-room__head h2{margin-top:6px}
-.nmg-room__head .sub{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg .nmg-room__head p{margin-top:18px}
-/* operă */
-.nmg-work{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:start;padding:clamp(48px,6vw,90px) 0 0}
+.nmg-rules{counter-reset:r;margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.nmg-rules li{counter-increment:r;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:18px 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.nmg-rules li::before{content:"0" counter(r);font:500 22px/1 var(--display);background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nmg-rules b{display:block;font:500 20px/1.25 var(--display);color:var(--ink);margin-bottom:4px;letter-spacing:-.01em}
+/* sală = încăpere a expoziției, cu degradeul ei */
+.nmg-room{margin-top:clamp(56px,7vw,100px);padding:clamp(56px,7vw,100px) 0;background:var(--g);position:relative}
+.nmg-room::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 0%,#ffffff55,transparent 70%),linear-gradient(180deg,transparent 60%,#FBFAFD 100%);pointer-events:none}
+.nmg-room>*{position:relative}
+.nmg-room__head{text-align:left;max-width:760px}
+.nmg-room__nr{display:block;margin-bottom:12px;font:500 clamp(64px,8vw,120px)/.9 var(--display);letter-spacing:-.05em;color:#ffffffd9}
+.nmg-room__head h2{margin-top:4px;color:#fff}
+.nmg-room__head .sub{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff33;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.nmg .nmg-room__head p{margin-top:18px;color:#ffffffe6;font-size:18.5px}
+.nmg-work{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(36px,4vw,60px);padding:clamp(18px,2.4vw,30px);border-radius:28px;background:#ffffffd9;backdrop-filter:blur(16px);border:1px solid #ffffff;box-shadow:0 40px 80px -50px #1d123d55}
 .nmg-work:nth-child(even) .nmg-work__art{order:2}
 .nmg-work__art .nmg-frame img{aspect-ratio:4/3}
-.nmg-work__nr{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.nmg-pb{margin:18px 0;padding:18px 20px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--orange)}
-.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
-.nmg-sol{padding:0 0 0 23px}
-.nmg-sol small{color:#8B6B4A}
-@media (max-width:560px){.nmg-pieces{grid-template-columns:1fr 1fr;gap:10px}.nmg-piece .nmg-label{font-size:10.5px}.nmg-piece .nmg-label b{font-size:15px}}
+.nmg-work__nr{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--g);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.nmg-work h3{margin-top:12px}
+.nmg-pb{margin:16px 0;padding:16px 18px;border-radius:16px;background:#FFF2EA;border:1px solid #FFD9C4}
+.nmg-sol{padding:16px 18px;border-radius:16px;background:#F2F0FF;border:1px solid #DCD6FF}
+.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.nmg-sol small{color:#6A4FE0}
 @media (max-width:860px){.nmg-work{grid-template-columns:1fr}.nmg-work:nth-child(even) .nmg-work__art{order:0}}
-/* exponate (produse) cu plăcuță de muzeu */
-.nmg-pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;margin-top:22px}
-.nmg-piece{display:block}
-.nmg-piece .nmg-frame{padding:10px}
-.nmg-piece .nmg-frame img{aspect-ratio:1;object-fit:contain;background:#fff}
-.nmg-piece .nmg-label{display:block;margin-top:10px;font-size:11.5px}
-.nmg-piece .nmg-label b{font-size:18px}
-.nmg-piece .nmg-label i{display:inline-block;margin-top:6px;font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
-.nmg-piece:hover .nmg-frame{transform:translateY(-3px)}.nmg-piece .nmg-frame{transition:transform .4s}
-/* tabel probleme */
-.nmg-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:15.5px;background:#fff}
+/* exponate */
+.nmg-pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:18px}
+.nmg-piece{display:flex;flex-direction:column;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.nmg-piece:hover{transform:translateY(-4px);box-shadow:0 24px 40px -26px #3B2A6E88}
+.nmg-piece .nmg-frame{border-radius:0;box-shadow:none;padding:8px}
+.nmg-piece .nmg-frame::after{display:none}
+.nmg-piece .nmg-frame img{aspect-ratio:1;object-fit:contain;border-radius:12px}
+.nmg-piece .nmg-label{display:block;margin:0;border:0;border-radius:0;background:transparent;padding:4px 12px 14px;font-size:11.5px;backdrop-filter:none}
+.nmg-piece .nmg-label b{display:block;font-size:15px}
+.nmg-piece .nmg-label i{display:inline-block;margin-top:6px;font-style:normal;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:560px){.nmg-pieces{grid-template-columns:1fr 1fr;gap:8px}}
+/* tabel */
+.nmg-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:24px;font-size:15.5px;background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line)}
 .nmg-table th,.nmg-table td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.nmg-table th{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--wall2)}
-.nmg-table td:first-child{font:500 19px/1.3 var(--serif);color:var(--ink);width:30%}
-.nmg-table a{color:#8B6B4A;text-decoration:underline;text-underline-offset:3px}
+.nmg-table th{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:500;background:var(--g-brand)}
+.nmg-table td:first-child{font:500 16.5px/1.3 var(--display);color:var(--ink);width:30%}
+.nmg-table a{color:#6A4FE0;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:640px){.nmg-table,.nmg-table tbody,.nmg-table tr,.nmg-table td{display:block;width:100%!important}.nmg-table thead{display:none}.nmg-table tr{border-bottom:1px solid var(--line)}.nmg-table td{border:0;padding:6px 14px}}
-/* tendințe */
-.nmg-trend{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.nmg-trend div{padding:26px;background:#fff;border:1px solid var(--line)}
-.nmg-trend b{display:block;font:500 30px/1 var(--serif);color:var(--ink);margin-bottom:12px}
-.nmg-trend ul{margin:0;padding:0;list-style:none}.nmg-trend li{padding:8px 0;border-top:1px solid var(--line)}
-.nmg-trend div:first-child li::before{content:"✓";color:#5E7F6B;margin-right:10px}
-.nmg-trend div:last-child li::before{content:"×";color:var(--orange);margin-right:10px}
+/* tendințe + stiluri */
+.nmg-trend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.nmg-trend div{padding:26px;border-radius:24px;color:#fff}
+.nmg-trend div:first-child{background:linear-gradient(135deg,#1FA38A,#5BC6E8)}
+.nmg-trend div:last-child{background:linear-gradient(135deg,#8A8796,#C9C6D3)}
+.nmg-trend b{display:block;font:500 30px/1 var(--display);margin-bottom:12px;letter-spacing:-.03em}
+.nmg-trend ul{margin:0;padding:0;list-style:none}.nmg-trend li{padding:8px 0;border-top:1px solid #ffffff40}
+.nmg-trend div:first-child li::before{content:"✓";margin-right:10px}
+.nmg-trend div:last-child li::before{content:"×";margin-right:10px}
 @media (max-width:640px){.nmg-trend{grid-template-columns:1fr}}
-/* stiluri */
-.nmg-styles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
-.nmg-styles>div{padding:24px;background:#fff;border:1px solid var(--line)}
-.nmg-styles b{display:block;font:500 28px/1 var(--serif);color:var(--ink)}
+.nmg-styles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.nmg-styles>div{padding:24px;border-radius:24px;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden}
+.nmg-styles>div::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--g)}
+.nmg-styles b{display:block;font:500 24px/1.1 var(--display);color:var(--ink);letter-spacing:-.02em}
 .nmg-styles p{margin:8px 0 12px;font-size:15px}
 .nmg-styles ul{margin:0;padding:0;list-style:none;font-size:14.5px}
 .nmg-styles li a{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--line)}
 .nmg-styles li a:hover{color:var(--orange)}
 @media (max-width:820px){.nmg-styles{grid-template-columns:1fr}}
-/* citat */
-.nmg .nmg-quote{padding:0 20px;margin:clamp(50px,6vw,90px) auto 0;max-width:820px;text-align:center;font:italic 400 clamp(28px,3.4vw,44px)/1.25 var(--serif);color:var(--ink)}
-.nmg-quote span{display:block;margin-top:14px;font:400 11.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-style:normal}
-/* faq */
-.nmg details{border-bottom:1px solid #29292B26}.nmg details:first-of-type{border-top:1px solid #29292B26}
-.nmg summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font:500 23px/1.25 var(--serif);color:var(--ink)}
-.nmg summary::-webkit-details-marker{display:none}.nmg summary::after{content:"+";font:300 24px/1 var(--sans);color:var(--orange)}
+.nmg .nmg-quote{margin:clamp(50px,6vw,90px) auto 0;max-width:900px;padding:clamp(30px,4vw,56px);border-radius:28px;background:var(--g-hero);text-align:center;font:500 clamp(24px,3vw,38px)/1.25 var(--display);letter-spacing:-.025em;color:var(--ink)}
+.nmg-quote span{display:block;margin-top:14px;font:500 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.nmg details{margin-bottom:10px;padding:0 20px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.nmg summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font:500 19px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+.nmg summary::-webkit-details-marker{display:none}.nmg summary::after{content:"+";font:400 22px/1 var(--sans);color:var(--orange)}
 .nmg details[open] summary::after{content:"–"}
-/* cta */
-.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(48px,7vw,96px) clamp(20px,4vw,60px);text-align:center;background:#fff;border-top:1px solid var(--line)}
-.nmg-cta h2{font-size:clamp(40px,5vw,70px)}
+.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(56px,8vw,110px) clamp(20px,4vw,60px);text-align:center;background:linear-gradient(125deg,#FF671F 0%,#F2459B 50%,#7B5CF5 100%);color:#fff}
+.nmg-cta h2,.nmg-cta h2 em{color:#fff;-webkit-text-fill-color:#fff;background:none}
+.nmg-cta .nmg-kick{color:var(--ink)}
 .nmg-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
-.nmg-btn{display:inline-flex;align-items:center;height:54px;padding:0 30px;font:500 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:#fff!important;transition:background .3s}
-.nmg-btn:hover{background:var(--orange)}
-.nmg-btn--ghost{background:transparent;color:var(--ink)!important;border:1px solid #29292B40}
-.nmg-btn--ghost:hover{background:var(--ink);color:#fff!important}
-.nmg-note{margin-top:28px;font-size:13px;color:var(--muted)}
+.nmg-btn{display:inline-flex;align-items:center;height:54px;padding:0 28px;border-radius:999px;font:500 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;background:#fff;color:var(--ink)!important;transition:transform .2s}
+.nmg-btn:hover{transform:translateY(-2px)}
+.nmg-btn--ghost{background:#ffffff26;color:#fff!important;border:1px solid #ffffff80}
+.nmg-note{margin-top:28px;font-size:13px;opacity:.85}
+.nmg h2,.nmg h3,.nmg-label b,.nmg-plan b,.nmg summary,.nmg-table td{font-variant-numeric:lining-nums}
 """
 
 
@@ -248,15 +265,15 @@ def piece(k, IMG):
 def article(IMG):
     t = []
     a = t.append
-    a('<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">')
+    a('<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">')
     a(f"<style>{CSS}</style>")
     a('<div class="nmg">')
-    plan = "".join(f'<a href="#{s["id"]}"><b>{s["nr"]}</b><span>{e(s["nume"])}</span></a>' for s in SALI)
+    plan = "".join(f'<a href="#{s["id"]}" style="--g:{GRAD[s["id"]]}"><b>{s["nr"]}</b><span>{e(s["nume"])}</span></a>' for s in SALI)
     a(f'''<header class="nmg-hero"><div class="nmg-wide">
-<span class="nmg-kick">Ghid NMC · amenajare interioară și exterioară</span>
+<span class="nmg-kick">NMC prezintă · Expoziția virtuală a casei</span>
 <h2>Galeria NMC:<br><em>casa ta, expusă ca o operă de artă.</em></h2>
 <p class="nmg-lead">Un tur ghidat prin cinci săli: fațada, lumina, tavanul, pereții și textura. Pentru fiecare, problema pe care probabil nu știi că o ai și soluția care o transformă în detaliu de arhitectură.</p>
-<div class="nmg-meta"><span>Timp de citire · 12 min</span><span>Stil · scandinav luminos</span><span>Interior + exterior</span></div>
+<div class="nmg-meta"><span>Timp de citire · 12 min</span><span>5 săli · 11 opere</span><span>Interior + exterior</span></div>
 <div class="nmg-frame"><img src="{IMG}vila-alba.jpg" alt="Vilă albă cu ancadramente și cornișe decorative" loading="eager"></div>
 <span class="nmg-label"><b>„Casa albă”</b>Fațadă cu ancadramente, cornișă și solbancuri · Profile decorative NMC</span>
 <nav class="nmg-plan" aria-label="Planul galeriei">{plan}</nav></div></header>''')
@@ -279,7 +296,7 @@ def article(IMG):
 <div class="nmg-pb"><small>Problema pe care nu știi că o ai</small>{e(o["prob"])}</div>
 <div class="nmg-sol"><small>Soluția NMC</small>{e(o["sol"])}</div>
 <div class="nmg-pieces">{"".join(piece(k, IMG) for k in o["prod"])}</div></div></article>''')
-        a(f'''<section class="nmg-room" id="{s["id"]}"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">{s["nr"]}</span><span class="sub">Sala {s["nr"]} · {e(s["sub"])}</span><h2>{e(s["nume"])}</h2><p>{e(s["intro"])}</p></div>
+        a(f'''<section class="nmg-room" id="{s["id"]}" style="--g:{GRAD[s["id"]]}"><div class="nmg-wide"><div class="nmg-room__head"><span class="nmg-room__nr">{s["nr"]}</span><span class="sub">Sala {s["nr"]} · {e(s["sub"])}</span><h2>{e(s["nume"])}</h2><p>{e(s["intro"])}</p></div>
 {"".join(works)}</div></section>''')
     a('<p class="nmg-quote">„Într-o galerie nu vezi rama. Simți doar că opera e la locul ei.”<span>Ghidul NMC</span></p>')
     # tabel
@@ -293,7 +310,8 @@ def article(IMG):
 <table class="nmg-table"><thead><tr><th>Problema</th><th>Cum o recunoști</th><th>Soluția NMC</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></section>''')
     # tendințe + stiluri
     tr = "".join(f'<div><b>{e(n)}</b><ul>{"".join(f"<li>{e(x)}</li>" for x in L)}</ul></div>' for n, L in TENDINTE)
-    st = "".join(f'<div><b>{e(n)}</b><p>{e(d)}</p><ul>{"".join(f"<li><a href=\'{PR[k]['url']}\'>{e(PR[k]['name'])}<span>→</span></a></li>" for k in ks)}</ul></div>' for n, d, ks in STILURI)
+    SG = ["linear-gradient(90deg,#57C5D8,#7E9CF4)","linear-gradient(90deg,#FF9A6B,#F27BAE)","linear-gradient(90deg,#6C7CF7,#D27BEA)"]
+    st = "".join(f'<div style="--g:{SG[i]}"><b>{e(n)}</b><p>{e(d)}</p><ul>{"".join(f"<li><a href=\'{PR[k]['url']}\'>{e(PR[k]['name'])}<span>→</span></a></li>" for k in ks)}</ul></div>' for i, (n, d, ks) in enumerate(STILURI))
     a(f'''<section class="nmg-sec" id="tendinte"><div class="nmg-wide"><span class="nmg-kick">Tendințe care țin</span>
 <h2>Ce rămâne în galerie<br><em>și ce iese din expoziție.</em></h2>
 <p>Modele vin și pleacă. Proporția, lumina și materialele naturale rămân. Iată ce recomandăm pentru o casă care arată la fel de bine și peste zece ani:</p>
