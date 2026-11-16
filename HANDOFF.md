@@ -1,7 +1,15 @@
 # Handoff
 
-Ultima actualizare: 2026-11-15
+Ultima actualizare: 2026-11-16
 Agent: Codex
+
+## Bannere homepage nmcromania.ro — Black November — Claude Code, 2026-11-16
+Folder: `nmc-black-november-homepage/`. Legate de landing-ul live https://www.nmcromania.ro/black-november/ (nu e în repo; inspectat în browser). Fișiere:
+- `homepage-black-november-desktop-3840x1940.jpg` (de urcat în slider; același format ca slide-urile existente 1920×970 @2x) + `-1920x970.jpg`;
+- `homepage-black-november-mobil-1080x1350.jpg` (4:5; homepage-ul nu are acum slide separat de mobil — de folosit dacă tema permite imagine mobilă distinctă).
+Stil = landing: fundal #070a09, „BLACK” Cormorant Garamond + „November” italic degradeu roz–magenta, Inter, buton magenta „Descoperă ofertele”, logo NMC alb + „Black November”. Texte doar din landing: „Ediție limitată · până pe 30 noiembrie”, „Prețuri speciale pe întreaga selecție de profile decorative. O singură lună. Doar la NMC.”, „Calitate premium · cel mai bun raport calitate–preț”, „Livrare imediată din stoc · Stocuri mari · Lider de piață de peste 20 de ani”.
+Imagini: casa din slide-ul homepage actual „nmc-black-friday-schimba-casa” (partea dreaptă, fără dunga portocalie/text) + partea stângă a slide-ului „panouri 3d” (fără text), ambele 3840 px. Link slide: https://www.nmcromania.ro/black-november/.
+Reproducere: `python3 build.py && node render.cjs`.
 
 ## Reel promovare blog Deco&Flair (decoflair.ro/blog) — Claude Code, 2026-11-15
 Folder: `decoflair-blog-reel/`. Reel `reel/decoflair-blog-reel.mp4` (1080×1920, 30 fps, 50,4 s, fără sunet), stil revistă „Jurnalul Deco&Flair”: intro („Ai idei pentru casă, dar nu știi de unde să începi?” → „Blogul care îți face casa frumoasă.”) → 7 articole reale, fiecare cu imaginea principală a articolului (og:image, original) + categorie + titlu + „ce afli” + „Citește pe decoflair.ro/blog”, bară de progres 7 segmente, tranziție tip pagină → final „Citește. Alege. Transformă.”, QR spre https://decoflair.ro/blog, contact.
