@@ -4,7 +4,6 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import glob
 rows=[l.rstrip('\n').split('\t') for l in open('all.tsv')]
 order={'Ancadramente':0,'Solbanc':1,'Cornisa':2}
 items=set()
@@ -21,10 +20,7 @@ with open('/home/user/dfhai/etichete/lista_etichete_adro_2000.csv','w',newline='
     w=csv.writer(f); w.writerow(['categorie','cod','dimensiuni'])
     for k,c,d in items: w.writerow([['Ancadrament','Solbanc','Cornisa'][k],c,d])
 # fonts
-reg=bold=None
-for p in glob.glob('/usr/share/fonts/**/DejaVuSans*.ttf',recursive=True):
-    if p.endswith('DejaVuSans.ttf'): reg=p
-    pass
+reg='/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf'
 bold='/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf'
 pdfmetrics.registerFont(TTFont('R',reg)); pdfmetrics.registerFont(TTFont('B',bold))
 W,H=A4; LW,LH=65*mm,28*mm; COLS,ROWS=3,10
@@ -32,9 +28,14 @@ mx=(W-COLS*LW)/2; my=(H-ROWS*LH)/2
 c=canvas.Canvas('/home/user/dfhai/etichete/etichete_adro_2000mm_A4.pdf',pagesize=A4)
 c.setTitle('Etichete ADRo 2000 mm')
 per=COLS*ROWS
-FS=20
-while max(pdfmetrics.stringWidth(f'{a} {b}','B',FS) for _,a,b in items)>LW-5*mm: FS-=0.25
-print('font',FS)
+
+def fit(texts,font,start,maxw):
+    fs=start
+    while max(pdfmetrics.stringWidth(t,font,fs) for t in texts)>maxw: fs-=0.25
+    return fs
+FS1=fit([a for _,a,_ in items],'B',27,LW-8*mm)
+FS2=fit([b+' mm' for _,_,b in items],'R',FS1*0.56,LW-8*mm)
+print('font',FS1,FS2)
 for i,(k,code,dim) in enumerate(items):
     if i and i%per==0: c.showPage()
     j=i%per; col=j%COLS; row=j//COLS
@@ -42,8 +43,10 @@ for i,(k,code,dim) in enumerate(items):
     c.setStrokeColorRGB(.75,.75,.75); c.setLineWidth(.3); c.setDash(2,2)
     c.rect(x,y,LW,LH)
     c.setDash(); c.setFillColorRGB(0,0,0)
-    text=f"{code} {dim}"
-    # single line, fit width with 4mm padding
-    fs=FS
-    c.setFont('B',fs); c.drawCentredString(x+LW/2,y+LH/2-fs*0.35,text)
+    cap1=FS1*0.72; cap2=FS2*0.72; gap=3.2*mm
+    block=cap1+gap+cap2
+    base2=y+(LH-block)/2
+    base1=base2+cap2+gap
+    c.setFont('B',FS1); c.drawCentredString(x+LW/2,base1,code)
+    c.setFont('R',FS2); c.drawCentredString(x+LW/2,base2,dim+' mm')
 c.save()
