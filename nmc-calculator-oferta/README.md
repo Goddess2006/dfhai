@@ -1,6 +1,6 @@
 # Calculator ofertă NMC
 
-Deschide `index.html` în browser (fișier unic, funcționează și offline, fără server).
+**Pe desktop:** copiază `Calculator-Oferta-NMC.html` pe Desktop și deschide-l cu dublu-clic (Chrome / Edge). Fișier unic, funcționează și fără internet. (`index.html` e același fișier.)
 
 - Căutare produse după cod sau denumire (561 produse, coduri „Model” și prețuri cu TVA de pe nmcromania.ro); filtru pe categorii; Enter adaugă primul rezultat.
 - Cantitate și preț unitar editabile (se vede „preț site” + „revino” dacă prețul a fost schimbat); rând liber pentru produse/servicii în afara catalogului.
@@ -8,6 +8,10 @@ Deschide `index.html` în browser (fișier unic, funcționează și offline, fă
 - Transport: flotă NMC 242 lei cu TVA, curier 150 lei cu TVA, sau fără transport.
 - RON ⇄ EUR, curs euro editabil; totaluri cu TVA 21%, fără TVA și echivalent în cealaltă monedă.
 - Nr. comandă automat (NMC-AAAA-0001, crește la „Ofertă nouă”, editabil), data automată, date client, informații suplimentare.
-- „Printează / PDF” (A4, fără butoane și câmpuri goale), „Copiază oferta (text)”. Oferta curentă se păstrează automat în browser.
+- **Descarcă PDF** (A4, generat direct în pagină, cu diacritice) și **Descarcă Word** (.docx real, editabil), denumite `Oferta-<nr>-<client>`.
+- **Trimite pe e-mail:** destinatar (din e-mailul clientului) + subiect; „Outlook / Mail” sau „Gmail” descarcă PDF-ul și deschid un e-mail completat cu rezumatul ofertei (PDF-ul se atașează din Descărcări); „Partajează PDF-ul” apare unde Windows permite trimiterea directă a fișierului.
+- „Printează”, „Copiază text”. Oferta curentă se păstrează automat în browser.
+
+Biblioteci incluse local (data/lib): jsPDF 2.5.1, jspdf-autotable 3.8.2, Roboto (subset cu diacritice). Word-ul e generat de `export.js` (zip propriu, fără bibliotecă).
 
 Actualizare prețuri: `python3 tools/scrape.py && python3 build.py`.

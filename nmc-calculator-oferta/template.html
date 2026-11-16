@@ -40,6 +40,12 @@ body{background:var(--bg);color:var(--ink);font:14px/1.45 var(--f-body);margin:0
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .notice{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:10px;padding:9px 14px;font-size:13px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mailbox{display:grid;gap:10px;justify-content:stretch}
+.mailgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px}
+.mailbox .fld span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mailbox input{font:14px var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
+.mailhint{color:var(--muted);font-size:12px}
+@media (max-width:600px){.mailgrid{grid-template-columns:1fr}}
 /* foaia */
 .sheet{background:var(--paper);border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 30px rgba(0,0,0,.06);padding:34px 38px 30px;display:grid;gap:26px;min-width:0}
 .head{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:start;border-bottom:3px solid var(--accent);padding-bottom:20px}
@@ -162,11 +168,28 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       <label class="rate" for="rate">Curs euro: 1 EUR = <input id="rate" inputmode="decimal" value="5.0900"> lei</label>
     </div>
     <div class="grp">
-      <button type="button" class="btn" id="copyBtn">Copiază oferta (text)</button>
-      <button type="button" class="btn primary" id="printBtn">Printează / PDF</button>
+      <button type="button" class="btn primary exp" id="pdfBtn">Descarcă PDF</button>
+      <button type="button" class="btn exp" id="docBtn">Descarcă Word</button>
+      <button type="button" class="btn exp" id="mailBtn" aria-expanded="false" aria-controls="mailBox">Trimite pe e-mail ▾</button>
+      <button type="button" class="btn" id="printBtn">Printează</button>
+      <button type="button" class="btn" id="copyBtn">Copiază text</button>
       <button type="button" class="btn danger" id="newBtn">Ofertă nouă</button>
     </div>
   </div>
+  <div class="notice mailbox" id="mailBox" hidden>
+    <div class="mailgrid">
+      <label class="fld" for="mailTo"><span>Către (e-mail client)</span><input id="mailTo" inputmode="email" placeholder="client@exemplu.ro"></label>
+      <label class="fld" for="mailSubj"><span>Subiect</span><input id="mailSubj"></label>
+    </div>
+    <div class="confirm">
+      <button type="button" class="btn primary" id="mailDefault">Outlook / Mail (aplicația de pe calculator)</button>
+      <button type="button" class="btn" id="mailGmail">Gmail</button>
+      <button type="button" class="btn" id="mailShare" hidden>Partajează PDF-ul (Windows)</button>
+      <button type="button" class="btn" id="mailClose">Închide</button>
+    </div>
+    <small class="mailhint">Se descarcă automat PDF-ul ofertei și se deschide un e-mail completat cu destinatarul, subiectul și rezumatul ofertei. Atașează PDF-ul din folderul Descărcări (Downloads) și apasă Trimite.</small>
+  </div>
+  <div class="notice" id="framedNote" hidden><span>Exportul în PDF/Word și trimiterea pe e-mail funcționează în varianta de desktop (fișierul <b>Calculator-Oferta-NMC.html</b>).</span></div>
   <div class="notice" id="confirmNew" hidden>
     <span>Golești oferta curentă și pornești o ofertă nouă cu număr nou?</span>
     <span class="confirm"><button type="button" class="btn danger" id="newYes">Da, ofertă nouă</button><button type="button" class="btn" id="newNo">Renunț</button></span>
@@ -267,6 +290,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 </div>
 <div class="toast" id="toast" hidden></div>
 
+__LIBS__
 <script>
 const CATALOG = __CATALOG__;
 const TVA = 0.21, SITE = "https://www.nmcromania.ro/";
@@ -422,7 +446,7 @@ document.querySelectorAll(".client input").forEach(i=>i.addEventListener("input"
 
 /* acțiuni */
 const framed = (()=>{try{return window.self!==window.top}catch(e){return true}})();
-if(framed){ $("printBtn").hidden=true }
+if(framed){ $("printBtn").hidden=true; document.querySelectorAll(".exp").forEach(b=>b.hidden=true); $("framedNote").hidden=false }
 $("printBtn").onclick=()=>window.print();
 $("newBtn").onclick=()=>{$("confirmNew").hidden=false};
 $("newNo").onclick=()=>{$("confirmNew").hidden=true};
@@ -445,5 +469,6 @@ $("copyBtn").onclick=()=>{const txt=asText();
 };
 let tt; function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,1800)}
 
+/*__EXPORT__*/
 load(); fillForm(); renderAll();
 </script>

@@ -7,7 +7,8 @@ Agent: Claude Code
 Folder: `nmc-calculator-oferta/`. `index.html` = fișier unic (deschis direct în browser). Catalog 561 produse extras din paginile de produs nmcromania.ro (sitemap) la 16.11.2026: cod = câmpul „Model”, preț cu TVA (prețul promo dacă există + preț vechi), fără TVA, UM, categorie, stoc → `data/catalog.json`.
 Funcții: căutare cod/denumire + filtru categorie, cantitate/preț editabile, rând liber, discount % sau valoare (doar pe produse), transport flotă NMC 242 lei cu TVA / curier Fan Courier 150 lei cu TVA / fără transport, RON⇄EUR cu curs editabil (implicit 5,09 — de setat la cursul zilei), TVA 21%, nr. comandă automat NMC-AAAA-0001 (contor în localStorage, editabil), dată automată, date client, „Informații / date suplimentare”, print A4/PDF, copiere text. Draftul se salvează în localStorage.
 Datele firmei din antet: doar ce e public pe site (NMC România, telefon 0213 193 535, program). De adăugat CUI/adresă/IBAN dacă se dorește.
-Reproducere: `python3 tools/scrape.py && python3 build.py` (template în `template.html`).
+Actualizare (aceeași zi): export **PDF** (jsPDF + autotable + Roboto subset cu diacritice, incluse inline din `data/lib/`) și **Word .docx** (generat în `export.js`, zip STORE propriu), butoane „Trimite pe e-mail” (mailto Outlook/Mail sau Gmail compose; PDF-ul se descarcă automat și se atașează manual — mailto nu poate atașa fișiere; Web Share cu fișier unde e suportat). Variantă desktop: `Calculator-Oferta-NMC.html` (identic cu index.html, ~650 KB, offline). În artifact (iframe) exporturile sunt ascunse — descărcările sunt blocate acolo.
+Reproducere: `python3 tools/scrape.py && python3 build.py` (template în `template.html`, export în `export.js`).
 
 ## Bannere homepage nmcromania.ro — Black November — Claude Code, 2026-11-16
 Folder: `nmc-black-november-homepage/`. Legate de landing-ul live https://www.nmcromania.ro/black-november/ (nu e în repo; inspectat în browser). Fișiere:
