@@ -1,5 +1,8 @@
 # Handoff
 
+Ultima actualizare: 2026-11-16
+Agent: Codex
+
 Ultima actualizare: 2026-11-15
 Agent: Claude Code
 
@@ -30,6 +33,28 @@ Date: 30 de produse, linkuri și imagini de pe nmcromania.ro (15.11.2026); ambie
 bn.js pe nmcromania.ro: preț live din JSON-LD sau `.product-price-new/old` (procent calculat automat când există special), stoc live, „Adaugă în coș” prin `checkout/cart/add` (doar pentru produse fără opțiuni). Testat cu paginile reale (rute Playwright), cu coșul simulat.
 Afirmații: din /despre-noi (20+ ani, lider de piață, producție proprie, stocuri mari, DIY). Am evitat „cel mai bun preț din România” / „cele mai mari stocuri din România” (superlative fără dovadă) → „cel mai bun raport calitate–preț”, „stocuri mari”.
 Reproducere: `python3 black-november/tools/build.py && python3 black-november/tools/package.py` (arhiva este ignorată de git). Instalare: `black-november/INSTALARE.md`.
+
+## Bannere homepage nmcromania.ro — Black November — Claude Code, 2026-11-16
+Folder: `nmc-black-november-homepage/`. Legate de landing-ul live https://www.nmcromania.ro/black-november/ (nu e în repo; inspectat în browser). Fișiere:
+- `homepage-black-november-desktop-3840x1940.jpg` (de urcat în slider; același format ca slide-urile existente 1920×970 @2x) + `-1920x970.jpg`;
+- `homepage-black-november-mobil-1080x1350.jpg` (4:5; homepage-ul nu are acum slide separat de mobil — de folosit dacă tema permite imagine mobilă distinctă).
+Stil = landing: fundal #070a09, „BLACK” Cormorant Garamond + „November” italic degradeu roz–magenta, Inter, buton magenta „Descoperă ofertele”, logo NMC alb + „Black November”. Texte doar din landing: „Ediție limitată · până pe 30 noiembrie”, „Prețuri speciale pe întreaga selecție de profile decorative. O singură lună. Doar la NMC.”, „Calitate premium · cel mai bun raport calitate–preț”, „Livrare imediată din stoc · Stocuri mari · Lider de piață de peste 20 de ani”.
+Imagini: casa din slide-ul homepage actual „nmc-black-friday-schimba-casa” (partea dreaptă, fără dunga portocalie/text) + partea stângă a slide-ului „panouri 3d” (fără text), ambele 3840 px. Link slide: https://www.nmcromania.ro/black-november/.
+Reproducere: `python3 build.py && node render.cjs`.
+
+## Reel promovare blog Deco&Flair (decoflair.ro/blog) — Claude Code, 2026-11-15
+Folder: `decoflair-blog-reel/`. Reel `reel/decoflair-blog-reel.mp4` (1080×1920, 30 fps, 50,4 s, fără sunet), stil revistă „Jurnalul Deco&Flair”: intro („Ai idei pentru casă, dar nu știi de unde să începi?” → „Blogul care îți face casa frumoasă.”) → 7 articole reale, fiecare cu imaginea principală a articolului (og:image, original) + categorie + titlu + „ce afli” + „Citește pe decoflair.ro/blog”, bară de progres 7 segmente, tranziție tip pagină → final „Citește. Alege. Transformă.”, QR spre https://decoflair.ro/blog, contact.
+Articole: 10 detalii arhitecturale care cresc valoarea percepută; apartament nou care nu arată ca toate celelalte; chenare decorative (proporții); cornișă LED iluminare indirectă; ușă simplă → element arhitectural (journal_blog_post_id=31); cele mai frumoase fațade; idei de gard. Interpretare: „acest blog” = blogul decoflair.ro (de confirmat cu utilizatorul).
+Texte postare: `decoflair-blog-reel/TEXTE-REEL.md`. Texte pentru cele 8 postări Trend 2027 + reel-ul lor: `decoflair-trend-2027/TEXTE-POSTARI.md`.
+Reproducere: `python3 reel_build.py && node reel_render.cjs`.
+
+## Deco&Flair „Trend 2027 · Tokyo × Singapore” — 8 produse de nișă — Claude Code, 2026-11-15 (revizuit)
+Folder: `decoflair-trend-2027/`. 8 feed 1080×1350 + 8 Story 1080×1920 (`story/`) + Reel `reel/decoflair-trend-2027-reel.mp4` (80,1 s, 1080×1920, 30 fps, fără sunet). Fără prețuri. Structură pe fiecare postare: PROBLEMA → SOLUȚIA (produsul) → REZULTATUL.
+REVIZIE la cererea clientului: ELIMINAT orice scris japonez (kanji) din imagini și din reel — risc de percepție „produse din China”. În loc: cuvânt românesc vertical (liniște, linie, val…) și marca reală sub numele produsului: „ARSTYL® · NMC Belgia”, „WALLSTYL® · NMC Belgia”, „NMC® · Belgia” (mărcile din fișele decoflair.ro; NMC România = importator unic NMC Belgia, conform nmcromania.ro/despre-noi). NU reintroduce kanji.
+Selecție (fără date de vânzări — Platforma DecoFlair indisponibilă): riflaj acustic stejar deschis, CANELÉ L (design Bertrand Lejoly), WAVE, WING, RAY, ICON, PUZZLE 3D, cornișă LED IL18; toate InStock la 15.11.2026.
+Aspect: hârtie washi, cerneală, accent de culoare din fiecare fotografie, cerc ensō în jurul produsului, sigiliu „D&F”, „No.0X · Trend 2027”, CTA text „Descoperă-l pe decoflair.ro”.
+Reel (ritm lent, cerut de client): intro cerc desenat + „2027” + sigiliu D&F → 8 produse (teaser ~2 s: cuvânt-cheie + întrebare pe fotografie; apoi cortina urcă și creativul se construiește lent: ensō, întrebare, răspuns, pașii 01/02/03, sigiliu) cu 7 mesaje scurte între produse („Liniștea, rezolvată. Acum, ritmul.” etc.) → final logo, „Fii primul care le are acasă.”, decoflair.ro, QR, contact (0723 300 603, office@decoflair.ro, L–V 07:30–16:00, @decoflairhub).
+Reproducere: `python3 build.py && node render.cjs`; reel: `python3 reel_build.py && node reel_render.cjs`.
 
 ## Deco&Flair „Idei 2027” — refacere FĂRĂ prețuri (înlocuiește seriile cu preț) — Claude Code, 2026-11-15
 Folder: `decoflair-idei-2027/`. La cererea utilizatorului, toate creativele Deco&Flair refăcute fără preț/preț tăiat (prețul final nu e stabilit). Seriile `decoflair-black-friday/` și `decoflair-lux-2027/` (cu prețuri BF) rămân ca arhivă — NU se mai folosesc.

@@ -1,0 +1,270 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>Deco&Flair Trend 2027 — Reel</title><link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--washi:#F4F1EA;--ink:#1B1B1F;--mut:#6d675f;--hanko:#C8392B;--gold:#C9A869}
+html,body{width:1080px;height:1350px;font-family:Jost,sans-serif;overflow:hidden;background:var(--washi);color:var(--ink)}
+.c{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--washi)}
+.fiber{position:absolute;inset:0;opacity:.35;background:
+ repeating-linear-gradient(17deg,rgba(120,100,70,.05) 0 2px,transparent 2px 9px),repeating-linear-gradient(-23deg,rgba(120,100,70,.04) 0 1px,transparent 1px 13px)}
+.photo{position:absolute;left:0;right:0;top:0;height:790px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.12) contrast(1.04)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,transparent 22%,transparent 80%,rgba(244,241,234,.25) 100%)}
+.grid{position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(90deg,transparent 64px,rgba(27,27,31,.10) 64px 65px,transparent 65px calc(100% - 65px),rgba(27,27,31,.10) calc(100% - 65px) calc(100% - 64px),transparent calc(100% - 64px))}
+.top{position:absolute;left:64px;right:64px;top:48px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.chip{background:rgba(244,241,234,.92);border-radius:40px;padding:12px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.chip img{width:150px;filter:brightness(.8) contrast(1.2)}
+.mono{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:3px;text-transform:uppercase}
+.tag{background:var(--ink);color:var(--washi);border-radius:40px;padding:12px 20px 10px}
+.tag b{color:var(--gold)}
+.tate{position:absolute;right:64px;top:150px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:16px;
+ background:rgba(244,241,234,.9);padding:22px 14px;border-radius:40px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.tate .dot{width:16px;height:16px;border-radius:50%;background:var(--acc)}
+.tate .v{font-size:17px!important}
+.tate .v{writing-mode:vertical-rl;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:6px;text-transform:uppercase}
+.enso{position:absolute;right:70px;top:610px;width:300px;height:300px;z-index:6}
+.enso .ring{position:absolute;inset:-18px}
+.enso .pic{position:absolute;inset:18px;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.30)}
+.enso .pic img{width:100%;height:100%;object-fit:cover}
+.panel{position:absolute;left:64px;right:64px;top:820px}
+.q{font-weight:300;font-size:56px;line-height:1.06;letter-spacing:-.5px;max-width:640px}
+.a{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:52px;color:var(--acc);margin-top:6px}
+.steps{position:absolute;left:64px;right:64px;top:1060px;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:18px}
+.st{border-top:2px solid var(--ink);padding-top:12px}
+.st.s2{border-top:4px solid var(--acc)}
+.st .mono{font-size:13px;letter-spacing:2.5px;font-weight:700}
+.st.s2 .mono{color:var(--acc)}
+.st p{font-size:21px;line-height:1.35;margin-top:8px;font-weight:400}
+.st .br{display:block;font-style:normal;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:1.5px;color:var(--mut);margin-bottom:6px}
+.st.s2 p b{display:block;font-size:24px;font-weight:600;margin-bottom:2px}
+.foot{position:absolute;left:64px;right:64px;bottom:40px;display:flex;align-items:center;gap:20px}
+.hanko{width:62px;height:62px;flex:none;background:var(--hanko);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;
+ font-family:'Playfair Display',serif;font-weight:600;font-size:22px;line-height:.9;text-align:center;transform:rotate(-4deg);box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+.foot .go{font-size:24px;font-weight:300}
+.foot .go b{font-family:'Playfair Display',serif;font-weight:600;font-size:34px;margin-left:6px}
+.foot .sp{flex:1}
+.foot .mono{font-size:13px;letter-spacing:2px;color:var(--mut);text-align:right;line-height:1.5}
+/* story */
+body.story,.story .c{height:1920px}
+.story .photo{height:1080px}
+.story .top{top:200px}
+.story .tate{top:310px}
+.story .enso{top:900px}
+.story .panel{top:1110px}
+.story .steps{top:1360px}
+.story .foot{bottom:280px}
+
+.sc{position:absolute;inset:0;overflow:hidden;box-shadow:-40px 0 80px rgba(0,0,0,.3)}
+.sc .c{position:absolute;inset:0;height:1920px}
+.photo img{transform-origin:50% 50%}
+.tz{position:absolute;inset:0;z-index:30;overflow:hidden;background:#111}
+.tz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.15) brightness(.62)}
+.tz .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 80px}
+.tz .jp{font-family:'Space Mono',monospace;font-size:30px;letter-spacing:16px;text-transform:uppercase;opacity:.95;padding:14px 26px;border:1.5px solid rgba(255,255,255,.7);border-radius:40px}
+.tz .ln{width:0;height:2px;background:#fff;margin-top:50px}
+.tz .qq{font-weight:400;font-size:82px;line-height:1.08;margin-top:56px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.tz .no{position:absolute;top:240px;left:0;right:0;text-align:center}
+.prog{position:absolute;left:60px;right:60px;top:120px;display:flex;gap:8px;z-index:80}
+.prog i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.4);overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+.prog i b{display:block;height:100%;width:0;background:#C8392B}
+.io{position:absolute;inset:0;background:var(--washi);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--ink)}
+.io .big{position:relative;width:400px;height:400px;margin-top:40px}.io .big svg{position:absolute;inset:0}.io .big span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:600;font-size:118px}
+.io .stamp{position:absolute;width:190px;height:190px;background:var(--hanko);color:#fff;border-radius:18px;display:flex;align-items:center;justify-content:center;
+ font-family:'Playfair Display',serif;font-weight:600;font-size:64px;line-height:.9;text-align:center;box-shadow:inset 0 0 0 8px rgba(255,255,255,.35)}
+.io .t1{font-weight:300;font-size:64px;letter-spacing:10px;text-transform:uppercase;margin-top:60px}
+.io .t2{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:76px;color:var(--hanko);margin-top:6px}
+.io .mono{margin-top:44px;color:var(--mut)}
+.io .lg{width:340px;filter:brightness(.8) contrast(1.2)}
+.io .site{font-family:'Playfair Display',serif;font-weight:600;font-size:104px;margin-top:10px}
+.io .k{font-weight:300;font-size:44px;margin-top:60px}
+.io .qr{margin-top:40px;width:240px;height:240px;background:#fff;padding:16px;border-radius:14px;box-shadow:0 0 0 3px var(--ink)}
+.io .qr svg{width:100%;height:100%;display:block}
+.io .ct{margin-top:40px;display:flex;flex-direction:column;gap:12px;font-size:31px;font-weight:300}
+.io .ct span{font-family:'Space Mono',monospace;font-size:19px;letter-spacing:3px;text-transform:uppercase;color:var(--hanko);margin-right:12px}
+.io .ct b{font-weight:600}
+.msg .mt{font-family:'Playfair Display',serif;font-weight:500;font-size:84px;line-height:1.12;margin-top:40px;padding:0 80px}
+.msg .mt i{color:var(--hanko);font-weight:600}
+.msg .ml{width:0;height:2px;background:var(--ink);margin-top:56px}
+</style></head><body class="story"><div class="c" style="position:relative;overflow:hidden"><div class="sc" data-k="intro"><div class="io"><div class="fiber" style="position:absolute;inset:0"></div>
+<img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
+<div class="big"><svg viewBox="0 0 400 400" width="400" height="400"><circle cx="200" cy="200" r="180" fill="none" stroke="#1B1B1F" stroke-width="9" stroke-linecap="round"/></svg><span>2027</span></div>
+<div class="stamp" style="right:190px;top:900px">D<br>&amp;F</div>
+<div class="t1">Trend 2027</div>
+<div class="t2">Tokyo × Singapore</div>
+<div class="mono">8 forme care schimbă o casă</div></div></div><div class="sc" data-k="p" style="--acc:#8a6a3f"><div class="tz"><img src="../assets/riflaj-amb.jpg" style="object-position:50% 50%" alt=""><div class="no mono" style="color:#fff">No.01</div><div class="in"><div class="jp">liniște</div><div class="qq">Livingul tău sună<br>a sală goală?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/riflaj-amb.jpg" style="object-position:50% 50%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>01</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">liniște</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/riflaj.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Livingul tău sună<br>a sală goală?</div><div class="a">Liniștea are o formă nouă.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Ecou, voci care răsună, pereți reci.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Riflaj acustic 3D</b><em class="br">NMC® · Belgia</em>Panouri riflaj acustic de doar 3,1 kg, montaj fără scule speciale.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Acustică mai bună cu până la 25% și un perete cald, japandi.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Liniștea, rezolvată.<br><i>Acum, ritmul.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#3f6b55"><div class="tz"><img src="../assets/canele-amb.jpg" style="object-position:55% 50%" alt=""><div class="no mono" style="color:#fff">No.02</div><div class="in"><div class="jp">linie</div><div class="qq">Un perete plat,<br>fără personalitate?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/canele-amb.jpg" style="object-position:55% 50%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>02</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">linie</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/canele.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Un perete plat,<br>fără personalitate?</div><div class="a">Dă-i ritm.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Pereți goi care nu spun nimic despre tine.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou 3D CANELÉ L</b><em class="br">ARSTYL® · NMC Belgia</em>Caneluri sculptate, semnate de designerul belgian Bertrand Lejoly. 30 cm × 2 m.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Linii verticale care înalță camera. Se vopsește în orice culoare.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Un singur detaliu<br><i>schimbă o cameră întreagă.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#5d7c8c"><div class="tz"><img src="../assets/wave-amb.jpg" style="object-position:50% 50%" alt=""><div class="no mono" style="color:#fff">No.03</div><div class="in"><div class="jp">val</div><div class="qq">Dormitorul tău arată<br>ca toate celelalte?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/wave-amb.jpg" style="object-position:50% 50%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>03</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">val</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/wave.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Dormitorul tău arată<br>ca toate celelalte?</div><div class="a">Fă-l să curgă.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Un perete de pat banal, uitat după montaj.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou 3D WAVE</b><em class="br">ARSTYL® · NMC Belgia</em>Valuri sculptate în relief, preamorsate, gata de vopsit.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Lumina laterală desenează umbre vii, de dimineața până seara.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Culoarea are nevoie<br><i>de formă.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#1f6b4a"><div class="tz"><img src="../assets/wing-amb.jpg" style="object-position:50% 50%" alt=""><div class="no mono" style="color:#fff">No.04</div><div class="in"><div class="jp">aripă</div><div class="qq">Vrei culoare,<br>dar fără tapet?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/wing-amb.jpg" style="object-position:50% 50%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>04</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">aripă</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/wing.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Vrei culoare,<br>dar fără tapet?</div><div class="a">Dă-i aripi peretelui.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Vopseaua singură arată plat și previzibil.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou 3D WING</b><em class="br">ARSTYL® · NMC Belgia</em>Module mici WING, din poliuretan, combinate liber pe perete.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Un perete-sculptură, în culoarea ta preferată.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Restul îl face<br><i>lumina.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#1f4f7a"><div class="tz"><img src="../assets/ray-amb.jpg" style="object-position:50% 50%" alt=""><div class="no mono" style="color:#fff">No.05</div><div class="in"><div class="jp">lumină</div><div class="qq">Un dining care<br>nu impresionează?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/ray-amb.jpg" style="object-position:50% 50%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>05</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">lumină</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/ray.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Un dining care<br>nu impresionează?</div><div class="a">Lasă lumina să lucreze.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Masa e frumoasă. Peretele din spate, nu.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou 3D RAY</b><em class="br">ARSTYL® · NMC Belgia</em>Romburi cu raze în relief, care prind lumina din fiecare unghi.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Un fundal de restaurant de lux, la tine acasă.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Acasă poate arăta<br><i>ca un hotel boutique.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#b8862a"><div class="tz"><img src="../assets/icon-amb.jpg" style="object-position:50% 30%" alt=""><div class="no mono" style="color:#fff">No.06</div><div class="in"><div class="jp">formă</div><div class="qq">Biroul de acasă<br>arată a birou?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/icon-amb.jpg" style="object-position:50% 30%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>06</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">formă</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/icon.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Biroul de acasă<br>arată a birou?</div><div class="a">Fă-l iconic.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Un colț de lucru fără inspirație, care se vede în fiecare call.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou 3D ICON</b><em class="br">ARSTYL® · NMC Belgia</em>Forme rotunjite, retro-futuriste, preamorsate pentru orice culoare.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Un fundal la care toți te vor întreba: „Unde l-ai găsit?”</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Unic înseamnă<br><i>al tău.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#b5603a"><div class="tz"><img src="../assets/puzzle-amb.jpg" style="object-position:60% 45%" alt=""><div class="no mono" style="color:#fff">No.07</div><div class="in"><div class="jp">joc</div><div class="qq">Același perete,<br>de ani de zile?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/puzzle-amb.jpg" style="object-position:60% 45%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>07</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">joc</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/puzzle.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Același perete,<br>de ani de zile?</div><div class="a">Joacă-te cu umbrele.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Pereți monotoni, pe care nu-i mai vezi.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Panou PUZZLE 3D</b><em class="br">ARSTYL® · NMC Belgia</em>Piese 3D pe care le rotești ca să compui modele diferite.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Un perete unic, care nu seamănă cu al nimănui.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="msg"><div class="io msg"><div class="fiber" style="position:absolute;inset:0"></div><div class="mono">Deco&amp;Flair · Trend 2027</div><div class="mt">Ultimul detaliu:<br><i>lumina caldă.</i></div><div class="ml"></div></div></div><div class="sc" data-k="p" style="--acc:#9c7a45"><div class="tz"><img src="../assets/il18-amb.jpg" style="object-position:50% 40%" alt=""><div class="no mono" style="color:#fff">No.08</div><div class="in"><div class="jp">lumină caldă</div><div class="qq">Șina de perdea<br>se vede urât?</div><div class="ln"></div></div></div><div class="c"><div class="fiber"></div>
+<div class="photo"><img src="../assets/il18-amb.jpg" style="object-position:50% 40%" alt=""></div>
+<div class="grid"></div>
+<div class="top"><div class="chip"><img src="../assets/logo-decoflair.png" alt="Deco&amp;Flair"></div><div class="tag mono">No.<b>08</b> · Trend 2027</div></div>
+<div class="tate"><span class="dot"></span><span class="v">lumină caldă</span></div>
+<div class="enso"><svg class="ring" viewBox="0 0 336 336"><circle cx="168" cy="168" r="158" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" stroke-dasharray="880 120" transform="rotate(-70 168 168)" opacity=".85"/><circle cx="168" cy="168" r="150" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-dasharray="6 10" opacity=".9"/></svg><div class="pic"><img src="../assets/il18.jpg" alt=""></div></div>
+<div class="panel"><div class="q">Șina de perdea<br>se vede urât?</div><div class="a">Ascunde-o în lumină.</div></div>
+<div class="steps">
+ <div class="st"><div class="mono">01 · Problema</div><p>Șine la vedere și lumină rece de plafon.</p></div>
+ <div class="st s2"><div class="mono">02 · Soluția</div><p><b>Cornișă LED IL18</b><em class="br">WALLSTYL® · NMC Belgia</em>IL18 maschează șina de perdea și are spațiu pentru banda LED.</p></div>
+ <div class="st"><div class="mono">03 · Rezultatul</div><p>Draperii scăldate în lumină caldă, ca într-un hotel boutique.</p></div>
+</div>
+<div class="foot"><div class="hanko">D<br>&amp;F</div><div class="go">Descoperă-l pe<b>decoflair.ro</b></div><div class="sp"></div>
+<div class="mono">Ales cu grijă · Pentru orice buget<br>Reduceri de sezon</div></div></div></div><div class="sc" data-k="out"><div class="io"><div class="fiber" style="position:absolute;inset:0"></div>
+<img class="lg" src="../assets/logo-decoflair.png" alt="Deco&amp;Flair">
+<div class="k">Fii primul care le are acasă.</div>
+<div class="site">decoflair.ro</div>
+<div class="qr"><svg viewBox="0 0 25 25"><path d="M0,0H1V1H0zM1,0H2V1H1zM2,0H3V1H2zM3,0H4V1H3zM4,0H5V1H4zM5,0H6V1H5zM6,0H7V1H6zM8,0H9V1H8zM10,0H11V1H10zM11,0H12V1H11zM14,0H15V1H14zM16,0H17V1H16zM18,0H19V1H18zM19,0H20V1H19zM20,0H21V1H20zM21,0H22V1H21zM22,0H23V1H22zM23,0H24V1H23zM24,0H25V1H24zM0,1H1V2H0zM6,1H7V2H6zM8,1H9V2H8zM10,1H11V2H10zM18,1H19V2H18zM24,1H25V2H24zM0,2H1V3H0zM2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM6,2H7V3H6zM8,2H9V3H8zM9,2H10V3H9zM11,2H12V3H11zM12,2H13V3H12zM13,2H14V3H13zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM24,2H25V3H24zM0,3H1V4H0zM2,3H3V4H2zM3,3H4V4H3zM4,3H5V4H4zM6,3H7V4H6zM10,3H11V4H10zM12,3H13V4H12zM13,3H14V4H13zM18,3H19V4H18zM20,3H21V4H20zM21,3H22V4H21zM22,3H23V4H22zM24,3H25V4H24zM0,4H1V5H0zM2,4H3V5H2zM3,4H4V5H3zM4,4H5V5H4zM6,4H7V5H6zM8,4H9V5H8zM9,4H10V5H9zM10,4H11V5H10zM16,4H17V5H16zM18,4H19V5H18zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM0,5H1V6H0zM6,5H7V6H6zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM18,5H19V6H18zM24,5H25V6H24zM0,6H1V7H0zM1,6H2V7H1zM2,6H3V7H2zM3,6H4V7H3zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM19,6H20V7H19zM20,6H21V7H20zM21,6H22V7H21zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM9,7H10V8H9zM11,7H12V8H11zM12,7H13V8H12zM13,7H14V8H13zM14,7H15V8H14zM0,8H1V9H0zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM11,8H12V9H11zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM17,8H18V9H17zM20,8H21V9H20zM22,8H23V9H22zM23,8H24V9H23zM24,8H25V9H24zM0,9H1V10H0zM1,9H2V10H1zM4,9H5V10H4zM5,9H6V10H5zM7,9H8V10H7zM8,9H9V10H8zM9,9H10V10H9zM11,9H12V10H11zM13,9H14V10H13zM14,9H15V10H14zM15,9H16V10H15zM19,9H20V10H19zM20,9H21V10H20zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM0,10H1V11H0zM2,10H3V11H2zM3,10H4V11H3zM5,10H6V11H5zM6,10H7V11H6zM7,10H8V11H7zM8,10H9V11H8zM9,10H10V11H9zM11,10H12V11H11zM13,10H14V11H13zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM20,10H21V11H20zM21,10H22V11H21zM24,10H25V11H24zM1,11H2V12H1zM2,11H3V12H2zM5,11H6V12H5zM7,11H8V12H7zM10,11H11V12H10zM14,11H15V12H14zM16,11H17V12H16zM18,11H19V12H18zM19,11H20V12H19zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM24,11H25V12H24zM0,12H1V13H0zM1,12H2V13H1zM3,12H4V13H3zM4,12H5V13H4zM6,12H7V13H6zM7,12H8V13H7zM11,12H12V13H11zM13,12H14V13H13zM14,12H15V13H14zM15,12H16V13H15zM16,12H17V13H16zM18,12H19V13H18zM19,12H20V13H19zM24,12H25V13H24zM0,13H1V14H0zM1,13H2V14H1zM4,13H5V14H4zM9,13H10V14H9zM10,13H11V14H10zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM20,13H21V14H20zM23,13H24V14H23zM0,14H1V15H0zM1,14H2V15H1zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM14,14H15V15H14zM15,14H16V15H15zM16,14H17V15H16zM18,14H19V15H18zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM0,15H1V16H0zM2,15H3V16H2zM5,15H6V16H5zM7,15H8V16H7zM10,15H11V16H10zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM17,15H18V16H17zM19,15H20V16H19zM21,15H22V16H21zM22,15H23V16H22zM24,15H25V16H24zM0,16H1V17H0zM3,16H4V17H3zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM10,16H11V17H10zM11,16H12V17H11zM12,16H13V17H12zM16,16H17V17H16zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM22,16H23V17H22zM23,16H24V17H23zM8,17H9V18H8zM9,17H10V18H9zM11,17H12V18H11zM16,17H17V18H16zM20,17H21V18H20zM22,17H23V18H22zM23,17H24V18H23zM0,18H1V19H0zM1,18H2V19H1zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM8,18H9V19H8zM9,18H10V19H9zM10,18H11V19H10zM12,18H13V19H12zM13,18H14V19H13zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM24,18H25V19H24zM0,19H1V20H0zM6,19H7V20H6zM8,19H9V20H8zM11,19H12V20H11zM13,19H14V20H13zM15,19H16V20H15zM16,19H17V20H16zM20,19H21V20H20zM24,19H25V20H24zM0,20H1V21H0zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM8,20H9V21H8zM10,20H11V21H10zM11,20H12V21H11zM13,20H14V21H13zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM23,20H24V21H23zM24,20H25V21H24zM0,21H1V22H0zM2,21H3V22H2zM3,21H4V22H3zM4,21H5V22H4zM6,21H7V22H6zM8,21H9V22H8zM9,21H10V22H9zM10,21H11V22H10zM12,21H13V22H12zM13,21H14V22H13zM17,21H18V22H17zM18,21H19V22H18zM23,21H24V22H23zM24,21H25V22H24zM0,22H1V23H0zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM6,22H7V23H6zM9,22H10V23H9zM11,22H12V23H11zM13,22H14V23H13zM17,22H18V23H17zM20,22H21V23H20zM21,22H22V23H21zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM0,23H1V24H0zM6,23H7V24H6zM10,23H11V24H10zM11,23H12V24H11zM12,23H13V24H12zM13,23H14V24H13zM19,23H20V24H19zM20,23H21V24H20zM22,23H23V24H22zM23,23H24V24H23zM24,23H25V24H24zM0,24H1V25H0zM1,24H2V25H1zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM11,24H12V25H11zM12,24H13V25H12zM13,24H14V25H13zM16,24H17V25H16zM21,24H22V25H21zM24,24H25V25H24z" fill="#1B1B1F"/></svg></div>
+<div class="ct"><div><span>Consultanță</span><b>0723 300 603</b></div>
+<div><span>E-mail</span>office@decoflair.ro</div>
+<div><span>Program</span>Luni – Vineri · 07:30 – 16:00</div>
+<div><span>Instagram</span>@decoflairhub</div></div></div></div><div class="prog"></div></div><script>
+const D={intro:4.6,p:7.8,msg:3.0,out:6.5}, X=0.9, R=2.2;
+const S=[...document.querySelectorAll('.sc')];
+let t0=0; S.forEach(s=>{s.t0=t0; s.d=D[s.dataset.k]; t0+=s.d-X;});
+window.TOTAL=t0+X;
+const P=S.filter(s=>s.dataset.k==='p');
+const prog=document.querySelector('.prog'); P.forEach(()=>{const i=document.createElement('i');i.appendChild(document.createElement('b'));prog.appendChild(i);});
+const bars=[...prog.querySelectorAll('b')];
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=v=>1-Math.pow(1-v,3);
+const eio=v=>v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2;
+const back=v=>{const c=1.7;return 1+(c+1)*Math.pow(v-1,3)+c*Math.pow(v-1,2)};
+const seg=(u,a,b)=>cl((u-a)/(b-a));
+const qa=(s,sel)=>[...s.querySelectorAll(sel)];
+function fade(e,v,dx,dy){if(!e)return;e.style.opacity=v;e.style.transform=`translate(${(1-v)*dx}px,${(1-v)*dy}px)`;}
+// pregătire cerc ensō: lungimea traseului
+document.querySelectorAll('.enso circle').forEach(c=>{const L=2*Math.PI*c.r.baseVal.value;c.dataset.L=L;c.style.strokeDasharray=c.getAttribute('stroke-dasharray')==='6 10'?'6 10':`${L*.88} ${L}`;});
+window.setT=function(t){
+ S.forEach((s,i)=>{const u=t-s.t0;
+  if(!(u>=0&&u<=s.d+X)){s.style.display='none';return;}
+  s.style.display='block'; s.style.zIndex=i;
+  const sl=i>0?eio(seg(u,0,X)):1; s.style.transform=`translateX(${(1-sl)*100}%)`;
+  const k=s.dataset.k;
+  if(k==='intro'){
+   fade(s.querySelector('.lg'),ease(seg(u,.1,.6)),0,-30);
+   const b=s.querySelector('.big'); const c=b.querySelector('circle'); const L=2*Math.PI*180; c.style.strokeDasharray=`${L*.9} ${L}`; c.style.strokeDashoffset=`${L*.9*(1-ease(seg(u,.3,1.8)))}`; c.style.transform='rotate(-80deg)'; c.style.transformOrigin='200px 200px'; const yv=ease(seg(u,1.2,2.0)); b.querySelector('span').style.opacity=yv; b.querySelector('span').style.transform=`scale(${1.2-.2*yv})`;
+   const st=s.querySelector('.stamp'); const sv=seg(u,2.0,2.3); st.style.opacity=sv?1:0; st.style.transform=`rotate(-8deg) scale(${sv?2.2-1.2*ease(sv):0})`;
+   fade(s.querySelector('.t1'),ease(seg(u,2.4,3.0)),0,30);
+   fade(s.querySelector('.t2'),ease(seg(u,2.8,3.4)),0,30);
+   fade(s.querySelector('.mono'),ease(seg(u,3.2,3.8)),0,20);
+  } else if(k==='p'){
+   const tz=s.querySelector('.tz'); const tv=eio(seg(u,R,R+.9));
+   tz.style.clipPath=`inset(0 0 ${tv*100}% 0)`;  // cortina urcă
+   tz.querySelector('img').style.transform=`scale(${1.05+.08*seg(u,0,R)})`;
+      fade(tz.querySelector('.jp'),ease(seg(u,.5,1.1)),0,16);
+   fade(tz.querySelector('.qq'),ease(seg(u,.8,1.5)),0,40);
+   tz.querySelector('.ln').style.width=`${140*ease(seg(u,1.2,1.9))}px`;
+   fade(tz.querySelector('.no'),ease(seg(u,.3,.7)),0,-16);
+   const w=u-R;
+   s.querySelector('.photo img').style.transform=`scale(${1.12-.1*cl(w/(s.d-R))})`;
+   fade(s.querySelector('.top'),ease(seg(w,0,.8)),0,-20);
+   const ta=s.querySelector('.tate'); const tav=ease(seg(w,.3,1.0)); ta.style.opacity=tav; ta.style.transform=`translateY(${(1-tav)*-60}px)`;
+   // ensō desenat
+   const e=s.querySelector('.enso'); const ev=seg(w,.4,1.6); e.style.opacity=ev?1:0;
+   e.querySelectorAll('circle').forEach((c,j)=>{const L=+c.dataset.L; if(j===0){c.style.strokeDashoffset=`${L*(1-ease(ev))}`;} else c.style.opacity=.9*ease(ev);});
+   const pic=e.querySelector('.pic'); const pv=seg(w,.6,1.2); pic.style.transform=`scale(${pv?back(pv):0})`;
+   fade(s.querySelector('.q'),ease(seg(w,.6,1.3)),-40,0);
+   fade(s.querySelector('.a'),ease(seg(w,1.0,1.7)),40,0);
+   qa(s,'.st').forEach((el,j)=>{const v=ease(seg(w,1.6+j*.6,2.3+j*.6)); el.style.opacity=v; el.style.transform=`translateY(${(1-v)*40}px)`;});
+   const h=s.querySelector('.hanko'); const hv=seg(w,3.4,3.7); h.style.transform=`rotate(-4deg) scale(${hv?2-ease(hv):0})`;
+   fade(s.querySelector('.foot .go'),ease(seg(w,3.5,4.0)),20,0);
+   fade(s.querySelector('.foot .mono'),ease(seg(w,3.6,4.1)),0,0);
+  } else if(k==='msg'){
+   fade(s.querySelector('.mono'),ease(seg(u,.3,.9)),0,-20);
+   fade(s.querySelector('.mt'),ease(seg(u,.5,1.4)),0,40);
+   s.querySelector('.ml').style.width=`${160*ease(seg(u,1.0,1.8))}px`;
+  } else {
+   qa(s,'.lg,.k,.site,.qr,.ct div').forEach((e,j)=>{const v=ease(seg(u,.3+j*.35,1.1+j*.35)); e.style.opacity=v; e.style.transform=`translateY(${(1-v)*30}px)`;});
+  }
+ });
+ const first=P[0].t0,last=P[P.length-1];
+ prog.style.opacity=(t>=first&&t<=last.t0+last.d)?1:0;
+ P.forEach((s,j)=>{bars[j].style.width=`${100*cl((t-s.t0)/(s.d-X))}%`;});
+};
+setT(0);
+</script></body></html>

@@ -1,0 +1,100 @@
+"""Bannere homepage nmcromania.ro pentru campania Black November (landing: nmcromania.ro/black-november/).
+Desktop: 1920x970 (randat @2x → 3840x1940, ca slide-urile existente). Mobil: 1080x1350 (4:5).
+Stil preluat din landing: fundal aproape negru, „BLACK” Cormorant Garamond, „November” italic cu degradeu roz–magenta,
+text Inter, buton magenta. Texte doar din landing. Rulare: python3 build.py && node render.cjs
+"""
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent
+
+CSS = """
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070a09;--cream:#f2ece3;--pink:#ecb8da;--mag:#a8417f;--mag2:#7a1f5c;--sage:#9fb5a6}
+html,body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--cream);overflow:hidden}
+.c{position:relative;overflow:hidden;background:
+ radial-gradient(ellipse at 78% 40%,rgba(168,65,127,.32),transparent 55%),radial-gradient(ellipse at 10% 100%,rgba(60,90,75,.25),transparent 50%),var(--bg)}
+.grain{position:absolute;inset:0;opacity:.07;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px}
+.logo{position:absolute}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:15px;letter-spacing:4px;text-transform:uppercase;font-weight:500}
+.eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--pink);box-shadow:0 0 14px var(--pink)}
+.t1{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:.86;letter-spacing:2px;color:var(--cream)}
+.t2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;line-height:.9;
+ background:linear-gradient(95deg,#f3cfe6 0%,#d98fc0 45%,#a8417f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-weight:300;line-height:1.45}
+.sub b{font-weight:600}
+.cta{display:inline-flex;align-items:center;gap:14px;border-radius:60px;background:linear-gradient(90deg,var(--mag2),#b13a86);
+ font-weight:600;letter-spacing:3px;text-transform:uppercase;box-shadow:0 14px 40px rgba(168,65,127,.45)}
+.cta svg{width:22px;height:22px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 26px;color:rgba(242,236,227,.78);font-size:15px;letter-spacing:1.5px;text-transform:uppercase}
+.trust span::before{content:"✦";color:var(--pink);margin-right:8px}
+.ph{position:absolute;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,9,0) 55%,rgba(7,10,9,.55));}
+.ph .lab{position:absolute;left:24px;bottom:20px;z-index:2;font-size:14px;letter-spacing:4px;text-transform:uppercase;font-weight:600;
+ background:rgba(7,10,9,.6);border:1px solid rgba(236,184,218,.6);border-radius:30px;padding:8px 16px}
+.ring{position:absolute;border:1.5px solid rgba(236,184,218,.45);pointer-events:none}
+.beam{position:absolute;background:linear-gradient(180deg,transparent,#d98fc0,transparent);filter:blur(.3px);box-shadow:0 0 30px #d98fc0}
+.deadline{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--sage)}
+
+/* DESKTOP 1920x970 */
+.d{width:1920px;height:970px}
+.d .logo{left:120px;top:70px;width:150px}
+.d .tag{position:absolute;left:290px;top:78px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--pink);padding-left:22px;border-left:1px solid rgba(242,236,227,.4)}
+.d .txt{position:absolute;left:120px;top:205px;width:800px}
+.d .t1{font-size:190px;margin-top:26px}
+.d .t2{font-size:200px;margin-top:-6px}
+.d .sub{font-size:28px;margin-top:30px}
+.d .deadline{font-size:30px;margin-top:16px}
+.d .cta{margin-top:36px;padding:24px 40px;font-size:18px}
+.d .trust{position:absolute;left:120px;bottom:54px;right:120px}
+.d .p1{left:1010px;top:110px;width:500px;height:760px;border-radius:250px 250px 24px 24px}
+.d .p2{left:1400px;top:250px;width:420px;height:620px;border-radius:24px 24px 210px 210px;box-shadow:0 0 0 8px var(--bg),0 30px 90px rgba(0,0,0,.6)}
+.d .r1{left:985px;top:85px;width:550px;height:810px;border-radius:275px 275px 30px 30px}
+.d .b1{left:1380px;top:120px;width:2px;height:760px;transform:rotate(14deg)}
+
+/* MOBIL 1080x1350 */
+.m{width:1080px;height:1350px}
+.m .logo{left:64px;top:56px;width:130px}
+.m .tag{position:absolute;left:214px;top:60px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:var(--pink);padding-left:20px;border-left:1px solid rgba(242,236,227,.4)}
+.m .p1{left:64px;top:140px;width:500px;height:500px;border-radius:250px 250px 22px 22px}
+.m .p2{left:530px;top:220px;width:486px;height:420px;border-radius:22px 22px 243px 243px;box-shadow:0 0 0 8px var(--bg),0 30px 90px rgba(0,0,0,.6)}
+.m .r1{left:44px;top:120px;width:540px;height:540px;border-radius:270px 270px 28px 28px}
+.m .b1{left:546px;top:140px;width:2px;height:500px;transform:rotate(12deg)}
+.m .txt{position:absolute;left:64px;right:64px;top:690px}
+.m .eyebrow{font-size:14px;letter-spacing:3px}
+.m .t1{font-size:128px;margin-top:16px}
+.m .t2{font-size:138px;margin-top:-6px}
+.m .sub{font-size:28px;margin-top:18px}
+.m .deadline{font-size:27px;margin-top:8px}
+.m .cta{margin-top:24px;padding:20px 34px;font-size:18px}
+.m .trust{position:absolute;left:64px;right:64px;bottom:40px;font-size:13px;gap:8px 20px}
+"""
+
+ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>'
+
+
+def body(cls):
+    return f"""<div class="c {cls}"><div class="grain"></div>
+<img class="logo" src="assets/nmc-logo-alb.png" alt="nmc"><div class="tag">Black November</div>
+<div class="ring r1"></div>
+<div class="ph p1"><img src="assets/exterior.jpg" style="object-position:30% 50%" alt=""><span class="lab">Exterior</span></div>
+<div class="ph p2"><img src="assets/interior.jpg" style="object-position:45% 65%" alt=""><span class="lab" style="top:22px;bottom:auto;left:50%;transform:translateX(-50%)">Interior</span></div>
+<div class="beam b1"></div>
+<div class="txt">
+ <div class="eyebrow"><i></i>Ediție limitată · până pe 30 noiembrie</div>
+ <div class="t1">BLACK</div><div class="t2">November</div>
+ <div class="sub">Prețuri speciale pe întreaga selecție de profile decorative.<br><b>O singură lună. Doar la NMC.</b></div>
+ <div class="deadline">— Calitate premium · cel mai bun raport calitate–preț</div>
+ <div class="cta">Descoperă ofertele {ARROW}</div>
+</div>
+<div class="trust"><span>Livrare imediată din stoc</span><span>Stocuri mari</span><span>Lider de piață de peste 20 de ani</span></div>
+</div>"""
+
+
+HEAD = ('<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>{t}</title>'
+        '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500'
+        '&family=Inter:wght@300;500;600&display=swap" rel="stylesheet"><style>' + CSS + '</style></head>')
+
+for name, cls, t in [("homepage-black-november-desktop", "d", "NMC Black November — homepage desktop"),
+                     ("homepage-black-november-mobil", "m", "NMC Black November — homepage mobil")]:
+    (ROOT / f"{name}.html").write_text(HEAD.replace('{t}', t) + '<body>' + body(cls) + '</body></html>')
+print("ok")
