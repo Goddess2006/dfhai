@@ -45,11 +45,11 @@ PR = {p["id"]: p for p in [
 
 # Fiecare „sală” are opere (exponate): imagine + problema ascunsă + soluția + produsele
 GRAD = {
-    "fatada": "linear-gradient(135deg,#FF9A6B 0%,#F27BAE 50%,#9C8CF2 100%)",
-    "lumina": "linear-gradient(135deg,#FFB547 0%,#FF7A59 55%,#E8507E 100%)",
-    "tavan": "linear-gradient(135deg,#6C7CF7 0%,#9A6DF0 50%,#D27BEA 100%)",
-    "pereti": "linear-gradient(135deg,#2BB5A0 0%,#57C5D8 50%,#7E9CF4 100%)",
-    "textura": "linear-gradient(135deg,#C98A63 0%,#D9798F 50%,#8F7BD6 100%)",
+    "fatada": "linear-gradient(165deg,#5E2B26 0%,#8E5A4A 30%,#C9A592 62%,#EEE2D8 100%)",
+    "lumina": "linear-gradient(165deg,#5C4320 0%,#8C6B3E 30%,#C9AF86 62%,#F1E7D6 100%)",
+    "tavan": "linear-gradient(165deg,#1B2438 0%,#3D4A66 30%,#9AA5B8 62%,#E6E9EF 100%)",
+    "pereti": "linear-gradient(165deg,#17332A 0%,#355A4C 30%,#97AD9F 62%,#E5ECE6 100%)",
+    "textura": "linear-gradient(165deg,#36202F 0%,#5E3B52 30%,#B396A6 62%,#EFE3E5 100%)",
 }
 
 SALI = [
@@ -137,8 +137,8 @@ FAQ = [
 
 CSS = r"""
 .nmg{--ink:#16151C;--ink2:#3C3A46;--muted:#77737F;--line:#16151C14;--orange:#FF671F;--orange2:#FF9A5C;
- --g-hero:linear-gradient(125deg,#FFE3D3 0%,#F6D3E6 28%,#D9D4F7 58%,#CDE9F2 100%);
- --g-brand:linear-gradient(100deg,#FF671F 0%,#F2459B 45%,#7B5CF5 100%);
+ --g-hero:linear-gradient(125deg,#F3E9E0 0%,#EADBCF 35%,#E4E2DE 65%,#DDE2E6 100%);
+ --g-brand:linear-gradient(100deg,#A9481F 0%,#B9774E 45%,#A89272 100%);
  --display:"Space Grotesk",system-ui,sans-serif;--sans:"Roboto",system-ui,sans-serif;
  font:300 17.5px/1.8 var(--sans);color:var(--ink2);background:#FBFAFD;border-radius:28px;overflow:hidden;position:relative}
 .nmg *{box-sizing:border-box}.nmg img{display:block;max-width:100%;height:auto}.nmg a{color:inherit;text-decoration:none}
@@ -150,17 +150,17 @@ CSS = r"""
 .nmg-in{max-width:860px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 .nmg-wide{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 .nmg-kick{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 14px;border-radius:999px;background:#ffffffb3;border:1px solid #ffffff;backdrop-filter:blur(10px);font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
-.nmg-kick::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--g-brand)}
+.nmg-kick::before{content:"";width:8px;height:8px;border-radius:50%;background:#FF671F}
 .nmg-sec{padding:clamp(56px,7vw,110px) 0 0}
 /* „rama” = ecran de expoziție digitală */
-.nmg-frame{position:relative;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -40px #3B2A6E66,0 0 0 1px #ffffff}
+.nmg-frame{position:relative;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -40px #1E1B1A80,0 0 0 1px #ffffff}
 .nmg-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #ffffff66;pointer-events:none}
 .nmg-frame img{width:100%;object-fit:cover}
 /* hero */
 .nmg-hero{position:relative;padding:clamp(56px,8vw,120px) 0 clamp(40px,5vw,70px);text-align:center;background:var(--g-hero);overflow:hidden}
 .nmg-hero::before,.nmg-hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.8;pointer-events:none}
-.nmg-hero::before{width:520px;height:520px;left:-140px;top:-120px;background:#FFB48A}
-.nmg-hero::after{width:560px;height:560px;right:-160px;bottom:-200px;background:#9DB8FF}
+.nmg-hero::before{width:520px;height:520px;left:-140px;top:-120px;background:#E2C3AA;opacity:.6}
+.nmg-hero::after{width:560px;height:560px;right:-160px;bottom:-200px;background:#BFC8D3;opacity:.6}
 .nmg-hero>*{position:relative;z-index:1}
 .nmg-hero h2{font-size:clamp(46px,7vw,104px);line-height:.95;margin:18px 0 24px}
 .nmg .nmg-lead{max-width:680px;margin:0 auto;font-size:19.5px;color:var(--ink2)}
@@ -190,21 +190,21 @@ CSS = r"""
 .nmg-room__nr{display:block;margin-bottom:12px;font:500 clamp(64px,8vw,120px)/.9 var(--display);letter-spacing:-.05em;color:#ffffffd9}
 .nmg-room__head h2{margin-top:4px;color:#fff}
 .nmg-room__head .sub{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff33;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#fff}
-.nmg .nmg-room__head p{margin-top:18px;color:#ffffffe6;font-size:18.5px}
-.nmg-work{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(36px,4vw,60px);padding:clamp(18px,2.4vw,30px);border-radius:28px;background:#ffffffd9;backdrop-filter:blur(16px);border:1px solid #ffffff;box-shadow:0 40px 80px -50px #1d123d55}
+.nmg .nmg-room__head p{margin-top:18px;color:#ffffffde;font-size:18.5px}
+.nmg-work{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(36px,4vw,60px);padding:clamp(18px,2.4vw,30px);border-radius:28px;background:#FBF8F5e6;backdrop-filter:blur(16px);border:1px solid #ffffff;box-shadow:0 40px 80px -50px #1E1B1A66}
 .nmg-work:nth-child(even) .nmg-work__art{order:2}
 .nmg-work__art .nmg-frame img{aspect-ratio:4/3}
 .nmg-work__nr{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--g);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
 .nmg-work h3{margin-top:12px}
-.nmg-pb{margin:16px 0;padding:16px 18px;border-radius:16px;background:#FFF2EA;border:1px solid #FFD9C4}
-.nmg-sol{padding:16px 18px;border-radius:16px;background:#F2F0FF;border:1px solid #DCD6FF}
-.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
-.nmg-sol small{color:#6A4FE0}
+.nmg-pb{margin:16px 0;padding:16px 18px;border-radius:16px;background:#F6EDE6;border:1px solid #E7D5C6}
+.nmg-sol{padding:16px 18px;border-radius:16px;background:#EEF0F1;border:1px solid #D9DEE2}
+.nmg-pb small,.nmg-sol small{display:block;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#A9481F;margin-bottom:6px}
+.nmg-sol small{color:#2F3E5A}
 @media (max-width:860px){.nmg-work{grid-template-columns:1fr}.nmg-work:nth-child(even) .nmg-work__art{order:0}}
 /* exponate */
 .nmg-pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:18px}
 .nmg-piece{display:flex;flex-direction:column;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
-.nmg-piece:hover{transform:translateY(-4px);box-shadow:0 24px 40px -26px #3B2A6E88}
+.nmg-piece:hover{transform:translateY(-4px);box-shadow:0 24px 40px -26px #1E1B1A88}
 .nmg-piece .nmg-frame{border-radius:0;box-shadow:none;padding:8px}
 .nmg-piece .nmg-frame::after{display:none}
 .nmg-piece .nmg-frame img{aspect-ratio:1;object-fit:contain;border-radius:12px}
@@ -217,13 +217,13 @@ CSS = r"""
 .nmg-table th,.nmg-table td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .nmg-table th{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:500;background:var(--g-brand)}
 .nmg-table td:first-child{font:500 16.5px/1.3 var(--display);color:var(--ink);width:30%}
-.nmg-table a{color:#6A4FE0;text-decoration:underline;text-underline-offset:3px}
+.nmg-table a{color:#7A4A2E;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:640px){.nmg-table,.nmg-table tbody,.nmg-table tr,.nmg-table td{display:block;width:100%!important}.nmg-table thead{display:none}.nmg-table tr{border-bottom:1px solid var(--line)}.nmg-table td{border:0;padding:6px 14px}}
 /* tendințe + stiluri */
 .nmg-trend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
 .nmg-trend div{padding:26px;border-radius:24px;color:#fff}
-.nmg-trend div:first-child{background:linear-gradient(135deg,#1FA38A,#5BC6E8)}
-.nmg-trend div:last-child{background:linear-gradient(135deg,#8A8796,#C9C6D3)}
+.nmg-trend div:first-child{background:linear-gradient(135deg,#17332A,#4E7464 60%,#97AD9F)}
+.nmg-trend div:last-child{background:linear-gradient(135deg,#3A3633,#7D756E 60%,#B9AFA5)}
 .nmg-trend b{display:block;font:500 30px/1 var(--display);margin-bottom:12px;letter-spacing:-.03em}
 .nmg-trend ul{margin:0;padding:0;list-style:none}.nmg-trend li{padding:8px 0;border-top:1px solid #ffffff40}
 .nmg-trend div:first-child li::before{content:"✓";margin-right:10px}
@@ -244,7 +244,7 @@ CSS = r"""
 .nmg summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font:500 19px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
 .nmg summary::-webkit-details-marker{display:none}.nmg summary::after{content:"+";font:400 22px/1 var(--sans);color:var(--orange)}
 .nmg details[open] summary::after{content:"–"}
-.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(56px,8vw,110px) clamp(20px,4vw,60px);text-align:center;background:linear-gradient(125deg,#FF671F 0%,#F2459B 50%,#7B5CF5 100%);color:#fff}
+.nmg-cta{margin-top:clamp(70px,9vw,130px);padding:clamp(56px,8vw,110px) clamp(20px,4vw,60px);text-align:center;background:linear-gradient(125deg,#1E1B1A 0%,#4A3428 45%,#8C6247 80%,#B98C66 100%);color:#fff}
 .nmg-cta h2,.nmg-cta h2 em{color:#fff;-webkit-text-fill-color:#fff;background:none}
 .nmg-cta .nmg-kick{color:var(--ink)}
 .nmg-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
@@ -310,7 +310,7 @@ def article(IMG):
 <table class="nmg-table"><thead><tr><th>Problema</th><th>Cum o recunoști</th><th>Soluția NMC</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></section>''')
     # tendințe + stiluri
     tr = "".join(f'<div><b>{e(n)}</b><ul>{"".join(f"<li>{e(x)}</li>" for x in L)}</ul></div>' for n, L in TENDINTE)
-    SG = ["linear-gradient(90deg,#57C5D8,#7E9CF4)","linear-gradient(90deg,#FF9A6B,#F27BAE)","linear-gradient(90deg,#6C7CF7,#D27BEA)"]
+    SG = ["linear-gradient(90deg,#17332A,#97AD9F)","linear-gradient(90deg,#5E2B26,#C9A592)","linear-gradient(90deg,#1B2438,#9AA5B8)"]
     st = "".join(f'<div style="--g:{SG[i]}"><b>{e(n)}</b><p>{e(d)}</p><ul>{"".join(f"<li><a href=\'{PR[k]['url']}\'>{e(PR[k]['name'])}<span>→</span></a></li>" for k in ks)}</ul></div>' for i, (n, d, ks) in enumerate(STILURI))
     a(f'''<section class="nmg-sec" id="tendinte"><div class="nmg-wide"><span class="nmg-kick">Tendințe care țin</span>
 <h2>Ce rămâne în galerie<br><em>și ce iese din expoziție.</em></h2>
