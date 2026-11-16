@@ -1,0 +1,48 @@
+REEL „CASA DE SĂRBĂTORI” · DECO&FLAIR (promovează articolul de blog)
+Video: reel-casa-de-sarbatori.mp4 (1080×1920, 35 s, fără sunet)
+Copertă: coperta-reel-casa-de-sarbatori.jpg
+
+================================================================
+TEXT PENTRU INSTAGRAM / FACEBOOK (copiază de aici)
+================================================================
+
+Casa de sărbători începe cu peretele din spatele mesei. 🎄🤍
+
+Am pregătit un ghid de design complet pentru o renovare elegantă înainte de Crăciun:
+✦ Paleta 2027: verde forest, salvie, roz pudră, mov șters, crem cald și onix
+✦ 6 rețete de perete pas cu pas: chenare, rozetă, relief 3D, lumină LED, riflaj, marmură
+✦ Planul în 4 săptămâni, ca totul să fie gata înainte de Ajun
+✦ Lux pentru orice buzunar: Esențial, Rafinat, Signature
+
+Salvează postarea și citește ghidul complet pe blog, cu toate produsele recomandate.
+👉 decoflair.ro/blog
+
+Ai nevoie de ajutor? Consultanță gratuită: 0723 300 603
+
+#DecoFlair #CasaDeSarbatori #DecorCraciun #DesignInterior #MasaDeCraciun #RenovareCasa #ProfileDecorative #Chenare #Culori2027 #QuietLuxury #AmenajariInterioare
+
+================================================================
+VARIANTĂ SCURTĂ (Story / reclamă)
+================================================================
+
+Peretele din spatele mesei e scena sărbătorilor. Ghidul Deco&Flair: paleta 2027, 6 rețete și planul în 4 săptămâni. 👉 decoflair.ro/blog
+
+================================================================
+COMENTARIU FIXAT (opțional)
+================================================================
+
+Linkul direct spre ghid e în bio 🤍 Spune-ne în comentarii ce rețetă ți-ar plăcea pentru casa ta: 01 chenare, 02 rozetă, 03 relief 3D, 04 LED, 05 riflaj sau 06 marmură?
+
+================================================================
+CUM PUBLICI
+================================================================
+
+1. Instagram: + › Reel › reel-casa-de-sarbatori.mp4; coperta: coperta-reel-casa-de-sarbatori.jpg.
+2. Muzică din biblioteca aplicației (licențiată): instrumental de sărbători, calm, elegant
+   (pian, clopoței discreți), volum redus.
+3. În bio: linkul direct spre articol, după publicare:
+   https://decoflair.ro/blog/casa-de-sarbatori-ghid-design-renovare-inainte-de-craciun
+   (verifică adresa finală după ce articolul e publicat). Pe Facebook pune linkul direct în text.
+4. Imaginile din video sunt aceleași ca în articol (inspirație, fără decor de Crăciun).
+   Dacă le înlocuiești în articol cu pozele de sărbători din PROMPTURI-IMAGINI.md,
+   pune noile fișiere în ../img/ și rulează din nou: node decoflair-blog-sarbatori/reel/render.cjs
