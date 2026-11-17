@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-17
 Agent: Claude Code
 
+## CATALOG PERMANENT: imagini de fațade — `catalog-fatade/` — Claude Code, 2026-11-17
+5 imagini de fațade furnizate de client (1536×1024), de folosit în creative/landing-uri/bannere/reel-uri NMC și Deco&Flair. Originale în `catalog-fatade/imagini/` (WebP, nu se modifică) + `jpg/`, `manifest.json` (titlu, culori, elemente vizibile, stil, unghi, potrivit pentru, zonă liberă pentru text, SHA-256), `index.html` (galerie), `planse-contact.jpg`, `README.md` (reguli). 01 terracota (ancadramente+brâu), 02 crem (ancadramente gri+portic/pilaștri), 03 bej (COLȚARE bosaje+ancadramente), 04 galbenă (ancadramente cu cheie de boltă+cornișă), 05 albastru-gri (ancadramente+cornișă). Proveniență nedeclarată → nu atribui SKU exact fără verificare; confirmă drepturile pentru reclame plătite. Imagini noi: pune în `imagini/`, completează META în `build_catalog.py`, rulează `python3 catalog-fatade/build_catalog.py`.
+
 ## NMC „wow” −30%: SIDDING PANEL 3 + colțar NCL107 — Claude Code, 2026-11-17
 Folder: `nmc-wow-30/`. 4 feed 1080×1350 + 4 Story 1080×1920 (`story/`). Prețuri verificate live 17.11.2026 (InStock, exact −30% pe site): SIDDING PANEL 3 223,31→156,31 lei/buc; NCL107 248,09→173,66 lei/buc. Legate de campania Black November („până pe 30 noiembrie, în limita stocului disponibil”).
 Două concepte noi: (A) CHAT `01`, `03` — bule de mesaje: clientul își spune problema, NMC răspunde cu produsul, card de sticlă cu prețul + cerc conic „−30%”; (B) MEGA-TYPE `02`, `04` — „−30%” uriaș (Unbounded 900) umplut cu imaginea produsului (background-clip:text) pe degradeu mesh portocaliu NMC → magenta → violet, lupă cu produsul, Problema/Soluția, preț cu degradeu. Fonturi: Unbounded, Instrument Serif italic, Inter.
