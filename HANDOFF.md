@@ -9,6 +9,7 @@ Două concepte noi: (A) CHAT `01`, `03` — bule de mesaje: clientul își spune
 REVIZIE paletă (cererea clientului — roz/magenta respins ca „aplicație de menstruație”): paletă premium 2027 = verde forest #1E3A2E/#2F5242, negru subtil #0F1110, crem #F3ECDF/#E6D9C3/nisip #CDBB9A, mov șters #9C86A0/#B9A3BD, vânăt #4A2A47, roz pal #E8D3CD doar ca accent. Fundamentare: WGSN/Coloro COTY 2027 Luminous Blue; tendințe interior 2027: aubergine, pasteluri decolorate, verde, argilă, alb cremos (Pantone 2026 Cloud Dancer); Pantone COTY 2027 neanunțat la data lucrului. NU mai folosi roz/magenta saturat în creativele NMC.
 Reel: `nmc-wow-30/reel/nmc-wow-30-reel.mp4` (1080×1920, 30 fps, 44,9 s, fără sunet): intro „Fațada ta are întrebări? Noi avem răspunsuri. Și o reducere de −30%.” → chat Sidding (mesajele clientului se scriu literă cu literă, indicator „scrie…” înaintea răspunsurilor NMC, cardul ofertei urcă, cercul −30% se rotește) → mega Sidding → chat NCL107 → mega NCL107 → final −30% · până pe 30 noiembrie · nmcromania.ro · QR spre https://www.nmcromania.ro/black-november/ · „Consultanță gratuită 021 319 35 35” (din landing). Sursă: `reel_build.py` + `reel_render.cjs`.
 Ambient: Sidding = randarea cu fereastră de pe nmcromania.ro (etichetat „Randare de pe nmcromania.ro”); NCL107 = `decoflair-inspiratie-50/imagini/exterior/17-colt-fatada.png` (AI, etichetat „Ambient de inspirație”).
+Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
 ## Calculator ofertă NMC + Deco&Flair (două foi) — Claude Code, 2026-11-16
