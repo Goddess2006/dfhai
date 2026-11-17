@@ -1,0 +1,96 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><title>NMC −30% — SIDDING PANEL 3 (chat) — Story</title><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Instrument+Serif:ital@1&family=Inter:wght@400;600;800&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--o:#FF671F;--m:#B13A86;--v:#3B1E6E;--ink:#0C0B12;--cream:#FFF7F0}
+html,body{width:1080px;height:1350px;overflow:hidden;font-family:Inter,sans-serif;color:#fff;background:var(--ink)}
+.c{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--ink)}
+.mesh{position:absolute;inset:-20%;background:
+ radial-gradient(circle at 15% 15%,rgba(255,103,31,.95),transparent 38%),
+ radial-gradient(circle at 85% 30%,rgba(177,58,134,.9),transparent 40%),
+ radial-gradient(circle at 40% 90%,rgba(59,30,110,.95),transparent 45%),
+ radial-gradient(circle at 90% 95%,rgba(255,103,31,.55),transparent 35%),var(--ink);filter:saturate(1.1)}
+.grain{position:absolute;inset:0;opacity:.12;mix-blend-mode:overlay;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:3px 3px}
+.top{position:absolute;left:56px;right:56px;top:48px;display:flex;justify-content:space-between;align-items:center;z-index:10}
+.logo{width:130px;border-radius:10px}
+.pill{font-family:'Unbounded',sans-serif;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;border-radius:40px;
+ background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px)}
+.pill b{background:linear-gradient(90deg,#FFB38A,#F2A6D4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:linear-gradient(100deg,#FF8A4C 0%,#FF4F8B 45%,#C35BFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.note{position:absolute;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(12,11,18,.65);padding:6px 12px;border-radius:20px;color:rgba(255,255,255,.85)}
+.foot{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;z-index:10}
+.foot b{font-family:'Unbounded',sans-serif;font-weight:700;font-size:30px}
+.foot span{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8);text-align:right;line-height:1.4}
+
+/* ===== CHAT ===== */
+.chat .amb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
+.chat .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,18,.75) 0%,rgba(12,11,18,.15) 18%,rgba(12,11,18,.2) 40%,rgba(12,11,18,.88) 70%,var(--ink) 100%)}
+.chat .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,103,31,.25),rgba(177,58,134,.25) 50%,rgba(59,30,110,.35));mix-blend-mode:soft-light}
+.chat .thread{position:absolute;left:56px;right:56px;top:300px;display:flex;flex-direction:column;gap:18px}
+.b{max-width:76%;padding:22px 26px;font-size:28px;line-height:1.35;border-radius:30px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.b.bc{align-self:flex-start;background:rgba(255,255,255,.92);color:#16141c;border-bottom-left-radius:8px}
+.b.bn{align-self:flex-end;background:linear-gradient(120deg,#FF6A2B,#E8478F 60%,#A845D6);border-bottom-right-radius:8px}
+.b.bn b{font-weight:800}
+.who{font-size:14px;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:6px;display:block;font-weight:600}
+.typing{align-self:flex-end;display:flex;gap:8px;padding:18px 24px;border-radius:24px;background:rgba(255,255,255,.18)}
+.typing i{width:12px;height:12px;border-radius:50%;background:#fff;opacity:.8}
+.offer{position:absolute;left:56px;right:56px;top:auto;bottom:130px;display:flex;align-items:center;gap:26px;padding:22px;border-radius:30px;
+ background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(16px);box-shadow:0 24px 70px rgba(0,0,0,.5)}
+.offer .ph{flex:none;width:190px;height:190px;border-radius:22px;overflow:hidden;background:#fff}
+.offer .ph img{width:100%;height:100%;object-fit:cover}
+.offer .tx{flex:1}
+.offer .k{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:600}
+.offer .nm{font-family:'Unbounded',sans-serif;font-weight:700;font-size:34px;margin-top:6px;line-height:1.05}
+.offer .dm{font-size:19px;color:rgba(255,255,255,.75);margin-top:6px}
+.offer .pr{display:flex;align-items:baseline;gap:16px;margin-top:10px}
+.offer .pr s{font-size:24px;color:rgba(255,255,255,.6);text-decoration-color:#FF4F8B;text-decoration-thickness:3px}
+.offer .pr b{font-family:'Unbounded',sans-serif;font-weight:800;font-size:56px}
+.offer .pr span{font-size:18px;color:rgba(255,255,255,.8)}
+.offer .pct{flex:none;width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-family:'Unbounded',sans-serif;font-weight:800;font-size:44px;background:conic-gradient(from 200deg,#FF6A2B,#E8478F,#A845D6,#FF6A2B);box-shadow:0 0 50px rgba(232,71,143,.7)}
+
+/* ===== MEGA ===== */
+.mega .mesh{opacity:1}
+.mega .kick{position:absolute;left:56px;top:150px;font-family:'Instrument Serif',serif;font-style:italic;font-size:46px;line-height:1.05;z-index:4}
+.mega .kick b{font-family:'Unbounded',sans-serif;font-style:normal;font-weight:700;font-size:58px;display:block;letter-spacing:-1px}
+.mega .huge{position:absolute;left:44px;top:300px;font-family:'Unbounded',sans-serif;font-weight:900;font-size:262px;line-height:.9;letter-spacing:-14px;
+ background-size:cover;background-position:center;-webkit-background-clip:text;background-clip:text;color:transparent;
+ -webkit-text-stroke:3px rgba(255,255,255,.9);filter:drop-shadow(0 20px 40px rgba(0,0,0,.45));z-index:3}
+.mega .huge2{position:absolute;left:44px;top:300px;font-family:'Unbounded',sans-serif;font-weight:900;font-size:262px;line-height:.9;letter-spacing:-14px;
+ color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.25);transform:translate(16px,16px);z-index:2}
+.mega .orb{position:absolute;right:56px;top:640px;width:400px;height:400px;border-radius:50%;overflow:hidden;z-index:5;background:#fff;
+ box-shadow:0 0 0 10px rgba(255,255,255,.15),0 0 0 22px rgba(255,255,255,.06),0 40px 90px rgba(0,0,0,.55)}
+.mega .orb img{width:100%;height:100%;object-fit:cover}
+.mega .ps{position:absolute;left:56px;top:720px;width:540px;z-index:5;display:flex;flex-direction:column;gap:18px}
+.mega .ps div{padding:20px 22px;border-radius:22px;background:rgba(12,11,18,.55);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px)}
+.mega .ps small{display:block;font-family:'Unbounded',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.mega .ps .p small{color:#FFB38A}.mega .ps .s small{color:#F2A6D4}
+.mega .ps span{font-size:25px;line-height:1.3}
+.mega .price{position:absolute;left:56px;right:56px;bottom:120px;display:flex;align-items:flex-end;justify-content:space-between;z-index:5}
+.mega .price .nm{font-family:'Unbounded',sans-serif;font-weight:700;font-size:38px;line-height:1.05}
+.mega .price .dm{font-size:19px;color:rgba(255,255,255,.8);margin-top:6px}
+.mega .price .pv{text-align:right}
+.mega .price s{font-size:26px;color:rgba(255,255,255,.65);text-decoration-color:#FF4F8B;text-decoration-thickness:3px}
+.mega .price b{display:block;font-family:'Unbounded',sans-serif;font-weight:800;font-size:76px;line-height:1}
+.mega .price em{font-style:normal;font-size:18px;color:rgba(255,255,255,.85)}
+
+/* ===== STORY ===== */
+body.story,.story .c{height:1920px}
+.story .top{top:200px}
+.story.chat .thread{top:420px;gap:24px}
+.story .b{font-size:31px}
+.story .offer{bottom:300px}
+.story .foot{bottom:250px}
+.story.mega .kick{top:310px}
+.story.mega .huge,.story.mega .huge2{top:480px;font-size:262px}
+.story.mega .orb{top:930px}
+.story.mega .ps{top:1010px}
+.story.mega .price{bottom:340px}
+</style></head><body class="chat story"><div class="c chat"><img class="amb" src="../assets/sid3fer.jpg" style="object-position:50% 50%" alt="">
+<div class="tint"></div><div class="shade"></div><div class="grain"></div>
+<div class="top"><img class="logo" src="../assets/nmc-logo.png" alt="nmc"><div class="pill">Black November · <b>−30%</b></div></div>
+<span class="note" style="left:56px;top:140px">Randare de pe nmcromania.ro</span>
+<div class="thread"><div class="b bc"><span class="who">Tu</span>Fațada mea arată obosită, iar iarna simt frigul. Se poate face ceva fără să refac tot?</div><div class="b bn"><span class="who">NMC</span>Da. <b>SIDDING PANEL 3</b> e finisaj decorativ și termoizolație într-un singur panou. Se lipește direct pe fațadă.</div><div class="b bc"><span class="who">Tu</span>Și îl pot avea în culoarea casei?</div><div class="b bn"><span class="who">NMC</span>Sigur, se vopsește în orice culoare RAL. Iar acum are <b>−30%</b>. 🔥</div></div>
+<div class="offer"><div class="ph"><img src="../assets/sid3.jpg" alt=""></div><div class="tx">
+<div class="k">Termosistem decorativ ADRo</div><div class="nm">SIDDING PANEL 3</div><div class="dm">500 × 40 × 2000 mm</div>
+<div class="pr"><s>223,31 lei</s><b class="grad">156,31</b><span>lei / buc</span></div></div>
+<div class="pct">−30%</div></div>
+<div class="foot"><b>nmcromania.ro</b><span>Până pe 30 noiembrie<br>în limita stocului disponibil</span></div></div></body></html>

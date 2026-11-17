@@ -1,7 +1,13 @@
 # Handoff
 
-Ultima actualizare: 2026-11-16
+Ultima actualizare: 2026-11-17
 Agent: Claude Code
+
+## NMC „wow” −30%: SIDDING PANEL 3 + colțar NCL107 — Claude Code, 2026-11-17
+Folder: `nmc-wow-30/`. 4 feed 1080×1350 + 4 Story 1080×1920 (`story/`). Prețuri verificate live 17.11.2026 (InStock, exact −30% pe site): SIDDING PANEL 3 223,31→156,31 lei/buc; NCL107 248,09→173,66 lei/buc. Legate de campania Black November („până pe 30 noiembrie, în limita stocului disponibil”).
+Două concepte noi: (A) CHAT `01`, `03` — bule de mesaje: clientul își spune problema, NMC răspunde cu produsul, card de sticlă cu prețul + cerc conic „−30%”; (B) MEGA-TYPE `02`, `04` — „−30%” uriaș (Unbounded 900) umplut cu imaginea produsului (background-clip:text) pe degradeu mesh portocaliu NMC → magenta → violet, lupă cu produsul, Problema/Soluția, preț cu degradeu. Fonturi: Unbounded, Instrument Serif italic, Inter.
+Ambient: Sidding = randarea cu fereastră de pe nmcromania.ro (etichetat „Randare de pe nmcromania.ro”); NCL107 = `decoflair-inspiratie-50/imagini/exterior/17-colt-fatada.png` (AI, etichetat „Ambient de inspirație”).
+Reproducere: `python3 build.py && node render.cjs`.
 
 ## Calculator ofertă NMC + Deco&Flair (două foi) — Claude Code, 2026-11-16
 Actualizare: calculatorul are acum două foi (taburi): NMC România și Deco&Flair. Foaia Deco&Flair: catalog decoflair.ro 989 produse (`data/catalog-decoflair.json`, „Cod produs” + preț cu TVA, prețuri format RO), sigla aurie `data/logo-decoflair.png`, antet cu datele de pe decoflair.ro/contact (Deco & Flair Hub SRL, CUI RO 54681700, J2026031505008, sediu Str. Faurei nr. 1 S1 București, depozit Str. Comerțului nr. 3 Domnești, 0723 300 603, office@decoflair.ro, IBAN RO95 INGB 0000 9999 1984 0357), accent auriu/vișiniu, titlu Playfair. Transport identic, confirmat pe decoflair.ro/plata-si-livrare: flotă 242 RON, Fan Courier 150 RON. Numerotare separată DF-AAAA-0001, ciornă separată (localStorage `df_oferta_draft`), PDF/Word/e-mail cu datele Deco&Flair. Fișier desktop redenumit `Calculator-Oferta.html` (vechiul Calculator-Oferta-NMC.html eliminat). Scraper: `python3 tools/scrape.py nmc|decoflair [--pages DIR]`.
