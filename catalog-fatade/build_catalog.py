@@ -24,7 +24,7 @@ for f in sorted((ROOT / "imagini").iterdir()):
                       sha256=hashlib.sha256(f.read_bytes()).hexdigest(), **m))
 
 manifest = dict(
-    nume="Catalog fațade — imagini de referință",
+    nume="Catalog imagini de referință — fațade și interioare",
     sursa="Imagini furnizate de client (proprietarul NMC / Deco&Flair) în conversație, 17.11.2026. Proveniența exactă (fotografii proprii, randări, AI sau stoc) nu a fost declarată — confirmați drepturile înainte de folosire în reclame plătite.",
     branduri=["nmcromania.ro", "decoflair.ro"],
     reguli=[
@@ -43,10 +43,10 @@ for it in items:
     tags = "".join(f"<span>{html.escape(t)}</span>" for t in it.get("elemente", []))
     cards += (f'<figure><img src="{it["jpg"]}" alt="{html.escape(it.get("titlu", ""))}" loading="lazy">'
               f'<figcaption><b>{it["id"]} · {html.escape(it.get("titlu", ""))}</b>'
-              f'<small>{html.escape(it.get("stil", ""))} · {it["latime"]}×{it["inaltime"]}</small><div class="t">{tags}</div>'
+              f'<small>{html.escape(it.get("categorie", ""))} · {html.escape(it.get("stil", ""))} · {it["latime"]}×{it["inaltime"]}</small><div class="t">{tags}</div>'
               f'<small>Potrivit pentru: {html.escape(", ".join(it.get("potrivit", [])))}</small></figcaption></figure>')
 (ROOT / "index.html").write_text(f"""<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Catalog fațade</title><style>
+<title>Catalog fațade și interioare</title><style>
 body{{margin:0;font-family:system-ui,sans-serif;background:#F3ECDF;color:#1d1f1c;padding:24px}}
 h1{{font-weight:600;margin:0 0 6px}}p{{margin:0 0 20px;color:#555}}
 .g{{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}}
@@ -54,7 +54,7 @@ figure{{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0
 img{{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}}
 figcaption{{padding:12px 14px;display:flex;flex-direction:column;gap:6px}}small{{color:#666}}
 .t{{display:flex;flex-wrap:wrap;gap:6px}}.t span{{font-size:12px;background:#1E3A2E;color:#F3ECDF;border-radius:20px;padding:3px 9px}}
-</style></head><body><h1>Catalog fațade</h1><p>{len(items)} imagini de referință · sursa: furnizate de client · vezi manifest.json</p>
+</style></head><body><h1>Catalog fațade și interioare</h1><p>{len(items)} imagini de referință · sursa: furnizate de client · vezi manifest.json</p>
 <div class="g">{cards}</div></body></html>""")
 
 # planșă de contact

@@ -1,7 +1,7 @@
-# Catalog fațade — imagini de referință (NMC / Deco&Flair)
+# Catalog imagini de referință — fațade și interioare (NMC / Deco&Flair)
 
 Bibliotecă permanentă de imagini de fațade, pentru creative, landing-uri, bannere și reel-uri.
-Imaginile au fost furnizate de client pe 17–18.11.2026 (10 imagini).
+Imaginile au fost furnizate de client pe 17–18.11.2026: 15 imagini, 01–10 fațade și 11–15 interioare.
 
 - `imagini/`: originalele (WebP, 1536 × 1024). **Nu se modifică.**
 - `jpg/`: aceleași imagini în JPG (calitate 93), pentru unelte care nu citesc WebP.
@@ -21,6 +21,13 @@ Imaginile au fost furnizate de client pe 17–18.11.2026 (10 imagini).
 | 08 | Casă gri deschis | ancadramente, cornișă profilată |
 | 09 | Casă verde salvie, două niveluri | ancadramente, brâu între etaje |
 | 10 | Casă piersică pe parter | ancadramente, cornișă de fronton, pilaștri |
+| 11 | Living salvie — **ÎNAINTE** (pereche cu 13) | cornișă LED, perete simplu |
+| 12 | Hol albastru-petrol | chenare pe pereți, cornișă, plinte |
+| 13 | Living salvie — **DUPĂ** (pereche cu 11) | chenare din brâu + cornișă LED |
+| 14 | Dormitor mov-prună | chenare în spatele patului |
+| 15 | Bucătărie terracota | chenare + brâu la jumătatea peretelui |
+
+**Perechea 11 / 13** este aceeași cameră, fără și cu chenare. E ideală pentru postări de tip ÎNAINTE/DUPĂ cu brâuri decorative.
 
 ## Reguli de folosire (Claude Code și Codex)
 

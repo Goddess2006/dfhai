@@ -22,7 +22,8 @@
    "Înainte/După (după)",
    "landing fațade"
   ],
-  "cadru_util": "tot cadrul; spațiu liber minim pentru text (cer în dreapta-sus)"
+  "cadru_util": "tot cadrul; spațiu liber minim pentru text (cer în dreapta-sus)",
+  "categorie": "exterior · fațadă"
  },
  "02-casa-crem-ancadramente-gri-portic": {
   "titlu": "Casă crem cu ancadramente gri și portic cu pilaștri",
@@ -46,7 +47,8 @@
    "pilaștri și cornișe",
    "landing hero"
   ],
-  "cadru_util": "cerul din stânga-sus permite text; casa ocupă dreapta"
+  "cadru_util": "cerul din stânga-sus permite text; casa ocupă dreapta",
+  "categorie": "exterior · fațadă"
  },
  "03-casa-bej-coltare-bosaje-ancadramente": {
   "titlu": "Casă bej cu colțare albe tip bosaje și ancadramente",
@@ -69,7 +71,8 @@
    "ancadramente",
    "Problema/Soluția colțuri plate"
   ],
-  "cadru_util": "colțarele sunt clar vizibile la stânga și la dreapta; cer liber sus-dreapta"
+  "cadru_util": "colțarele sunt clar vizibile la stânga și la dreapta; cer liber sus-dreapta",
+  "categorie": "exterior · fațadă"
  },
  "04-casa-galbena-ancadramente-cheie-bolta-cornisa": {
   "titlu": "Casă galbenă pe parter cu ancadramente cu cheie de boltă și cornișă",
@@ -93,7 +96,8 @@
    "renovare casă bătrânească",
    "cornișe exterior"
   ],
-  "cadru_util": "tot cadrul; poarta din stânga poate fi decupată"
+  "cadru_util": "tot cadrul; poarta din stânga poate fi decupată",
+  "categorie": "exterior · fațadă"
  },
  "05-casa-albastra-ancadramente-cornisa": {
   "titlu": "Casă albastru-gri pe parter cu ancadramente albe și cornișă",
@@ -117,7 +121,8 @@
    "ancadramente decorative",
    "campanii cu prețuri accesibile"
   ],
-  "cadru_util": "frontal simetric; bun pentru format pătrat/4:5 cu decupaj central"
+  "cadru_util": "frontal simetric; bun pentru format pătrat/4:5 cu decupaj central",
+  "categorie": "exterior · fațadă"
  },
  "06-casa-taupe-coltare-bosaje-ancadramente-cornisa": {
   "titlu": "Casă taupe pe parter cu colțare tip bosaje, ancadramente și cornișă",
@@ -142,7 +147,8 @@
    "capace gard",
    "paleta 2027 taupe/crem"
   ],
-  "cadru_util": "frontal simetric; cer liber sus; gardul din față poate fi decupat"
+  "cadru_util": "frontal simetric; cer liber sus; gardul din față poate fi decupat",
+  "categorie": "exterior · fațadă"
  },
  "07-casa-alba-ancadramente-portic": {
   "titlu": "Casă albă pe parter cu ancadramente cu cornișă și portic",
@@ -165,7 +171,8 @@
    "contrast alb + tâmplărie antracit",
    "renovare casă pe parter"
   ],
-  "cadru_util": "copacul din stânga încadrează; text posibil pe peretele alb din dreapta-jos"
+  "cadru_util": "copacul din stânga încadrează; text posibil pe peretele alb din dreapta-jos",
+  "categorie": "exterior · fațadă"
  },
  "08-casa-gri-ancadramente-cornisa": {
   "titlu": "Casă gri deschis cu ancadramente albe și cornișă profilată",
@@ -189,7 +196,8 @@
    "ancadramente",
    "paletă neutră gri/alb"
   ],
-  "cadru_util": "perete mare uniform — mult spațiu pentru text pe fațadă"
+  "cadru_util": "perete mare uniform — mult spațiu pentru text pe fațadă",
+  "categorie": "exterior · fațadă"
  },
  "09-casa-verde-salvie-ancadramente-brau": {
   "titlu": "Casă verde salvie pe două niveluri cu ancadramente și brâu",
@@ -213,7 +221,8 @@
    "paleta 2027 (verde salvie)",
    "landing fațade"
   ],
-  "cadru_util": "frontal; cer liber sus; vegetație în colțuri"
+  "cadru_util": "frontal; cer liber sus; vegetație în colțuri",
+  "categorie": "exterior · fațadă"
  },
  "10-casa-piersica-ancadramente-cornisa-pilastri": {
   "titlu": "Casă piersică pe parter cu ancadramente, cornișă de fronton și pilaștri",
@@ -238,6 +247,135 @@
    "pilaștri",
    "renovare casă bătrânească"
   ],
-  "cadru_util": "frontal simetric; fronton cu spațiu pentru text"
+  "cadru_util": "frontal simetric; fronton cu spațiu pentru text",
+  "categorie": "exterior · fațadă"
+ },
+ "11-living-salvie-cornisa-led-inainte": {
+  "categorie": "interior",
+  "titlu": "Living salvie cu cornișă LED (fără chenare) — ÎNAINTE",
+  "culori": [
+   "verde salvie",
+   "crem",
+   "lemn natur",
+   "vișiniu (accente)"
+  ],
+  "elemente": [
+   "cornișă cu iluminare LED indirectă",
+   "plintă (posibil LED la podea)",
+   "perete simplu, fără chenare"
+  ],
+  "stil": "contemporan cald, apus de soare",
+  "unghi": "oblic",
+  "sezon": "—",
+  "pereche": "13 (aceeași cameră, cu chenare)",
+  "potrivit": [
+   "ÎNAINTE/DUPĂ cu 13 (chenare din brâu)",
+   "cornișe LED (ex. L5, IL18)",
+   "paleta 2027 salvie/crem/vișiniu"
+  ],
+  "cadru_util": "perete mare liber pentru text în stânga-sus"
+ },
+ "12-hol-albastru-chenare-cornisa": {
+  "categorie": "interior",
+  "titlu": "Hol albastru-petrol cu chenare pe pereți și cornișă",
+  "culori": [
+   "albastru petrol / navy",
+   "alb",
+   "lemn natur",
+   "alamă"
+  ],
+  "elemente": [
+   "chenare decorative din brâu pe ambii pereți",
+   "cornișă de tavan",
+   "plintă albă",
+   "ancadramente uși"
+  ],
+  "stil": "modern-clasic, elegant",
+  "unghi": "perspectivă centrală pe hol",
+  "sezon": "—",
+  "potrivit": [
+   "chenare/brâuri (ex. WO2)",
+   "cornișe",
+   "plinte (ex. FD3)",
+   "„Holul care face prima impresie”"
+  ],
+  "cadru_util": "simetric; plafonul și capătul holului pentru text"
+ },
+ "13-living-salvie-cornisa-led-chenare-dupa": {
+  "categorie": "interior",
+  "titlu": "Living salvie cu cornișă LED și chenare — DUPĂ",
+  "culori": [
+   "verde salvie",
+   "crem",
+   "lemn natur",
+   "vișiniu (accente)"
+  ],
+  "elemente": [
+   "chenare decorative din brâu pe tot peretele",
+   "cornișă cu iluminare LED indirectă",
+   "plintă"
+  ],
+  "stil": "contemporan-clasic, premium",
+  "unghi": "oblic",
+  "sezon": "—",
+  "pereche": "11 (aceeași cameră, fără chenare)",
+  "potrivit": [
+   "ÎNAINTE/DUPĂ cu 11",
+   "chenare din brâu (ex. WO2)",
+   "cornișe LED",
+   "„Lux cu bani puțini”"
+  ],
+  "cadru_util": "chenarele dau ritm; text pe tavan/sus"
+ },
+ "14-dormitor-mov-chenare": {
+  "categorie": "interior",
+  "titlu": "Dormitor mov-prună prăfuit cu chenare în spatele patului",
+  "culori": [
+   "mov-prună / mauve prăfuit",
+   "roz pal",
+   "crem",
+   "lemn natur",
+   "alamă"
+  ],
+  "elemente": [
+   "chenare decorative (3 panouri) pe peretele patului",
+   "aplice de perete",
+   "plintă"
+  ],
+  "stil": "contemporan cald, hotel boutique",
+  "unghi": "frontal simetric",
+  "sezon": "—",
+  "potrivit": [
+   "chenare/brâuri",
+   "perete accent dormitor",
+   "paleta 2027 (mov șters, roz pal)"
+  ],
+  "cadru_util": "peretele de deasupra patului — spațiu central pentru text"
+ },
+ "15-bucatarie-terracota-chenare-brau": {
+  "categorie": "interior",
+  "titlu": "Bucătărie terracota cu chenare și brâu la jumătatea peretelui",
+  "culori": [
+   "terracota / argilă",
+   "bej (tencuială decorativă)",
+   "alb",
+   "lemn natur",
+   "negru"
+  ],
+  "elemente": [
+   "chenare decorative (3 panouri)",
+   "brâu orizontal (chair rail) la jumătatea peretelui",
+   "plintă albă"
+  ],
+  "stil": "contemporan cald",
+  "unghi": "frontal-oblic",
+  "sezon": "—",
+  "potrivit": [
+   "brâuri (chair rail)",
+   "chenare",
+   "bucătărie / dining",
+   "paleta 2027 (argilă)"
+  ],
+  "cadru_util": "partea superioară a peretelui terracota pentru text"
  }
 }

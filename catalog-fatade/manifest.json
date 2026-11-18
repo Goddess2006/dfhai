@@ -1,5 +1,5 @@
 {
- "nume": "Catalog fațade — imagini de referință",
+ "nume": "Catalog imagini de referință — fațade și interioare",
  "sursa": "Imagini furnizate de client (proprietarul NMC / Deco&Flair) în conversație, 17.11.2026. Proveniența exactă (fotografii proprii, randări, AI sau stoc) nu a fost declarată — confirmați drepturile înainte de folosire în reclame plătite.",
  "branduri": [
   "nmcromania.ro",
@@ -41,7 +41,8 @@
     "Înainte/După (după)",
     "landing fațade"
    ],
-   "cadru_util": "tot cadrul; spațiu liber minim pentru text (cer în dreapta-sus)"
+   "cadru_util": "tot cadrul; spațiu liber minim pentru text (cer în dreapta-sus)",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "02",
@@ -71,7 +72,8 @@
     "pilaștri și cornișe",
     "landing hero"
    ],
-   "cadru_util": "cerul din stânga-sus permite text; casa ocupă dreapta"
+   "cadru_util": "cerul din stânga-sus permite text; casa ocupă dreapta",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "03",
@@ -100,7 +102,8 @@
     "ancadramente",
     "Problema/Soluția colțuri plate"
    ],
-   "cadru_util": "colțarele sunt clar vizibile la stânga și la dreapta; cer liber sus-dreapta"
+   "cadru_util": "colțarele sunt clar vizibile la stânga și la dreapta; cer liber sus-dreapta",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "04",
@@ -130,7 +133,8 @@
     "renovare casă bătrânească",
     "cornișe exterior"
    ],
-   "cadru_util": "tot cadrul; poarta din stânga poate fi decupată"
+   "cadru_util": "tot cadrul; poarta din stânga poate fi decupată",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "05",
@@ -160,7 +164,8 @@
     "ancadramente decorative",
     "campanii cu prețuri accesibile"
    ],
-   "cadru_util": "frontal simetric; bun pentru format pătrat/4:5 cu decupaj central"
+   "cadru_util": "frontal simetric; bun pentru format pătrat/4:5 cu decupaj central",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "06",
@@ -191,7 +196,8 @@
     "capace gard",
     "paleta 2027 taupe/crem"
    ],
-   "cadru_util": "frontal simetric; cer liber sus; gardul din față poate fi decupat"
+   "cadru_util": "frontal simetric; cer liber sus; gardul din față poate fi decupat",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "07",
@@ -220,7 +226,8 @@
     "contrast alb + tâmplărie antracit",
     "renovare casă pe parter"
    ],
-   "cadru_util": "copacul din stânga încadrează; text posibil pe peretele alb din dreapta-jos"
+   "cadru_util": "copacul din stânga încadrează; text posibil pe peretele alb din dreapta-jos",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "08",
@@ -250,7 +257,8 @@
     "ancadramente",
     "paletă neutră gri/alb"
    ],
-   "cadru_util": "perete mare uniform — mult spațiu pentru text pe fațadă"
+   "cadru_util": "perete mare uniform — mult spațiu pentru text pe fațadă",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "09",
@@ -280,7 +288,8 @@
     "paleta 2027 (verde salvie)",
     "landing fațade"
    ],
-   "cadru_util": "frontal; cer liber sus; vegetație în colțuri"
+   "cadru_util": "frontal; cer liber sus; vegetație în colțuri",
+   "categorie": "exterior · fațadă"
   },
   {
    "id": "10",
@@ -311,7 +320,166 @@
     "pilaștri",
     "renovare casă bătrânească"
    ],
-   "cadru_util": "frontal simetric; fronton cu spațiu pentru text"
+   "cadru_util": "frontal simetric; fronton cu spațiu pentru text",
+   "categorie": "exterior · fațadă"
+  },
+  {
+   "id": "11",
+   "fisier": "imagini/11-living-salvie-cornisa-led-inainte.webp",
+   "jpg": "jpg/11-living-salvie-cornisa-led-inainte.jpg",
+   "latime": 1536,
+   "inaltime": 1024,
+   "sha256": "5795a794f14b992c6785bd4a0bf3913deffd9aa3ad7692b1b75c0d1e2dd04f3b",
+   "categorie": "interior",
+   "titlu": "Living salvie cu cornișă LED (fără chenare) — ÎNAINTE",
+   "culori": [
+    "verde salvie",
+    "crem",
+    "lemn natur",
+    "vișiniu (accente)"
+   ],
+   "elemente": [
+    "cornișă cu iluminare LED indirectă",
+    "plintă (posibil LED la podea)",
+    "perete simplu, fără chenare"
+   ],
+   "stil": "contemporan cald, apus de soare",
+   "unghi": "oblic",
+   "sezon": "—",
+   "pereche": "13 (aceeași cameră, cu chenare)",
+   "potrivit": [
+    "ÎNAINTE/DUPĂ cu 13 (chenare din brâu)",
+    "cornișe LED (ex. L5, IL18)",
+    "paleta 2027 salvie/crem/vișiniu"
+   ],
+   "cadru_util": "perete mare liber pentru text în stânga-sus"
+  },
+  {
+   "id": "12",
+   "fisier": "imagini/12-hol-albastru-chenare-cornisa.webp",
+   "jpg": "jpg/12-hol-albastru-chenare-cornisa.jpg",
+   "latime": 1536,
+   "inaltime": 1024,
+   "sha256": "207962a8a59512ddff7ed0983342c3bdafa0a1bfb48588fdede6d276e2d56461",
+   "categorie": "interior",
+   "titlu": "Hol albastru-petrol cu chenare pe pereți și cornișă",
+   "culori": [
+    "albastru petrol / navy",
+    "alb",
+    "lemn natur",
+    "alamă"
+   ],
+   "elemente": [
+    "chenare decorative din brâu pe ambii pereți",
+    "cornișă de tavan",
+    "plintă albă",
+    "ancadramente uși"
+   ],
+   "stil": "modern-clasic, elegant",
+   "unghi": "perspectivă centrală pe hol",
+   "sezon": "—",
+   "potrivit": [
+    "chenare/brâuri (ex. WO2)",
+    "cornișe",
+    "plinte (ex. FD3)",
+    "„Holul care face prima impresie”"
+   ],
+   "cadru_util": "simetric; plafonul și capătul holului pentru text"
+  },
+  {
+   "id": "13",
+   "fisier": "imagini/13-living-salvie-cornisa-led-chenare-dupa.webp",
+   "jpg": "jpg/13-living-salvie-cornisa-led-chenare-dupa.jpg",
+   "latime": 1536,
+   "inaltime": 1024,
+   "sha256": "82ee61acbbbb03361ad79a3fdeb8a473a41b040388802b6b7f8111b51e95b854",
+   "categorie": "interior",
+   "titlu": "Living salvie cu cornișă LED și chenare — DUPĂ",
+   "culori": [
+    "verde salvie",
+    "crem",
+    "lemn natur",
+    "vișiniu (accente)"
+   ],
+   "elemente": [
+    "chenare decorative din brâu pe tot peretele",
+    "cornișă cu iluminare LED indirectă",
+    "plintă"
+   ],
+   "stil": "contemporan-clasic, premium",
+   "unghi": "oblic",
+   "sezon": "—",
+   "pereche": "11 (aceeași cameră, fără chenare)",
+   "potrivit": [
+    "ÎNAINTE/DUPĂ cu 11",
+    "chenare din brâu (ex. WO2)",
+    "cornișe LED",
+    "„Lux cu bani puțini”"
+   ],
+   "cadru_util": "chenarele dau ritm; text pe tavan/sus"
+  },
+  {
+   "id": "14",
+   "fisier": "imagini/14-dormitor-mov-chenare.webp",
+   "jpg": "jpg/14-dormitor-mov-chenare.jpg",
+   "latime": 1536,
+   "inaltime": 1024,
+   "sha256": "b2a5f865f64b6f594910f79ef80e02b2dd305c853ddcd3215da29adcf133935a",
+   "categorie": "interior",
+   "titlu": "Dormitor mov-prună prăfuit cu chenare în spatele patului",
+   "culori": [
+    "mov-prună / mauve prăfuit",
+    "roz pal",
+    "crem",
+    "lemn natur",
+    "alamă"
+   ],
+   "elemente": [
+    "chenare decorative (3 panouri) pe peretele patului",
+    "aplice de perete",
+    "plintă"
+   ],
+   "stil": "contemporan cald, hotel boutique",
+   "unghi": "frontal simetric",
+   "sezon": "—",
+   "potrivit": [
+    "chenare/brâuri",
+    "perete accent dormitor",
+    "paleta 2027 (mov șters, roz pal)"
+   ],
+   "cadru_util": "peretele de deasupra patului — spațiu central pentru text"
+  },
+  {
+   "id": "15",
+   "fisier": "imagini/15-bucatarie-terracota-chenare-brau.webp",
+   "jpg": "jpg/15-bucatarie-terracota-chenare-brau.jpg",
+   "latime": 1536,
+   "inaltime": 1024,
+   "sha256": "f476494888994dda0bd94916c84ee57d539e4b440ec83da7cbc78d4671742351",
+   "categorie": "interior",
+   "titlu": "Bucătărie terracota cu chenare și brâu la jumătatea peretelui",
+   "culori": [
+    "terracota / argilă",
+    "bej (tencuială decorativă)",
+    "alb",
+    "lemn natur",
+    "negru"
+   ],
+   "elemente": [
+    "chenare decorative (3 panouri)",
+    "brâu orizontal (chair rail) la jumătatea peretelui",
+    "plintă albă"
+   ],
+   "stil": "contemporan cald",
+   "unghi": "frontal-oblic",
+   "sezon": "—",
+   "potrivit": [
+    "brâuri (chair rail)",
+    "chenare",
+    "bucătărie / dining",
+    "paleta 2027 (argilă)"
+   ],
+   "cadru_util": "partea superioară a peretelui terracota pentru text"
   }
  ]
 }
