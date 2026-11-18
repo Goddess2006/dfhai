@@ -26,7 +26,24 @@
 .tabs button{border:1px solid var(--line);border-bottom:0;background:var(--soft);color:var(--muted);border-radius:8px 8px 0 0;padding:9px 18px 8px;font:500 14px var(--f-body);cursor:pointer;display:flex;gap:8px;align-items:center;white-space:nowrap;margin-bottom:-2px}
 .tabs button i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--line);border-bottom:2px solid var(--paper);font-weight:700}
-.tabs .t-nmc i{background:#FF671F}.tabs .t-df i{background:#B08A4E;box-shadow:inset 0 0 0 2px #8E2329}
+.tabs .t-nmc i{background:#FF671F}.tabs .t-np i{background:#22252A;box-shadow:inset 0 0 0 2px #FF671F}
+:root:not([data-brand="np"]) .pcol{display:none!important}
+td input.dd{width:58px}
+td.svc{text-align:center}td.svc input{width:16px;height:16px;accent-color:var(--accent)}
+tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-size:11px;color:var(--muted)}
+.gest{background:var(--paper);border:1px dashed color-mix(in srgb,var(--accent) 55%,transparent);border-radius:10px;padding:12px 16px;display:grid;gap:10px}
+.gest .row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.gest .st{display:grid;gap:2px;font-size:13px}.gest .st b{font-weight:500}.gest .st span{color:var(--muted);font-size:12px}
+.gest .st .warn{color:var(--bad)}
+.map{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:10px}
+.map .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 14px}
+.map label{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.map select,.cpick input{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+.map .chk{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink)}
+.prev{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+.prev table{min-width:0;font-size:12px}.prev td,.prev th{padding:4px 8px;white-space:nowrap}
+.cpick{position:relative;margin-bottom:12px}
+.cpick .results div{grid-template-columns:1fr auto}.tabs .t-df i{background:#B08A4E;box-shadow:inset 0 0 0 2px #8E2329}
 .tabs .hint{margin-left:auto;align-self:center;color:var(--muted);font-size:12px;padding:0 4px 6px;white-space:nowrap}
 .logo.df{width:170px}
 [hidden]{display:none!important}
@@ -174,6 +191,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 <div class="wrap">
   <nav class="tabs" role="tablist" aria-label="Foaie">
     <button type="button" role="tab" class="t-nmc" data-brand="nmc" id="tab_nmc" aria-selected="true"><i></i>NMC România</button>
+    <button type="button" role="tab" class="t-np" data-brand="np" id="tab_np" aria-selected="false"><i></i>NMC Parteneri</button>
     <button type="button" role="tab" class="t-df" data-brand="df" id="tab_df" aria-selected="false"><i></i>Deco&amp;Flair</button>
     <span class="hint">Fiecare foaie are catalogul, numerotarea și oferta ei.</span>
   </nav>
@@ -216,6 +234,18 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     <span>Ofertă exemplu: produsele de mai jos sunt doar ca model. Șterge-le sau apasă „Ofertă nouă”.</span>
   </div>
 
+  <section class="gest noprint" id="gest" hidden aria-label="Date din gestiune">
+    <div class="row">
+      <div class="st"><b id="gsPrice"></b><span id="gsPriceInfo"></span></div>
+      <div class="st"><b id="gsCli"></b><span id="gsCliInfo"></span></div>
+      <div class="confirm">
+        <button type="button" class="btn primary" id="impPrice">Importă lista de prețuri</button>
+        <button type="button" class="btn" id="impCli">Importă clienții</button>
+        <input type="file" id="impFile" accept=".xlsx,.xls,.xlsm,.csv,.txt,.dbf,.ods" hidden>
+      </div>
+    </div>
+    <div class="map" id="impMap" hidden></div>
+  </section>
   <main class="sheet" id="sheet">
     <header class="head">
       <img class="logo" id="logo" src="" alt="">
@@ -232,6 +262,10 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 
     <section aria-labelledby="hClient">
       <h2 id="hClient">Date client</h2>
+      <div class="cpick noprint" id="cpick" hidden>
+        <input id="cq" placeholder="Caută client din gestiune după nume, CUI sau localitate…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="cres">
+        <div class="results" id="cres" role="listbox" hidden></div>
+      </div>
       <div class="client">
         <div class="fld w2"><label for="c_nume">Nume / Denumire firmă</label><input id="c_nume" placeholder="ex. Popescu Ion / SC Exemplu SRL"></div>
         <div class="fld"><label for="c_cui">CUI / CNP</label><input id="c_cui" placeholder=" "></div>
@@ -257,7 +291,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
         <table>
           <thead><tr>
             <th>#</th><th>Cod</th><th>Produs</th><th>UM</th><th class="n">Cant.</th>
-            <th class="n">Preț unitar<br>fără TVA</th><th class="n">Preț unitar<br>cu TVA</th><th class="n">Valoare<br>cu TVA</th><th class="noprint"></th>
+            <th class="n">Preț unitar<br>fără TVA</th><th class="n">Preț unitar<br>cu TVA</th><th class="n pcol">Disc.<br>%</th><th class="n">Valoare<br>cu TVA</th><th class="pcol noprint" title="Serviciu: nu primește discount">Serv.</th><th class="noprint"></th>
           </tr></thead>
           <tbody id="rows"></tbody>
         </table>
@@ -283,7 +317,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
               <button type="button" id="dPct" aria-pressed="true">%</button>
               <button type="button" id="dVal" aria-pressed="false">RON</button>
             </div>
-            <span style="color:var(--muted);font-size:12.5px">se aplică la valoarea produselor, nu la transport</span>
+            <span style="color:var(--muted);font-size:12.5px">se aplică doar produselor, niciodată la servicii sau transport</span>
           </div>
         </div>
       </div>
@@ -320,6 +354,7 @@ const BRANDS = {
     sign:["Echipa Deco&Flair","0723 300 603 · office@decoflair.ro · decoflair.ro"],
     rgb:[169,131,74], rgbInk:[142,35,41], hex:"A9834A", hexInk:"8E2329"}
 };
+BRANDS.np = Object.assign({}, BRANDS.nmc, {id:"np", prefix:"NMCP", catalog:[], example:[], partner:true});
 let B = BRANDS.nmc;
 const TVA = 0.21;
 const SHIP = {"242":{ron:242},"150":{name:"Curier Fan Courier",ron:150},"0":{name:"Fără transport (ridicare de la depozit)",ron:0}};
@@ -335,7 +370,9 @@ function nextNr(){
   return B.prefix+"-"+y+"-"+String(c.n).padStart(4,"0");
 }
 function blank(){return {nr:nextNr(),data:todayISO(),cur:"RON",rate:5.09,ship:"242",disc:0,dType:"pct",client:{},info:"",lines:[],example:false}}
-function lineFrom(p){return {c:p.c,n:p.n,u:p.u,l:p.l,q:1,p:p.p,base:p.p,o:p.o}}
+function lineFrom(p){return {c:p.c,n:p.n,u:p.u,l:p.l,cat:true,q:1,p:p.p,base:p.p,o:p.o,d:0,svc:!!p.svc}}
+const isCat = l => l.cat ?? !!l.l;
+const lineVal = l => round2(l.q*l.p*(l.svc?1:1-Math.min(Math.max(l.d||0,0),100)/100));
 
 const num = v => { const x=parseFloat(String(v).replace(/\s/g,"").replace(",", ".")); return isFinite(x)?x:0 };
 const round2 = x => Math.round((x+Number.EPSILON)*100)/100;
@@ -347,45 +384,53 @@ const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">"
 
 function load(){
   S = store.get(B.id+"_oferta_draft");
-  if(!S){ S=blank(); S.example=true; B.example.forEach(([c,q])=>{const p=B.catalog.find(x=>x.c===c); if(p){const l=lineFrom(p);l.q=q;S.lines.push(l)}}) }
+  if(!S){ S=blank(); S.example=true; B.example.forEach(([c,q])=>{const p=B.catalog.find(x=>x.c===c); if(p){const l=lineFrom(p);l.q=q;S.lines.push(l)}}); S.example=S.lines.length>0 }
 }
 function save(){ store.set(B.id+"_oferta_draft",S) }
 
 function calc(){
-  const gross = S.lines.reduce((a,l)=>a+round2(l.q*l.p),0);
-  let disc = S.dType==="pct" ? gross*Math.min(Math.max(S.disc,0),100)/100 : Math.min(Math.max(back(S.disc),0),gross);
-  const prod = gross-disc, ship = SHIP[S.ship].ron, total = prod+ship, net = total/(1+TVA);
-  return {gross,disc,prod,ship,total,net,tva:total-net};
+  // discountul (pe linie și general) se aplică doar produselor; serviciile și transportul rămân întregi
+  const P = S.lines.filter(l=>!l.svc), V = S.lines.filter(l=>l.svc);
+  const gross = P.reduce((a,l)=>a+round2(l.q*l.p),0), after = P.reduce((a,l)=>a+lineVal(l),0), lineDisc = gross-after;
+  const gen = S.dType==="pct" ? after*Math.min(Math.max(S.disc,0),100)/100 : Math.min(Math.max(back(S.disc),0),after);
+  const prod = after-gen, svc = V.reduce((a,l)=>a+lineVal(l),0), ship = SHIP[S.ship].ron, total = prod+svc+ship, net = total/(1+TVA);
+  return {gross,lineDisc,gen,disc:lineDisc+gen,prod,svc,ship,total,net,tva:total-net};
+}
+function totalRows(t){
+  const pct = fmtN(S.disc).replace(/,00$/,"");
+  const r=[["Valoare produse (cu TVA)",t.gross]];
+  if(t.lineDisc>0.004) r.push(["Discount pe produse",-t.lineDisc,"neg"]);
+  if(t.gen>0.004) r.push([(t.lineDisc>0.004?"Discount general":"Discount")+(S.dType==="pct"?` ${pct}%`:""),-t.gen,"neg"]);
+  if(t.disc>0.004) r.push(["Produse după discount",t.prod,"sub"]);
+  if(t.svc>0.004 || S.lines.some(l=>l.svc)) r.push(["Servicii (fără discount)",t.svc]);
+  r.push([shipName(S.ship),t.ship],["Total fără TVA",t.net],["TVA 21%",t.tva]);
+  return r;
 }
 
 function renderRows(){
   const tb=$("rows");
-  if(!S.lines.length){tb.innerHTML='<tr class="emptyrow"><td colspan="9">Niciun produs încă. Caută după cod sau denumire în câmpul de mai sus.</td></tr>';return}
+  if(!S.lines.length){tb.innerHTML=`<tr class="emptyrow"><td colspan="11">${B.id==="np"&&!B.catalog.length?"Importă mai întâi lista de prețuri din gestiune (butonul de deasupra foii).":"Niciun produs încă. Caută după cod sau denumire în câmpul de mai sus."}</td></tr>`;return}
   tb.innerHTML=S.lines.map((l,i)=>{
     const changed = l.base!=null && Math.abs(l.p-l.base)>0.004;
-    const name = l.l ? `<a href="${B.site+esc(l.l)}" target="_blank" rel="noopener">${esc(l.n)}</a>` : `<input class="free" data-i="${i}" data-k="n" value="${esc(l.n)}" placeholder="Denumire produs / serviciu" style="width:100%;text-align:left;font-family:var(--f-body)">`;
-    const code = l.l ? esc(l.c) : `<input data-i="${i}" data-k="c" value="${esc(l.c)}" placeholder="Cod" style="width:80px;text-align:left">`;
-    return `<tr>
+    const name = l.l ? `<a href="${B.site+esc(l.l)}" target="_blank" rel="noopener">${esc(l.n)}</a>` : isCat(l) ? esc(l.n) : `<input class="free" data-i="${i}" data-k="n" value="${esc(l.n)}" placeholder="Denumire produs / serviciu" style="width:100%;text-align:left;font-family:var(--f-body)">`;
+    const code = isCat(l) ? esc(l.c) : `<input data-i="${i}" data-k="c" value="${esc(l.c)}" placeholder="Cod" style="width:80px;text-align:left">`;
+    return `<tr class="${l.svc?"isvc":""}">
       <td class="um">${i+1}</td>
       <td class="code">${code}</td>
       <td class="name">${name}${l.o&&!changed?'<span class="tag">promo</span>':''}${changed?`<small>preț site: ${fmt(conv(l.base))} · <a href="#" data-reset="${i}">revino</a></small>`:''}</td>
-      <td class="um">${l.l?esc(l.u):`<input data-i="${i}" data-k="u" value="${esc(l.u)}" style="width:56px;text-align:left">`}</td>
+      <td class="um">${isCat(l)?esc(l.u):`<input data-i="${i}" data-k="u" value="${esc(l.u)}" style="width:56px;text-align:left">`}</td>
       <td class="n"><input class="q" data-i="${i}" data-k="q" inputmode="decimal" value="${l.q}" aria-label="Cantitate ${esc(l.c)}"></td>
       <td class="n" style="font-family:var(--f-num);font-size:13px">${fmtN(conv(l.p/(1+TVA)))}</td>
       <td class="n"><input class="pu" data-i="${i}" data-k="p" inputmode="decimal" value="${fmtN(conv(l.p)).replace(/\./g,"")}" aria-label="Preț unitar cu TVA ${esc(l.c)}">${l.o&&!changed?`<span class="old">${fmtN(conv(l.o))}</span>`:''}</td>
-      <td class="n val" data-v="${i}">${fmt(conv(l.q*l.p))}</td>
+      <td class="n pcol">${l.svc?'<span class="um">—</span>':`<input class="dd" data-i="${i}" data-k="d" inputmode="decimal" value="${String(l.d||0).replace(".",",")}" aria-label="Discount % ${esc(l.c)}">`}</td>
+      <td class="n val" data-v="${i}">${fmt(conv(lineVal(l)))}</td>
+      <td class="svc pcol noprint"><input type="checkbox" data-i="${i}" data-k="svc" ${l.svc?"checked":""} aria-label="Serviciu (fără discount) ${esc(l.c)}"></td>
       <td class="noprint"><button class="x" data-del="${i}" aria-label="Șterge rândul ${i+1}">×</button></td></tr>`}).join("");
 }
 function renderTotals(){
   const t=calc(), other=S.cur==="RON"?"EUR":"RON";
   const otherVal = other==="EUR" ? t.total/(S.rate||1) : t.total;
-  const dl = S.dType==="pct" ? `Discount ${fmtN(S.disc).replace(/,00$/,"")}%` : "Discount";
-  $("totals").innerHTML=`
-    <div><span>Valoare produse (cu TVA)</span><span>${fmt(conv(t.gross))}</span></div>
-    ${t.disc>0?`<div class="neg"><span>${dl}</span><span>− ${fmt(conv(t.disc))}</span></div><div class="sub"><span>Produse după discount</span><span>${fmt(conv(t.prod))}</span></div>`:""}
-    <div><span>${esc(shipName(S.ship))}</span><span>${fmt(conv(t.ship))}</span></div>
-    <div><span>Total fără TVA</span><span>${fmt(conv(t.net))}</span></div>
-    <div><span>TVA 21%</span><span>${fmt(conv(t.tva))}</span></div>
+  $("totals").innerHTML = totalRows(t).map(([k,v,c])=>`<div${c?` class="${c}"`:""}><span>${esc(k)}</span><span>${v<0?"− ":""}${fmt(conv(Math.abs(v)))}</span></div>`).join("")+`
     <div class="grand"><span>Total de plată</span><span>${fmt(conv(t.total))}</span></div>
     <div class="alt"><span>Echivalent ${other} (1 EUR = ${fmtN(S.rate).replace(/,?0+$/,"")} lei)</span><span>${fmt(otherVal,other)}</span></div>`;
 }
@@ -426,7 +471,7 @@ function drawHits(){
 function addHit(i){
   const p=hits[i]; if(!p)return;
   if(S.example){S.lines=[];S.example=false}
-  const ex=S.lines.find(l=>l.l===p.l); if(ex) ex.q=round2(ex.q+1); else S.lines.push(lineFrom(p));
+  const ex=S.lines.find(l=>isCat(l)&&l.c===p.c&&l.n===p.n); if(ex) ex.q=round2(ex.q+1); else S.lines.push(lineFrom(p));
   $("q").value=""; $("res").hidden=true; $("q").setAttribute("aria-expanded","false"); renderAll(); toast(p.c+" adăugat");
   const inp=[...document.querySelectorAll("input.q")].at(ex?S.lines.indexOf(ex):-1); inp&&inp.select();
 }
@@ -445,19 +490,23 @@ document.addEventListener("click",e=>{ if(!e.target.closest(".picker")) $("res")
 /* rânduri */
 $("rows").addEventListener("input",e=>{
   const i=e.target.dataset.i, k=e.target.dataset.k; if(i==null)return; const l=S.lines[i];
+  if(k==="svc") return;
   if(k==="q") l.q=num(e.target.value);
+  else if(k==="d") l.d=Math.min(Math.max(num(e.target.value),0),100);
   else if(k==="p") l.p=back(num(e.target.value));
   else l[k]=e.target.value;
   S.example=false; $("exampleNote").hidden=true;
-  const v=document.querySelector(`[data-v="${i}"]`); if(v) v.textContent=fmt(conv(l.q*l.p));
+  const v=document.querySelector(`[data-v="${i}"]`); if(v) v.textContent=fmt(conv(lineVal(l)));
   renderTotals(); save();
 });
-$("rows").addEventListener("change",e=>{ if(e.target.dataset.k==="p") renderRows() });
+$("rows").addEventListener("change",e=>{ const k=e.target.dataset.k;
+  if(k==="svc"){ const l=S.lines[e.target.dataset.i]; l.svc=e.target.checked; if(l.svc)l.d=0; renderAll(); return }
+  if(k==="p") renderRows() });
 $("rows").addEventListener("click",e=>{
   if(e.target.dataset.del!=null){S.lines.splice(+e.target.dataset.del,1);renderAll()}
   if(e.target.dataset.reset!=null){e.preventDefault();const l=S.lines[+e.target.dataset.reset];l.p=l.base;renderAll()}
 });
-$("addFree").addEventListener("click",()=>{ if(S.example){S.lines=[];S.example=false} S.lines.push({c:"",n:"",u:"buc",l:"",q:1,p:0,base:null,o:null}); renderAll(); const f=[...document.querySelectorAll("input.free")].at(-1); f&&f.focus() });
+$("addFree").addEventListener("click",()=>{ if(S.example){S.lines=[];S.example=false} S.lines.push({c:"",n:"",u:"buc",l:"",cat:false,q:1,p:0,base:null,o:null,d:0,svc:false}); renderAll(); const f=[...document.querySelectorAll("input.free")].at(-1); f&&f.focus() });
 
 /* monedă, curs, discount, transport */
 function setCur(c){ if(S.cur===c)return; if(S.dType==="val") S.disc=round2(c==="EUR"?S.disc/S.rate:S.disc*S.rate); S.cur=c; $("disc").value=String(S.disc).replace(".",","); renderAll(); if(!$("res").hidden)drawHits() }
@@ -484,10 +533,9 @@ function asText(){
   const L=[`OFERTĂ DE PREȚ – ${B.name}`,`Nr. comandă: ${S.nr}    Data: ${d}    Moneda: ${S.cur}${S.cur==="EUR"?` (1 EUR = ${S.rate} lei)`:""}`,""];
   const cl=[["Client",c.c_nume],["CUI/CNP",c.c_cui],["Reg. Com.",c.c_reg],["Contact",c.c_pers],["Telefon",c.c_tel],["E-mail",c.c_email],["Adresă facturare",c.c_adr],["Adresă livrare",c.c_livr]].filter(x=>x[1]);
   cl.forEach(x=>L.push(x[0]+": "+x[1])); if(cl.length)L.push("");
-  S.lines.forEach((l,i)=>L.push(`${i+1}. ${l.c} – ${l.n} | ${fmtN(l.q)} ${l.u} x ${fmt(conv(l.p))} = ${fmt(conv(l.q*l.p))}`));
-  L.push("",`Valoare produse (cu TVA): ${fmt(conv(t.gross))}`);
-  if(t.disc>0)L.push(`Discount${S.dType==="pct"?" "+S.disc+"%":""}: -${fmt(conv(t.disc))}`);
-  L.push(`${shipName(S.ship)}: ${fmt(conv(t.ship))}`,`Total fără TVA: ${fmt(conv(t.net))}`,`TVA 21%: ${fmt(conv(t.tva))}`,`TOTAL DE PLATĂ: ${fmt(conv(t.total))}`);
+  S.lines.forEach((l,i)=>L.push(`${i+1}. ${l.c} – ${l.n} | ${fmtN(l.q)} ${l.u} x ${fmt(conv(l.p))}${l.d&&!l.svc?` − ${String(l.d).replace(".",",")}%`:""}${l.svc?" (serviciu)":""} = ${fmt(conv(lineVal(l)))}`));
+  L.push(""); totalRows(t).forEach(([k,v])=>L.push(`${k}: ${v<0?"-":""}${fmt(conv(Math.abs(v)))}`));
+  L.push(`TOTAL DE PLATĂ: ${fmt(conv(t.total))}`);
   if(S.info.trim())L.push("","Informații suplimentare:",S.info.trim());
   return L.join("\n");
 }
@@ -498,21 +546,26 @@ $("copyBtn").onclick=()=>{const txt=asText();
 let tt; function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,1800)}
 
 /*__EXPORT__*/
-/* foi (NMC / Deco&Flair) */
+/*__PARTNER__*/
+/* foi (NMC / NMC Parteneri / Deco&Flair) */
+const ID2HASH={nmc:"#nmc",np:"#parteneri",df:"#decoflair"}, HASH2ID={"#nmc":"nmc","#parteneri":"np","#decoflair":"df"};
 function applyBrand(id){
   B=BRANDS[id]||BRANDS.nmc; document.documentElement.dataset.brand=B.id;
   document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.setAttribute("aria-selected",t.dataset.brand===B.id));
   const lg=$("logo"); lg.src=B.logo; lg.alt=B.name; lg.className="logo "+B.logoClass;
   $("issuer").innerHTML=B.issuer.map(([b,t])=>(b?`<b>${esc(b)}</b>`:"")+esc(t)).join("<br>");
   $("fleetName").textContent=B.fleet;
-  $("footNote").textContent=`Prețurile și codurile produselor sunt preluate de pe ${B.domain} la data de ${B.date}. Toate prețurile includ TVA 21%.`;
+  if(B.partner) npLoadCatalog();
+  B.noteText = B.partner ? `Prețuri conform listei de parteneri${B.listName?" "+B.listName:""}. Toate prețurile includ TVA 21%.` : `Prețurile și codurile produselor sunt preluate de pe ${B.domain} la data de ${B.date}. Toate prețurile includ TVA 21%.`;
+  $("footNote").textContent=B.noteText;
+  $("gest").hidden=!B.partner; $("cpick").hidden=!B.partner; if(B.partner) npStatus();
   $("q").placeholder = B.id==="df" ? "Caută după cod sau denumire (ex. L5, Z11, IL10, tapet Carrara)…" : "Caută după cod sau denumire (ex. NA102, Z11, plintă, tapet)…";
   fillCats(); $("q").value=""; $("res").hidden=true; $("mailBox").hidden=true; $("confirmNew").hidden=true;
   store.set("oferta_brand",B.id);
-  if(location.hash!=="#"+(B.id==="df"?"decoflair":"nmc")) history.replaceState(null,"","#"+(B.id==="df"?"decoflair":"nmc"));
+  const h=ID2HASH[B.id]; if(location.hash!==h) history.replaceState(null,"",h);
   load(); fillForm(); renderAll();
 }
 document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.addEventListener("click",()=>{ if(t.dataset.brand!==B.id){ save(); applyBrand(t.dataset.brand) } }));
-window.addEventListener("hashchange",()=>{const id=location.hash==="#decoflair"?"df":location.hash==="#nmc"?"nmc":null; if(id&&id!==B.id){save();applyBrand(id)}});
-applyBrand(location.hash==="#decoflair"?"df":location.hash==="#nmc"?"nmc":(store.get("oferta_brand")||"nmc"));
+window.addEventListener("hashchange",()=>{const id=HASH2ID[location.hash]||null; if(id&&id!==B.id){save();applyBrand(id)}});
+applyBrand(HASH2ID[location.hash]||store.get("oferta_brand")||"nmc");
 </script>

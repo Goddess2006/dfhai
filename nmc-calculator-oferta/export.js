@@ -7,17 +7,25 @@ const issuerLines=()=>B.issuer.map(([b,t])=>b+t);
 function offer(){
   const t=calc();
   const dateRo=S.data?S.data.split("-").reverse().join("."):"";
-  const lines=S.lines.map((l,i)=>[String(i+1),l.c||"",l.n||"",l.u||"",fmtN(l.q).replace(/,00$/,""),fmtN(conv(l.p/(1+TVA))),fmtN(conv(l.p)),fmtN(conv(l.q*l.p))]);
-  const totals=[["Valoare produse (cu TVA)",fmt(conv(t.gross))]];
-  if(t.disc>0){totals.push([S.dType==="pct"?`Discount ${String(S.disc).replace(".",",")}%`:"Discount","− "+fmt(conv(t.disc))]);totals.push(["Produse după discount",fmt(conv(t.prod))])}
-  totals.push([shipName(S.ship),fmt(conv(t.ship))],["Total fără TVA",fmt(conv(t.net))],["TVA 21%",fmt(conv(t.tva))]);
+  const P=!!B.partner;
+  // coloane: [titlu, lățime PDF mm, lățime Word twips, aliniere dreapta, stil]  (stil: m=gri, c=cod, b=bold)
+  const cols = P
+    ? [["#",7,400,0,"m"],["Cod",20,1150,0,"c"],["Produs",0,3416,0,""],["UM",13,750,0,"m"],["Cant.",12,700,1,""],["Preț unitar\ncu TVA",19,1050,1,""],["Disc.\n%",12,650,1,""],["Preț final\ncu TVA",19,1100,1,""],["Valoare\ncu TVA",22,1250,1,"b"]]
+    : [["#",7,400,0,"m"],["Cod",22,1250,0,"c"],["Produs",0,3866,0,""],["UM",17,950,0,"m"],["Cant.",12,700,1,""],["Preț unitar\nfără TVA",20,1100,1,""],["Preț unitar\ncu TVA",20,1100,1,""],["Valoare\ncu TVA",23,1100,1,"b"]];
+  const lines=S.lines.map((l,i)=>{
+    const base=[String(i+1),l.c||"",(l.n||"")+(P&&l.svc?" (serviciu)":""),l.u||"",fmtN(l.q).replace(/,00$/,"")];
+    if(!P) return [...base,fmtN(conv(l.p/(1+TVA))),fmtN(conv(l.p)),fmtN(conv(lineVal(l)))];
+    const d=l.svc?0:(l.d||0);
+    return [...base,fmtN(conv(l.p)),d?String(round2(d)).replace(".",","):"–",fmtN(conv(l.p*(1-d/100))),fmtN(conv(lineVal(l)))];
+  });
+  const totals=totalRows(t).map(([k,v])=>[k,(v<0?"− ":"")+fmt(conv(Math.abs(v)))]);
   const other=S.cur==="RON"?"EUR":"RON", otherVal=other==="EUR"?t.total/(S.rate||1):t.total;
-  return {t,dateRo,lines,totals,grand:fmt(conv(t.total)),
+  return {t,dateRo,cols,lines,totals,grand:fmt(conv(t.total)),
     alt:`Echivalent ${other} (1 EUR = ${String(S.rate).replace(".",",")} lei): ${fmt(otherVal,other)}`,
     client:CLIENT_FIELDS.map(([k,l])=>[l,(S.client[k]||"").trim()]).filter(x=>x[1]),
     meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",S.cur==="EUR"?`EUR (curs ${String(S.rate).replace(".",",")} lei)`:"RON (lei)"]],
     info:(S.info||"").trim(),
-    note:`Prețurile și codurile produselor sunt preluate de pe ${B.domain}. Toate prețurile includ TVA 21%.`};
+    note:B.noteText||`Toate prețurile includ TVA 21%.`};
 }
 function fileBase(){
   const c=(S.client.c_nume||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40);
@@ -53,12 +61,12 @@ function makePDF(){
   }
   head("Produse",y); y+=3;
   d.autoTable({startY:y,margin:{left:M,right:M,bottom:18},
-    head:[["#","Cod","Produs","UM","Cant.","Preț unitar\nfără TVA","Preț unitar\ncu TVA","Valoare\ncu TVA"]],
-    body:O.lines.length?O.lines:[["","","Niciun produs","","","","",""]],
+    head:[O.cols.map(c=>c[0])],
+    body:O.lines.length?O.lines:[O.cols.map((c,i)=>i===2?"Niciun produs":"")],
     styles:{font:"Roboto",fontSize:8.3,textColor:C_INK,cellPadding:{top:1.8,bottom:1.8,left:1.6,right:1.6},lineColor:C_LINE,lineWidth:{bottom:.2}},
     headStyles:{fillColor:C_SOFT,textColor:C_MU,fontStyle:"normal",fontSize:7,valign:"middle"},
-    columnStyles:{0:{cellWidth:7,textColor:C_MU},1:{cellWidth:22,textColor:B.rgbInk,fontStyle:"bold"},3:{cellWidth:17,textColor:C_MU},4:{cellWidth:12,halign:"right"},5:{cellWidth:20,halign:"right"},6:{cellWidth:20,halign:"right"},7:{cellWidth:23,halign:"right",fontStyle:"bold"}},
-    didParseCell:c=>{if(c.section==="head"&&c.column.index>=4)c.cell.styles.halign="right"},
+    columnStyles:Object.fromEntries(O.cols.map(([,w,,r,st],i)=>[i,Object.assign(w?{cellWidth:w}:{},r?{halign:"right"}:{},st==="m"?{textColor:C_MU}:{},st==="c"?{textColor:B.rgbInk,fontStyle:"bold"}:{},st==="b"?{fontStyle:"bold"}:{})])),
+    didParseCell:c=>{if(c.section==="head"&&O.cols[c.column.index][3])c.cell.styles.halign="right"},
     theme:"plain"});
   y=d.lastAutoTable.finalY+7;
   const boxW=88, bx=R-boxW, rowH=6.4, need=(O.totals.length+2)*rowH+4;
@@ -113,10 +121,9 @@ function makeDOCX(){
     body+=table([FULL/2,FULL/2],rows,{noBorder:1});
   }
   body+=heading("Produse");
-  const W=[400,1250,3866,950,700,1100,1100,1100];
-  const H=["#","Cod","Produs","UM","Cant.","Preț unitar fără TVA","Preț unitar cu TVA","Valoare cu TVA"];
-  const rows=[tr(H.map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:i>=4?"right":undefined}),W[i],{fill:"F6F4F1"})).join(""),1)];
-  O.lines.forEach(r=>rows.push(tr(r.map((v,i)=>cell(cp(v,{s:8.5,a:i>=4?"right":undefined,b:i===1||i===7,c:i===1?B.hexInk:i===0||i===3?"6C6F76":undefined}),W[i])).join(""))));
+  const W=O.cols.map(c=>c[2]), H=O.cols.map(c=>c[0].replace("\n"," ")), RA=O.cols.map(c=>c[3]), ST=O.cols.map(c=>c[4]);
+  const rows=[tr(H.map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:RA[i]?"right":undefined}),W[i],{fill:"F6F4F1"})).join(""),1)];
+  O.lines.forEach(r=>rows.push(tr(r.map((v,i)=>cell(cp(v,{s:8.5,a:RA[i]?"right":undefined,b:ST[i]==="c"||ST[i]==="b",c:ST[i]==="c"?B.hexInk:ST[i]==="m"?"6C6F76":undefined}),W[i])).join(""))));
   body+=table(W,rows);
   body+=para("",{after:160});
   const TW=[3000,1900], trs=O.totals.map(([k,v])=>tr(cell(cp(k,{s:9.5}),TW[0])+cell(cp(v,{s:9.5,b:1,a:"right",c:k.startsWith("Discount")?"1E8E4E":undefined}),TW[1])));
@@ -156,7 +163,7 @@ function zipStore(files,type){
 function mailBody(){
   const O=offer(), c=S.client;
   const L=[`Bună ziua${c.c_pers?" "+c.c_pers:c.c_nume?" "+c.c_nume:""},`,"",`Vă transmitem oferta ${B.name} nr. ${S.nr} din data de ${O.dateRo}.`,""];
-  O.lines.forEach(r=>L.push(`• ${r[1]} – ${r[2]}: ${r[4]} ${r[3]} x ${r[6]} = ${r[7]} ${S.cur==="EUR"?"€":"lei"}`));
+  S.lines.forEach(l=>L.push(`• ${l.c} – ${l.n}: ${fmtN(l.q).replace(/,00$/,"")} ${l.u} x ${fmtN(conv(l.p))}${l.d&&!l.svc?` − ${String(l.d).replace(".",",")}%`:""} = ${fmt(conv(lineVal(l)))}`));
   if(O.lines.length)L.push("");
   O.totals.forEach(([k,v])=>L.push(`${k}: ${v}`)); L.push(`TOTAL DE PLATĂ: ${O.grand} (TVA inclus)`);
   if(O.info)L.push("",O.info);

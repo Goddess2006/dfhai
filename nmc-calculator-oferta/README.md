@@ -1,6 +1,6 @@
 # Calculator ofertă NMC · Deco&Flair
 
-Două foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr. NMC-AAAA-0001) și **Deco&Flair** (catalog decoflair.ro, 989 produse, nr. DF-AAAA-0001, sigla și datele firmei Deco & Flair Hub SRL). Fiecare foaie are oferta, numerotarea și ciorna ei. Link direct: `Calculator-Oferta.html#decoflair` sau `#nmc`.
+Trei foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr. NMC-AAAA-0001) **NMC Parteneri** (prețuri din lista de parteneri a gestiunii, ex. NMC05.10.26, nr. NMCP-AAAA-0001) și **Deco&Flair** (catalog decoflair.ro, 989 produse, nr. DF-AAAA-0001, sigla și datele firmei Deco & Flair Hub SRL). Fiecare foaie are oferta, numerotarea și ciorna ei. Link direct: `Calculator-Oferta.html#decoflair` sau `#nmc`.
 
 **Pe desktop:** copiază `Calculator-Oferta.html` pe Desktop și deschide-l cu dublu-clic (Chrome / Edge). Fișier unic, funcționează și fără internet. (`index.html` e același fișier.)
 
@@ -17,3 +17,10 @@ Două foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr
 Biblioteci incluse local (data/lib): jsPDF 2.5.1, jspdf-autotable 3.8.2, Roboto (subset cu diacritice). Word-ul e generat de `export.js` (zip propriu, fără bibliotecă).
 
 Actualizare prețuri: `python3 tools/scrape.py nmc && python3 tools/scrape.py decoflair && python3 build.py`.
+
+## Foaia NMC Parteneri
+- Datele vin din programul de gestiune prin **import de fișier** (Excel .xlsx/.xls, CSV, .dbf sau .ods): butoanele „Importă lista de prețuri” și „Importă clienții” de deasupra foii.
+- La import, calculatorul ghicește coloanele (cod, denumire, UM, preț; pentru clienți: denumire, CUI, Reg. Com., adresă, localitate, județ, telefon, e-mail) și arată o previzualizare; le poți corecta din liste. Dacă tabelul are mai multe liste de preț, alegi coloana listei și lista (se preselectează NMC05.10.26). Bifezi dacă prețurile din fișier includ TVA (implicit: fără TVA, se adaugă 21%).
+- Datele importate rămân doar în browserul de pe calculatorul tău (nu se urcă nicăieri, nu sunt în repo). Re-importă când se schimbă lista.
+- Client: câmpul de căutare din „Date client” (nume, CUI, localitate) completează automat datele clientului.
+- Discount pe fiecare produs (coloana „Disc. %”) + discount general (pe produse, după discountul pe linie). Rândurile bifate „Serv.” sunt servicii: nu primesc niciodată discount; transportul nu primește niciodată discount. Articolele cu „montaj/manoperă/serviciu/transport…” în denumire sunt bifate automat ca servicii.
