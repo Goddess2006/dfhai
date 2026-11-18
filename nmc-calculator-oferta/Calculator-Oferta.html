@@ -35,6 +35,14 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .gest .row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
 .gest .st{display:grid;gap:2px;font-size:13px}.gest .st b{font-weight:500}.gest .st span{color:var(--muted);font-size:12px}
 .gest .st .warn{color:var(--bad)}
+.hist{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:grid;gap:10px}
+.hist .hbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.hist .hbar .sp{flex:1}
+.hist .hbar input,.hist .hbar select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 9px}
+.hist .hbar input{width:min(340px,100%)}
+.htbl{min-width:820px}.htbl td small{display:block;color:var(--muted);font-size:11.5px}
+.htbl tr.cur td{background:var(--accent-soft)}.htbl td.acts{white-space:nowrap;text-align:right}
+.btn.sm{padding:4px 9px;font-size:12px}.htbl td.acts .um{font-size:12px;margin-right:6px}
+#histState{font-size:12px;color:var(--muted);align-self:center}
 .gest .dbrow{border-bottom:1px solid var(--line);padding-bottom:10px}
 .gest .ok{color:var(--good)}
 .map pre{font:11.5px/1.45 var(--f-num);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:220px;overflow:auto;white-space:pre-wrap;margin:0}
@@ -205,6 +213,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
         <button type="button" id="curEUR" aria-pressed="false">EUR</button>
       </div>
       <label class="rate" for="rate">Curs euro: 1 EUR = <input id="rate" inputmode="decimal" value="5.0900"> lei</label>
+      <span id="histState"></span>
     </div>
     <div class="grp">
       <button type="button" class="btn primary exp" id="pdfBtn">Descarcă PDF</button>
@@ -212,6 +221,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       <button type="button" class="btn exp" id="mailBtn" aria-expanded="false" aria-controls="mailBox">Trimite pe e-mail ▾</button>
       <button type="button" class="btn" id="printBtn">Printează</button>
       <button type="button" class="btn" id="copyBtn">Copiază text</button>
+      <button type="button" class="btn" id="histBtn" aria-expanded="false" aria-controls="hist">Oferte salvate</button>
       <button type="button" class="btn danger" id="newBtn">Ofertă nouă</button>
     </div>
   </div>
@@ -229,6 +239,22 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     <small class="mailhint">Se descarcă automat PDF-ul ofertei și se deschide un e-mail completat cu destinatarul, subiectul și rezumatul ofertei. Atașează PDF-ul din folderul Descărcări (Downloads) și apasă Trimite.</small>
   </div>
   <div class="notice" id="framedNote" hidden><span>Exportul în PDF/Word și trimiterea pe e-mail funcționează în varianta de desktop (fișierul <b>Calculator-Oferta.html</b>).</span></div>
+  <section class="hist" id="hist" hidden aria-label="Oferte salvate">
+    <div class="hbar">
+      <b>Oferte salvate</b><span class="um" id="histCount"></span>
+      <span class="sp"></span>
+      <input id="histQ" placeholder="Caută după nr. comandă, client, CUI sau dată…" autocomplete="off" aria-label="Caută oferte">
+      <select id="histScope" aria-label="Foaie"><option value="nmc">NMC România</option><option value="np">NMC Parteneri</option><option value="df">Deco&amp;Flair</option><option value="all">Toate foile</option></select>
+    </div>
+    <div class="tbl"><table class="htbl"><thead><tr><th>Nr. comandă</th><th>Data</th><th>Client</th><th>Foaie</th><th class="n">Poz.</th><th class="n">Total</th><th>Modificată</th><th></th></tr></thead><tbody id="histRows"></tbody></table></div>
+    <div class="confirm">
+      <button type="button" class="btn" id="histExport">Descarcă backup (toate ofertele)</button>
+      <button type="button" class="btn" id="histImport">Restaurează din backup</button>
+      <input type="file" id="histFile" accept=".json,application/json" hidden>
+      <button type="button" class="btn" id="histClose">Închide</button>
+      <span class="um" style="font-size:12px">Ofertele se salvează automat în acest browser. Descarcă din când în când un backup și păstrează-l pe server.</span>
+    </div>
+  </section>
   <div class="notice" id="confirmNew" hidden>
     <span>Golești oferta curentă și pornești o ofertă nouă cu număr nou?</span>
     <span class="confirm"><button type="button" class="btn danger" id="newYes">Da, ofertă nouă</button><button type="button" class="btn" id="newNo">Renunț</button></span>
@@ -830,7 +856,7 @@ function load(){
   S = store.get(B.id+"_oferta_draft");
   if(!S){ S=blank(); S.example=true; B.example.forEach(([c,q])=>{const p=B.catalog.find(x=>x.c===c); if(p){const l=lineFrom(p);l.q=q;S.lines.push(l)}}); S.example=S.lines.length>0 }
 }
-function save(){ store.set(B.id+"_oferta_draft",S) }
+function save(){ store.set(B.id+"_oferta_draft",S); if(typeof arhSchedule==="function") arhSchedule() }
 
 function calc(){
   // discountul (pe linie și general) se aplică doar produselor; serviciile și transportul rămân întregi
@@ -968,7 +994,9 @@ document.querySelectorAll("input[name=ship]").forEach(r=>r.addEventListener("cha
 $("nr").addEventListener("input",e=>{S.nr=e.target.value;save()});
 $("data").addEventListener("input",e=>{S.data=e.target.value;save()});
 $("info").addEventListener("input",e=>{S.info=e.target.value;save()});
-document.querySelectorAll(".client input").forEach(i=>i.addEventListener("input",()=>{S.client[i.id]=i.value;save()}));
+document.querySelectorAll(".client input").forEach(i=>i.addEventListener("input",()=>{
+  if(S.example){ S.example=false; S.lines=[]; renderRows(); renderTotals(); renderMeta() } // începi o ofertă reală: produsele-exemplu dispar
+  S.client[i.id]=i.value; save()}));
 
 /* acțiuni */
 const framed = (()=>{try{return window.self!==window.top}catch(e){return true}})();
@@ -976,7 +1004,7 @@ if(framed){ $("printBtn").hidden=true; document.querySelectorAll(".exp").forEach
 $("printBtn").onclick=()=>window.print();
 $("newBtn").onclick=()=>{$("confirmNew").hidden=false};
 $("newNo").onclick=()=>{$("confirmNew").hidden=true};
-$("newYes").onclick=()=>{const keep={cur:S.cur,rate:S.rate}; S=blank(); Object.assign(S,keep); $("confirmNew").hidden=true; fillForm(); renderAll(); toast("Ofertă nouă: "+S.nr)};
+$("newYes").onclick=async()=>{ if(typeof arhSaveNow==="function") await arhSaveNow(); const keep={cur:S.cur,rate:S.rate}; S=blank(); Object.assign(S,keep); $("confirmNew").hidden=true; fillForm(); renderAll(); toast("Ofertă nouă: "+S.nr)};
 function asText(){
   const t=calc(), c=S.client, d=S.data?S.data.split("-").reverse().join("."):"";
   const L=[`OFERTĂ DE PREȚ – ${B.name}`,`Nr. comandă: ${S.nr}    Data: ${d}    Moneda: ${S.cur}${S.cur==="EUR"?` (1 EUR = ${S.rate} lei)`:""}`,""];
@@ -1373,7 +1401,7 @@ document.addEventListener("click",e=>{ if(!e.target.closest(".cpick")) $("cres")
 /* ---------- legătură directă cu baza de date a gestiunii (folder cu tabele .dbf FoxPro) ----------
    Folderul se alege o dată (File System Access API, Chrome/Edge); handle-ul se păstrează în IndexedDB.
    La deschiderea foii, dacă browserul a păstrat permisiunea, se sincronizează singur; altfel un clic pe „Sincronizează acum”. */
-const DBX = { dir:null, tables:null, cfg:store.get("np_dbcfg") };
+const DBX = { dir:null, tables:null, cfg:store.get("np_dbcfg2") };
 function idb(){ return new Promise((res,rej)=>{ const r=indexedDB.open("oferta_np",1); r.onupgradeneeded=()=>r.result.createObjectStore("h"); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error) }) }
 async function idbGet(k){ try{ const d=await idb(); return await new Promise(r=>{ const q=d.transaction("h").objectStore("h").get(k); q.onsuccess=()=>r(q.result); q.onerror=()=>r(null) }) }catch(e){ return null } }
 async function idbSet(k,v){ try{ const d=await idb(); return await new Promise(r=>{ const t=d.transaction("h","readwrite"); t.objectStore("h").put(v,k); t.oncomplete=()=>r(true); t.onerror=()=>r(false) }) }catch(e){ return false } }
@@ -1462,11 +1490,21 @@ async function autoDetect(T){
     if(pp) cfg.price={t:t.name,code:cfg.prod.code,price:pp,lf:"",lv:"",name:cfg.prod.name,label:"(din tabelul de articole — nu am găsit lista NMC05.10.26)"};
   }
   cfg.inclTva=false;
+  // schema cunoscută a gestiunii NMC: preturi.dbf (CODPR, CATPRET, PRETVANZ) — lista NMC05.10.26 = CATPRET 90, prețuri CU TVA
+  // (verificat 18.11.2026: prețurile listei 90 coincid cu prețurile cu TVA de pe nmcromania.ro)
+  const kp=T.find(t=>/^PRETURI$/.test(tbase(t)) && ["CODPR","CATPRET","PRETVANZ"].every(f=>t.fields.some(x=>x.name===f)));
+  if(kp){
+    const found = cfg.price && cfg.price.t===kp.name && cfg.price.lf==="CATPRET" ? cfg.price.lv : "90";
+    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26"};
+    cfg.inclTva=true;
+  }
+  const kc=T.find(t=>/^CLIENT$/.test(tbase(t)) && t.fields.some(x=>x.name==="NUMECLI"));
+  if(kc && (!cfg.cli || cfg.cli.t!==kc.name)) cfg.cli={t:kc.name,inv:"INVECHIT",name:"NUMECLI",cui:fx(kc,RX.cui),reg:fx(kc,RX.reg),adr:"ADRESA",loc:fx(kc,RX.loc),jud:fx(kc,RX.jud),tel:fx(kc,RX.tel),email:fx(kc,RX.email),pers:fx(kc,RX.pers)};
   return cfg;
 }
 async function dbSync(silent){
   const T=DBX.tables||(DBX.tables=await listTables(DBX.dir));
-  if(!DBX.cfg){ DBX.cfg=await autoDetect(T); store.set("np_dbcfg",DBX.cfg) }
+  if(!DBX.cfg){ DBX.cfg=await autoDetect(T); store.set("np_dbcfg2",DBX.cfg) }
   const C=DBX.cfg, byName=n=>T.find(t=>t.name===n), stamp=new Date().toISOString(), msg=[];
   if(C.price&&byName(C.price.t)){
     const pt=byName(C.price.t); let rows=await readTable(pt);
@@ -1476,7 +1514,7 @@ async function dbSync(silent){
     const items=[], seen=new Set();
     for(const r of rows){
       const c=String(r[C.price.code]??"").trim(), raw=+r[C.price.price]; if(!c||!(raw>0)||seen.has(c)) continue; seen.add(c);
-      const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||c).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
+      const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||("Articol cod "+c)).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
       const gross=C.inclTva?raw:raw*(1+TVA);
       items.push({c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)});
     }
@@ -1504,7 +1542,7 @@ function dbState(){
 }
 async function dbUse(dir){ DBX.dir=dir; DBX.tables=null; await idbSet("dir",dir); dbState(); }
 $("dbConnect").onclick=async()=>{
-  try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); if(DBX.dir&&DBX.dir.name!==dir.name){DBX.cfg=null;store.set("np_dbcfg",null)} await dbUse(dir); await dbSync() }
+  try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); if(DBX.dir&&DBX.dir.name!==dir.name){DBX.cfg=null;store.set("np_dbcfg2",null)} await dbUse(dir); await dbSync() }
   catch(e){ if(e.name!=="AbortError") toast("Nu am putut deschide folderul: "+e.message) }
 };
 $("dbSync").onclick=async()=>{
@@ -1535,8 +1573,8 @@ function dbSetupDraw(){
   $("dbCfg").querySelectorAll("select[data-g]").forEach(s=>s.onchange=()=>{ C[s.dataset.g]=Object.assign({},C[s.dataset.g]||{},{[s.dataset.k]:s.value}) });
   $("cfgSave").onclick=async()=>{ if(C.price){const nv=$("cfgLv").value.trim(); if(nv!==C.price.lv){C.price.lv=nv; C.price.label=nv}} C.inclTva=$("cfgTva").checked;
     for(const g of ["price","prod","cli"]) if(C[g]&&!C[g].t) delete C[g];
-    store.set("np_dbcfg",C); $("dbCfg").hidden=true; await dbSync() };
-  $("cfgAuto").onclick=async()=>{ DBX.cfg=await autoDetect(T); store.set("np_dbcfg",DBX.cfg); dbSetupDraw() };
+    store.set("np_dbcfg2",C); $("dbCfg").hidden=true; await dbSync() };
+  $("cfgAuto").onclick=async()=>{ DBX.cfg=await autoDetect(T); store.set("np_dbcfg2",DBX.cfg); dbSetupDraw() };
   $("cfgClose").onclick=()=>{ $("dbCfg").hidden=true };
   $("cfgCopy").onclick=()=>{ const txt=T.map(t=>`${t.name} (${t.n} rânduri): ${t.fields.map(f=>f.name+":"+f.type+f.len).join(", ")}`).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast("Structura bazei a fost copiată"),()=>{ $("dbCfg").insertAdjacentHTML("beforeend",`<pre>${esc(txt)}</pre>`) }) };
@@ -1548,6 +1586,89 @@ async function dbBoot(){
   DBX.dir=dir; dbState();
   try{ if(await dir.queryPermission({mode:"read"})==="granted" && B.partner) await dbSync(true) }catch(e){}
 }
+
+/* Arhiva de oferte: fiecare ofertă se salvează automat (IndexedDB „oferte_arhiva”) cât lucrezi la ea;
+   „Oferte salvate” le listează pe foi, cu căutare, și permite redeschiderea pentru editare, duplicarea, ștergerea
+   și backup-ul într-un fișier .json (de păstrat pe server / de mutat pe alt calculator).
+   Inserat de build.py; folosește S, B, BRANDS, calc, fmt, nextNr, todayISO, fillForm, renderAll, applyBrand, store, toast, download. */
+const ARH = { db:null, cache:null };
+function arhOpen(){ return ARH.db || (ARH.db = new Promise((res,rej)=>{ const r=indexedDB.open("oferte_arhiva",1);
+  r.onupgradeneeded=()=>{ const st=r.result.createObjectStore("oferte",{keyPath:"id"}); st.createIndex("brand","brand") };
+  r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error) })) }
+async function arhAll(){ try{ const d=await arhOpen(); return await new Promise(r=>{ const q=d.transaction("oferte").objectStore("oferte").getAll(); q.onsuccess=()=>r(q.result||[]); q.onerror=()=>r([]) }) }catch(e){ return [] } }
+async function arhPut(o){ try{ const d=await arhOpen(); await new Promise(r=>{ const t=d.transaction("oferte","readwrite"); t.objectStore("oferte").put(o); t.oncomplete=r; t.onerror=r }) }catch(e){} }
+async function arhDel(id){ try{ const d=await arhOpen(); await new Promise(r=>{ const t=d.transaction("oferte","readwrite"); t.objectStore("oferte").delete(id); t.oncomplete=r; t.onerror=r }) }catch(e){} }
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+
+/* salvarea automată: la fiecare save() al ofertei curente (cu întârziere mică) */
+let arhTimer=null;
+function arhSchedule(){ clearTimeout(arhTimer); arhTimer=setTimeout(arhSaveNow,400) }
+async function arhSaveNow(){
+  if(!S || S.example) return;
+  const empty = !S.lines.length && !(S.client.c_nume||"").trim();
+  if(empty) return;
+  if(!S.id){ S.id=uid(); S.created=new Date().toISOString(); store.set(B.id+"_oferta_draft",S) }
+  const t=calc();
+  await arhPut({ id:S.id, brand:B.id, nr:S.nr, data:S.data, client:(S.client.c_nume||"").trim(), cui:(S.client.c_cui||"").trim(),
+    total:t.total, cur:S.cur, rate:S.rate, items:S.lines.length, created:S.created, updated:new Date().toISOString(), state:JSON.parse(JSON.stringify(S)) });
+  $("histState").textContent = "Salvată automat · "+new Date().toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"});
+  if(!$("hist").hidden) histDraw();
+}
+
+/* panoul „Oferte salvate” */
+const BR_NAME = {nmc:"NMC România", np:"NMC Parteneri", df:"Deco&Flair"};
+async function histDraw(){
+  const all=(await arhAll()).sort((a,b)=>b.updated.localeCompare(a.updated));
+  const scope=$("histScope").value, q=norm($("histQ").value.trim());
+  const list=all.filter(o=>(scope==="all"||o.brand===scope) && (!q || norm([o.nr,o.client,o.cui,o.data.split("-").reverse().join(".")].join(" ")).includes(q)));
+  $("histCount").textContent = `${list.length} ${list.length===1?"ofertă":"oferte"}${scope==="all"?"":" în "+BR_NAME[scope]} · ${all.length} în total`;
+  $("histRows").innerHTML = list.length ? list.slice(0,300).map(o=>`<tr data-id="${o.id}" class="${o.id===S.id?"cur":""}">
+      <td class="code">${esc(o.nr)}</td><td class="um">${esc(o.data.split("-").reverse().join("."))}</td>
+      <td>${esc(o.client||"—")}${o.cui?`<small>${esc(o.cui)}</small>`:""}</td>
+      <td class="um">${esc(BR_NAME[o.brand]||o.brand)}</td><td class="n um">${o.items}</td>
+      <td class="n val">${new Intl.NumberFormat("ro-RO",{minimumFractionDigits:2,maximumFractionDigits:2}).format(o.cur==="EUR"?o.total/(o.rate||1):o.total)} ${o.cur==="EUR"?"€":"lei"}</td>
+      <td class="um">${new Date(o.updated).toLocaleString("ro-RO",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}</td>
+      <td class="acts">${o.id===S.id?'<span class="um">deschisă acum</span>':`<button type="button" class="btn sm" data-a="open">Deschide</button>`}
+        <button type="button" class="btn sm" data-a="dup">Duplică</button><button type="button" class="btn sm danger" data-a="del">Șterge</button></td></tr>`).join("")
+    : `<tr class="emptyrow"><td colspan="8">${all.length?"Nicio ofertă nu se potrivește căutării.":"Încă nu există oferte salvate. Ofertele se salvează automat pe măsură ce le completezi."}</td></tr>`;
+}
+async function histOpen(id, dup){
+  const o=(await arhAll()).find(x=>x.id===id); if(!o) return;
+  await arhSaveNow();
+  if(o.brand!==B.id){ save(); applyBrand(o.brand) }
+  S=JSON.parse(JSON.stringify(o.state)); S.example=false;
+  if(dup){ S.id=uid(); S.created=new Date().toISOString(); S.nr=nextNr(); S.data=todayISO() }
+  fillForm(); renderAll(); if(dup) arhSaveNow();
+  toast(dup?`Copie creată: ${S.nr}`:`Ofertă deschisă: ${S.nr}`);
+  histDraw(); window.scrollTo({top:0,behavior:"smooth"});
+}
+$("histBtn").onclick=()=>{ const h=$("hist"); h.hidden=!h.hidden; $("histBtn").setAttribute("aria-expanded",!h.hidden); if(!h.hidden){ $("histScope").value=B.id; histDraw(); $("histQ").focus() } };
+$("histClose").onclick=()=>{ $("hist").hidden=true; $("histBtn").setAttribute("aria-expanded","false") };
+$("histQ").addEventListener("input",histDraw); $("histScope").addEventListener("change",histDraw);
+$("histRows").addEventListener("click",async e=>{
+  const btn=e.target.closest("button[data-a]"); if(!btn) return; const id=btn.closest("tr").dataset.id, a=btn.dataset.a;
+  if(a==="open") histOpen(id,false);
+  else if(a==="dup") histOpen(id,true);
+  else if(a==="del"){
+    if(btn.dataset.sure){ await arhDel(id); toast("Oferta a fost ștearsă"); histDraw() }
+    else { btn.dataset.sure="1"; btn.textContent="Sigur? Șterge"; setTimeout(()=>{ if(btn.isConnected){ delete btn.dataset.sure; btn.textContent="Șterge" } },4000) }
+  }
+});
+$("histExport").onclick=async()=>{
+  const all=await arhAll(); if(!all.length){ toast("Nu există oferte de salvat"); return }
+  download(new Blob([JSON.stringify({tip:"oferte-nmc-decoflair",versiune:1,exportat:new Date().toISOString(),oferte:all},null,1)],{type:"application/json"}),`Backup-oferte-${todayISO()}.json`);
+  toast(`Backup cu ${all.length} oferte descărcat`);
+};
+$("histImport").onclick=()=>$("histFile").click();
+$("histFile").addEventListener("change",async e=>{
+  const f=e.target.files[0]; e.target.value=""; if(!f) return;
+  try{
+    const d=JSON.parse(await f.text()); const list=Array.isArray(d)?d:d.oferte; if(!Array.isArray(list)) throw new Error("fișierul nu este un backup de oferte");
+    const have=new Map((await arhAll()).map(o=>[o.id,o])); let n=0;
+    for(const o of list){ if(!o||!o.id||!o.state) continue; const ex=have.get(o.id); if(!ex||ex.updated<o.updated){ await arhPut(o); n++ } }
+    toast(`${n} oferte restaurate din backup`); histDraw();
+  }catch(err){ toast("Backup-ul nu a putut fi citit: "+err.message) }
+});
 
 /* foi (NMC / NMC Parteneri / Deco&Flair) */
 const ID2HASH={nmc:"#nmc",np:"#parteneri",df:"#decoflair"}, HASH2ID={"#nmc":"nmc","#parteneri":"np","#decoflair":"df"};

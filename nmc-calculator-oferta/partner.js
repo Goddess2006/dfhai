@@ -179,7 +179,7 @@ document.addEventListener("click",e=>{ if(!e.target.closest(".cpick")) $("cres")
 /* ---------- legătură directă cu baza de date a gestiunii (folder cu tabele .dbf FoxPro) ----------
    Folderul se alege o dată (File System Access API, Chrome/Edge); handle-ul se păstrează în IndexedDB.
    La deschiderea foii, dacă browserul a păstrat permisiunea, se sincronizează singur; altfel un clic pe „Sincronizează acum”. */
-const DBX = { dir:null, tables:null, cfg:store.get("np_dbcfg") };
+const DBX = { dir:null, tables:null, cfg:store.get("np_dbcfg2") };
 function idb(){ return new Promise((res,rej)=>{ const r=indexedDB.open("oferta_np",1); r.onupgradeneeded=()=>r.result.createObjectStore("h"); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error) }) }
 async function idbGet(k){ try{ const d=await idb(); return await new Promise(r=>{ const q=d.transaction("h").objectStore("h").get(k); q.onsuccess=()=>r(q.result); q.onerror=()=>r(null) }) }catch(e){ return null } }
 async function idbSet(k,v){ try{ const d=await idb(); return await new Promise(r=>{ const t=d.transaction("h","readwrite"); t.objectStore("h").put(v,k); t.oncomplete=()=>r(true); t.onerror=()=>r(false) }) }catch(e){ return false } }
@@ -268,11 +268,21 @@ async function autoDetect(T){
     if(pp) cfg.price={t:t.name,code:cfg.prod.code,price:pp,lf:"",lv:"",name:cfg.prod.name,label:"(din tabelul de articole — nu am găsit lista NMC05.10.26)"};
   }
   cfg.inclTva=false;
+  // schema cunoscută a gestiunii NMC: preturi.dbf (CODPR, CATPRET, PRETVANZ) — lista NMC05.10.26 = CATPRET 90, prețuri CU TVA
+  // (verificat 18.11.2026: prețurile listei 90 coincid cu prețurile cu TVA de pe nmcromania.ro)
+  const kp=T.find(t=>/^PRETURI$/.test(tbase(t)) && ["CODPR","CATPRET","PRETVANZ"].every(f=>t.fields.some(x=>x.name===f)));
+  if(kp){
+    const found = cfg.price && cfg.price.t===kp.name && cfg.price.lf==="CATPRET" ? cfg.price.lv : "90";
+    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26"};
+    cfg.inclTva=true;
+  }
+  const kc=T.find(t=>/^CLIENT$/.test(tbase(t)) && t.fields.some(x=>x.name==="NUMECLI"));
+  if(kc && (!cfg.cli || cfg.cli.t!==kc.name)) cfg.cli={t:kc.name,inv:"INVECHIT",name:"NUMECLI",cui:fx(kc,RX.cui),reg:fx(kc,RX.reg),adr:"ADRESA",loc:fx(kc,RX.loc),jud:fx(kc,RX.jud),tel:fx(kc,RX.tel),email:fx(kc,RX.email),pers:fx(kc,RX.pers)};
   return cfg;
 }
 async function dbSync(silent){
   const T=DBX.tables||(DBX.tables=await listTables(DBX.dir));
-  if(!DBX.cfg){ DBX.cfg=await autoDetect(T); store.set("np_dbcfg",DBX.cfg) }
+  if(!DBX.cfg){ DBX.cfg=await autoDetect(T); store.set("np_dbcfg2",DBX.cfg) }
   const C=DBX.cfg, byName=n=>T.find(t=>t.name===n), stamp=new Date().toISOString(), msg=[];
   if(C.price&&byName(C.price.t)){
     const pt=byName(C.price.t); let rows=await readTable(pt);
@@ -282,7 +292,7 @@ async function dbSync(silent){
     const items=[], seen=new Set();
     for(const r of rows){
       const c=String(r[C.price.code]??"").trim(), raw=+r[C.price.price]; if(!c||!(raw>0)||seen.has(c)) continue; seen.add(c);
-      const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||c).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
+      const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||("Articol cod "+c)).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
       const gross=C.inclTva?raw:raw*(1+TVA);
       items.push({c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)});
     }
@@ -310,7 +320,7 @@ function dbState(){
 }
 async function dbUse(dir){ DBX.dir=dir; DBX.tables=null; await idbSet("dir",dir); dbState(); }
 $("dbConnect").onclick=async()=>{
-  try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); if(DBX.dir&&DBX.dir.name!==dir.name){DBX.cfg=null;store.set("np_dbcfg",null)} await dbUse(dir); await dbSync() }
+  try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); if(DBX.dir&&DBX.dir.name!==dir.name){DBX.cfg=null;store.set("np_dbcfg2",null)} await dbUse(dir); await dbSync() }
   catch(e){ if(e.name!=="AbortError") toast("Nu am putut deschide folderul: "+e.message) }
 };
 $("dbSync").onclick=async()=>{
@@ -341,8 +351,8 @@ function dbSetupDraw(){
   $("dbCfg").querySelectorAll("select[data-g]").forEach(s=>s.onchange=()=>{ C[s.dataset.g]=Object.assign({},C[s.dataset.g]||{},{[s.dataset.k]:s.value}) });
   $("cfgSave").onclick=async()=>{ if(C.price){const nv=$("cfgLv").value.trim(); if(nv!==C.price.lv){C.price.lv=nv; C.price.label=nv}} C.inclTva=$("cfgTva").checked;
     for(const g of ["price","prod","cli"]) if(C[g]&&!C[g].t) delete C[g];
-    store.set("np_dbcfg",C); $("dbCfg").hidden=true; await dbSync() };
-  $("cfgAuto").onclick=async()=>{ DBX.cfg=await autoDetect(T); store.set("np_dbcfg",DBX.cfg); dbSetupDraw() };
+    store.set("np_dbcfg2",C); $("dbCfg").hidden=true; await dbSync() };
+  $("cfgAuto").onclick=async()=>{ DBX.cfg=await autoDetect(T); store.set("np_dbcfg2",DBX.cfg); dbSetupDraw() };
   $("cfgClose").onclick=()=>{ $("dbCfg").hidden=true };
   $("cfgCopy").onclick=()=>{ const txt=T.map(t=>`${t.name} (${t.n} rânduri): ${t.fields.map(f=>f.name+":"+f.type+f.len).join(", ")}`).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast("Structura bazei a fost copiată"),()=>{ $("dbCfg").insertAdjacentHTML("beforeend",`<pre>${esc(txt)}</pre>`) }) };

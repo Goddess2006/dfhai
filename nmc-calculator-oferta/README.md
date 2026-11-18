@@ -16,6 +16,12 @@ Trei foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr.
 
 Biblioteci incluse local (data/lib): jsPDF 2.5.1, jspdf-autotable 3.8.2, Roboto (subset cu diacritice). Word-ul e generat de `export.js` (zip propriu, fără bibliotecă).
 
+## Oferte salvate
+Fiecare ofertă se salvează automat (IndexedDB, în browser) cât lucrezi la ea. Butonul „Oferte salvate” le listează (pe foaie sau toate), cu căutare după nr. comandă, client, CUI sau dată: **Deschide** (o reîncarci și o editezi; modificările se salvează în aceeași ofertă), **Duplică** (copie cu număr nou și data de azi), **Șterge** (cu confirmare). „Descarcă backup” salvează toate ofertele într-un .json; „Restaurează din backup” le aduce înapoi (și pe alt calculator).
+
+## Gestiune NMC — schema cunoscută
+`preturi.dbf` (marfa.dbc): CODPR, CATPRET (nr. listă), PRETVANZ (lei, cu TVA). Lista NMC05.10.26 = **CATPRET 90** (754 articole; prețurile coincid cu prețurile cu TVA de pe nmcromania.ro, ex. cod 2875 = NA102 = 71,06 lei). `client.dbf` (dl.dbc): CODCLI, NUMECLI, ADRESA, INVECHIT; clienții cu prefix „XXX” sau învechiți sunt ignorați. Denumirile/UM ale articolelor vin din tabelul de articole din același folder (detectat automat după CODPR + DENUMIRE); fără el, rândurile apar ca „Articol cod …”.
+
 Actualizare prețuri: `python3 tools/scrape.py nmc && python3 tools/scrape.py decoflair && python3 build.py`.
 
 ## Foaia NMC Parteneri

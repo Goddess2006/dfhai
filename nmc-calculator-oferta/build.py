@@ -14,6 +14,7 @@ libs += '<script>const FONT_R="%s",FONT_B="%s";</script>' % (font('Roboto-Regula
 html = open(P('template.html'), encoding='utf8').read()
 for k, v in {'__LIBS__': libs, '/*__EXPORT__*/': open(P('export.js'), encoding='utf8').read(),
              '/*__PARTNER__*/': open(P('partner.js'), encoding='utf8').read(),
+             '/*__HISTORY__*/': open(P('history.js'), encoding='utf8').read(),
              '__CATALOG_NMC__': cat('catalog.json'), '__CATALOG_DF__': cat('catalog-decoflair.json'),
              '__LOGO_NMC__': png('nmc-logo.png'), '__LOGO_DF__': png('logo-decoflair.png'),
              '__DATE_NMC__': date('catalog.json'), '__DATE_DF__': date('catalog-decoflair.json')}.items():
