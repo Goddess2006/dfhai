@@ -9,7 +9,7 @@
 | `out/newsletter-themarketer.html` | **Varianta pentru theMarketer**: dezabonare `{{unsubscribe_link}}`, iar sus, în loc de „Vezi online”, un link spre decoflair.ro. |
 | `out/newsletter-preview.html` | Doar pentru previzualizare locală (imagini din `img/`). |
 | `out/newsletter.txt` | Versiunea text simplu. Lipește-o la „Plain text”: ajută la livrabilitate. |
-| `img/` | 25 de imagini optimizate (936 KB în total), **de urcat înainte de trimitere**. |
+| `img/` | 27 de imagini optimizate (~1 MB în total), **de urcat înainte de trimitere**. |
 | `expert/expert-hq.jpg` | Fotografia expertei la claritate HQ (2228×2824, mărită 2× cu Real-ESRGAN + textură naturală). |
 | `PALETA.md` | Paleta 2027 și verificarea de contrast (toate perechile de text trec WCAG AA). |
 

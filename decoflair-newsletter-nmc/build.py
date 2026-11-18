@@ -58,6 +58,7 @@ IMAGES = [
     ("blog-led.jpg", "blog-led.png", 560, 360, 0.5, 0.4), ("blog-chenare.jpg", "blog-chenare.jpg", 560, 360, 0.5, 0.5),
     ("blog-fatade.jpg", "blog-fatade.webp", 560, 360, 0.5, 0.5),
     ("final.jpg", "amb-tapet.jpg", 1200, 560, 0.5, 0.55),
+    ("sarb-interior.jpg", "amb-led-window.jpg", 560, 440, 0.5, 0.6),
 ]
 
 def build_images():
@@ -65,6 +66,7 @@ def build_images():
         out, src, w, h, *f = spec
         box = (0, 0, 640, 600) if src == "icon-amb.jpg" else None  # fără colțul alb cu watermark
         fit(src, out, w, h, *(f or []), box=box)
+    fit("exterior.jpg", "sarb-exterior.jpg", 560, 440, 0.5, 0.5, box=(1350, 0, 2960, 1600))
     # expertul: cap + umeri + mâinile încrucișate, din versiunea HQ
     hq = ROOT / "expert" / "expert-hq.jpg"
     fit(str(hq), "expert.jpg", 504, 1000, 0.5, 0.0, box=(250, 0, 1978, 2824), q=84)
@@ -108,7 +110,7 @@ FAQ = [
     ("Se pot vopsi profilele?", "Da. Profilele WALLSTYL® și ARSTYL® vin preamorsate din fabrică — le vopsești direct, cu vopsea pe bază de apă, în culoarea peretelui (efect ton-pe-ton) sau în contrast."),
     ("Montajul e complicat?", "Nu. Se lipesc cu adezivii dedicați ADEFIX (lipire) și ADEFIX Plus (îmbinări). Fără praf, fără șuruburi. Pe blog găsești ghidul pas cu pas."),
     ("Rezistă în baie sau bucătărie?", "Profilele din polimer dur (HDPS) sunt rezistente la umezeală și la șocuri — potrivite și pentru spațiile „grele” ale casei."),
-    ("Nu știu ce să aleg. Mă ajutați?", "Pentru asta suntem aici: consultanță de specialitate la 0723 300 603 și, pentru proiecte mai mari, randare 3D — vezi rezultatul înainte să cumperi."),
+    ("Nu știu ce să aleg. Mă ajutați?", "Pentru asta suntem aici: consultanță de specialitate la 0765 740 280 și, pentru proiecte mai mari, randare 3D — vezi rezultatul înainte să cumperi."),
 ]
 
 BLOG = [
@@ -141,6 +143,11 @@ def button(text, href, bg=C["teal"], fg=C["white"], border=None):
             f'<a href="{href}" target="_blank" style="display:inline-block;padding:14px 30px;font-family:{SANS};font-size:15px;'
             f'font-weight:600;letter-spacing:.04em;color:{fg};text-decoration:none;border-radius:999px;">{text}</a></td></tr></table>')
 
+WA = "https://wa.me/40765740280?text=" + "Bun%C4%83%21%20Vreau%20o%20recomandare%20de%20amenajare%20%28din%20newsletterul%20Deco%26Flair%29"
+
+def wa_button(text="Scrie-ne pe WhatsApp"):
+    return button("&#128172;&nbsp; " + text, WA, "#25D366", C["ink"])
+
 def eyebrow(text, color):
     return (f'<div style="font-family:{SANS};font-size:12px;letter-spacing:.24em;text-transform:uppercase;'
             f'color:{color};font-weight:600;margin:0 0 10px;">{text}</div>')
@@ -167,16 +174,50 @@ def two_col(cells, gap=16, valign="top"):
 def divider(color=C["mauve"]):
     return f'<tr><td style="padding:0 40px;" bgcolor="{C["cream"]}"><div style="height:1px;line-height:1px;background:{color};font-size:0;">&nbsp;</div></td></tr>'
 
+# ---------- secțiunea „Casa gata de sărbători” ----------
+def holiday_section():
+    def side(im_, alt, label, title, items, href, k):
+        li = "".join(f'<tr><td valign="top" style="padding:0 8px 6px 0;color:{C["gold"]};font-family:{SANS};font-size:14px;">✦</td>'
+                     f'<td style="padding:0 0 6px;font-family:{SANS};font-size:14px;line-height:1.5;color:{C["cream"]};">{t}</td></tr>' for t in items)
+        return (f'<a href="{u(href, k)}" target="_blank">{img(im_, 262, alt, style="border-radius:12px;")}</a>'
+                f'<div style="font-family:{SANS};font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:{C["teal_light"]};padding:14px 0 4px;">{label}</div>'
+                f'<div style="font-family:{SERIF};font-size:21px;line-height:1.25;color:{C["cream"]};padding-bottom:10px;">{title}</div>'
+                f'<table role="presentation" cellpadding="0" cellspacing="0" border="0">{li}</table>'
+                f'<div style="padding-top:8px;"><a href="{u(href, k)}" target="_blank" style="font-family:{SANS};font-size:14px;font-weight:600;color:{C["gold"]};">Vezi soluțiile →</a></div>')
+    inside = side("sarb-interior.jpg", "Living luminos pregătit de sărbători", "Înăuntru", "Lumină caldă pentru mesele lungi de sărbători",
+                  ["Scafă LED: lumină indirectă, ca la hotel", "Cornișe și chenare: living de revistă", "Plinte noi: camera arată „terminată”"],
+                  "/profile-decorative-interior", "sarbatori-interior")
+    outside = side("sarb-exterior.jpg", "Fațadă luminată seara, cu ancadramente decorative", "Afară", "Fațada care îi primește pe colindători",
+                   ["Ancadramente la ferestre, de la 88,38 lei (NA214, în stoc)", "Colțare și brâuri pentru caracter", "Solbancuri și cornișe: casa arată nouă"],
+                   "/profile-decorative-exterior", "sarbatori-exterior")
+    steps = "".join(f'<td class="col3" width="25%" valign="top" style="padding:0 6px;text-align:center;">'
+                    f'<div style="font-family:{SERIF};font-size:26px;color:{C["gold"]};">{n}</div>'
+                    f'<div style="font-family:{SANS};font-size:13px;line-height:1.45;color:{C["cream"]};">{t}</div></td>'
+                    for n, t in [("1", "Alegi azi sau ne trimiți o poză pe WhatsApp"), ("2", "Livrăm din stoc"), ("3", "Montezi prin lipire, fără praf, și vopsești"), ("4", "Primești musafirii acasă")])
+    inner = (f'<div style="text-align:center;">{eyebrow("Numărătoarea inversă a început", C["gold"])}'
+             + h2("Casa gata de sărbători.<br><i>Și înăuntru, și afară.</i>", C["cream"], 32)
+             + p("Musafirii vin în câteva săptămâni. Profilele se montează repede, prin lipire, fără praf și fără șantier. "
+                 "<b>Comandă acum, ca să ai timp de montaj și vopsit înainte de Crăciun.</b>", C["nude"], 16) + '</div>'
+             + '<div style="height:10px;"></div>' + two_col([inside, outside], 20)
+             + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:10px 0 24px;border-top:1px solid {C["gold"]};border-bottom:1px solid {C["gold"]};"><tr><td style="padding:20px 0 12px;">'
+             + f'<div style="text-align:center;font-family:{SANS};font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:{C["teal_light"]};padding-bottom:14px;">Planul tău până la sărbători</div>'
+             + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>{steps}</tr></table></td></tr></table>'
+             + f'<table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td align="center">{wa_button("Trimite-ne o poză pe WhatsApp")}</td></tr>'
+             + f'<tr><td align="center" style="padding-top:12px;">{button("Pregătește-ți casa acum", u("/oferte-speciale", "sarbatori-cta"), C["gold"], C["ink"])}</td></tr></table>'
+             + p("Trimite-ne o poză cu camera sau fațada, iar noi îți spunem ce profile se potrivesc și de câte ai nevoie.", C["nude"], 13, "text-align:center;padding-top:14px;"))
+    return section(inner, C["ink"], "44px 30px 34px", f"linear-gradient(170deg,#141815 0%,{C['forest']} 60%,{C['aubergine']} 140%)")
+
 # ---------- secțiuni ----------
 def build_html(variant):
     E = EXPERT_NAME or "Expertul Deco&amp;Flair"
     unsub = {"preview": "#", "brevo": "{{ unsubscribe }}", "mailerlite": "{$unsubscribe}", "themarketer": "{{unsubscribe_link}}"}[variant]
     mirror = {"preview": "#", "brevo": "{{ mirror }}", "mailerlite": "{$url}", "themarketer": u("/", "bara-sus")}[variant]
     mirror_txt = "decoflair.ro" if variant == "themarketer" else "Vezi online"
-    pre = "Kit complet de cameră cu 15% inclus, −10% la profile LED și plinte, tendințele 2027 și sfatul expertului."
+    pre = "Pregătește casa de sărbători, înăuntru și afară: −10% la profile LED și plinte, kit complet de cameră și sfatul expertului."
 
     S = []
     # bara de sus
+    S.append('@@bara')
     S.append(f'''<tr><td bgcolor="{C['ink']}" style="background-color:{C['ink']};padding:10px 24px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 <td style="font-family:{SANS};font-size:12px;line-height:1.5;color:{C['nude']};">Deco&amp;Flair · dealer autorizat NMC® · Ediția 2027</td>
@@ -184,6 +225,7 @@ def build_html(variant):
 </tr></table></td></tr>''')
 
     # header + meniu
+    S.append('@@header')
     nav = " ".join(f'<a href="{u(h, "meniu-" + k)}" style="color:{C["cream"]};text-decoration:none;font-family:{SANS};font-size:13px;letter-spacing:.08em;padding:0 8px;white-space:nowrap;">{t}</a>'
                    for t, h, k in [("Interior", "/profile-decorative-interior", "interior"), ("Exterior", "/profile-decorative-exterior", "exterior"),
                                    ("Tapet", "/tapet-premium-design-interior", "tapet"), ("Oferte", "/oferte-speciale", "oferte"), ("Blog", "/blog", "blog")])
@@ -192,6 +234,7 @@ def build_html(variant):
 <div style="padding-top:16px;line-height:2;">{nav}</div></td></tr>''')
 
     # HERO
+    S.append('@@hero')
     S.append(f'<tr><td bgcolor="{C["forest"]}" style="background-color:{C["forest"]};"><a href="{u("/", "hero-img")}" target="_blank">{img("hero.jpg", 600, "Living elegant cu scafă LED și profile decorative Deco&Flair")}</a></td></tr>')
     S.append(section(
         eyebrow("Ediția 2027 · Statement", C["gold"]) +
@@ -202,6 +245,7 @@ def build_html(variant):
         C["forest"], "36px 40px 44px", f"linear-gradient(160deg,{C['forest']} 0%,{C['forest_mid']} 55%,{C['teal']} 130%)"))
 
     # manifest — 3 piloni
+    S.append('@@manifest')
     pill = lambda n, t, d: (f'<td class="col3" width="33%" valign="top" style="padding:0 8px;">'
                             f'<div style="font-family:{SERIF};font-size:30px;color:{C["mauve_mid"]};line-height:1;">{n}</div>'
                             f'<div style="font-family:{SANS};font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:{C["ink"]};padding:8px 0 6px;">{t}</div>'
@@ -215,6 +259,7 @@ def build_html(variant):
         + '</tr></table>', C["cream"], "44px 32px"))
 
     # SFATUL EXPERTULUI
+    S.append('@@expert')
     tips = "".join(
         f'<tr><td valign="top" style="padding:0 12px 14px 0;font-family:{SERIF};font-size:20px;color:{C["gold"]};">{n}</td>'
         f'<td valign="top" style="padding:0 0 14px;font-family:{SANS};font-size:15px;line-height:1.55;color:{C["cream"]};"><b style="color:{C["white"]};">{t}</b> {d}</td></tr>'
@@ -224,7 +269,8 @@ def build_html(variant):
     expert_txt = (eyebrow("Sfatul expertului", C["gold"]) + h2("„Un detaliu bine ales schimbă toată camera.”", C["cream"], 28) +
                   f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 10px;">{tips}</table>' +
                   f'<div style="font-family:{SANS};font-size:14px;color:{C["nude"]};padding-bottom:16px;">— {E}, consultanță design interior &amp; exterior</div>' +
-                  button("Cere o consultanță", u("/consultanta-premium", "expert-cta"), C["gold"], C["ink"]))
+                  button("Cere o consultanță", u("/consultanta-premium", "expert-cta"), C["gold"], C["ink"]) +
+                  '<div style="height:12px;"></div>' + wa_button("Scrie-i pe WhatsApp"))
     S.append(f'''<tr><td bgcolor="{C['aubergine']}" style="background-color:{C['aubergine']};background-image:linear-gradient(135deg,{C['aubergine']} 0%,#5E3A5B 60%,{C['mauve_mid']} 140%);padding:0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 <td class="col" width="42%" valign="top" style="padding:0;"><a href="{u('/consultanta-premium', 'expert-foto')}" target="_blank">{img("expert.jpg", 252, "Expertul Deco&Flair")}</a></td>
@@ -232,6 +278,7 @@ def build_html(variant):
 </tr></table></td></tr>''')
 
     # OFERTE
+    S.append('@@oferte')
     def pcard(x):
         return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{C["white"]}" style="background:{C["white"]};border-radius:14px;overflow:hidden;">'
                 f'<tr><td style="position:relative;"><a href="{u(x["url"], "oferta-" + x["img"][2:-4])}" target="_blank">{img(x["img"], 252, x["name"])}</a></td></tr>'
@@ -252,6 +299,7 @@ def build_html(variant):
         C["nude"], "44px 28px", f"linear-gradient(180deg,{C['nude']} 0%,{C['cream']} 100%)"))
 
     # KIT LINEA
+    S.append('@@linea')
     S.append(f'<tr><td bgcolor="{C["forest"]}"><a href="{u("/linea-room-kit-complet-pentru-o-cameră", "kit-linea-img")}" target="_blank">{img("kit-linea.jpg", 600, "LINEA Room Kit — set complet de profile pentru o cameră")}</a></td></tr>')
     S.append(section(
         eyebrow("Kit complet de cameră · 15% reducere inclusă", C["gold"]) + h2("LINEA Room Kit.<br><i>O cameră întreagă, o singură comandă.</i>", C["cream"], 30)
@@ -261,6 +309,7 @@ def build_html(variant):
         C["forest"], "34px 40px 42px", f"linear-gradient(160deg,{C['forest']} 0%,{C['teal']} 140%)"))
 
     # KITURI recomandate de expert
+    S.append('@@kituri')
     def krow(x):
         im_, t, items, d, h, k = x
         return (f'<tr><td class="col" width="120" valign="top" style="padding:0 18px 22px 0;"><a href="{u(h, k)}" target="_blank">{img(im_, 120, t, style="border-radius:10px;")}</a></td>'
@@ -274,6 +323,7 @@ def build_html(variant):
         C["ivory"], "44px 40px 26px"))
 
     # SONDAJ INTERACTIV — ce cameră transformi
+    S.append('@@sondaj')
     def room(x):
         im_, t, d, h, k = x
         return (f'<a href="{u(h, k)}" target="_blank" style="text-decoration:none;display:block;">{img(im_, 262, t, style="border-radius:12px;")}'
@@ -286,6 +336,7 @@ def build_html(variant):
         C["aubergine"], "44px 30px 28px", f"linear-gradient(160deg,{C['aubergine']} 0%,#3A1F38 100%)"))
 
     # TREND 2027 · TOKYO × SINGAPORE
+    S.append('@@trend')
     def tcard(x):
         im_, t, d, h, k = x
         return (f'<a href="{u(h, k)}" target="_blank" style="text-decoration:none;display:block;">{img(im_, 262, "Panou " + t, style="border-radius:12px;")}'
@@ -302,16 +353,18 @@ def build_html(variant):
         C["cream"], "44px 30px", f"linear-gradient(180deg,{C['ivory']} 0%,{C['cream']} 100%)"))
 
     # Q&A
+    S.append('@@qa')
     qa = "".join(f'<tr><td style="padding:0 0 12px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{C["white"]}" style="background:{C["white"]};border-left:3px solid {C["teal"]};border-radius:10px;">'
                  f'<tr><td style="padding:16px 20px;"><div style="font-family:{SERIF};font-size:18px;color:{C["forest"]};padding-bottom:6px;">{q}</div>'
                  f'<div style="font-family:{SANS};font-size:15px;line-height:1.55;color:{C["ink"]};">{a}</div></td></tr></table></td></tr>' for q, a in FAQ)
     S.append(section(
         eyebrow("Întrebări &amp; răspunsuri", C["gold_dark"]) + h2("Ce ne întreabă <i>clienții noștri.</i>", C["forest"])
         + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">{qa}</table>'
-        + p("Ai altă întrebare? <b>Răspunde direct la acest e-mail</b> — îți scrie un specialist, nu un robot.", C["ink"], 15, "padding-top:6px;"),
+        + p("Ai altă întrebare? <b>Răspunde direct la acest e-mail</b> sau scrie-ne pe WhatsApp — îți răspunde un specialist, nu un robot.", C["ink"], 15, "padding-top:6px;") + wa_button(),
         C["nude"], "44px 40px 30px"))
 
     # BLOG
+    S.append('@@blog')
     brow = "".join(
         f'<tr><td class="col" width="200" valign="top" style="padding:0 18px 20px 0;"><a href="{u(h, k)}" target="_blank">{img(im_, 200, t, style="border-radius:10px;")}</a></td>'
         f'<td class="col" valign="middle" style="padding:0 0 20px;"><div style="font-family:{SANS};font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:{C["teal"]};">{cat}</div>'
@@ -325,6 +378,7 @@ def build_html(variant):
         C["ivory"], "44px 40px"))
 
     # AVANTAJE
+    S.append('@@avantaje')
     adv = [f'<div style="border-top:1px solid {C["gold"]};padding-top:12px;"><div style="font-family:{SERIF};font-size:19px;color:{C["gold"]};padding-bottom:4px;">{t}</div>'
            f'<div style="font-family:{SANS};font-size:14px;line-height:1.55;color:{C["cream"]};">{d}</div></div>' for t, d in ADV]
     S.append(section(
@@ -333,6 +387,7 @@ def build_html(variant):
         C["forest"], "44px 36px 24px", f"linear-gradient(200deg,{C['forest']} 0%,{C['forest_mid']} 70%,{C['teal']} 160%)"))
 
     # COD opțional
+    S.append('@@cod')
     if COUPON:
         S.append(section(
             f'<div style="text-align:center;">{eyebrow("Cadoul tău de bun venit", C["aubergine"])}'
@@ -340,26 +395,36 @@ def build_html(variant):
             + p(COUPON["text"], C["ink"], 15, "padding-top:12px;") + '</div>', C["nude"], "34px 40px"))
 
     # FINAL
+    S.append('@@final')
     S.append(f'<tr><td bgcolor="{C["ink"]}"><a href="{u("/tapet-premium-design-interior", "final-img")}" target="_blank">{img("final.jpg", 600, "Tapet premium de designer, ambient Deco&Flair")}</a></td></tr>')
     S.append(section(
         f'<div style="text-align:center;">{h2("Casa ta poate arăta<br><i>ca în revistă.</i>", C["cream"], 32)}'
         + p("Intră pe decoflair.ro, alege-ți ideea și lasă-ne pe noi să te ajutăm cu restul.", C["nude"], 16)
-        + f'<div style="height:6px;"></div><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td>{button("Descoperă decoflair.ro", u("/", "final-cta"), C["gold"], C["ink"])}</td></tr></table>'
-        + f'<div style="font-family:{SANS};font-size:15px;color:{C["cream"]};padding-top:22px;line-height:1.8;">Consultanță: <a href="tel:+40723300603" style="color:{C["gold"]};text-decoration:none;font-weight:600;">0723 300 603</a> · '
+        + f'<div style="height:6px;"></div><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td>{button("Descoperă decoflair.ro", u("/", "final-cta"), C["gold"], C["ink"])}</td></tr><tr><td style="padding-top:12px;">{wa_button()}</td></tr></table>'
+        + f'<div style="font-family:{SANS};font-size:15px;color:{C["cream"]};padding-top:22px;line-height:1.8;">Consultanță: <a href="tel:+40765740280" style="color:{C["gold"]};text-decoration:none;font-weight:600;">0765 740 280</a> · '
         + f'<a href="mailto:office@decoflair.ro" style="color:{C["gold"]};text-decoration:none;">office@decoflair.ro</a><br>Luni–Vineri 07:30–16:00</div></div>',
         C["ink"], "36px 40px 40px", f"linear-gradient(180deg,{C['ink']} 0%,{C['forest']} 100%)"))
 
     # footer
+    S.append('@@footer')
     soc = " · ".join(f'<a href="{h}" style="color:{C["muted"]};text-decoration:underline;">{t}</a>' for t, h in
                      [("Instagram", "https://www.instagram.com/decoflairhub"), ("TikTok", "https://www.tiktok.com/@decoflairhub"), ("Facebook", "https://www.facebook.com/HubDecoFlair"), ("YouTube", "https://www.youtube.com/@Decoflairhub")])
     S.append(f'''<tr><td bgcolor="{C['cream']}" style="background-color:{C['cream']};padding:28px 40px 36px;font-family:{SANS};font-size:12px;line-height:1.7;color:{C['muted']};text-align:center;">
 {soc}<br><br>
 Deco&amp;Flair este dealer autorizat NMC®, producătorul belgian al profilelor ARSTYL®, WALLSTYL® și NOMASTYL®.<br>
-Deco &amp; Flair Hub SRL · CUI RO 54681700 · Str. Faurei nr. 1, Sector 1, București · Depozit: Str. Comerțului nr. 3, Domnești, Ilfov<br><br>
+Deco &amp; Flair Hub SRL · CUI RO 54681700 · Depozit: Str. Comerțului nr. 3, Domnești, Ilfov<br><br>
 Nu mai vrei să primești astfel de mesaje? <a href="{unsub}" style="color:{C['ink']};text-decoration:underline;">Dezabonează-te aici</a>.
 </td></tr>''')
 
-    body = "\n".join(S)
+    S.append('@@sarbatori')
+    S.append(holiday_section())
+    blocks, cur = {}, None
+    for x in S:
+        if x.startswith('@@'): cur = x[2:]; blocks[cur] = []
+        else: blocks[cur].append(x)
+    ORDER = ["bara", "header", "hero", "oferte", "sarbatori", "manifest", "linea", "kituri", "expert", "trend", "sondaj", "qa", "blog", "avantaje", "cod", "final", "footer"]
+    assert set(ORDER) == set(blocks), set(blocks) ^ set(ORDER)
+    body = "\n".join(x for k in ORDER for x in blocks[k])
     doc = f'''<!DOCTYPE html>
 <html lang="ro" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -402,7 +467,12 @@ a[x-apple-data-detectors]{{color:inherit!important;text-decoration:none!importan
 def build_text():
     L = ["DECO&FLAIR — Ediția 2027 · dealer autorizat NMC®", "", "Casa ta, la nivelul următor. Alege cum o trăiești.",
          "Profile fabricate în Belgia, tapet italian de designer, panouri 3D, kituri complete de cameră — și know-how-ul nostru.",
-         f"Intră pe decoflair.ro: {u('/', 'txt-hero')}", "", "SFATUL EXPERTULUI",
+         f"Intră pe decoflair.ro: {u('/', 'txt-hero')}", "",
+         "CASA GATA DE SĂRBĂTORI — ÎNĂUNTRU ȘI AFARĂ",
+         "Musafirii vin în câteva săptămâni. Comandă acum, ca să ai timp de montaj și vopsit înainte de Crăciun.",
+         f"- Înăuntru: scafă LED, cornișe, chenare, plinte — {u('/profile-decorative-interior', 'txt-sarbatori-interior')}",
+         f"- Afară: ancadramente (de la 88,38 lei, NA214), colțare, brâuri, solbancuri — {u('/profile-decorative-exterior', 'txt-sarbatori-exterior')}",
+         f"Trimite-ne o poză pe WhatsApp: {WA}", "", "SFATUL EXPERTULUI",
          "1. Începe cu liniile, nu cu mobila: plinta, brâul și cornișa sunt rama camerei.",
          "2. Lumina face jumătate din lux: o scafă LED pe peretele lung înalță vizual tavanul.",
          "3. 2027 se poartă ton-pe-ton: vopsește profilele în culoarea peretelui.", "",
@@ -413,8 +483,8 @@ def build_text():
     L += [f"- {t}: {d} — {u(h, k)}" for _, t, d, h, k in TREND]
     L += ["", "ÎNTREBĂRI & RĂSPUNSURI"] + [f"- {q} {a}" for q, a in FAQ]
     L += ["", "DIN BLOG"] + [f"- {t} — {u(h, k)}" for _, _, t, h, k in BLOG]
-    L += ["", "Consultanță: 0723 300 603 · office@decoflair.ro · Luni–Vineri 07:30–16:00",
-          "Deco & Flair Hub SRL · CUI RO 54681700", "Dezabonare: folosește linkul din e-mail."]
+    L += ["", f"WhatsApp: {WA}", "Consultanță: 0765 740 280 · office@decoflair.ro · Luni–Vineri 07:30–16:00",
+          "Deco & Flair Hub SRL · CUI RO 54681700 · Depozit: Str. Comerțului nr. 3, Domnești, Ilfov", "Dezabonare: folosește linkul din e-mail."]
     return "\n".join(L) + "\n"
 
 if __name__ == "__main__":
