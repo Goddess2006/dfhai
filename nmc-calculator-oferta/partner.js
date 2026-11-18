@@ -35,13 +35,23 @@ function pnum(v){
   const x=parseFloat(s); return isFinite(x)?x:NaN;
 }
 const dRo = iso => iso ? new Date(iso).toLocaleDateString("ro-RO") : "";
+/* listele de preț în EUR (fără TVA) incluse în calculator: Interior Premium, Selit, Izolații țeavă */
+const EUR_ITEMS = EUR_LISTS.items.map(i=>({c:i.c, m:i.m, n:i.n, u:i.u, k:i.k, src:i.src, pc:"EUR", pn:Math.round(i.e*(1+TVA)*1e6)/1e6, e:i.e, p:0, f:0, o:null, s:null, l:"", svc:false}));
 function npLoadCatalog(){
-  const d=npData("price"); B.catalog = d ? d.items : []; B.listName = d ? d.name : "";
-  B.catalog.forEach(p=>{ if(!p._t){ p._c=norm(p.c).replace(/[\s.]/g,""); p._t=norm(p.c+" "+p.n+" "+p.k) } });
+  const d=npData("price"); B.listName = d ? d.name : "";
+  // produsele din listele EUR au prioritate: un articol din gestiune cu același model în denumire (ex. „Z11”) e înlocuit
+  const cnt={}; EUR_ITEMS.forEach(i=>cnt[i.m]=(cnt[i.m]||0)+1);
+  const models=Object.keys(cnt).filter(m=>cnt[m]===1 && m.length>=2 && /\d/.test(m)).map(m=>m.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
+  const rx = models.length ? new RegExp("(^|[\\s,(])("+models.join("|")+")(?=$|[\\s,)])","i") : null;
+  const db = (d ? d.items : []).filter(p=>!(rx && !/^Articol cod /.test(p.n) && rx.test(p.n)));
+  B.catalog = [...EUR_ITEMS, ...db];
+  B.catalog.forEach(p=>{ if(!p._t){ p._c=norm(p.c).replace(/[\s.]/g,""); p._t=norm(p.c+" "+(p.m||"")+" "+p.n+" "+p.k) } });
+  B.replaced = (d?d.items.length:0) - db.length;
 }
 function npStatus(){
   const p=npData("price"), c=npData("client");
   const ne=p?p.items.filter(i=>i.pc==="EUR").length:0;
+  $("gsEur").textContent = `Liste în EUR (fără TVA): ${EUR_LISTS.lists.map(l=>`${l.name} ${l.date} (${l.n})`).join(" · ")}${B.replaced?` · ${B.replaced} articole din gestiune înlocuite`:""}`;
   $("gsPrice").textContent = p ? `Listă de prețuri: ${p.name} · ${p.items.length.toLocaleString("ro-RO")} articole${ne?` (${ne} în EUR, ${p.items.length-ne} în RON)`:""}` : "Nicio listă de prețuri importată";
   $("gsPriceInfo").innerHTML = p ? `importată la ${dRo(p.date)} din ${esc(p.file)} · prețuri ${p.inclTva?"cu":"fără"} TVA în fișier` : `<span class="warn">Exportă din gestiune lista NMC05.10.26 (Excel, CSV sau DBF) și importă fișierul aici.</span>`;
   $("gsCli").textContent = c ? `Clienți: ${c.items.length.toLocaleString("ro-RO")}` : "Niciun client importat";

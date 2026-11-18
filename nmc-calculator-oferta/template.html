@@ -130,6 +130,7 @@ td.code{font:500 12.5px var(--f-num);color:var(--accent-ink);white-space:nowrap}
 td.name a{color:var(--ink);text-decoration:none}
 td.name a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
 td.name small{display:block;color:var(--muted);font-size:11.5px}
+td.val small.ron{display:block;font:11px var(--f-num);color:var(--muted)}
 .tag.cur-eur{background:#1F5FAE}.tag.cur-ron{background:#6C6F76}
 .tag{display:inline-block;font:500 10.5px var(--f-body);color:#fff;background:var(--accent);border-radius:3px;padding:0 5px;margin-left:4px;vertical-align:1px}
 td input{font:500 13px var(--f-num);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:4px 6px;text-align:right}
@@ -275,7 +276,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     </div>
     <div class="map" id="dbCfg" hidden></div>
     <div class="row">
-      <div class="st"><b id="gsPrice"></b><span id="gsPriceInfo"></span></div>
+      <div class="st"><b id="gsPrice"></b><span id="gsPriceInfo"></span><span id="gsEur"></span></div>
       <div class="st"><b id="gsCli"></b><span id="gsCliInfo"></span></div>
       <div class="confirm">
         <button type="button" class="btn primary" id="impPrice">Importă lista de prețuri</button>
@@ -393,6 +394,7 @@ const BRANDS = {
     sign:["Echipa Deco&Flair","0723 300 603 · office@decoflair.ro · decoflair.ro"],
     rgb:[169,131,74], rgbInk:[142,35,41], hex:"A9834A", hexInk:"8E2329"}
 };
+const EUR_LISTS = __EUR_LISTS__;
 BRANDS.np = Object.assign({}, BRANDS.nmc, {id:"np", prefix:"NMCP", catalog:[], example:[], partner:true});
 let B = BRANDS.nmc;
 const TVA = 0.21;
@@ -470,7 +472,7 @@ function renderRows(){
       <td class="n"><input class="pu" data-i="${i}" data-k="pf" inputmode="decimal" value="${fmtN(conv(l.p/(1+TVA))).replace(/\./g,"")}" aria-label="Preț unitar fără TVA ${esc(l.c)}"></td>
       <td class="n"><input class="pu" data-i="${i}" data-k="p" inputmode="decimal" value="${fmtN(conv(l.p)).replace(/\./g,"")}" aria-label="Preț unitar cu TVA ${esc(l.c)}">${l.o&&!changed?`<span class="old">${fmtN(conv(l.o))}</span>`:''}</td>
       <td class="n pcol">${l.svc?'<span class="um">—</span>':`<input class="dd" data-i="${i}" data-k="d" inputmode="decimal" value="${String(l.d||0).replace(".",",")}" aria-label="Discount % ${esc(l.c)}">`}</td>
-      <td class="n val" data-v="${i}">${fmt(conv(lineVal(l)))}</td>
+      <td class="n val" data-v="${i}">${fmt(conv(lineVal(l)))}${B.partner&&S.cur==="EUR"?`<small class="ron">= ${fmt(lineVal(l),"RON")}</small>`:""}</td>
       <td class="svc pcol noprint"><input type="checkbox" data-i="${i}" data-k="svc" ${l.svc?"checked":""} aria-label="Serviciu (fără discount) ${esc(l.c)}"></td>
       <td class="noprint"><button class="x" data-del="${i}" aria-label="Șterge rândul ${i+1}">×</button></td></tr>`}).join("");
 }
@@ -549,7 +551,7 @@ $("rows").addEventListener("input",e=>{
     if(other) other.value=fmtN(conv(k==="p"?l.p/(1+TVA):l.p)).replace(/\./g,"");
   }
   S.example=false; $("exampleNote").hidden=true;
-  const v=document.querySelector(`[data-v="${i}"]`); if(v) v.textContent=fmt(conv(lineVal(l)));
+  const v=document.querySelector(`[data-v="${i}"]`); if(v) v.innerHTML=fmt(conv(lineVal(l)))+(B.partner&&S.cur==="EUR"?`<small class="ron">= ${fmt(lineVal(l),"RON")}</small>`:"");
   renderTotals(); save();
 });
 $("rows").addEventListener("change",e=>{ const k=e.target.dataset.k;
