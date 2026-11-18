@@ -1,0 +1,243 @@
+{
+ "01-casa-terracota-ancadramente-brau": {
+  "titlu": "Casă pe două niveluri, terracota, cu ancadramente crem și brâu",
+  "culori": [
+   "terracota",
+   "crem",
+   "maro ciocolatiu (tâmplărie)"
+  ],
+  "elemente": [
+   "ancadramente ferestre",
+   "ancadrament ușă",
+   "brâu decorativ între etaje",
+   "solbancuri",
+   "soclu placat"
+  ],
+  "stil": "clasic-modern, casă familială",
+  "unghi": "frontal-ușor oblic",
+  "sezon": "vară",
+  "potrivit": [
+   "campanii ancadramente",
+   "brâuri exterior",
+   "Înainte/După (după)",
+   "landing fațade"
+  ],
+  "cadru_util": "tot cadrul; spațiu liber minim pentru text (cer în dreapta-sus)"
+ },
+ "02-casa-crem-ancadramente-gri-portic": {
+  "titlu": "Casă crem cu ancadramente gri și portic cu pilaștri",
+  "culori": [
+   "crem / alb cald",
+   "gri cald",
+   "negru (acoperiș, tâmplărie)"
+  ],
+  "elemente": [
+   "ancadramente ferestre gri",
+   "cornișă portic",
+   "pilaștri / coloane pătrate",
+   "solbancuri",
+   "soclu gri"
+  ],
+  "stil": "modern-clasic, minimalist premium",
+  "unghi": "frontal-oblic",
+  "sezon": "vară, cer înnorat",
+  "potrivit": [
+   "creative premium (paletă 2027 crem/negru)",
+   "pilaștri și cornișe",
+   "landing hero"
+  ],
+  "cadru_util": "cerul din stânga-sus permite text; casa ocupă dreapta"
+ },
+ "03-casa-bej-coltare-bosaje-ancadramente": {
+  "titlu": "Casă bej cu colțare albe tip bosaje și ancadramente",
+  "culori": [
+   "bej / nisip",
+   "alb",
+   "maro (acoperiș, tâmplărie)"
+  ],
+  "elemente": [
+   "colțare decorative (bosaje) la colțuri",
+   "ancadramente ferestre",
+   "solbancuri",
+   "soclu maro"
+  ],
+  "stil": "clasic, casă cu mansardă",
+  "unghi": "oblic, pe colț",
+  "sezon": "vară",
+  "potrivit": [
+   "colțare NCL (ex. NCL107, NCL113)",
+   "ancadramente",
+   "Problema/Soluția colțuri plate"
+  ],
+  "cadru_util": "colțarele sunt clar vizibile la stânga și la dreapta; cer liber sus-dreapta"
+ },
+ "04-casa-galbena-ancadramente-cheie-bolta-cornisa": {
+  "titlu": "Casă galbenă pe parter cu ancadramente cu cheie de boltă și cornișă",
+  "culori": [
+   "galben pastel",
+   "alb",
+   "maro (acoperiș, poartă, gard)"
+  ],
+  "elemente": [
+   "ancadramente cu cheie de boltă",
+   "cornișă sub streașină",
+   "solbancuri",
+   "soclu maro"
+  ],
+  "stil": "tradițional românesc renovat",
+  "unghi": "frontal-oblic",
+  "sezon": "vară",
+  "potrivit": [
+   "chei de boltă",
+   "ancadramente clasice",
+   "renovare casă bătrânească",
+   "cornișe exterior"
+  ],
+  "cadru_util": "tot cadrul; poarta din stânga poate fi decupată"
+ },
+ "05-casa-albastra-ancadramente-cornisa": {
+  "titlu": "Casă albastru-gri pe parter cu ancadramente albe și cornișă",
+  "culori": [
+   "albastru-gri",
+   "alb",
+   "teracotă (acoperiș)",
+   "maro (tâmplărie)"
+  ],
+  "elemente": [
+   "ancadramente cu pilaștri decorativi",
+   "cornișă sub streașină",
+   "solbancuri",
+   "soclu gri"
+  ],
+  "stil": "tradițional românesc renovat, rural",
+  "unghi": "frontal",
+  "sezon": "vară",
+  "potrivit": [
+   "renovare casă la țară",
+   "ancadramente decorative",
+   "campanii cu prețuri accesibile"
+  ],
+  "cadru_util": "frontal simetric; bun pentru format pătrat/4:5 cu decupaj central"
+ },
+ "06-casa-taupe-coltare-bosaje-ancadramente-cornisa": {
+  "titlu": "Casă taupe pe parter cu colțare tip bosaje, ancadramente și cornișă",
+  "culori": [
+   "taupe / gri cald",
+   "alb",
+   "maro închis (acoperiș, tâmplărie)"
+  ],
+  "elemente": [
+   "colțare decorative (bosaje) la ambele colțuri",
+   "ancadramente ferestre",
+   "cornișă sub streașină",
+   "solbancuri",
+   "gard cu stâlpi și capace"
+  ],
+  "stil": "tradițional românesc renovat, premium",
+  "unghi": "frontal",
+  "sezon": "vară",
+  "potrivit": [
+   "colțare NCL (ex. NCL107, NCL113)",
+   "cornișe exterior",
+   "capace gard",
+   "paleta 2027 taupe/crem"
+  ],
+  "cadru_util": "frontal simetric; cer liber sus; gardul din față poate fi decupat"
+ },
+ "07-casa-alba-ancadramente-portic": {
+  "titlu": "Casă albă pe parter cu ancadramente cu cornișă și portic",
+  "culori": [
+   "alb",
+   "gri antracit (tâmplărie, soclu)",
+   "maro (acoperiș)"
+  ],
+  "elemente": [
+   "ancadramente cu cornișă deasupra ferestrelor",
+   "solbancuri",
+   "portic la intrare",
+   "soclu gri"
+  ],
+  "stil": "clasic-modern, curat",
+  "unghi": "oblic, din grădină",
+  "sezon": "vară",
+  "potrivit": [
+   "ancadramente cu cornișă",
+   "contrast alb + tâmplărie antracit",
+   "renovare casă pe parter"
+  ],
+  "cadru_util": "copacul din stânga încadrează; text posibil pe peretele alb din dreapta-jos"
+ },
+ "08-casa-gri-ancadramente-cornisa": {
+  "titlu": "Casă gri deschis cu ancadramente albe și cornișă profilată",
+  "culori": [
+   "gri deschis",
+   "alb",
+   "gri închis (soclu)",
+   "maro (acoperiș, tâmplărie)"
+  ],
+  "elemente": [
+   "ancadramente ferestre",
+   "cornișă profilată sub streașină",
+   "solbancuri",
+   "soclu gri"
+  ],
+  "stil": "clasic, sobru",
+  "unghi": "oblic",
+  "sezon": "vară",
+  "potrivit": [
+   "cornișe exterior (ex. NC104)",
+   "ancadramente",
+   "paletă neutră gri/alb"
+  ],
+  "cadru_util": "perete mare uniform — mult spațiu pentru text pe fațadă"
+ },
+ "09-casa-verde-salvie-ancadramente-brau": {
+  "titlu": "Casă verde salvie pe două niveluri cu ancadramente și brâu",
+  "culori": [
+   "verde salvie",
+   "alb",
+   "maro (acoperiș, tâmplărie, portic)"
+  ],
+  "elemente": [
+   "ancadramente ferestre și ușă",
+   "brâu decorativ între etaje",
+   "brâu la soclu",
+   "portic din lemn"
+  ],
+  "stil": "modern-clasic, casă familială",
+  "unghi": "frontal",
+  "sezon": "vară",
+  "potrivit": [
+   "brâuri exterior",
+   "ancadramente",
+   "paleta 2027 (verde salvie)",
+   "landing fațade"
+  ],
+  "cadru_util": "frontal; cer liber sus; vegetație în colțuri"
+ },
+ "10-casa-piersica-ancadramente-cornisa-pilastri": {
+  "titlu": "Casă piersică pe parter cu ancadramente, cornișă de fronton și pilaștri",
+  "culori": [
+   "piersică / somon pal",
+   "crem",
+   "maro (acoperiș, gard, soclu)"
+  ],
+  "elemente": [
+   "ancadramente ferestre",
+   "ancadrament fereastră mică în fronton",
+   "cornișă orizontală de fronton",
+   "pilaștri / benzi verticale la colțuri",
+   "solbancuri"
+  ],
+  "stil": "tradițional românesc renovat",
+  "unghi": "frontal",
+  "sezon": "vară",
+  "potrivit": [
+   "ancadramente",
+   "cornișe de fronton",
+   "pilaștri",
+   "renovare casă bătrânească"
+  ],
+  "cadru_util": "frontal simetric; fronton cu spațiu pentru text"
+ }
+}

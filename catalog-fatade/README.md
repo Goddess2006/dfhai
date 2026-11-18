@@ -1,7 +1,7 @@
 # Catalog fațade — imagini de referință (NMC / Deco&Flair)
 
 Bibliotecă permanentă de imagini de fațade, pentru creative, landing-uri, bannere și reel-uri.
-Imaginile au fost furnizate de client pe 17.11.2026.
+Imaginile au fost furnizate de client pe 17–18.11.2026 (10 imagini).
 
 - `imagini/`: originalele (WebP, 1536 × 1024). **Nu se modifică.**
 - `jpg/`: aceleași imagini în JPG (calitate 93), pentru unelte care nu citesc WebP.
@@ -16,6 +16,11 @@ Imaginile au fost furnizate de client pe 17.11.2026.
 | 03 | Casă bej cu mansardă | **colțare albe tip bosaje**, ancadramente |
 | 04 | Casă galbenă pe parter | ancadramente cu cheie de boltă, cornișă |
 | 05 | Casă albastru-gri pe parter | ancadramente albe cu pilaștri, cornișă |
+| 06 | Casă taupe pe parter | **colțare tip bosaje**, ancadramente, cornișă, gard cu capace |
+| 07 | Casă albă cu portic | ancadramente cu cornișă, portic |
+| 08 | Casă gri deschis | ancadramente, cornișă profilată |
+| 09 | Casă verde salvie, două niveluri | ancadramente, brâu între etaje |
+| 10 | Casă piersică pe parter | ancadramente, cornișă de fronton, pilaștri |
 
 ## Reguli de folosire (Claude Code și Codex)
 
@@ -26,7 +31,7 @@ Imaginile au fost furnizate de client pe 17.11.2026.
 
 ## Adăugare imagini noi
 
-Pune fișierul în `imagini/` (nume: `NN-descriere-scurta.webp`), adaugă descrierea în `META` din `build_catalog.py`, apoi rulează:
+Pune fișierul în `imagini/` (nume: `NN-descriere-scurta.webp`), adaugă descrierea în `meta.json`, apoi rulează:
 
 ```bash
 python3 catalog-fatade/build_catalog.py
