@@ -35,6 +35,9 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .gest .row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
 .gest .st{display:grid;gap:2px;font-size:13px}.gest .st b{font-weight:500}.gest .st span{color:var(--muted);font-size:12px}
 .gest .st .warn{color:var(--bad)}
+.gest .dbrow{border-bottom:1px solid var(--line);padding-bottom:10px}
+.gest .ok{color:var(--good)}
+.map pre{font:11.5px/1.45 var(--f-num);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:220px;overflow:auto;white-space:pre-wrap;margin:0}
 .map{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:10px}
 .map .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 14px}
 .map label{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
@@ -235,6 +238,15 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
   </div>
 
   <section class="gest noprint" id="gest" hidden aria-label="Date din gestiune">
+    <div class="row dbrow">
+      <div class="st"><b id="dbState">Baza de date a gestiunii: neconectată</b><span id="dbInfo">Conectează o dată folderul cu baza (ex. \\rds.nmc.local\Backup\baze) și prețurile și clienții se preiau automat.</span></div>
+      <div class="confirm">
+        <button type="button" class="btn primary" id="dbConnect">Conectează folderul bazei</button>
+        <button type="button" class="btn" id="dbSync" hidden>Sincronizează acum</button>
+        <button type="button" class="btn" id="dbSetup" hidden>Setări bază</button>
+      </div>
+    </div>
+    <div class="map" id="dbCfg" hidden></div>
     <div class="row">
       <div class="st"><b id="gsPrice"></b><span id="gsPriceInfo"></span></div>
       <div class="st"><b id="gsCli"></b><span id="gsCliInfo"></span></div>
@@ -558,7 +570,7 @@ function applyBrand(id){
   if(B.partner) npLoadCatalog();
   B.noteText = B.partner ? `Prețuri conform listei de parteneri${B.listName?" "+B.listName:""}. Toate prețurile includ TVA 21%.` : `Prețurile și codurile produselor sunt preluate de pe ${B.domain} la data de ${B.date}. Toate prețurile includ TVA 21%.`;
   $("footNote").textContent=B.noteText;
-  $("gest").hidden=!B.partner; $("cpick").hidden=!B.partner; if(B.partner) npStatus();
+  $("gest").hidden=!B.partner; $("cpick").hidden=!B.partner; if(B.partner){ npStatus(); if(!DBX.booted){ DBX.booted=true; dbBoot() } }
   $("q").placeholder = B.id==="df" ? "Caută după cod sau denumire (ex. L5, Z11, IL10, tapet Carrara)…" : "Caută după cod sau denumire (ex. NA102, Z11, plintă, tapet)…";
   fillCats(); $("q").value=""; $("res").hidden=true; $("mailBox").hidden=true; $("confirmNew").hidden=true;
   store.set("oferta_brand",B.id);

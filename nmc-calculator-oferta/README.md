@@ -19,6 +19,9 @@ Biblioteci incluse local (data/lib): jsPDF 2.5.1, jspdf-autotable 3.8.2, Roboto 
 Actualizare prețuri: `python3 tools/scrape.py nmc && python3 tools/scrape.py decoflair && python3 build.py`.
 
 ## Foaia NMC Parteneri
+**Automat, din baza gestiunii (Chrome/Edge):** „Conectează folderul bazei” → alegi o dată `\\rds.nmc.local\Backup\baze`. Calculatorul citește direct tabelele Visual FoxPro (.dbf), găsește singur tabelul cu lista NMC05.10.26 (caută valoarea în tabelele mici, ia codul listei și tabelul de prețuri care îl folosește), tabelul de articole (cod, denumire, UM) și tabelul de clienți (denumire + cod fiscal; furnizorii sunt ocoliți). La fiecare deschidere a foii se resincronizează singur dacă browserul a păstrat permisiunea (în Chrome/Edge alege „Permite la fiecare vizită”), altfel un clic pe „Sincronizează acum”. „Setări bază” arată ce tabele/câmpuri au fost alese și permite corectarea; „Copiază structura bazei” copiază doar numele tabelelor și câmpurilor.
+
+**Manual (orice browser):**
 - Datele vin din programul de gestiune prin **import de fișier** (Excel .xlsx/.xls, CSV, .dbf sau .ods): butoanele „Importă lista de prețuri” și „Importă clienții” de deasupra foii.
 - La import, calculatorul ghicește coloanele (cod, denumire, UM, preț; pentru clienți: denumire, CUI, Reg. Com., adresă, localitate, județ, telefon, e-mail) și arată o previzualizare; le poți corecta din liste. Dacă tabelul are mai multe liste de preț, alegi coloana listei și lista (se preselectează NMC05.10.26). Bifezi dacă prețurile din fișier includ TVA (implicit: fără TVA, se adaugă 21%).
 - Datele importate rămân doar în browserul de pe calculatorul tău (nu se urcă nicăieri, nu sunt în repo). Re-importă când se schimbă lista.
