@@ -6,7 +6,7 @@ P = lambda *a: os.path.join(D, *a)
 def cat(f): return json.dumps(json.load(open(P('data', f))), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 def date(f): return datetime.datetime.fromtimestamp(os.path.getmtime(P('data', f))).strftime('%d.%m.%Y')
 def png(f): return 'data:image/png;base64,' + base64.b64encode(open(P('data', f), 'rb').read()).decode()
-lib = lambda f: open(P('data', 'lib', f), encoding='utf8').read()
+lib = lambda f: open(P('data', 'lib', f), encoding='utf8').read().replace('\ufffd', '\\ufffd')  # U+FFFD literal -> escape JS (identic la rulare)
 font = lambda f: base64.b64encode(open(P('data', 'lib', f), 'rb').read()).decode()
 libs = '<script>' + lib('jspdf.umd.min.js') + '</script>\n<script>' + lib('jspdf.plugin.autotable.min.js') + '</script>\n'
 libs += '<script>' + lib('xlsx.full.min.js') + '</script>\n'
