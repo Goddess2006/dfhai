@@ -6,6 +6,7 @@
 |---|---|
 | `out/newsletter-brevo.html` | **Fișierul de lipit în Brevo** („Paste your code / Lipește codul”). Dezabonarea și „Vezi online” sunt deja legate. |
 | `out/newsletter-mailerlite.html` | Același e-mail, cu tag-urile MailerLite. |
+| `out/newsletter-themarketer.html` | **Varianta pentru theMarketer**: dezabonare `{{unsubscribe_link}}`, iar sus, în loc de „Vezi online”, un link spre decoflair.ro. |
 | `out/newsletter-preview.html` | Doar pentru previzualizare locală (imagini din `img/`). |
 | `out/newsletter.txt` | Versiunea text simplu. Lipește-o la „Plain text”: ajută la livrabilitate. |
 | `img/` | 25 de imagini optimizate (936 KB în total), **de urcat înainte de trimitere**. |
@@ -32,6 +33,19 @@ E-mailul caută imaginile la `https://decoflair.ro/image/catalog/newsletter/2026
 2. Importă lista din CSV cu coloanele `EMAIL, PRENUME, NUME, DATA_ULTIMEI_COMENZI`. Scoate duplicatele și adresele invalide.
 3. Campaign → Create → „Paste your code” → lipește `newsletter-brevo.html`; la „Plain text” lipește `newsletter.txt`.
 4. Activează **click tracking** și **Google Analytics tracking**. Linkurile au deja UTM-uri (`utm_source=newsletter`, `utm_campaign=decoflair-2027`, câte un `utm_content` pentru fiecare bloc).
+
+## 2b. Dacă trimiți din theMarketer
+
+theMarketer e o platformă românească, făcută pentru magazine online. **Planul Basic e gratuit până la 1000 de contacte**; Standard costă ~20 €/lună, iar Ecommerce ~25 €/lună (cu integrare cu magazinul și tracking de vânzări). Prețurile sunt fără TVA; verifică-le pe themarketer.com/pricing.
+
+1. **Validează domeniul:** Settings → Email settings → „Domain validation”. Copiezi înregistrările DNS la furnizorul de domeniu decoflair.ro, apoi apeși „Validate”.
+2. **Importă contactele** din CSV (email, prenume, nume).
+3. **Creează campania** și caută în editor opțiunea de cod HTML (bloc „HTML” / „Custom code” / import HTML). Lipește tot conținutul din `out/newsletter-themarketer.html`.
+   - Documentația publică descrie doar editorul drag-and-drop, deci nu am putut confirma unde e opțiunea de HTML. Dacă n-o găsești, cere-o la suport: iam@themarketer.com („vreau să import un newsletter HTML propriu”).
+4. **Dezabonarea:** linkul folosește `{{unsubscribe_link}}`, tag-ul din documentația theMarketer. theMarketer adaugă oricum un subsol cu dezabonare. Dacă îl vezi de două ori la test, poți șterge rândul nostru de dezabonare.
+5. **Personalizare (opțional):** `{{client_first_name}}`, de exemplu în subiect: „{{client_first_name}}, casa ta la nivelul următor”. Setează și o valoare implicită pentru cei fără prenume.
+6. **Imaginile** se încarcă tot de pe decoflair.ro (pasul cu Image Manager de mai sus), deci în theMarketer nu urci nimic.
+7. **Trimite-ți întâi un test** și verifică trei lucruri: imaginile apar, linkul de dezabonare merge, prenumele se completează.
 
 ## 3. Expeditor și partea legală
 

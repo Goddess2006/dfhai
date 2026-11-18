@@ -6,6 +6,7 @@ Ieșiri:
   out/newsletter-preview.html     imagini relative (img/…) — pentru previzualizare locală
   out/newsletter-brevo.html       URL-uri absolute + tag-uri Brevo ({{ unsubscribe }}, {{ mirror }})
   out/newsletter-mailerlite.html  URL-uri absolute + tag-uri MailerLite ({$unsubscribe}, {$url})
+  out/newsletter-themarketer.html URL-uri absolute + tag theMarketer ({{unsubscribe_link}}); fără „Vezi online” (tag nedocumentat)
   out/newsletter.txt              versiunea text simplu (obligatorie pentru livrabilitate)
 
 IMG_BASE = unde urci folderul img/ (ex. Image Manager OpenCart → catalog/newsletter/2026-11/).
@@ -169,8 +170,9 @@ def divider(color=C["mauve"]):
 # ---------- secțiuni ----------
 def build_html(variant):
     E = EXPERT_NAME or "Expertul Deco&amp;Flair"
-    unsub = {"preview": "#", "brevo": "{{ unsubscribe }}", "mailerlite": "{$unsubscribe}"}[variant]
-    mirror = {"preview": "#", "brevo": "{{ mirror }}", "mailerlite": "{$url}"}[variant]
+    unsub = {"preview": "#", "brevo": "{{ unsubscribe }}", "mailerlite": "{$unsubscribe}", "themarketer": "{{unsubscribe_link}}"}[variant]
+    mirror = {"preview": "#", "brevo": "{{ mirror }}", "mailerlite": "{$url}", "themarketer": u("/", "bara-sus")}[variant]
+    mirror_txt = "decoflair.ro" if variant == "themarketer" else "Vezi online"
     pre = "Kit complet de cameră cu 15% inclus, −10% la profile LED și plinte, tendințele 2027 și sfatul expertului."
 
     S = []
@@ -178,7 +180,7 @@ def build_html(variant):
     S.append(f'''<tr><td bgcolor="{C['ink']}" style="background-color:{C['ink']};padding:10px 24px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 <td style="font-family:{SANS};font-size:12px;line-height:1.5;color:{C['nude']};">Deco&amp;Flair · dealer autorizat NMC® · Ediția 2027</td>
-<td align="right" style="font-family:{SANS};font-size:12px;"><a href="{mirror}" style="color:{C['gold']};text-decoration:underline;">Vezi online</a></td>
+<td align="right" style="font-family:{SANS};font-size:12px;"><a href="{mirror}" style="color:{C['gold']};text-decoration:underline;">{mirror_txt}</a></td>
 </tr></table></td></tr>''')
 
     # header + meniu
@@ -417,7 +419,7 @@ def build_text():
 
 if __name__ == "__main__":
     build_images()
-    for v in ("preview", "brevo", "mailerlite"):
+    for v in ("preview", "brevo", "mailerlite", "themarketer"):
         h = build_html(v)
         (OUT / f"newsletter-{v}.html").write_text(h, encoding="utf-8")
         print(v, f"{len(h.encode('utf-8'))/1024:.1f} KB")

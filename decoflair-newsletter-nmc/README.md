@@ -7,4 +7,5 @@ Secțiuni: bara „dealer autorizat NMC®”, hero „statement”, manifest, sf
 - Paletă: `python3 tools/palette_check.py` → `PALETA.md`
 - Fotografia expertei HQ: `python3 tools/upscale.py MODEL.onnx expert/expert-original.jpg expert/expert` (model realesr-general-x4v3, ONNX, de pe Hugging Face; nu e în repo)
 - Sursele mari (`src/`) nu sunt în git: ele vin de pe decoflair.ro (bannere, poze de produs, imagini de blog) și din `decoflair-idei-2027/assets`, `decoflair-trend-2027/assets`.
+- Variante: Brevo, MailerLite, theMarketer (`out/newsletter-*.html`)
 - Trimitere, GDPR, platformă, plan: **GHID-TRIMITERE.md**
