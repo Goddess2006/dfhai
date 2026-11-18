@@ -219,29 +219,30 @@ function dbfRows(buf, only){
   }
   return out;
 }
-async function listTables(dir){
+async function listTables(dir,prefix="",depth=0){
   const T=[];
   for await (const [name,h] of dir.entries()){
+    if(h.kind==="directory"){ if(depth<1) T.push(...await listTables(h,prefix+name+"/",depth+1)); continue }
     if(h.kind!=="file" || !/\.dbf$/i.test(name)) continue;
     const file=await h.getFile(); if(file.size<33) continue;
-    try{ const head=dbfHead(await file.slice(0,Math.min(file.size,32+32*255+2)).arrayBuffer()); T.push({name, size:file.size, n:head.n, fields:head.fields, h}) }catch(e){}
+    try{ const head=dbfHead(await file.slice(0,Math.min(file.size,32+32*255+2)).arrayBuffer()); T.push({name:prefix+name, size:file.size, n:head.n, fields:head.fields, h}) }catch(e){}
   }
-  return T.sort((a,b)=>a.name.localeCompare(b.name));
+  return depth?T:T.sort((a,b)=>a.name.localeCompare(b.name));
 }
 const fx=(t,rx)=>t.fields.find(f=>rx.test(f.name))?.name||"";
-const tbase=t=>t.name.replace(/\.dbf$/i,"").toUpperCase();
+const tbase=t=>t.name.replace(/^.*\//,"").replace(/\.dbf$/i,"").toUpperCase();
 async function readTable(t,only){ return dbfRows(await (await t.h.getFile()).arrayBuffer(), only) }
 const RX = { code:/^(CODPR|COD_?PR|CODART|COD_?ART|CODPROD|COD_?PROD|CODMAT|COD_?MARFA|CODINTERN|CODP)$/, name:/^(DENUMIRE|DENPR|DEN_?PR|DENART|DEN_?ART|DENPROD|DENMAT|DENUM|NUME|DEN)$/,
-  um:/^(UM|U_?M|UNIT|UNITATE|UM1)$/, price:/^(PRET|PRET_?V|PRETV|PRET_?VANZ|PRVANZ|PU|PRET_?LISTA|PRETLISTA|PRET1|VALOARE)$/, pricey:/PRET|PRT|^PU/,
-  cname:/^(DENUMIRE|DENPART|DEN_?PART|DENCL|DEN_?CL|DENTERT|NUME|DENUM|DEN|DENFIRMA|FIRMA)$/, cui:/^(COD_?FISC(AL)?|CODFISC|CUI|CIF|CF|COD_?FISCAL|CNP|CODUNIC)$/,
+  um:/^(UM|U_?M|UNIT|UNITATE|UM1)$/, price:/^(PRETVANZ|PRET|PRET_?V|PRETV|PRET_?VANZ|PRVANZ|PU|PRET_?LISTA|PRETLISTA|PRET1|VALOARE)$/, pricey:/PRET|PRT|^PU/,
+  cname:/^(NUMECLI|NUME_?CLI|DENCLI|DENUMIRE|DENPART|DEN_?PART|DENCL|DEN_?CL|DENTERT|NUME|DENUM|DEN|DENFIRMA|FIRMA|NUMEPART)$/, cui:/^(COD_?FISC(AL)?|CODFISC|CUI|CIF|CF|COD_?FISCAL|CNP|CODUNIC|CODFISCAL|CODF)$/,
   reg:/^(NR_?REG(_?COM)?|NRREGCOM|REGCOM|REG_?COM|NRORC|ONRC|NR_?ORC)$/, adr:/^(ADRESA|ADR|SEDIU|STRADA|ADRESA1)$/, loc:/^(LOCALITATE|LOCALIT|ORAS|LOCAL)$/, jud:/^(JUDET|JUD)$/,
   tel:/^(TELEFON|TEL|TEL1|TELEFON1|MOBIL|TELMOBIL)$/, email:/^(E_?MAIL|EMAIL|MAIL)$/, pers:/^(PERS_?CONTACT|PERSCONT|CONTACT|DELEGAT|REPREZ|PERSOANA)$/ };
 async function autoDetect(T){
   const cfg={};
   // 1) clienți: denumire + cod fiscal (+ adresă)
-  const cl=T.map(t=>({t,s:(fx(t,RX.cname)?2:0)+(fx(t,RX.cui)?3:0)+(fx(t,RX.adr)||fx(t,RX.loc)?1:0)+(/CLIENT|PARTEN|TERT|BENEF/.test(tbase(t))?2:0)-(/FURN/.test(tbase(t))?2:0)}))
-    .filter(x=>x.s>=5).sort((a,b)=>b.s-a.s||b.t.n-a.t.n)[0];
-  if(cl){ const t=cl.t; cfg.cli={t:t.name,name:fx(t,RX.cname),cui:fx(t,RX.cui),reg:fx(t,RX.reg),adr:fx(t,RX.adr),loc:fx(t,RX.loc),jud:fx(t,RX.jud),tel:fx(t,RX.tel),email:fx(t,RX.email),pers:fx(t,RX.pers)} }
+  const cl=T.map(t=>({t,s:(fx(t,RX.cname)?2:0)+(fx(t,RX.cui)?3:0)+(fx(t,RX.adr)||fx(t,RX.loc)?1:0)+(/^CLI|CLIENT|PARTEN|TERT|BENEF/.test(tbase(t))?3:0)+(fx(t,/^CODCLI$/)?2:0)-(/FURN/.test(tbase(t))?4:0)}))
+    .filter(x=>x.s>=5 && fx(x.t,RX.cname)).sort((a,b)=>b.s-a.s||b.t.n-a.t.n)[0];
+  if(cl){ const t=cl.t; cfg.cli={t:t.name,inv:fx(t,/^(INVECHIT|INACTIV|ARHIVAT)$/),name:fx(t,RX.cname),cui:fx(t,RX.cui),reg:fx(t,RX.reg),adr:fx(t,RX.adr),loc:fx(t,RX.loc),jud:fx(t,RX.jud),tel:fx(t,RX.tel),email:fx(t,RX.email),pers:fx(t,RX.pers)} }
   // 2) articole: cod + denumire
   const pr=T.map(t=>({t,s:(fx(t,RX.code)?3:0)+(fx(t,RX.name)?2:0)+(fx(t,RX.um)?1:0)+(/PROD|ARTIC|MARF|NOMEN|STOC|MATER/.test(tbase(t))?2:0)}))
     .filter(x=>x.s>=5).sort((a,b)=>b.s-a.s||b.t.n-a.t.n)[0];
@@ -253,9 +254,12 @@ async function autoDetect(T){
       const hitF=Object.keys(r).find(k=>typeof r[k]==="string"&&LIST_HINT.test(r[k])); if(!hitF) continue;
       const pc=fx(t,RX.code), pp=fx(t,RX.price)||fx(t,RX.pricey);
       if(pc&&pp){ cfg.price={t:t.name,code:pc,price:pp,lf:hitF,lv:String(r[hitF]),name:fx(t,RX.name),label:r[hitF]}; break }
-      const idF=t.fields.find(f=>f.name!==hitF && /^(COD|ID|NR)/.test(f.name))?.name; if(!idF) continue;
-      const pt=T.find(x=>x!==t && x.fields.some(f=>f.name===idF) && fx(x,RX.code) && (fx(x,RX.price)||fx(x,RX.pricey)));
-      if(pt){ cfg.price={t:pt.name,code:fx(pt,RX.code),price:fx(pt,RX.price)||fx(pt,RX.pricey),lf:idF,lv:String(r[idF]),name:fx(pt,RX.name),label:`${r[hitF]} (${idF} = ${r[idF]})`}; break }
+      let idF="", pt=null;
+      for(const f of t.fields.filter(f=>f.name!==hitF && (f.type!=="C" || /^(COD|ID|NR|CAT)/.test(f.name)))){
+        pt=T.find(x=>x!==t && x.fields.some(g=>g.name===f.name) && fx(x,RX.code) && (fx(x,RX.price)||fx(x,RX.pricey)));
+        if(pt){ idF=f.name; break }
+      }
+      if(pt&&idF){ cfg.price={t:pt.name,code:fx(pt,RX.code),price:fx(pt,RX.price)||fx(pt,RX.pricey),lf:idF,lv:String(r[idF]),name:fx(pt,RX.name),label:`${r[hitF]} (${idF} = ${r[idF]})`}; break }
     }
     if(cfg.price) break;
   }
@@ -287,6 +291,8 @@ async function dbSync(silent){
   }
   if(C.cli&&byName(C.cli.t)){
     const k=C.cli, items=(await readTable(byName(C.cli.t))).map(r=>{ const g=f=>f?String(r[f]??"").trim():"";
+      if(k.inv && r[k.inv]===true) return null;
+      if(/^\s*X{3}/i.test(g(k.name))) return null; // conturi dezactivate în gestiune (prefix XXX)
       const o={c_nume:g(k.name),c_cui:g(k.cui),c_reg:g(k.reg),c_tel:g(k.tel),c_email:g(k.email),c_pers:g(k.pers),loc:g(k.loc)}; o.c_adr=[g(k.adr),g(k.loc),g(k.jud)].filter(Boolean).join(", "); return o.c_nume?o:null }).filter(Boolean);
     if(items.length){ npSave("client",{file:"baza "+C.cli.t,date:stamp,items}); msg.push(items.length+" clienți") }
   }

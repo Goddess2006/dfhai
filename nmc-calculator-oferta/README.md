@@ -5,7 +5,7 @@ Trei foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr.
 **Pe desktop:** copiază `Calculator-Oferta.html` pe Desktop și deschide-l cu dublu-clic (Chrome / Edge). Fișier unic, funcționează și fără internet. (`index.html` e același fișier.)
 
 - Căutare produse după cod sau denumire (561 produse, coduri „Model” și prețuri cu TVA de pe nmcromania.ro); filtru pe categorii; Enter adaugă primul rezultat.
-- Cantitate și preț unitar editabile (se vede „preț site” + „revino” dacă prețul a fost schimbat); rând liber pentru produse/servicii în afara catalogului.
+- Cantitate, preț unitar **fără TVA** și **cu TVA** editabile pe fiecare rând (în RON sau EUR, în toate foile; celălalt preț se recalculează) (se vede „preț site” + „revino” dacă prețul a fost schimbat); rând liber pentru produse/servicii în afara catalogului.
 - Discount în % sau valoare (RON/EUR), aplicat doar la produse.
 - Transport: flotă NMC 242 lei cu TVA, curier 150 lei cu TVA, sau fără transport.
 - RON ⇄ EUR, curs euro editabil; totaluri cu TVA 21%, fără TVA și echivalent în cealaltă monedă.

@@ -432,7 +432,7 @@ function renderRows(){
       <td class="name">${name}${l.o&&!changed?'<span class="tag">promo</span>':''}${changed?`<small>preț site: ${fmt(conv(l.base))} · <a href="#" data-reset="${i}">revino</a></small>`:''}</td>
       <td class="um">${isCat(l)?esc(l.u):`<input data-i="${i}" data-k="u" value="${esc(l.u)}" style="width:56px;text-align:left">`}</td>
       <td class="n"><input class="q" data-i="${i}" data-k="q" inputmode="decimal" value="${l.q}" aria-label="Cantitate ${esc(l.c)}"></td>
-      <td class="n" style="font-family:var(--f-num);font-size:13px">${fmtN(conv(l.p/(1+TVA)))}</td>
+      <td class="n"><input class="pu" data-i="${i}" data-k="pf" inputmode="decimal" value="${fmtN(conv(l.p/(1+TVA))).replace(/\./g,"")}" aria-label="Preț unitar fără TVA ${esc(l.c)}"></td>
       <td class="n"><input class="pu" data-i="${i}" data-k="p" inputmode="decimal" value="${fmtN(conv(l.p)).replace(/\./g,"")}" aria-label="Preț unitar cu TVA ${esc(l.c)}">${l.o&&!changed?`<span class="old">${fmtN(conv(l.o))}</span>`:''}</td>
       <td class="n pcol">${l.svc?'<span class="um">—</span>':`<input class="dd" data-i="${i}" data-k="d" inputmode="decimal" value="${String(l.d||0).replace(".",",")}" aria-label="Discount % ${esc(l.c)}">`}</td>
       <td class="n val" data-v="${i}">${fmt(conv(lineVal(l)))}</td>
@@ -506,14 +506,19 @@ $("rows").addEventListener("input",e=>{
   if(k==="q") l.q=num(e.target.value);
   else if(k==="d") l.d=Math.min(Math.max(num(e.target.value),0),100);
   else if(k==="p") l.p=back(num(e.target.value));
+  else if(k==="pf") l.p=back(num(e.target.value))*(1+TVA); // preț fără TVA → cu TVA, în moneda afișată
   else l[k]=e.target.value;
+  if(k==="p"||k==="pf"){ // sincronizează perechea cu/fără TVA din același rând, fără a pierde focusul
+    const other=document.querySelector(`input[data-i="${i}"][data-k="${k==="p"?"pf":"p"}"]`);
+    if(other) other.value=fmtN(conv(k==="p"?l.p/(1+TVA):l.p)).replace(/\./g,"");
+  }
   S.example=false; $("exampleNote").hidden=true;
   const v=document.querySelector(`[data-v="${i}"]`); if(v) v.textContent=fmt(conv(lineVal(l)));
   renderTotals(); save();
 });
 $("rows").addEventListener("change",e=>{ const k=e.target.dataset.k;
   if(k==="svc"){ const l=S.lines[e.target.dataset.i]; l.svc=e.target.checked; if(l.svc)l.d=0; renderAll(); return }
-  if(k==="p") renderRows() });
+  if(k==="p"||k==="pf") renderRows() });
 $("rows").addEventListener("click",e=>{
   if(e.target.dataset.del!=null){S.lines.splice(+e.target.dataset.del,1);renderAll()}
   if(e.target.dataset.reset!=null){e.preventDefault();const l=S.lines[+e.target.dataset.reset];l.p=l.base;renderAll()}
