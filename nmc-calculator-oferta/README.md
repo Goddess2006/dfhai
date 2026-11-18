@@ -16,6 +16,9 @@ Trei foi (taburi sus): **NMC România** (catalog nmcromania.ro, 561 produse, nr.
 
 Biblioteci incluse local (data/lib): jsPDF 2.5.1, jspdf-autotable 3.8.2, Roboto (subset cu diacritice). Word-ul e generat de `export.js` (zip propriu, fără bibliotecă).
 
+## Monede în foaia NMC Parteneri
+Fiecare articol își păstrează moneda din gestiune (preturi.dbf: CODVAL=1 → EUR cu prețul PRETVAL; altfel RON cu PRETVANZ). Oferta pornește în EUR. Articolele EUR au preț fix în EUR, cele RON preț fix în RON; conversia folosește cursul completat în „Curs BRD vânzare” (cursul BRD de vânzare EUR din ziua ofertei; ultimul curs folosit se reține). Pe fiecare rând apare eticheta EUR/RON; pe ofertă apare cursul de referință.
+
 ## Oferte salvate
 Fiecare ofertă se salvează automat (IndexedDB, în browser) cât lucrezi la ea. Butonul „Oferte salvate” le listează (pe foaie sau toate), cu căutare după nr. comandă, client, CUI sau dată: **Deschide** (o reîncarci și o editezi; modificările se salvează în aceeași ofertă), **Duplică** (copie cu număr nou și data de azi), **Șterge** (cu confirmare). „Descarcă backup” salvează toate ofertele într-un .json; „Restaurează din backup” le aduce înapoi (și pe alt calculator).
 

@@ -41,7 +41,8 @@ function npLoadCatalog(){
 }
 function npStatus(){
   const p=npData("price"), c=npData("client");
-  $("gsPrice").textContent = p ? `Listă de prețuri: ${p.name} · ${p.items.length.toLocaleString("ro-RO")} articole` : "Nicio listă de prețuri importată";
+  const ne=p?p.items.filter(i=>i.pc==="EUR").length:0;
+  $("gsPrice").textContent = p ? `Listă de prețuri: ${p.name} · ${p.items.length.toLocaleString("ro-RO")} articole${ne?` (${ne} în EUR, ${p.items.length-ne} în RON)`:""}` : "Nicio listă de prețuri importată";
   $("gsPriceInfo").innerHTML = p ? `importată la ${dRo(p.date)} din ${esc(p.file)} · prețuri ${p.inclTva?"cu":"fără"} TVA în fișier` : `<span class="warn">Exportă din gestiune lista NMC05.10.26 (Excel, CSV sau DBF) și importă fișierul aici.</span>`;
   $("gsCli").textContent = c ? `Clienți: ${c.items.length.toLocaleString("ro-RO")}` : "Niciun client importat";
   $("gsCliInfo").textContent = c ? `importați la ${dRo(c.date)} din ${c.file}` : "Exportă lista de clienți din gestiune și importă fișierul aici.";
@@ -273,7 +274,7 @@ async function autoDetect(T){
   const kp=T.find(t=>/^PRETURI$/.test(tbase(t)) && ["CODPR","CATPRET","PRETVANZ"].every(f=>t.fields.some(x=>x.name===f)));
   if(kp){
     const found = cfg.price && cfg.price.t===kp.name && cfg.price.lf==="CATPRET" ? cfg.price.lv : "90";
-    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26"};
+    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26",pv:kp.fields.some(f=>f.name==="PRETVAL")?"PRETVAL":"",cv:kp.fields.some(f=>f.name==="CODVAL")?"CODVAL":""};
     cfg.inclTva=true;
   }
   const kc=T.find(t=>/^CLIENT$/.test(tbase(t)) && t.fields.some(x=>x.name==="NUMECLI"));
@@ -294,7 +295,10 @@ async function dbSync(silent){
       const c=String(r[C.price.code]??"").trim(), raw=+r[C.price.price]; if(!c||!(raw>0)||seen.has(c)) continue; seen.add(c);
       const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||("Articol cod "+c)).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
       const gross=C.inclTva?raw:raw*(1+TVA);
-      items.push({c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)});
+      const it={c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)};
+      // articole introduse în euro în gestiune (CODVAL=1): păstrăm prețul în euro (PRETVAL), fără conversie
+      if(C.price.pv&&C.price.cv&&+r[C.price.cv]===1&&+r[C.price.pv]>0){ const e=+r[C.price.pv]; it.pc="EUR"; it.pn=Math.round((C.inclTva?e:e*(1+TVA))*10000)/10000 } else it.pc="RON";
+      items.push(it);
     }
     items.sort((a,b)=>a.c.localeCompare(b.c,"ro",{numeric:true}));
     if(items.length){ npSave("price",{name:String(C.price.label||C.price.lv||"").split(" (")[0]||"gestiune",file:"baza "+C.price.t,date:stamp,inclTva:!!C.inclTva,items}); msg.push(items.length+" articole") }

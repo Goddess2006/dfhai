@@ -130,6 +130,7 @@ td.code{font:500 12.5px var(--f-num);color:var(--accent-ink);white-space:nowrap}
 td.name a{color:var(--ink);text-decoration:none}
 td.name a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
 td.name small{display:block;color:var(--muted);font-size:11.5px}
+.tag.cur-eur{background:#1F5FAE}.tag.cur-ron{background:#6C6F76}
 .tag{display:inline-block;font:500 10.5px var(--f-body);color:#fff;background:var(--accent);border-radius:3px;padding:0 5px;margin-left:4px;vertical-align:1px}
 td input{font:500 13px var(--f-num);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:4px 6px;text-align:right}
 td input.q{width:70px}td input.pu{width:96px}
@@ -212,7 +213,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
         <button type="button" id="curRON" aria-pressed="true">RON</button>
         <button type="button" id="curEUR" aria-pressed="false">EUR</button>
       </div>
-      <label class="rate" for="rate">Curs euro: 1 EUR = <input id="rate" inputmode="decimal" value="5.0900"> lei</label>
+      <label class="rate" for="rate"><span id="rateLbl">Curs euro</span>: 1 EUR = <input id="rate" inputmode="decimal" value="5.0900"> lei</label>
       <span id="histState"></span>
     </div>
     <div class="grp">
@@ -839,8 +840,15 @@ function nextNr(){
   if(c.y!==y)c={y,n:0}; c.n++; store.set(key,c);
   return B.prefix+"-"+y+"-"+String(c.n).padStart(4,"0");
 }
-function blank(){return {nr:nextNr(),data:todayISO(),cur:"RON",rate:5.09,ship:"242",disc:0,dType:"pct",client:{},info:"",lines:[],example:false}}
-function lineFrom(p){return {c:p.c,n:p.n,u:p.u,l:p.l,cat:true,q:1,p:p.p,base:p.p,o:p.o,d:0,svc:!!p.svc}}
+function blank(){return {nr:nextNr(),data:todayISO(),cur:B.partner?"EUR":"RON",rate:store.get(B.id+"_rate")||5.09,ship:"242",disc:0,dType:"pct",client:{},info:"",lines:[],example:false}}
+function lineFrom(p){
+  const l={c:p.c,n:p.n,u:p.u,l:p.l,cat:true,q:1,p:p.p,base:p.p,o:p.o,d:0,svc:!!p.svc};
+  if(p.pc==="EUR"){ l.pc="EUR"; l.pn=p.pn; l.bn=p.pn; l.p=p.pn*S.rate; l.base=null } // preț fixat în euro (din gestiune)
+  return l;
+}
+const isEurLine = l => l.pc==="EUR";
+function syncEur(){ S.lines.forEach(l=>{ if(isEurLine(l)) l.p=l.pn*S.rate }) } // EUR rămâne fix; leii urmează cursul
+const catPrice = p => p.pc==="EUR" ? p.pn*S.rate : p.p;
 const isCat = l => l.cat ?? !!l.l;
 const lineVal = l => round2(l.q*l.p*(l.svc?1:1-Math.min(Math.max(l.d||0,0),100)/100));
 
@@ -881,13 +889,14 @@ function renderRows(){
   const tb=$("rows");
   if(!S.lines.length){tb.innerHTML=`<tr class="emptyrow"><td colspan="11">${B.id==="np"&&!B.catalog.length?"Importă mai întâi lista de prețuri din gestiune (butonul de deasupra foii).":"Niciun produs încă. Caută după cod sau denumire în câmpul de mai sus."}</td></tr>`;return}
   tb.innerHTML=S.lines.map((l,i)=>{
-    const changed = l.base!=null && Math.abs(l.p-l.base)>0.004;
+    const changed = isEurLine(l) ? Math.abs(l.pn-l.bn)>0.00005 : (l.base!=null && Math.abs(l.p-l.base)>0.004);
+    const baseTxt = isEurLine(l) ? fmt(l.bn,"EUR") : fmt(conv(l.base??0));
     const name = l.l ? `<a href="${B.site+esc(l.l)}" target="_blank" rel="noopener">${esc(l.n)}</a>` : isCat(l) ? esc(l.n) : `<input class="free" data-i="${i}" data-k="n" value="${esc(l.n)}" placeholder="Denumire produs / serviciu" style="width:100%;text-align:left;font-family:var(--f-body)">`;
     const code = isCat(l) ? esc(l.c) : `<input data-i="${i}" data-k="c" value="${esc(l.c)}" placeholder="Cod" style="width:80px;text-align:left">`;
     return `<tr class="${l.svc?"isvc":""}">
       <td class="um">${i+1}</td>
       <td class="code">${code}</td>
-      <td class="name">${name}${l.o&&!changed?'<span class="tag">promo</span>':''}${changed?`<small>preț site: ${fmt(conv(l.base))} · <a href="#" data-reset="${i}">revino</a></small>`:''}</td>
+      <td class="name">${name}${l.o&&!changed?'<span class="tag">promo</span>':''}${B.partner&&l.cat!==false?`<span class="tag cur-${isEurLine(l)?"eur":"ron"}" title="Moneda din lista de preț">${isEurLine(l)?"EUR":"RON"}</span>`:""}${changed?`<small>${B.partner?"preț listă":"preț site"}: ${baseTxt} · <a href="#" data-reset="${i}">revino</a></small>`:''}</td>
       <td class="um">${isCat(l)?esc(l.u):`<input data-i="${i}" data-k="u" value="${esc(l.u)}" style="width:56px;text-align:left">`}</td>
       <td class="n"><input class="q" data-i="${i}" data-k="q" inputmode="decimal" value="${l.q}" aria-label="Cantitate ${esc(l.c)}"></td>
       <td class="n"><input class="pu" data-i="${i}" data-k="pf" inputmode="decimal" value="${fmtN(conv(l.p/(1+TVA))).replace(/\./g,"")}" aria-label="Preț unitar fără TVA ${esc(l.c)}"></td>
@@ -908,7 +917,7 @@ function renderMeta(){
   $("curRON").setAttribute("aria-pressed",S.cur==="RON"); $("curEUR").setAttribute("aria-pressed",S.cur==="EUR");
   $("dVal").textContent=S.cur; $("dPct").setAttribute("aria-pressed",S.dType==="pct"); $("dVal").setAttribute("aria-pressed",S.dType==="val");
   $("curShow").value = S.cur==="EUR" ? "EUR (curs "+String(S.rate).replace(".",",")+" lei)" : "RON (lei)";
-  $("footRate").textContent = S.cur==="EUR" ? "Valori în EUR calculate la cursul de 1 EUR = "+String(S.rate).replace(".",",")+" lei." : "";
+  $("footRate").textContent = B.partner ? `Curs de referință: 1 EUR = ${String(S.rate).replace(".",",")} lei (BRD, vânzare, ${(S.data||"").split("-").reverse().join(".")}). Articolele listate în EUR au preț fix în EUR, cele listate în RON au preț fix în RON.` : (S.cur==="EUR" ? "Valori în EUR calculate la cursul de 1 EUR = "+String(S.rate).replace(".",",")+" lei." : "");
   for(const [id,v] of [["pr_flota",242],["pr_curier",150],["pr_none",0]]) $(id).textContent = fmt(conv(v))+(v?" cu TVA":"");
   $("exampleNote").hidden=!S.example;
 }
@@ -934,7 +943,7 @@ function search(){
 }
 function drawHits(){
   const r=$("res"); r.hidden=false; $("q").setAttribute("aria-expanded","true");
-  r.innerHTML = hits.length ? hits.map((p,i)=>`<div role="option" data-h="${i}" aria-selected="${i===sel}"><code>${esc(p.c)}</code><span>${esc(p.n)}<small>${esc(p.k)} · ${esc(p.u)}${p.s===false?" · stoc epuizat":""}</small></span><span class="pr">${fmt(conv(p.p))}${p.o?`<s>${fmt(conv(p.o))}</s>`:""}</span></div>`).join("")
+  r.innerHTML = hits.length ? hits.map((p,i)=>`<div role="option" data-h="${i}" aria-selected="${i===sel}"><code>${esc(p.c)}</code><span>${esc(p.n)}<small>${esc(p.k)} · ${esc(p.u)}${p.s===false?" · stoc epuizat":""}</small></span><span class="pr">${p.pc==="EUR"&&S.cur==="EUR"?fmt(p.pn,"EUR"):fmt(conv(catPrice(p)))}${p.pc?`<s style="text-decoration:none">listă în ${p.pc}</s>`:""}${p.o?`<s>${fmt(conv(p.o))}</s>`:""}</span></div>`).join("")
     : '<div class="empty">Niciun produs găsit. Încearcă alt cod sau folosește „Rând liber”.</div>';
   const a=r.querySelector('[aria-selected="true"]'); a&&a.scrollIntoView({block:"nearest"});
 }
@@ -966,6 +975,7 @@ $("rows").addEventListener("input",e=>{
   else if(k==="p") l.p=back(num(e.target.value));
   else if(k==="pf") l.p=back(num(e.target.value))*(1+TVA); // preț fără TVA → cu TVA, în moneda afișată
   else l[k]=e.target.value;
+  if((k==="p"||k==="pf") && isEurLine(l)) l.pn=l.p/S.rate;
   if(k==="p"||k==="pf"){ // sincronizează perechea cu/fără TVA din același rând, fără a pierde focusul
     const other=document.querySelector(`input[data-i="${i}"][data-k="${k==="p"?"pf":"p"}"]`);
     if(other) other.value=fmtN(conv(k==="p"?l.p/(1+TVA):l.p)).replace(/\./g,"");
@@ -979,14 +989,14 @@ $("rows").addEventListener("change",e=>{ const k=e.target.dataset.k;
   if(k==="p"||k==="pf") renderRows() });
 $("rows").addEventListener("click",e=>{
   if(e.target.dataset.del!=null){S.lines.splice(+e.target.dataset.del,1);renderAll()}
-  if(e.target.dataset.reset!=null){e.preventDefault();const l=S.lines[+e.target.dataset.reset];l.p=l.base;renderAll()}
+  if(e.target.dataset.reset!=null){e.preventDefault();const l=S.lines[+e.target.dataset.reset]; if(isEurLine(l)){l.pn=l.bn;l.p=l.pn*S.rate}else l.p=l.base; renderAll()}
 });
 $("addFree").addEventListener("click",()=>{ if(S.example){S.lines=[];S.example=false} S.lines.push({c:"",n:"",u:"buc",l:"",cat:false,q:1,p:0,base:null,o:null,d:0,svc:false}); renderAll(); const f=[...document.querySelectorAll("input.free")].at(-1); f&&f.focus() });
 
 /* monedă, curs, discount, transport */
 function setCur(c){ if(S.cur===c)return; if(S.dType==="val") S.disc=round2(c==="EUR"?S.disc/S.rate:S.disc*S.rate); S.cur=c; $("disc").value=String(S.disc).replace(".",","); renderAll(); if(!$("res").hidden)drawHits() }
 $("curRON").onclick=()=>setCur("RON"); $("curEUR").onclick=()=>setCur("EUR");
-$("rate").addEventListener("input",e=>{const r=num(e.target.value); if(r>0){S.rate=r;renderMeta();renderRows();renderTotals();save()}});
+$("rate").addEventListener("input",e=>{const r=num(e.target.value); if(r>0){S.rate=r;syncEur();store.set(B.id+"_rate",r);renderMeta();renderRows();renderTotals();save()}});
 $("rate").addEventListener("blur",e=>e.target.value=S.rate.toFixed(4));
 $("disc").addEventListener("input",e=>{S.disc=num(e.target.value);renderTotals();save()});
 $("dPct").onclick=()=>{S.dType="pct";renderAll()}; $("dVal").onclick=()=>{S.dType="val";renderAll()};
@@ -1047,9 +1057,9 @@ function offer(){
   return {t,dateRo,cols,lines,totals,grand:fmt(conv(t.total)),
     alt:`Echivalent ${other} (1 EUR = ${String(S.rate).replace(".",",")} lei): ${fmt(otherVal,other)}`,
     client:CLIENT_FIELDS.map(([k,l])=>[l,(S.client[k]||"").trim()]).filter(x=>x[1]),
-    meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",S.cur==="EUR"?`EUR (curs ${String(S.rate).replace(".",",")} lei)`:"RON (lei)"]],
+    meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",`${S.cur==="EUR"?"EUR":"RON"} · 1 EUR = ${String(S.rate).replace(".",",")} lei${B.partner?" (BRD)":""}`]],
     info:(S.info||"").trim(),
-    note:B.noteText||`Toate prețurile includ TVA 21%.`};
+    note:(B.noteText||`Toate prețurile includ TVA 21%.`)+(B.partner?` Curs de referință: 1 EUR = ${String(S.rate).replace(".",",")} lei (BRD, vânzare).`:"")};
 }
 function fileBase(){
   const c=(S.client.c_nume||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40);
@@ -1263,7 +1273,8 @@ function npLoadCatalog(){
 }
 function npStatus(){
   const p=npData("price"), c=npData("client");
-  $("gsPrice").textContent = p ? `Listă de prețuri: ${p.name} · ${p.items.length.toLocaleString("ro-RO")} articole` : "Nicio listă de prețuri importată";
+  const ne=p?p.items.filter(i=>i.pc==="EUR").length:0;
+  $("gsPrice").textContent = p ? `Listă de prețuri: ${p.name} · ${p.items.length.toLocaleString("ro-RO")} articole${ne?` (${ne} în EUR, ${p.items.length-ne} în RON)`:""}` : "Nicio listă de prețuri importată";
   $("gsPriceInfo").innerHTML = p ? `importată la ${dRo(p.date)} din ${esc(p.file)} · prețuri ${p.inclTva?"cu":"fără"} TVA în fișier` : `<span class="warn">Exportă din gestiune lista NMC05.10.26 (Excel, CSV sau DBF) și importă fișierul aici.</span>`;
   $("gsCli").textContent = c ? `Clienți: ${c.items.length.toLocaleString("ro-RO")}` : "Niciun client importat";
   $("gsCliInfo").textContent = c ? `importați la ${dRo(c.date)} din ${c.file}` : "Exportă lista de clienți din gestiune și importă fișierul aici.";
@@ -1495,7 +1506,7 @@ async function autoDetect(T){
   const kp=T.find(t=>/^PRETURI$/.test(tbase(t)) && ["CODPR","CATPRET","PRETVANZ"].every(f=>t.fields.some(x=>x.name===f)));
   if(kp){
     const found = cfg.price && cfg.price.t===kp.name && cfg.price.lf==="CATPRET" ? cfg.price.lv : "90";
-    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26"};
+    cfg.price={t:kp.name,code:"CODPR",price:"PRETVANZ",lf:"CATPRET",lv:found,name:"",label:"NMC05.10.26",pv:kp.fields.some(f=>f.name==="PRETVAL")?"PRETVAL":"",cv:kp.fields.some(f=>f.name==="CODVAL")?"CODVAL":""};
     cfg.inclTva=true;
   }
   const kc=T.find(t=>/^CLIENT$/.test(tbase(t)) && t.fields.some(x=>x.name==="NUMECLI"));
@@ -1516,7 +1527,10 @@ async function dbSync(silent){
       const c=String(r[C.price.code]??"").trim(), raw=+r[C.price.price]; if(!c||!(raw>0)||seen.has(c)) continue; seen.add(c);
       const pr=names[c]||{}, n=String((C.prod&&pr[C.prod.name])||(C.price.name&&r[C.price.name])||("Articol cod "+c)).trim(), u=String((C.prod&&C.prod.um&&pr[C.prod.um])||"buc").trim().toLowerCase()||"buc";
       const gross=C.inclTva?raw:raw*(1+TVA);
-      items.push({c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)});
+      const it={c,n,u,p:Math.round(gross*100)/100,f:Math.round(gross/(1+TVA)*100)/100,o:null,k:"",s:null,l:"",svc:SVC_RX.test(n)||/^(ora|ore|h|serv)/.test(u)};
+      // articole introduse în euro în gestiune (CODVAL=1): păstrăm prețul în euro (PRETVAL), fără conversie
+      if(C.price.pv&&C.price.cv&&+r[C.price.cv]===1&&+r[C.price.pv]>0){ const e=+r[C.price.pv]; it.pc="EUR"; it.pn=Math.round((C.inclTva?e:e*(1+TVA))*10000)/10000 } else it.pc="RON";
+      items.push(it);
     }
     items.sort((a,b)=>a.c.localeCompare(b.c,"ro",{numeric:true}));
     if(items.length){ npSave("price",{name:String(C.price.label||C.price.lv||"").split(" (")[0]||"gestiune",file:"baza "+C.price.t,date:stamp,inclTva:!!C.inclTva,items}); msg.push(items.length+" articole") }
@@ -1678,6 +1692,7 @@ function applyBrand(id){
   const lg=$("logo"); lg.src=B.logo; lg.alt=B.name; lg.className="logo "+B.logoClass;
   $("issuer").innerHTML=B.issuer.map(([b,t])=>(b?`<b>${esc(b)}</b>`:"")+esc(t)).join("<br>");
   $("fleetName").textContent=B.fleet;
+  $("rateLbl").textContent = B.partner ? "Curs BRD vânzare" : "Curs euro";
   if(B.partner) npLoadCatalog();
   B.noteText = B.partner ? `Prețuri conform listei de parteneri${B.listName?" "+B.listName:""}. Toate prețurile includ TVA 21%.` : `Prețurile și codurile produselor sunt preluate de pe ${B.domain} la data de ${B.date}. Toate prețurile includ TVA 21%.`;
   $("footNote").textContent=B.noteText;

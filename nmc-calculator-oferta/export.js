@@ -23,9 +23,9 @@ function offer(){
   return {t,dateRo,cols,lines,totals,grand:fmt(conv(t.total)),
     alt:`Echivalent ${other} (1 EUR = ${String(S.rate).replace(".",",")} lei): ${fmt(otherVal,other)}`,
     client:CLIENT_FIELDS.map(([k,l])=>[l,(S.client[k]||"").trim()]).filter(x=>x[1]),
-    meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",S.cur==="EUR"?`EUR (curs ${String(S.rate).replace(".",",")} lei)`:"RON (lei)"]],
+    meta:[["Nr. comandă",S.nr||""],["Data",dateRo],["Moneda",`${S.cur==="EUR"?"EUR":"RON"} · 1 EUR = ${String(S.rate).replace(".",",")} lei${B.partner?" (BRD)":""}`]],
     info:(S.info||"").trim(),
-    note:B.noteText||`Toate prețurile includ TVA 21%.`};
+    note:(B.noteText||`Toate prețurile includ TVA 21%.`)+(B.partner?` Curs de referință: 1 EUR = ${String(S.rate).replace(".",",")} lei (BRD, vânzare).`:"")};
 }
 function fileBase(){
   const c=(S.client.c_nume||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40);
