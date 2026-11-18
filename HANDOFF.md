@@ -1,7 +1,13 @@
 # Handoff
 
 Ultima actualizare: 2026-11-18
-Agent: Claude Code
+Agent: Codex
+
+## Skill UI/UX din ghidul Clean Code Culture — Codex, 2026-11-18
+Cererea clarificată a utilizatorului: doar instalarea skill-urilor din PDF, fără construirea unui website. Instalat `ui-ux-pro-max` din sursa oficială `nextlevelbuilder/ui-ux-pro-max-skill`, calea `.claude/skills/ui-ux-pro-max`, prin helper-ul skill-installer, cu verificarea sursei înaintea instalării.
+Instalări locale pe acest host: `/home/dfh/.codex/skills/ui-ux-pro-max/` și `/home/dfh/.claude/skills/ui-ux-pro-max/`. Ambele includ SKILL.md, data/, references/, scripts/, licența MIT și INSTALLATION.json cu proveniența și hash-ul SKILL.md original. Commit upstream observat: `ed766d3bf62f32c8d27762ad49abdc3a4744c84f`. Adaptare locală: comenzile din SKILL.md folosesc python3 și calea absolută a instalării în loc de CLAUDE_PLUGIN_ROOT. Aceste instalări personale nu sunt incluse în repository și nu sunt replicate prin git pull pe alte hosturi.
+Verificări: căutare UX cu rezultate din baza locală pentru fiecare instalare; generarea unui design system testată în copia de verificare, fără persistență în proiect. Skill-ul Codex devine disponibil din tura următoare; pentru Claude Code, pornește o sesiune nouă.
+În brief există un singur skill propriu-zis: ui-ux-pro-max. 21st.dev este integrare MCP, Framer Motion/Motion este dependență de proiect, iar Claude Code este unealta agent. Nu au fost instalate/conectate suplimentar în această cerere limitată la skills; nu există website nou sau chei API adăugate.
 
 ## Newsletter Deco&Flair pentru clienții NMC — `decoflair-newsletter-nmc/` — Claude Code, 2026-11-18
 E-mail HTML gata de lipit (Brevo: `out/newsletter-brevo.html`; MailerLite: `out/newsletter-mailerlite.html`; text: `out/newsletter.txt`), 600 px, tabele + stiluri inline, se stivuiește pe mobil, ~62 KB (sub limita Gmail). Imaginile (25, 936 KB, `img/` + `out/imagini-de-urcat.zip`) TREBUIE urcate în `https://decoflair.ro/image/catalog/newsletter/2026-11/` (`IMG_BASE` în `build.py`).
