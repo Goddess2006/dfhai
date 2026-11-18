@@ -1,4 +1,4 @@
-"""Newsletter „Deco&Flair × clienții NMC” — generator.
+"""Newsletter Deco&Flair „Ediția 2027” — generator.
 
 python3 build.py            → img/ (imagini optimizate pentru e-mail) + out/*.html + out/newsletter.txt
 
@@ -19,9 +19,9 @@ IMG.mkdir(exist_ok=True); OUT.mkdir(exist_ok=True)
 
 IMG_BASE = "https://decoflair.ro/image/catalog/newsletter/2026-11/"
 SITE = "https://decoflair.ro"
-CAMPAIGN = "nmc-decoflair-2027"
+CAMPAIGN = "decoflair-2027"
 EXPERT_NAME = ""            # ex. „Ana Popescu” — gol = „Expertul Deco&Flair”
-COUPON = None               # ex. {"code": "NMCDECO", "text": "−5% la prima comandă pe decoflair.ro"} — creează întâi codul în OpenCart!
+COUPON = None               # ex. {"code": "BUNVENIT", "text": "−5% la prima comandă pe decoflair.ro"} — creează întâi codul în OpenCart!
 PRICES_DATE = "18.11.2026"
 
 # ---------- paleta (verificată în tools/palette_check.py) ----------
@@ -72,7 +72,7 @@ def build_images():
 # ---------- date ----------
 def u(path, content):
     sep = "&" if "?" in path else "?"
-    return f"{SITE}{path}{sep}utm_source=nmcromania&utm_medium=email&utm_campaign={CAMPAIGN}&utm_content={content}"
+    return f"{SITE}{path}{sep}utm_source=newsletter&utm_medium=email&utm_campaign={CAMPAIGN}&utm_content={content}"
 
 PRODUCTS = [  # prețuri cu TVA citite pe decoflair.ro/oferte-speciale la PRICES_DATE, toate „În stoc”
     dict(img="p-l5.jpg", name="Scafă LED ARSTYL® L5", note="Lumină indirectă, 2 m", old="585,36", new="526,83", unit="lei / bară", url="/l5-arstyl"),
@@ -117,7 +117,7 @@ BLOG = [
 ]
 
 ADV = [
-    ("Fabricat în Belgia", "Profile de interior NMC® — ARSTYL®, WALLSTYL®, NOMASTYL® — calitate europeană, la prețul corect."),
+    ("Dealer autorizat NMC®", "Profile ARSTYL®, WALLSTYL®, NOMASTYL®, fabricate în Belgia — calitate europeană, la prețul corect."),
     ("Selecție, nu stoc", "Alegem cu grijă din mulți producători: profile, tapet italian de designer, panouri 3D, riflaje."),
     ("Know-how inclus", "Îți spunem ce merge, ce e în trend și ce rămâne frumos peste ani: produs, finisaj, culoare."),
     ("Randare 3D", "Vezi camera transformată înainte de prima comandă."),
@@ -174,10 +174,10 @@ def build_html(variant):
     pre = "Kit complet de cameră cu 15% inclus, −10% la profile LED și plinte, tendințele 2027 și sfatul expertului."
 
     S = []
-    # bara de sus — puntea NMC → Deco&Flair
+    # bara de sus
     S.append(f'''<tr><td bgcolor="{C['ink']}" style="background-color:{C['ink']};padding:10px 24px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-<td style="font-family:{SANS};font-size:12px;line-height:1.5;color:{C['nude']};">Pentru clienții NMC România · selecție Deco&amp;Flair</td>
+<td style="font-family:{SANS};font-size:12px;line-height:1.5;color:{C['nude']};">Deco&amp;Flair · dealer autorizat NMC® · Ediția 2027</td>
 <td align="right" style="font-family:{SANS};font-size:12px;"><a href="{mirror}" style="color:{C['gold']};text-decoration:underline;">Vezi online</a></td>
 </tr></table></td></tr>''')
 
@@ -193,8 +193,8 @@ def build_html(variant):
     S.append(f'<tr><td bgcolor="{C["forest"]}" style="background-color:{C["forest"]};"><a href="{u("/", "hero-img")}" target="_blank">{img("hero.jpg", 600, "Living elegant cu scafă LED și profile decorative Deco&Flair")}</a></td></tr>')
     S.append(section(
         eyebrow("Ediția 2027 · Statement", C["gold"]) +
-        f'<h1 style="margin:0 0 16px;font-family:{SERIF};font-weight:400;font-size:40px;line-height:1.1;color:{C["cream"]};">Ai ales NMC pentru casa ta.<br><i style="color:{C["gold"]};">Acum alege cum o trăiești.</i></h1>' +
-        p("Calitatea o cunoști deja. Pe <b>decoflair.ro</b> găsești restul poveștii: profile fabricate în Belgia, tapet italian de designer, panouri 3D, kituri complete de cameră — și know-how-ul nostru, pus în slujba casei tale.", C["cream"], 17) +
+        f'<h1 style="margin:0 0 16px;font-family:{SERIF};font-weight:400;font-size:40px;line-height:1.1;color:{C["cream"]};">Casa ta, la nivelul următor.<br><i style="color:{C["gold"]};">Alege cum o trăiești.</i></h1>' +
+        p("Pe <b>decoflair.ro</b> găsești tot ce face diferența: profile fabricate în Belgia, tapet italian de designer, panouri 3D, kituri complete de cameră — și know-how-ul nostru, pus în slujba casei tale.", C["cream"], 17) +
         p("Eleganță și lux, la prețul corect. Pentru orice buget.", C["teal_light"], 15, "font-weight:600;letter-spacing:.02em;") +
         f'<div style="height:10px;"></div>{button("Intră pe decoflair.ro", u("/", "hero-cta"), C["gold"], C["ink"])}',
         C["forest"], "36px 40px 44px", f"linear-gradient(160deg,{C['forest']} 0%,{C['forest_mid']} 55%,{C['teal']} 130%)"))
@@ -304,7 +304,7 @@ def build_html(variant):
                  f'<tr><td style="padding:16px 20px;"><div style="font-family:{SERIF};font-size:18px;color:{C["forest"]};padding-bottom:6px;">{q}</div>'
                  f'<div style="font-family:{SANS};font-size:15px;line-height:1.55;color:{C["ink"]};">{a}</div></td></tr></table></td></tr>' for q, a in FAQ)
     S.append(section(
-        eyebrow("Întrebări &amp; răspunsuri", C["gold_dark"]) + h2("Ce ne întreabă <i>clienții NMC.</i>", C["forest"])
+        eyebrow("Întrebări &amp; răspunsuri", C["gold_dark"]) + h2("Ce ne întreabă <i>clienții noștri.</i>", C["forest"])
         + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">{qa}</table>'
         + p("Ai altă întrebare? <b>Răspunde direct la acest e-mail</b> — îți scrie un specialist, nu un robot.", C["ink"], 15, "padding-top:6px;"),
         C["nude"], "44px 40px 30px"))
@@ -333,7 +333,7 @@ def build_html(variant):
     # COD opțional
     if COUPON:
         S.append(section(
-            f'<div style="text-align:center;">{eyebrow("Bun venit, client NMC", C["aubergine"])}'
+            f'<div style="text-align:center;">{eyebrow("Cadoul tău de bun venit", C["aubergine"])}'
             f'<div style="display:inline-block;border:2px dashed {C["aubergine"]};border-radius:12px;padding:14px 28px;font-family:{SANS};font-size:26px;font-weight:700;letter-spacing:.18em;color:{C["aubergine"]};">{COUPON["code"]}</div>'
             + p(COUPON["text"], C["ink"], 15, "padding-top:12px;") + '</div>', C["nude"], "34px 40px"))
 
@@ -352,7 +352,7 @@ def build_html(variant):
                      [("Instagram", "https://www.instagram.com/decoflairhub"), ("TikTok", "https://www.tiktok.com/@decoflairhub"), ("Facebook", "https://www.facebook.com/HubDecoFlair"), ("YouTube", "https://www.youtube.com/@Decoflairhub")])
     S.append(f'''<tr><td bgcolor="{C['cream']}" style="background-color:{C['cream']};padding:28px 40px 36px;font-family:{SANS};font-size:12px;line-height:1.7;color:{C['muted']};text-align:center;">
 {soc}<br><br>
-Primești acest mesaj pentru că ești client NMC România (nmcromania.ro). Deco&amp;Flair este partenerul NMC pentru design interior și exterior premium.<br>
+Deco&amp;Flair este dealer autorizat NMC®, producătorul belgian al profilelor ARSTYL®, WALLSTYL® și NOMASTYL®.<br>
 Deco &amp; Flair Hub SRL · CUI RO 54681700 · Str. Faurei nr. 1, Sector 1, București · Depozit: Str. Comerțului nr. 3, Domnești, Ilfov<br><br>
 Nu mai vrei să primești astfel de mesaje? <a href="{unsub}" style="color:{C['ink']};text-decoration:underline;">Dezabonează-te aici</a>.
 </td></tr>''')
@@ -364,7 +364,7 @@ Nu mai vrei să primești astfel de mesaje? <a href="{unsub}" style="color:{C['i
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting"><meta name="format-detection" content="telephone=no,address=no,email=no,date=no">
 <meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light">
-<title>Deco&amp;Flair — pentru clienții NMC</title>
+<title>Deco&amp;Flair — Ediția 2027</title>
 <!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><style>h1,h2,p,div,td,a{{font-family:Georgia,serif!important}}</style><![endif]-->
 <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"><!--<![endif]-->
 <style>
@@ -398,7 +398,7 @@ a[x-apple-data-detectors]{{color:inherit!important;text-decoration:none!importan
     return doc.replace("{IMG}", base)
 
 def build_text():
-    L = ["DECO&FLAIR — pentru clienții NMC România", "", "Ai ales NMC pentru casa ta. Acum alege cum o trăiești.",
+    L = ["DECO&FLAIR — Ediția 2027 · dealer autorizat NMC®", "", "Casa ta, la nivelul următor. Alege cum o trăiești.",
          "Profile fabricate în Belgia, tapet italian de designer, panouri 3D, kituri complete de cameră — și know-how-ul nostru.",
          f"Intră pe decoflair.ro: {u('/', 'txt-hero')}", "", "SFATUL EXPERTULUI",
          "1. Începe cu liniile, nu cu mobila: plinta, brâul și cornișa sunt rama camerei.",
@@ -412,7 +412,7 @@ def build_text():
     L += ["", "ÎNTREBĂRI & RĂSPUNSURI"] + [f"- {q} {a}" for q, a in FAQ]
     L += ["", "DIN BLOG"] + [f"- {t} — {u(h, k)}" for _, _, t, h, k in BLOG]
     L += ["", "Consultanță: 0723 300 603 · office@decoflair.ro · Luni–Vineri 07:30–16:00",
-          "Deco & Flair Hub SRL · CUI RO 54681700", "Primești acest mesaj pentru că ești client NMC România. Dezabonare: folosește linkul din e-mail."]
+          "Deco & Flair Hub SRL · CUI RO 54681700", "Dezabonare: folosește linkul din e-mail."]
     return "\n".join(L) + "\n"
 
 if __name__ == "__main__":

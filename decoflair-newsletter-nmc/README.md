@@ -1,7 +1,7 @@
-# Newsletter Deco&Flair × clienții NMC (2027)
+# Newsletter Deco&Flair „Ediția 2027”
 
 E-mail HTML compatibil cu clienții de e-mail: tabele, stiluri inline, 600 px, se stivuiește pe mobil, ~62 KB (sub limita Gmail de 102 KB).
-Secțiuni: puntea NMC → Deco&Flair, hero „statement”, manifest, sfatul expertului (cu fotografie), reduceri −10% (6 produse în stoc), LINEA Room Kit, 3 kituri recomandate, sondaj interactiv „Ce cameră transformi?” (click = segmentare), Trend 2027 · Tokyo × Singapore, Întrebări & răspunsuri, blog, avantaje, CTA final, subsol cu dezabonare.
+Secțiuni: bara „dealer autorizat NMC®”, hero „statement”, manifest, sfatul expertului (cu fotografie), reduceri −10% (6 produse în stoc), LINEA Room Kit, 3 kituri recomandate, sondaj interactiv „Ce cameră transformi?” (click = segmentare), Trend 2027 · Tokyo × Singapore, Întrebări & răspunsuri, blog, avantaje, CTA final, subsol cu dezabonare.
 
 - Generare: `python3 build.py` → `img/` + `out/`
 - Paletă: `python3 tools/palette_check.py` → `PALETA.md`

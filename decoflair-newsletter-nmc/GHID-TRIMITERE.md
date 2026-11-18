@@ -1,4 +1,4 @@
-# Newsletter Deco&Flair pentru clienții NMC: ghid de trimitere
+# Newsletter Deco&Flair „Ediția 2027”: ghid de trimitere
 
 ## 1. Ce ai în folder
 
@@ -31,31 +31,25 @@ E-mailul caută imaginile la `https://decoflair.ro/image/catalog/newsletter/2026
 1. **Autentifică domeniul** din care trimiți (Senders, Domains & IPs → Domains): adaugi în DNS înregistrările SPF, DKIM și DMARC pe care ți le dă Brevo. Fără ele, e-mailul ajunge în Spam la Gmail și Yahoo.
 2. Importă lista din CSV cu coloanele `EMAIL, PRENUME, NUME, DATA_ULTIMEI_COMENZI`. Scoate duplicatele și adresele invalide.
 3. Campaign → Create → „Paste your code” → lipește `newsletter-brevo.html`; la „Plain text” lipește `newsletter.txt`.
-4. Activează **click tracking** și **Google Analytics tracking**. Linkurile au deja UTM-uri (`utm_source=nmcromania`, `utm_campaign=nmc-decoflair-2027`, câte un `utm_content` pentru fiecare bloc).
+4. Activează **click tracking** și **Google Analytics tracking**. Linkurile au deja UTM-uri (`utm_source=newsletter`, `utm_campaign=decoflair-2027`, câte un `utm_content` pentru fiecare bloc).
 
-## 3. Cine trimite: partea legală (GDPR, important)
+## 3. Expeditor și partea legală
 
-Adresele de e-mail ale clienților nmcromania.ro aparțin operatorului de date al nmcromania.ro (NMC România). Deco & Flair Hub SRL este altă firmă (CUI RO 54681700). Regulile (GDPR și Legea 506/2004) spun că:
-- **Lista NU se predă către Deco&Flair** ca să trimită Deco&Flair în nume propriu: pentru asta ar trebui consimțământul fiecărui client.
-- **Varianta corectă și cea mai eficientă:** e-mailul pleacă **de la NMC România**, către clienții proprii, ca o recomandare a partenerului. Expeditor: `NMC România × Deco&Flair`, adresă de pe domeniul NMC. Reply-to: `office@decoflair.ro`, ca răspunsurile să ajungă la voi.
-- Trimite doar clienților care **au bifat newsletterul** sau care **n-au refuzat** comunicările comerciale la comandă. Scoate orice adresă care s-a dezabonat vreodată.
-- Linkul de dezabonare e deja în subsol. Cererile de dezabonare se respectă imediat.
-- Clienții care dau click și se abonează sau cumpără pe decoflair.ro devin clienții Deco&Flair, cu acordul lor. Așa construiești lista proprie Deco&Flair, legal.
-
-Bonus de marketing: oamenii deschid e-mailul unui nume pe care îl cunosc. „NMC România” în câmpul „De la” aduce mai multe deschideri decât un nume nou.
-
-> Verifică formularea din subsol: „Deco&Flair este partenerul NMC pentru design interior și exterior premium”. Dacă relația are alt nume (aceeași echipă, distribuitor autorizat etc.), spune-mi și o schimb.
+- Expeditor: `Deco&Flair`, adresă de pe domeniul decoflair.ro (ex. `noutati@decoflair.ro`), reply-to `office@decoflair.ro`.
+- Textul e-mailului nu spune de unde vine adresa destinatarului. NMC apare doar ca „Deco&Flair, dealer autorizat NMC®”.
+- Obligatoriu și deja în subsol: identitatea firmei (Deco & Flair Hub SRL, CUI) și linkul de dezabonare. Cererile de dezabonare se respectă imediat.
+- Trimite doar adreselor pe care aveți dreptul să le folosiți pentru marketing. Dacă un destinatar întreabă de unde aveți adresa, GDPR (art. 14–15) vă obligă să-i spuneți sursa.
 
 ## 4. Subiect și preheader
 
 Preheader (deja în cod): *Kit complet de cameră cu 15% inclus, −10% la profile LED și plinte, tendințele 2027 și sfatul expertului.*
 
 Fă test A/B pe primele 2 tranșe:
-- **A:** `Ai ales NMC. Iată ce poate deveni casa ta`
+- **A:** `Casa ta, la nivelul următor: idei 2027 + −10%`
 - **B:** `Sfatul expertului: 3 detalii care schimbă o cameră (+ −10%)`
 - Rezervă: `Lux real, la prețul corect: noutățile 2027 pentru casa ta`
 
-Expeditor: `NMC România × Deco&Flair`.
+Expeditor: `Deco&Flair`.
 
 ## 5. Planul de trimitere pentru ~1000 de adrese
 
@@ -73,16 +67,16 @@ Trimiterea în tranșe protejează reputația domeniului și se potrivește cu l
 
 Fiecare cameră (Living, Dormitor, Hol, Fațadă) are un link diferit (`utm_content=camera-…`). În Brevo, segmentează după linkul apăsat și trimite după 7–10 zile un **e-mail scurt, doar pentru camera aleasă**: 3 produse, un sfat și „Sună-ne pentru o randare 3D”. Asta e partea care vinde cel mai bine.
 
-## 7. Cum prezentăm povestea: NMC → Deco&Flair
+## 7. Cum poziționăm Deco&Flair
 
-Mesajul central: **„Ai ales deja calitatea NMC. Deco&Flair este locul în care calitatea asta devine design.”**
-- **Continuitate, nu schimbare:** aceleași profile NMC Belgia pe care le cunosc, plus tapet italian de designer, panouri 3D și riflaje, alese pentru ei.
-- **Expertul are un chip:** fotografia expertei și sfatul personal transformă un magazin într-un consultant. De aici vine statutul de expert premium.
-- **Lux accesibil:** „Luxul nu e un preț. E o alegere bine făcută.” Prețuri reale, reduceri reale, made in Belgium.
+Mesajul central: **„Casa ta, la nivelul următor. Expert premium, la prețul corect.”**
+- **Garanția de calitate:** „Dealer autorizat NMC®”. Profilele ARSTYL®, WALLSTYL® și NOMASTYL®, fabricate în Belgia, plus tapet italian de designer, panouri 3D și riflaje.
+- **Expertul are un chip:** fotografia expertei și sfatul personal transformă magazinul într-un consultant.
+- **Lux accesibil:** „Luxul nu e un preț. E o alegere bine făcută.” Prețuri reale, reduceri reale.
 - **Seria de 3 e-mailuri:** (1) acesta, statement + oferte; (2) după 10 zile, e-mailul pe camera aleasă; (3) în ianuarie, „Planul casei tale pentru 2027” cu Trend 2027 · Tokyo × Singapore și o ofertă de început de an.
 - **Pe rețele, în aceeași săptămână:** reel-urile Trend 2027, Idei 2027 și Blog (deja în repo) cresc recunoașterea, așa că e-mailul nu vine „din senin”.
 
-KPI-uri realiste pentru o listă de clienți: deschideri 30–45%, click 3–6%, dezabonări sub 0,5%. Urmărește în GA4 traficul cu `utm_source=nmcromania`.
+KPI-uri realiste pentru o listă de clienți: deschideri 30–45%, click 3–6%, dezabonări sub 0,5%. Urmărește în GA4 traficul cu `utm_source=newsletter`, `utm_campaign=decoflair-2027`.
 
 ## 8. Checklist înainte de „Trimite”
 
@@ -90,5 +84,5 @@ KPI-uri realiste pentru o listă de clienți: deschideri 30–45%, click 3–6%,
 - [ ] Prețurile încă valabile pe decoflair.ro/oferte-speciale (au fost citite la **18.11.2026**: −10% la L5, L2, WO2, FD3, FO1, FL13; Kit LINEA 2.838,30 lei). Dacă se schimbă, modifică `PRODUCTS` în `build.py` și rulează `python3 build.py`.
 - [ ] Domeniul autentificat (SPF, DKIM, DMARC).
 - [ ] Testul arată bine în Gmail (telefon + desktop) și în Outlook.
-- [ ] Lista curățată, doar clienți care n-au refuzat comunicări.
+- [ ] Lista curățată (fără duplicate, adrese invalide sau dezabonați).
 - [ ] Opțional: numele expertei (`EXPERT_NAME`) și un cod de bun venit (`COUPON`; creează întâi codul în OpenCart!) în `build.py`.
