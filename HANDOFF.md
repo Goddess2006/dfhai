@@ -16,6 +16,9 @@ TikTok (2 variante, 22–23 s): `nmc-wow-30/tiktok/nmc-wow-30-tiktok-ads.mp4` (f
 Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
+## Calculator ofertă — Interior Premium 05.10.2026 — Claude Code, 2026-11-18
+Lista Interior Premium 01.06.2026 înlocuită cu `Lista_Preturi_Interior_Premium_05.10.2026.xlsx` (prețuri finale EUR fără TVA, coloana „Pret lista 05.10.2026”): 317 articole (vechea avea 426; 109 scoase — baghete/rozete EPS, Baghete LX, tavane, Thermo Line, NOMA®, rozete/panouri Decoflair; 313 prețuri modificate, majoritatea −11…−13 %, ex. Z11 50,31→43,95; L5 100,77→87,96). Notă: în fișierul sursă SCURETTO și DORIQUE au același Cod SAP 3050611 (ambele păstrate cu prețurile lor).
+
 ## Calculator ofertă — liste EUR pentru Parteneri — Claude Code, 2026-11-18
 Fișiere de la utilizator copiate în `nmc-calculator-oferta/data/liste-eur/`: Lista_Preturi_Interior_Premium_01.06.2026.xlsx (foaia „Lista NMC 2026”: Cod Sap, model, brand, dimensiuni, lungime, UM, „Pret Lista 2026”; coloana „Pret lista 05.10.2026” e goală — se folosește dacă se completează), PRETURI_SELIT_2026_VALID_01.05.2026.xlsx, LISTA_PRET_IZOLATII_TEAVA_01.05.2026.xls. Toate EUR fără TVA. `tools/liste-eur.cjs` → `data/parteneri-eur.json` (470 articole), inclus de build ca `EUR_LISTS`. În foaia Parteneri: catalog = liste EUR + lista 90 din gestiune; articolele EUR au preț fix în EUR (`pc:"EUR"`, `pn` = net × 1,21), sub valoare se afișează echivalentul RON la cursul BRD; articolele din gestiune cu același model unic în denumire sunt înlocuite (doar când gestiunea dă denumiri reale). Articolele RON din lista 90 rămân RON. Cod SAP = „Cod”, modelul (ex. Z11) e căutabil. Notă: UM din lista Interior Premium e preluată ca atare (multe „M” cu lungime 2 ml) — de confirmat cu utilizatorul dacă prețul e pe bucată sau pe metru.
 
