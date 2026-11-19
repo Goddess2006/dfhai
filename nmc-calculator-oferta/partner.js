@@ -223,6 +223,7 @@ function dbfRows(buf, only){
         case "B": o[f.name]=v.getFloat64(p,true); break;
         case "L": o[f.name]=/[TtYy]/.test(String.fromCharCode(u8[p])); break;
         case "D": o[f.name]=String.fromCharCode(...u8.subarray(p,p+8)).trim(); break;
+        case "T": { const jd=v.getInt32(p,true); o[f.name]=jd>0?new Date((jd-2440588)*864e5).toISOString().slice(0,10).replace(/-/g,""):""; break } // datetime FoxPro → AAAALLZZ
         default: o[f.name]=null; // memo / binar: ignorat
       }
     }

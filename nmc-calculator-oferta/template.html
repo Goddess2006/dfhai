@@ -26,6 +26,7 @@
 .tabs button{border:1px solid var(--line);border-bottom:0;background:var(--soft);color:var(--muted);border-radius:8px 8px 0 0;padding:9px 18px 8px;font:500 14px var(--f-body);cursor:pointer;display:flex;gap:8px;align-items:center;white-space:nowrap;margin-bottom:-2px}
 .tabs button i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--line);border-bottom:2px solid var(--paper);font-weight:700}
+.tabs .t-bd i{background:#2E7D5B}
 .tabs .t-nmc i{background:#FF671F}.tabs .t-np i{background:#22252A;box-shadow:inset 0 0 0 2px #FF671F}
 :root:not([data-brand="np"]) .pcol{display:none!important}
 td input.dd{width:58px}
@@ -35,6 +36,18 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .gest .row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
 .gest .st{display:grid;gap:2px;font-size:13px}.gest .st b{font-weight:500}.gest .st span{color:var(--muted);font-size:12px}
 .gest .st .warn{color:var(--bad)}
+.bdsearch{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end}
+.bdsearch label{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.bdsearch label.grow{flex:1 1 220px}
+.bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+.bdtbl{min-width:860px}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
+.bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
+.chipx{display:inline-flex;align-items:center;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:12.5px}
+.bdtot{display:flex;justify-content:flex-end;gap:18px;padding:10px 4px;font:500 14px var(--f-num)}
+.bdtot b{font-weight:700}
+.anx{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.anx .ah{background:var(--soft);padding:7px 10px;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.anx table{min-width:0}
 .hist{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:grid;gap:10px}
 .hist .hbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.hist .hbar .sp{flex:1}
 .hist .hbar input,.hist .hbar select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 9px}
@@ -59,7 +72,7 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .logo.df{width:170px}
 [hidden]{display:none!important}
 .sheet>*,.wrap>*{min-width:0}
-#info{width:100%;font:14px/1.5 var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
+#info,#bdInfo{width:100%;font:14px/1.5 var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
 td.name{font-size:13.5px}
 body{background:var(--bg);color:var(--ink);font:14px/1.45 var(--f-body);margin:0;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
@@ -189,6 +202,9 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
   .tbl{overflow:visible}table{min-width:0}
   tr{break-inside:avoid}
   .printonly{display:block}.sign.printonly{display:grid}
+  body.bdmode .wrap>*:not(#bord){display:none!important} body.bdmode #bord>*:not(#bdSheet){display:none!important}
+  .bdtbl{min-width:0} .bdtbl input,.bdtbl select{border:0!important;background:none!important;padding:0!important;appearance:none}
+  #bdAnexa.empty{display:none!important} #bdAnexa{break-before:page}
   .head{grid-template-columns:auto 1fr auto!important}.doc{text-align:right!important;justify-items:end!important}.meta label{text-align:right!important}
   .client{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px 14px}.fld.w2{grid-column:span 2!important}
   .bottom{grid-template-columns:minmax(0,1fr) 330px!important}
@@ -206,6 +222,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     <button type="button" role="tab" class="t-nmc" data-brand="nmc" id="tab_nmc" aria-selected="true"><i></i>NMC România</button>
     <button type="button" role="tab" class="t-np" data-brand="np" id="tab_np" aria-selected="false"><i></i>NMC Parteneri</button>
     <button type="button" role="tab" class="t-df" data-brand="df" id="tab_df" aria-selected="false"><i></i>Deco&amp;Flair</button>
+    <button type="button" role="tab" class="t-bd" data-brand="bd" id="tab_bd" aria-selected="false"><i></i>Borderou livrări</button>
     <span class="hint">Fiecare foaie are catalogul, numerotarea și oferta ei.</span>
   </nav>
   <div class="toolbar">
@@ -375,6 +392,90 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       <span id="footRate"></span>
     </div>
   </main>
+
+  <section id="bord" hidden aria-label="Borderou livrări">
+    <div class="toolbar">
+      <div class="grp">
+        <span class="um" id="bdState"></span>
+      </div>
+      <div class="grp">
+        <button type="button" class="btn primary" id="bdPdf">Descarcă PDF</button>
+        <button type="button" class="btn" id="bdDoc">Descarcă Word</button>
+        <button type="button" class="btn" id="bdPrint">Printează</button>
+        <button type="button" class="btn" id="bdHistBtn">Borderouri salvate</button>
+        <button type="button" class="btn danger" id="bdNew">Borderou nou</button>
+      </div>
+    </div>
+    <div class="notice" id="bdConfirmNew" hidden><span>Pornești un borderou nou? Cel curent rămâne salvat în „Borderouri salvate”.</span><span class="confirm"><button type="button" class="btn danger" id="bdNewYes">Da, borderou nou</button><button type="button" class="btn" id="bdNewNo">Renunț</button></span></div>
+    <section class="hist" id="bdHist" hidden aria-label="Borderouri salvate">
+      <div class="hbar"><b>Borderouri salvate</b><span class="um" id="bdHistCount"></span><span class="sp"></span><input id="bdHistQ" placeholder="Caută după nr., transportator, șofer, client sau document…" aria-label="Caută borderouri"></div>
+      <div class="tbl"><table class="htbl"><thead><tr><th>Nr. borderou</th><th>Data</th><th>Transportator</th><th>Șofer</th><th class="n">Documente</th><th class="n">Valoare</th><th>Modificat</th><th></th></tr></thead><tbody id="bdHistRows"></tbody></table></div>
+      <div class="confirm"><button type="button" class="btn" id="bdHistClose">Închide</button></div>
+    </section>
+
+    <section class="gest noprint" id="bdGest" aria-label="Documente din gestiune">
+      <div class="row dbrow">
+        <div class="st"><b id="bdDbState"></b><span id="bdDbInfo"></span></div>
+        <div class="confirm">
+          <button type="button" class="btn primary" id="bdConnect">Conectează folderul bazei</button>
+          <button type="button" class="btn" id="bdReload" hidden>Reîncarcă documentele</button>
+          <button type="button" class="btn" id="bdSetup" hidden>Setări documente</button>
+        </div>
+      </div>
+      <div class="map" id="bdCfg" hidden></div>
+      <div class="bdsearch">
+        <label>De la<input type="date" id="bdFrom"></label>
+        <label>Până la<input type="date" id="bdTo"></label>
+        <label class="grow">Caută document<input id="bdQ" placeholder="Nr. factură / aviz sau client…" autocomplete="off"></label>
+        <label>Tip<select id="bdTip"><option value="">Toate</option><option>Factură</option><option>Aviz</option></select></label>
+      </div>
+      <div class="tbl" id="bdResWrap" hidden><table class="htbl"><thead><tr><th></th><th>Tip</th><th>Nr. document</th><th>Data</th><th>Client</th><th class="n">Valoare</th><th class="n">Poz.</th></tr></thead><tbody id="bdRes"></tbody></table></div>
+      <div class="confirm"><button type="button" class="btn primary" id="bdAddSel" hidden>Adaugă documentele bifate în borderou</button><span class="um" id="bdResInfo"></span></div>
+    </section>
+
+    <main class="sheet bdsheet" id="bdSheet">
+      <header class="head">
+        <img class="logo" id="bdLogo" src="" alt="NMC România">
+        <div class="issuer" id="bdIssuer"></div>
+        <div class="doc">
+          <h1>Borderou de livrare</h1>
+          <div class="meta">
+            <label for="bdNr">Nr. borderou</label><input id="bdNr" autocomplete="off">
+            <label for="bdData">Data</label><input id="bdData" type="date">
+          </div>
+        </div>
+      </header>
+      <section aria-labelledby="hTr">
+        <h2 id="hTr">Transport</h2>
+        <div class="client bdtr">
+          <div class="fld w2"><label for="bdFirma">Firmă transportatoare</label><input id="bdFirma" list="dlFirma" placeholder="Alege din listă sau scrie una nouă" autocomplete="off"></div>
+          <div class="fld"><label for="bdAuto">Nr. auto</label><input id="bdAuto" list="dlAuto" placeholder=" " autocomplete="off"></div>
+          <div class="fld w2"><label for="bdSofer">Șofer</label><input id="bdSofer" list="dlSofer" placeholder="Alege din listă sau scrie un nume nou" autocomplete="off"></div>
+          <div class="fld"><label for="bdTel">Telefon șofer</label><input id="bdTel" placeholder=" " autocomplete="off"></div>
+        </div>
+        <datalist id="dlFirma"></datalist><datalist id="dlSofer"></datalist><datalist id="dlAuto"></datalist>
+        <button type="button" class="btn sm noprint" id="bdLists" style="margin-top:8px">Gestionează listele de transportatori și șoferi</button>
+        <div class="map noprint" id="bdListsBox" hidden></div>
+      </section>
+      <section aria-labelledby="hDocs">
+        <h2 id="hDocs">Documente livrate</h2>
+        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Client</th><th>Tip</th><th>Nr. document</th><th>Data emiterii</th><th class="n">Valoare (lei)</th><th class="noprint">Anexă</th><th>Semnătură primire</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
+        <div class="confirm noprint" style="margin-top:8px"><button type="button" class="btn" id="bdAddManual">+ Document introdus manual</button>
+          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează valoarea documentelor pe borderou</label></div>
+        <div class="bdtot" id="bdTot"></div>
+      </section>
+      <section aria-labelledby="hBdInfo">
+        <h2 id="hBdInfo">Observații</h2>
+        <textarea id="bdInfo" rows="2" placeholder="Traseu, ora plecării, mențiuni pentru șofer…" style="width:100%"></textarea>
+      </section>
+      <div class="sign bdsign"><div>Predat (gestionar),</div><div>Primit (șofer / transportator),</div></div>
+      <section id="bdAnexa" aria-labelledby="hAnexa">
+        <h2 id="hAnexa">Anexă – produse pe documente</h2>
+        <div class="confirm noprint"><label class="chk"><input type="checkbox" id="bdAnexaVal"> Afișează valorile produselor în anexă</label><span class="um">Anexa include doar documentele bifate în coloana „Anexă”.</span></div>
+        <div id="bdAnexaBody"></div>
+      </section>
+    </main>
+  </section>
 </div>
 <div class="toast" id="toast" hidden></div>
 
@@ -605,8 +706,20 @@ let tt; function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clea
 /*__EXPORT__*/
 /*__PARTNER__*/
 /*__HISTORY__*/
+/*__BORD__*/
 /* foi (NMC / NMC Parteneri / Deco&Flair) */
-const ID2HASH={nmc:"#nmc",np:"#parteneri",df:"#decoflair"}, HASH2ID={"#nmc":"nmc","#parteneri":"np","#decoflair":"df"};
+const ID2HASH={nmc:"#nmc",np:"#parteneri",df:"#decoflair",bd:"#borderou"}, HASH2ID={"#nmc":"nmc","#parteneri":"np","#decoflair":"df","#borderou":"bd"};
+function setBordMode(on){
+  document.body.classList.toggle("bdmode",on); $("bord").hidden=!on;
+  for(const el of document.querySelectorAll(".wrap>*:not(.tabs):not(#bord)")) if(on){ el.dataset.bdHid=el.hidden?"1":""; el.hidden=true } else if(el.dataset.bdHid!==undefined){ el.hidden=el.dataset.bdHid==="1"; delete el.dataset.bdHid }
+  document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.setAttribute("aria-selected",on?t.dataset.brand==="bd":t.dataset.brand===B.id));
+  if(on){ store.set("oferta_brand","bd"); if(location.hash!=="#borderou") history.replaceState(null,"","#borderou"); bdShow() }
+}
+function openTab(id){
+  if(id==="bd"){ if(!document.body.classList.contains("bdmode")){ save(); setBordMode(true) } return }
+  if(document.body.classList.contains("bdmode")){ setBordMode(false); if(id===B.id){ applyBrand(id); return } }
+  if(id!==B.id){ save(); applyBrand(id) }
+}
 function applyBrand(id){
   B=BRANDS[id]||BRANDS.nmc; document.documentElement.dataset.brand=B.id;
   document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.setAttribute("aria-selected",t.dataset.brand===B.id));
@@ -620,11 +733,12 @@ function applyBrand(id){
   $("gest").hidden=!B.partner; $("cpick").hidden=!B.partner; if(B.partner){ npStatus(); if(!DBX.booted){ DBX.booted=true; dbBoot() } }
   $("q").placeholder = B.id==="df" ? "Caută după cod sau denumire (ex. L5, Z11, IL10, tapet Carrara)…" : "Caută după cod sau denumire (ex. NA102, Z11, plintă, tapet)…";
   fillCats(); $("q").value=""; $("res").hidden=true; $("mailBox").hidden=true; $("confirmNew").hidden=true;
-  store.set("oferta_brand",B.id);
+  store.set("oferta_brand",B.id); store.set("oferta_brand_last",B.id);
   const h=ID2HASH[B.id]; if(location.hash!==h) history.replaceState(null,"",h);
   load(); fillForm(); renderAll();
 }
-document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.addEventListener("click",()=>{ if(t.dataset.brand!==B.id){ save(); applyBrand(t.dataset.brand) } }));
-window.addEventListener("hashchange",()=>{const id=HASH2ID[location.hash]||null; if(id&&id!==B.id){save();applyBrand(id)}});
-applyBrand(HASH2ID[location.hash]||store.get("oferta_brand")||"nmc");
+document.querySelectorAll(".tabs [role=tab]").forEach(t=>t.addEventListener("click",()=>openTab(t.dataset.brand)));
+window.addEventListener("hashchange",()=>{const id=HASH2ID[location.hash]||null; if(id) openTab(id)});
+{ const start=HASH2ID[location.hash]||store.get("oferta_brand")||"nmc";
+  applyBrand(start==="bd"?(store.get("oferta_brand_last")||"nmc"):start); if(start==="bd") setBordMode(true) }
 </script>

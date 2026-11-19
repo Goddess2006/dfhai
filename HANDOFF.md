@@ -34,6 +34,11 @@ TikTok (2 variante, 22–23 s): `nmc-wow-30/tiktok/nmc-wow-30-tiktok-ads.mp4` (f
 Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
+## Calculator ofertă — foaia „Borderou livrări” — Claude Code, 2026-11-19
+Cerere: borderou de livrări automat din aceeași bază (client, nr. document factură/aviz, data emiterii, valoare dacă are), antet NMC, câmpuri firmă transportatoare + șofer memorate în listă derulantă, anexă opțională cu produsele documentelor (cantitate; valoare doar la alegere).
+Implementare: `bord.js` (inserat ca /*__BORD__*/), tab `#borderou` (`openTab`/`setBordMode` în template — ascunde UI-ul de ofertă). Reutilizează DBX/listTables/readTable/idbGet/dbUse din partner.js (cititorul DBF are acum și tipul T). Detecție documente `bdDetect`: antet = tabel cu NRDOC/NRFACT/NUMAR… + câmp D/T + CODCLI…, fără CODPR; linii = tabel cu același câmp nr. + CODPR + CANTIT (preferă nume cu același prefix sau LIN/POZ/DET). Config `bd_cfg` (max. 2 surse: facturi + avize), editabil în „Setări documente”. Liste memorate `bd_lists` (firma, sofer {tel,auto,firma}, auto). Arhivă IndexedDB `borderouri_arhiva`. Antet: NMC Stil Distribution SRL, CUI RO16109528, J40/1507/2004, Autostrada București–Pitești km 13, clădirea A, Chiajna (din listele de preț NMC). Nr. borderou BL-AAAA-0001.
+ATENȚIE: tabelele reale de facturi/avize NU au fost văzute încă (doar preturi.dbf, client.dbf + 5 tabele mici). Testat cu tabele sintetice facturi.dbf/factlin.dbf. Cere utilizatorului „Copiază structura bazei” sau tabelele de documente ca să fixezi maparea.
+
 ## Calculator ofertă — Interior Premium 05.10.2026 — Claude Code, 2026-11-18
 Lista Interior Premium 01.06.2026 înlocuită cu `Lista_Preturi_Interior_Premium_05.10.2026.xlsx` (prețuri finale EUR fără TVA, coloana „Pret lista 05.10.2026”): 317 articole (vechea avea 426; 109 scoase — baghete/rozete EPS, Baghete LX, tavane, Thermo Line, NOMA®, rozete/panouri Decoflair; 313 prețuri modificate, majoritatea −11…−13 %, ex. Z11 50,31→43,95; L5 100,77→87,96). Notă: în fișierul sursă SCURETTO și DORIQUE au același Cod SAP 3050611 (ambele păstrate cu prețurile lor).
 
