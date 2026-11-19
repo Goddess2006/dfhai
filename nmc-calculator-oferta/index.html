@@ -38,7 +38,11 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .gest .st .warn{color:var(--bad)}
 .bdsearch{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end}
 .bdsearch label{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.bdsearch label.grow{flex:1 1 220px}
+.bdsearch label.grow{flex:1 1 340px}
+#bdDrop[hidden]{display:none!important}
+#bdDrop{text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
+#bdDrop div{grid-template-columns:110px 1fr auto}
+#bdDrop div.in{opacity:.55}
 .bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
 .bdtbl{min-width:860px}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
@@ -424,13 +428,13 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </div>
       <div class="map" id="bdCfg" hidden></div>
       <div class="bdsearch">
-        <label>De la<input type="date" id="bdFrom"></label>
-        <label>Până la<input type="date" id="bdTo"></label>
-        <label class="grow">Caută document<input id="bdQ" placeholder="Nr. factură / aviz sau client…" autocomplete="off"></label>
+        <label class="grow">Caută document (nr. factură / aviz, client, CUI sau dată)
+          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 1003, 45, Universal, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
         <label>Tip<select id="bdTip"><option value="">Toate</option><option>Factură</option><option>Aviz</option></select></label>
+        <label>De la (opțional)<input type="date" id="bdFrom"></label>
+        <label>Până la (opțional)<input type="date" id="bdTo"></label>
       </div>
-      <div class="tbl" id="bdResWrap" hidden><table class="htbl"><thead><tr><th></th><th>Tip</th><th>Nr. document</th><th>Data</th><th>Client</th><th class="n">Valoare</th><th class="n">Poz.</th></tr></thead><tbody id="bdRes"></tbody></table></div>
-      <div class="confirm"><button type="button" class="btn primary" id="bdAddSel" hidden>Adaugă documentele bifate în borderou</button><span class="um" id="bdResInfo"></span></div>
+      <div class="um" id="bdResInfo" style="font-size:12.5px"></div>
     </section>
 
     <main class="sheet bdsheet" id="bdSheet">
@@ -1569,7 +1573,7 @@ function dbfRows(buf, only){
 async function listTables(dir,prefix="",depth=0){
   const T=[];
   for await (const [name,h] of dir.entries()){
-    if(h.kind==="directory"){ if(depth<1) T.push(...await listTables(h,prefix+name+"/",depth+1)); continue }
+    if(h.kind==="directory"){ if(depth<2) T.push(...await listTables(h,prefix+name+"/",depth+1)); continue }
     if(h.kind!=="file" || !/\.dbf$/i.test(name)) continue;
     const file=await h.getFile(); if(file.size<33) continue;
     try{ const head=dbfHead(await file.slice(0,Math.min(file.size,32+32*255+2)).arrayBuffer()); T.push({name:prefix+name, size:file.size, n:head.n, fields:head.fields, h}) }catch(e){}
@@ -1804,11 +1808,13 @@ $("histFile").addEventListener("change",async e=>{
    idbGet, fx, tbase, store, toast, download, esc, norm, num, todayISO, zipStore, b64bytes, BRANDS. */
 const BD_ISSUER=[["NMC Stil Distribution SRL",""],["","CUI RO16109528 · Reg. Com. J40/1507/2004"],["","Autostrada București–Pitești km 13, clădirea A, Chiajna, Ilfov"],["","Tel. 021 319 35 35 · www.nmcromania.ro"]];
 const BDRX = {
-  nr:/^(NRDOC|NR_DOC|NRFACT|NR_FACT|NRAVIZ|NR_AVIZ|NUMAR|NRDOCUM|NR_DOCUM|NRFACTURA|NRAV)$/, data:/^(DATA|DATADOC|DATA_DOC|DATAFACT|DATA_FACT|DATAEMIT|DATAAVIZ|DATAF)$/,
-  cli:/^(CODCLI|COD_CLI|CODPART|COD_PART|CODTERT|CODBEN|CODCLIENT)$/, val:/^(VALCUTVA|VAL_CU_TVA|TOTCUTVA|TOTALTVA|TOTAL|VALTOT|VAL_TOT|TOTALFACT|VALFACT|VALOARE|VALOARETVA|SUMA|VAL)$/,
-  tip:/^(TIPDOC|TIP_DOC|TIP|FELDOC|TIPFACT)$/, cod:/^(CODPR|COD_PR|CODART|CODPROD)$/, cant:/^(CANTIT|CANT|CANTITATE|CANTIT_)$/,
+  nr:/^(NRDOC|NR_DOC|NRFACT|NR_FACT|NRAVIZ|NR_AVIZ|NUMAR|NRDOCUM|NR_DOCUM|NRFACTURA|NRAV|NRDOCUMENT|NUMARDOC|NUMDOC|NRFAC|NRF|NRDOCF|NR|DOC|NRACT|NRBON)$/,
+  data:/^(DATA|DATADOC|DATA_DOC|DATAFACT|DATA_FACT|DATAEMIT|DATAAVIZ|DATAF|DATAD|DATAEM|DATAOP)$/,
+  cli:/^(CODCLI|COD_CLI|CODPART|COD_PART|CODTERT|CODBEN|CODCLIENT|CODCL|CODPARTEN|CODP)$/, cname:/^(NUMECLI|DENCLI|NUMECL|DENCL|CLIENT|DENPART|NUMEPART|BENEFICIAR|DENBEN)$/,
+  val:/^(VALCUTVA|VAL_CU_TVA|TOTCUTVA|TOTALTVA|TOTAL|VALTOT|VAL_TOT|TOTALFACT|VALFACT|VALOARE|VALOARETVA|SUMA|VAL|TOTGEN|TOTAL_GEN|VALDOC|TOTDOC)$/,
+  tip:/^(TIPDOC|TIP_DOC|TIP|FELDOC|TIPFACT|TIPD)$/, cod:/^(CODPR|COD_PR|CODART|CODPROD)$/, cant:/^(CANTIT|CANT|CANTITATE|CANTIT_)$/,
   lval:/^(VALCUTVA|VALOARE|VAL|VALVANZ|VALTOT|VAL_TOT)$/, lpret:/^(PRETVANZ|PRET|PU|PRET_V|PRETV)$/, um:/^(UM|U_M|UNIT)$/, den:/^(DENUMIRE|DENPR|DEN)$/ };
-const BDX = { cfg:store.get("bd_cfg"), cache:{}, results:[] };
+const BDX = { cfg:store.get("bd_cfg2"), cache:{}, results:[] };
 const isoD = s => s&&s.length===8 ? `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6)}` : (s||"");
 const roD = s => s ? s.split("-").reverse().join(".") : "";
 const fmtL = v => v==null||v==="" ? "" : new Intl.NumberFormat("ro-RO",{minimumFractionDigits:2,maximumFractionDigits:2}).format(v);
@@ -1905,15 +1911,16 @@ $("bdListsBox").addEventListener("click",e=>{ const b=e.target.closest("[data-lk
 /* ---------- documente din baza gestiunii ---------- */
 function bdDetect(T){
   const cfg={srcs:[]}, has=(t,rx)=>fx(t,rx);
-  const heads=T.filter(t=>has(t,BDRX.nr)&&dfield(t)&&has(t,BDRX.cli)&&!has(t,BDRX.cod))
-    .map(t=>({t,s:(has(t,BDRX.val)?2:0)+(/FACT|AVIZ|IES|VANZ|DOC/.test(tbase(t))?3:0)+(has(t,BDRX.tip)?1:0)+Math.min(3,Math.log10(t.n+1))}))
+  // antete de documente: nr. document + dată + client (cod sau nume); fără cod de articol (acelea sunt liniile)
+  const heads=T.filter(t=>has(t,BDRX.nr)&&dfield(t)&&(has(t,BDRX.cli)||has(t,BDRX.cname))&&!has(t,BDRX.cod)&&!/^(CLIENT|FURNIZ|PRETURI)$/.test(tbase(t)))
+    .map(t=>({t,s:(has(t,BDRX.val)?2:0)+(/FACT|AVIZ|IES|VANZ|DOC|LIVR|BON/.test(tbase(t))?4:0)-(/INTR|RECEP|NIR|FURN|PLAT|INCAS|CASA|BANC/.test(tbase(t))?4:0)+(has(t,BDRX.tip)?1:0)+Math.min(3,Math.log10(t.n+1))}))
     .sort((a,b)=>b.s-a.s).slice(0,2);
   for(const {t} of heads){
     const nrF=fx(t,BDRX.nr), stem=tbase(t).slice(0,3);
     const lines=T.filter(x=>x!==t&&x.fields.some(f=>f.name===nrF)&&has(x,BDRX.cod)&&has(x,BDRX.cant))
       .map(x=>({x,s:(tbase(x).startsWith(stem)?3:0)+(/LIN|POZ|DET|CONT|ART/.test(tbase(x))?2:0)+Math.log10(x.n+1)})).sort((a,b)=>b.s-a.s)[0];
     const L=lines&&lines.x;
-    cfg.srcs.push({label:/AVIZ/.test(tbase(t))?"Aviz":"Factură", t:t.name, nr:nrF, data:dfield(t), cli:fx(t,BDRX.cli), val:fx(t,BDRX.val), tip:fx(t,BDRX.tip),
+    cfg.srcs.push({label:/AVIZ/.test(tbase(t))?"Aviz":"Factură", t:t.name, nr:nrF, data:dfield(t), cli:fx(t,BDRX.cli), cname:fx(t,BDRX.cname), val:fx(t,BDRX.val), tip:fx(t,BDRX.tip),
       lt:L?L.name:"", lnr:L?nrF:"", ldata:L?(L.fields.find(f=>f.name===dfield(t))?.name||""):"", lcod:L?fx(L,BDRX.cod):"", lcant:L?fx(L,BDRX.cant):"", lval:L?fx(L,BDRX.lval):"", lpret:L?fx(L,BDRX.lpret):"", lum:L?fx(L,BDRX.um):"", lden:L?fx(L,BDRX.den):""});
   }
   const ct=T.find(t=>/^CLIENT$/.test(tbase(t))&&t.fields.some(f=>f.name==="NUMECLI")) || T.find(t=>fx(t,/^(CODCLI|COD_CLI)$/)&&fx(t,RX.cname)&&!fx(t,BDRX.nr));
@@ -1938,49 +1945,82 @@ async function bdEnsureDb(interactive){
   if(perm!=="granted") return false;
   if(!DBX.tables) DBX.tables=await listTables(DBX.dir);
   if(!DBX.cfg){ try{ DBX.cfg=await autoDetect(DBX.tables); store.set("np_dbcfg2",DBX.cfg) }catch(e){} }
-  if(!BDX.cfg||!BDX.cfg.srcs||!BDX.cfg.srcs.length){ BDX.cfg=bdDetect(DBX.tables); store.set("bd_cfg",BDX.cfg) }
+  if(!BDX.cfg||!BDX.cfg.srcs||!BDX.cfg.srcs.length){ BDX.cfg=bdDetect(DBX.tables); store.set("bd_cfg2",BDX.cfg) }
   return true;
 }
 function bdDbState(){
   const ok=!!(DBX.dir&&DBX.tables), n=BDX.cfg&&BDX.cfg.srcs?BDX.cfg.srcs.filter(s=>s.t).length:0;
   $("bdDbState").innerHTML = ok ? `Baza de date a gestiunii: <span class="ok">conectată</span> (${esc(DBX.dir.name)})` : "Baza de date a gestiunii: neconectată";
   $("bdDbInfo").textContent = !window.showDirectoryPicker ? "Legătura directă cu baza merge în Google Chrome sau Microsoft Edge. Documentele se pot adăuga și manual."
-    : ok ? (n ? `Documente din: ${BDX.cfg.srcs.filter(s=>s.t).map(s=>`${s.label.toLowerCase()} → ${s.t}${s.lt?` (produse: ${s.lt})`:""}`).join(" · ")}` : "Nu am găsit tabelele cu facturi / avize — deschide „Setări documente” sau trimite structura bazei.")
+    : ok ? (n ? `Documente din: ${BDX.cfg.srcs.filter(s=>s.t).map(s=>`${s.label.toLowerCase()} → ${s.t}${s.lt?` (produse: ${s.lt})`:""}`).join(" · ")}` : `Am citit ${DBX.tables.length} tabele din folder, dar nu am recunoscut tabelul cu facturi / avize — deschide „Setări documente” și alege-l, sau apasă acolo „Copiază structura bazei” și trimite textul.`)
     : (DBX.dir ? "Apasă „Reîncarcă documentele” ca să dai acces la folder." : "Conectează folderul bazei (ex. \\\\rds.nmc.local\\Backup\\baze), la fel ca în foaia NMC Parteneri.");
   $("bdConnect").hidden=!window.showDirectoryPicker; $("bdConnect").textContent=DBX.dir?"Schimbă folderul":"Conectează folderul bazei";
   $("bdReload").hidden=!DBX.dir; $("bdSetup").hidden=!ok;
 }
-$("bdConnect").onclick=async()=>{ try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); BDX.cache={}; BDX.cliMap=null; BDX.prodMap=null;
-  if(DBX.dir&&DBX.dir.name!==dir.name){ DBX.cfg=null; store.set("np_dbcfg2",null); BDX.cfg=null; store.set("bd_cfg",null) }
+$("bdConnect").onclick=async()=>{ try{ const dir=await window.showDirectoryPicker({id:"baze-gestiune",mode:"read"}); BDX.cache={}; BDX.cliMap=null; BDX.prodMap=null; BDX.docs=null;
+  if(DBX.dir&&DBX.dir.name!==dir.name){ DBX.cfg=null; store.set("np_dbcfg2",null); BDX.cfg=null; store.set("bd_cfg2",null) }
   await dbUse(dir); DBX.tables=null; await bdEnsureDb(true); bdDbState(); bdSearch() }catch(e){ if(e.name!=="AbortError") toast("Nu am putut deschide folderul: "+e.message) } };
-$("bdReload").onclick=async()=>{ BDX.cache={}; BDX.cliMap=null; BDX.prodMap=null; DBX.tables=null; try{ if(await bdEnsureDb(true)){ bdDbState(); await bdSearch(); toast("Documente reîncărcate") } else toast("Fără permisiune de citire pentru folder") }catch(e){ toast("Nu am putut citi baza: "+e.message) } };
-async function bdSearch(){
-  if(!(DBX.dir&&DBX.tables)||!BDX.cfg||!BDX.cfg.srcs){ $("bdResWrap").hidden=true; $("bdAddSel").hidden=true; return }
-  const from=($("bdFrom").value||"0000-00-00").replace(/-/g,""), to=($("bdTo").value||"9999-99-99").replace(/-/g,""), q=norm($("bdQ").value.trim()), tipF=$("bdTip").value;
+$("bdReload").onclick=async()=>{ BDX.cache={}; BDX.cliMap=null; BDX.prodMap=null; BDX.docs=null; DBX.tables=null; try{ if(await bdEnsureDb(true)){ bdDbState(); await bdSearch(); toast("Documente reîncărcate") } else toast("Fără permisiune de citire pentru folder") }catch(e){ toast("Nu am putut citi baza: "+e.message) } };
+/* toate documentele din bază (toate datele), cu index de căutare; reîncărcate la „Reîncarcă documentele” */
+async function bdDocs(){
+  if(BDX.docs) return BDX.docs;
   const cl=await bdClients(), out=[];
-  for(const [si,s] of BDX.cfg.srcs.entries()){ if(!s.t||!s.nr||!s.data) continue;
-    const rows=await bdTable(s.t,[s.nr,s.data,s.cli,s.val,s.tip].filter(Boolean));
-    for(const r of rows){ const d=String(r[s.data]||""); if(!d||d<from||d>to) continue;
-      const tip = s.tip&&r[s.tip]!=null&&String(r[s.tip]).trim() ? (/AV/i.test(String(r[s.tip]))?"Aviz":/FA|FC/i.test(String(r[s.tip]))?"Factură":s.label) : s.label;
-      if(tipF&&tip!==tipF) continue;
-      const c=cl[String(r[s.cli]).trim()]||{n:s.cli?`Client cod ${String(r[s.cli]).trim()}`:"",cui:""};
-      const nr=String(r[s.nr]).trim(); if(q&&!norm(nr+" "+c.n+" "+c.cui).includes(q)) continue;
-      out.push({key:`${s.t}|${nr}|${d}`,src:si,tip,nr,data:isoD(d),client:c.n,cui:c.cui,val:s.val&&+r[s.val]?Math.round(+r[s.val]*100)/100:null});
+  for(const [si,s] of (BDX.cfg.srcs||[]).entries()){ if(!s.t||!s.nr) continue;
+    const rows=await bdTable(s.t,[s.nr,s.data,s.cli,s.cname,s.val,s.tip].filter(Boolean));
+    for(const r of rows){
+      const nr=String(r[s.nr]??"").trim(); if(!nr) continue;
+      const d=s.data?String(r[s.data]||""):"";
+      const tv=s.tip&&r[s.tip]!=null?String(r[s.tip]).trim():"";
+      const tip = tv ? (/AV/i.test(tv)?"Aviz":/F/i.test(tv)?"Factură":s.label) : s.label;
+      const c = s.cname&&r[s.cname] ? {n:String(r[s.cname]).trim(),cui:""} : (cl[String(r[s.cli]??"").trim()]||{n:s.cli&&r[s.cli]!=null?`Client cod ${String(r[s.cli]).trim()}`:"",cui:""});
+      const o={key:`${s.t}|${nr}|${d}`,src:si,tip,nr,data:isoD(d),client:c.n,cui:c.cui,val:s.val&&+r[s.val]?Math.round(+r[s.val]*100)/100:null};
+      o._nr=nr.toLowerCase().replace(/^0+/,""); o._t=norm([tip,nr,c.n,c.cui,roD(o.data)].join(" "));
+      out.push(o);
     } }
   out.sort((a,b)=>b.data.localeCompare(a.data)||b.nr.localeCompare(a.nr,"ro",{numeric:true}));
-  BDX.results=out.slice(0,400); const inB=new Set(BD.docs.map(d=>d.key));
-  $("bdResWrap").hidden=false; $("bdAddSel").hidden=!BDX.results.length;
-  $("bdRes").innerHTML = BDX.results.length ? BDX.results.map((r,i)=>`<tr><td><input type="checkbox" data-r="${i}" ${inB.has(r.key)?"disabled checked":""} aria-label="Selectează ${esc(r.nr)}" style="width:16px;height:16px;accent-color:var(--accent)"></td>
-      <td class="um">${r.tip}</td><td class="code">${esc(r.nr)}</td><td class="um">${roD(r.data)}</td><td>${esc(r.client)}${r.cui?`<small style="display:block;color:var(--muted);font-size:11.5px">${esc(r.cui)}</small>`:""}</td>
-      <td class="n val">${r.val==null?"—":fmtL(r.val)}</td><td class="n um">${inB.has(r.key)?"în borderou":""}</td></tr>`).join("")
-    : `<tr class="emptyrow"><td colspan="7">Niciun document în intervalul ales.</td></tr>`;
-  $("bdResInfo").textContent = `${out.length} ${out.length===1?"document":"documente"} găsite${out.length>400?" (primele 400)":""}`;
+  return BDX.docs=out;
+}
+let bdHits=[], bdSel=0;
+async function bdSearch(){
+  const ready=!!(DBX.dir&&DBX.tables&&BDX.cfg&&BDX.cfg.srcs&&BDX.cfg.srcs.some(s=>s.t));
+  if(!ready){ $("bdResInfo").textContent = DBX.tables ? "Nu am găsit tabelele cu facturi / avize. Deschide „Setări documente” și alege-le sau trimite structura bazei." : ""; return }
+  let all; try{ all=await bdDocs() }catch(e){ $("bdResInfo").textContent="Nu am putut citi documentele: "+e.message; return }
+  const from=($("bdFrom").value||"").replace(/-/g,""), to=($("bdTo").value||"").replace(/-/g,""), tipF=$("bdTip").value;
+  const raw=$("bdQ").value.trim(), q=norm(raw), words=q.split(/\s+/).filter(Boolean), qn=q.replace(/^0+/,"");
+  const inB=new Set(BD.docs.map(d=>d.key));
+  // potrivire parțială: fiecare cuvânt căutat trebuie să apară undeva (nr., client, CUI, dată, tip); nr. fără zerouri în față
+  bdHits = all.filter(o=>(!tipF||o.tip===tipF) && (!from||o.data.replace(/-/g,"")>=from) && (!to||o.data.replace(/-/g,"")<=to) &&
+      words.every(w=>o._t.includes(w)||o._nr.includes(w.replace(/^0+/,""))))
+    .map(o=>({o,s:!q?0:(o._nr===qn?0:o._nr.startsWith(qn)?1:o._nr.includes(qn)?2:3)})).sort((a,b)=>a.s-b.s).slice(0,60).map(x=>x.o);
+  bdSel=0;
+  $("bdResInfo").textContent = `${all.length.toLocaleString("ro-RO")} documente în bază${tipF||from||to?" (cu filtrele alese)":""} · scrie un număr, un client sau o dată și alege din listă`;
+  if(document.activeElement===$("bdQ")) bdDrawDrop(inB);
+}
+function bdDrawDrop(inB){
+  inB=inB||new Set(BD.docs.map(d=>d.key));
+  const r=$("bdDrop"); r.hidden=false; $("bdQ").setAttribute("aria-expanded","true");
+  r.innerHTML = bdHits.length ? bdHits.map((o,i)=>`<div role="option" data-h="${i}" aria-selected="${i===bdSel}" class="${inB.has(o.key)?"in":""}">
+      <code>${esc(o.tip==="Aviz"?"Aviz ":"Fact. ")}${esc(o.nr)}</code><span>${esc(o.client||"—")}<small>${roD(o.data)}${o.cui?" · "+esc(o.cui):""}${inB.has(o.key)?" · deja în borderou":""}</small></span>
+      <span class="pr">${o.val==null?"":fmtL(o.val)+" lei"}</span></div>`).join("")
+    : '<div class="empty">Niciun document găsit. Încearcă doar o parte din număr sau din numele clientului.</div>';
+  const a=r.querySelector('[aria-selected="true"]'); a&&a.scrollIntoView({block:"nearest"});
+}
+function bdPick(i){
+  const o=bdHits[i]; if(!o) return;
+  if(BD.docs.some(d=>d.key===o.key)){ toast(`${o.tip} ${o.nr} este deja în borderou`); return }
+  const {_nr,_t,...doc}=o; BD.docs.push({...doc,anexa:false,lines:null}); bdRender(); bdSave();
+  $("bdQ").value=""; $("bdQ").focus(); bdSearch(); toast(`${o.tip} ${o.nr} adăugat`);
 }
 ["bdFrom","bdTo","bdTip"].forEach(id=>$(id).addEventListener("change",bdSearch));
-$("bdQ").addEventListener("input",()=>{ clearTimeout(bdSearch.t); bdSearch.t=setTimeout(bdSearch,250) });
-$("bdAddSel").onclick=()=>{ const sel=[...$("bdRes").querySelectorAll("input[data-r]:checked:not(:disabled)")].map(c=>BDX.results[+c.dataset.r]);
-  if(!sel.length){ toast("Bifează documentele de adăugat"); return }
-  sel.forEach(r=>BD.docs.push({...r,anexa:false,lines:null})); bdRender(); bdSave(); bdSearch(); toast(`${sel.length} documente adăugate`) };
+$("bdQ").addEventListener("input",()=>{ clearTimeout(bdSearch.t); bdSearch.t=setTimeout(bdSearch,150) });
+$("bdQ").addEventListener("focus",bdSearch);
+$("bdQ").addEventListener("keydown",e=>{ if($("bdDrop").hidden) return;
+  if(e.key==="ArrowDown"){bdSel=Math.min(bdSel+1,bdHits.length-1);bdDrawDrop();e.preventDefault()}
+  else if(e.key==="ArrowUp"){bdSel=Math.max(bdSel-1,0);bdDrawDrop();e.preventDefault()}
+  else if(e.key==="Enter"){bdPick(bdSel);e.preventDefault()}
+  else if(e.key==="Escape"){$("bdDrop").hidden=true} });
+$("bdDrop").addEventListener("mousedown",e=>{ const d=e.target.closest("[data-h]"); if(d){ e.preventDefault(); bdPick(+d.dataset.h) } });
+document.addEventListener("click",e=>{ if(!e.target.closest(".bdsearch")) { $("bdDrop").hidden=true; $("bdQ").setAttribute("aria-expanded","false") } });
 async function bdLinesFor(d){
   const s=BDX.cfg&&BDX.cfg.srcs[d.src]; if(!s||!s.lt||!await bdEnsureDb(true)) return [];
   const rows=await bdTable(s.lt,[s.lnr,s.ldata,s.lcod,s.lcant,s.lval,s.lpret,s.lum,s.lden].filter(Boolean)), P=await bdProducts(), dd=d.data.replace(/-/g,"");
@@ -1998,11 +2038,11 @@ function bdSetupDraw(){
   const fsel=(si,key,label,tn)=>{ const t=T.find(x=>x.name===tn), v=C.srcs[si][key]||""; return `<label>${label}<select data-s="${si}" data-k="${key}"><option value="">—</option>${(t?t.fields:[]).map(f=>`<option ${f.name===v?"selected":""}>${f.name}</option>`).join("")}</select></label>` };
   $("bdCfg").innerHTML=`<b>Setări documente</b><span class="um" style="font-size:12.5px">Alege tabelul cu antetele documentelor (nr., dată, client, valoare) și tabelul cu produsele lor. Poți folosi două surse (ex. facturi și avize).</span>`+
     C.srcs.map((s,si)=>`<div class="grid"><label>Sursa ${si+1} – tip implicit<select data-s="${si}" data-k="label"><option ${s.label==="Factură"?"selected":""}>Factură</option><option ${s.label==="Aviz"?"selected":""}>Aviz</option></select></label>
-      <label>Tabel documente${tsel(si,"t",s.t)}</label>${fsel(si,"nr","Nr. document",s.t)}${fsel(si,"data","Data",s.t)}${fsel(si,"cli","Cod client",s.t)}${fsel(si,"val","Valoare",s.t)}${fsel(si,"tip","Tip document (opțional)",s.t)}
+      <label>Tabel documente${tsel(si,"t",s.t)}</label>${fsel(si,"nr","Nr. document",s.t)}${fsel(si,"data","Data",s.t)}${fsel(si,"cli","Cod client",s.t)}${fsel(si,"cname","Nume client (dacă e în tabel)",s.t)}${fsel(si,"val","Valoare",s.t)}${fsel(si,"tip","Tip document (opțional)",s.t)}
       <label>Tabel produse pe document${tsel(si,"lt",s.lt)}</label>${fsel(si,"lnr","Nr. document",s.lt)}${fsel(si,"ldata","Data (opțional)",s.lt)}${fsel(si,"lcod","Cod articol",s.lt)}${fsel(si,"lcant","Cantitate",s.lt)}${fsel(si,"lval","Valoare (opțional)",s.lt)}${fsel(si,"lpret","Preț (opțional)",s.lt)}</div>`).join("")+
     `<div class="confirm"><button type="button" class="btn primary" id="bdCfgSave">Salvează</button><button type="button" class="btn" id="bdCfgAuto">Detectează din nou</button><button type="button" class="btn" id="bdCfgCopy">Copiază structura bazei</button><button type="button" class="btn" id="bdCfgClose">Închide</button></div>`;
   $("bdCfg").querySelectorAll("select[data-s]").forEach(x=>x.onchange=()=>{ C.srcs[x.dataset.s][x.dataset.k]=x.value; if(x.dataset.tbl) bdSetupDraw() });
-  $("bdCfgSave").onclick=()=>{ C.srcs=C.srcs.filter(s=>s.t); store.set("bd_cfg",C); BDX.cache={}; $("bdCfg").hidden=true; bdDbState(); bdSearch() };
+  $("bdCfgSave").onclick=()=>{ C.srcs=C.srcs.filter(s=>s.t); store.set("bd_cfg2",C); BDX.cache={}; BDX.docs=null; $("bdCfg").hidden=true; bdDbState(); bdSearch() };
   $("bdCfgAuto").onclick=()=>{ BDX.cfg=bdDetect(T); bdSetupDraw() };
   $("bdCfgClose").onclick=()=>{ $("bdCfg").hidden=true };
   $("bdCfgCopy").onclick=()=>{ const txt=T.map(t=>`${t.name} (${t.n} rânduri): ${t.fields.map(f=>f.name+":"+f.type+f.len).join(", ")}`).join("\n");
@@ -2119,7 +2159,7 @@ $("bdPrint").onclick=()=>{ if(!bdSaveWarn()) return; window.print() };
 async function bdShow(){
   if(!BD){ BD=store.get("bd_draft")||bdBlank(); bdFillLists(); bdRenderHead(); bdRender();
     const t=new Date(), f=new Date(t-3*864e5), iso=x=>new Date(x-x.getTimezoneOffset()*6e4).toISOString().slice(0,10);
-    $("bdFrom").value=iso(f); $("bdTo").value=iso(t) }
+    $("bdFrom").value=""; $("bdTo").value="" }
   if(framed){ $("bdPdf").hidden=$("bdDoc").hidden=$("bdPrint").hidden=true }
   bdDbState();
   try{ if(window.showDirectoryPicker && await bdEnsureDb(false)){ bdDbState(); await bdSearch() } }catch(e){}

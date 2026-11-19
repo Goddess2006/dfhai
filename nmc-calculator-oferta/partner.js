@@ -234,7 +234,7 @@ function dbfRows(buf, only){
 async function listTables(dir,prefix="",depth=0){
   const T=[];
   for await (const [name,h] of dir.entries()){
-    if(h.kind==="directory"){ if(depth<1) T.push(...await listTables(h,prefix+name+"/",depth+1)); continue }
+    if(h.kind==="directory"){ if(depth<2) T.push(...await listTables(h,prefix+name+"/",depth+1)); continue }
     if(h.kind!=="file" || !/\.dbf$/i.test(name)) continue;
     const file=await h.getFile(); if(file.size<33) continue;
     try{ const head=dbfHead(await file.slice(0,Math.min(file.size,32+32*255+2)).arrayBuffer()); T.push({name:prefix+name, size:file.size, n:head.n, fields:head.fields, h}) }catch(e){}

@@ -38,7 +38,11 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .gest .st .warn{color:var(--bad)}
 .bdsearch{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end}
 .bdsearch label{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.bdsearch label.grow{flex:1 1 220px}
+.bdsearch label.grow{flex:1 1 340px}
+#bdDrop[hidden]{display:none!important}
+#bdDrop{text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
+#bdDrop div{grid-template-columns:110px 1fr auto}
+#bdDrop div.in{opacity:.55}
 .bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
 .bdtbl{min-width:860px}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
@@ -424,13 +428,13 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </div>
       <div class="map" id="bdCfg" hidden></div>
       <div class="bdsearch">
-        <label>De la<input type="date" id="bdFrom"></label>
-        <label>Până la<input type="date" id="bdTo"></label>
-        <label class="grow">Caută document<input id="bdQ" placeholder="Nr. factură / aviz sau client…" autocomplete="off"></label>
+        <label class="grow">Caută document (nr. factură / aviz, client, CUI sau dată)
+          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 1003, 45, Universal, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
         <label>Tip<select id="bdTip"><option value="">Toate</option><option>Factură</option><option>Aviz</option></select></label>
+        <label>De la (opțional)<input type="date" id="bdFrom"></label>
+        <label>Până la (opțional)<input type="date" id="bdTo"></label>
       </div>
-      <div class="tbl" id="bdResWrap" hidden><table class="htbl"><thead><tr><th></th><th>Tip</th><th>Nr. document</th><th>Data</th><th>Client</th><th class="n">Valoare</th><th class="n">Poz.</th></tr></thead><tbody id="bdRes"></tbody></table></div>
-      <div class="confirm"><button type="button" class="btn primary" id="bdAddSel" hidden>Adaugă documentele bifate în borderou</button><span class="um" id="bdResInfo"></span></div>
+      <div class="um" id="bdResInfo" style="font-size:12.5px"></div>
     </section>
 
     <main class="sheet bdsheet" id="bdSheet">
