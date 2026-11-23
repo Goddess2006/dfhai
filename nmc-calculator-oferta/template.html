@@ -41,8 +41,12 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .bdsearch label.grow{flex:1 1 340px}
 #bdDrop[hidden]{display:none!important}
 #bdDrop{text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
-#bdDrop div{grid-template-columns:110px 1fr auto}
-#bdDrop div.in{opacity:.55}
+#bdDrop{max-height:440px}
+#bdDrop div{grid-template-columns:22px 1fr auto;align-items:center}
+#bdDrop div input{width:16px;height:16px;accent-color:var(--accent);margin:0;pointer-events:none}
+#bdDrop div.on{background:color-mix(in srgb,var(--good) 10%,transparent)}
+#bdDrop div code{margin-right:6px}
+#bdDrop .dall{position:sticky;top:0;background:var(--soft);z-index:1;border-bottom:1px solid var(--line)}
 .bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
 .bdtbl{min-width:1180px}
 .bdtbl td input{text-align:left;font-family:var(--f-body)}

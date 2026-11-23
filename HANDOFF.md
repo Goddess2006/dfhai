@@ -34,6 +34,9 @@ TikTok (2 variante, 22–23 s): `nmc-wow-30/tiktok/nmc-wow-30-tiktok-ads.mp4` (f
 Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
+## Borderou: listă derulantă cu bife — Claude Code, 2026-11-23
+Lista derulantă de documente are acum bife: bifat = documentul e în borderou (adăugare / scoatere imediată, lista rămâne deschisă), rând „Bifează / Debifează toate (n)” pentru rezultatele afișate (max. 150), Enter comută rândul selectat. Cod: `bdDrawDrop`, `bdToggle`, `bdToggleAll` în bord.js.
+
 ## Borderou livrări refăcut pe modelul DL — Claude Code, 2026-11-23
 Utilizatorul a trimis rapoartele de care are nevoie: „Raport zilnic activitate șoferi” (capturi) și exporturi XLS din gestiune: `dedemn.xls`/`altex.xls` (rânduri produs pe aviz: codpr, cantit, pvanzftva, codlocm, codcli, denlocm, localitate, nraviz, nrcomanda, nrdl, data [serial Excel], nrdoc, numecli, denprod, codmare, greutate, factout, numesof…) și `facturi_nmc.xls` (DL-urile cursei: nrdl „131126011 (1)”, incasat, firma, nrfactura, nrchitanta, nrdlinit, sumdeincas, codcli, adresa, gr_dl, localitate…). Verificat: sumdeincas ≈ Σ cantit × pvanzftva × 1,21 (raport kg/valoare consistent). `bord.js` rescris: document = DL, câmpuri mapate prin aliasuri (`BF`), `rowsToDocs` grupează pe DL și calculează valoare/greutate/produse, `mergeDocs` îmbină surse; import de rapoarte Excel (mai multe fișiere), detecție în bază după aceleași câmpuri (config `bd_cfg3`, blocuri „Tabel DL-uri” + „Tabel produse pe DL”), antet cu cursă/gestiune/km/greutate, centralizator „Total marfă”, încasat/chitanță, alimentare; PDF/Word landscape. Testat cu cele 3 rapoarte reale (2.847 documente). Tabelele DBF reale cu DL-uri tot nu sunt confirmate — dacă detecția nu le găsește, utilizatorul poate importa rapoartele Excel sau trimite structura.
 

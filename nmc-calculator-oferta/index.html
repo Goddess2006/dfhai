@@ -41,8 +41,12 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .bdsearch label.grow{flex:1 1 340px}
 #bdDrop[hidden]{display:none!important}
 #bdDrop{text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
-#bdDrop div{grid-template-columns:110px 1fr auto}
-#bdDrop div.in{opacity:.55}
+#bdDrop{max-height:440px}
+#bdDrop div{grid-template-columns:22px 1fr auto;align-items:center}
+#bdDrop div input{width:16px;height:16px;accent-color:var(--accent);margin:0;pointer-events:none}
+#bdDrop div.on{background:color-mix(in srgb,var(--good) 10%,transparent)}
+#bdDrop div code{margin-right:6px}
+#bdDrop .dall{position:sticky;top:0;background:var(--soft);z-index:1;border-bottom:1px solid var(--line)}
 .bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
 .bdtbl{min-width:1180px}
 .bdtbl td input{text-align:left;font-family:var(--f-body)}
@@ -2072,27 +2076,38 @@ async function bdSearch(){
   $("bdResInfo").textContent=`${all.length.toLocaleString("ro-RO")} documente disponibile · ${bdHits.length.toLocaleString("ro-RO")} corespund căutării`;
   if(document.activeElement===$("bdQ")) bdDrawDrop();
 }
-function bdDrawDrop(){
-  const inB=new Set(BD.docs.map(d=>d.dl||d.factura||d.aviz)), r=$("bdDrop"); r.hidden=false; $("bdQ").setAttribute("aria-expanded","true");
-  const H=bdHits.slice(0,80);
-  r.innerHTML = H.length ? H.map((o,i)=>{ const inn=inB.has(o.dl||o.factura||o.aviz); return `<div role="option" data-h="${i}" aria-selected="${i===bdSel}" class="${inn?"in":""}">
-      <code>${esc(o.dlLabel||o.dl||o.factura||o.aviz)}</code><span>${esc(o.client||"—")}${o.adresa?` · ${esc(o.adresa)}`:""}<small>${[o.factura&&"fact. "+o.factura,o.aviz&&"aviz "+o.aviz,roD(o.data),o.lines?`${o.lines.length} produse`:"",inn?"deja în borderou":""].filter(Boolean).map(esc).join(" · ")}</small></span>
+const bdK = o => o.dl||o.factura||o.aviz;
+function bdDrawDrop(){ // listă derulantă cu bife: bifat = documentul e în borderou (se adaugă / se scoate imediat)
+  const inB=new Set(BD.docs.map(bdK)), r=$("bdDrop"); r.hidden=false; $("bdQ").setAttribute("aria-expanded","true");
+  const H=bdHits.slice(0,150), allIn=H.length&&H.every(o=>inB.has(bdK(o)));
+  r.innerHTML = H.length ? `<div class="dall" data-all="1" role="option" aria-selected="false"><input type="checkbox" tabindex="-1" ${allIn?"checked":""} aria-hidden="true"><span><b>${allIn?"Debifează toate":"Bifează toate"} (${H.length}${bdHits.length>H.length?` din ${bdHits.length}`:""})</b><small>${inB.size} documente în borderou</small></span><span></span></div>`+
+    H.map((o,i)=>{ const inn=inB.has(bdK(o)); return `<div role="option" data-h="${i}" aria-selected="${i===bdSel}" aria-checked="${inn}" class="${inn?"on":""}">
+      <input type="checkbox" tabindex="-1" ${inn?"checked":""} aria-hidden="true"><span><code>${esc(o.dlLabel||o.dl||o.factura||o.aviz)}</code> ${esc(o.client||"—")}${o.adresa?` · ${esc(o.adresa)}`:""}<small>${[o.factura&&"fact. "+o.factura,o.aviz&&"aviz "+o.aviz,roD(o.data),o.lines?`${o.lines.length} produse`:""].filter(Boolean).map(esc).join(" · ")}</small></span>
       <span class="pr">${o.val==null?"":fmtL(o.val)+" lei"}</span></div>` }).join("")
     : '<div class="empty">Niciun document găsit. Încearcă doar o parte din număr, client sau adresă.</div>';
-  const a=r.querySelector('[aria-selected="true"]'); a&&a.scrollIntoView({block:"nearest"});
+  const a=r.querySelector('[data-h][aria-selected="true"]'); a&&a.scrollIntoView({block:"nearest"});
 }
-function bdAddDoc(o){ if(BD.docs.some(d=>(d.dl||d.factura||d.aviz)===(o.dl||o.factura||o.aviz))) return false; const {_t,...d}=o; BD.docs.push({...JSON.parse(JSON.stringify(d)),anexa:false,incasat:d.incasat??null}); return true }
-function bdPick(i){ const o=bdHits[i]; if(!o) return; if(!bdAddDoc(o)){ toast("Documentul este deja în borderou"); return }
-  bdRender(); bdSave(); $("bdQ").value=""; $("bdQ").focus(); bdSearch(); toast(`DL ${o.dlLabel||o.dl||o.factura} adăugat`) }
+function bdAddDoc(o){ if(BD.docs.some(d=>bdK(d)===bdK(o))) return false; const {_t,...d}=o; BD.docs.push({...JSON.parse(JSON.stringify(d)),anexa:false,incasat:d.incasat??null}); return true }
+function bdToggle(i){ // bifă → preluare automată în borderou; debifare → scoatere
+  const o=bdHits[i]; if(!o) return; const k=bdK(o), at=BD.docs.findIndex(d=>bdK(d)===k);
+  if(at>=0){ BD.docs.splice(at,1); toast(`Scos: ${o.dlLabel||k}`) } else { bdAddDoc(o); toast(`Adăugat: ${o.dlLabel||k}`) }
+  bdRender(); bdSave(); const st=$("bdDrop").scrollTop; bdDrawDrop(); $("bdDrop").scrollTop=st;
+}
+function bdToggleAll(){
+  const H=bdHits.slice(0,150), inB=new Set(BD.docs.map(bdK)), allIn=H.every(o=>inB.has(bdK(o)));
+  if(allIn){ const ks=new Set(H.map(bdK)); BD.docs=BD.docs.filter(d=>!ks.has(bdK(d))); toast(`${H.length} documente scoase`) }
+  else { const n=H.filter(bdAddDoc).length; toast(`${n} documente adăugate`) }
+  bdRender(); bdSave(); bdDrawDrop();
+}
 $("bdAddAll").onclick=async()=>{ if(!bdHits.length) await bdSearch(); const n=bdHits.filter(bdAddDoc).length; bdRender(); bdSave(); bdSearch(); toast(n?`${n} documente adăugate`:"Niciun document nou de adăugat") };
 ["bdFrom","bdTo"].forEach(id=>$(id).addEventListener("change",bdSearch));
 $("bdQ").addEventListener("input",()=>{ clearTimeout(bdSearch.t); bdSearch.t=setTimeout(bdSearch,150) });
 $("bdQ").addEventListener("focus",bdSearch);
 $("bdQ").addEventListener("keydown",e=>{ if($("bdDrop").hidden) return;
-  if(e.key==="ArrowDown"){bdSel=Math.min(bdSel+1,Math.min(bdHits.length,80)-1);bdDrawDrop();e.preventDefault()}
+  if(e.key==="ArrowDown"){bdSel=Math.min(bdSel+1,Math.min(bdHits.length,150)-1);bdDrawDrop();e.preventDefault()}
   else if(e.key==="ArrowUp"){bdSel=Math.max(bdSel-1,0);bdDrawDrop();e.preventDefault()}
-  else if(e.key==="Enter"){bdPick(bdSel);e.preventDefault()} else if(e.key==="Escape"){$("bdDrop").hidden=true} });
-$("bdDrop").addEventListener("mousedown",e=>{ const d=e.target.closest("[data-h]"); if(d){ e.preventDefault(); bdPick(+d.dataset.h) } });
+  else if(e.key==="Enter"||e.key===" "&&e.ctrlKey){bdToggle(bdSel);e.preventDefault()} else if(e.key==="Escape"){$("bdDrop").hidden=true} });
+$("bdDrop").addEventListener("mousedown",e=>{ e.preventDefault(); if(e.target.closest("[data-all]")){ bdToggleAll(); return } const d=e.target.closest("[data-h]"); if(d) bdToggle(+d.dataset.h) });
 document.addEventListener("click",e=>{ if(!e.target.closest(".bdsearch")){ $("bdDrop").hidden=true; $("bdQ").setAttribute("aria-expanded","false") } });
 
 /* ---------- setări: alegerea tabelelor din bază ---------- */
