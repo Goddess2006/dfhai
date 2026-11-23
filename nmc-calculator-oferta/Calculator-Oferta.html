@@ -1922,7 +1922,7 @@ function bdFinish(d){ // valori fără / cu TVA, greutate, text de căutare
   else if(d.valC!=null&&d.valF==null) d.valF=r2(d.valC/(1+TVA));
   d.trF=r2(d.trF||0); d.trC=r2(d.trF*(1+TVA));
   if(d.lines){ if(d.gr==null) d.gr=r2(d.lines.reduce((a,l)=>a+l.w,0)); d.lines=mergeLines(d.lines) }
-  d._t=norm([d.kind==="aviz"?"aviz":"factura",d.aviz,d.factura,d.client,d.cui,d.loc,d.dl,roD(d.data)].join(" "));
+  d._t=norm([d.kind==="aviz"?"aviz":"factura",d.aviz,d.factura,d.client,d.cui,d.loc,d.dl,roD(d.data),d.metro?"metro":""].join(" "));
   return d;
 }
 function mergeLines(L){ const m=new Map(); for(const l of L){ const k=l.cp+"|"+l.n; const e=m.get(k); if(e){ e.q+=l.q; if(e.vf!=null&&l.vf!=null) e.vf+=l.vf; if(e.v!=null&&l.v!=null) e.v=r2(e.v+l.v); e.w+=l.w } else m.set(k,{...l}) } return [...m.values()] }
@@ -2073,11 +2073,16 @@ function bdHyperChanged(){ bdHyperDraw(); BDX.dbDocs=null; const pool=BDX.raw||[
 function bdDetect(T, metro){ // produse pe document (nr. DL / aviz / factură + CODPR + CANTIT) și/sau antete (nr. + sumă / client)
   const has=(t,k)=>pick(BF[k],t.fields.map(f=>f.name)), key=t=>has(t,"dl")||has(t,"aviz")||has(t,"factura")||(metro&&has(t,"doc"));
   const nameSc=t=>(/AVIZ|METRO|IES|LIVR|DL/.test(tbase(t))?3:0)-(/MODIF|ISTOR|STERS|ANUL|INTR|RECEP|NIR|COMAND|OFERT/.test(tbase(t))?5:0);
-  const lines=T.filter(t=>key(t)&&has(t,"cod")&&has(t,"q")&&t.n>0).sort((a,b)=>(nameSc(b)+(has(b,"pv")?2:0)+(has(b,"aviz")?1:0))-(nameSc(a)+(has(a,"pv")?2:0)+(has(a,"aviz")?1:0))||b.n-a.n)[0];
+  const isMetroT0=t=>has(t,"aviz")&&(/METRO/.test(tbase(t))||t.fields.some(f=>/^(CODPRMETRO|CODGMETRO)$/.test(f.name)));
+  const lines=T.filter(t=>key(t)&&has(t,"cod")&&has(t,"q")&&t.n>0&&(metro||!isMetroT0(t))).sort((a,b)=>(nameSc(b)+(has(b,"pv")?2:0)+(has(b,"aviz")?1:0))-(nameSc(a)+(has(a,"pv")?2:0)+(has(a,"aviz")?1:0))||b.n-a.n)[0];
   const head=T.filter(t=>key(t)&&!has(t,"cod")&&(has(t,"val")||has(t,"cli")||has(t,"client"))&&!/^(CLIENT|CLIENTI|FURNIZ|PRETURI)$/.test(tbase(t))).sort((a,b)=>(nameSc(b)+(has(b,"val")?2:0))-(nameSc(a)+(has(a,"val")?2:0))||b.n-a.n)[0];
   const ct=T.find(t=>/^CLIENT/.test(tbase(t))&&t.fields.some(f=>/^(NUMECLI|DENCLI|DENUMIRE)$/.test(f.name))&&t.fields.some(f=>/^CODCLI$/.test(f.name)));
   const lt=T.find(t=>t.fields.some(f=>/^(CODLOCM|CODLOC)$/.test(f.name))&&t.fields.some(f=>/^(DENLOCM|DENLOC|DENUMIRE)$/.test(f.name))&&!t.fields.some(f=>BF.cod.includes(f.name)));
+  // tabel de avize Metro (DistribNet „Vânzare Metro”): NRAVIZ + cod articol + cantitate, eventual CODPRMETRO / CODLOCM / nume cu METRO sau AVIZ
+  const isMetroT=t=>has(t,"aviz")&&has(t,"cod")&&has(t,"q")&&(/METRO|AVIZ/.test(tbase(t))||t.fields.some(f=>/^(CODPRMETRO|CODLOCM|CODGMETRO)$/.test(f.name)))&&!/MODIF|ISTOR|STERS/.test(tbase(t));
+  const mt=metro?null:T.filter(t=>isMetroT(t)&&t!==lines).sort((a,b)=>(/METRO/.test(tbase(b))?2:0)-(/METRO/.test(tbase(a))?2:0)||b.n-a.n)[0];
   return { lines:lines?{t:lines.name,map:mapFor(lines.fields.map(f=>f.name))}:null, head:head?{t:head.name,map:mapFor(head.fields.map(f=>f.name))}:null,
+    metro:mt?{t:mt.name,map:mapFor(mt.fields.map(f=>f.name))}:null,
     cli:ct?{t:ct.name,code:"CODCLI",name:ct.fields.some(f=>f.name==="NUMECLI")?"NUMECLI":ct.fields.some(f=>f.name==="DENCLI")?"DENCLI":"DENUMIRE",adr:ct.fields.some(f=>f.name==="ADRESA")?"ADRESA":""}:null,
     loc:lt?{t:lt.name,code:lt.fields.find(f=>/^(CODLOCM|CODLOC)$/.test(f.name)).name,name:lt.fields.find(f=>/^(DENLOCM|DENLOC|DENUMIRE)$/.test(f.name)).name,l:(lt.fields.find(f=>/^(LOCALITATE|ORAS)$/.test(f.name))||{}).name||""}:null };
 }
@@ -2093,7 +2098,7 @@ async function bdEnsureDb(interactive){
   let perm=await DBX.dir.queryPermission({mode:"read"}); if(perm!=="granted"&&interactive) perm=await DBX.dir.requestPermission({mode:"read"});
   if(perm!=="granted") return false;
   if(!DBX.tables) DBX.tables=await listTables(DBX.dir);
-  if(!BDX.cfg||(!BDX.cfg.lines&&!BDX.cfg.head)){ BDX.cfg=bdDetect(DBX.tables); store.set("bd_cfg3",BDX.cfg) }
+  if(!BDX.cfg||(!BDX.cfg.lines&&!BDX.cfg.head&&!BDX.cfg.metro)||BDX.cfg.v!==4){ BDX.cfg=Object.assign(bdDetect(DBX.tables),{v:4}); store.set("bd_cfg3",BDX.cfg) }
   return true;
 }
 async function bdDbDocs(){
@@ -2101,6 +2106,8 @@ async function bdDbDocs(){
   const C=BDX.cfg||{}, cl=await bdClients(); let docs=[];
   if(C.head&&C.head.t) docs=rowsToDocs(await bdTable(C.head.t),C.head.map,cl,"db");
   if(C.lines&&C.lines.t) docs=mergeDocs(docs,rowsToDocs(await bdTable(C.lines.t),C.lines.map,cl,"db"));
+  if(C.metro&&C.metro.t){ let locMap={}; if(C.loc) for(const r of await bdTable(C.loc.t)) locMap[S2(r[C.loc.code])]={n:S2(r[C.loc.name]),l:C.loc.l?S2(r[C.loc.l]):""};
+    docs=mergeDocs(docs,rowsToDocs(await bdTable(C.metro.t),C.metro.map,cl,"metro",{forceAviz:true,locMap})) }
   return BDX.dbDocs=docs;
 }
 async function bdLinesFor(d){ // produse pentru un document adăugat fără produse
@@ -2111,7 +2118,7 @@ function bdDbState(){
   const ok=!!(DBX.dir&&DBX.tables), C=BDX.cfg||{};
   $("bdDbState").innerHTML = (ok ? `Baza de date a gestiunii: <span class="ok">conectată</span> (${esc(DBX.dir.name)})` : "Baza de date a gestiunii: neconectată")
     + (BDX.pool.length?` · raport importat: ${BDX.pool.filter(d=>d.kind==="aviz").length.toLocaleString("ro-RO")} avize, ${BDX.pool.filter(d=>d.kind!=="aviz").length.toLocaleString("ro-RO")} facturi`:"");
-  $("bdDbInfo").textContent = ok ? ((C.lines||C.head) ? `DL-uri din: ${[C.head&&C.head.t,C.lines&&C.lines.t+" (cu produse)"].filter(Boolean).join(" + ")}`
+  $("bdDbInfo").textContent = ok ? ((C.lines||C.head||C.metro) ? `Documente din: ${[C.head&&C.head.t,C.lines&&C.lines.t+" (cu produse)",C.metro&&C.metro.t+" (avize Metro)"].filter(Boolean).join(" + ")}`
       : `Am citit ${DBX.tables.length} tabele, dar nu am găsit tabelul cu DL-uri (câmpuri NRDL, CODPR, CANTIT…). Folosește „Importă raport (Excel)” sau „Setări documente”.`)
     : (window.showDirectoryPicker ? (DBX.dir?"Apasă „Reîncarcă documentele” ca să dai acces la folder.":"Conectează folderul bazei (\\\\rds.nmc.local\\Backup\\baze) sau importă un raport Excel exportat din gestiune.") : "Importă un raport Excel exportat din gestiune (legătura directă cu baza merge în Chrome / Edge).");
   $("bdConnect").hidden=!window.showDirectoryPicker; $("bdConnect").textContent=DBX.dir?"Schimbă folderul":"Conectează folderul bazei";
@@ -2180,7 +2187,7 @@ $("bdImpFile").addEventListener("change",async e=>{
 /* ---------- căutare cu listă derulantă (potrivire parțială, toate datele) ---------- */
 let bdHits=[], bdSel=0;
 async function bdAllDocs(){ let db=[], mx=[];
-  if(DBX.dir&&DBX.tables&&BDX.cfg&&(BDX.cfg.lines||BDX.cfg.head)){ try{ db=await bdDbDocs() }catch(e){ $("bdResInfo").textContent="Nu am putut citi documentele: "+e.message } }
+  if(DBX.dir&&DBX.tables&&BDX.cfg&&(BDX.cfg.lines||BDX.cfg.head||BDX.cfg.metro)){ try{ db=await bdDbDocs() }catch(e){ $("bdResInfo").textContent="Nu am putut citi documentele: "+e.message } }
   if(MX.dir&&MX.tables&&MX.cfg&&(MX.cfg.lines||MX.cfg.head)){ try{ mx=await mxDocs() }catch(e){ $("bdResInfo").textContent="Nu am putut citi avizele Metro: "+e.message } }
   return mergeDocs(mergeDocs(JSON.parse(JSON.stringify(mx)),JSON.parse(JSON.stringify(db))),BDX.pool).sort((a,b)=>b.data.localeCompare(a.data)||String(b.dl).localeCompare(String(a.dl),"ro",{numeric:true})) }
 async function bdSearch(force){
@@ -2237,7 +2244,7 @@ function bdSetupDraw(){
     return `<div class="grid"><label>${title}<select data-b="${key}" data-tbl="1"><option value="">— nefolosit —</option>${T.map(x=>`<option ${x.name===s.t?"selected":""} value="${esc(x.name)}">${esc(x.name)} · ${x.n.toLocaleString("ro-RO")} rânduri</option>`).join("")}</select></label>
       ${t?Object.keys(BF_LBL).map(k=>`<label>${BF_LBL[k]}<select data-b="${key}" data-k="${k}"><option value="">—</option>${t.fields.map(f=>`<option ${f.name===s.map[k]?"selected":""}>${f.name}</option>`).join("")}</select></label>`).join(""):""}</div>` };
   $("bdCfg").innerHTML=`<b>${metro?"Setări bază avize Metro":"Setări documente"}</b><span class="um" style="font-size:12.5px">Tabelul cu antetele documentelor (nr. aviz / factură / DL, client, sumă) și/sau tabelul cu produsele pe document (nr., cod articol, cantitate, preț fără TVA).${metro?" Toate documentele din baza Metro sunt tratate ca avize.":""}</span>`+
-    block("head",metro?"Tabel avize (antet)":"Tabel documente (antet)")+block("lines",metro?"Tabel produse pe aviz":"Tabel produse pe document")+
+    block("head",metro?"Tabel avize (antet)":"Tabel documente (antet)")+block("lines",metro?"Tabel produse pe aviz":"Tabel produse pe document")+(metro?"":block("metro","Tabel avize Metro (Vânzare Metro – DistribNet)"))+
     `<div class="confirm"><button type="button" class="btn primary" id="bdCfgSave">Salvează</button><button type="button" class="btn" id="bdCfgAuto">Detectează din nou</button><button type="button" class="btn" id="bdCfgCopy">Copiază structura bazei</button><button type="button" class="btn" id="bdCfgClose">Închide</button></div>`;
   $("bdCfg").querySelectorAll("select[data-b]").forEach(x=>x.onchange=()=>{ const b=x.dataset.b;
     if(x.dataset.tbl){ const t=T.find(y=>y.name===x.value); C[b]=x.value?{t:x.value,map:mapFor(t.fields.map(f=>f.name))}:null; bdSetupDraw() } else C[b].map[x.dataset.k]=x.value });
