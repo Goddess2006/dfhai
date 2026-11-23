@@ -44,7 +44,11 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 #bdDrop div{grid-template-columns:110px 1fr auto}
 #bdDrop div.in{opacity:.55}
 .bdsearch input,.bdsearch select,.bdtbl input,.bdtbl select{font:13.5px var(--f-body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
-.bdtbl{min-width:860px}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
+.bdtbl{min-width:1180px}
+.bdtbl td input{text-align:left;font-family:var(--f-body)}
+.bdtbl td.cl input,.bdtbl td.ad input{min-width:190px}
+.marfa{font:12.5px/1.55 var(--f-num);columns:2 360px;column-gap:28px}.marfa div{display:flex;justify-content:space-between;gap:10px;break-inside:avoid;border-bottom:1px dotted var(--line)}.marfa b{font-weight:500}
+#bdMarfaSec.off #bdMarfaBody{display:none}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
 .chipx{display:inline-flex;align-items:center;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:12.5px}
 .bdtot{display:flex;justify-content:flex-end;gap:18px;padding:10px 4px;font:500 14px var(--f-num)}
@@ -192,6 +196,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
   .bottom{grid-template-columns:1fr}
 }
 @media (max-width:480px){.client{grid-template-columns:1fr}.meta input{width:150px}.sign{grid-template-columns:1fr}}
+@page bdland{size:A4 landscape;margin:9mm 9mm}
 @media print{
   @page{size:A4;margin:11mm 10mm}
   :root{--bg:#fff;--paper:#fff;--ink:#111;--muted:#555;--line:#ccc;--soft:#fff;--accent-soft:#fff;color-scheme:light}
@@ -208,7 +213,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
   .printonly{display:block}.sign.printonly{display:grid}
   body.bdmode .wrap>*:not(#bord){display:none!important} body.bdmode #bord>*:not(#bdSheet){display:none!important}
   .bdtbl{min-width:0} .bdtbl input,.bdtbl select{border:0!important;background:none!important;padding:0!important;appearance:none}
-  #bdAnexa.empty{display:none!important} #bdAnexa{break-before:page}
+  #bdAnexa.empty{display:none!important} #bdAnexa{break-before:page} #bdMarfaSec.off{display:none!important}
+  #bdSheet{page:bdland} .bdtbl td,.bdtbl th{padding:3px 4px;font-size:10.5px} .bdsheet .client input{font-size:11px}
   .head{grid-template-columns:auto 1fr auto!important}.doc{text-align:right!important;justify-items:end!important}.meta label{text-align:right!important}
   .client{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px 14px}.fld.w2{grid-column:span 2!important}
   .bottom{grid-template-columns:minmax(0,1fr) 330px!important}
@@ -399,9 +405,7 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
 
   <section id="bord" hidden aria-label="Borderou livrări">
     <div class="toolbar">
-      <div class="grp">
-        <span class="um" id="bdState"></span>
-      </div>
+      <div class="grp"><span class="um" id="bdState"></span></div>
       <div class="grp">
         <button type="button" class="btn primary" id="bdPdf">Descarcă PDF</button>
         <button type="button" class="btn" id="bdDoc">Descarcă Word</button>
@@ -412,8 +416,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
     </div>
     <div class="notice" id="bdConfirmNew" hidden><span>Pornești un borderou nou? Cel curent rămâne salvat în „Borderouri salvate”.</span><span class="confirm"><button type="button" class="btn danger" id="bdNewYes">Da, borderou nou</button><button type="button" class="btn" id="bdNewNo">Renunț</button></span></div>
     <section class="hist" id="bdHist" hidden aria-label="Borderouri salvate">
-      <div class="hbar"><b>Borderouri salvate</b><span class="um" id="bdHistCount"></span><span class="sp"></span><input id="bdHistQ" placeholder="Caută după nr., transportator, șofer, client sau document…" aria-label="Caută borderouri"></div>
-      <div class="tbl"><table class="htbl"><thead><tr><th>Nr. borderou</th><th>Data</th><th>Transportator</th><th>Șofer</th><th class="n">Documente</th><th class="n">Valoare</th><th>Modificat</th><th></th></tr></thead><tbody id="bdHistRows"></tbody></table></div>
+      <div class="hbar"><b>Borderouri salvate</b><span class="um" id="bdHistCount"></span><span class="sp"></span><input id="bdHistQ" placeholder="Caută după nr., șofer, mașină, client, DL sau factură…" aria-label="Caută borderouri"></div>
+      <div class="tbl"><table class="htbl"><thead><tr><th>Nr. borderou</th><th>Data</th><th>Șofer</th><th>Mașină</th><th class="n">DL-uri</th><th class="n">De încasat</th><th>Modificat</th><th></th></tr></thead><tbody id="bdHistRows"></tbody></table></div>
       <div class="confirm"><button type="button" class="btn" id="bdHistClose">Închide</button></div>
     </section>
 
@@ -424,15 +428,17 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
           <button type="button" class="btn primary" id="bdConnect">Conectează folderul bazei</button>
           <button type="button" class="btn" id="bdReload" hidden>Reîncarcă documentele</button>
           <button type="button" class="btn" id="bdSetup" hidden>Setări documente</button>
+          <button type="button" class="btn" id="bdImp">Importă raport (Excel)</button>
+          <input type="file" id="bdImpFile" accept=".xls,.xlsx,.csv,.dbf" multiple hidden>
         </div>
       </div>
       <div class="map" id="bdCfg" hidden></div>
       <div class="bdsearch">
-        <label class="grow">Caută document (nr. factură / aviz, client, CUI sau dată)
-          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 1003, 45, Universal, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
-        <label>Tip<select id="bdTip"><option value="">Toate</option><option>Factură</option><option>Aviz</option></select></label>
+        <label class="grow">Caută DL, factură, aviz, client, adresă sau dată
+          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 131126011, NMCF15750, 69170, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
         <label>De la (opțional)<input type="date" id="bdFrom"></label>
         <label>Până la (opțional)<input type="date" id="bdTo"></label>
+        <button type="button" class="btn" id="bdAddAll" style="align-self:end">Adaugă toate rezultatele</button>
       </div>
       <div class="um" id="bdResInfo" style="font-size:12.5px"></div>
     </section>
@@ -452,30 +458,46 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       <section aria-labelledby="hTr">
         <h2 id="hTr">Transport</h2>
         <div class="client bdtr">
+          <div class="fld w2"><label for="bdSofer">Șofer (nume)</label><input id="bdSofer" list="dlSofer" placeholder="Alege din listă sau scrie un nume nou" autocomplete="off"></div>
+          <div class="fld"><label for="bdAuto">Nr. mașină</label><input id="bdAuto" list="dlAuto" placeholder=" " autocomplete="off"></div>
           <div class="fld w2"><label for="bdFirma">Firmă transportatoare</label><input id="bdFirma" list="dlFirma" placeholder="Alege din listă sau scrie una nouă" autocomplete="off"></div>
-          <div class="fld"><label for="bdAuto">Nr. auto</label><input id="bdAuto" list="dlAuto" placeholder=" " autocomplete="off"></div>
-          <div class="fld w2"><label for="bdSofer">Șofer</label><input id="bdSofer" list="dlSofer" placeholder="Alege din listă sau scrie un nume nou" autocomplete="off"></div>
           <div class="fld"><label for="bdTel">Telefon șofer</label><input id="bdTel" placeholder=" " autocomplete="off"></div>
+          <div class="fld"><label for="bdCursa">Cursa nr.</label><input id="bdCursa" inputmode="numeric" placeholder=" "></div>
+          <div class="fld"><label for="bdGestiune">Gestiune</label><input id="bdGestiune" placeholder=" "></div>
+          <div class="fld"><label for="bdGr">Greutate totală transportată (kg)</label><input id="bdGr" readonly tabindex="-1" placeholder=" "></div>
+          <div class="fld"><label for="bdKmP">Km plecare</label><input id="bdKmP" inputmode="numeric" placeholder=" "></div>
+          <div class="fld"><label for="bdKmS">Km sosire</label><input id="bdKmS" inputmode="numeric" placeholder=" "></div>
+          <div class="fld"><label for="bdKmE">Km efectuați</label><input id="bdKmE" readonly tabindex="-1" placeholder=" "></div>
         </div>
         <datalist id="dlFirma"></datalist><datalist id="dlSofer"></datalist><datalist id="dlAuto"></datalist>
-        <button type="button" class="btn sm noprint" id="bdLists" style="margin-top:8px">Gestionează listele de transportatori și șoferi</button>
+        <button type="button" class="btn sm noprint" id="bdLists" style="margin-top:8px">Gestionează listele de șoferi, mașini și transportatori</button>
         <div class="map noprint" id="bdListsBox" hidden></div>
       </section>
       <section aria-labelledby="hDocs">
         <h2 id="hDocs">Documente livrate</h2>
-        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Client</th><th>Tip</th><th>Nr. document</th><th>Data emiterii</th><th class="n">Valoare (lei)</th><th class="noprint">Anexă</th><th>Semnătură primire</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
+        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Nr. DL</th><th>Firma</th><th>Adresă</th><th>Nr. factură</th><th>Nr. aviz</th><th class="n">De încasat</th><th class="n">Încasat</th><th>Nr. chitanță</th><th class="noprint">Anexă</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
         <div class="confirm noprint" style="margin-top:8px"><button type="button" class="btn" id="bdAddManual">+ Document introdus manual</button>
-          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează valoarea documentelor pe borderou</label></div>
+          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează sumele (de încasat / încasat)</label></div>
         <div class="bdtot" id="bdTot"></div>
       </section>
-      <section aria-labelledby="hBdInfo">
-        <h2 id="hBdInfo">Observații</h2>
-        <textarea id="bdInfo" rows="2" placeholder="Traseu, ora plecării, mențiuni pentru șofer…" style="width:100%"></textarea>
+      <section id="bdMarfaSec" aria-labelledby="hMarfa">
+        <h2 id="hMarfa">Total marfă</h2>
+        <div class="confirm noprint"><label class="chk"><input type="checkbox" id="bdMarfa" checked> Include centralizatorul de marfă pe borderou</label></div>
+        <div id="bdMarfaBody"></div>
       </section>
-      <div class="sign bdsign"><div>Predat (gestionar),</div><div>Primit (șofer / transportator),</div></div>
+      <section aria-labelledby="hAlim">
+        <h2 id="hAlim">Alimentare carburant și observații</h2>
+        <div class="client">
+          <div class="fld w2"><label for="bdStatie">Alimentare stație</label><input id="bdStatie" placeholder=" "></div>
+          <div class="fld"><label for="bdLitri">Nr. litri</label><input id="bdLitri" inputmode="decimal" placeholder=" "></div>
+          <div class="fld"><label for="bdValComb">Valoare (lei)</label><input id="bdValComb" inputmode="decimal" placeholder=" "></div>
+          <div class="fld w3"><label for="bdInfo">Observații</label><textarea id="bdInfo" rows="2" placeholder="Traseu, ora plecării, mențiuni…"></textarea></div>
+        </div>
+      </section>
+      <div class="sign bdsign"><div>Predat (gestionar),</div><div>Semnătura șofer,</div></div>
       <section id="bdAnexa" aria-labelledby="hAnexa">
         <h2 id="hAnexa">Anexă – produse pe documente</h2>
-        <div class="confirm noprint"><label class="chk"><input type="checkbox" id="bdAnexaVal"> Afișează valorile produselor în anexă</label><span class="um">Anexa include doar documentele bifate în coloana „Anexă”.</span></div>
+        <div class="confirm noprint"><label class="chk"><input type="checkbox" id="bdAnexaVal"> Afișează valorile produselor (în anexă și în total marfă)</label><span class="um">Anexa include doar documentele bifate în coloana „Anexă”.</span></div>
         <div id="bdAnexaBody"></div>
       </section>
     </main>
