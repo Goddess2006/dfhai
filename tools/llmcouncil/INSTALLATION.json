@@ -1,0 +1,1 @@
+{"source":"https://github.com/rachittshah/llmcouncil","upstream_commit":"a9b0ad35182ce55c85ef07b833a922c85e538a3a","license":"MIT (declarat în README)","installed":"2026-11-23","local_changes":["ID-uri Claude invalide înlocuite: claude-sonnet-4-6-20250514 -> claude-sonnet-4-6, claude-opus-4-6-20250219 -> claude-opus-4-6","run.sh: build automat + pornire server MCP"]}

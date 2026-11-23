@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "llmcouncil": {
+      "command": "bash",
+      "args": ["tools/llmcouncil/run.sh"]
+    }
+  }
+}

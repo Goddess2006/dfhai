@@ -1,7 +1,14 @@
 # Handoff
 
-Ultima actualizare: 2026-11-18
-Agent: Codex
+Ultima actualizare: 2026-11-23
+Agent: Claude Code
+
+## LLM Council (MCP + skill `/council`) — `tools/llmcouncil/` — Claude Code, 2026-11-23
+Instalat din `rachittshah/llmcouncil` (MIT, commit upstream în `tools/llmcouncil/INSTALLATION.json`), cod verificat înainte (fără exec/eval; doar apeluri la API-urile OpenAI, Gemini, Anthropic; broker HTTP opțional pe 127.0.0.1:7899, nepornit). Interoghează mai multe modele în paralel și combină răspunsurile: vot anonim, dezbatere cu oprire adaptivă, sinteză prin „chairman”, critică/red team, verificare.
+Instalare la nivel de proiect (se replică prin git pull): `.mcp.json` → serverul `llmcouncil` pornit prin `tools/llmcouncil/run.sh` (la prima rulare face `npm ci` + `tsc`; node_modules/dist ignorate); skill `.claude/skills/council/SKILL.md`. Claude Code cere aprobarea serverului din `.mcp.json` la prima pornire în director.
+Unelte: council_deliberate, council_vote, council_debate, council_critique, council_verify, council_estimate_cost, council_status, council_configure. Test stdio OK (8 unelte, council_status răspunde).
+Modificare locală: ID-urile Claude din upstream erau invalide (`claude-sonnet-4-6-20250514`, `claude-opus-4-6-20250219`) → `claude-sonnet-4-6`, `claude-opus-4-6`.
+NECESAR pentru rulare reală: variabilele `OPENAI_API_KEY`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY` în mediul hostului (NU în repo). Fără ele council_status arată toți furnizorii `available:false`. Fiecare rulare costă bani la fiecare furnizor — folosește întâi council_estimate_cost.
 
 ## Skill UI/UX din ghidul Clean Code Culture — Codex, 2026-11-18
 Cererea clarificată a utilizatorului: doar instalarea skill-urilor din PDF, fără construirea unui website. Instalat `ui-ux-pro-max` din sursa oficială `nextlevelbuilder/ui-ux-pro-max-skill`, calea `.claude/skills/ui-ux-pro-max`, prin helper-ul skill-installer, cu verificarea sursei înaintea instalării.
