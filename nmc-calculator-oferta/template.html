@@ -56,6 +56,8 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
 .bdtbl select{min-width:92px}
 .bdtbl td small.hyp{display:block;font-size:10.5px;color:var(--accent-ink)}
+.mxpath{display:grid;gap:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.mxpath input{font:13px var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:min(420px,100%)}
 .chipx{display:inline-flex;align-items:center;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:12.5px}
 .bdtot{display:flex;justify-content:flex-end;gap:18px;padding:10px 4px;font:500 14px var(--f-num)}
 .bdtot b{font-weight:700}
@@ -436,6 +438,15 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
           <button type="button" class="btn" id="bdSetup" hidden>Setări documente</button>
           <button type="button" class="btn" id="bdImp">Importă raport (Excel)</button>
           <input type="file" id="bdImpFile" accept=".xls,.xlsx,.csv,.dbf" multiple hidden>
+        </div>
+      </div>
+      <div class="row dbrow">
+        <div class="st"><b id="mxState"></b><span id="mxInfo"></span>
+          <label class="mxpath">Locația bazei Metro<input id="mxPath" placeholder="ex. \\rds.nmc.local\Backup\metro" autocomplete="off"></label></div>
+        <div class="confirm">
+          <button type="button" class="btn primary" id="mxConnect">Conectează baza Metro</button>
+          <button type="button" class="btn" id="mxReload" hidden>Reîncarcă avizele</button>
+          <button type="button" class="btn" id="mxSetup" hidden>Setări Metro</button>
         </div>
       </div>
       <div class="map" id="bdCfg" hidden></div>
