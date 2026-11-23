@@ -54,6 +54,8 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .marfa{font:12.5px/1.55 var(--f-num);columns:2 360px;column-gap:28px}.marfa div{display:flex;justify-content:space-between;gap:10px;break-inside:avoid;border-bottom:1px dotted var(--line)}.marfa b{font-weight:500}
 #bdMarfaSec.off #bdMarfaBody{display:none}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
+.bdtbl select{min-width:92px}
+.bdtbl td small.hyp{display:block;font-size:10.5px;color:var(--accent-ink)}
 .chipx{display:inline-flex;align-items:center;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:12.5px}
 .bdtot{display:flex;justify-content:flex-end;gap:18px;padding:10px 4px;font:500 14px var(--f-num)}
 .bdtot b{font-weight:700}
@@ -438,8 +440,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </div>
       <div class="map" id="bdCfg" hidden></div>
       <div class="bdsearch">
-        <label class="grow">Caută DL, factură, aviz, client, adresă sau dată
-          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 131126011, NMCF15750, 69170, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
+        <label class="grow">Caută aviz, factură, client, localitate sau dată
+          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 69170, NMCF157504, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
         <label>Data documentelor<input type="date" id="bdFrom" title="Alege o zi: lista arată toate documentele din ziua respectivă"></label>
         <label>Până la (pentru interval)<input type="date" id="bdTo"></label>
         <button type="button" class="btn" id="bdAddAll" style="align-self:end">Adaugă toate rezultatele</button>
@@ -479,10 +481,16 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </section>
       <section aria-labelledby="hDocs">
         <h2 id="hDocs">Documente livrate</h2>
-        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Nr. DL</th><th>Firma</th><th>Adresă</th><th>Nr. factură</th><th>Nr. aviz</th><th class="n">De încasat</th><th class="n">Încasat</th><th>Nr. chitanță</th><th class="noprint">Anexă</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
+        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Tip</th><th>Nr. aviz</th><th>Nr. factură</th><th>Client</th><th>Localitate / locație</th><th class="n">Valoare fără TVA</th><th class="n">Valoare cu TVA</th><th class="n">Încasat</th><th>Nr. chitanță</th><th class="noprint">Anexă</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
         <div class="confirm noprint" style="margin-top:8px"><button type="button" class="btn" id="bdAddManual">+ Document introdus manual</button>
-          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează sumele (de încasat / încasat)</label></div>
+          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează valorile</label>
+          <button type="button" class="btn sm" id="bdHyperBtn">Clienți hypermarket (doar avize)</button></div>
+        <div class="map noprint" id="bdHyperBox" hidden></div>
         <div class="bdtot" id="bdTot"></div>
+      </section>
+      <section aria-labelledby="hTransp">
+        <h2 id="hTransp">Transport facturat – clienți non-hypermarket</h2>
+        <div id="bdTranspBody"></div>
       </section>
       <section id="bdMarfaSec" aria-labelledby="hMarfa">
         <h2 id="hMarfa">Total marfă</h2>
@@ -1845,7 +1853,12 @@ const BF = {
   data:["DATA","DATADL","DATA_DL","DATADOC","DATAAVIZ"], val:["SUMDEINCAS","DEINCASAT","SUMA_INCAS","VALCUTVA","VALOARE","TOTAL"],
   incasat:["INCASAT"], chitanta:["NRCHITANTA","NRCHIT","CHITANTA"], grdl:["GR_DL","GREUTDL","GREUT_DL","GRDL"],
   cod:["CODPR","COD_PR","CODART"], q:["CANTIT","CANT","CANTITATE"], pv:["PVANZFTVA","PRETFTVA","PVFTVA","PRETVANZ","PRET","PU"],
-  den:["DENPROD","DENUMIRE","DENPR"], codm:["CODMARE","CODPRMARE","MODEL"], gr:["GREUTATE","GREUT"], sofer:["NUMESOF","SOFER"], anul:["FACT_ANUL"] };
+  den:["DENPROD","DENUMIRE","DENPR"], codm:["CODMARE","CODPRMARE","MODEL"], gr:["GREUTATE","GREUT"], sofer:["NUMESOF","SOFER"], anul:["FACT_ANUL"], cont:["CONT","CONTCONT","CONTCORESP","CONTV","SIMBCONT","CONT_V","CONTVANZ"] };
+/* clienți hypermarket: pentru ei contează doar AVIZELE (marfa pleacă pe aviz; facturile sunt doar instrumente contabile) */
+const BD_HYPER_DEF=["DEDEMAN","HORNBACH","LEROY MERLIN","ALTEX"];
+const bdHyperList = () => store.get("bd_hyper") || BD_HYPER_DEF;
+const isHyper = name => { const n=norm(name||""); return bdHyperList().some(h=>h&&n.includes(norm(h))) };
+const TRANSP_RX=/transport/i;
 const BDX = { cfg:store.get("bd_cfg3"), cache:{}, pool:[], dbDocs:null };
 const pick = (names,list) => { const L=list.map(x=>String(x).toUpperCase()); for(const n of names){ const i=L.indexOf(n); if(i>=0) return list[i] } return "" };
 function mapFor(fields){ const m={}; for(const k in BF) m[k]=pick(BF[k],fields); return m }
@@ -1863,37 +1876,52 @@ function toISO(v){ // AAAALLZZ (DBF) · număr serial Excel · zz.ll.aaaa · Dat
 const S2 = v => v==null ? "" : String(v).trim();
 const dlKey = v => S2(v).replace(/\s*\(\d+\)\s*$/,""); // „131126011 (1)” → 131126011
 
-/* rânduri (din bază sau din raport) → documente DL, cu produse dacă rândurile au cod + cantitate */
+/* rânduri (din bază sau din raport) → documente:
+   - client hypermarket → AVIZ (nr. aviz, client, locația magazinului, valoarea avizului); facturile lor sunt ignorate
+   - ceilalți clienți → FACTURĂ (nr. factură, client, localitate, valoarea facturii); transportul facturat (cont 704 / „transport”) separat */
+const r2 = x => Math.round(x*100)/100;
 function rowsToDocs(rows, m, cliMap, srcTag){
   const by=new Map();
   for(const r of rows){
-    const key = dlKey(r[m.dl]) || S2(r[m.factura]) || S2(r[m.aviz]) || S2(r[m.doc]); if(!key) continue;
-    let d=by.get(key);
-    if(!d){ const c=cliMap&&m.cli?cliMap[S2(r[m.cli])]:null;
-      d={key:srcTag+"|"+key, src:srcTag, dl:m.dl?dlKey(r[m.dl]):"", dlLabel:m.dl?S2(r[m.dl]):"",
-        client:S2(r[m.client])||(c&&c.n)||(m.cli&&S2(r[m.cli])?`Client cod ${S2(r[m.cli])}`:""), cui:c?c.cui:"",
-        adresa:[S2(r[m.adresa]),S2(r[m.loc])].filter((x,i,a)=>x&&!(i&&a[0].toUpperCase().includes(x.toUpperCase()))).join(", ")||(c&&c.adr)||"",
-        factura:S2(r[m.factura]), aviz:S2(r[m.aviz])||(m.aviz?"":S2(r[m.doc])), data:toISO(r[m.data]),
-        val:m.val&&r[m.val]!==""&&r[m.val]!=null?+r[m.val]:null, incasat:m.incasat&&+r[m.incasat]?+r[m.incasat]:null, chitanta:S2(r[m.chitanta]),
-        gr:m.grdl&&+r[m.grdl]?+r[m.grdl]:null, sofer:S2(r[m.sofer]), lines:m.cod&&m.q?[]:null };
+    const c=cliMap&&m.cli?cliMap[S2(r[m.cli])]:null;
+    const client=S2(r[m.client])||(c&&c.n)||(m.cli&&S2(r[m.cli])?`Client cod ${S2(r[m.cli])}`:"");
+    const hyper=isHyper(client), aviz=S2(r[m.aviz])||S2(r[m.doc]), factura=S2(r[m.factura]);
+    let kind, nr;
+    if(hyper){ if(!aviz) continue; kind="aviz"; nr=aviz }            // hypermarket: doar avizele
+    else if(factura){ kind="factura"; nr=factura }
+    else if(aviz){ kind="aviz"; nr=aviz } else continue;
+    const key=kind+"|"+nr; let d=by.get(key);
+    if(!d){ const adr=S2(r[m.adresa]), loc=S2(r[m.loc]);
+      d={key:srcTag+"|"+key, src:srcTag, kind, hyper, aviz:kind==="aviz"?nr:aviz, factura:kind==="factura"?nr:(hyper?"":factura), dl:m.dl?dlKey(r[m.dl]):"",
+        client, cui:c?c.cui:"", loc: hyper ? (adr||loc) : (loc||adr||(c&&c.adr)||""), data:toISO(r[m.data]),
+        valC:m.val&&r[m.val]!==""&&r[m.val]!=null?+r[m.val]:null, valF:null, trF:0, trC:0,
+        incasat:m.incasat&&+r[m.incasat]?+r[m.incasat]:null, chitanta:S2(r[m.chitanta]), gr:m.grdl&&+r[m.grdl]?+r[m.grdl]:null, lines:m.cod&&m.q?[]:null };
       by.set(key,d) }
-    if(d.lines){ const q=+r[m.q]||0, pv=m.pv?+r[m.pv]||0:null, cod=S2(r[m.cod]);
-      if(cod&&q) d.lines.push({c:S2(r[m.codm])||cod, cp:cod, n:S2(r[m.den]), u:"buc", q, v:pv==null?null:Math.round(q*pv*(1+TVA)*100)/100, w:m.gr?q*(+r[m.gr]||0):0}) }
+    if(d.lines){ const q=+r[m.q]||0, pv=m.pv?+r[m.pv]||0:null, cod=S2(r[m.cod]), den=S2(r[m.den]);
+      if(!cod&&!den||!q) continue;
+      const vf=pv==null?null:q*pv, isTr=!hyper&&(TRANSP_RX.test(den)||TRANSP_RX.test(S2(r[m.codm]))||/^704/.test(S2(r[m.cont])));
+      if(isTr){ d.trF+=vf||0; continue }   // transport facturat: separat, nu intră în marfă
+      d.lines.push({c:S2(r[m.codm])||cod, cp:cod, n:den, u:"buc", q, vf, v:vf==null?null:r2(vf*(1+TVA)), w:m.gr?q*(+r[m.gr]||0):0}) }
   }
-  for(const d of by.values()){ if(d.lines){
-      if(d.val==null&&d.lines.some(l=>l.v!=null)) d.val=Math.round(d.lines.reduce((a,l)=>a+(l.v||0),0)*100)/100;
-      if(d.gr==null) d.gr=Math.round(d.lines.reduce((a,l)=>a+l.w,0)*100)/100;
-      d.lines=mergeLines(d.lines) }
-    d._t=norm([d.dlLabel,d.dl,d.client,d.cui,d.adresa,d.factura,d.aviz,roD(d.data)].join(" ")) }
+  for(const d of by.values()) bdFinish(d);
   return [...by.values()];
 }
-function mergeLines(L){ const m=new Map(); for(const l of L){ const k=l.cp+"|"+l.n; const e=m.get(k); if(e){ e.q+=l.q; if(e.v!=null&&l.v!=null) e.v=Math.round((e.v+l.v)*100)/100; e.w+=l.w } else m.set(k,{...l}) } return [...m.values()] }
-function mergeDocs(a,b){ // același DL din două surse (ex. DL-urile cursei + avizele cu produse)
-  const idx=new Map(a.map(d=>[d.dl||d.factura||d.aviz,d]));
-  for(const d of b){ const k=d.dl||d.factura||d.aviz, e=idx.get(k);
-    if(e){ for(const f of ["client","adresa","factura","aviz","data","chitanta","sofer"]) if(!e[f]&&d[f]) e[f]=d[f];
-      if(e.val==null) e.val=d.val; if(e.gr==null) e.gr=d.gr; if(!e.lines&&d.lines) e.lines=d.lines; e._t=norm([e._t,d._t].join(" ")) }
-    else { a.push(d); idx.set(k,d) } }
+function bdFinish(d){ // valori fără / cu TVA, greutate, text de căutare
+  if(d.lines&&d.lines.length&&d.lines.some(l=>l.vf!=null)){ const f=d.lines.reduce((a,l)=>a+(l.vf||0),0)+(d.trF||0); d.valF=r2(f); d.valC=r2(f*(1+TVA)) }
+  else if(d.valC!=null&&d.valF==null) d.valF=r2(d.valC/(1+TVA));
+  d.trF=r2(d.trF||0); d.trC=r2(d.trF*(1+TVA));
+  if(d.lines){ if(d.gr==null) d.gr=r2(d.lines.reduce((a,l)=>a+l.w,0)); d.lines=mergeLines(d.lines) }
+  d._t=norm([d.kind==="aviz"?"aviz":"factura",d.aviz,d.factura,d.client,d.cui,d.loc,d.dl,roD(d.data)].join(" "));
+  return d;
+}
+function mergeLines(L){ const m=new Map(); for(const l of L){ const k=l.cp+"|"+l.n; const e=m.get(k); if(e){ e.q+=l.q; if(e.vf!=null&&l.vf!=null) e.vf+=l.vf; if(e.v!=null&&l.v!=null) e.v=r2(e.v+l.v); e.w+=l.w } else m.set(k,{...l}) } return [...m.values()] }
+const bdK = o => (o.kind||"")+"|"+(o.kind==="aviz"?o.aviz:o.factura);
+function mergeDocs(a,b){ // același document din două surse
+  const idx=new Map(a.map(d=>[bdK(d),d]));
+  for(const d of b){ const e=idx.get(bdK(d));
+    if(e){ for(const f of ["client","loc","factura","aviz","data","chitanta","dl"]) if(!e[f]&&d[f]) e[f]=d[f];
+      if(e.valC==null){ e.valC=d.valC; e.valF=d.valF } if(!e.trF&&d.trF){ e.trF=d.trF; e.trC=d.trC } if(e.gr==null) e.gr=d.gr; if(!e.lines&&d.lines) e.lines=d.lines; e._t=norm([e._t,d._t].join(" ")) }
+    else { a.push(d); idx.set(bdK(d),d) } }
   return a;
 }
 
@@ -1902,7 +1930,8 @@ let BD;
 function bdNextNr(){ const y=new Date().getFullYear(); let c=store.get("bd_counter")||{y,n:0}; if(c.y!==y)c={y,n:0}; c.n++; store.set("bd_counter",c); return "BL-"+y+"-"+String(c.n).padStart(4,"0") }
 const BD_DEF = () => ({id:"",nr:"",data:todayISO(),firma:"",sofer:"",auto:"",tel:"",cursa:"1",gestiune:"NMC SD",kmP:"",kmS:"",statie:"",litri:"",valComb:"",info:"",showVal:true,marfa:true,anexaVal:false,docs:[]});
 function bdBlank(){ return Object.assign(BD_DEF(),{nr:bdNextNr()}) }
-function bdMigrate(b){ for(const d of b.docs||[]) if(d.nr!=null&&d.dl==null){ d.dl=""; d.dlLabel=""; if(d.tip==="Aviz") d.aviz=d.nr; else d.factura=d.nr; delete d.nr; delete d.tip }
+function bdMigrate(b){ for(const d of b.docs||[]){ if(d.nr!=null&&d.dl==null){ if(d.tip==="Aviz") d.aviz=d.nr; else d.factura=d.nr; delete d.nr; delete d.tip }
+    if(!d.kind){ d.kind=d.aviz&&!d.factura||isHyper(d.client)?"aviz":"factura"; d.hyper=isHyper(d.client); d.loc=d.loc||d.adresa||""; if(d.valC==null&&d.val!=null){ d.valC=d.val; d.valF=r2(d.val/(1+TVA)) } d.trF=d.trF||0; d.trC=d.trC||0 } }
   return Object.assign(BD_DEF(),b) }
 function bdSave(){ store.set("bd_draft",BD); clearTimeout(bdSave.t); bdSave.t=setTimeout(bdArhSave,400) }
 const bdLists = () => store.get("bd_lists") || {firma:[],sofer:[],auto:[]};
@@ -1925,25 +1954,37 @@ function bdCalcHead(){
   const e=num(BD.kmS)-num(BD.kmP); $("bdKmE").value = BD.kmS&&BD.kmP ? String(e) : "";
   const g=BD.docs.reduce((a,d)=>a+(+d.gr||0),0); $("bdGr").value = g ? fmtL(g) : "";
 }
-const totInc = () => BD.docs.reduce((a,d)=>a+(+d.val||0),0), totIncasat = () => BD.docs.reduce((a,d)=>a+(+d.incasat||0),0);
-function bdTotHtml(){ return `<span>${BD.docs.length} ${BD.docs.length===1?"document":"documente"}</span>${BD.showVal?`<span>Total de încasat: <b>${fmtL(totInc())} lei</b></span><span>Total încasat: <b>${fmtL(totIncasat())} lei</b></span>`:""}` }
+const sumK = k => r2(BD.docs.reduce((a,d)=>a+(+d[k]||0),0));
+const totInc = () => sumK("valC"), totIncasat = () => sumK("incasat");
+const nAv = () => BD.docs.filter(d=>d.kind==="aviz").length, nFa = () => BD.docs.filter(d=>d.kind!=="aviz").length;
+function bdTotHtml(){ return `<span>${nAv()} avize · ${nFa()} facturi</span>${BD.showVal?`<span>Total fără TVA: <b>${fmtL(sumK("valF"))} lei</b></span><span>Total cu TVA: <b>${fmtL(sumK("valC"))} lei</b></span><span>Încasat: <b>${fmtL(totIncasat())} lei</b></span>`:""}` }
 function bdRender(){
   const inp=(i,k,v,w,al)=>`<input data-i="${i}" data-k="${k}" value="${esc(v??"")}" style="${w?`width:${w}px;`:""}${al?`text-align:${al}`:""}" aria-label="${k} ${i+1}">`;
+  const money=(i,k,v)=>BD.showVal?inp(i,k,v==null?"":fmtL(v).replace(/\./g,""),100,"right"):'<span class="um">—</span>';
   $("bdRows").innerHTML = BD.docs.length ? BD.docs.map((d,i)=>`<tr>
-      <td class="um">${i+1}</td><td>${inp(i,"dlLabel",d.dlLabel||d.dl,120)}</td>
-      <td class="cl">${inp(i,"client",d.client)}${d.cui?`<small>${esc(d.cui)}</small>`:""}</td><td class="ad">${inp(i,"adresa",d.adresa)}</td>
-      <td>${inp(i,"factura",d.factura,120)}</td><td>${inp(i,"aviz",d.aviz,90)}</td>
-      <td class="n">${BD.showVal?inp(i,"val",d.val==null?"":fmtL(d.val).replace(/\./g,""),100,"right"):'<span class="um">—</span>'}</td>
-      <td class="n">${BD.showVal?inp(i,"incasat",d.incasat==null?"":fmtL(d.incasat).replace(/\./g,""),90,"right"):'<span class="um">—</span>'}</td>
-      <td>${inp(i,"chitanta",d.chitanta,90)}</td>
+      <td class="um">${i+1}</td>
+      <td><select data-i="${i}" data-k="kind" aria-label="Tip document ${i+1}"><option value="aviz" ${d.kind==="aviz"?"selected":""}>Aviz</option><option value="factura" ${d.kind!=="aviz"?"selected":""}>Factură</option></select>${d.hyper?'<small class="hyp">hypermarket</small>':""}</td>
+      <td>${inp(i,"aviz",d.aviz,90)}</td><td>${inp(i,"factura",d.factura,120)}</td>
+      <td class="cl">${inp(i,"client",d.client)}${d.cui?`<small>${esc(d.cui)}</small>`:""}</td><td class="ad">${inp(i,"loc",d.loc)}</td>
+      <td class="n">${money(i,"valF",d.valF)}</td><td class="n">${money(i,"valC",d.valC)}</td>
+      <td class="n">${money(i,"incasat",d.incasat)}</td><td>${inp(i,"chitanta",d.chitanta,90)}</td>
       <td class="noprint" style="text-align:center"><input type="checkbox" data-i="${i}" data-k="anexa" ${d.anexa?"checked":""} aria-label="Anexă document ${i+1}" style="width:16px;height:16px;accent-color:var(--accent)"></td>
       <td class="noprint"><button class="x" data-del="${i}" aria-label="Scoate documentul ${i+1}">×</button></td></tr>`).join("")
-    : `<tr class="emptyrow"><td colspan="11">Niciun document încă. Caută DL-urile / facturile / avizele mai sus sau adaugă un document manual.</td></tr>`;
-  $("bdTot").innerHTML=bdTotHtml(); bdCalcHead(); bdRenderMarfa(); bdRenderAnexa();
+    : `<tr class="emptyrow"><td colspan="12">Niciun document încă. Alege data sau caută avizele / facturile mai sus și bifează-le.</td></tr>`;
+  $("bdTot").innerHTML=bdTotHtml(); bdCalcHead(); bdRenderTransp(); bdRenderMarfa(); bdRenderAnexa();
   $("bdState").textContent = BD.id ? `${BD.nr} · salvat automat` : BD.nr;
 }
+function bdTranspRows(){ return BD.docs.filter(d=>d.kind!=="aviz"&&!d.hyper&&+d.trF>0) }
+function bdRenderTransp(){ // transport facturat la clienții care nu sunt hypermarket (cont 704 / serviciu „transport”)
+  const T=bdTranspRows(), tf=r2(T.reduce((a,d)=>a+(+d.trF||0),0));
+  $("bdTranspBody").innerHTML = T.length ? `<div class="tbl"><table class="htbl" style="min-width:0"><thead><tr><th>Nr. factură</th><th>Client</th><th>Localitate</th><th class="n">Transport fără TVA</th><th class="n">Transport cu TVA</th></tr></thead><tbody>
+      ${T.map(d=>`<tr><td class="code">${esc(d.factura)}</td><td>${esc(d.client)}</td><td class="um">${esc(d.loc)}</td><td class="n val">${fmtL(d.trF)}</td><td class="n val">${fmtL(d.trC)}</td></tr>`).join("")}
+      <tr><td colspan="3"><b>Total transport facturat</b></td><td class="n val"><b>${fmtL(tf)}</b></td><td class="n val"><b>${fmtL(r2(tf*(1+TVA)))}</b></td></tr></tbody></table></div>`
+    : `<p class="um">Nu s-a detectat transport facturat (cont 704 / serviciu „transport”) pe facturile clienților non-hypermarket din borderou.</p>`;
+}
+const bdDocName = d => d.kind==="aviz" ? `Aviz ${d.aviz||"—"}` : `Factura ${d.factura||"—"}`;
 function bdMarfaRows(){ // centralizator: toate produsele din documentele borderoului, însumate pe cod
-  const m=new Map(); for(const d of BD.docs) for(const l of d.lines||[]){ const k=l.c+"|"+l.n; const e=m.get(k); if(e){ e.q+=+l.q||0; e.v=(e.v||0)+(+l.v||0) } else m.set(k,{c:l.c,n:l.n,u:l.u,q:+l.q||0,v:+l.v||0}) }
+  const m=new Map(); for(const d of BD.docs) for(const l of d.lines||[]){ const k=l.c||l.n; const e=m.get(k); if(e){ e.q+=+l.q||0; e.v=(e.v||0)+(+l.v||0) } else m.set(k,{c:l.c,n:l.n,u:l.u,q:+l.q||0,v:+l.v||0}) }
   return [...m.values()].sort((a,b)=>a.c.localeCompare(b.c,"ro",{numeric:true}));
 }
 function bdRenderMarfa(){
@@ -1956,7 +1997,7 @@ function bdRenderAnexa(){
   const A=BD.docs.map((d,i)=>[d,i]).filter(([d])=>d.anexa);
   $("bdAnexa").classList.toggle("empty",!A.length);
   $("bdAnexaBody").innerHTML = A.length ? A.map(([d,i],k)=>`<div class="anx">
-      <div class="ah"><b>Anexa ${k+1} – DL ${esc(d.dlLabel||d.dl||"—")}${d.factura?` · factura ${esc(d.factura)}`:""}${d.aviz?` · aviz ${esc(d.aviz)}`:""}${d.data?` · ${roD(d.data)}`:""}</b><span>${esc(d.client)}${d.adresa?" · "+esc(d.adresa):""}</span></div>
+      <div class="ah"><b>Anexa ${k+1} – ${esc(bdDocName(d))}${d.data?` · ${roD(d.data)}`:""}</b><span>${esc(d.client)}${d.loc?" · "+esc(d.loc):""}</span></div>
       <div class="tbl" style="border:0;border-radius:0"><table><thead><tr><th>Cod</th><th>Denumire</th><th>UM</th><th class="n">Cantitate</th>${BD.anexaVal?'<th class="n">Valoare cu TVA</th>':""}<th class="noprint"></th></tr></thead><tbody>
       ${(d.lines||[]).map((l,j)=>`<tr><td><input data-d="${i}" data-j="${j}" data-k="c" value="${esc(l.c)}" style="width:100px"></td><td><input data-d="${i}" data-j="${j}" data-k="n" value="${esc(l.n)}" style="width:100%;text-align:left"></td>
         <td><input data-d="${i}" data-j="${j}" data-k="u" value="${esc(l.u)}" style="width:56px"></td><td class="n"><input data-d="${i}" data-j="${j}" data-k="q" inputmode="decimal" value="${String(l.q??"").replace(".",",")}" style="width:80px;text-align:right"></td>
@@ -1977,9 +2018,16 @@ $("bdShowVal").onchange=e=>{ BD.showVal=e.target.checked; bdRender(); bdSave() }
 $("bdAnexaVal").onchange=e=>{ BD.anexaVal=e.target.checked; bdRenderMarfa(); bdRenderAnexa(); bdSave() };
 $("bdMarfa").onchange=e=>{ BD.marfa=e.target.checked; bdRenderMarfa(); bdSave() };
 $("bdRows").addEventListener("input",e=>{ const i=e.target.dataset.i,k=e.target.dataset.k; if(i==null||k==="anexa") return; const d=BD.docs[i];
-  d[k] = k==="val"||k==="incasat" ? (e.target.value.trim()===""?null:num(e.target.value)) : e.target.value; if(k==="dlLabel") d.dl=dlKey(e.target.value);
-  bdSave(); if(k==="val"||k==="incasat") $("bdTot").innerHTML=bdTotHtml() });
-$("bdRows").addEventListener("change",async e=>{ const i=e.target.dataset.i; if(e.target.dataset.k!=="anexa") return; const d=BD.docs[i]; d.anexa=e.target.checked;
+  if(k==="kind") return;
+  d[k] = ["valF","valC","incasat"].includes(k) ? (e.target.value.trim()===""?null:num(e.target.value)) : e.target.value;
+  if(k==="valF"&&d.valF!=null){ d.valC=r2(d.valF*(1+TVA)); const o=$("bdRows").querySelector(`input[data-i="${i}"][data-k="valC"]`); if(o) o.value=fmtL(d.valC).replace(/\./g,"") }
+  if(k==="valC"&&d.valC!=null){ d.valF=r2(d.valC/(1+TVA)); const o=$("bdRows").querySelector(`input[data-i="${i}"][data-k="valF"]`); if(o) o.value=fmtL(d.valF).replace(/\./g,"") }
+  if(k==="client") d.hyper=isHyper(d.client);
+  bdSave(); if(["valF","valC","incasat"].includes(k)) $("bdTot").innerHTML=bdTotHtml() });
+$("bdRows").addEventListener("change",async e=>{ const i=e.target.dataset.i;
+  if(e.target.dataset.k==="kind"){ BD.docs[i].kind=e.target.value; bdRender(); bdSave(); return }
+  if(e.target.dataset.k==="client"){ bdRender(); return }
+  if(e.target.dataset.k!=="anexa") return; const d=BD.docs[i]; d.anexa=e.target.checked;
   if(d.anexa&&!d.lines) d.lines=await bdLinesFor(d).catch(()=>[]); bdRenderMarfa(); bdRenderAnexa(); bdSave() });
 $("bdRows").addEventListener("click",e=>{ if(e.target.dataset.del!=null){ BD.docs.splice(+e.target.dataset.del,1); bdRender(); bdSave() } });
 $("bdAnexaBody").addEventListener("input",e=>{ const t=e.target; if(t.dataset.d==null) return; const l=BD.docs[t.dataset.d].lines[t.dataset.j], k=t.dataset.k;
@@ -1987,7 +2035,7 @@ $("bdAnexaBody").addEventListener("input",e=>{ const t=e.target; if(t.dataset.d=
 $("bdAnexaBody").addEventListener("click",e=>{ const t=e.target;
   if(t.dataset.ladd!=null){ const d=BD.docs[t.dataset.ladd]; (d.lines=d.lines||[]).push({c:"",n:"",u:"buc",q:1,v:null}); bdRenderAnexa(); bdSave() }
   if(t.dataset.ldel){ const [i,j]=t.dataset.ldel.split(":"); BD.docs[i].lines.splice(+j,1); bdRenderAnexa(); bdRenderMarfa(); bdSave() } });
-$("bdAddManual").onclick=()=>{ BD.docs.push({key:"m"+Date.now(),src:"manual",dl:"",dlLabel:"",client:"",adresa:"",factura:"",aviz:"",data:BD.data,val:null,incasat:null,chitanta:"",gr:null,anexa:false,lines:null}); bdRender(); bdSave(); $("bdRows").querySelectorAll('input[data-k="dlLabel"]')[BD.docs.length-1]?.focus() };
+$("bdAddManual").onclick=()=>{ BD.docs.push({key:"m"+Date.now(),src:"manual",kind:"factura",hyper:false,dl:"",client:"",loc:"",factura:"",aviz:"",data:BD.data,valF:null,valC:null,trF:0,trC:0,incasat:null,chitanta:"",gr:null,anexa:false,lines:null}); bdRender(); bdSave(); $("bdRows").querySelectorAll('input[data-k="factura"]')[BD.docs.length-1]?.focus() };
 $("bdNew").onclick=()=>{ $("bdConfirmNew").hidden=false }; $("bdNewNo").onclick=()=>{ $("bdConfirmNew").hidden=true };
 $("bdNewYes").onclick=async()=>{ await bdArhSave(); const keep={firma:BD.firma,sofer:BD.sofer,auto:BD.auto,tel:BD.tel,gestiune:BD.gestiune,kmP:BD.kmS}; BD=bdBlank(); Object.assign(BD,keep); $("bdConfirmNew").hidden=true; bdRenderHead(); bdRender(); bdSave(); toast("Borderou nou: "+BD.nr) };
 $("bdLists").onclick=()=>{ const b=$("bdListsBox"); b.hidden=!b.hidden; if(!b.hidden) bdDrawLists() };
@@ -1996,6 +2044,19 @@ function bdDrawLists(){
   $("bdListsBox").innerHTML=sec("sofer","Șoferi")+sec("auto","Mașini")+sec("firma","Firme transportatoare")+`<span class="um" style="font-size:12px">Valorile noi se adaugă automat în liste când le scrii în borderou.</span>`;
 }
 $("bdListsBox").addEventListener("click",e=>{ const b=e.target.closest("[data-lk]"); if(!b) return; const L=bdLists(); L[b.dataset.lk].splice(+b.dataset.li,1); store.set("bd_lists",L); bdFillLists(); bdDrawLists() });
+
+/* clienți hypermarket (doar avize) — listă editabilă */
+$("bdHyperBtn").onclick=()=>{ const b=$("bdHyperBox"); b.hidden=!b.hidden; if(!b.hidden) bdHyperDraw() };
+function bdHyperDraw(){
+  const L=bdHyperList();
+  $("bdHyperBox").innerHTML=`<b style="font-size:13px">Clienți hypermarket</b><span class="um" style="font-size:12.5px">Pentru acești clienți se preiau doar avizele (facturile lor sunt ignorate). Se recunosc după o parte din nume.</span>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">${L.map((x,i)=>`<span class="chipx">${esc(x)} <button class="x" data-hi="${i}" aria-label="Scoate ${esc(x)}">×</button></span>`).join("")}</div>
+    <div class="confirm"><input id="bdHyperNew" placeholder="ex. BRICO DEPOT" style="font:13.5px var(--f-body);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;color:var(--ink)"><button type="button" class="btn sm" id="bdHyperAdd">Adaugă</button><button type="button" class="btn sm" id="bdHyperReset">Lista implicită</button></div>`;
+  $("bdHyperAdd").onclick=()=>{ const v=$("bdHyperNew").value.trim().toUpperCase(); if(!v) return; store.set("bd_hyper",[...bdHyperList(),v]); bdHyperChanged() };
+  $("bdHyperReset").onclick=()=>{ store.set("bd_hyper",null); bdHyperChanged() };
+}
+$("bdHyperBox").addEventListener("click",e=>{ const b=e.target.closest("[data-hi]"); if(!b) return; const L=bdHyperList(); L.splice(+b.dataset.hi,1); store.set("bd_hyper",L); bdHyperChanged() });
+function bdHyperChanged(){ bdHyperDraw(); BDX.dbDocs=null; const pool=BDX.raw||[]; BDX.pool=[]; for(const [rows,m] of pool) BDX.pool=mergeDocs(BDX.pool,rowsToDocs(rows,m,null,"xls")); BD.docs.forEach(d=>d.hyper=isHyper(d.client)); bdRender(); bdSave(); bdSearch(); toast("Lista de clienți hypermarket a fost actualizată") }
 
 /* ---------- surse: baza gestiunii ---------- */
 function bdDetect(T){ // tabel cu produse pe DL (NRDL + CODPR + CANTIT) și/sau tabel cu DL-uri (NRDL + sumă / factură)
@@ -2029,13 +2090,13 @@ async function bdDbDocs(){
   return BDX.dbDocs=docs;
 }
 async function bdLinesFor(d){ // produse pentru un document adăugat fără produse
-  const all=[...BDX.pool,...(BDX.dbDocs||[])]; const f=all.find(x=>x.lines&&((d.dl&&x.dl===d.dl)||(d.factura&&x.factura===d.factura)||(d.aviz&&x.aviz===d.aviz)));
+  const all=[...BDX.pool,...(BDX.dbDocs||[])]; const f=all.find(x=>x.lines&&bdK(x)===bdK(d));
   return f?JSON.parse(JSON.stringify(f.lines)):[];
 }
 function bdDbState(){
   const ok=!!(DBX.dir&&DBX.tables), C=BDX.cfg||{};
   $("bdDbState").innerHTML = (ok ? `Baza de date a gestiunii: <span class="ok">conectată</span> (${esc(DBX.dir.name)})` : "Baza de date a gestiunii: neconectată")
-    + (BDX.pool.length?` · raport importat: ${BDX.pool.length.toLocaleString("ro-RO")} documente`:"");
+    + (BDX.pool.length?` · raport importat: ${BDX.pool.filter(d=>d.kind==="aviz").length.toLocaleString("ro-RO")} avize, ${BDX.pool.filter(d=>d.kind!=="aviz").length.toLocaleString("ro-RO")} facturi`:"");
   $("bdDbInfo").textContent = ok ? ((C.lines||C.head) ? `DL-uri din: ${[C.head&&C.head.t,C.lines&&C.lines.t+" (cu produse)"].filter(Boolean).join(" + ")}`
       : `Am citit ${DBX.tables.length} tabele, dar nu am găsit tabelul cu DL-uri (câmpuri NRDL, CODPR, CANTIT…). Folosește „Importă raport (Excel)” sau „Setări documente”.`)
     : (window.showDirectoryPicker ? (DBX.dir?"Apasă „Reîncarcă documentele” ca să dai acces la folder.":"Conectează folderul bazei (\\\\rds.nmc.local\\Backup\\baze) sau importă un raport Excel exportat din gestiune.") : "Importă un raport Excel exportat din gestiune (legătura directă cu baza merge în Chrome / Edge).");
@@ -2056,10 +2117,10 @@ $("bdImpFile").addEventListener("change",async e=>{
     try{ const ce=console.error; console.error=()=>{}; let wb; try{ wb=XLSX.read(await f.arrayBuffer(),{type:"array",codepage:1250}) } finally { console.error=ce } // avertismente inofensive ale citirii .xls
       for(const sn of wb.SheetNames){ const rows=XLSX.utils.sheet_to_json(wb.Sheets[sn],{defval:"",raw:true}); if(!rows.length) continue;
         const m=mapFor(Object.keys(rows[0])); if(!m.dl&&!m.factura&&!m.aviz) continue;
-        const docs=rowsToDocs(rows,m,null,"xls"); BDX.pool=mergeDocs(BDX.pool,docs); n+=docs.length } }
+        (BDX.raw=BDX.raw||[]).push([rows,m]); const docs=rowsToDocs(rows,m,null,"xls"); BDX.pool=mergeDocs(BDX.pool,docs); n+=docs.length } }
     catch(err){ toast(`${f.name}: ${err.message}`) } }
   BDX.pool.sort((a,b)=>b.data.localeCompare(a.data)||String(b.dl).localeCompare(String(a.dl),"ro",{numeric:true}));
-  bdDbState(); toast(n?`${n} documente importate din raport — caută-le sau apasă „Adaugă toate rezultatele”`:"Nu am găsit DL-uri / facturi / avize în fișier"); $("bdQ").focus(); bdSearch();
+  bdDbState(); toast(n?`${n} documente importate (avize hypermarket + facturi alți clienți) — alege data sau caută-le`:"Nu am găsit avize / facturi în fișier (facturile clienților hypermarket sunt ignorate)"); $("bdQ").focus(); bdSearch();
 });
 
 /* ---------- căutare cu listă derulantă (potrivire parțială, toate datele) ---------- */
@@ -2072,27 +2133,26 @@ async function bdSearch(force){
   // o singură dată aleasă (doar „De la”) = documentele din ziua respectivă
   const from=$("bdFrom").value, to=$("bdTo").value||$("bdFrom").value, q=norm($("bdQ").value.trim()), words=q.split(/\s+/).filter(Boolean);
   bdHits=all.filter(o=>(!from||o.data>=from)&&(!to||o.data<=to)&&words.every(w=>o._t.includes(w)))
-    .map(o=>({o,s:!q?0:[o.dl,o.factura,o.aviz].some(x=>norm(x)===q)?0:[o.dl,o.factura,o.aviz].some(x=>norm(x).startsWith(q))?1:2})).sort((a,b)=>a.s-b.s).map(x=>x.o);
+    .map(o=>({o,s:!q?0:[o.aviz,o.factura,o.dl].some(x=>norm(x)===q)?0:[o.aviz,o.factura,o.dl].some(x=>norm(x).startsWith(q))?1:2})).sort((a,b)=>a.s-b.s).map(x=>x.o);
   bdSel=0;
   $("bdResInfo").textContent=`${all.length.toLocaleString("ro-RO")} documente disponibile · ${bdHits.length.toLocaleString("ro-RO")} corespund căutării`;
   if(force===true||document.activeElement===$("bdQ")) bdDrawDrop();
 }
-const bdK = o => o.dl||o.factura||o.aviz;
 const bdLim = () => $("bdFrom").value||$("bdTo").value ? 2000 : 150; // pe o dată / interval se afișează toate documentele
 function bdDrawDrop(){ // listă derulantă cu bife: bifat = documentul e în borderou (se adaugă / se scoate imediat)
   const inB=new Set(BD.docs.map(bdK)), r=$("bdDrop"); r.hidden=false; $("bdQ").setAttribute("aria-expanded","true");
   const H=bdHits.slice(0,bdLim()), allIn=H.length&&H.every(o=>inB.has(bdK(o)));
   r.innerHTML = H.length ? `<div class="dall" data-all="1" role="option" aria-selected="false"><input type="checkbox" tabindex="-1" ${allIn?"checked":""} aria-hidden="true"><span><b>${allIn?"Debifează toate":"Bifează toate"} (${H.length}${bdHits.length>H.length?` din ${bdHits.length}`:""})</b><small>${inB.size} documente în borderou</small></span><span></span></div>`+
     H.map((o,i)=>{ const inn=inB.has(bdK(o)); return `<div role="option" data-h="${i}" aria-selected="${i===bdSel}" aria-checked="${inn}" class="${inn?"on":""}">
-      <input type="checkbox" tabindex="-1" ${inn?"checked":""} aria-hidden="true"><span><code>${esc(o.dlLabel||o.dl||o.factura||o.aviz)}</code> ${esc(o.client||"—")}${o.adresa?` · ${esc(o.adresa)}`:""}<small>${[o.factura&&"fact. "+o.factura,o.aviz&&"aviz "+o.aviz,roD(o.data),o.lines?`${o.lines.length} produse`:""].filter(Boolean).map(esc).join(" · ")}</small></span>
-      <span class="pr">${o.val==null?"":fmtL(o.val)+" lei"}</span></div>` }).join("")
+      <input type="checkbox" tabindex="-1" ${inn?"checked":""} aria-hidden="true"><span><code>${esc(bdDocName(o))}</code> ${esc(o.client||"—")}${o.loc?` · ${esc(o.loc)}`:""}<small>${[o.hyper?"hypermarket":"",o.kind==="aviz"&&o.factura?"fact. "+o.factura:"",roD(o.data),o.lines?`${o.lines.length} produse`:"",o.trF?`transport ${fmtL(o.trF)} lei`:""].filter(Boolean).map(esc).join(" · ")}</small></span>
+      <span class="pr">${o.valF==null?"":fmtL(o.valF)+" / "+fmtL(o.valC)+" lei"}</span></div>` }).join("")
     : '<div class="empty">Niciun document găsit. Încearcă doar o parte din număr, client sau adresă.</div>';
   const a=r.querySelector('[data-h][aria-selected="true"]'); a&&a.scrollIntoView({block:"nearest"});
 }
 function bdAddDoc(o){ if(BD.docs.some(d=>bdK(d)===bdK(o))) return false; const {_t,...d}=o; BD.docs.push({...JSON.parse(JSON.stringify(d)),anexa:false,incasat:d.incasat??null}); return true }
 function bdToggle(i){ // bifă → preluare automată în borderou; debifare → scoatere
   const o=bdHits[i]; if(!o) return; const k=bdK(o), at=BD.docs.findIndex(d=>bdK(d)===k);
-  if(at>=0){ BD.docs.splice(at,1); toast(`Scos: ${o.dlLabel||k}`) } else { bdAddDoc(o); toast(`Adăugat: ${o.dlLabel||k}`) }
+  if(at>=0){ BD.docs.splice(at,1); toast(`Scos: ${bdDocName(o)}`) } else { bdAddDoc(o); toast(`Adăugat: ${bdDocName(o)}`) }
   bdRender(); bdSave(); const st=$("bdDrop").scrollTop; bdDrawDrop(); $("bdDrop").scrollTop=st;
 }
 function bdToggleAll(){
@@ -2114,7 +2174,7 @@ document.addEventListener("click",e=>{ if(!e.target.closest(".bdsearch")){ $("bd
 
 /* ---------- setări: alegerea tabelelor din bază ---------- */
 $("bdSetup").onclick=()=>{ const b=$("bdCfg"); b.hidden=!b.hidden; if(!b.hidden) bdSetupDraw() };
-const BF_LBL={dl:"Nr. DL",cli:"Cod client",client:"Nume client",adresa:"Adresă / punct livrare",loc:"Localitate",factura:"Nr. factură",aviz:"Nr. aviz",doc:"Nr. document",data:"Data",val:"De încasat",incasat:"Încasat",chitanta:"Nr. chitanță",grdl:"Greutate DL",cod:"Cod articol",q:"Cantitate",pv:"Preț fără TVA",den:"Denumire produs",codm:"Cod / model afișat",gr:"Greutate unitară",sofer:"Șofer"};
+const BF_LBL={dl:"Nr. DL",cli:"Cod client",client:"Nume client",adresa:"Adresă / punct livrare",loc:"Localitate",factura:"Nr. factură",aviz:"Nr. aviz",doc:"Nr. document",data:"Data",val:"De încasat",incasat:"Încasat",chitanta:"Nr. chitanță",grdl:"Greutate DL",cod:"Cod articol",q:"Cantitate",pv:"Preț fără TVA",den:"Denumire produs",codm:"Cod / model afișat",gr:"Greutate unitară",sofer:"Șofer",cont:"Cont contabil (704 = transport)"};
 function bdSetupDraw(){
   const T=DBX.tables||[], C=BDX.cfg||(BDX.cfg={});
   const block=(key,title)=>{ const s=C[key]||{t:"",map:{}}, t=T.find(x=>x.name===s.t);
@@ -2141,7 +2201,7 @@ async function bdArhSave(){
   if(!BD.docs.length && !BD.sofer && !BD.firma) return;
   if(!BD.id){ BD.id=Date.now().toString(36)+Math.random().toString(36).slice(2,7); store.set("bd_draft",BD) }
   await bdPut({id:BD.id,nr:BD.nr,data:BD.data,firma:BD.firma,sofer:BD.sofer,auto:BD.auto,docs:BD.docs.length,val:totInc(),
-    text:BD.docs.map(d=>[d.dlLabel,d.factura,d.aviz,d.client].join(" ")).join(" "),updated:new Date().toISOString(),state:JSON.parse(JSON.stringify(BD))});
+    text:BD.docs.map(d=>[d.factura,d.aviz,d.client,d.loc].join(" ")).join(" "),updated:new Date().toISOString(),state:JSON.parse(JSON.stringify(BD))});
   $("bdState").textContent=`${BD.nr} · salvat automat ${new Date().toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"})}`;
   if(!$("bdHist").hidden) bdHistDraw();
 }
@@ -2169,8 +2229,9 @@ const kmE = () => BD.kmS&&BD.kmP ? String(num(BD.kmS)-num(BD.kmP)) : "";
 const grT = () => { const g=BD.docs.reduce((a,d)=>a+(+d.gr||0),0); return g?fmtL(g)+" kg":"" };
 function bdHeadPairs(){ return [["Data",roD(BD.data)],["Șofer",BD.sofer+(BD.tel?" · "+BD.tel:"")],["Nr. mașină",BD.auto],["Cursa nr.",BD.cursa],["Gestiune",BD.gestiune],["Firmă transportatoare",BD.firma],
   ["Km plecare",BD.kmP],["Km sosire",BD.kmS],["Km efectuați",kmE()],["Greutate totală",grT()]] }
-function bdDocRows(){ const sv=BD.showVal; return BD.docs.map((d,i)=>[String(i+1),d.dlLabel||d.dl||"",d.client||"",d.adresa||"",d.factura||"",d.aviz||"",...(sv?[d.val==null?"":fmtL(d.val),d.incasat==null?"":fmtL(d.incasat)]:[]),d.chitanta||""]) }
-const bdDocHead = () => ["Nr. crt","Nr. DL","Firma","Adresa","Nr. factură","Nr. aviz",...(BD.showVal?["De încasat","Încasat"]:[]),"Nr. chitanță"];
+function bdDocRows(){ const sv=BD.showVal; return BD.docs.map((d,i)=>[String(i+1),d.kind==="aviz"?"Aviz":"Factură",d.aviz||"",d.factura||"",d.client||"",d.loc||"",...(sv?[d.valF==null?"":fmtL(d.valF),d.valC==null?"":fmtL(d.valC),d.incasat==null?"":fmtL(d.incasat)]:[]),d.chitanta||""]) }
+const bdDocHead = () => ["Nr. crt","Tip","Nr. aviz","Nr. factură","Client","Localitate / locație",...(BD.showVal?["Valoare fără TVA","Valoare cu TVA","Încasat"]:[]),"Nr. chitanță"];
+const bdTotLine = () => `${nAv()} avize · ${nFa()} facturi${BD.showVal?` · Total fără TVA: ${fmtL(sumK("valF"))} lei · Total cu TVA: ${fmtL(sumK("valC"))} lei · Încasat: ${fmtL(totIncasat())} lei`:""}`;
 function bdPDF(){
   const {jsPDF}=window.jspdf, d=new jsPDF({unit:"mm",format:"a4",orientation:"landscape"}), OR=[255,103,31], INK=[34,37,42], MU=[108,111,118], LN=[200,198,194], SO=[246,244,241], CI=[194,71,11];
   d.addFileToVFS("Roboto-Regular.ttf",FONT_R); d.addFont("Roboto-Regular.ttf","Roboto","normal"); d.addFileToVFS("Roboto-Bold.ttf",FONT_B); d.addFont("Roboto-Bold.ttf","Roboto","bold");
@@ -2186,9 +2247,18 @@ function bdPDF(){
   d.autoTable({startY:y,margin:{left:M,right:M,bottom:14},theme:"grid",head:[bdDocHead()],body:bdDocRows(),
     styles:{font:"Roboto",fontSize:8.4,textColor:INK,cellPadding:1.6,lineColor:LN,lineWidth:.2,valign:"middle"},
     headStyles:{fillColor:SO,textColor:INK,fontStyle:"bold",fontSize:7.6,halign:"center"},
-    columnStyles:Object.assign({0:{cellWidth:12,halign:"center"},1:{cellWidth:28},4:{cellWidth:26},5:{cellWidth:20}},sv?{6:{cellWidth:24,halign:"right"},7:{cellWidth:22,halign:"right"},8:{cellWidth:24}}:{6:{cellWidth:26}})});
+    columnStyles:Object.assign({0:{cellWidth:11,halign:"center"},1:{cellWidth:16},2:{cellWidth:18},3:{cellWidth:26}},sv?{6:{cellWidth:25,halign:"right"},7:{cellWidth:25,halign:"right"},8:{cellWidth:20,halign:"right"},9:{cellWidth:22}}:{6:{cellWidth:26}})});
   y=d.lastAutoTable.finalY+5;
-  txt(`${BD.docs.length} documente${sv?` · Total de încasat: ${fmtL(totInc())} lei · Total încasat: ${fmtL(totIncasat())} lei`:""}`,R,y,{b:1,s:9.5,a:"right"}); y+=6;
+  txt(bdTotLine(),R,y,{b:1,s:9.5,a:"right"}); y+=6;
+  const TR=bdTranspRows();
+  if(TR.length){ if(y>H-30){d.addPage();header();y=33} head("Transport facturat – clienți non-hypermarket (cont 704)",y+2); y+=4;
+    const tf=r2(TR.reduce((a,x)=>a+(+x.trF||0),0));
+    d.autoTable({startY:y,margin:{left:M,right:M,bottom:14},theme:"plain",head:[["Nr. factură","Client","Localitate","Transport fără TVA","Transport cu TVA"]],
+      body:[...TR.map(x=>[x.factura,x.client,x.loc,fmtL(x.trF),fmtL(x.trC)]),["","Total transport facturat","",fmtL(tf),fmtL(r2(tf*(1+TVA)))]],
+      styles:{font:"Roboto",fontSize:8,textColor:INK,cellPadding:1.2,lineColor:LN,lineWidth:{bottom:.1}},headStyles:{fillColor:SO,textColor:MU,fontStyle:"normal",fontSize:7},
+      columnStyles:{0:{cellWidth:30,textColor:CI},3:{cellWidth:32,halign:"right"},4:{cellWidth:32,halign:"right"}},
+      didParseCell:c=>{ if(c.section==="body"&&c.row.index===TR.length) c.cell.styles.fontStyle="bold" }});
+    y=d.lastAutoTable.finalY+5 }
   const MR=BD.marfa?bdMarfaRows():[];
   if(MR.length){ if(y>H-30){d.addPage();header();y=33} head("Total marfă",y+2); y+=5;
     const av=BD.anexaVal;
@@ -2205,7 +2275,7 @@ function bdPDF(){
   const A=BD.docs.filter(x=>x.anexa);
   if(A.length){ d.addPage(); header(); y=33; head("Anexă – produse pe documente",y); y+=4;
     A.forEach((x,k)=>{ if(y>H-30){d.addPage();header();y=33}
-      txt(`Anexa ${k+1} – DL ${x.dlLabel||x.dl||"—"}${x.factura?" · factura "+x.factura:""}${x.aviz?" · aviz "+x.aviz:""} · ${x.client}${x.adresa?" · "+x.adresa:""}`,M,y+3,{b:1,s:9}); y+=5;
+      txt(`Anexa ${k+1} – ${bdDocName(x)}${x.data?" · "+roD(x.data):""} · ${x.client}${x.loc?" · "+x.loc:""}`,M,y+3,{b:1,s:9}); y+=5;
       const av=BD.anexaVal;
       d.autoTable({startY:y,margin:{left:M,right:M,bottom:14},theme:"plain",head:[["Cod","Denumire","UM","Cantitate",...(av?["Valoare cu TVA"]:[])]],
         body:(x.lines&&x.lines.length?x.lines:[{c:"",n:"(fără produse)",u:"",q:"",v:null}]).map(l=>[l.c,l.n,l.u,l.q===""||l.q==null?"":String(l.q).replace(".",","),...(av?[l.v==null?"":fmtL(l.v)]:[])]),
@@ -2225,11 +2295,16 @@ function bdDOCX(){
   const P=bdHeadPairs(), cw=Math.floor(FULL/5);
   body+=table(Array(5).fill(cw),[0,1].map(rw=>tr(P.slice(rw*5,rw*5+5).map(([k,v])=>cell(cp(k.toUpperCase(),{s:7,c:"6C6F76"})+cp(v||"—",{s:10,b:k==="Greutate totală"}),cw)).join(""))),{noBorder:1});
   body+=hd("Documente livrate");
-  const HH=bdDocHead(), Wd=sv?[700,1700,2900,3000,1600,1200,1500,1300,1498]:[700,1800,3400,3800,1800,1400,2498];
-  const rows=[tr(HH.map((h,i)=>cell(cp(h,{s:7.5,b:1,a:sv&&(i===6||i===7)?"right":undefined}),Wd[i],{fill:"F6F4F1"})).join(""),1)];
-  bdDocRows().forEach(r=>rows.push(tr(r.map((v,j)=>cell(cp(v,{s:8.8,a:sv&&(j===6||j===7)?"right":undefined}),Wd[j])).join(""))));
+  const HH=bdDocHead(), Wd=sv?[600,1000,1100,1600,3100,2900,1450,1450,1100,1098]:[700,1200,1400,2000,4300,3998,2400];
+  const rows=[tr(HH.map((h,i)=>cell(cp(h,{s:7.5,b:1,a:sv&&i>=6&&i<=8?"right":undefined}),Wd[i],{fill:"F6F4F1"})).join(""),1)];
+  bdDocRows().forEach(r=>rows.push(tr(r.map((v,j)=>cell(cp(v,{s:8.8,a:sv&&j>=6&&j<=8?"right":undefined}),Wd[j])).join(""))));
   body+=table(Wd,rows);
-  body+=para(`${BD.docs.length} documente${sv?` · Total de încasat: ${fmtL(totInc())} lei · Total încasat: ${fmtL(totIncasat())} lei`:""}`,{b:1,s:10,a:"right",before:100});
+  body+=para(bdTotLine(),{b:1,s:10,a:"right",before:100});
+  const TR=bdTranspRows();
+  if(TR.length){ const tf=r2(TR.reduce((a,x)=>a+(+x.trF||0),0)), TW=[2400,5500,3500,2000,1998];
+    body+=hd("Transport facturat – clienți non-hypermarket (cont 704)")+table(TW,[tr(["Nr. factură","Client","Localitate","Transport fără TVA","Transport cu TVA"].map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:i>=3?"right":undefined}),TW[i],{fill:"F6F4F1"})).join(""),1),
+      ...TR.map(x=>tr([x.factura,x.client,x.loc,fmtL(x.trF),fmtL(x.trC)].map((v,i)=>cell(cp(v,{s:8.8,a:i>=3?"right":undefined,c:i===0?INKC:undefined}),TW[i])).join(""))),
+      tr(["","Total transport facturat","",fmtL(tf),fmtL(r2(tf*(1+TVA)))].map((v,i)=>cell(cp(v,{s:8.8,b:1,a:i>=3?"right":undefined}),TW[i])).join(""))]) }
   const MR=BD.marfa?bdMarfaRows():[], av=BD.anexaVal;
   if(MR.length){ body+=hd("Total marfă"); const MW=av?[2400,8698,2000,2300]:[2600,10298,2500];
     body+=table(MW,[tr(["Cod","Denumire","Cantitate",...(av?["Valoare cu TVA"]:[])].map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:i>=2?"right":undefined}),MW[i],{fill:"F6F4F1"})).join(""),1),
@@ -2240,7 +2315,7 @@ function bdDOCX(){
   body+=para("",{after:400})+table([6000,3398,6000],[tr(cell(para("Predat (gestionar),",{s:9,c:"6C6F76",border:4,bc:"9A9A9A"}),6000)+cell(cp(""),3398)+cell(para("Semnătura șofer,",{s:9,c:"6C6F76",border:4,bc:"9A9A9A"}),6000))],{noBorder:1});
   const A=BD.docs.filter(x=>x.anexa);
   if(A.length){ body+=`<w:p><w:r><w:br w:type="page"/></w:r></w:p>`+hd("Anexă – produse pe documente");
-    A.forEach((x,k)=>{ body+=para(`Anexa ${k+1} – DL ${x.dlLabel||x.dl||"—"}${x.factura?" · factura "+x.factura:""}${x.aviz?" · aviz "+x.aviz:""} · ${x.client}${x.adresa?" · "+x.adresa:""}`,{b:1,s:10,before:140,after:60});
+    A.forEach((x,k)=>{ body+=para(`Anexa ${k+1} – ${bdDocName(x)}${x.data?" · "+roD(x.data):""} · ${x.client}${x.loc?" · "+x.loc:""}`,{b:1,s:10,before:140,after:60});
       const AW=av?[2400,8398,1000,1600,2000]:[2400,9898,1200,1900], AH=["Cod","Denumire","UM","Cantitate",...(av?["Valoare cu TVA"]:[])];
       body+=table(AW,[tr(AH.map((h,i)=>cell(cp(h,{s:7.5,c:"6C6F76",a:i>=3?"right":undefined}),AW[i],{fill:"F6F4F1"})).join(""),1),
         ...(x.lines||[]).map(l=>tr([l.c,l.n,l.u,l.q==null?"":String(l.q).replace(".",","),...(av?[l.v==null?"":fmtL(l.v)]:[])].map((v,i)=>cell(cp(v,{s:8.8,a:i>=3?"right":undefined,c:i===0?INKC:undefined}),AW[i])).join("")))]) }) }

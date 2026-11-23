@@ -54,6 +54,8 @@ tr.isvc td.name::after{content:"serviciu · fără discount";display:block;font-
 .marfa{font:12.5px/1.55 var(--f-num);columns:2 360px;column-gap:28px}.marfa div{display:flex;justify-content:space-between;gap:10px;break-inside:avoid;border-bottom:1px dotted var(--line)}.marfa b{font-weight:500}
 #bdMarfaSec.off #bdMarfaBody{display:none}.bdtbl td{vertical-align:middle}.bdtbl td.sig{min-width:150px}
 .bdtbl .cl small{display:block;color:var(--muted);font-size:11.5px}
+.bdtbl select{min-width:92px}
+.bdtbl td small.hyp{display:block;font-size:10.5px;color:var(--accent-ink)}
 .chipx{display:inline-flex;align-items:center;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:12.5px}
 .bdtot{display:flex;justify-content:flex-end;gap:18px;padding:10px 4px;font:500 14px var(--f-num)}
 .bdtot b{font-weight:700}
@@ -438,8 +440,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </div>
       <div class="map" id="bdCfg" hidden></div>
       <div class="bdsearch">
-        <label class="grow">Caută DL, factură, aviz, client, adresă sau dată
-          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 131126011, NMCF15750, 69170, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
+        <label class="grow">Caută aviz, factură, client, localitate sau dată
+          <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 69170, NMCF157504, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
         <label>Data documentelor<input type="date" id="bdFrom" title="Alege o zi: lista arată toate documentele din ziua respectivă"></label>
         <label>Până la (pentru interval)<input type="date" id="bdTo"></label>
         <button type="button" class="btn" id="bdAddAll" style="align-self:end">Adaugă toate rezultatele</button>
@@ -479,10 +481,16 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       </section>
       <section aria-labelledby="hDocs">
         <h2 id="hDocs">Documente livrate</h2>
-        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Nr. DL</th><th>Firma</th><th>Adresă</th><th>Nr. factură</th><th>Nr. aviz</th><th class="n">De încasat</th><th class="n">Încasat</th><th>Nr. chitanță</th><th class="noprint">Anexă</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
+        <div class="tbl"><table class="bdtbl"><thead><tr><th>#</th><th>Tip</th><th>Nr. aviz</th><th>Nr. factură</th><th>Client</th><th>Localitate / locație</th><th class="n">Valoare fără TVA</th><th class="n">Valoare cu TVA</th><th class="n">Încasat</th><th>Nr. chitanță</th><th class="noprint">Anexă</th><th class="noprint"></th></tr></thead><tbody id="bdRows"></tbody></table></div>
         <div class="confirm noprint" style="margin-top:8px"><button type="button" class="btn" id="bdAddManual">+ Document introdus manual</button>
-          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează sumele (de încasat / încasat)</label></div>
+          <label class="chk"><input type="checkbox" id="bdShowVal" checked> Afișează valorile</label>
+          <button type="button" class="btn sm" id="bdHyperBtn">Clienți hypermarket (doar avize)</button></div>
+        <div class="map noprint" id="bdHyperBox" hidden></div>
         <div class="bdtot" id="bdTot"></div>
+      </section>
+      <section aria-labelledby="hTransp">
+        <h2 id="hTransp">Transport facturat – clienți non-hypermarket</h2>
+        <div id="bdTranspBody"></div>
       </section>
       <section id="bdMarfaSec" aria-labelledby="hMarfa">
         <h2 id="hMarfa">Total marfă</h2>

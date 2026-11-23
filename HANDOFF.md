@@ -34,6 +34,9 @@ TikTok (2 variante, 22–23 s): `nmc-wow-30/tiktok/nmc-wow-30-tiktok-ads.mp4` (f
 Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
+## Borderou: avize hypermarket / facturi alți clienți + transport 704 — Claude Code, 2026-11-23
+Reguli de la utilizator: fără nr. DL la vedere; clienți hypermarket (implicit DEDEMAN, HORNBACH, LEROY MERLIN, ALTEX — listă editabilă, `bd_hyper`) → doar AVIZE (nr. aviz, client, locație magazin = DENLOCM, valoare aviz); facturile lor sunt ignorate (instrumente contabile). Ceilalți clienți → FACTURĂ (nr. factură, client, localitate, valoare factură). Valori fără TVA și cu TVA (Σ cantit × pvanzftva; × 1,21; sau SUMDEINCAS/1,21). Jos: „Transport facturat – clienți non-hypermarket”: rândurile de pe facturi cu denumire „transport” sau cont 704 (câmp CONT…) se scot din marfă și se afișează separat (valoarea facturii îl include). `rowsToDocs` grupează pe kind|nr (aviz pentru hypermarket, factură pentru ceilalți), `bdK` = kind|număr. Coloane: Tip, Nr. aviz, Nr. factură, Client, Localitate/locație, Valoare fără TVA, Valoare cu TVA, Încasat, Nr. chitanță. Migrare pentru borderourile salvate vechi (`bdMigrate`). Testat cu dedemn.xls/facturi_nmc.xls + un fișier sintetic cu facturi non-hypermarket și transport.
+
 ## Borderou: selecție pe dată — Claude Code, 2026-11-23
 Câmpul „Data documentelor” (#bdFrom): la alegerea unei zile lista derulantă se deschide singură cu TOATE documentele din ziua respectivă (fără limită de 150; `bdLim()` = 2000 când e filtru de dată); „Până la” opțional pentru interval. Bifele adaugă/scot documentele în borderou ca înainte.
 
