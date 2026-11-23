@@ -236,20 +236,22 @@ $("bdImpFile").addEventListener("change",async e=>{
 let bdHits=[], bdSel=0;
 async function bdAllDocs(){ let db=[]; if(DBX.dir&&DBX.tables&&BDX.cfg&&(BDX.cfg.lines||BDX.cfg.head)){ try{ db=await bdDbDocs() }catch(e){ $("bdResInfo").textContent="Nu am putut citi documentele: "+e.message } }
   return mergeDocs(JSON.parse(JSON.stringify(db)),BDX.pool).sort((a,b)=>b.data.localeCompare(a.data)||String(b.dl).localeCompare(String(a.dl),"ro",{numeric:true})) }
-async function bdSearch(){
+async function bdSearch(force){
   const all=await bdAllDocs();
   if(!all.length){ $("bdResInfo").textContent=""; $("bdDrop").hidden=true; return }
-  const from=$("bdFrom").value, to=$("bdTo").value, q=norm($("bdQ").value.trim()), words=q.split(/\s+/).filter(Boolean);
+  // o singură dată aleasă (doar „De la”) = documentele din ziua respectivă
+  const from=$("bdFrom").value, to=$("bdTo").value||$("bdFrom").value, q=norm($("bdQ").value.trim()), words=q.split(/\s+/).filter(Boolean);
   bdHits=all.filter(o=>(!from||o.data>=from)&&(!to||o.data<=to)&&words.every(w=>o._t.includes(w)))
     .map(o=>({o,s:!q?0:[o.dl,o.factura,o.aviz].some(x=>norm(x)===q)?0:[o.dl,o.factura,o.aviz].some(x=>norm(x).startsWith(q))?1:2})).sort((a,b)=>a.s-b.s).map(x=>x.o);
   bdSel=0;
   $("bdResInfo").textContent=`${all.length.toLocaleString("ro-RO")} documente disponibile · ${bdHits.length.toLocaleString("ro-RO")} corespund căutării`;
-  if(document.activeElement===$("bdQ")) bdDrawDrop();
+  if(force===true||document.activeElement===$("bdQ")) bdDrawDrop();
 }
 const bdK = o => o.dl||o.factura||o.aviz;
+const bdLim = () => $("bdFrom").value||$("bdTo").value ? 2000 : 150; // pe o dată / interval se afișează toate documentele
 function bdDrawDrop(){ // listă derulantă cu bife: bifat = documentul e în borderou (se adaugă / se scoate imediat)
   const inB=new Set(BD.docs.map(bdK)), r=$("bdDrop"); r.hidden=false; $("bdQ").setAttribute("aria-expanded","true");
-  const H=bdHits.slice(0,150), allIn=H.length&&H.every(o=>inB.has(bdK(o)));
+  const H=bdHits.slice(0,bdLim()), allIn=H.length&&H.every(o=>inB.has(bdK(o)));
   r.innerHTML = H.length ? `<div class="dall" data-all="1" role="option" aria-selected="false"><input type="checkbox" tabindex="-1" ${allIn?"checked":""} aria-hidden="true"><span><b>${allIn?"Debifează toate":"Bifează toate"} (${H.length}${bdHits.length>H.length?` din ${bdHits.length}`:""})</b><small>${inB.size} documente în borderou</small></span><span></span></div>`+
     H.map((o,i)=>{ const inn=inB.has(bdK(o)); return `<div role="option" data-h="${i}" aria-selected="${i===bdSel}" aria-checked="${inn}" class="${inn?"on":""}">
       <input type="checkbox" tabindex="-1" ${inn?"checked":""} aria-hidden="true"><span><code>${esc(o.dlLabel||o.dl||o.factura||o.aviz)}</code> ${esc(o.client||"—")}${o.adresa?` · ${esc(o.adresa)}`:""}<small>${[o.factura&&"fact. "+o.factura,o.aviz&&"aviz "+o.aviz,roD(o.data),o.lines?`${o.lines.length} produse`:""].filter(Boolean).map(esc).join(" · ")}</small></span>
@@ -264,17 +266,17 @@ function bdToggle(i){ // bifă → preluare automată în borderou; debifare →
   bdRender(); bdSave(); const st=$("bdDrop").scrollTop; bdDrawDrop(); $("bdDrop").scrollTop=st;
 }
 function bdToggleAll(){
-  const H=bdHits.slice(0,150), inB=new Set(BD.docs.map(bdK)), allIn=H.every(o=>inB.has(bdK(o)));
+  const H=bdHits.slice(0,bdLim()), inB=new Set(BD.docs.map(bdK)), allIn=H.every(o=>inB.has(bdK(o)));
   if(allIn){ const ks=new Set(H.map(bdK)); BD.docs=BD.docs.filter(d=>!ks.has(bdK(d))); toast(`${H.length} documente scoase`) }
   else { const n=H.filter(bdAddDoc).length; toast(`${n} documente adăugate`) }
   bdRender(); bdSave(); bdDrawDrop();
 }
 $("bdAddAll").onclick=async()=>{ if(!bdHits.length) await bdSearch(); const n=bdHits.filter(bdAddDoc).length; bdRender(); bdSave(); bdSearch(); toast(n?`${n} documente adăugate`:"Niciun document nou de adăugat") };
-["bdFrom","bdTo"].forEach(id=>$(id).addEventListener("change",bdSearch));
+["bdFrom","bdTo"].forEach(id=>$(id).addEventListener("change",()=>bdSearch(true))); // alegi data → lista se deschide cu toate documentele din acea zi
 $("bdQ").addEventListener("input",()=>{ clearTimeout(bdSearch.t); bdSearch.t=setTimeout(bdSearch,150) });
-$("bdQ").addEventListener("focus",bdSearch);
+$("bdQ").addEventListener("focus",()=>bdSearch());
 $("bdQ").addEventListener("keydown",e=>{ if($("bdDrop").hidden) return;
-  if(e.key==="ArrowDown"){bdSel=Math.min(bdSel+1,Math.min(bdHits.length,150)-1);bdDrawDrop();e.preventDefault()}
+  if(e.key==="ArrowDown"){bdSel=Math.min(bdSel+1,Math.min(bdHits.length,bdLim())-1);bdDrawDrop();e.preventDefault()}
   else if(e.key==="ArrowUp"){bdSel=Math.max(bdSel-1,0);bdDrawDrop();e.preventDefault()}
   else if(e.key==="Enter"||e.key===" "&&e.ctrlKey){bdToggle(bdSel);e.preventDefault()} else if(e.key==="Escape"){$("bdDrop").hidden=true} });
 $("bdDrop").addEventListener("mousedown",e=>{ e.preventDefault(); if(e.target.closest("[data-all]")){ bdToggleAll(); return } const d=e.target.closest("[data-h]"); if(d) bdToggle(+d.dataset.h) });

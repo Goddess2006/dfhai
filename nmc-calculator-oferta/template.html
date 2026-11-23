@@ -440,8 +440,8 @@ td.val{font:500 13.5px var(--f-num);white-space:nowrap}
       <div class="bdsearch">
         <label class="grow">Caută DL, factură, aviz, client, adresă sau dată
           <span class="cpick" style="margin:0;display:block"><input id="bdQ" placeholder="ex. 131126011, NMCF15750, 69170, Dedeman, Bacău, 18.11…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="bdDrop"><span class="results" id="bdDrop" role="listbox" hidden style="display:block"></span></span></label>
-        <label>De la (opțional)<input type="date" id="bdFrom"></label>
-        <label>Până la (opțional)<input type="date" id="bdTo"></label>
+        <label>Data documentelor<input type="date" id="bdFrom" title="Alege o zi: lista arată toate documentele din ziua respectivă"></label>
+        <label>Până la (pentru interval)<input type="date" id="bdTo"></label>
         <button type="button" class="btn" id="bdAddAll" style="align-self:end">Adaugă toate rezultatele</button>
       </div>
       <div class="um" id="bdResInfo" style="font-size:12.5px"></div>

@@ -34,6 +34,9 @@ TikTok (2 variante, 22–23 s): `nmc-wow-30/tiktok/nmc-wow-30-tiktok-ads.mp4` (f
 Texte postări + reel + ads: `nmc-wow-30/TEXTE-POSTARI.md`.
 Reproducere: `python3 build.py && node render.cjs`.
 
+## Borderou: selecție pe dată — Claude Code, 2026-11-23
+Câmpul „Data documentelor” (#bdFrom): la alegerea unei zile lista derulantă se deschide singură cu TOATE documentele din ziua respectivă (fără limită de 150; `bdLim()` = 2000 când e filtru de dată); „Până la” opțional pentru interval. Bifele adaugă/scot documentele în borderou ca înainte.
+
 ## Borderou: listă derulantă cu bife — Claude Code, 2026-11-23
 Lista derulantă de documente are acum bife: bifat = documentul e în borderou (adăugare / scoatere imediată, lista rămâne deschisă), rând „Bifează / Debifează toate (n)” pentru rezultatele afișate (max. 150), Enter comută rândul selectat. Cod: `bdDrawDrop`, `bdToggle`, `bdToggleAll` în bord.js.
 
