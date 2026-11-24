@@ -147,14 +147,13 @@ Da. Stratul de rășină cu minerale cuarțoase conferă polistirenului rezisten
 Kitul conține 5 cornișe NC104 de câte 2 m și 1 găleată de adeziv ADRO-FIX 4 kg. Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Cornișa Fațadei: Cornișă exterior NC104 + adeziv, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Cornișă exterior NC104 + adeziv — Linia care încununează fațada. (imagine de prezentare)
-3. `03-ambient.jpg` — Cornișă exterior NC104 + adeziv — 10 metri liniari de cornișă + adezivul de montaj (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice NC104: secțiune 220 × 80 mm, lungime bară 2 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Cornișa Fațadei: 5 × Cornișă NC104 (220 × 80 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
-6. `produs-NC104-01.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
-7. `produs-NC104-02.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
-8. `produs-NC104-03.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Linia care încununează casa — cornișă de fațadă NC104 în amenajare
+2. `02-ambient.jpg` — Frumoasă de aproape. Și de departe — Cornișă exterior NC104 + adeziv în amenajare
+3. `03-ambient.jpg` — Detaliile care fac casa să pară nouă — Cornișă exterior NC104 + adeziv în amenajare
+4. `04-ambient.jpg` — O fațadă veselă, cu personalitate — Cornișă exterior NC104 + adeziv în amenajare
+5. `05-ce-primesti.jpg` — Kit Cornișa Fațadei: 5 × Cornișă NC104 (220 × 80 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
+6. `produs-NC104.jpg` — Cornisa decorativa exterior NC104 220X80X2000 — fotografie produs
+7. `produs-Adro-Fix4.jpg` — Adeziv profiluri decorative exterior ADRO-FIX 4KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json

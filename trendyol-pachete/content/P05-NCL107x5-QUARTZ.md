@@ -147,14 +147,13 @@ Da. Culoarea naturală este gri-nisipiu; după montaj și chituire se vopsesc cu
 Pentru lipire se folosește un adeziv pentru profile decorative de exterior, de exemplu ADRO-FIX (se comandă separat). Rășina ADRO-QUARTZ din kit este pentru chituire, nu pentru lipire.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Colțuri de Fațadă: Colțar fațadă NCL107 + rășină, 5 bare × 1 m = 5 m de colț
-2. `02-ambient.jpg` — Colțar fațadă NCL107 + rășină — Colțuri de fațadă cu caracter. (imagine de prezentare)
-3. `03-ambient.jpg` — Colțar fațadă NCL107 + rășină — 5 metri liniari de colț + rășina pentru chituirea îmbinărilor (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice NCL107: secțiune 300/300 × 30 mm, lungime bară 1 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Colțuri de Fațadă: 5 × Colțar NCL107 (300/300 × 30 mm, bară de 1 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
-6. `produs-NCL107-01.jpg` — Fotografie produs Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm de pe decoflair.ro
-7. `produs-NCL107-02.jpg` — Fotografie produs Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm de pe decoflair.ro
-8. `produs-Adro-Quartz1.5-01.jpg` — Fotografie produs Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG de pe decoflair.ro
+1. `01-pachet.jpg` — Colțuri de casă cu aer de piatră — colțare de fațadă NCL107 în amenajare
+2. `02-ambient.jpg` — Detaliul care dă caracter — colțar NCL107 în amenajare
+3. `03-ambient.jpg` — Casa ta, cu altă personalitate — Colțar fațadă NCL107 + rășină în amenajare
+4. `04-ambient.jpg` — Arată ca piatra. E ușor ca polistirenul — Colțar fațadă NCL107 + rășină în amenajare
+5. `05-ce-primesti.jpg` — Kit Colțuri de Fațadă: 5 × Colțar NCL107 (300/300 × 30 mm, bară de 1 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
+6. `produs-NCL107.jpg` — Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm — fotografie produs
+7. `produs-Adro-Quartz1.5.jpg` — Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json

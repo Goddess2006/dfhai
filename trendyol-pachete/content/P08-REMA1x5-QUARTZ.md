@@ -147,14 +147,13 @@ Da. Culoarea naturală este gri-nisipiu; se vopsește cu vopsea acrilică de ext
 Kitul conține 5 brâuri REMA1 de câte 2 m și 1 găleată de rășină ADRO-QUARTZ 1,5 kg. Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Brâu de Fațadă: Brâu fațadă REMA1 + rășină, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Brâu fațadă REMA1 + rășină — Fațada cu ritm și proporție. (imagine de prezentare)
-3. `03-ambient.jpg` — Brâu fațadă REMA1 + rășină — 10 metri liniari de brâu + rășina pentru chituirea îmbinărilor (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice REMA1: secțiune 140 × 30 mm, lungime bară 2 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Brâu de Fațadă: 5 × Brâu REMA1 (140 × 30 mm, bară de 2 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
-6. `produs-REMA1-01.jpg` — Fotografie produs Brau decorativ polistiren REMA1 140X30X2000 de pe decoflair.ro
-7. `produs-REMA1-02.jpg` — Fotografie produs Brau decorativ polistiren REMA1 140X30X2000 de pe decoflair.ro
-8. `produs-Adro-Quartz1.5-01.jpg` — Fotografie produs Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG de pe decoflair.ro
+1. `01-pachet.jpg` — Fațada cu ritm și proporție — brâu de fațadă REMA1 în amenajare
+2. `02-ambient.jpg` — Culoare caldă, linii albe — Brâu fațadă REMA1 + rășină în amenajare
+3. `03-ambient.jpg` — Casa visată, pe strada ta — Brâu fațadă REMA1 + rășină în amenajare
+4. `04-ambient.jpg` — Mic detaliu, efect mare — Brâu fațadă REMA1 + rășină în amenajare
+5. `05-ce-primesti.jpg` — Kit Brâu de Fațadă: 5 × Brâu REMA1 (140 × 30 mm, bară de 2 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
+6. `produs-REMA1.jpg` — Brau decorativ polistiren REMA1 140X30X2000 — fotografie produs
+7. `produs-Adro-Quartz1.5.jpg` — Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json

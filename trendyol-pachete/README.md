@@ -18,13 +18,15 @@ Prețurile finale NU includ comisionul Trendyol.
 
 ## Fișiere
 - `out/trendyol-pachete.csv` — fișa de listare (titlu, SKU, preț final, conținut, descriere, ordinea imaginilor); se deschide în Excel (separator `;`).
-- `out/<cod>/01…05-*.jpg` — imaginile pachetului, 1200×1800 (2:3, cât cere Trendyol): copertă, ambient, idee/montaj, detalii tehnice, conținut.
-- `out/<cod>/produs-*.jpg` — fotografiile produselor de pe decoflair.ro pe fundal alb 1200×1800.
+- `out/<cod>/01-pachet.jpg … NN-ce-primesti.jpg` — imagini 1200×1800 DOAR de ambient (cerința 3): copertă cu fotografie reală + etichetă-reper pe produs + lupă pe detaliu, 3–4 ambienturi cu text scurt emoțional, card „Ce primești”. Fără secțiuni, cote sau tabele.
+- `out/<cod>/produs-<COD>.jpg` — o singură fotografie de produs (pe perete) de pe decoflair.ro.
+- Scenele (fotografie, decupaj, eticheta-reper, texte) se editează în `ambient.py` → `SCENES`. Sursele fotografiilor: `src/amb/SURSE.md`.
+- WL1: tablourile din chenare (living cu canapea verde = foto Linea Room Kit de pe decoflair.ro; bucătărie terracota = catalog-fatade 15) sunt adăugate cu `tools/tablouri.py`; plus înainte/după (catalog-fatade 11 → 13).
 - `out/index.html` — galerie + calcul.
 - La P03 (WL1): imaginea `03-caroiaje-tablouri.jpg` arată caroiajele ca rame pentru tablouri, plus două ambienturi cu chenare.
 
 ## Reguli respectate pe imagini
-Fără preț, fără site, fără telefon (reguli Trendyol). Ambienturile din `catalog-fatade/` și `decoflair-inspiratie-50/` sunt imagini de prezentare (marcate discret „Imagine de prezentare”), nu fotografii ale SKU-ului exact.
+Fără preț, fără site, fără telefon (reguli Trendyol). Ambienturile din `catalog-fatade/`, `decoflair-inspiratie-50/`, `decoflair-blog-reel/` sunt imagini de prezentare (marcate discret „Imagine de prezentare”), nu fotografii ale SKU-ului exact; cele de pe decoflair.ro sunt preluate de pe site (blog, bannere, galerie).
 
 ## Reproducere
 ```

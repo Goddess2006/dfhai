@@ -80,15 +80,20 @@ def kit_content(pk):
            'Vopsibil': 'Da', 'Garanție': '24 luni (conform legii)'}
     # ------------- alt text imagini
     alts = []
+    import ambient as amb
+    scs = amb.SCENES[pk['id']]
     for f in c['trendyol']:
-        kind = f.split('-', 1)[1].rsplit('.', 1)[0] if not f.startswith('produs-') else 'produs'
-        kind = 'ambient' if kind.startswith('ambient') else kind
-        if kind == 'produs':
-            code = f.split('-')[1] if not f.startswith('produs-Adro') else f[7:].rsplit('-', 1)[0]
-            name = build.P.get(code, main)['n']
-        else: name = ''
-        alts.append((f, ALT.get(kind, '{scurt}').format(kit=pk['kit'], scurt=pk['scurt'], qty=build.qty_label(pk), main=it['c'],
-                     dim=inf['dim'], L=inf['L'], mat=inf['mat'].lower(), cont='; '.join(cont), name=name, head=(pk['headline'] if f.startswith('02') else pk['acoperire']))))
+        if f.startswith('produs-'):
+            code = f[7:-4]; a = f"{build.P[code]['n']} — fotografie produs"
+        elif 'ce-primesti' in f:
+            a = f"{pk['kit']}: " + '; '.join(cont) + ', livrare inclusă'
+        else:
+            sc = scs[int(f[:2]) - 1]
+            if sc['kind'] == 'ba': a = f"Același living înainte și după montarea chenarelor din {inf['short']}"
+            else:
+                lab = f" — {sc['tag'][2].lower()} {it['c']} în amenajare" if sc.get('tag') else f" — {pk['scurt']} în amenajare"
+                a = sc['title'].rstrip('.') + lab
+        alts.append((f, a))
     tags = sorted(set(k['kw_primar'] + k['kw_secundar'][:3] + [it['c'].lower(), 'deco flair', 'kit ' + pk['scurt'].split(' ')[0].lower()]))
     # ------------- JSON-LD (pentru pagina kitului pe decoflair.ro)
     url = f"https://decoflair.ro/{k['slug']}"

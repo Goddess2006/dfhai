@@ -146,14 +146,12 @@ Z11 are un model ornamentat, potrivit stilurilor clasic, romantic sau neoclasic.
 Kitul conține 5 cornișe Z11 de câte 2 m (10 ml). Livrarea este inclusă în prețul afișat.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Tavan Clasic: Cornișă tavan Z11, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Cornișă tavan Z11 — Tavanul care spune o poveste. (imagine de prezentare)
-3. `03-ambient.jpg` — Cornișă tavan Z11 — 10 metri liniari — perimetrul unei camere de cca. 2,5 × 2,5 m (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice Z11: secțiune 148 × 69 mm, lungime bară 2 m, material poliuretan
-5. `05-continut.jpg` — Conținutul Kit Tavan Clasic: 5 × Cornișă Z11 (148 × 69 mm, bară de 2 m), livrare inclusă
-6. `produs-Z11-01.jpg` — Fotografie produs Cornisa decorativa Z11 148x69x2000 de pe decoflair.ro
-7. `produs-Z11-02.jpg` — Fotografie produs Cornisa decorativa Z11 148x69x2000 de pe decoflair.ro
-8. `produs-Z11-03.jpg` — Fotografie produs Cornisa decorativa Z11 148x69x2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Tavanul care face camera să pară mai înaltă — cornișă de tavan Z11 în amenajare
+2. `02-ambient.jpg` — Detaliul pe care îl observă toți musafirii — cornișă Z11 în amenajare
+3. `03-ambient.jpg` — Se montează într-o după-amiază — Cornișă tavan Z11 în amenajare
+4. `04-ambient.jpg` — Clasic, luminos. La tine acasă — Cornișă tavan Z11 în amenajare
+5. `05-ce-primesti.jpg` — Kit Tavan Clasic: 5 × Cornișă Z11 (148 × 69 mm, bară de 2 m), livrare inclusă
+6. `produs-Z11.jpg` — Cornisa decorativa Z11 148x69x2000 — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -461,14 +459,12 @@ Da. Este preamorsată din fabrică și se vopsește cu vopsea acrilică sau pe b
 Kitul conține 5 plinte FD3 de câte 2 m (10 ml). Livrarea este inclusă în preț; adezivul se comandă separat.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Plintă Albă Modernă: Plintă FD3, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Plintă FD3 — Finisajul care leagă podeaua de perete. (imagine de prezentare)
-3. `03-ambient.jpg` — Plintă FD3 — 10 metri liniari de plintă (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice FD3: secțiune 100 × 20 mm, lungime bară 2 m, material polimer dur
-5. `05-continut.jpg` — Conținutul Kit Plintă Albă Modernă: 5 × Plintă FD3 (100 × 20 mm, bară de 2 m), livrare inclusă
-6. `produs-FD3-01.jpg` — Fotografie produs Plinta polimer dur FD3 100X20X2000 de pe decoflair.ro
-7. `produs-FD3-02.jpg` — Fotografie produs Plinta polimer dur FD3 100X20X2000 de pe decoflair.ro
-8. `produs-FD3-03.jpg` — Fotografie produs Plinta polimer dur FD3 100X20X2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Finisajul care schimbă tot — plintă albă FD3 în amenajare
+2. `02-ambient.jpg` — Un hol care te întâmpină frumos — Plintă FD3 în amenajare
+3. `03-ambient.jpg` — Liniște. Lumină. Ordine — Plintă FD3 în amenajare
+4. `04-ambient.jpg` — Schimbi culoarea? Plinta o urmează — Plintă FD3 în amenajare
+5. `05-ce-primesti.jpg` — Kit Plintă Albă Modernă: 5 × Plintă FD3 (100 × 20 mm, bară de 2 m), livrare inclusă
+6. `produs-FD3.jpg` — Plinta polimer dur FD3 100X20X2000 — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -780,14 +776,13 @@ Cutie de tăiere la 45° și fierăstrău cu dinți fini, nivelă sau nivelă la
 Kitul conține 8 baghete WL1 de câte 2 m (16 ml). Livrarea este inclusă în preț; adezivul se comandă separat.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Chenare & Tablouri: Brâu WL1 pentru chenare, 8 bare × 2 m = 16 ml
-2. `02-ambient.jpg` — Brâu WL1 pentru chenare — Rame elegante pentru tablouri, direct pe perete. (imagine de prezentare)
-3. `03-caroiaje-tablouri.jpg` — Ilustrație perete cu caroiaje din bagheta WL1 și tablouri încadrate în chenare
-4. `04-ambient.jpg` — Brâu WL1 pentru chenare — 16 metri liniari — aprox. 3 chenare de 100 × 140 cm (imagine de prezentare)
-5. `05-detalii.jpg` — Detalii tehnice WL1: secțiune 38 × 18 mm, lungime bară 2 m, material polimer dur
-6. `06-continut.jpg` — Conținutul Kit Chenare & Tablouri: 8 × Brâu WL1 (38 × 18 mm, bară de 2 m), livrare inclusă
-7. `produs-WL1-01.jpg` — Fotografie produs Brau polimer dur WL1 38X18X2000 de pe decoflair.ro
-8. `produs-WL1-02.jpg` — Fotografie produs Brau polimer dur WL1 38X18X2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Rame elegante pentru tablouri. Direct pe perete — chenare din brâu WL1 în amenajare
+2. `02-inainte-dupa.jpg` — Același living înainte și după montarea chenarelor din Brâu WL1
+3. `03-ambient.jpg` — Și în bucătărie, de ce nu? — chenar pentru tablou WL1 în amenajare
+4. `04-ambient.jpg` — Holul care arată ca într-o revistă — caroiaje WL1 în amenajare
+5. `05-ambient.jpg` — Peretele din spatele patului, transformat — Brâu WL1 pentru chenare în amenajare
+6. `06-ce-primesti.jpg` — Kit Chenare & Tablouri: 8 × Brâu WL1 (38 × 18 mm, bară de 2 m), livrare inclusă
+7. `produs-WL1.jpg` — Brau polimer dur WL1 38X18X2000 — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -1096,13 +1091,12 @@ Da. Este preamorsată din fabrică și se vopsește cu vopsea pe bază de apă.
 Kitul conține 5 cornișe LED IL13 de câte 2 m (10 ml). Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Lumină Indirectă: Cornișă LED IL13, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Cornișă LED IL13 — Lumina devine arhitectură. (imagine de prezentare)
-3. `03-ambient.jpg` — Cornișă LED IL13 — 10 metri liniari de lumină indirectă (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice IL13: secțiune 80 × 52 mm, lungime bară 2 m, material polimer dur
-5. `05-continut.jpg` — Conținutul Kit Lumină Indirectă: 5 × Cornișă LED IL13 (80 × 52 mm, bară de 2 m), livrare inclusă
-6. `produs-IL13-01.jpg` — Fotografie produs Cornisa led IL13 80x52x2000 de pe decoflair.ro
-7. `produs-IL13-02.jpg` — Fotografie produs Cornisa led IL13 80x52x2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Lumina devine atmosferă — lumină indirectă IL13 în amenajare
+2. `02-ambient.jpg` — Seara, livingul arată ca la hotel — cornișă led IL13 în amenajare
+3. `03-ambient.jpg` — Cea mai frumoasă lumină din casă — cornișă cu led IL13 în amenajare
+4. `04-ambient.jpg` — Un detaliu. Toată diferența — Cornișă LED IL13 în amenajare
+5. `05-ce-primesti.jpg` — Kit Lumină Indirectă: 5 × Cornișă LED IL13 (80 × 52 mm, bară de 2 m), livrare inclusă
+6. `produs-IL13.jpg` — Cornisa led IL13 80x52x2000 — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -1411,14 +1405,13 @@ Da. Culoarea naturală este gri-nisipiu; după montaj și chituire se vopsesc cu
 Pentru lipire se folosește un adeziv pentru profile decorative de exterior, de exemplu ADRO-FIX (se comandă separat). Rășina ADRO-QUARTZ din kit este pentru chituire, nu pentru lipire.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Colțuri de Fațadă: Colțar fațadă NCL107 + rășină, 5 bare × 1 m = 5 m de colț
-2. `02-ambient.jpg` — Colțar fațadă NCL107 + rășină — Colțuri de fațadă cu caracter. (imagine de prezentare)
-3. `03-ambient.jpg` — Colțar fațadă NCL107 + rășină — 5 metri liniari de colț + rășina pentru chituirea îmbinărilor (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice NCL107: secțiune 300/300 × 30 mm, lungime bară 1 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Colțuri de Fațadă: 5 × Colțar NCL107 (300/300 × 30 mm, bară de 1 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
-6. `produs-NCL107-01.jpg` — Fotografie produs Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm de pe decoflair.ro
-7. `produs-NCL107-02.jpg` — Fotografie produs Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm de pe decoflair.ro
-8. `produs-Adro-Quartz1.5-01.jpg` — Fotografie produs Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG de pe decoflair.ro
+1. `01-pachet.jpg` — Colțuri de casă cu aer de piatră — colțare de fațadă NCL107 în amenajare
+2. `02-ambient.jpg` — Detaliul care dă caracter — colțar NCL107 în amenajare
+3. `03-ambient.jpg` — Casa ta, cu altă personalitate — Colțar fațadă NCL107 + rășină în amenajare
+4. `04-ambient.jpg` — Arată ca piatra. E ușor ca polistirenul — Colțar fațadă NCL107 + rășină în amenajare
+5. `05-ce-primesti.jpg` — Kit Colțuri de Fațadă: 5 × Colțar NCL107 (300/300 × 30 mm, bară de 1 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
+6. `produs-NCL107.jpg` — Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm — fotografie produs
+7. `produs-Adro-Quartz1.5.jpg` — Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -1734,14 +1727,13 @@ Da. Culoarea naturală este gri-nisipiu; după montaj se aplică amorsă și vop
 Kitul conține 5 ancadramente NA105 de câte 2 m și 1 găleată de adeziv ADRO-FIX 4 kg. Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Ferestre Încadrate: Ancadrament NA105 + adeziv, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Ancadrament NA105 + adeziv — Ferestre încadrate ca într-o vilă clasică. (imagine de prezentare)
-3. `03-ambient.jpg` — Ancadrament NA105 + adeziv — 10 metri liniari — de regulă o fereastră mare sau o ușă + adezivul de montaj (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice NA105: secțiune 175 × 40 mm, lungime bară 2 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Ferestre Încadrate: 5 × Ancadrament NA105 (175 × 40 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
-6. `produs-NA105-01.jpg` — Fotografie produs Ancadrament decorativ fereastra NA105 175X40X2000 de pe decoflair.ro
-7. `produs-NA105-02.jpg` — Fotografie produs Ancadrament decorativ fereastra NA105 175X40X2000 de pe decoflair.ro
-8. `produs-NA105-03.jpg` — Fotografie produs Ancadrament decorativ fereastra NA105 175X40X2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Ferestre încadrate ca la o vilă — ancadrament NA105 în amenajare
+2. `02-ambient.jpg` — Renovezi fațada? Începe cu ferestrele — Ancadrament NA105 + adeziv în amenajare
+3. `03-ambient.jpg` — Umbre fine. Linii curate — Ancadrament NA105 + adeziv în amenajare
+4. `04-ambient.jpg` — Casa pe care o recunoști de pe stradă — Ancadrament NA105 + adeziv în amenajare
+5. `05-ce-primesti.jpg` — Kit Ferestre Încadrate: 5 × Ancadrament NA105 (175 × 40 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
+6. `produs-NA105.jpg` — Ancadrament decorativ fereastra NA105 175X40X2000 — fotografie produs
+7. `produs-Adro-Fix4.jpg` — Adeziv profiluri decorative exterior ADRO-FIX 4KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -2057,14 +2049,13 @@ Da. Stratul de rășină cu minerale cuarțoase conferă polistirenului rezisten
 Kitul conține 5 cornișe NC104 de câte 2 m și 1 găleată de adeziv ADRO-FIX 4 kg. Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Cornișa Fațadei: Cornișă exterior NC104 + adeziv, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Cornișă exterior NC104 + adeziv — Linia care încununează fațada. (imagine de prezentare)
-3. `03-ambient.jpg` — Cornișă exterior NC104 + adeziv — 10 metri liniari de cornișă + adezivul de montaj (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice NC104: secțiune 220 × 80 mm, lungime bară 2 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Cornișa Fațadei: 5 × Cornișă NC104 (220 × 80 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
-6. `produs-NC104-01.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
-7. `produs-NC104-02.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
-8. `produs-NC104-03.jpg` — Fotografie produs Cornisa decorativa exterior NC104 220X80X2000 de pe decoflair.ro
+1. `01-pachet.jpg` — Linia care încununează casa — cornișă de fațadă NC104 în amenajare
+2. `02-ambient.jpg` — Frumoasă de aproape. Și de departe — Cornișă exterior NC104 + adeziv în amenajare
+3. `03-ambient.jpg` — Detaliile care fac casa să pară nouă — Cornișă exterior NC104 + adeziv în amenajare
+4. `04-ambient.jpg` — O fațadă veselă, cu personalitate — Cornișă exterior NC104 + adeziv în amenajare
+5. `05-ce-primesti.jpg` — Kit Cornișa Fațadei: 5 × Cornișă NC104 (220 × 80 mm, bară de 2 m); 1 × Adeziv ADRO-FIX 4 kg, livrare inclusă
+6. `produs-NC104.jpg` — Cornisa decorativa exterior NC104 220X80X2000 — fotografie produs
+7. `produs-Adro-Fix4.jpg` — Adeziv profiluri decorative exterior ADRO-FIX 4KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json
@@ -2380,14 +2371,13 @@ Da. Culoarea naturală este gri-nisipiu; se vopsește cu vopsea acrilică de ext
 Kitul conține 5 brâuri REMA1 de câte 2 m și 1 găleată de rășină ADRO-QUARTZ 1,5 kg. Livrarea este inclusă în preț.
 
 ## 9. Text alternativ imagini (ordinea Trendyol)
-1. `01-pachet.jpg` — Copertă Kit Brâu de Fațadă: Brâu fațadă REMA1 + rășină, 5 bare × 2 m = 10 ml
-2. `02-ambient.jpg` — Brâu fațadă REMA1 + rășină — Fațada cu ritm și proporție. (imagine de prezentare)
-3. `03-ambient.jpg` — Brâu fațadă REMA1 + rășină — 10 metri liniari de brâu + rășina pentru chituirea îmbinărilor (imagine de prezentare)
-4. `04-detalii.jpg` — Detalii tehnice REMA1: secțiune 140 × 30 mm, lungime bară 2 m, material polistiren acoperit cu rășină și cuarț
-5. `05-continut.jpg` — Conținutul Kit Brâu de Fațadă: 5 × Brâu REMA1 (140 × 30 mm, bară de 2 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
-6. `produs-REMA1-01.jpg` — Fotografie produs Brau decorativ polistiren REMA1 140X30X2000 de pe decoflair.ro
-7. `produs-REMA1-02.jpg` — Fotografie produs Brau decorativ polistiren REMA1 140X30X2000 de pe decoflair.ro
-8. `produs-Adro-Quartz1.5-01.jpg` — Fotografie produs Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG de pe decoflair.ro
+1. `01-pachet.jpg` — Fațada cu ritm și proporție — brâu de fațadă REMA1 în amenajare
+2. `02-ambient.jpg` — Culoare caldă, linii albe — Brâu fațadă REMA1 + rășină în amenajare
+3. `03-ambient.jpg` — Casa visată, pe strada ta — Brâu fațadă REMA1 + rășină în amenajare
+4. `04-ambient.jpg` — Mic detaliu, efect mare — Brâu fațadă REMA1 + rășină în amenajare
+5. `05-ce-primesti.jpg` — Kit Brâu de Fațadă: 5 × Brâu REMA1 (140 × 30 mm, bară de 2 m); 1 × Rășină ADRO-QUARTZ 1,5 kg, livrare inclusă
+6. `produs-REMA1.jpg` — Brau decorativ polistiren REMA1 140X30X2000 — fotografie produs
+7. `produs-Adro-Quartz1.5.jpg` — Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG — fotografie produs
 
 ## 10. JSON-LD (pentru pagina kitului pe decoflair.ro)
 ```json

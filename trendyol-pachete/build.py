@@ -2,6 +2,7 @@
 Rulare: python3 tools/fetch_prices.py && python3 tools/fetch_images.py && python3 build.py && node render.cjs"""
 import json, os, csv, math, html, shutil
 from PIL import Image
+import ambient as amb
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TRANSPORT = 200.00
@@ -236,24 +237,18 @@ def main():
         lines, prod, final = price(pk)
         bd = os.path.join(ROOT, 'build', pk['id']); shutil.rmtree(bd, ignore_errors=True); os.makedirs(bd)
         od = os.path.join(out, pk['id']); os.makedirs(od)
-        pages = [('01-pachet', cover(pk)),
-                 ('02-ambient', ambient(pk, pk['ambient'][0], pk['headline'], pk['sub'], pk['scurt']))]
-        if pk.get('caroiaj'):
-            pages.append(('03-caroiaje-tablouri', caroiaj(pk)))
-            pages.append(('04-ambient', ambient(pk, pk['ambient'][1], 'Chenare care încadrează patul și aplicele.', 'Același brâu, montat în caroiaje pe peretele din spatele patului.', 'Idee de amenajare')))
-        else:
-            pages.append(('03-ambient', ambient(pk, pk['ambient'][1], pk['scurt'], pk['acoperire'], 'Montat')))
-        pages.append((f'{len(pages)+1:02d}-detalii', detalii(pk)))
-        pages.append((f'{len(pages)+1:02d}-continut', continut(pk)))
+        # imagini 100% de ambient (fotografii reale), fara desene tehnice — vezi ambient.py
+        it0 = pk['items'][0]
+        qty = f"{it0['q']} bucăți · {pk.get('mlLabel') or str(pk['ml']) + ' metri'}"
+        pages = amb.pages(pk, bd, INFO, qty)
         for name, h in pages:
             open(os.path.join(bd, name + '.html'), 'w').write(h)
-        # fotografii de produs (site) pentru fiecare produs din pachet
+        # o singura fotografie de produs (cea „pe perete”), fara sectiuni / cote
         prod_imgs = []
         for it in pk['items']:
-            d = os.path.join(ROOT, 'src', it['c'])
-            for f in sorted(x for x in os.listdir(d) if x.endswith('.jpg')):
-                dst = f"produs-{it['c']}-{f}"
-                produs_jpg(os.path.join('src', it['c'], f), os.path.join(od, dst)); prod_imgs.append(dst)
+            src = INFO[it['c']]['hero'] if it['c'] != 'NA105' else 'src/NA105/04.jpg'
+            dst = f"produs-{it['c']}.jpg"
+            produs_jpg(src, os.path.join(od, dst)); prod_imgs.append(dst)
         imgs = [n + '.jpg' for n, _ in pages] + prod_imgs
         trendyol = imgs[:8]
         rows.append({'Cod pachet (SKU / barcode vânzător)': pk['id'], 'Titlu Trendyol': pk['titlu'],
