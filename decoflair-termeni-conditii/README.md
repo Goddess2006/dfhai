@@ -83,3 +83,9 @@ De confirmat: randarea se plătește? (textul spune „termenul și costul în f
 
 Fișier de publicat: `parteneriate.html` (stil scopat `.df-pt`). Admin → Catalog → Informații → „Parteneriate” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
 Păstrate: mesajul, beneficiile, cele două imagini existente din `image/catalog/Arhitecti/`. Adăugat: butoane „Deveniți partener” (e-mail cu subiect) / telefon 0765 740 280, 4 tipuri de parteneri (+ constructori/echipe de montaj), 6 beneficii (+ suport tehnic, randări și produse personalizate), linkuri către game, 4 pași de colaborare, casetă finală. Fără promisiuni de discount concrete („condiții comerciale în funcție de volum”).
+
+# Catalogul nostru — decoflair.ro/catalog-produse-decoflair
+
+Fișier de publicat: `catalog-produse.html` (stil scopat `.df-ct`). Admin → Catalog → Informații → „Catalogul nostru” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Catalog vizual: intro, butoane rapide pe categorii, 5 carduri mari cu imagine (Interior, Exterior, Riflaje 3D, Tapet, Adezivi și accesorii), fiecare cu toate subcategoriile ca linkuri și „Vedeți toate…”, casetă finală (Consultanță, Produse personalizate, Oferte speciale). Toate cele 40+ linkuri și 5 imagini verificate (fără 404); imaginile sunt deja pe server.
+Modulul Journal „Catalogul nostru” (Catalog Blocks, ID 682, lista pliabilă de deasupra textului) afișează „Riflaje Acustice 3D” de două ori și dublează conținutul nou: recomandat să fie scos din layoutul paginii (Journal → Layouts → layoutul paginii de informații / Catalogul nostru) sau măcar să se șteargă duplicatul.

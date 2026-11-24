@@ -18,6 +18,7 @@ Pagina /produse-personalizate: `produse-personalizate.html` (stil `.df-pp`), con
 Pagina /consultanta-premium: `consultanta-premium.html` (stil `.df-cs`), rescrisă cu imagini din portofoliu. Produse personalizate: adăugate 11 imagini din catalogul de exterior. Verificat pe pagina live.
 Pagina /randare-3d: `randare-3d.html` (stil `.df-rd`), rescrisă cu imagini din portofoliu și video YouTube responsive (youtube-nocookie). Verificat pe pagina live, video-ul rulează.
 Pagina /parteneriate: `parteneriate.html` (stil `.df-pt`), rescrisă cu imaginile existente, tipuri de parteneri, beneficii, pași. Verificat pe pagina live.
+Pagina /catalog-produse-decoflair: `catalog-produse.html` (stil `.df-ct`), catalog vizual cu 5 categorii și toate subcategoriile. Modulul Catalog Blocks 682 are „Riflaje Acustice 3D” dublat; recomandat de scos din layout.
 Adresa veche (Făurei nr. 1, Sector 1) apare încă pe /contact, /politica-retur, subsol și în setările magazinului — de corectat (lista în README).
 
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24
