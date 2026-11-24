@@ -50,3 +50,20 @@ Afirmațiile tehnice (3,1 kg, cutter, până la 25% acustică, kit pentru 20–2
 **Comentariu fixat:** „Câți m² are camera ta? Îți spunem dacă îți ajunge un kit LINEA 📐”
 **Reclamă:** două seturi de anunțuri cu același video: (a) link `https://decoflair.ro/riflaje-acustice-3d?utm_source=meta&utm_medium=paid&utm_campaign=riflaje-linea&utm_content=reel-liniste-riflaj`; (b) link `https://decoflair.ro/linea-room-kit-complet-pentru-o-camer%C4%83?utm_source=meta&utm_medium=paid&utm_campaign=riflaje-linea&utm_content=reel-liniste-linea`. Titlu: „Liniște. Și o cameră terminată.” Text: „Riflaje acustice 3D și LINEA Room Kit: totul pentru o cameră, din stoc.” Buton: „Cumpără acum”.
 **Indicator:** comenzi LINEA atribuite + clickuri pe riflaje (7 zile).
+
+## 4. „Pereți care prind viață” (`reel/decoflair-panouri-3d-*.mp4`, 36,8 s)
+**Reper:** Apple „Shot on iPhone” (obiectul în lumină, fără explicații) + ritmul Guinness „Surfer”.
+**Cadre (fotografii reale: portofoliu decoflair.ro + ambient Arstyl de pe paginile de produs, fără sigle):** sufragerie albă cu valuri („Cel mai *plictisitor* perete din casa ta…”) → perete geometric cu LED („…poate deveni locul unde lumina *desenează.*”) → FLOWER („Petale albe. *Nicio floare nu se ofilește.*”, 460 lei · 2 în stoc) → WING pe verde, în ramă („Pe verde închis, devine *sculptură.*”, de la 111 lei) → WAVE cu pian („Valuri care *stau pe loc.*”, 433 lei · 69 în stoc) → RAY pe albastru, în ramă („Gata de vopsire. În *orice culoare* vrei.”, 166 lei · 3 în stoc) → panouri cub („Fără praf. Fără șuruburi. Doar *lipite.* Le găsești pe:”, 14 modele · de la 111 lei) → decoflair.ro · „Pereți care prind viață.”
+„Gata de vopsire” și „montaj curat, fără praf sau șuruburi” sunt preluate din fișa produsului (WAVE). Fotografiile pătrate de 800 px (WING, RAY) sunt puse în ramă peste fundal estompat, ca să nu-și piardă calitatea.
+
+**Instagram / Facebook:**
+> Cel mai plictisitor perete din casa ta poate deveni locul unde lumina desenează. ✨
+> 14 modele de panouri decorative 3D, gata de vopsire, de la 111 lei.
+> Fără praf. Fără șuruburi. Doar lipite.
+> 💬 0765 740 280 · 🔗 link în bio
+>
+> #panouri3d #pereti3d #designinterior #peretedecorativ #amenajariinterioare #decoflair
+
+**Comentariu fixat:** „Care model l-ai pune la tine: FLOWER, WING, WAVE sau RAY? 👇”
+**Reclamă:** link `https://decoflair.ro/profile-decorative-interior/panouri-decorative-3d-interior-poliuretan?utm_source=meta&utm_medium=paid&utm_campaign=panouri-3d&utm_content=reel-pereti-viata` · Titlu „Pereți care prind viață” · Text „Panouri decorative 3D, gata de vopsire, de la 111 lei. Fără praf, fără șuruburi.” · Buton „Cumpără acum”.
+**Atenție la stoc:** FLOWER (2 buc.), RAY (3 buc.), WING (1 buc.) au stoc mic; WAVE are 69. Pentru reclame plătite lungi, verifică stocul sau înlocuiește etichetele.

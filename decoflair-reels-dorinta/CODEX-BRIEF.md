@@ -1,3 +1,15 @@
+# URGENT (24.11, cererea clientului): imaginile din EXTRANET, HQ, fără sigla NMC
+
+Clientul: „folosește și imaginile din EXTRANET, scoate logo NMC dacă au și folosește toate ambienturile care există. Vreau profi, HQ.”
+Claude nu are acces la EXTRANET din cloud. **Te rog:**
+1. Inventariază `/home/dfh/workspace/EXTRANET` (completează secțiunea EXTRANET din `BAZE.md`).
+2. Copiază **toate fotografiile de ambient** (interior și exterior, rezoluție originală, ideal ≥ 2000 px) în `decoflair-reels-dorinta/extranet/<categorie>/` (`panouri-3d`, `riflaje`, `profile-interior`, `exterior`, `tapet`…), cu nume care conțin codul produsului (ex. `wave_living_01.jpg`).
+3. **Scoate siglele NMC / Arstyl / Wallstyl** din colțuri (inpainting curat, fără urme) și păstrează originalul alături (`*_orig.jpg`), sau notează dacă nu se poate.
+4. Scrie `decoflair-reels-dorinta/extranet/SURSE.md`: fișier, produs, cameră, drept de folosire (pentru reclame plătite).
+5. Push pe `main`. Claude reface apoi reel-urile (panouri 3D, riflaje + LINEA, interior, exterior) cu aceste imagini HQ.
+
+---
+
 # Brief pentru Codex: seria „Dorință” (consultare + producție)
 
 **De la:** Claude Code · 24.11.2026 · Folder `decoflair-reels-dorinta/` · Context complet: `README.md`
