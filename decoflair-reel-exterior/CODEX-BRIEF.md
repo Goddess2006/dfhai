@@ -1,3 +1,21 @@
+# Brief pentru Codex: reel exterior v3 „Casa ta are ceva să-ți spună.”
+
+> **ACTUALIZARE 24.11 (v3), deciziile clientului:** fără zăpadă; **imagini REALE** la început (grafica și imaginile care „par AI” au fost respinse); culori noi (cobalt `#2340FF` + alb osos + negru); finalul „2030” e păstrat. Brief-ul de mai jos înlocuiește cererile anterioare.
+
+## Ce îți cer (în ordinea priorității)
+1. **Imagini reale din EXTRANET / BAZE** (Claude nu are acces din cloud): fotografii REALE de fațade cu profile Deco&Flair/NMC/ADRo montate (lucrări, clienți, showroom), de preferat case românești P sau P+1, și **fotografii reale „înainte/după” sau din timpul montajului**. Copiază în `decoflair-reel-exterior/codex/` doar imagini publicabile (fără date de client), cu numele `r01-conac-9x16.jpg` … `r07-vecini-9x16.jpg` (vezi `asset(...)` în `reel_build.py`) sau adaugă altele și notează-le în HANDOFF.
+2. **Extinde la 9:16 fotografiile reale orizontale**, fără să schimbi clădirea (outpainting doar pe cer și sol): `assets/r-schele.jpg`, `assets/r-coloane.jpg`, `assets/r-coltare.jpg`, `assets/r-brau.jpg`, `assets/r-vecini.jpg` → `codex/r02-schele-9x16.jpg` etc. Acum se decupează doar centrul.
+3. **Curăță și mărește 2×** `assets/r-ancadramente.jpg` și `assets/r-arcade.jpg` (sunt 736 px și apar moi pe ecran) → `codex/r03-ancadramente-9x16.jpg`, `codex/r05-arcade-9x16.jpg`.
+4. Opțional: **voce off „vocea casei”** în română (`codex/voce-casa.mp3`, voce caldă, cu umor discret), pe replicile din `TEXTE-REEL.md`.
+
+Regulă: NU genera fațade noi care par AI pentru începutul reel-ului. Ambientele tale existente (colțar, cornișă, gard, casa seara) rămân doar la mijlocul reel-ului.
+
+## După
+`cd decoflair-reel-exterior && python3 reel_build.py && node reel_render.cjs organic && node reel_render.cjs ads`, intrare în `HANDOFF.md`, push pe `main`. Conform `FLUX-CREATIV.md`, trimite-mi versiunea pentru revizie înainte de livrare.
+
+---
+<details><summary>Brief-urile anterioare (v1/v2), anulate</summary>
+
 # Brief pentru Codex: imagini pentru reel-ul de exterior v2 „Schița devine casă”
 
 > **ACTUALIZARE 24.11 (v2):** clientul a respins zăpada („prea multă zăpadă”). **NU genera imagini cu zăpadă sau iarnă.** Reel-ul v2 are nevoie doar de imaginea `03-fatada-aurie.jpg` (prioritate 1); restul listei de mai jos este opțional, pentru postări viitoare, și trebuie generat FĂRĂ zăpadă (toamnă târzie, lumină aurie).
@@ -34,3 +52,5 @@ Pentru perechea 02: generează întâi `02-colt-dupa.jpg`, apoi editează-l pent
 
 ## După generare
 `cd decoflair-reel-exterior && python3 reel_build.py && node reel_render.cjs organic && node reel_render.cjs ads`, apoi intrare în `HANDOFF.md` și push pe `main`.
+
+</details>

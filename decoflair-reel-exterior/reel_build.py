@@ -1,11 +1,13 @@
-"""Reel exterior Deco&Flair v2 — „Schița devine casă” (IG/TikTok/Meta Ads, 1080x1920, 23 s). Fără zăpadă.
+"""Reel exterior Deco&Flair v3 — „Casa ta are ceva să-ți spună.” (IG/TikTok/Meta Ads, 1080x1920, ~24 s).
 
-  0,0–2,4  CÂRLIG     tipografie cinetică: „Casa ta e frumoasă.” → „Dar îi lipsesc 5 detalii.”
-  2,4–11,6 SCHIȚA     plan tehnic animat: fațada se desenează, apoi cele 5 profile „se montează” pe rând (nume, preț real, foto produs)
- 11,6–14,4 REALITATE  linie de scanare: schița devine casa reală, în lumină aurie
- 14,4–18,2 STOC       contoare HUD: 2.135 colțare · 1.733 ancadramente · 519 chei de boltă → din stoc, 3–5 zile, gata de sărbători
- 18,2–23,0 FINAL 2030 decoflair.ro centrat: particule care converg, inel de lumină, fascicul, text metalic cu reflex
-Variante: organic (cu „link în bio”) și ads (fără nimic în zona butonului). Rulare: python3 reel_build.py && node reel_render.cjs organic|ads
+Cererea clientului: imagini REALE la început (grafica plictisește și pare AI), culori noi, ceva care surprinde, creativ care „vorbește”.
+Concept: fațada e personajul. Pe fotografii reale de case, casa vorbește cu privitorul prin subtitrări cuvânt-cu-cuvânt
+(formatul de „subtitrare cinetică” din reclamele japoneze, coreene și americane), cu umor românesc, apoi cu produsul real,
+prețul și stocul. Paletă nouă: albastru cobalt electric, alb osos, negru. Finalul „2030” păstrat, recolorat în cobalt.
+
+Scene: hook „Psst. Da, tu.” → schele „acum o lună” → ancadramente → colțare → materialul → brâu/cornișă → „vecinii mă întreabă…”
+→ „Le-am zis: decoflair.ro” → final 2030.
+Rulare: python3 reel_build.py && node reel_render.cjs organic|ads
 """
 from pathlib import Path
 import json, random, math
@@ -20,129 +22,78 @@ def asset(fallback, codex=None):
     return f"../assets/{fallback}"
 
 
-REAL = asset("a-vila.jpg", "03-fatada-aurie.jpg")
-
-# date verificate pe decoflair.ro la 24.11.2026
-STEPS = [  # (id element svg, nume, cod, preț, imagine)
-    ("el-cornisa", "Cornișă", "NC104", "194", "../assets/p-nc104-main.jpg"),
-    ("el-coltar", "Colțar cu bosaje", "NCL107", "248", "../assets/p-ncl107-hero-crop.jpg"),
-    ("el-ancadr", "Ancadrament", "NA102", "71", "../assets/p-na102-main.jpg"),
-    ("el-solbanc", "Solbanc", "NS110", "118", "../assets/p-ns110-closeup.jpg"),
-    ("el-cheie", "Cheie de boltă", "NCB104", "87", "../assets/p-ncb104-main.jpg"),
+# fiecare scenă: imagine reală, poziție, replici (cuvinte; *cuvânt* = evidențiat), etichetă produs (opțional)
+# date produs verificate pe decoflair.ro la 24.11.2026
+D = 2.6
+SCENES = [
+    dict(img=asset("r-conac.jpg", "r01-conac-9x16.jpg"), pos="50% 50%", lines=["Psst. *Da,* tu.", "Sunt *casa.* Am ceva să-ți spun."], tag=None, d=2.8, src="foto reală · portofoliu decoflair.ro"),
+    dict(img=asset("r-schele.jpg", "r02-schele-9x16.jpg"), pos="62% 50%", lines=["Acum o lună eram doar", "*schele* și polistiren."], tag=("ÎNAINTE", "", ""), d=2.3, src="foto reală"),
+    dict(img=asset("r-coloane.jpg"), pos="30% 50%", lines=["Coloanele? Le-au urcat", "*de mână.* Sunt ușoare."], tag=("Coloane decorative", "polistiren + rășină", ""), d=2.3, src="foto reală"),
+    dict(img=asset("r-ancadramente.jpg", "r03-ancadramente-9x16.jpg"), pos="45% 50%", lines=["Mi-au pus *ancadramente.*", "Ferestrele mele au *sprâncene.*"], tag=("Ancadrament NA102", "de la 71 lei", "1.733 în stoc"), d=2.4, src="foto reală"),
+    dict(img=asset("cx-ncl107.jpg"), pos="50% 50%", lines=["Colțurile mele erau *ciupite.*", "Acum par din *piatră.*"], tag=("Colțar NCL107", "248 lei/buc", "2.135 în stoc"), d=2.4, src=""),
+    dict(img=asset("r-arcade.jpg", "r05-arcade-9x16.jpg"), pos="40% 50%", lines=["Secretul? *Rășină* și", "*nisip cuarțos.* Nu-mi pasă de *îngheț.*"], tag=("Rezistă la îngheț și UV", "", ""), d=2.5, src="foto reală"),
+    dict(img=asset("cx-nc104.jpg"), pos="50% 30%", lines=["O *cornișă* nouă…", "și am întinerit *zece ani.*"], tag=("Cornișă NC104", "194 lei", "185 în stoc"), d=2.3, src=""),
+    dict(img=asset("cx-st105.jpg"), pos="50% 50%", lines=["Și gardul a cerut", "*același tratament.*"], tag=("Capac gard ST105", "200 lei", "18 în stoc"), d=2.3, src=""),
+    dict(img=asset("cx-seara.jpg", "r07-vecini-9x16.jpg"), pos="50% 50%", lines=["Vecinii mă întreabă", "de unde m-am *aranjat.*", "Le-am zis:"], tag=("Din stoc", "livrare în 3–5 zile", ""), d=2.9, src=""),
 ]
-STOCK = [("2135", "colțare NCL107"), ("1733", "ancadramente NA102"), ("519", "chei de boltă NCB104")]
+T_FINAL = sum(s["d"] for s in SCENES)
+TOTAL = round(T_FINAL + 5.2, 2)
 
 VARIANTS = {"organic": dict(foot="Link în bio"), "ads": dict(foot="")}
 
-# ---------------------------------------------------------------- fațada SVG (coordonate în cadrul 1080x1920)
-X0, X1, Y_ROOF, Y_TOP, Y_BOT = 150, 930, 560, 720, 1360
-WIN = [(270, 800, 140, 170), (670, 800, 140, 170), (270, 1090, 140, 170), (670, 1090, 140, 170)]
-DOOR = (480, 1110, 120, 250)
-
-
-def facade_svg():
-    L = []
-    line = 'fill="none" stroke="#CFE3DA" stroke-width="3" pathLength="1" class="draw"'
-    # grilă
-    grid = "".join(f'<line x1="{x}" y1="0" x2="{x}" y2="1920" />' for x in range(0, 1081, 60)) + \
-           "".join(f'<line x1="0" y1="{y}" x2="1080" y2="{y}" />' for y in range(0, 1921, 60))
-    L.append(f'<g id="grid" stroke="rgba(207,227,218,.08)" stroke-width="1">{grid}</g>')
-    # contur casă
-    L.append(f'<path {line} d="M{X0} {Y_BOT} L{X0} {Y_TOP} L{X1} {Y_TOP} L{X1} {Y_BOT} Z"/>')
-    L.append(f'<path {line} d="M{X0 - 50} {Y_TOP} L540 {Y_ROOF} L{X1 + 50} {Y_TOP}"/>')
-    L.append(f'<path {line} d="M{X0 - 80} {Y_BOT} L{X1 + 80} {Y_BOT}"/>')
-    for x, y, w, h in WIN:
-        L.append(f'<path {line} d="M{x} {y} h{w} v{h} h{-w} Z M{x + w / 2} {y} v{h} M{x} {y + h * .45} h{w}"/>')
-    x, y, w, h = DOOR
-    L.append(f'<path {line} d="M{x} {Y_BOT} V{y} h{w} V{Y_BOT} M{x + w / 2} {y} V{Y_BOT}"/>')
-    # cote
-    L.append(f'<path {line} stroke="rgba(214,188,132,.7)" stroke-width="2" d="M{X0} {Y_BOT + 50} H{X1} M{X0} {Y_BOT + 38} v24 M{X1} {Y_BOT + 38} v24"/>')
-    iv = 'fill="#F1E7D3" stroke="#B9A67F" stroke-width="1.5"'
-    # 1 cornișă
-    L.append(f'<g id="el-cornisa" class="el"><path {iv} d="M{X0 - 30} {Y_TOP - 6} H{X1 + 30} V{Y_TOP + 26} H{X1 + 8} V{Y_TOP + 42} H{X0 - 8} V{Y_TOP + 26} H{X0 - 30} Z"/>'
-             f'<path stroke="#B9A67F" stroke-width="2" d="M{X0 - 8} {Y_TOP + 34} H{X1 + 8}"/></g>')
-    # 2 colțare (bosaje alternante)
-    q = []
-    y, i = Y_TOP + 42, 0
-    while y < Y_BOT - 10:
-        hb = 62
-        for xc, side in ((X0, 1), (X1, -1)):
-            w = 70 if i % 2 == 0 else 48
-            xx = xc if side == 1 else xc - w
-            q.append(f'<rect {iv} x="{xx}" y="{y + 3}" width="{w}" height="{hb - 6}" rx="2"/>')
-        y += hb
-        i += 1
-    L.append(f'<g id="el-coltar" class="el">{"".join(q)}</g>')
-    # 3 ancadramente
-    a = "".join(f'<path {iv} fill-rule="evenodd" d="M{x - 22} {y - 22} h{w + 44} v{h + 22} h{-(w + 44)} Z M{x} {y} h{w} v{h} h{-w} Z"/>' for x, y, w, h in WIN)
-    L.append(f'<g id="el-ancadr" class="el">{a}</g>')
-    # 4 solbancuri
-    s = "".join(f'<rect {iv} x="{x - 36}" y="{y + h}" width="{w + 72}" height="20" rx="2"/><rect {iv} x="{x - 28}" y="{y + h + 20}" width="{w + 56}" height="10"/>' for x, y, w, h in WIN)
-    L.append(f'<g id="el-solbanc" class="el">{s}</g>')
-    # 5 chei de boltă
-    k = "".join(f'<path {iv} d="M{x + w / 2 - 22} {y - 46} h44 l-8 50 h-28 Z"/>' for x, y, w, h in WIN)
-    L.append(f'<g id="el-cheie" class="el">{k}</g>')
-    return f'<svg id="plan" viewBox="0 0 1080 1920" width="1080" height="1920">{"".join(L)}</svg>'
-
-
-random.seed(11)
+random.seed(21)
 PARTS = []
-for i in range(160):
+for i in range(170):
     ang = random.random() * math.tau
     PARTS.append([round(540 + math.cos(ang) * random.uniform(500, 1100), 1), round(930 + math.sin(ang) * random.uniform(600, 1300), 1),
-                  round(random.uniform(330, 420), 1), round(ang, 3), round(random.uniform(2, 5), 1), round(random.uniform(.2, .6), 2)])
+                  round(random.uniform(330, 430), 1), round(ang, 3), round(random.uniform(2, 5), 1), round(random.uniform(.25, .7), 2)])
 
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--g:#1F3A2F;--g0:#0E1C16;--gold:#D6BC84;--ink:#141412;--mint:#CFE3DA}
-html,body{width:1080px;height:1920px;overflow:hidden;background:#050607;font-family:Manrope,sans-serif;color:#fff}
+:root{--co:#2340FF;--co2:#6E86FF;--bone:#F5F1E8;--ink:#0A0A0B}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Manrope,sans-serif;color:#fff}
 .sc{position:absolute;inset:0;overflow:hidden;opacity:0}
-.serif{font-family:'Cormorant Garamond',serif;font-weight:600}
-.wm{font-size:22px;letter-spacing:7px;font-weight:700;display:flex;align-items:center;gap:14px}
-.wm i{display:block;width:3px;height:26px;background:#9E1F2A}
-/* cârlig */
-#s1{background:radial-gradient(ellipse at 50% 40%,#22423a,#0E1C16 70%)}
-.kin{position:absolute;left:72px;right:72px;font-size:120px;line-height:1.0}
-.five{color:var(--gold);font-family:Unbounded,sans-serif;font-weight:800}
-/* plan */
-#s2{background:radial-gradient(ellipse at 50% 50%,#1b3a30 0%,#0E1C16 75%)}
-#plan{position:absolute;inset:0}
-.cota{fill:rgba(214,188,132,.85);font:700 22px Manrope;letter-spacing:5px}
-.el{opacity:0;transform-box:fill-box;transform-origin:center}
-.step-n{position:absolute;top:250px;left:72px;font-size:26px;letter-spacing:6px;font-weight:800;color:var(--gold)}
-.step-t{position:absolute;top:292px;left:72px;right:72px;font-size:104px;line-height:1}
-.chip{position:absolute;left:72px;top:1440px;display:flex;align-items:center;gap:20px;background:rgba(244,238,228,.97);color:var(--ink);border-radius:24px;padding:12px 28px 12px 12px;box-shadow:0 0 0 1px rgba(214,188,132,.6),0 20px 60px rgba(0,0,0,.45)}
-.chip .im{width:120px;height:120px;border-radius:14px;background:#fff center/cover no-repeat}
-.chip .k{font-size:19px;letter-spacing:3px;text-transform:uppercase;color:#7A5B22;font-weight:800}
-.chip .v{font-size:52px;font-weight:800;line-height:1.05}
-.chip .v small{font-size:24px}
-.dots{position:absolute;top:262px;right:72px;display:flex;gap:10px}
-.dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--gold)}
-/* realitate */
-.bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.scan{position:absolute;left:0;right:0;height:6px;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 40px 10px rgba(214,188,132,.8)}
-.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 24%,rgba(0,0,0,0) 40%,rgba(0,0,0,0) 62%,rgba(0,0,0,.7))}
-/* stoc */
-#s4{background:#07110d}
-.hud{position:absolute;left:72px;right:72px}
-.cnt{font-family:Unbounded,sans-serif;font-weight:800;font-size:150px;line-height:1;color:#fff;letter-spacing:-4px}
-.cnt-l{font-size:34px;font-weight:700;color:var(--mint);letter-spacing:2px;margin-top:6px}
-.hline{height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:26px 0 30px;transform-origin:left}
-.pillg{display:inline-block;margin:10px 12px 0 0;padding:14px 26px;border-radius:40px;border:2px solid rgba(214,188,132,.7);font-size:34px;font-weight:800}
-/* final 2030 */
-#s5{background:#030405}
-#glow{position:absolute;left:50%;top:930px;width:1400px;height:1400px;margin:-700px 0 0 -700px;border-radius:50%;background:radial-gradient(circle,rgba(214,188,132,.28) 0%,rgba(46,82,68,.25) 30%,rgba(0,0,0,0) 62%)}
-#beam{position:absolute;left:-600px;top:-200px;width:500px;height:2400px;background:linear-gradient(90deg,transparent,rgba(255,240,210,.18),transparent);transform-origin:center;mix-blend-mode:screen}
-#ring{position:absolute;left:50%;top:930px;border-radius:50%;border:2px solid rgba(214,188,132,.9);box-shadow:0 0 40px rgba(214,188,132,.6),inset 0 0 40px rgba(214,188,132,.35)}
-#ring2{position:absolute;left:50%;top:930px;border-radius:50%;border:1px solid rgba(207,227,218,.5)}
-#parts i{position:absolute;left:0;top:0;border-radius:50%;background:#FFF4DC;box-shadow:0 0 10px rgba(255,220,160,.9)}
+.bg{position:absolute;inset:-40px;background-size:cover;background-repeat:no-repeat;filter:contrast(1.06) saturate(1.05)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.7))}
+#grain{position:absolute;inset:-200px;background:url(../assets/grain.png);background-size:540px 960px;opacity:.10;mix-blend-mode:overlay;z-index:60;pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:55;pointer-events:none}
+/* subtitrare cinetică */
+.cap{position:absolute;left:60px;right:60px;top:1060px;text-align:center;z-index:5}
+.ln{display:block;margin:0 auto 14px;font-size:68px;line-height:1.12;font-weight:800;letter-spacing:-1px;text-shadow:0 4px 24px rgba(0,0,0,.65)}
+.w{display:inline-block;margin:0 .14em;opacity:0;white-space:nowrap}
+.w.hl{background:var(--co);color:#fff;padding:0 .18em;border-radius:10px;text-shadow:none;box-shadow:0 10px 40px rgba(35,64,255,.55)}
+.who{position:absolute;left:0;right:0;top:985px;text-align:center;font-size:24px;letter-spacing:8px;font-weight:800;color:var(--bone);opacity:.85;z-index:5}
+.src{position:absolute;right:60px;top:330px;font-size:18px;letter-spacing:3px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;z-index:6}
+.who b{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--co);margin-right:12px;box-shadow:0 0 16px var(--co)}
+/* etichetă produs (sticker) */
+.tag{position:absolute;left:60px;top:250px;display:flex;flex-direction:column;gap:6px;background:var(--bone);color:var(--ink);border-radius:22px;padding:18px 26px;z-index:6;box-shadow:0 18px 50px rgba(0,0,0,.4);transform-origin:left top}
+.tag .n{font-size:34px;font-weight:800;letter-spacing:-.5px}
+.tag .p{font-size:30px;font-weight:800;color:var(--co)}
+.tag .s{font-size:24px;font-weight:800;color:#0a7a3e}
+.tag.solo{background:var(--co);color:#fff}
+.tag.solo .n{font-size:36px;letter-spacing:5px}
+.wm{position:absolute;top:255px;right:60px;font-size:20px;letter-spacing:7px;font-weight:800;z-index:6;opacity:.9;display:flex;align-items:center;gap:12px}
+.wm i{width:3px;height:24px;background:var(--co);display:block}
+.bar{position:absolute;top:215px;left:60px;right:60px;height:5px;display:flex;gap:6px;z-index:6}
+.bar span{flex:1;background:rgba(255,255,255,.28);border-radius:3px;overflow:hidden}
+.bar span i{display:block;height:100%;width:0;background:#fff}
+/* zbor decoflair.ro din subtitrare spre final */
+#fly{position:absolute;left:0;right:0;top:1345px;text-align:center;font-family:Unbounded,sans-serif;font-weight:800;font-size:76px;color:#fff;z-index:58;opacity:0;text-shadow:0 0 30px rgba(110,134,255,.9)}
+/* final 2030 (cobalt) */
+#s9{background:#020309}
+#glow{position:absolute;left:50%;top:930px;width:1500px;height:1500px;margin:-750px 0 0 -750px;border-radius:50%;background:radial-gradient(circle,rgba(35,64,255,.42) 0%,rgba(35,64,255,.16) 30%,rgba(0,0,0,0) 62%)}
+#beam{position:absolute;left:-600px;top:-200px;width:520px;height:2400px;background:linear-gradient(90deg,transparent,rgba(190,205,255,.20),transparent);mix-blend-mode:screen}
+#ring{position:absolute;left:50%;top:930px;border-radius:50%;border:2px solid rgba(150,170,255,.95);box-shadow:0 0 44px rgba(35,64,255,.8),inset 0 0 40px rgba(35,64,255,.45)}
+#ring2{position:absolute;left:50%;top:930px;border-radius:50%;border:1px solid rgba(255,255,255,.45)}
+#parts i{position:absolute;left:0;top:0;border-radius:50%;background:#EEF2FF;box-shadow:0 0 10px rgba(130,150,255,.95)}
 #site{position:absolute;left:0;right:0;top:860px;text-align:center;font-family:Unbounded,sans-serif;font-weight:800;font-size:122px;line-height:1.1;
-  background:linear-gradient(100deg,#9a8a68 0%,#fff 18%,#D6BC84 32%,#fff6e2 46%,#b79a62 60%,#ffffff 74%,#D6BC84 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(214,188,132,.35))}
+  background:linear-gradient(100deg,#7d8bd6 0%,#fff 18%,#9fb0ff 32%,#ffffff 46%,#5f74ff 60%,#ffffff 74%,#b9c4ff 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
 #wm5{position:absolute;left:0;right:0;top:790px;display:flex;justify-content:center}
-#tag{position:absolute;left:0;right:0;top:1025px;text-align:center;font-size:44px;font-weight:600;color:#fff}
-#tag2{position:absolute;left:0;right:0;top:1100px;text-align:center;font-size:26px;font-weight:700;letter-spacing:6px;color:var(--gold);text-transform:uppercase}
+#wm5 .wm{position:static}
+#tag1{position:absolute;left:0;right:0;top:1025px;text-align:center;font-size:52px;font-weight:700;color:#fff;letter-spacing:-.5px}
+#tag2{position:absolute;left:0;right:0;top:1100px;text-align:center;font-size:26px;font-weight:800;letter-spacing:6px;color:var(--co2);text-transform:uppercase}
 #foot{position:absolute;left:0;right:0;top:1340px;text-align:center;font-size:28px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:3px}
-#flare{position:absolute;left:50%;top:930px;width:900px;height:6px;margin-left:-450px;background:radial-gradient(ellipse,rgba(255,255,255,.95),rgba(255,220,160,0) 70%);filter:blur(2px)}
+#flare{position:absolute;left:50%;top:930px;width:900px;height:6px;margin-left:-450px;background:radial-gradient(ellipse,rgba(255,255,255,.95),rgba(140,160,255,0) 70%);filter:blur(2px)}
 """
 
 JS = r"""
@@ -151,106 +102,101 @@ const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
 const out=x=>1-Math.pow(1-cl(x),3);
 const expo=x=>{x=cl(x);return x==1?1:1-Math.pow(2,-10*x)};
-const back=x=>{x=cl(x);const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const back=x=>{x=cl(x);const c1=1.8,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
 const seg=(t,a,b)=>cl((t-a)/(b-a));
 const vis=(el,o)=>el.style.opacity=o;
-function rise(el,t,a,d=.4,dist=60){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dist}px)`}
-function pop(el,t,a,d=.4){const k=seg(t,a,a+d);el.style.opacity=cl(k*2);el.style.transform=`scale(${.7+.3*back(k)})`}
-function blurIn(el,t,a,d=.5){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.filter=`blur(${(1-k)*18}px)`;el.style.transform=`scale(${1.12-.12*k})`}
-window.TOTAL=23.0;
-const S0=3.9, SD=1.5;  // primul profil la 3,9 s, câte 1,5 s
+function rise(el,t,a,d=.45,dist=30){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dist}px)`}
+window.TOTAL=TOTAL;
+// starturi scene
+const ST=[];{let a=0;SC.forEach(s=>{ST.push(a);a+=s.d});}
 window.setT=function(t){
-  // 1 cârlig
-  vis($('#s1'), t<2.55?1:0);
-  blurIn($('#k1'),t,.05,.45); $('#k1').style.opacity=Math.min(+$('#k1').style.opacity,1-seg(t,1.05,1.2));
-  blurIn($('#k2'),t,1.15,.4);
-  const f=$('#five'); const fk=seg(t,1.45,1.9); f.style.display='inline-block'; f.style.transform=`scale(${1+.6*Math.sin(Math.PI*fk)})`;
-  $('#s1').style.clipPath=`inset(0 0 ${ease(seg(t,2.2,2.55))*100}% 0)`;
-  // 2 plan
-  const S2=$('#s2'); vis(S2, t>=2.2&&t<14.4?1:0);
-  $('#grid').style.opacity=seg(t,2.3,2.8);
-  $$('.draw').forEach((p,i)=>{const k=ease(seg(t,2.45+i*.07,3.35+i*.07)); p.style.strokeDasharray='1'; p.style.strokeDashoffset=1-k;});
-  $$('.cota').forEach(c=>c.style.opacity=seg(t,3.2,3.6));
-  STEPS.forEach((s,i)=>{const a=S0+i*SD, el=$('#'+s[0]);
-    const k=seg(t,a,a+.45); el.style.opacity=cl(k*2);
-    el.style.transform=`translateY(${(1-out(k))*-40}px) scale(${1+.08*(1-out(k))})`;
-    const active=t>=a&&t<a+SD; el.style.filter= active? `drop-shadow(0 0 ${10+8*Math.sin(t*8)}px rgba(214,188,132,.95))` : 'drop-shadow(0 6px 8px rgba(0,0,0,.35))';
-    const lab=$('#lab'+i); const on=t>=a-.02&&t<a+SD-.02 || (i==STEPS.length-1&&t>=a&&t<11.4);
-    lab.style.display=on?'block':'none'; if(on){rise(lab.querySelector('.step-t'),t,a,.35,40); vis(lab.querySelector('.step-n'),out(seg(t,a,a+.25))); pop(lab.querySelector('.chip'),t,a+.25,.35)}
-    $$('.dots i')[i].style.background = t>=a? 'var(--gold)':'transparent';
+  // granulație de film animată
+  $('#grain').style.transform=`translate(${(Math.floor(t*24)*37)%200-100}px,${(Math.floor(t*24)*53)%200-100}px)`;
+  let flash=0;
+  SC.forEach((s,i)=>{const a=ST[i], e=a+s.d, el=$('#sc'+i);
+    const on=t>=a&&t<e+(i==SC.length-1?.6:0); vis(el,on?1:0);
+    const lt=t-a;
+    // mișcare de cameră: push lent + mică deriva; intrare cu „whip” scurt
+    const whip=1-out(seg(lt,0,.28));
+    el.querySelector('.bg').style.transform=`translateX(${whip*(i%2?-160:160)}px) scale(${1.10+.06*seg(lt,0,s.d)})`;
+    el.querySelector('.bg').style.filter=`contrast(1.06) saturate(1.05) blur(${whip*10}px)`;
+    if(i>0&&lt>=0) flash=Math.max(flash, 1-seg(lt,0,.12));
+    // cuvinte
+    const ws=el.querySelectorAll('.w'); const n=ws.length; const span=Math.min(s.d-.75, n*.2);
+    ws.forEach((w,j)=>{const wa=a+.22+j*(span/n); const k=seg(t,wa,wa+.16);
+      w.style.opacity=cl(k*2); w.style.transform=`translateY(${(1-out(k))*26}px) scale(${.8+.2*back(k)})`;});
+    rise(el.querySelector('.who'),t,a+.1,.3,10);
+    const tg=el.querySelector('.tag'); if(tg){const k=seg(t,a+.55,a+.95); tg.style.opacity=cl(k*2); tg.style.transform=`rotate(${(1-back(k))*-8-2}deg) scale(${.6+.4*back(k)})`;}
+    el.querySelectorAll('.bar i').forEach((x,j)=>{x.style.width=(j<i?100:j==i?seg(t,a,e)*100:0)+'%'});
   });
-  // zoom lent pe plan
-  $('#plan').style.transform=`scale(${1+.05*seg(t,2.4,11.6)})`;
-  $('.dots').style.opacity=seg(t,3.7,4)*(1-seg(t,11.3,11.6));
-  // 3 realitate (scanare de jos în sus)
-  const S3=$('#s3'); vis(S3, t>=11.5&&t<14.55?1:0); S3.style.zIndex=20;
-  const sk=ease(seg(t,11.6,12.6)); S3.style.clipPath=`inset(${(1-sk)*100}% 0 0 0)`;
-  $('#scan').style.top=((1-sk)*1920-3)+'px'; vis($('#scan'), sk>0&&sk<1?1:0);
-  $('#s3 .bg').style.transform=`scale(${1.12-.08*seg(t,11.6,14.4)})`;
-  rise($('#r1'),t,12.3,.45); rise($('#r2'),t,12.75,.45);
-  // 4 stoc
-  const S4=$('#s4'); vis(S4, t>=14.3&&t<18.4?out(seg(t,14.3,14.55)):0); S4.style.zIndex=21;
-  STOCK.forEach((s,i)=>{const a=14.55+i*.45; const box=$('#st'+i); rise(box,t,a,.4,50);
-    const n=Math.round(+s[0]*expo(seg(t,a,a+1.1))); box.querySelector('.cnt').textContent=n.toLocaleString('ro-RO');
-    box.querySelector('.hline').style.transform=`scaleX(${out(seg(t,a+.2,a+.9))})`;});
-  rise($('#g1'),t,16.4,.4,30); rise($('#g2'),t,16.8,.4,30); rise($('#hudt'),t,14.45,.4,30);
-  // 5 final 2030
-  const S5=$('#s5'); vis(S5, t>=18.2?1:0); S5.style.zIndex=22;
-  const T=t-18.2;
+  vis($('#flash'), flash*.55);
+  // „decoflair.ro” sare din subtitrare în final
+  const tf=T_FINAL, fk=seg(t,tf-.55,tf+.35); const fly=$('#fly');
+  fly.style.opacity = t<tf-.55?0 : t<tf+.35 ? 1 : 1-seg(t,tf+.35,tf+.5);
+  fly.style.transform=`translateY(${-485*ease(fk)}px) scale(${1+ .6*ease(fk)})`; fly.style.letterSpacing=`${ease(seg(t,tf-.1,tf+.35))*8}px`; fly.style.filter=`blur(${ease(seg(t,tf,tf+.35))*8}px)`;
+  // final 2030
+  const S=$('#s9'); vis(S, t>=tf?1:0);
+  const T=t-tf;
   vis($('#glow'), out(seg(T,0,1.2))*(.85+.15*Math.sin(t*2.2)));
   $('#beam').style.transform=`translateX(${-200+2200*seg(T,.3,2.4)}px) rotate(18deg)`;
   $$('#parts i').forEach((p,i)=>{const d=PARTS[i]; const k=ease(seg(T,0,1.6)); const ang=d[3]+T*.35;
     const rx=540+Math.cos(ang)*d[2], ry=930+Math.sin(ang)*d[2]*.42;
-    const x=d[0]+(rx-d[0])*k, y=d[1]+(ry-d[1])*k; p.style.transform=`translate(${x}px,${y}px)`; p.style.opacity=d[5]*out(seg(T,0,.4))*(1-.6*seg(T,3.2,4.8)) + (k>.98?.15*Math.sin(t*6+i):0);});
-  const rk=expo(seg(T,.9,2.2)); const R=80+720*rk; const ring=$('#ring');
+    const x=d[0]+(rx-d[0])*k, y=d[1]+(ry-d[1])*k; p.style.transform=`translate(${x}px,${y}px)`; p.style.opacity=d[5]*out(seg(T,0,.4))*(1-.6*seg(T,3.2,4.8));});
+  const rk=expo(seg(T,.6,1.9)); const R=80+720*rk; const ring=$('#ring');
   ring.style.width=ring.style.height=R+'px'; ring.style.margin=`${-R/2}px 0 0 ${-R/2}px`; ring.style.opacity=(1-rk)*.9+.08;
-  const R2=60+560*expo(seg(T,1.1,2.6)); const r2=$('#ring2'); r2.style.width=r2.style.height=R2+'px'; r2.style.margin=`${-R2/2}px 0 0 ${-R2/2}px`; r2.style.opacity=.6*(1-seg(T,1.6,3));
-  const sk2=out(seg(T,1.0,1.9)); const site=$('#site');
-  site.style.opacity=sk2; site.style.letterSpacing=`${(1-sk2)*60}px`; site.style.filter=`blur(${(1-sk2)*14}px) drop-shadow(0 0 24px rgba(214,188,132,.35))`;
-  site.style.backgroundPosition=`${100-100*seg(T,1.4,3.6)}% 0`;
-  const fl=seg(T,2.1,2.9); vis($('#flare'), Math.sin(Math.PI*fl)); $('#flare').style.transform=`scaleX(${.3+fl})`;
-  rise($('#wm5'),t,18.2+1.6,.5,20); rise($('#tag'),t,18.2+2.2,.5,30); rise($('#tag2'),t,18.2+2.6,.5,20); rise($('#foot'),t,18.2+3.1,.5,20);
+  const R2=60+560*expo(seg(T,.8,2.3)); const r2=$('#ring2'); r2.style.width=r2.style.height=R2+'px'; r2.style.margin=`${-R2/2}px 0 0 ${-R2/2}px`; r2.style.opacity=.6*(1-seg(T,1.3,2.7));
+  const sk2=out(seg(T,.3,1.1)); const site=$('#site');
+  site.style.opacity=sk2; site.style.letterSpacing=`${(1-sk2)*30}px`; site.style.filter=`blur(${(1-sk2)*10}px) drop-shadow(0 0 26px rgba(35,64,255,.55))`;
+  site.style.backgroundPosition=`${100-100*seg(T,.8,3.2)}% 0`;
+  const fl=seg(T,1.6,2.4); vis($('#flare'), Math.sin(Math.PI*fl)); $('#flare').style.transform=`scaleX(${.3+fl})`;
+  rise($('#wm5'),t,tf+1.2,.5,20); rise($('#tag1'),t,tf+1.8,.5,30); rise($('#tag2'),t,tf+2.3,.5,20); rise($('#foot'),t,tf+2.8,.5,20);
 };
 """
 
 
+def words(line):
+    out = []
+    for w in line.split(" "):
+        hl = w.startswith("*")
+        w = w.replace("*", "")
+        out.append(f'<span class="w{" hl" if hl else ""}">{w}</span>')
+    return f'<span class="ln">{"".join(out)}</span>'
+
+
+def scene_html(i, s):
+    bars = "".join("<span><i></i></span>" for _ in SCENES)
+    tag = ""
+    if s["tag"]:
+        n, p, st = s["tag"]
+        if p:
+            tag = f'<div class="tag"><div class="n">{n}</div><div class="p">{p}</div>{f"<div class=s>✓ {st}</div>" if st else ""}</div>'
+        else:
+            tag = f'<div class="tag solo"><div class="n">{n}</div></div>'
+    return f"""<div class="sc" id="sc{i}"><div class="bg" style="background-image:url('{s['img']}');background-position:{s['pos']}"></div><div class="vig"></div>
+  <div class="bar">{bars}</div><div class="wm"><i></i>DECO &amp; FLAIR</div>{tag}
+  <div class="who"><b></b>CASA</div>{f'<div class="src">{s["src"]}</div>' if s.get("src") else ""}<div class="cap">{"".join(words(l) for l in s['lines'])}</div></div>"""
+
+
 def page(v):
     V = VARIANTS[v]
-    labs = "".join(f"""<div id="lab{i}" style="display:none"><div class="step-n">PROFIL {i + 1:02d} / 05</div><div class="step-t serif">{n}</div>
-  <div class="chip"><div class="im" style="background-image:url('{img}')"></div><div><div class="k">{c} · de la</div><div class="v">{p} <small>lei</small></div></div></div></div>"""
-                   for i, (_, n, c, p, img) in enumerate(STEPS))
-    stock = "".join(f'<div class="hud" id="st{i}" style="top:{560 + i * 270}px;opacity:0"><div class="cnt">0</div><div class="cnt-l">{l}</div><div class="hline"></div></div>' for i, (_, l) in enumerate(STOCK))
     parts = "".join(f'<i style="width:{p[4]}px;height:{p[4]}px"></i>' for p in PARTS)
+    sc = "\n".join(scene_html(i, s) for i, s in enumerate(SCENES))
     return f"""<!doctype html><html lang="ro"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@500;600;700;800&family=Unbounded:wght@800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@800&display=block" rel="stylesheet">
 <style>{CSS}</style></head><body>
-<div class="sc" id="s2">{facade_svg()}
-  <div class="dots">{''.join('<i></i>' for _ in STEPS)}</div>{labs}</div>
-<div class="sc" id="s1" style="z-index:10">
-  <div class="kin serif" id="k1" style="top:760px">Casa ta e<br>frumoasă.</div>
-  <div class="kin serif" id="k2" style="top:700px;opacity:0">Lipsesc doar<br><span class="five" id="five">5</span> detalii.</div>
-</div>
-<div class="sc" id="s3"><div class="bg" style="background-image:url('{REAL}');background-position:50% 35%"></div><div class="shade"></div>
-  <div class="kin serif" id="r1" style="top:280px;font-size:108px">Din schiță.</div>
-  <div class="kin serif" id="r2" style="top:395px;font-size:108px;color:var(--gold)">Pe casa ta.</div>
-</div>
-<div class="scan" id="scan" style="z-index:25;opacity:0"></div>
-<div class="sc" id="s4">
-  <div class="hud" id="hudt" style="top:300px;font-size:28px;letter-spacing:7px;font-weight:800;color:var(--gold)">ÎN STOC ACUM · DECOFLAIR.RO</div>
-  {stock}
-  <div class="hud" style="top:1380px"><span class="pillg" id="g1">Livrare în 3–5 zile</span><span class="pillg" id="g2">Gata de sărbători</span></div>
-</div>
-<div class="sc" id="s5"><div id="glow"></div><div id="beam"></div><div id="ring2"></div><div id="ring"></div><div id="parts">{parts}</div>
+{sc}
+<div class="sc" id="s9" style="z-index:40"><div id="glow"></div><div id="beam"></div><div id="ring2"></div><div id="ring"></div><div id="parts">{parts}</div>
   <div id="wm5" style="opacity:0"><div class="wm"><i></i>DECO &amp; FLAIR</div></div>
   <div id="site">decoflair.ro</div><div id="flare"></div>
-  <div id="tag" class="serif" style="opacity:0;font-size:56px">Detaliile care fac casa.</div>
+  <div id="tag1" style="opacity:0">Fațada care vorbește pentru tine.</div>
   <div id="tag2" style="opacity:0">Profile de exterior · din stoc</div>
   <div id="foot" style="opacity:0">{V['foot']}</div>
 </div>
-<script>const STEPS={json.dumps(STEPS)};const STOCK={json.dumps(STOCK)};const PARTS={json.dumps(PARTS)};{JS}
+<div id="fly">decoflair.ro</div><div id="flash"></div><div id="grain"></div>
+<script>const SC={json.dumps([dict(d=s['d']) for s in SCENES])};const T_FINAL={T_FINAL};const TOTAL={TOTAL};const PARTS={json.dumps(PARTS)};{JS}
 setT(0);</script></body></html>"""
 
 
 for v in VARIANTS:
     (ROOT / "reel" / f"reel-{v}.html").write_text(page(v), encoding="utf-8")
-print("OK", list(VARIANTS))
+print("OK", list(VARIANTS), "durată", TOTAL, "s; final la", T_FINAL)
