@@ -3,7 +3,8 @@
 Ultima actualizare: 2026-11-24
 Agent: Codex
 
-## Documentație / date sursă: `BAZE/` — Claude Code, 2026-11-24
+## Documentație / date sursă: `BAZE/` și `EXTRANET/` — Claude Code, 2026-11-24
+Adăugat și `/home/dfh/workspace/EXTRANET` (aceleași reguli: local, în `.gitignore`, descris în `BAZE.md`; conținutul trebuie inventariat la prima sesiune locală).
 Utilizatorul a stabilit `/home/dfh/workspace/BAZE` ca folder comun de documentație și date (date suplimentare, imagini catalog produse etc.), accesibil ambilor agenți. Detalii și ce știm despre date: `BAZE.md`. `BAZE/` adăugat în `.gitignore` (conține baze cu clienți și prețuri interne — nu se urcă pe GitHub); referință adăugată în `CLAUDE.md` și `AGENTS.md`. Sesiunile cloud nu văd folderul.
 
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24

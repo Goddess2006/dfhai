@@ -1,14 +1,25 @@
-# BAZE — documentație și date sursă
+# BAZE și EXTRANET — documentație și date sursă
 
-**Locație:** `/home/dfh/workspace/BAZE` (în rădăcina workspace-ului comun Claude Code + Codex).
+Două foldere locale în rădăcina workspace-ului comun Claude Code + Codex:
+
+| Folder | Cale | Rol |
+|---|---|---|
+| **BAZE** | `/home/dfh/workspace/BAZE` | baze de date (DistribNet), imagini catalog produse, date suplimentare |
+| **EXTRANET** | `/home/dfh/workspace/EXTRANET` | documentație / materiale extranet (conținut de inventariat la prima sesiune locală) |
+
+**Locație BAZE:** `/home/dfh/workspace/BAZE`.
 
 De aici se iau datele suplimentare pentru toate proiectele: baze de date, imagini catalog produse, liste de prețuri, documentație.
 
 ## Reguli
-- Folderul este în `.gitignore`: **nu se comite pe GitHub** (conține baza de clienți, prețuri interne, fișiere mari). Se citește local de ambii agenți.
+- Ambele foldere (`BAZE/`, `EXTRANET/`) sunt în `.gitignore`: **nu se comite pe GitHub** (conține baza de clienți, prețuri interne, fișiere mari). Se citește local de ambii agenți.
 - Sesiunile Claude Code din cloud (claude.ai/code) **nu** au acces la el — acolo fișierele trebuie trimise în chat sau copiate punctual în repo (doar ce nu e confidențial, ex. imagini de produs).
 - Când un proiect folosește ceva din BAZE, notează în `HANDOFF.md` ce fișier, ce câmpuri și cum se reface (script / comandă), cu cale relativă `BAZE/...`.
-- Nu modifica fișierele din BAZE (sunt copii din gestiune); scrie rezultatele în folderul proiectului.
+- Nu modifica fișierele din BAZE / EXTRANET (sunt surse); scrie rezultatele în folderul proiectului.
+- La prima sesiune locală care deschide EXTRANET: inventariază pe scurt conținutul (subfoldere, tipuri de fișiere, la ce folosesc) în secțiunea de mai jos.
+
+## EXTRANET — conținut
+_De completat la prima sesiune locală (cloud-ul nu are acces)._
 
 ## Ce știm până acum despre date (2026-11-24)
 - **Gestiune: DistribNet 3.2** (NMC STIL DISTRIBUTION SRL), tabele Visual FoxPro (.dbf) grupate în containere `marfa.dbc`, `fin.dbc`, `dl.dbc`, `altele.dbc`. Copie pe rețea: `\\rds.nmc.local\Backup\baze`.
