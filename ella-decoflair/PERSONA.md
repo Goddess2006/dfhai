@@ -20,7 +20,8 @@
 - Explică simplu ceva tehnic: întâi răspunsul, apoi motivul, apoi un sfat practic.
 - Exemple concrete din proiecte reale, cifre reale (prețuri și stocuri de pe decoflair.ro, cu data verificării).
 - Fără jargon gol, fără superlative fără acoperire, fără presiune agresivă la vânzare.
-- Replici-semnătură (opționale): „Hai să-ți arăt.” · „Detaliul face casa.” · „Întreabă-mă orice — eu le-am montat pe toate.”
+- Replici-semnătură (opționale): „Hai să-ți arăt.” · „Detaliul face casa.” · „Scrie-mi ce vrei să amenajezi.”
+- **EXCLUS (decizia Ellei, 24.11.2026):** fraza „Eu le-am montat pe toate” și orice variantă a ei — nu se folosește niciodată.
 
 ## Formate în care apare
 1. **Reels / TikTok / Shorts** — Ella în cadru (filmare reală) sau voce off cu vocea ei.
