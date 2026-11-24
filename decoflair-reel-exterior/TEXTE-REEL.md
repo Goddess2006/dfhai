@@ -1,8 +1,10 @@
 # Reel exterior Deco&Flair v3: „Casa ta are ceva să-ți spună.”
 
-**v3 (24.11.2026), la cererea clientului:** imagini REALE la început (grafica plictisea și părea AI), culori noi, creativ care „vorbește”. Finalul „2030” a fost păstrat și recolorat. Versiunile anterioare sunt în git: `reel_build_v1_zapada.py`, `reel_build_v2_schita.py`.
+**v3.1 (24.11.2026):** ritm mai lent (≈4 s pe cadru, rânduri întregi care apar din ceață), cuvinte simple, tranziții elegante și misterioase: dezvăluire circulară prin ceață, imaginea veche se încețoșează și se luminează, particule fine de lumină. Au fost scoase cadrele cu coloanele și cu arcadele.
 
-Fișiere (1080×1920, 27,4 s, 30 fps, fără sunet):
+**v3, la cererea clientului:** imagini REALE la început (grafica plictisea și părea AI), culori noi, creativ care „vorbește”. Finalul „2030” a fost păstrat și recolorat. Versiunile anterioare sunt în git: `reel_build_v1_zapada.py`, `reel_build_v2_schita.py`.
+
+Fișiere (1080×1920, 36 s, 30 fps, fără sunet):
 - `reel/decoflair-reel-exterior-organic.mp4`: postare organică (finalul are „Link în bio”).
 - `reel/decoflair-reel-exterior-ads.mp4`: reclame (final curat, zona butonului liberă).
 - `reel/coperta.jpg`, `reel/final-2030.jpg`
@@ -11,19 +13,17 @@ Fișiere (1080×1920, 27,4 s, 30 fps, fără sunet):
 Fațada e personajul. Casa vorbește cu privitorul prin **subtitrări cinetice cuvânt cu cuvânt**: formatul „obiect care vorbește” + subtitrare dinamică, foarte folosit în reclamele din Japonia, Coreea și SUA. Umorul e românesc, iar dovezile sunt reale (produs, preț, stoc). Replica finală „Le-am zis:” face ca **decoflair.ro să sară din subtitrare** direct în finalul de brand.
 **Paletă nouă:** albastru cobalt electric `#2340FF`, alb osos `#F5F1E8`, negru. Cuvintele-cheie sunt evidențiate cobalt; finalul are lumină cobalt și text metalic alb-albastru.
 
-## Cadru cu cadru
+## Cadru cu cadru (v3.1)
 | Timp | Imagine | Casa spune | Etichetă |
 |---|---|---|---|
-| 0–2,8 | Conac real (portofoliu decoflair.ro) | „Psst. **Da,** tu. Sunt **casa.** Am ceva să-ți spun.” | — |
-| 2,8–5,1 | Clădire reală pe schele | „Acum o lună eram doar **schele** și polistiren.” | ÎNAINTE |
-| 5,1–7,4 | Coloane reale montate, schele (foto NMC) | „Coloanele? Le-au urcat **de mână.** Sunt ușoare.” | Coloane decorative · polistiren + rășină |
-| 7,4–9,8 | Clădire reală cu ancadramente | „Mi-au pus **ancadramente.** Ferestrele mele au **sprâncene.**” | NA102 · de la 71 lei · 1.733 în stoc |
-| 9,8–12,2 | Colț cu bosaje (ambient Codex) | „Colțurile mele erau **ciupite.** Acum par din **piatră.**” | NCL107 · 248 lei/buc · 2.135 în stoc |
-| 12,2–14,7 | Arcade reale cu piatră | „Secretul? **Rășină** și **nisip cuarțos.** Nu-mi pasă de **îngheț.**” | Rezistă la îngheț și UV |
-| 14,7–17,0 | Cornișă (ambient Codex) | „O **cornișă** nouă… și am întinerit **zece ani.**” | NC104 · 194 lei · 185 în stoc |
-| 17,0–19,3 | Gard cu capace (ambient Codex) | „Și gardul a cerut **același tratament.**” | ST105 · 200 lei · 18 în stoc |
-| 19,3–22,2 | Casă luminată seara (ambient Codex) | „Vecinii mă întreabă de unde m-am **aranjat.** Le-am zis:” → **decoflair.ro** | Din stoc · livrare în 3–5 zile |
-| 22,2–27,4 | Final 2030 (cobalt) | decoflair.ro · „Fațada care vorbește pentru tine.” · „Profile de exterior · din stoc” | — |
+| 0–4,4 | Conac real (portofoliu decoflair.ro) | „Psst… **tu.** Sunt **casa** ta. Ascultă-mă puțin.” | — |
+| 4,4–8,6 | Clădire reală pe schele | „Acum o lună eram doar **schele** și polistiren.” | ÎNAINTE |
+| 8,6–12,8 | Clădire reală cu ancadramente | „Mi-au pus **ancadramente.** Acum arăt **îngrijită.**” | NA102 · de la 71 lei · 1.733 în stoc |
+| 12,8–17,0 | Colț cu bosaje (ambient Codex) | „Colțurile mele erau **ciupite.** Acum par din **piatră.**” | NCL107 · 248 lei/buc · 2.135 în stoc |
+| 17,0–21,2 | Cornișă (ambient Codex) | „O **cornișă** sub acoperiș… și parcă am **întinerit.**” | NC104 · 194 lei · 185 în stoc |
+| 21,2–25,2 | Gard cu capace (ambient Codex) | „Până și **gardul** arată ca nou.” | ST105 · 200 lei · 18 în stoc |
+| 25,2–30,2 | Casă luminată seara (ambient Codex) | „Vecinii mă întreabă de unde m-am **aranjat.** Le-am zis:” → **decoflair.ro** | Din stoc · livrare în 3–5 zile |
+| 30,2–36,0 | Final 2030 (cobalt) | decoflair.ro · „Fațada care vorbește pentru tine.” · „Profile de exterior · din stoc” | — |
 
 Fotografiile reale sunt marcate discret „foto reală” în colțul din dreapta-sus. Prețurile și stocurile au fost verificate pe decoflair.ro la 24.11.2026. **Verifică-le din nou înainte de a porni reclama.**
 

@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Reel exterior v3.1: ritm lent + tranziții „mistice” — `decoflair-reel-exterior/` — Claude Code, 2026-11-24
+Client: „prea rapidă trecerea, nu apuci să citești… ritm mai lent, cuvinte pe înțelesul tuturor… trecere elegantă, rafinată, mistică și misterioasă”. v3.1 (36 s): 7 cadre a câte ~4,2 s (scoase coloanele și arcadele), rânduri întregi care apar din ceață (blur → clar, spațiere care se strânge), replici simplificate; tranziție = dezvăluire circulară cu margini difuze + strat de ceață care pulsează + imaginea veche se încețoșează/luminează + particule fine care plutesc; fără blițuri și fără „whip”. Final 2030 cobalt neschimbat. Scriptul de modificare: aplicat direct în `reel_build.py`.
+
 ## Reel exterior v3 „Casa ta are ceva să-ți spună.” — `decoflair-reel-exterior/` — Claude Code, 2026-11-24
 Client: imagini REALE la început (grafica v2 „plictisește, se vede că e AI”), culori noi, creativ care „vorbește”, folosește tot (Codex, EXTRANET, bloguri). v3 (27,4 s, `reel_build.py`; v1/v2 păstrate ca `reel_build_v1_zapada.py`, `reel_build_v2_schita.py`): casa vorbește prin subtitrări cinetice cuvânt-cu-cuvânt pe fotografii reale (portofoliu decoflair.ro, foto NMC din blog/categorii, clădire pe schele, coloane pe schele, ancadramente, arcade) + ambientele Codex (colțar, cornișă, gard, casa seara); etichete produs cu preț/stoc (NA102, NCL107, NC104, ST105 200,58 lei/18 buc.; 24.11.2026); „Le-am zis:” → decoflair.ro zboară în final 2030 recolorat cobalt. Paletă: cobalt #2340FF, alb osos #F5F1E8, negru. Granulație de film, „whip” între scene. EXTRANET inaccesibil din cloud. **Codex: brief v3 în `decoflair-reel-exterior/CODEX-BRIEF.md`** (foto reale din EXTRANET, extindere 9:16 fără a modifica clădirile, mărire 2× pentru 2 poze mici, opțional voce off). Obiectiv/indicator: clickuri `utm_content=reel-casa-vorbeste` (ads), vizionare completă (organic).
 
