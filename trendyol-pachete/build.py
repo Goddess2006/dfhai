@@ -14,10 +14,10 @@ INFO = {  # dimensiuni / material, din denumirile de pe decoflair.ro
  'FD3': dict(dim='100 × 20 mm', L='2 m', mat='Polimer dur', sec='src/FD3/02.jpg', hero='src/FD3/01.jpg', short='Plintă FD3'),
  'WL1': dict(dim='38 × 18 mm', L='2 m', mat='Polimer dur', sec='src/WL1/02.jpg', hero='src/WL1/01.jpg', short='Brâu WL1'),
  'IL13': dict(dim='80 × 52 mm', L='2 m', mat='Polimer dur', sec=None, hero='src/IL13/01.jpg', short='Cornișă LED IL13'),
- 'NCL107': dict(dim='300/300 × 30 mm', L='1 m', mat='Polistiren de densitate mare', sec='src/NCL107/02.jpg', hero='src/NCL107/01.jpg', short='Colțar NCL107'),
- 'NA105': dict(dim='175 × 40 mm', L='2 m', mat='Polistiren de densitate mare', sec='src/NA105/02.jpg', hero='src/NA105/03.jpg', short='Ancadrament NA105'),
- 'NC104': dict(dim='220 × 80 mm', L='2 m', mat='Polistiren de densitate mare', sec='src/NC104/02.jpg', hero='src/NC104/01.jpg', short='Cornișă NC104'),
- 'REMA1': dict(dim='140 × 30 mm', L='2 m', mat='Polistiren de densitate mare', sec='src/REMA1/02.jpg', hero='src/REMA1/01.jpg', short='Brâu REMA1'),
+ 'NCL107': dict(dim='300/300 × 30 mm', L='1 m', mat='Polistiren acoperit cu rășină și cuarț', sec='src/NCL107/02.jpg', hero='src/NCL107/01.jpg', short='Colțar NCL107'),
+ 'NA105': dict(dim='175 × 40 mm', L='2 m', mat='Polistiren acoperit cu rășină și cuarț', sec='src/NA105/02.jpg', hero='src/NA105/03.jpg', short='Ancadrament NA105'),
+ 'NC104': dict(dim='220 × 80 mm', L='2 m', mat='Polistiren acoperit cu rășină și cuarț', sec='src/NC104/02.jpg', hero='src/NC104/01.jpg', short='Cornișă NC104'),
+ 'REMA1': dict(dim='140 × 30 mm', L='2 m', mat='Polistiren acoperit cu rășină și cuarț', sec='src/REMA1/02.jpg', hero='src/REMA1/01.jpg', short='Brâu REMA1'),
  'Adro-Quartz1.5': dict(dim='1,5 kg', L='', mat='Rășină de chituire', sec=None, hero='src/Adro-Quartz1.5/01.jpg', short='Rășină ADRO-QUARTZ 1,5 kg'),
  'Adro-Fix4': dict(dim='4 kg', L='', mat='Adeziv de montaj', sec=None, hero='src/Adro-Fix4/01.jpg', short='Adeziv ADRO-FIX 4 kg'),
 }
@@ -77,7 +77,7 @@ def cover(pk):
         acc = f'''<div class="acc"><div class="plus">+</div><img src="{rel(e['hero'])}"><div class="accl">{extra[0]['q']} × {html.escape(e['short'])}</div></div>'''
     bars = ''.join('<i></i>' for _ in range(it['q']))
     body = f'''
-<div class="top"><div class="eyebrow">Pachet complet · {'Interior' if pk['zona']=='interior' else 'Exterior'}</div></div>
+<div class="top"><div class="eyebrow">{html.escape(pk['kit'])} · {'Interior' if pk['zona']=='interior' else 'Exterior'}</div></div>
 <div class="hero"><img src="{rel(inf['hero'])}"></div>
 <div class="badge"><b>{it['q']}</b><span>bucăți</span></div>
 {acc}
@@ -225,8 +225,8 @@ def desc(pk, lines, final):
     return (f"{pk['headline']} {pk['sub']}\n\nConținutul pachetului:\n{cont}\n\n"
             f"Specificații: model {it['c']}, secțiune {inf['dim']}, lungime bară {inf['L']}, material {inf['mat'].lower()}.\n"
             f"Acoperire: {pk['acoperire']}.\n\nAvantaje:\n{ben}\n\n"
-            f"Livrarea este inclusă în preț. Produsele se livrează ambalate pentru transport. "
-            f"Culoarea din imaginile de prezentare este orientativă; profilele se livrează albe/neutre și se pot vopsi.")
+            f"Livrarea este inclusă în preț. Produsele se livrează ambalate pentru transport. " +
+            ("Culoarea din imaginile de prezentare este orientativă; profilele se livrează " + ("albe, preamorsate" if pk['zona']=='interior' else "în culoare naturală gri-nisipiu") + " și se pot vopsi."))
 
 def main():
     os.makedirs(os.path.join(ROOT, 'build'), exist_ok=True)

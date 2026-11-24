@@ -1,0 +1,145 @@
+Colțarul exterior ADRo NCL107 este un profil decorativ în formă de L, proiectat pentru evidențierea colțurilor exterioare ale clădirilor. Modelul are brațe de 300 × 300 mm, grosime de 30 mm și înălțime de 1000 mm, fiind potrivit pentru fațade clasice, moderne sau proiecte de renovare. 
+ Realizat din polistiren expandat și acoperit cu un strat protector pe bază de rășină și nisip cuarțos, colțarul decorativ NCL107 combină greutatea redusă cu rezistența necesară utilizării la exterior. Suprafața poate fi vopsită cu vopsea acrilică de exterior, astfel încât ornamentul să fie integrat în cromatica fațadei.
+ Avantajele colțarului exterior NCL107
+Evidențiază arhitectural colțurile clădirii;
+Rezistă la umezeală, radiații UV și cicluri de îngheț-dezgheț;
+Poate masca vizual mici imperfecțiuni ale muchiilor;
+Este vopsibil în culoarea dorită;
+Are greutate redusă și se montează prin lipire;
+Poate fi continuat cu profilul drept compatibil NCL107D;
+Se integrează cu ancadramente, brâuri și cornișe decorative de exterior.
+ Montaj 
+ Colțarul NCL107 se aplică pe un suport exterior curat, stabil și pregătit corespunzător. Pentru lipire se utilizează adeziv compatibil pentru profile decorative de exterior, iar îmbinările și finisarea se realizează conform sistemului recomandat de producător. După uscarea completă, profilul poate fi vopsit cu o vopsea acrilică destinată exteriorului.
+ Pentru calcularea cantității, măsoară numărul colțurilor și înălțimea care trebuie decorată. Fiecare piesă NCL107 are înălțimea de 1000 mm.
+ Ce dimensiuni are colțarul NCL107? 
+Are laterale de 300 × 300 mm, grosime de 30 mm și înălțime de 1000 mm.
+ Din ce material este realizat? 
+Din polistiren expandat acoperit cu un strat protector pe bază de rășină și nisip cuarțos.
+ Poate fi vopsit? 
+Da. După montaj și pregătirea suprafeței, poate fi vopsit cu vopsea acrilică de exterior.
+ Este potrivit pentru exterior? 
+Da. Produsul este destinat fațadelor și prezintă rezistență la umezeală, UV și îngheț-dezgheț.
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Tip produs
+ Coltar decorativ polistiren
+ Stil 
+ Modern / Clasic / Elegant
+ Culoare
+ Gri nisipiu (natur) 
+ Material 
+ Polistiren expandat acoperit cu rasina 
+ Material Finisare 
+ Adro Quartz (Rasina cu nisip cuartos)
+ Brand 
+ Adro
+ Tip Finisaj 
+ Acoperit cu rasina Adro-Quartz
+ DIMENSIUNE 
+ Lățime (mm)
+ 30
+ Înălțime (mm)
+ 1000
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la compresiune
+ Da
+ Rezistența la impact
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adro-fix
+ Adeziv pentru imbinare
+ Adro-Kit 
+ Adeziv pentru chituire
+ Adro-Quartz 
+ Amorsa recomandata 
+ Adro-Prime 
+ Vopsea recomandata 
+ Adro-Optim / vopsele pentru exterior pe bază de apă
+ Compatibilitate Vopsea 
+ Acrilică pe bază de apă / vopsele pentru fațadă
+ Compatibilitate Amorsa 
+ Acril-stirenică sau pe bază de rășini minerale
+ Accesorii compatibile 
+ Colțare, Adezivi, Cleme de fixare
+ Produse complementare
+ Solbanc, Termosisteme
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton, BCA, cărămidă
+ Montaj 
+ Lipire cu Adeziv Adro fix + fixare mecanica optionala
+ Aplicabilitate
+ Exterior
+ Utilizare 
+ Fațade, ferestre, usi, restaurări clădiri istorice
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ Lungime l1 (mm)
+ 300
+ Lungime l2 (mm)
+ 300
+ CUSTOM 
+ Personalizare
+ La cerere
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ coltare exterior 
+ , coltare polistiren 
+ , coltare fatada 
+ , ornamente colt fatada 
+ , bosaje 
+ , coltar decorativ 
+ , coltar fatada 
+ , colt fatada 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

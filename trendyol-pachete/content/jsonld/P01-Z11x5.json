@@ -1,0 +1,151 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Cornișe Tavan Z11 Decorative, Baghete Poliuretan 148x69 mm, 10 ml, Albe",
+  "sku": "P01-Z11x5",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Tavan Clasic reunește 5 cornișe decorative Z11 ARSTYL® din poliuretan alb mat, cu model ornamentat simetric. Cele 10 metri liniari sunt suficienți pentru perimetrul unei camere de cca. 2,5 × 2,5 m și transformă îmbinarea dintre perete și tavan într-un detaliu arhitectural, potrivit amenajărilor clasice, romantice sau în stil baroc venețian.",
+  "category": "Profile decorative interior",
+  "material": "Poliuretan",
+  "color": "Alb",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Cornisa decorativa Z11 148x69x2000",
+    "sku": "Z11",
+    "gtin13": "5412938534338",
+    "url": "https://decoflair.ro/plinta-decorativa-tavan-arstyl-z11"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "Z11"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "ARSTYL®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "148 × 69 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Poliuretan"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Alb"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Interior"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-cornisa-tavan-z11-5-bucati",
+   "priceCurrency": "RON",
+   "price": "1662.35",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Câte cornișe îmi trebuie pentru o cameră?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Măsoară perimetrul camerei și împarte la 2 m (lungimea unei bare), apoi adaugă 10% pentru tăieturile la colțuri. Kitul de 5 cornișe (10 ml) acoperă o cameră de cca. 2,5 × 2,5 m; pentru o cameră de 3 × 4 m (14 ml) sunt necesare 8 bare."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Din ce material este cornișa Z11?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Cornișa Z11 este din poliuretan, de culoare alb mat. Materialul este ușor, nu absoarbe umezeala și poate fi vopsit cu vopsea pe bază de apă."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Cornișa Z11 se poate vopsi?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. După montaj și chituirea rosturilor, cornișa se vopsește cu vopsea pe bază de apă, în culoarea tavanului, a pereților sau într-un ton de accent."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce adeziv folosesc pentru cornișa de tavan?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Se recomandă adeziv pentru profile decorative de interior: Adefix pentru lipire și Adefix Plus pentru îmbinarea barelor. Adezivul nu este inclus în kit."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Se potrivește cornișa Z11 într-un apartament modern?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Z11 are un model ornamentat, potrivit stilurilor clasic, romantic sau neoclasic. Într-un interior modern funcționează ca accent decorativ, mai ales vopsită în același ton cu tavanul."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 cornișe Z11 de câte 2 m (10 ml). Livrarea este inclusă în prețul afișat."
+    }
+   }
+  ]
+ }
+]

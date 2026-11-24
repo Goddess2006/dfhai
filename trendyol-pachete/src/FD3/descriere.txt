@@ -1,0 +1,124 @@
+Plinta FD3 din polimer dur este un produs Deco&Flair, de calitate premium, culoare alb mat, specifică stilului minimalist. Prin design-ul său unic și simplist este potrivit pentru locuințele realizate în stil clasic, romantic și contemporan-elegant. Se armonizează perfect cu restul încăperii în care este montată și poate fi vopsită în orice culoare prin vopseaua acrilică. Are proprietatea de a ascunde defectele de finisare.
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Stil 
+ Modern / Clasic / Atemporal
+ Culoare
+ Alb
+ Finisaj
+ Preamorsat din fabrica
+ Material 
+ Polimer-dur ( HDPS)
+ Material Finisare 
+ Adefix
+ Brand 
+ Noel Marquet
+ Gama
+ Wallstyl
+ Avantaje
+ "Rezistență de top la șocuri și umezeală;
+Design premium, perfect finisat; 
+Montaj curat, fără praf sau șuruburi;
+Material de înaltă densitate (HDPS); 
+Gata de vopsire; 
+Compatibile cu soluții de mascare; 
+Durabilitate pe termen lung; 
+Gama variată de modele și dimensiuni; 
+Fabricate eco, 100% reciclabile;"
+ DIMENSIUNE 
+ Lungime (mm)
+ 2000
+ Lățime (mm)
+ 20
+ Înălțime (mm)
+ 100
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la impact
+ Da
+ Rezistența termică
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adefix
+ Adeziv pentru imbinare
+ Adefix Plus 
+ Adeziv pentru chituire
+ Adefix
+ Amorsa recomandata 
+ Amorsa pe baza de apa
+ Vopsea recomandata 
+ Vopsea pe baza de apa 
+ Accesorii compatibile 
+ Adeziv lipire, Adeziv imbinare
+ Produse complementare
+ Plinte flexibile, Brauri, Cornise, caroiaje
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton
+ Montaj 
+ Lipire cu adezivii speciali. Finisarea se efecteaza cu adezivul Adefix.
+ Aplicabilitate
+ Interior
+ Utilizare 
+ Rezidential (Living, Dormitor, Bucatarie, baie, holuri); Industrial, Horeca
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ Material / Suport
+ Polimer-dur
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ plinta mascare cabluri 
+ , plinta parchet 
+ , stil minimalist 
+ , plinta polimer 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

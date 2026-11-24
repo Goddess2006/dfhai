@@ -1,0 +1,158 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Cornișe Exterior NC104 Polistiren 220x80 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
+  "sku": "P07-NC104x5-FIX",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Cornișa Fațadei conține 5 cornișe decorative de exterior NC104 ADRo® (220 × 80 mm, bare de 2 m), unul dintre cele mai vândute modele din categorie, din polistiren acoperit cu rășini sintetice și minerale cuarțoase, plus adezivul ADRO-FIX 4 kg. Montată sub streașină sau la atic, cornișa încununează fațada și îi dă un aspect finisat.",
+  "category": "Profile decorative exterior",
+  "material": "Polistiren acoperit cu rășină și cuarț",
+  "color": "Gri nisipiu (natur)",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Cornisa decorativa exterior NC104 220X80X2000",
+    "sku": "NC104",
+    "gtin13": "5945786801081",
+    "url": "https://decoflair.ro/cornisa-decorativa-exterior-nc104-220x80x2000"
+   },
+   {
+    "@type": "Product",
+    "name": "Adeziv profiluri decorative exterior ADRO-FIX 4KG",
+    "sku": "Adro-Fix4",
+    "gtin13": "5945786802804",
+    "url": "https://decoflair.ro/adeziv-lipire-adro-fix-4-kg"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "NC104"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "ADRo®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "220 × 80 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polistiren acoperit cu rășină și cuarț"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Gri nisipiu (natur), vopsibil"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Exterior (fațadă)"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-cornisa-exterior-nc104-adeziv-adro-fix",
+   "priceCurrency": "RON",
+   "price": "1279.41",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Unde se montează cornișa de exterior NC104?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "De regulă sub streașină, la atic sau ca element de separare între etaje. Poate fi folosită și la coronamentul zidurilor sau gardurilor."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Câtă cornișă îmi trebuie?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Măsoară lungimea fațadelor de decorat și împarte la 2 m. Adaugă 5–10% pentru tăieturile la colțuri. Kitul acoperă 10 ml."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce adeziv folosesc pentru cornișa de exterior?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Pentru lipire, ADRO-FIX (inclus în kit, 4 kg). Pentru îmbinarea barelor se recomandă un adeziv poliuretanic de îmbinare (ex. AKFIX), iar pentru chituirea rosturilor ADRO-QUARTZ."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Cum se vopsește cornișa?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Se aplică 1–2 straturi de amorsă, apoi vopsea acrilică de exterior. Culoarea naturală a profilului este gri-nisipiu."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Rezistă la ger și ploaie?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Stratul de rășină cu minerale cuarțoase conferă polistirenului rezistență mecanică și chimică la exterior."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 cornișe NC104 de câte 2 m și 1 găleată de adeziv ADRO-FIX 4 kg. Livrarea este inclusă în preț."
+    }
+   }
+  ]
+ }
+]

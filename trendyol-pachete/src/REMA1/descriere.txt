@@ -1,0 +1,125 @@
+Profilul REMA1 din polistiren acoperit cu rășină este un produs rezistent la șocuri, îngheț și umezeală. Poate fi vopsit ușor în orice culoare în funcție de preferință folosind o vopsea acrilică de exterior pentru decorarea ferestrelor. Designul său unic conferă eleganță și reprezintă punctul de atracție în cadrul amenajărilor de tip modern. Adezivul de îmbinare Domostyl Hybrid, ADRo-Fix sau AKFIX se aplică ușor și reprezintă cea mai bună soluție pentru fixarea profilurilor.
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Tip produs
+Brau decorativ
+ Stil 
+ Modern / Clasic / Elegant
+ Culoare
+ Gri nisipiu (natur) 
+ Material 
+ Polistiren expandat acoperit cu rasina 
+ Material Finisare 
+ Adro Quartz (Rasina cu nisip cuartos)
+ Brand 
+ Adro
+ Tip Finisaj 
+ Acoperit cu rasina Adro-Quartz
+ DIMENSIUNE 
+ Lungime (mm)
+ 2000
+ Lățime (mm)
+ 30
+ Înălțime (mm)
+ 140
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta UV
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la compresiune
+ Da
+ Rezistența la impact
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adro-fix
+ Adeziv pentru imbinare
+ Adro-Kit 
+ Adeziv pentru chituire
+ Adro-Quartz 
+ Amorsa recomandata 
+ Adro-Prime 
+ Vopsea recomandata 
+ Adro-Optim / vopsele pentru exterior pe bază de apă
+ Compatibilitate Vopsea 
+ Acrilică pe bază de apă / vopsele pentru fațadă
+ Compatibilitate Amorsa 
+ Acril-stirenică sau pe bază de rășini minerale
+ Accesorii compatibile 
+ Colțare, Adezivi, Cleme de fixare
+ Produse complementare
+ Solbanc, Termosisteme
+ Produse complementare 
+ Solbanc, Termosisteme
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton, BCA, cărămidă
+ Montaj 
+ Lipire cu Adeziv Adro fix + fixare mecanica optionala
+ Aplicabilitate
+ Exterior
+ Utilizare 
+ Fațade, ferestre, usi, restaurări clădiri istorice
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ CUSTOM 
+ Personalizare
+ La cerere
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ brauri exterior 
+ , brau decorativ exterior 
+ , brau exterior 
+ , brauri decorative fatada 
+ , brauri polistiren cu rasini 
+ , profil exterior 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

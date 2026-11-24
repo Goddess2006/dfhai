@@ -1,0 +1,55 @@
+Folosit pentru chituirea la suprafața îmbinărilor între profilurile decorative sau pentru remedierea degradărilor care pot apărea în urma montajului, ADRo-Quartz este un amestec de compuși pe bază de rășini sintetice, minerale cuarțoase și calcaroase, aditivi și apă. Temperatura pentru aplicare trebuie să fie cuprinsă între 10°C și 25°C, iar umiditatea mai mică de 10%. Este recomandat ca procesul de chituire să se facă după uscarea completă a adezivilor.
+Uscarea procesului de chituire poate dura pâna la 2 zile. 
+ <div class="product-extra-attributes product_extra-243
+
+AMBALARE SI UNITATE DE VANZARE 
+ Greutate
+ 1.5 kg
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ adeziv lipire 
+ , adeziv îmbinare 
+ , adeziv chituire 
+ , adeziv pentru profiluri 
+ , adeziv polistiren 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

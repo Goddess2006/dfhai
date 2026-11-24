@@ -1,0 +1,158 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Brâuri Decorative Fațadă REMA1 140x30 mm + Rășină ADRO-QUARTZ 1,5 kg, 10 ml",
+  "sku": "P08-REMA1x5-QUARTZ",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Brâu de Fațadă conține 5 brâuri decorative REMA1 ADRo® (140 × 30 mm, bare de 2 m) din polistiren acoperit cu rășină, plus rășina de chituire ADRO-QUARTZ 1,5 kg. Brâul orizontal împarte fațada în registre, marchează nivelul dintre etaje sau linia ferestrelor și dă casei ritm și proporție.",
+  "category": "Profile decorative exterior",
+  "material": "Polistiren acoperit cu rășină și cuarț",
+  "color": "Gri nisipiu (natur)",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Brau decorativ polistiren REMA1 140X30X2000",
+    "sku": "REMA1",
+    "gtin13": "5945786802125",
+    "url": "https://decoflair.ro/brau-decorativ-polistiren-adro-decor-rema1-140x30x2000"
+   },
+   {
+    "@type": "Product",
+    "name": "Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG",
+    "sku": "Adro-Quartz1.5",
+    "gtin13": "5945786802842",
+    "url": "https://decoflair.ro/rasina-adro-quartz"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "REMA1"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "ADRo®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "140 × 30 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polistiren acoperit cu rășină și cuarț"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Gri nisipiu (natur), vopsibil"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Exterior (fațadă)"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-brau-decorativ-fatada-rema1-rasina-adro-quartz",
+   "priceCurrency": "RON",
+   "price": "859.29",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "La ce folosește un brâu decorativ pe fațadă?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Brâul este un profil orizontal care împarte fațada în registre: marchează nivelul dintre etaje, linia ferestrelor sau partea superioară a soclului și face casa să pară mai bine proporționată."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce dimensiuni are brâul REMA1?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "REMA1 are 140 mm înălțime și 30 mm grosime, cu bare de 2 m."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Cu ce se lipește brâul REMA1?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Cu adeziv pentru profile de exterior (ADRO-FIX, AKFIX sau Domostyl Hybrid — se comandă separat). Rășina ADRO-QUARTZ din kit se folosește la chituirea îmbinărilor, după uscarea adezivului."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Câți metri de brâu îmi trebuie?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Măsoară lungimea fațadelor pe care trece brâul și împarte la 2 m; adaugă 5–10% pentru colțuri. Kitul acoperă 10 ml."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Se poate vopsi?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Culoarea naturală este gri-nisipiu; se vopsește cu vopsea acrilică de exterior, pe amorsă, în culoarea fațadei sau în contrast."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 brâuri REMA1 de câte 2 m și 1 găleată de rășină ADRO-QUARTZ 1,5 kg. Livrarea este inclusă în preț."
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,125 @@
+Cornisa de iluminat IL13 WALLSTYL® are un aspect atemporal, creionat cu o curbă elegantă pentru un finisaj impecabil. Folosit cu banda LED, oferă o sursă de lumină ambientala sofisticată, creând o atmosferă caldă și confortabilă. Fabricat din polimer-dur, IL13 WALLSTYL® a fost dezvoltat in tendinte moderne și poate fi asociat cu modelul IL3. 
+ Pentru iluminarea indirectă, cornisa este prevăzuta cu un spațiu pentru fixarea benzilor LED. Miezul grafitat al cornisei IL13 WALLSTYL® o face să fie opaca, permițând luminii să fie concentrată într-o singură direcție.Cornisa este amorsata din fabrica, gata pentru stratul final de vopsea. 
+ Se recomanda vopsirea folosind o vopsea pe baza de apa. Finisarile de montaj se efectueaza folosind adezivul Adefix. 
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Stil 
+ Modern / Clasic / Atemporal
+ Culoare
+ Alb
+ Finisaj
+ Preamorsat din fabrica
+ Material 
+ Polimer-dur ( HDPS)
+ Material Finisare 
+ Adefix
+ Brand 
+ Noel Marquet
+ Gama
+ Wallstyl
+ Avantaje
+ "Rezistență de top la șocuri și umezeală;
+Design premium, perfect finisat; 
+Montaj curat, fără praf sau șuruburi;
+Material de înaltă densitate (HDPS); 
+Gata de vopsire; 
+Compatibile cu soluții de mascare; 
+Durabilitate pe termen lung; 
+Gama variată de modele și dimensiuni; 
+Fabricate eco, 100% reciclabile;"
+ DIMENSIUNE 
+ Lungime (mm)
+ 2000
+ Înălțime (mm)
+ 80
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la impact
+ Da
+ Rezistența termică
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adefix
+ Adeziv pentru imbinare
+ Adefix Plus 
+ Adeziv pentru chituire
+ Adefix
+ Amorsa recomandata 
+ Amorsa pe baza de apa
+ Vopsea recomandata 
+ Vopsea pe baza de apa 
+ Accesorii compatibile 
+ Adeziv lipire, Adeziv imbinare
+ Produse complementare
+ Plinte flexibile, Brauri, Cornise, caroiaje
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton
+ Montaj 
+ Lipire cu adezivii speciali. Finisarea se efecteaza cu adezivul Adefix.
+ Aplicabilitate
+ Interior
+ Utilizare 
+ Rezidential (Living, Dormitor, Bucatarie, baie, holuri); Industrial, Horeca
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ Grosime (mm)
+ 52
+ Material / Suport
+ Polimer-dur
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ CORNISA LED IL13 80X52X2000 
+ , IL13 
+ , Cornisa tavan 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

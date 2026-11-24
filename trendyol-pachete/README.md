@@ -31,3 +31,10 @@ Fără preț, fără site, fără telefon (reguli Trendyol). Ambienturile din `c
 python3 tools/fetch_prices.py && python3 tools/fetch_images.py && python3 build.py && node render.cjs
 ```
 Pachetele se editează în `data/pachete.json`; transportul în `TRANSPORT` din `build.py`.
+
+## Conținut (SEO / GEO / AEO) — `content/`
+- `content/<cod>.md` — per kit: nume kit, titlu Trendyol, descriere (text + HTML), puncte-cheie, atribute, cuvinte cheie cu volume Google RO (Semrush, nov. 2026), SEO title/meta/slug/H1, rezumat GEO + fapte cheie, FAQ (AEO), alt-text imagini, JSON-LD Product + FAQPage.
+- `content/TOATE-KITURILE.md` — toate într-un fișier; `content/trendyol-upload.csv` — toate câmpurile, un rând per kit.
+- `content/GHID-LISTARE-SEO-GEO-AEO.md` — strategia de titlu, reguli Trendyol, ce e de verificat.
+- Surse: `data/keywords-semrush-ro.csv`, fișele oficiale `src/<cod>/descriere.txt`, `data/meta-site.json` (EAN, producător).
+- Reproducere: `python3 tools/fetch_desc.py && python3 build.py && node render.cjs && python3 content.py`.

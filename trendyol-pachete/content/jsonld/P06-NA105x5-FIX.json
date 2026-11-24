@@ -1,0 +1,158 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Ancadramente Ferestre NA105 Polistiren 175x40 mm + Adeziv ADRO-FIX 4 kg",
+  "sku": "P06-NA105x5-FIX",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Ferestre Încadrate conține 5 ancadramente decorative NA105 ADRo® (175 × 40 mm, bare de 2 m), din polistiren acoperit cu rășină, plus adezivul de exterior ADRO-FIX 4 kg pentru lipire. Profilul lat, cu trepte, încadrează ferestrele și ușile ca la o vilă clasică și devine punctul de atracție al fațadei.",
+  "category": "Profile decorative exterior",
+  "material": "Polistiren acoperit cu rășină și cuarț",
+  "color": "Gri nisipiu (natur)",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Ancadrament decorativ fereastra NA105 175X40X2000",
+    "sku": "NA105",
+    "gtin13": "5945786800374",
+    "url": "https://decoflair.ro/ancadrament-decorativ-na105"
+   },
+   {
+    "@type": "Product",
+    "name": "Adeziv profiluri decorative exterior ADRO-FIX 4KG",
+    "sku": "Adro-Fix4",
+    "gtin13": "5945786802804",
+    "url": "https://decoflair.ro/adeziv-lipire-adro-fix-4-kg"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "NA105"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "ADRo®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "175 × 40 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polistiren acoperit cu rășină și cuarț"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Gri nisipiu (natur), vopsibil"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Exterior (fațadă)"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-ancadrament-fereastra-na105-adeziv-adro-fix",
+   "priceCurrency": "RON",
+   "price": "1124.21",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Câți metri de ancadrament îmi trebuie pentru o fereastră?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Adună cele două laturi verticale cu latura de sus (și de jos, dacă nu ai solbanc), plus lățimea profilului la colțuri. O fereastră de 120 × 140 cm încadrată pe 3 laturi are nevoie de cca. 4,5–5 ml; kitul de 10 ml acoperă de regulă două astfel de ferestre."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce lățime are ancadramentul NA105?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "NA105 are 175 mm lățime și 40 mm grosime, lungimea barei fiind de 2 m."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce adeziv este inclus?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul include ADRO-FIX 4 kg, adeziv pentru profile decorative de exterior. Se aplică la 5–25 °C, cu umiditatea mediului sub 60%."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Se poate monta ancadramentul pe termosistem?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da, pe un suport exterior curat, stabil și pregătit corespunzător (tencuială sau termosistem finisat). Suportul trebuie să fie plan și fără praf."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ancadramentul se poate vopsi?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Culoarea naturală este gri-nisipiu; după montaj se aplică amorsă și vopsea acrilică de exterior, în orice nuanță."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 ancadramente NA105 de câte 2 m și 1 găleată de adeziv ADRO-FIX 4 kg. Livrarea este inclusă în preț."
+    }
+   }
+  ]
+ }
+]

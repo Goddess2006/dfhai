@@ -1,59 +1,245 @@
 [
- {"id": "P01-Z11x5", "zona": "interior", "titlu": "Pachet 5 Cornișe Decorative Tavan Z11 Poliuretan 148x69 mm, 10 ml",
-  "scurt": "Cornișă tavan Z11", "brand": "ARSTYL® · NMC",
-  "items": [{"c": "Z11", "q": 5}], "ml": 10,
-  "headline": "Tavanul care spune o poveste.", "sub": "Cornișă ornamentată, montată de jur împrejurul camerei.",
+ {
+  "id": "P01-Z11x5",
+  "zona": "interior",
+  "titlu": "Set 5 Cornișe Tavan Z11 Decorative, Baghete Poliuretan 148x69 mm, 10 ml, Albe",
+  "scurt": "Cornișă tavan Z11",
+  "brand": "ARSTYL® · NMC",
+  "items": [
+   {
+    "c": "Z11",
+    "q": 5
+   }
+  ],
+  "ml": 10,
+  "headline": "Tavanul care spune o poveste.",
+  "sub": "Cornișă ornamentată, montată de jur împrejurul camerei.",
   "acoperire": "10 metri liniari — perimetrul unei camere de cca. 2,5 × 2,5 m",
-  "ambient": ["../decoflair-inspiratie-50/imagini/produse-detalii/41-cornisa-still-life.png", "src/Z11/03.jpg"],
-  "beneficii": ["Poliuretan de înaltă densitate", "Model ornamentat floral", "Se lipește și se vopsește", "Bare de 2 m, ușor de manipulat"]},
- {"id": "P02-FD3x5", "zona": "interior", "titlu": "Pachet 5 Plinte Decorative Polimer Dur FD3 100x20 mm, Albe, 10 ml",
-  "scurt": "Plintă FD3", "brand": "WALLSTYL® · NMC",
-  "items": [{"c": "FD3", "q": 5}], "ml": 10,
-  "headline": "Finisajul care leagă podeaua de perete.", "sub": "Plintă înaltă, modernă, cu profil curbat.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/produse-detalii/41-cornisa-still-life.png",
+   "src/Z11/03.jpg"
+  ],
+  "beneficii": [
+   "Poliuretan alb mat",
+   "Model ornamentat floral",
+   "Se lipește și se vopsește",
+   "Bare de 2 m, ușor de manipulat"
+  ],
+  "kit": "Kit Tavan Clasic"
+ },
+ {
+  "id": "P02-FD3x5",
+  "zona": "interior",
+  "titlu": "Set 5 Plinte Parchet Albe FD3, Plintă Polimer Dur 100x20 mm, 10 ml, Vopsibile",
+  "scurt": "Plintă FD3",
+  "brand": "WALLSTYL® · NMC",
+  "items": [
+   {
+    "c": "FD3",
+    "q": 5
+   }
+  ],
+  "ml": 10,
+  "headline": "Finisajul care leagă podeaua de perete.",
+  "sub": "Plintă înaltă, modernă, cu profil curbat.",
   "acoperire": "10 metri liniari de plintă",
-  "ambient": ["../decoflair-inspiratie-50/imagini/interior/05-hol-plinta.png", "src/FD3/03.jpg"],
-  "beneficii": ["Polimer dur, rezistent la lovituri", "Nu se umflă la umezeală", "Albă, gata de vopsit", "Bare de 2 m"]},
- {"id": "P03-WL1x8", "zona": "interior", "titlu": "Pachet 8 Brâuri Decorative WL1 38x18 mm pentru Chenare și Caroiaje Perete, 16 ml",
-  "scurt": "Brâu WL1 pentru chenare", "brand": "WALLSTYL® · NMC",
-  "items": [{"c": "WL1", "q": 8}], "ml": 16,
-  "headline": "Rame elegante pentru tablouri, direct pe perete.", "sub": "Caroiaje clasice care pun în valoare tablourile, oglinzile și aplicele.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/interior/05-hol-plinta.png",
+   "src/FD3/03.jpg"
+  ],
+  "beneficii": [
+   "Polimer dur (HDPS), muchii precise",
+   "Rezistent la umezeală și lovituri",
+   "Preamorsată, gata de vopsit",
+   "Bare de 2 m"
+  ],
+  "kit": "Kit Plintă Albă Modernă"
+ },
+ {
+  "id": "P03-WL1x8",
+  "zona": "interior",
+  "titlu": "Set 8 Baghete Decorative Perete WL1 pentru Chenare și Rame, Brâu 38x18 mm, 16 ml",
+  "scurt": "Brâu WL1 pentru chenare",
+  "brand": "WALLSTYL® · NMC",
+  "items": [
+   {
+    "c": "WL1",
+    "q": 8
+   }
+  ],
+  "ml": 16,
+  "headline": "Rame elegante pentru tablouri, direct pe perete.",
+  "sub": "Caroiaje clasice care pun în valoare tablourile, oglinzile și aplicele.",
   "acoperire": "16 metri liniari — aprox. 3 chenare de 100 × 140 cm",
-  "ambient": ["../catalog-fatade/jpg/13-living-salvie-cornisa-led-chenare-dupa.jpg", "../catalog-fatade/jpg/14-dormitor-mov-chenare.jpg", "src/WL1/03.jpg"],
+  "ambient": [
+   "../catalog-fatade/jpg/13-living-salvie-cornisa-led-chenare-dupa.jpg",
+   "../catalog-fatade/jpg/14-dormitor-mov-chenare.jpg",
+   "src/WL1/03.jpg"
+  ],
   "caroiaj": true,
-  "beneficii": ["Ideal pentru caroiaje și rame de tablouri", "Polimer dur, muchii precise", "Se taie la 45° cu cutia de tăiere", "Se vopsește în culoarea peretelui"]},
- {"id": "P04-IL13x5", "zona": "interior", "titlu": "Pachet 5 Cornișe LED Iluminare Indirectă IL13 80x52 mm Polimer Dur, 10 ml",
-  "scurt": "Cornișă LED IL13", "brand": "WALLSTYL® · NMC",
-  "items": [{"c": "IL13", "q": 5}], "ml": 10,
-  "headline": "Lumina devine arhitectură.", "sub": "Cornișă cu canal pentru bandă LED — lumină caldă, indirectă.",
+  "beneficii": [
+   "Ideal pentru caroiaje și rame de tablouri",
+   "Polimer dur, muchii precise",
+   "Se taie la 45° cu cutia de tăiere",
+   "Se vopsește în culoarea peretelui"
+  ],
+  "kit": "Kit Chenare & Tablouri"
+ },
+ {
+  "id": "P04-IL13x5",
+  "zona": "interior",
+  "titlu": "Set 5 Profile LED Tavan IL13, Cornișă LED Iluminare Indirectă 80x52 mm, 10 ml",
+  "scurt": "Cornișă LED IL13",
+  "brand": "WALLSTYL® · NMC",
+  "items": [
+   {
+    "c": "IL13",
+    "q": 5
+   }
+  ],
+  "ml": 10,
+  "headline": "Lumina devine arhitectură.",
+  "sub": "Cornișă cu canal pentru bandă LED — lumină caldă, indirectă.",
   "acoperire": "10 metri liniari de lumină indirectă",
-  "ambient": ["../decoflair-inspiratie-50/imagini/interior/07-living-scafa-led.png", "src/IL13/02.jpg"],
-  "beneficii": ["Canal ascuns pentru bandă LED", "Lumină indirectă, fără orbire", "Polimer dur, ușor", "Banda LED nu este inclusă"]},
- {"id": "P05-NCL107x5-QUARTZ", "zona": "exterior", "titlu": "Pachet 5 Colțare Decorative Fațadă NCL107 300/300x30x1000 mm + Rășină ADRO-QUARTZ 1,5 kg",
-  "scurt": "Colțar fațadă NCL107 + rășină", "brand": "ADRO-DECOR® · NMC",
-  "items": [{"c": "NCL107", "q": 5}, {"c": "Adro-Quartz1.5", "q": 1}], "ml": 5, "mlLabel": "5 m de colț",
-  "headline": "Colțuri de fațadă cu caracter.", "sub": "Bosaje clasice care dau casei aspect solid, de piatră.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/interior/07-living-scafa-led.png",
+   "src/IL13/02.jpg"
+  ],
+  "beneficii": [
+   "Canal ascuns pentru bandă LED",
+   "Lumină indirectă, fără orbire",
+   "Polimer dur, ușor",
+   "Banda LED nu este inclusă"
+  ],
+  "kit": "Kit Lumină Indirectă"
+ },
+ {
+  "id": "P05-NCL107x5-QUARTZ",
+  "zona": "exterior",
+  "titlu": "Set 5 Colțare Polistiren Fațadă NCL107 300x300 mm + Rășină ADRO-QUARTZ 1,5 kg",
+  "scurt": "Colțar fațadă NCL107 + rășină",
+  "brand": "ADRo® · ADRO-DECOR",
+  "items": [
+   {
+    "c": "NCL107",
+    "q": 5
+   },
+   {
+    "c": "Adro-Quartz1.5",
+    "q": 1
+   }
+  ],
+  "ml": 5,
+  "mlLabel": "5 m de colț",
+  "headline": "Colțuri de fațadă cu caracter.",
+  "sub": "Bosaje clasice care dau casei aspect solid, de piatră.",
   "acoperire": "5 metri liniari de colț + rășina pentru chituirea îmbinărilor",
-  "ambient": ["../decoflair-inspiratie-50/imagini/exterior/17-colt-fatada.png", "../catalog-fatade/jpg/03-casa-bej-coltare-bosaje-ancadramente.jpg"],
-  "beneficii": ["Polistiren de densitate mare", "Rezistent la UV, ger și umezeală", "Rășina ADRO-QUARTZ inclusă", "Se vopsește cu vopsea de fațadă"]},
- {"id": "P06-NA105x5-FIX", "zona": "exterior", "titlu": "Pachet 5 Ancadramente Decorative Ferestre NA105 175x40 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
-  "scurt": "Ancadrament NA105 + adeziv", "brand": "ADRO-DECOR® · NMC",
-  "items": [{"c": "NA105", "q": 5}, {"c": "Adro-Fix4", "q": 1}], "ml": 10,
-  "headline": "Ferestre încadrate ca într-o vilă clasică.", "sub": "Ancadrament lat, profilat, pentru ferestre și uși.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/exterior/17-colt-fatada.png",
+   "../catalog-fatade/jpg/03-casa-bej-coltare-bosaje-ancadramente.jpg"
+  ],
+  "beneficii": [
+   "Ușor, se montează prin lipire",
+   "Rezistent la UV, ger și umezeală",
+   "Rășina ADRO-QUARTZ inclusă",
+   "Se vopsește cu vopsea de fațadă"
+  ],
+  "kit": "Kit Colțuri de Fațadă"
+ },
+ {
+  "id": "P06-NA105x5-FIX",
+  "zona": "exterior",
+  "titlu": "Set 5 Ancadramente Ferestre NA105 Polistiren 175x40 mm + Adeziv ADRO-FIX 4 kg",
+  "scurt": "Ancadrament NA105 + adeziv",
+  "brand": "ADRo® · ADRO-DECOR",
+  "items": [
+   {
+    "c": "NA105",
+    "q": 5
+   },
+   {
+    "c": "Adro-Fix4",
+    "q": 1
+   }
+  ],
+  "ml": 10,
+  "headline": "Ferestre încadrate ca într-o vilă clasică.",
+  "sub": "Ancadrament lat, profilat, pentru ferestre și uși.",
   "acoperire": "10 metri liniari — de regulă o fereastră mare sau o ușă + adezivul de montaj",
-  "ambient": ["../decoflair-inspiratie-50/imagini/produse-detalii/46-ancadrament-studio.png", "../catalog-fatade/jpg/08-casa-gri-ancadramente-cornisa.jpg"],
-  "beneficii": ["Polistiren de densitate mare", "Rezistent la UV, ger și umezeală", "Adeziv ADRO-FIX 4 kg inclus", "Se vopsește cu vopsea de fațadă"]},
- {"id": "P07-NC104x5-FIX", "zona": "exterior", "titlu": "Pachet 5 Cornișe Decorative Exterior NC104 220x80 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
-  "scurt": "Cornișă exterior NC104 + adeziv", "brand": "ADRO-DECOR® · NMC",
-  "items": [{"c": "NC104", "q": 5}, {"c": "Adro-Fix4", "q": 1}], "ml": 10,
-  "headline": "Linia care încununează fațada.", "sub": "Cornișă clasică sub streașină, pentru o fațadă finisată.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/produse-detalii/46-ancadrament-studio.png",
+   "../catalog-fatade/jpg/08-casa-gri-ancadramente-cornisa.jpg"
+  ],
+  "beneficii": [
+   "Ușor, se montează prin lipire",
+   "Rezistent la UV, ger și umezeală",
+   "Adeziv ADRO-FIX 4 kg inclus",
+   "Se vopsește cu vopsea de fațadă"
+  ],
+  "kit": "Kit Ferestre Încadrate"
+ },
+ {
+  "id": "P07-NC104x5-FIX",
+  "zona": "exterior",
+  "titlu": "Set 5 Cornișe Exterior NC104 Polistiren 220x80 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
+  "scurt": "Cornișă exterior NC104 + adeziv",
+  "brand": "ADRo® · ADRO-DECOR",
+  "items": [
+   {
+    "c": "NC104",
+    "q": 5
+   },
+   {
+    "c": "Adro-Fix4",
+    "q": 1
+   }
+  ],
+  "ml": 10,
+  "headline": "Linia care încununează fațada.",
+  "sub": "Cornișă clasică sub streașină, pentru o fațadă finisată.",
   "acoperire": "10 metri liniari de cornișă + adezivul de montaj",
-  "ambient": ["../decoflair-inspiratie-50/imagini/exterior/15-cornisa-acoperis.png", "../catalog-fatade/jpg/05-casa-albastra-ancadramente-cornisa.jpg"],
-  "beneficii": ["Polistiren de densitate mare", "Rezistent la UV, ger și umezeală", "Adeziv ADRO-FIX 4 kg inclus", "Se vopsește cu vopsea de fațadă"]},
- {"id": "P08-REMA1x5-QUARTZ", "zona": "exterior", "titlu": "Pachet 5 Brâuri Decorative Fațadă REMA1 140x30 mm + Rășină ADRO-QUARTZ 1,5 kg, 10 ml",
-  "scurt": "Brâu fațadă REMA1 + rășină", "brand": "ADRO-DECOR® · NMC",
-  "items": [{"c": "REMA1", "q": 5}, {"c": "Adro-Quartz1.5", "q": 1}], "ml": 10,
-  "headline": "Fațada cu ritm și proporție.", "sub": "Brâu orizontal între etaje sau sub ferestre.",
+  "ambient": [
+   "../decoflair-inspiratie-50/imagini/exterior/15-cornisa-acoperis.png",
+   "../catalog-fatade/jpg/05-casa-albastra-ancadramente-cornisa.jpg"
+  ],
+  "beneficii": [
+   "Ușor, se montează prin lipire",
+   "Rezistent la UV, ger și umezeală",
+   "Adeziv ADRO-FIX 4 kg inclus",
+   "Se vopsește cu vopsea de fațadă"
+  ],
+  "kit": "Kit Cornișa Fațadei"
+ },
+ {
+  "id": "P08-REMA1x5-QUARTZ",
+  "zona": "exterior",
+  "titlu": "Set 5 Brâuri Decorative Fațadă REMA1 140x30 mm + Rășină ADRO-QUARTZ 1,5 kg, 10 ml",
+  "scurt": "Brâu fațadă REMA1 + rășină",
+  "brand": "ADRo® · ADRO-DECOR",
+  "items": [
+   {
+    "c": "REMA1",
+    "q": 5
+   },
+   {
+    "c": "Adro-Quartz1.5",
+    "q": 1
+   }
+  ],
+  "ml": 10,
+  "headline": "Fațada cu ritm și proporție.",
+  "sub": "Brâu orizontal între etaje sau sub ferestre.",
   "acoperire": "10 metri liniari de brâu + rășina pentru chituirea îmbinărilor",
-  "ambient": ["../catalog-fatade/jpg/09-casa-verde-salvie-ancadramente-brau.jpg", "../catalog-fatade/jpg/01-casa-terracota-ancadramente-brau.jpg"],
-  "beneficii": ["Polistiren de densitate mare", "Rezistent la UV, ger și umezeală", "Rășina ADRO-QUARTZ inclusă", "Se vopsește cu vopsea de fațadă"]}
+  "ambient": [
+   "../catalog-fatade/jpg/09-casa-verde-salvie-ancadramente-brau.jpg",
+   "../catalog-fatade/jpg/01-casa-terracota-ancadramente-brau.jpg"
+  ],
+  "beneficii": [
+   "Ușor, se montează prin lipire",
+   "Rezistent la UV, ger și umezeală",
+   "Rășina ADRO-QUARTZ inclusă",
+   "Se vopsește cu vopsea de fațadă"
+  ],
+  "kit": "Kit Brâu de Fațadă"
+ }
 ]

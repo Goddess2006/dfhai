@@ -1,0 +1,151 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Plinte Parchet Albe FD3, Plintă Polimer Dur 100x20 mm, 10 ml, Vopsibile",
+  "sku": "P02-FD3x5",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Plintă Albă Modernă conține 5 plinte FD3 WALLSTYL® din polimer dur (HDPS), înalte de 100 mm, cu profil curbat, minimalist. Cei 10 metri liniari finisează elegant trecerea dintre parchet sau gresie și perete, ascund defectele de finisare și protejează peretele la lovituri, aspirare și curățenie.",
+  "category": "Profile decorative interior",
+  "material": "Polimer dur",
+  "color": "Alb",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Plinta polimer dur FD3 100X20X2000",
+    "sku": "FD3",
+    "gtin13": "5412938527262",
+    "url": "https://decoflair.ro/plintafd3-wallstyl"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "FD3"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "WALLSTYL®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "100 × 20 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polimer dur"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Alb"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Interior"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-plinta-parchet-alba-fd3-5-bucati",
+   "priceCurrency": "RON",
+   "price": "805.65",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Ce înălțime are plinta FD3?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Plinta FD3 are 100 mm înălțime și 20 mm grosime, cu lungimea barei de 2 m."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Plinta din polimer dur rezistă la umezeală?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Polimerul dur (HDPS) are rezistență ridicată la umezeală și șocuri, motiv pentru care plinta se potrivește și pe holuri sau în bucătărie."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Pot folosi plinta FD3 la parchet?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. FD3 este o plintă pentru parchet, laminat, gresie sau piatră. Se lipește pe perete, nu pe pardoseală, astfel încât parchetul flotant se poate dilata liber."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Câte plinte îmi trebuie?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Măsoară perimetrul camerei, scade lățimea ușilor, împarte la 2 m și adaugă o bară pentru tăieturi. 10 ml (kitul de 5) acoperă de regulă o cameră de cca. 3 × 3 m cu o ușă."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Plinta se poate vopsi?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Este preamorsată din fabrică și se vopsește cu vopsea acrilică sau pe bază de apă, în culoarea peretelui sau a tâmplăriei."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 plinte FD3 de câte 2 m (10 ml). Livrarea este inclusă în preț; adezivul se comandă separat."
+    }
+   }
+  ]
+ }
+]

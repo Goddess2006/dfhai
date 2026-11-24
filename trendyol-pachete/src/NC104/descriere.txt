@@ -1,0 +1,134 @@
+Cornișa decorativă NC104 are un design simplu, dar elegant, iar formă prietenoasă și dimensiunile sale optime reușesc să facă din acest model unul dintre cele mai vândute din această categorie. Această este realizată dintr-un polistiren acoperit cu un amestec de compuși pe baza de rășini sintetice, minerale cuartoase și calcaroase, aditivi și apă. Vopsirea trebuie realizată cu vopsea acrilică de exterior și în prealabil aplicat un strat sau două de amorsă. Vă recomandăm pentru lipire adezivul de profiluri decorative exterior ADRo-Fix, un adeziv de exterior, capabil să asigure aderența diverselor produse la fațadele exterioare. Pentru îmbinări puteți folosi adezivul de îmbinare pentru profiluri decorative polistiren-poliuretan AKFIX. Acest adeziv poliuretanic este cea mai bună soluție pentru fixarea între profiluri, cât și de stratul suport pe care sunt aplicate. Ultima etapă este cea de chituire cu ajutorul produsului ADRo – Quartz, un adeziv care prin compoziția sa asigură polistirenului rezistență mecanică și chimică. Se folosește pentru acoperirea profilurilor și plăcilor decorative. Având în vedere că este necesară îmbinarea acestor elemente decorative, dar și păstrarea uniformității suprafeței exterioare, chituirea la nivelul rosturilor se face cu materialul compozit de acoperire.
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Tip produs
+ Cornisa decorativa
+ Stil 
+ Modern / Clasic / Elegant
+ Culoare
+ Gri nisipiu (natur) 
+ Material 
+ Polistiren expandat acoperit cu rasina 
+ Material Finisare 
+ Adro Quartz (Rasina cu nisip cuartos)
+ Brand 
+ Adro
+ Tip Finisaj 
+ Acoperit cu rasina Adro-Quartz
+ Avantaje
+ "Rezistență de top la șocuri și umezeală;
+Design premium, perfect finisat; 
+Montaj curat, fără praf sau șuruburi;
+Material de înaltă densitate (HDPS); 
+Gata de vopsire; 
+Compatibile cu soluții de mascare; 
+Durabilitate pe termen lung; 
+Gama variată de modele și dimensiuni; 
+Fabricate eco, 100% reciclabile;"
+ DIMENSIUNE 
+ Lungime (mm)
+ 2000
+ Lățime (mm)
+ 80
+ Înălțime (mm)
+ 220
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta UV
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la compresiune
+ Da
+ Rezistența la impact
+ Da
+ Rezistența termică
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adro-fix
+ Adeziv pentru imbinare
+ Adro-Kit 
+ Adeziv pentru chituire
+ Adro-Quartz 
+ Amorsa recomandata 
+ Adro-Prime 
+ Vopsea recomandata 
+ Adro-Optim / vopsele pentru exterior pe bază de apă
+ Compatibilitate Vopsea 
+ Acrilică pe bază de apă / vopsele pentru fațadă
+ Compatibilitate Amorsa 
+ Acril-stirenică sau pe bază de rășini minerale
+ Accesorii compatibile 
+ Colțare, Adezivi, Cleme de fixare
+ Produse complementare
+ Solbanc, Termosisteme
+ Produse complementare 
+ Plinte flexibile, Brauri, Cornise, caroiaje
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton, BCA, cărămidă
+ Montaj 
+ Lipire cu Adeziv Adro fix + fixare mecanica optionala
+ Aplicabilitate
+ Exterior
+ Utilizare 
+ Fațade, ferestre, usi, restaurări clădiri istorice
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ CUSTOM 
+ Personalizare
+ La cerere
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ CORNISA DECORATIVA EXTERIOR NC104 220X80X2000 
+ , NC104 
+ , Cornisa decorativa exterior 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.

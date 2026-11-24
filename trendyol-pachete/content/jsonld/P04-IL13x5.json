@@ -1,0 +1,151 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 5 Profile LED Tavan IL13, Cornișă LED Iluminare Indirectă 80x52 mm, 10 ml",
+  "sku": "P04-IL13x5",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Lumină Indirectă conține 5 cornișe IL13 WALLSTYL® din polimer dur, cu spațiu dedicat pentru banda LED. Lumina este proiectată spre tavan, caldă și fără orbire, iar miezul grafitat face cornișa opacă, astfel încât lumina pleacă într-o singură direcție. Cei 10 metri liniari aduc atmosferă de hotel boutique în living sau dormitor.",
+  "category": "Profile decorative interior",
+  "material": "Polimer dur",
+  "color": "Alb",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Cornisa led IL13 80x52x2000",
+    "sku": "IL13",
+    "gtin13": "5412938987844",
+    "url": "https://decoflair.ro/cornisa-led-il13-80x52x2000"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "IL13"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "WALLSTYL®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "80 × 52 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "10 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polimer dur"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Alb"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Interior"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-profil-led-tavan-cornisa-il13-5-bucati",
+   "priceCurrency": "RON",
+   "price": "1182.40",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Ce este iluminarea indirectă cu cornișă LED?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Banda LED se montează în canalul ascuns al cornișei IL13, iar lumina este reflectată de tavan. Rezultă o lumină difuză, caldă, fără sursă vizibilă și fără orbire."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Banda LED este inclusă în kit?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Nu. Kitul conține 5 cornișe IL13 (10 ml). Banda LED, sursa de alimentare și eventual controlerul se aleg separat, în funcție de lumina dorită."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce bandă LED se potrivește?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Orice bandă LED care încape în canalul cornișei; pentru ambient se aleg de obicei benzi de 2700–3000 K (alb cald). Montajul electric trebuie făcut de un electrician autorizat."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "La ce distanță de tavan se montează cornișa LED?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Cornișa se montează pe perete, sub tavan, lăsând câțiva centimetri între muchia superioară și tavan, ca lumina să se poată „deschide” pe tavan. Distanța exactă se alege în funcție de efectul dorit."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Cornișa IL13 se poate vopsi?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Este preamorsată din fabrică și se vopsește cu vopsea pe bază de apă."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 5 cornișe LED IL13 de câte 2 m (10 ml). Livrarea este inclusă în preț."
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,151 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Set 8 Baghete Decorative Perete WL1 pentru Chenare și Rame, Brâu 38x18 mm, 16 ml",
+  "sku": "P03-WL1x8",
+  "brand": {
+   "@type": "Brand",
+   "name": "Deco&Flair"
+  },
+  "description": "Kitul Chenare & Tablouri conține 8 baghete decorative WL1 WALLSTYL® din polimer dur, de 38 × 18 mm, gândite pentru caroiaje pe perete. Cu cei 16 metri liniari realizezi aprox. 3 chenare de 100 × 140 cm care încadrează tablouri, oglinzi sau aplice, ori un brâu orizontal cu caroiaje dedesubt — efectul de „perete cu rame” din amenajările clasice și neoclasice, fără lucrări de tâmplărie.",
+  "category": "Profile decorative interior",
+  "material": "Polimer dur",
+  "color": "Alb",
+  "isRelatedTo": [
+   {
+    "@type": "Product",
+    "name": "Brau polimer dur WL1 38X18X2000",
+    "sku": "WL1",
+    "gtin13": "5412938518765",
+    "url": "https://decoflair.ro/brau-decorativwl1-wallstyl"
+   }
+  ],
+  "additionalProperty": [
+   {
+    "@type": "PropertyValue",
+    "name": "Model",
+    "value": "WL1"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Producător",
+    "value": "WALLSTYL®"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Secțiune",
+    "value": "38 × 18 mm"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Lungime bară",
+    "value": "2 m"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Total",
+    "value": "16 metri liniari"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Material",
+    "value": "Polimer dur"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Culoare",
+    "value": "Alb"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Aplicare",
+    "value": "Interior"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Montaj",
+    "value": "Lipire cu adeziv pentru profile"
+   },
+   {
+    "@type": "PropertyValue",
+    "name": "Vopsibil",
+    "value": "Da"
+   }
+  ],
+  "offers": {
+   "@type": "Offer",
+   "url": "https://decoflair.ro/kit-baghete-decorative-perete-chenare-wl1-8-bucati",
+   "priceCurrency": "RON",
+   "price": "690.96",
+   "availability": "https://schema.org/InStock",
+   "itemCondition": "https://schema.org/NewCondition",
+   "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+     "@type": "MonetaryAmount",
+     "value": "0",
+     "currency": "RON"
+    },
+    "shippingDestination": {
+     "@type": "DefinedRegion",
+     "addressCountry": "RO"
+    }
+   }
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Cum fac chenare pe perete pentru tablouri?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Măsoară rama tabloului, adaugă 10–20 cm pe fiecare latură și trasează chenarul cu nivela. Taie baghetele WL1 la 45° la colțuri, lipește-le cu adeziv pentru profile, chituiește îmbinările și vopsește totul în culoarea peretelui. Tabloul se agață apoi în centrul chenarului."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Câte chenare fac cu 16 metri de baghetă?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Un chenar de 100 × 140 cm are perimetrul de 4,8 m. Cu 16 ml (8 bare de 2 m) faci aprox. 3 astfel de chenare, ținând cont de pierderile la tăierea colțurilor."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "La ce înălțime se montează brâul orizontal?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Brâul WL1 se montează de regulă la cca. 80 cm deasupra pardoselii (înălțimea spătarului unui scaun). Chenarele mari se pun deasupra, cele mici dedesubt."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Se poate vopsi bagheta WL1?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Da. Bagheta este albă și se vopsește cu vopsea acrilică sau pe bază de apă — fie în același ton cu peretele (efect elegant, monocrom), fie în contrast."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce unelte îmi trebuie pentru caroiaje?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Cutie de tăiere la 45° și fierăstrău cu dinți fini, nivelă sau nivelă laser, ruletă, creion, adeziv pentru profile de interior, chit și pensulă sau trafalet pentru vopsire."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Ce conține kitul și cât costă livrarea?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kitul conține 8 baghete WL1 de câte 2 m (16 ml). Livrarea este inclusă în preț; adezivul se comandă separat."
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,120 @@
+Profilul NA105 este confecționat din polistiren. Designul său conferă eleganță exteriorului locuinței și reprezintă adesea punctul de atracție în cadrul amenajărilor în stil contemporan. Profilul are stabilitate dimensională și este rezistent în timp la șocuri, îngheț și umezeală. Lipirea poate fi realizată cu ajutorul adezivul ADRo-Fix, ușor de aplicat, capabil să asigure aderența produselor pe diferite substraturi. Poate fi vopsit în orice culoare în funcție de preferință folosind o vopsea acrilică de exterior.
+ <div class="product-extra-attributes product_extra-243
+
+GENERAL 
+ Tip produs
+ Ancadrament fereastra / usa
+ Stil 
+ Modern / Clasic / Elegant
+ Culoare
+ Gri nisipiu (natur) 
+ Material 
+ Polistiren expandat acoperit cu rasina 
+ Material Finisare 
+ Adro Quartz (Rasina cu nisip cuartos)
+ Brand 
+ Adro
+ Tip Finisaj 
+ Acoperit cu rasina Adro-Quartz
+ DIMENSIUNE 
+ Lungime (mm)
+ 2000
+ Înălțime (mm)
+ 175
+ CARACTERISTICI TEHNICE 
+ Rezistenta la Umiditate
+ Da
+ Rezistenta la Inghet-Dezghet
+ Da
+ Rezistenta UV
+ Da
+ Rezistența la compresiune
+ Da
+ Rezistența la impact
+ Da
+ COMPATIBILITATE SI APLICARE 
+ Adeziv pentru lipire
+ Adro-fix
+ Adeziv pentru imbinare
+ Adro-Kit 
+ Adeziv pentru chituire
+ Adro-Quartz 
+ Amorsa recomandata 
+ Adro-Prime 
+ Vopsea recomandata 
+ Adro-Optim / vopsele pentru exterior pe bază de apă
+ Compatibilitate Vopsea 
+ Acrilică pe bază de apă / vopsele pentru fațadă
+ Compatibilitate Amorsa 
+ Acril-stirenică sau pe bază de rășini minerale
+ Accesorii compatibile 
+ Colțare, Adezivi, Cleme de fixare
+ Produse complementare
+ Solbanc, Termosisteme
+ MONTAJ SI UTILIZARE 
+ Suport aplicare
+ Tencuială, beton, BCA, cărămidă
+ Montaj 
+ Lipire cu Adeziv Adro fix + fixare mecanica optionala
+ Aplicabilitate
+ Exterior
+ Utilizare 
+ Fațade, ferestre, usi, restaurări clădiri istorice
+ AMBALARE SI UNITATE DE VANZARE 
+ Unitate de masura 
+ Bucata
+ Pret
+ Bucata
+ Grosime (mm)
+ 40
+ CUSTOM 
+ Personalizare
+ La cerere
+ <div class="product-extra-html product_extra-512
+
+Spune-ti opinia
+ Numele tau: 
+ Opinia ta: 
+ Nota: Codul HTML este citit ca şi text!
+ Nota: 
+ Nota: 
+ Rau 
+ Bun 
+ Captcha 
+ Verificare No Robot, click mai jos 
+ Continua 
+ Etichete: 
+ ancadramente exterioare 
+ , ancadramente ferestre 
+ , ancadramente polistiren 
+ , profiluri fațadă 
+ , profiluri ferestre 
+ ' + json['error'] + '
+');
+ }
+ if (json['success']) {
+ $('#review').after(' ' + json['success'] + '
+');
+ $('input[name=\'name\']').val('');
+ $('textarea[name=\'text\']').val('');
+ $('input[name=\'rating\']:checked').prop('checked', false);
+ }
+ }
+ });
+ });
+});
+$(document).ready(function() {
+ $('.thumbnails').magnificPopup({
+ type:'image',
+ delegate: 'a',
+ gallery: {
+ enabled: true
+ }
+ });
+});
+$(document).ready(function () {
+ $('.review-links a').on('click', function () {
+ var $review = $('#review');
+ if ($review.length) {
+ $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+ $('a[href="#' + $review.closest('.
