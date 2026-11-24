@@ -1,7 +1,31 @@
 # Handoff
 
-Ultima actualizare: 2026-11-18
+Ultima actualizare: 2026-11-24
 Agent: Codex
+
+## Bannere reduceri Deco & Flair — Codex, 2026-11-24
+Imagini finale pentru primul slide de pe decoflair.ro, exportate ca JPEG progresiv și verificate la dimensiunile afișate:
+- `decoflair-bannere-reduceri/decoflair-reduceri-desktop-1480x800.jpg` — 1480 × 800 px, 191.942 octeți.
+- `decoflair-bannere-reduceri/decoflair-reduceri-mobil-900x1200.jpg` — 900 × 1200 px, 162.517 octeți.
+
+Fișiere pregătite pentru încărcarea în sliderul site-ului. Destinația slide-ului existent este [pagina de oferte speciale](https://decoflair.ro/oferte-speciale). Text alternativ propus: „Reduceri la amenajări – vezi ofertele Deco & Flair”.
+
+<details>
+<summary>Prompturile ImageGen</summary>
+
+Prompt comun, cu imaginea bannerului existent din formatul corespunzător drept referință:
+
+> Use case: ads-marketing. Create a polished replacement homepage sale banner for the Romanian architectural decor shop Deco & Flair. Reference image is the current banner, a visual style and layout reference. Preserve the near-black warm charcoal living room, articulate ivory wall panel mouldings, classic crown moulding with warm concealed light, ivory sofa, burgundy textile and bronze reading lamp, fine muted gold inset perimeter rule, understated editorial art direction and elegant editorial serif. Realistic high-end interiors editorial photography with warm dramatic directional light. Make the decorative mouldings the featured product. Recompose naturally as needed, preserving the original palette and recognizable campaign feel. Integrate exactly these 3 easy-to-read text blocks, preserving spelling and Romanian diacritics: small widely tracked brand wordmark "DECO & FLAIR" with tiny vertical burgundy keyline; prominent elegant warm ivory serif title in two balanced lines "Reduceri la" then "amenajări"; below it a restrained thin gold rectangular call-to-action reading exactly "Vezi ofertele" in legible ivory text. Render the diacritic in amenajări accurately (breve above ă). All text well inside safe margins, fully legible, clean letterforms. A single full-bleed ready-for-website design, no mockup, no decorative filler copy, no Black Friday, no percentage, no dates, no numbers, no sales stickers.
+
+Desktop:
+
+> Wide landscape, use exactly 37:20 aspect ratio (1480x800 target). Keep copy aligned left on quiet charcoal wall with strong contrast and clear breathing room. Compose interior and its moulding details on the right half. Leave extra safety margin of around 5% at frame edges.
+
+Mobil:
+
+> Portrait composition, use exactly 3:4 aspect ratio (900x1200 target). Brand at upper left, title and CTA left in the upper-middle on quiet charcoal wall. Compose the elegant wall moulding and crown along the right and interior furniture in the lower half. Text large and legible when the finished banner is displayed 360 CSS pixels wide. Leave extra safety margin of around 5% at frame edges.
+
+</details>
 
 ## Skill UI/UX din ghidul Clean Code Culture — Codex, 2026-11-18
 Cererea clarificată a utilizatorului: doar instalarea skill-urilor din PDF, fără construirea unui website. Instalat `ui-ux-pro-max` din sursa oficială `nextlevelbuilder/ui-ux-pro-max-skill`, calea `.claude/skills/ui-ux-pro-max`, prin helper-ul skill-installer, cu verificarea sursei înaintea instalării.
