@@ -26,3 +26,8 @@ Fișier de publicat: `termeni-si-conditii.html` (fragment HTML cu stil propriu, 
 Fișier de publicat: `despre-noi.html` (stil scopat `.df-dn`). Admin → Catalog → Informații → „Despre noi” → Cod sursă (`</>`) → înlocuiți tot conținutul → Salvare → Clear cache.
 Textul păstrează mesajul original, mai aerisit: Cine suntem, Ce găsiți la noi (4 game, cu linkuri), Cum vă ajutăm (consultanță, randare 3D, produse personalizate, livrare), citatul final și **Date de identificare** (sediu Str. Renului nr. 3, Sector 2; tel. 0765 740 280).
 Blocul FAQ de sub pagină este un modul Journal separat și nu se modifică prin acest fișier. De corectat în el: „garanție conform standardelor europene” → „garanția legală de conformitate de 2 ani (OUG 140/2021)”; verificați și afirmația despre tutorialele video „pentru fiecare gamă”.
+
+# Politica de retur — decoflair.ro
+
+Fișier de publicat: `politica-retur.html` (stil scopat `.df-pr`). Admin → Catalog → Informații → „Politica de retur” → Cod sursă (`</>`) → înlocuiți tot conținutul → Salvare → Clear cache.
+Conținutul juridic existent a fost păstrat și reorganizat; schimbări: sediu Str. Renului nr. 3, Sector 2; tel. 0765 740 280; e-mail vanzari@decoflair.ro (păstrat); buton „Retrageți-vă din contract aici” sus; cuprins; cost estimat retur pentru produse agabaritice (150 lei curier / 242 lei flotă, ca tarifele de livrare; gratuit dacă e adus la depozit); excepție produse sigilate/igienă; formular de retragere cu linii de completat; trimitere ANPC/SAL.
