@@ -1,0 +1,357 @@
+[
+ {
+  "id": "P01-Z11x5",
+  "titlu": "Pachet 5 Cornișe Decorative Tavan Z11 Poliuretan 148x69 mm, 10 ml",
+  "final": 1662.35,
+  "produse": 1462.35,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "Z11",
+    "n": "Cornisa decorativa Z11 148x69x2000",
+    "q": 5,
+    "pu": 292.47,
+    "tot": 1462.35,
+    "url": "https://decoflair.ro/plinta-decorativa-tavan-arstyl-z11",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-Z11-01.jpg",
+   "produs-Z11-02.jpg",
+   "produs-Z11-03.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-Z11-01.jpg",
+   "produs-Z11-02.jpg",
+   "produs-Z11-03.jpg"
+  ]
+ },
+ {
+  "id": "P02-FD3x5",
+  "titlu": "Pachet 5 Plinte Decorative Polimer Dur FD3 100x20 mm, Albe, 10 ml",
+  "final": 805.65,
+  "produse": 605.65,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "FD3",
+    "n": "Plinta polimer dur FD3 100X20X2000",
+    "q": 5,
+    "pu": 121.13,
+    "tot": 605.65,
+    "url": "https://decoflair.ro/plintafd3-wallstyl",
+    "stoc": true,
+    "oferta": 109.02
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-FD3-01.jpg",
+   "produs-FD3-02.jpg",
+   "produs-FD3-03.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-FD3-01.jpg",
+   "produs-FD3-02.jpg",
+   "produs-FD3-03.jpg"
+  ]
+ },
+ {
+  "id": "P03-WL1x8",
+  "titlu": "Pachet 8 Brâuri Decorative WL1 38x18 mm pentru Chenare și Caroiaje Perete, 16 ml",
+  "final": 690.96,
+  "produse": 490.96,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "WL1",
+    "n": "Brau polimer dur WL1 38X18X2000",
+    "q": 8,
+    "pu": 61.37,
+    "tot": 490.96,
+    "url": "https://decoflair.ro/brau-decorativwl1-wallstyl",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-caroiaje-tablouri.jpg",
+   "04-ambient.jpg",
+   "05-detalii.jpg",
+   "06-continut.jpg",
+   "produs-WL1-01.jpg",
+   "produs-WL1-02.jpg",
+   "produs-WL1-03.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-caroiaje-tablouri.jpg",
+   "04-ambient.jpg",
+   "05-detalii.jpg",
+   "06-continut.jpg",
+   "produs-WL1-01.jpg",
+   "produs-WL1-02.jpg"
+  ]
+ },
+ {
+  "id": "P04-IL13x5",
+  "titlu": "Pachet 5 Cornișe LED Iluminare Indirectă IL13 80x52 mm Polimer Dur, 10 ml",
+  "final": 1182.4,
+  "produse": 982.4,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "IL13",
+    "n": "Cornisa led IL13 80x52x2000",
+    "q": 5,
+    "pu": 196.48,
+    "tot": 982.4,
+    "url": "https://decoflair.ro/cornisa-led-il13-80x52x2000",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-IL13-01.jpg",
+   "produs-IL13-02.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-IL13-01.jpg",
+   "produs-IL13-02.jpg"
+  ]
+ },
+ {
+  "id": "P05-NCL107x5-QUARTZ",
+  "titlu": "Pachet 5 Colțare Decorative Fațadă NCL107 300/300x30x1000 mm + Rășină ADRO-QUARTZ 1,5 kg",
+  "final": 1513.29,
+  "produse": 1313.29,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "NCL107",
+    "n": "Colțar decorativ exterior NCL107 din polistiren, 300/300 × 30 × 1000 mm",
+    "q": 5,
+    "pu": 248.09,
+    "tot": 1240.45,
+    "url": "https://decoflair.ro/coltar-exterior-decorativ-polistiren-ncl107-1000x30x300",
+    "stoc": true,
+    "oferta": null
+   },
+   {
+    "c": "Adro-Quartz1.5",
+    "n": "Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG",
+    "q": 1,
+    "pu": 72.84,
+    "tot": 72.84,
+    "url": "https://decoflair.ro/rasina-adro-quartz",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NCL107-01.jpg",
+   "produs-NCL107-02.jpg",
+   "produs-Adro-Quartz1.5-01.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NCL107-01.jpg",
+   "produs-NCL107-02.jpg",
+   "produs-Adro-Quartz1.5-01.jpg"
+  ]
+ },
+ {
+  "id": "P06-NA105x5-FIX",
+  "titlu": "Pachet 5 Ancadramente Decorative Ferestre NA105 175x40 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
+  "final": 1124.21,
+  "produse": 924.21,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "NA105",
+    "n": "Ancadrament decorativ fereastra NA105 175X40X2000",
+    "q": 5,
+    "pu": 163.7,
+    "tot": 818.5,
+    "url": "https://decoflair.ro/ancadrament-decorativ-na105",
+    "stoc": true,
+    "oferta": null
+   },
+   {
+    "c": "Adro-Fix4",
+    "n": "Adeziv profiluri decorative exterior ADRO-FIX 4KG",
+    "q": 1,
+    "pu": 105.71,
+    "tot": 105.71,
+    "url": "https://decoflair.ro/adeziv-lipire-adro-fix-4-kg",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NA105-01.jpg",
+   "produs-NA105-02.jpg",
+   "produs-NA105-03.jpg",
+   "produs-NA105-04.jpg",
+   "produs-Adro-Fix4-01.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NA105-01.jpg",
+   "produs-NA105-02.jpg",
+   "produs-NA105-03.jpg"
+  ]
+ },
+ {
+  "id": "P07-NC104x5-FIX",
+  "titlu": "Pachet 5 Cornișe Decorative Exterior NC104 220x80 mm + Adeziv ADRO-FIX 4 kg, 10 ml",
+  "final": 1279.41,
+  "produse": 1079.41,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "NC104",
+    "n": "Cornisa decorativa exterior NC104 220X80X2000",
+    "q": 5,
+    "pu": 194.74,
+    "tot": 973.7,
+    "url": "https://decoflair.ro/cornisa-decorativa-exterior-nc104-220x80x2000",
+    "stoc": true,
+    "oferta": null
+   },
+   {
+    "c": "Adro-Fix4",
+    "n": "Adeziv profiluri decorative exterior ADRO-FIX 4KG",
+    "q": 1,
+    "pu": 105.71,
+    "tot": 105.71,
+    "url": "https://decoflair.ro/adeziv-lipire-adro-fix-4-kg",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NC104-01.jpg",
+   "produs-NC104-02.jpg",
+   "produs-NC104-03.jpg",
+   "produs-NC104-04.jpg",
+   "produs-Adro-Fix4-01.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-NC104-01.jpg",
+   "produs-NC104-02.jpg",
+   "produs-NC104-03.jpg"
+  ]
+ },
+ {
+  "id": "P08-REMA1x5-QUARTZ",
+  "titlu": "Pachet 5 Brâuri Decorative Fațadă REMA1 140x30 mm + Rășină ADRO-QUARTZ 1,5 kg, 10 ml",
+  "final": 859.29,
+  "produse": 659.29,
+  "transport": 200.0,
+  "linii": [
+   {
+    "c": "REMA1",
+    "n": "Brau decorativ polistiren REMA1 140X30X2000",
+    "q": 5,
+    "pu": 117.29,
+    "tot": 586.45,
+    "url": "https://decoflair.ro/brau-decorativ-polistiren-adro-decor-rema1-140x30x2000",
+    "stoc": true,
+    "oferta": null
+   },
+   {
+    "c": "Adro-Quartz1.5",
+    "n": "Rasina chituire profiluri decorative exterioare ADRO-QUARTZ 1.5KG",
+    "q": 1,
+    "pu": 72.84,
+    "tot": 72.84,
+    "url": "https://decoflair.ro/rasina-adro-quartz",
+    "stoc": true,
+    "oferta": null
+   }
+  ],
+  "imagini": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-REMA1-01.jpg",
+   "produs-REMA1-02.jpg",
+   "produs-Adro-Quartz1.5-01.jpg"
+  ],
+  "trendyol": [
+   "01-pachet.jpg",
+   "02-ambient.jpg",
+   "03-ambient.jpg",
+   "04-detalii.jpg",
+   "05-continut.jpg",
+   "produs-REMA1-01.jpg",
+   "produs-REMA1-02.jpg",
+   "produs-Adro-Quartz1.5-01.jpg"
+  ]
+ }
+]

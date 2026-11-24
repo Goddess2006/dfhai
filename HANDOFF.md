@@ -1,7 +1,12 @@
 # Handoff
 
-Ultima actualizare: 2026-11-18
-Agent: Codex
+Ultima actualizare: 2026-11-24
+Agent: Claude Code
+
+## Pachete Trendyol Deco&Flair — `trendyol-pachete/` — Claude Code, 2026-11-24
+8 pachete listate ca un singur produs; preț = preț de listă NEREDUS decoflair.ro (TVA incl., prețul tăiat dacă e ofertă) × cant. + 200 lei transport. Finale: P01 5×Z11 1.662,35; P02 5×FD3 805,65 (neredus 121,13, azi ofertă 109,02); P03 8×WL1 690,96; P04 5×IL13 1.182,40; P05 5×NCL107+ADRO-QUARTZ 1,5 kg 1.513,29; P06 5×NA105+ADRO-FIX 4 kg 1.124,21; P07 5×NC104+ADRO-FIX 4 kg 1.279,41; P08 5×REMA1+ADRO-QUARTZ 859,29. Fără comision Trendyol.
+ATENȚIE: utilizatorul a cerut „WL12” — NU există pe decoflair.ro (căutare goală, nici în catalog); folosit WL1 (38×18, polimer dur, 61,37 lei), de confirmat.
+Imagini 1200×1800 (copertă cu insignă cantitate, ambient, idee/montaj, detalii tehnice, conținut + fotografii produs de pe site pe alb); la WL1 ilustrație caroiaje cu tablouri + ambient 13/14 din catalog-fatade. Fără preț/site/telefon pe imagini. Fișa `out/trendyol-pachete.csv` (titlu ≤100, SKU, descriere, ordinea a max. 8 imagini). Reproducere în README.
 
 ## Skill UI/UX din ghidul Clean Code Culture — Codex, 2026-11-18
 Cererea clarificată a utilizatorului: doar instalarea skill-urilor din PDF, fără construirea unui website. Instalat `ui-ux-pro-max` din sursa oficială `nextlevelbuilder/ui-ux-pro-max-skill`, calea `.claude/skills/ui-ux-pro-max`, prin helper-ul skill-installer, cu verificarea sursei înaintea instalării.
