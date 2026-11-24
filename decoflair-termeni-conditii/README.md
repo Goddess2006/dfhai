@@ -20,3 +20,9 @@ Fișier de publicat: `termeni-si-conditii.html` (fragment HTML cu stil propriu, 
 - Eliminați pictograma/linkul SOL (platforma ODR a UE a fost închisă la 20.07.2025); păstrați pictograma ANPC – SAL.
 - Politica de retur trebuie să indice costul estimat de retur pentru produsele agabaritice (textul T&C trimite acolo).
 - Transpunerea Directivei (UE) 2024/1799 (dreptul la reparare) este încă în proiect la ANPC; la adoptare, secțiunea 11 se actualizează.
+
+# Despre noi — decoflair.ro
+
+Fișier de publicat: `despre-noi.html` (stil scopat `.df-dn`). Admin → Catalog → Informații → „Despre noi” → Cod sursă (`</>`) → înlocuiți tot conținutul → Salvare → Clear cache.
+Textul păstrează mesajul original, mai aerisit: Cine suntem, Ce găsiți la noi (4 game, cu linkuri), Cum vă ajutăm (consultanță, randare 3D, produse personalizate, livrare), citatul final și **Date de identificare** (sediu Str. Renului nr. 3, Sector 2; tel. 0765 740 280).
+Blocul FAQ de sub pagină este un modul Journal separat și nu se modifică prin acest fișier. De corectat în el: „garanție conform standardelor europene” → „garanția legală de conformitate de 2 ani (OUG 140/2021)”; verificați și afirmația despre tutorialele video „pentru fiecare gamă”.
