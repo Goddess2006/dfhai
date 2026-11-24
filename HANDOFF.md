@@ -16,6 +16,7 @@ Pagina /plata-si-livrare: `plata-si-livrare.html` (stil `.df-pl`), rescrisă cu 
 Pagina /sugestii-si-reclamatii: `sugestii-si-reclamatii.html` (stil `.df-sr`), rescrisă; răspuns 3 zile lucrătoare, soluționare max. 30 zile, ANPC/SAL. Verificat pe pagina live.
 Pagina /produse-personalizate: `produse-personalizate.html` (stil `.df-pp`), condensată, pași de lucru, notă legală personalizate. Verificat pe pagina live.
 Pagina /consultanta-premium: `consultanta-premium.html` (stil `.df-cs`), rescrisă cu imagini din portofoliu. Produse personalizate: adăugate 11 imagini din catalogul de exterior. Verificat pe pagina live.
+Pagina /randare-3d: `randare-3d.html` (stil `.df-rd`), rescrisă cu imagini din portofoliu și video YouTube responsive (youtube-nocookie). Verificat pe pagina live, video-ul rulează.
 Adresa veche (Făurei nr. 1, Sector 1) apare încă pe /contact, /politica-retur, subsol și în setările magazinului — de corectat (lista în README).
 
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24

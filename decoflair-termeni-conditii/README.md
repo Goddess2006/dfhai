@@ -72,3 +72,9 @@ Fișier de publicat: `consultanta-premium.html` (stil scopat `.df-cs`). Admin �
 Mesajul original păstrat, condensat: intro + butoane (telefon 0765 740 280 / e-mail), colaj 3 imagini, Ce înseamnă consultanța (cu imagine), Cum vă ghidăm (5 pași), Unde are loc (showroom / la locație, carduri cu imagini; serviciu premium, cost și durată comunicate la programare), De ce Deco & Flair (6 carduri), casetă de programare cu linkuri spre Randare 3D și Produse personalizate.
 Imagini: 7 fotografii din portofoliu, deja pe server (`image/catalog/galerie/` 26, 27, 16, 13, 32, 31), 900×1200, < 160 KB.
 De confirmat: existența showroom-ului (pe Contact apare doar depozitul/punctul de ridicare) și faptul că sesiunea este cu plată.
+
+# Randare 3D — decoflair.ro
+
+Fișier de publicat: `randare-3d.html` (stil scopat `.df-rd`). Admin → Catalog → Informații → „Randare” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Păstrat: mesajul, procesul, publicul țintă, video-ul YouTube „Randare Profile decorative – Fatade de exceptie” (oLWAl1k8Fvs), acum responsive și prin youtube-nocookie.com (nu setează cookie-uri YouTube până la redare). Adăugat: butoane telefon / e-mail, colaj din portofoliu (galerie 25, 29, 30), imagine detaliu LED (24), pasul 5 (ofertă pe baza randării), ce trebuie pregătit, casetă finală cu linkuri spre Consultanță și Produse personalizate. Telefon 0765 740 280.
+De confirmat: randarea se plătește? (textul spune „termenul și costul în funcție de complexitate”).
