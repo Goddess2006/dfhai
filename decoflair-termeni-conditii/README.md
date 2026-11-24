@@ -78,3 +78,8 @@ De confirmat: existența showroom-ului (pe Contact apare doar depozitul/punctul 
 Fișier de publicat: `randare-3d.html` (stil scopat `.df-rd`). Admin → Catalog → Informații → „Randare” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
 Păstrat: mesajul, procesul, publicul țintă, video-ul YouTube „Randare Profile decorative – Fatade de exceptie” (oLWAl1k8Fvs), acum responsive și prin youtube-nocookie.com (nu setează cookie-uri YouTube până la redare). Adăugat: butoane telefon / e-mail, colaj din portofoliu (galerie 25, 29, 30), imagine detaliu LED (24), pasul 5 (ofertă pe baza randării), ce trebuie pregătit, casetă finală cu linkuri spre Consultanță și Produse personalizate. Telefon 0765 740 280.
 De confirmat: randarea se plătește? (textul spune „termenul și costul în funcție de complexitate”).
+
+# Parteneriate — decoflair.ro
+
+Fișier de publicat: `parteneriate.html` (stil scopat `.df-pt`). Admin → Catalog → Informații → „Parteneriate” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Păstrate: mesajul, beneficiile, cele două imagini existente din `image/catalog/Arhitecti/`. Adăugat: butoane „Deveniți partener” (e-mail cu subiect) / telefon 0765 740 280, 4 tipuri de parteneri (+ constructori/echipe de montaj), 6 beneficii (+ suport tehnic, randări și produse personalizate), linkuri către game, 4 pași de colaborare, casetă finală. Fără promisiuni de discount concrete („condiții comerciale în funcție de volum”).
