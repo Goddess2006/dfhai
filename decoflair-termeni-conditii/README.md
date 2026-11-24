@@ -31,3 +31,12 @@ Blocul FAQ de sub pagină este un modul Journal separat și nu se modifică prin
 
 Fișier de publicat: `politica-retur.html` (stil scopat `.df-pr`). Admin → Catalog → Informații → „Politica de retur” → Cod sursă (`</>`) → înlocuiți tot conținutul → Salvare → Clear cache.
 Conținutul juridic existent a fost păstrat și reorganizat; schimbări: sediu Str. Renului nr. 3, Sector 2; tel. 0765 740 280; e-mail vanzari@decoflair.ro (păstrat); buton „Retrageți-vă din contract aici” sus; cuprins; cost estimat retur pentru produse agabaritice (150 lei curier / 242 lei flotă, ca tarifele de livrare; gratuit dacă e adus la depozit); excepție produse sigilate/igienă; formular de retragere cu linii de completat; trimitere ANPC/SAL.
+
+# Politica de confidențialitate — decoflair.ro
+
+Fișier de publicat: `politica-de-confidentialitate.html` (stil scopat `.df-cf`). Admin → Catalog → Informații → „Politica de confidențialitate” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Rescrisă complet, GDPR: operator cu sediul nou, date colectate, tabel scopuri ↔ temei legal (art. 6), destinatari reali detectați pe site (FAN Courier, NETOPIA, Google Analytics/Tag Manager/reCAPTCHA, Meta Pixel, TikTok Pixel, Microsoft Clarity), transferuri SUA (DPF/SCC), termene de păstrare, cookie-uri, drepturi + termen de răspuns 1 lună, ANSPDCP, securitate, minori.
+De verificat: furnizorul de newsletter (nenominalizat) și termenele de păstrare propuse (cont inactiv 3 ani, mesaje fără comandă 2 ani, log-uri 12 luni).
+
+# Notă titluri (H1)
+Tema Journal3 afișează deja titlul paginii ca H1 („Termeni și condiții Deco&Flair”, „Politica de retur – Deco&Flair” etc.). Fișierele nu mai conțin H1 propriu, ca să nu apară titlul de două ori. Termenii și Politica de retur, deja publicate cu H1, trebuie relipite din versiunea actuală.
