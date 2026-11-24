@@ -40,6 +40,8 @@ CSS = """
 html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Manrope,sans-serif;color:#fff}
 .sc{position:absolute;inset:0;overflow:hidden;opacity:0}
 .bg{position:absolute;inset:-40px;background-size:cover;background-repeat:no-repeat;filter:contrast(1.06) saturate(1.05)}
+.framebg{filter:blur(36px) brightness(.55) saturate(1.1)!important}
+.fg{position:absolute;left:40px;right:40px;top:400px;height:640px;background-size:cover;background-position:center;border-radius:6px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(226,203,148,.35)}
 .vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.7))}
 #grain{position:absolute;inset:-200px;background:url(../assets/grain.png);background-size:540px 960px;opacity:.10;mix-blend-mode:overlay;z-index:60;pointer-events:none}
 #mist{position:absolute;inset:-300px;z-index:52;pointer-events:none;opacity:0;background:radial-gradient(ellipse 55% 35% at 30% 40%,rgba(255,236,205,.7),rgba(255,236,205,0) 70%),radial-gradient(ellipse 50% 30% at 75% 62%,rgba(255,214,160,.5),rgba(255,214,160,0) 70%),radial-gradient(ellipse 70% 45% at 50% 50%,rgba(255,255,255,.35),rgba(255,255,255,0) 70%);filter:blur(30px)}
@@ -115,7 +117,8 @@ window.setT=function(t){
     const ex=seg(t,e-.6,e+.8);
     const bg=el.querySelector('.bg');
     bg.style.transform=`scale(${1.06+.08*seg(lt,-0.6,s.d+.8)}) translate(${Math.sin((t+i)*.25)*12}px,${Math.cos((t+i)*.2)*10}px)`;
-    bg.style.filter=`contrast(1.05) saturate(${1.02-.25*ex}) brightness(${1+.18*ex}) blur(${ex*8}px)`;
+    if(!bg.classList.contains('framebg')) bg.style.filter=`contrast(1.05) saturate(${1.02-.25*ex}) brightness(${1+.18*ex}) blur(${ex*8}px)`;
+    const fgel=el.querySelector('.fg'); if(fgel){fgel.style.transform=`scale(${1+.04*seg(lt,0,s.d)})`; fgel.style.filter=`blur(${ex*6}px) brightness(${1+.12*ex})`;}
     const L=el.querySelectorAll('.ln'); const gap=Math.min(1.1,(s.d-2.2)/Math.max(1,L.length-1));
     L.forEach((ln,j)=>{const la=a+.55+j*gap; const k=out(seg(t,la,la+.9));
       const fade=(i==SC.length-1)?1:1-seg(t,e-.7,e-.05);
@@ -179,7 +182,10 @@ def scene_html(i, s):
             tag = f'<div class="tag"><div class="n">{n}</div><div class="p">{p}</div>{f"<div class=s>✓ {st}</div>" if st else ""}</div>'
         else:
             tag = f'<div class="tag solo"><div class="n">{n}</div></div>'
-    return f"""<div class="sc" id="sc{i}"><div class="bg" style="background-image:url('{s['img']}');background-position:{s['pos']}"></div><div class="vig"></div>
+    frame = s.get("frame")
+    bgx = " framebg" if frame else ""
+    fg = f"""<div class="fg" style="background-image:url('{s['img']}')"></div>""" if frame else ""
+    return f"""<div class="sc" id="sc{i}"><div class="bg{bgx}" style="background-image:url('{s['img']}');background-position:{s['pos']}"></div>{fg}<div class="vig"></div>
   <div class="bar">{bars}</div><img class="logo-s" src="../assets/logo-wide.png" alt="">{tag}
   <div class="who">{CFG.get("WHO","")}</div>{f'<div class="src">{s["src"]}</div>' if s.get("src") else ""}<div class="cap">{"".join(words(l) for l in s['lines'])}</div></div>"""
 
