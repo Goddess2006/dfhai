@@ -1,3 +1,47 @@
+# Reel interior Deco&Flair v2: „Camera ta are ceva să-ți spună.”
+
+**v2 (24.11.2026), aceeași rețetă ca reel-ul de exterior v3.1, cerută de client:** fotografii REALE (portofoliu decoflair.ro + blog), camera vorbește cu privitorul în cuvinte simple, ritm lent (~4,2 s pe cadru, rânduri întregi care apar din ceață), tranziții elegante și misterioase (dezvăluire circulară prin ceață, particule fine de lumină), paletă cobalt `#2340FF` / alb osos / negru, final „2030” cu decoflair.ro centrat.
+
+Fișiere (1080×1920, 40 s, 30 fps, fără sunet):
+- `reel/decoflair-reel-interior-organic.mp4`: postare organică (finalul are „Link în bio”).
+- `reel/decoflair-reel-interior-ads.mp4`: reclame (final curat, zona butonului liberă).
+- `reel/interior-coperta.jpg`, `reel/interior-final-2030.jpg`
+
+## Cadru cu cadru
+| Timp | Fotografie reală | Camera spune | Etichetă |
+|---|---|---|---|
+| 0–4,4 | Living cu cornișă LED caldă (portofoliu) | „Psst… **tu.** Sunt **camera** ta. Ascultă-mă puțin.” | — |
+| 4,4–8,4 | Perete gol în lucru, zugrav (blog) | „Acum o lună eram doar **pereți goi.**” | ÎNAINTE |
+| 8,4–12,6 | Montaj real de cornișă (blog) | „Fără spart. Fără praf. Profilele se **lipesc.**” | Montaj cu adeziv |
+| 12,6–16,8 | Colț cu LED cald | „O **cornișă cu LED**… și seara arăt ca la **hotel.**” | Cornișă LED IL18 · 217 lei · 92 în stoc |
+| 16,8–21,0 | Cameră albastră cu chenare | „Chenare pe pereți. Acum am **personalitate.**” | Brâu WO2 · 59 lei · 126 în stoc |
+| 21,0–25,2 | Perete cu valuri 3D și pian | „Un perete cu **relief** prinde viață în **lumină.**” | Panou 3D WAVE · 433 lei · 69 în stoc |
+| 25,2–29,4 | Living cu riflaj | „Riflajul mă face **caldă.** Și mai **liniștită.**” | Riflaj acustic 3D · 382 lei · 53 în stoc |
+| 29,4–34,4 | Perete TV cu chenare și LED | „Prietenii mă întreabă cine m-a **amenajat.** Le-am zis:” → **decoflair.ro** | Din stoc · livrare în 1–2 zile |
+| 34,4–40,2 | Final 2030 | decoflair.ro · „Camera care vorbește pentru tine.” · „Profile decorative de interior · din stoc” | — |
+
+Prețurile și stocurile au fost citite pe decoflair.ro la 24.11.2026. Cornișa IL13 avea doar 1 buc., așa că apare IL18. Livrarea „1–2 zile” este termenul de pe pagina Plată și livrare pentru profile de interior în stoc. **Verifică din nou înainte de reclamă.**
+
+## Descriere organică (Instagram / Facebook)
+> Psst… camera ta are ceva să-ți spună. 🛋️💬
+> Cornișe cu LED · chenare · panouri 3D · riflaje: din stoc, livrare în 1–2 zile.
+> Ce ți-ar spune camera ta? 👇
+> 💬 Consultanță gratuită: 0765 740 280 · 🔗 decoflair.ro
+>
+> #designinterior #amenajariinterioare #livingmodern #cornisaled #chenaredecorative #panouri3d #riflaje #inaintesidupa #decorcasa #decoflair
+
+**TikTok:** „Camera mea m-a pus să postez asta 😅 #designinterior #amenajare #inaintesidupa #decorcasa #romania #fyp”. Pune vocea text-to-speech din TikTok pe replici („vocea camerei”).
+**Comentariu fixat:** „Trimite-ne o poză cu camera ta în DM. Îți spunem ce i-ar sta bine și câte bucăți îți trebuie 📐”
+
+## Reclame
+- Link: `https://decoflair.ro/profile-decorative-interior?utm_source=meta&utm_medium=paid&utm_campaign=interior-sarbatori-2026&utm_content=reel-camera-vorbeste` (TikTok: `utm_source=tiktok`).
+- Text: „Camera ta are ceva să-ți spună. Cornișe cu LED, chenare, panouri 3D și riflaje din stoc, livrate în 1–2 zile.” · Titlu: „Camera care vorbește pentru tine” · Buton: „Cumpără acum”.
+- Obiectiv / indicator (conform `FLUX-CREATIV.md`): clickuri pe `utm_content=reel-camera-vorbeste` (ads); rata de vizionare completă (organic). Interval: 7 zile.
+
+---
+
+<details><summary>v1 „Aceeași cameră. Doar 6 detalii.” (înlocuit)</summary>
+
 # Reel viral Deco&Flair: „Aceeași cameră. Doar 6 detalii.”
 
 Fișiere: `reel/decoflair-reel-viral-instagram.mp4` și `reel/decoflair-reel-viral-tiktok.mp4`.
@@ -63,3 +107,5 @@ Schimbă textul `h1` / `h1b` în `reel_build.py` și randează din nou:
 
 ## Notă despre imagini
 Imaginile de ambient sunt randări de inspirație (generate digital); prețurile și fotografiile din carduri sunt ale produselor reale de pe decoflair.ro (24.11.2026). Imagini noi, inclusiv perechi înainte/după și momentul „LED stins/aprins” în același cadru, sunt comandate lui Codex în `CODEX-BRIEF.md`. Reel-ul le preia automat la următoarea randare.
+
+</details>

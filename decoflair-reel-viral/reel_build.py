@@ -1,97 +1,99 @@
-"""Reel viral Deco&Flair — „Aceeași cameră. Doar 6 detalii.” (Instagram Reels + TikTok, 1080x1920).
+"""Reel interior Deco&Flair v2 — „Camera ta are ceva să-ți spună.” (IG/TikTok/Meta Ads, 1080x1920, ~40 s).
 
-Structură (~30 s), gândită pentru retenție:
-  0,0–2,4  CÂRLIG     cameră „înainte” + „Aceeași cameră.” (întrebare implicită: ce s-a schimbat?)
-  2,4–5,6  GLISARE    linie care dezvăluie „după” + „Doar 6 detalii.”
-  5,6–20,0 6 DETALII  macro produs → ambient (zoom-through), nr. 01–06, beneficiu, preț real cu foto produs
- 20,0–23,2 LUMINA     hol în penumbră → „click” → LED cald aprins
- 23,2–26,0 BUGET      „Living 4×5 m · ~3.570 lei în profile”
- 26,0–30,0 CTA        salvează / trimite / decoflair.ro (diferit pe IG vs TikTok)
-
-Imaginile din codex/ (generate de Codex, vezi CODEX-BRIEF.md) înlocuiesc automat imaginile de rezervă din assets/.
-Rulare: python3 reel_build.py && node reel_render.cjs
+Aceeași rețetă ca reel-ul de exterior v3.1 (cerută de client): fotografii REALE (portofoliu decoflair.ro + blog), camera vorbește
+cu privitorul în cuvinte simple, ritm lent (~4,2 s pe cadru, rânduri întregi care apar din ceață), tranziții elegante și misterioase
+(dezvăluire circulară prin ceață, particule de lumină), paletă cobalt / alb osos / negru, final „2030” cu decoflair.ro centrat.
+v1 („Aceeași cameră. Doar 6 detalii.”) este în reel_build_v1_6detalii.py.
+Rulare: python3 reel_build.py && node reel_render.cjs organic|ads
 """
 from pathlib import Path
-import json
+import json, random, math
 
 ROOT = Path(__file__).resolve().parent
 (ROOT / "reel").mkdir(exist_ok=True)
 
 
 def asset(fallback, codex=None):
-    """Preferă imaginea Codex dacă există."""
     if codex and (ROOT / "codex" / codex).exists():
         return f"../codex/{codex}"
     return f"../assets/{fallback}"
 
 
-BEFORE = asset("inainte.jpg", "01-living-inainte.jpg")
-AFTER = asset("dupa.jpg", "01-living-dupa.jpg")
-HOL_OFF = asset("hol.jpg", "02-living-led-stins.jpg")
-HOL_ON = asset("hol.jpg", "02-living-led-aprins.jpg")
-REAL_SWITCH = (ROOT / "codex" / "02-living-led-aprins.jpg").exists()
-
-# preț = cel mai mic preț cu TVA din familie, citit pe decoflair.ro la 24.11.2026
-BEATS = [
-    dict(n="01", t="Cornișă LED", b="Lumină de hotel.<br>Fără tavan fals.", p="196", m=asset("m-led.jpg", "05-macro-montaj.jpg"), a=asset("a-led.jpg"), pr="../assets/p-led.jpg", code="IL13", pos="50% 30%"),
-    dict(n="02", t="Chenare pe perete", b="Peretele plat<br>devine boiserie.", p="59", m=asset("m-chenare.jpg", "07-macro-vopsire.jpg"), a=asset("a-chenare.jpg"), pr="../assets/p-chenare.jpg", code="WO2", pos="50% 50%"),
-    dict(n="03", t="Plintă înaltă", b="Tavanul pare<br>mai sus.", p="65", m=asset("m-plinta.jpg", "06-macro-taiere.jpg"), a=asset("a-plinta.jpg"), pr="../assets/p-plinta.jpg", code="FL13", pos="50% 70%"),
-    dict(n="04", t="Panouri 3D", b="Peretele prinde<br>viață în lumină.", p="166", m=asset("m-panou.jpg", "08-macro-panou-3d.jpg"), a=asset("a-panou.jpg"), pr="../assets/p-panou.jpg", code="RAY", pos="50% 50%"),
-    dict(n="05", t="Riflaj din lemn", b="Căldură. Și mai<br>puțin ecou.", p="382", m=asset("m-riflaj.jpg"), a=asset("a-riflaj.jpg"), pr="../assets/p-riflaj.jpg", code="Riflaj acustic 3D", pos="50% 50%"),
-    dict(n="06", t="Rozetă de tavan", b="Privirea urcă.<br>Camera crește.", p="199", m=asset("m-rozeta.jpg"), a=asset("a-rozeta.jpg"), pr="../assets/p-rozeta.jpg", code="R13", pos="50% 10%"),
+# fiecare scenă: imagine reală, poziție, replici (cuvinte; *cuvânt* = evidențiat), etichetă produs (opțional)
+# date produs verificate pe decoflair.ro la 24.11.2026
+# date produs verificate pe decoflair.ro la 24.11.2026 (preț cu TVA, „Disponibilitate” = buc. în stoc)
+SCENES = [
+    dict(img=asset("r-living-led.jpg"), pos="50% 50%", lines=["Psst… *tu.*", "Sunt *camera* ta. Ascultă-mă puțin."], tag=None, d=4.4, src="foto reală · portofoliu decoflair.ro"),
+    dict(img=asset("r-vopsit.jpg"), pos="40% 50%", lines=["Acum o lună eram doar", "*pereți goi.*"], tag=("ÎNAINTE", "", ""), d=4.0, src="foto reală"),
+    dict(img=asset("r-montaj.jpg"), pos="55% 50%", lines=["Fără spart. Fără praf.", "Profilele se *lipesc.*"], tag=("Montaj cu adeziv", "", ""), d=4.2, src="foto reală"),
+    dict(img=asset("r-led.jpg"), pos="50% 50%", lines=["O *cornișă cu LED*…", "și seara arăt ca la *hotel.*"], tag=("Cornișă LED IL18", "217 lei", "92 în stoc"), d=4.2, src="foto reală"),
+    dict(img=asset("r-chenare.jpg"), pos="50% 50%", lines=["Chenare pe pereți.", "Acum am *personalitate.*"], tag=("Brâu pentru chenare WO2", "59 lei", "126 în stoc"), d=4.2, src="foto reală"),
+    dict(img=asset("r-panou.jpg"), pos="50% 50%", lines=["Un perete cu *relief*", "prinde viață în *lumină.*"], tag=("Panou 3D WAVE", "433 lei", "69 în stoc"), d=4.2, src="foto reală"),
+    dict(img=asset("r-riflaj.jpg"), pos="50% 50%", lines=["Riflajul mă face *caldă.*", "Și mai *liniștită.*"], tag=("Riflaj acustic 3D", "382 lei", "53 în stoc"), d=4.2, src="foto reală"),
+    dict(img=asset("r-tv.jpg"), pos="50% 50%", lines=["Prietenii mă întreabă", "cine m-a *amenajat.*", "Le-am zis:"], tag=("Din stoc", "livrare în 1–2 zile", ""), d=5.0, src="foto reală"),
 ]
+T_FINAL = sum(s["d"] for s in SCENES)
+TOTAL = round(T_FINAL + 5.8, 2)
 
-VARIANTS = {
-    "instagram": dict(
-        l1="Salvează reel-ul.", l2="Trimite-l cuiva<br>care renovează.",
-        site="decoflair.ro", sub="Ghidul complet „Tendințe 2027”<br>e pe blog · link în bio"),
-    "tiktok": dict(
-        l1="Salvează-l acum.", l2="O să ai nevoie<br>de el la renovare.",
-        site="decoflair.ro", sub="Ghidul complet + prețuri<br>link în bio"),
-}
+VARIANTS = {"organic": dict(foot="Link în bio"), "ads": dict(foot="")}
+
+random.seed(21)
+MOTES = [[round(random.random()*1080,1), round(random.random()*1920,1), round(random.uniform(2,6),1), round(random.uniform(12,40),1), round(random.random()*6.28,2), round(random.uniform(.15,.55),2)] for _ in range(70)]
+PARTS = []
+for i in range(170):
+    ang = random.random() * math.tau
+    PARTS.append([round(540 + math.cos(ang) * random.uniform(500, 1100), 1), round(930 + math.sin(ang) * random.uniform(600, 1300), 1),
+                  round(random.uniform(330, 430), 1), round(ang, 3), round(random.uniform(2, 5), 1), round(random.uniform(.25, .7), 2)])
 
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--g:#1F3A2F;--g2:#2E5244;--cr:#F4EEE4;--gold:#D6BC84;--ink:#141412}
-html,body{width:1080px;height:1920px;overflow:hidden;background:#0d0f0e;font-family:Manrope,sans-serif;color:#fff}
+:root{--co:#2340FF;--co2:#6E86FF;--bone:#F5F1E8;--ink:#0A0A0B}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Manrope,sans-serif;color:#fff}
 .sc{position:absolute;inset:0;overflow:hidden;opacity:0}
-.bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
-.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 40%,rgba(0,0,0,.62) 62%,rgba(0,0,0,.78) 100%)}
-.serif{font-family:'Cormorant Garamond',serif;font-weight:600}
-.kick{font-size:26px;letter-spacing:7px;text-transform:uppercase;font-weight:700;color:var(--gold)}
-.wm{position:absolute;top:210px;left:72px;font-size:22px;letter-spacing:6px;font-weight:700;display:flex;align-items:center;gap:14px;opacity:.92}
-.wm i{display:block;width:3px;height:26px;background:#9E1F2A}
-.big{position:absolute;left:72px;right:150px;font-size:118px;line-height:.98;text-shadow:0 6px 40px rgba(0,0,0,.45)}
-.tag{position:absolute;padding:10px 22px;border-radius:40px;font-size:26px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
-/* glisare */
-#after{clip-path:inset(0 0 0 0)}
-.line{position:absolute;top:0;bottom:0;width:6px;background:#fff;box-shadow:0 0 30px rgba(255,255,255,.9)}
-.knob{position:absolute;top:50%;left:50%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:800}
-/* beat */
-.num{position:absolute;top:300px;left:72px;font-size:30px;font-weight:800;letter-spacing:4px;color:var(--gold)}
-.num b{color:#fff}
-.bt{position:absolute;top:350px;left:72px;right:150px;font-size:112px;line-height:1;text-shadow:0 4px 34px rgba(0,0,0,.55)}
-.bb{position:absolute;left:72px;right:150px;top:1060px;font-size:56px;line-height:1.12;font-weight:700;text-shadow:0 4px 30px rgba(0,0,0,.6)}
-.card{position:absolute;left:72px;top:1260px;display:flex;align-items:center;gap:22px;background:rgba(244,238,228,.96);color:var(--ink);border-radius:26px;padding:16px 30px 16px 16px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.card img{width:132px;height:132px;border-radius:16px;object-fit:cover;background:#fff}
-.card .k{font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#7A5B22;font-weight:800}
-.card .v{font-size:58px;font-weight:800;line-height:1.05}
-.card .v small{font-size:28px;font-weight:700}
-.card .c{font-size:22px;color:#5b5650;font-weight:600}
-.macro{position:absolute;overflow:hidden;background-position:center;background-size:cover;background-repeat:no-repeat;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.macro::after{content:'';position:absolute;inset:0;opacity:var(--sh,1);background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.25) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,0) 70%,rgba(0,0,0,.45) 100%)}
-.bar{position:absolute;top:262px;left:72px;right:150px;height:6px;display:flex;gap:8px}
+.bg{position:absolute;inset:-40px;background-size:cover;background-repeat:no-repeat;filter:contrast(1.06) saturate(1.05)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.7))}
+#grain{position:absolute;inset:-200px;background:url(../assets/grain.png);background-size:540px 960px;opacity:.10;mix-blend-mode:overlay;z-index:60;pointer-events:none}
+#mist{position:absolute;inset:-300px;z-index:52;pointer-events:none;opacity:0;background:radial-gradient(ellipse 55% 35% at 30% 40%,rgba(235,240,255,.75),rgba(235,240,255,0) 70%),radial-gradient(ellipse 50% 30% at 75% 62%,rgba(200,210,255,.6),rgba(200,210,255,0) 70%),radial-gradient(ellipse 70% 45% at 50% 50%,rgba(255,255,255,.35),rgba(255,255,255,0) 70%);filter:blur(30px)}
+#motes{position:absolute;inset:0;z-index:53;pointer-events:none}
+#motes i{position:absolute;left:0;top:0;border-radius:50%;background:#F4F1FF;box-shadow:0 0 12px rgba(160,175,255,.9)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:55;pointer-events:none}
+/* subtitrare cinetică */
+.cap{position:absolute;left:60px;right:60px;top:1060px;text-align:center;z-index:5}
+.ln{display:block;margin:0 auto 18px;font-size:72px;line-height:1.14;font-weight:800;letter-spacing:-1px;text-shadow:0 4px 30px rgba(0,0,0,.75);opacity:0}
+.w{display:inline-block;margin:0 .13em;white-space:nowrap}
+.w.hl{background:var(--co);color:#fff;padding:0 .18em;border-radius:10px;text-shadow:none;box-shadow:0 10px 40px rgba(35,64,255,.55)}
+.who{position:absolute;left:0;right:0;top:985px;text-align:center;font-size:24px;letter-spacing:8px;font-weight:800;color:var(--bone);opacity:.85;z-index:5}
+.src{position:absolute;right:60px;top:330px;font-size:18px;letter-spacing:3px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;z-index:6}
+.who b{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--co);margin-right:12px;box-shadow:0 0 16px var(--co)}
+/* etichetă produs (sticker) */
+.tag{position:absolute;left:60px;top:250px;display:flex;flex-direction:column;gap:6px;background:var(--bone);color:var(--ink);border-radius:22px;padding:18px 26px;z-index:6;box-shadow:0 18px 50px rgba(0,0,0,.4);transform-origin:left top}
+.tag .n{font-size:34px;font-weight:800;letter-spacing:-.5px}
+.tag .p{font-size:30px;font-weight:800;color:var(--co)}
+.tag .s{font-size:24px;font-weight:800;color:#0a7a3e}
+.tag.solo{background:var(--co);color:#fff}
+.tag.solo .n{font-size:36px;letter-spacing:5px}
+.wm{position:absolute;top:255px;right:60px;font-size:20px;letter-spacing:7px;font-weight:800;z-index:6;opacity:.9;display:flex;align-items:center;gap:12px}
+.wm i{width:3px;height:24px;background:var(--co);display:block}
+.bar{position:absolute;top:215px;left:60px;right:60px;height:5px;display:flex;gap:6px;z-index:6}
 .bar span{flex:1;background:rgba(255,255,255,.28);border-radius:3px;overflow:hidden}
 .bar span i{display:block;height:100%;width:0;background:#fff}
-/* lumina */
-.flash{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,rgba(255,196,120,.55),rgba(255,170,90,0) 60%);opacity:0;mix-blend-mode:screen}
-.click{position:absolute;left:50%;top:880px;width:150px;height:150px;margin-left:-75px;border-radius:50%;border:5px solid #fff;opacity:0}
-/* buget + cta */
-.solid{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#2E5244 0%,#1F3A2F 55%,#122219 100%)}
-.ctr{position:absolute;left:72px;right:150px;text-align:left}
-.price{font-size:190px;line-height:.95;color:var(--gold);font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-6px}
-.small{font-size:36px;line-height:1.35;font-weight:600;color:rgba(255,255,255,.88)}
-.btn{display:inline-block;margin-top:34px;padding:22px 40px;border:3px solid var(--gold);border-radius:60px;font-size:42px;font-weight:800;color:#fff}
+/* zbor decoflair.ro din subtitrare spre final */
+#fly{position:absolute;left:0;right:0;top:1345px;text-align:center;font-family:Unbounded,sans-serif;font-weight:800;font-size:76px;color:#fff;z-index:58;opacity:0;text-shadow:0 0 30px rgba(110,134,255,.9)}
+/* final 2030 (cobalt) */
+#s9{background:#020309}
+#glow{position:absolute;left:50%;top:930px;width:1500px;height:1500px;margin:-750px 0 0 -750px;border-radius:50%;background:radial-gradient(circle,rgba(35,64,255,.42) 0%,rgba(35,64,255,.16) 30%,rgba(0,0,0,0) 62%)}
+#beam{position:absolute;left:-600px;top:-200px;width:520px;height:2400px;background:linear-gradient(90deg,transparent,rgba(190,205,255,.20),transparent);mix-blend-mode:screen}
+#ring{position:absolute;left:50%;top:930px;border-radius:50%;border:2px solid rgba(150,170,255,.95);box-shadow:0 0 44px rgba(35,64,255,.8),inset 0 0 40px rgba(35,64,255,.45)}
+#ring2{position:absolute;left:50%;top:930px;border-radius:50%;border:1px solid rgba(255,255,255,.45)}
+#parts i{position:absolute;left:0;top:0;border-radius:50%;background:#EEF2FF;box-shadow:0 0 10px rgba(130,150,255,.95)}
+#site{position:absolute;left:0;right:0;top:860px;text-align:center;font-family:Unbounded,sans-serif;font-weight:800;font-size:122px;line-height:1.1;
+  background:linear-gradient(100deg,#7d8bd6 0%,#fff 18%,#9fb0ff 32%,#ffffff 46%,#5f74ff 60%,#ffffff 74%,#b9c4ff 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+#wm5{position:absolute;left:0;right:0;top:790px;display:flex;justify-content:center}
+#wm5 .wm{position:static}
+#tag1{position:absolute;left:0;right:0;top:1025px;text-align:center;font-size:52px;font-weight:700;color:#fff;letter-spacing:-.5px}
+#tag2{position:absolute;left:0;right:0;top:1100px;text-align:center;font-size:26px;font-weight:800;letter-spacing:6px;color:var(--co2);text-transform:uppercase}
+#foot{position:absolute;left:0;right:0;top:1340px;text-align:center;font-size:28px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:3px}
+#flare{position:absolute;left:50%;top:930px;width:900px;height:6px;margin-left:-450px;background:radial-gradient(ellipse,rgba(255,255,255,.95),rgba(140,160,255,0) 70%);filter:blur(2px)}
 """
 
 JS = r"""
@@ -99,125 +101,113 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
 const out=x=>1-Math.pow(1-cl(x),3);
-const back=x=>{x=cl(x);const c1=1.6,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const expo=x=>{x=cl(x);return x==1?1:1-Math.pow(2,-10*x)};
+const back=x=>{x=cl(x);const c1=1.8,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
 const seg=(t,a,b)=>cl((t-a)/(b-a));
-function vis(el,o){el.style.opacity=o}
-function rise(el,t,a,d=.45,dist=60){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dist}px)`}
-function pop(el,t,a,d=.45){const k=seg(t,a,a+d);el.style.opacity=cl(k*2);el.style.transform=`scale(${.6+.4*back(k)})`}
-const B=BEATS, T0=5.6, BD=2.4;
-window.TOTAL=30.0;
+const vis=(el,o)=>el.style.opacity=o;
+function rise(el,t,a,d=.45,dist=30){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dist}px)`}
+window.TOTAL=TOTAL;
+// starturi scene
+const ST=[];{let a=0;SC.forEach(s=>{ST.push(a);a+=s.d});}
 window.setT=function(t){
-  // 1 cârlig + 2 glisare
-  const s1=$('#s1'); vis(s1, t<5.75?1:0);
-  $('#before').style.transform=`scale(${1.08+0.06*seg(t,0,5.6)}) translateX(${-40+60*seg(t,0,5.6)}px)`;
-  $('#after').style.transform=$('#before').style.transform;
-  const w=ease(seg(t,2.4,3.9)); // procent dezvăluit
-  $('#after').style.clipPath=`inset(0 ${(1-w)*100}% 0 0)`;
-  const ln=$('#ln'); ln.style.left=`calc(${w*100}% - 3px)`; vis(ln, t>2.35&&t<4.3?1:0);
-  rise($('#h1'),t,.15,.5); rise($('#h1b'),t,.75,.5);
-  vis($('#tagB'), t<2.6?out(seg(t,.1,.5)):0); vis($('#tagA'), out(seg(t,3.4,3.8)));
-  const hookOut=seg(t,2.2,2.5); $('#hk').style.opacity=1-hookOut;
-  rise($('#h2'),t,3.9,.5); rise($('#h2b'),t,4.4,.5,40);
-  $('#s1').style.filter=`brightness(${1-0.5*seg(t,5.35,5.75)})`;
-  // 3 detalii
-  B.forEach((b,i)=>{
-    const a=T0+i*BD, e=a+BD, el=$('#b'+i), lt=t-a;
-    vis(el, t>=a-0.15 && t<e+0.15 ? (i==0?out(seg(t,a-.15,a+.15)):1) : 0);
-    el.style.zIndex=10+i;
-    // intrare: tranziție rapidă (cortină diagonală) peste beat-ul anterior
-    const inK=ease(seg(t,a-.15,a+.2));
-    el.style.clipPath= i==0? 'none' : `polygon(0 0, ${inK*140}% 0, ${inK*140-40}% 100%, 0 100%)`;
-    // macro: plin ecran la început, apoi se micșorează în card
-    const m=el.querySelector('.macro'), k=ease(seg(lt,.75,1.25));
-    m.style.width=(1080-(1080-300)*k)+'px'; m.style.height=(1920-(1920-380)*k)+'px';
-    m.style.left=(640*k)+'px'; m.style.top=(560*k)+'px';
-    m.style.borderRadius=(k*28)+'px'; m.style.setProperty('--sh',1-k);
-    m.style.opacity= 1-seg(lt,1.9,2.2);
-    el.querySelector('.bg').style.transform=`scale(${1.18-.12*seg(lt,.75,2.4)})`;
-    rise(el.querySelector('.num'),t,a+.05,.35,30); rise(el.querySelector('.bt'),t,a+.1,.4,50);
-    rise(el.querySelector('.bb'),t,a+1.0,.4,40); pop(el.querySelector('.card'),t,a+1.15,.45);
+  // granulație de film animată
+  $('#grain').style.transform=`translate(${(Math.floor(t*24)*37)%200-100}px,${(Math.floor(t*24)*53)%200-100}px)`;
+  let mist=0;
+  SC.forEach((s,i)=>{const a=ST[i], e=a+s.d, el=$('#sc'+i);
+    const start=i==0?0:a-.6, end=(i==SC.length-1)? e+1.0 : e+.8;
+    const on=t>=start&&t<end; el.style.display=on?'block':'none'; el.style.opacity=1; el.style.zIndex=i+1;
+    if(!on) return;
+    const lt=t-a;
+    if(i>0){const k=ease(seg(t,a-.6,a+.8)); const R=-35+175*k;
+      el.style.webkitMaskImage=el.style.maskImage=k>=1?'none':`radial-gradient(circle at 50% 44%, #000 ${R}%, rgba(0,0,0,0) ${R+32}%)`;
+      mist=Math.max(mist, Math.sin(Math.PI*seg(t,a-.7,a+1.0)));}
+    const ex=seg(t,e-.6,e+.8);
+    const bg=el.querySelector('.bg');
+    bg.style.transform=`scale(${1.06+.08*seg(lt,-0.6,s.d+.8)}) translate(${Math.sin((t+i)*.25)*12}px,${Math.cos((t+i)*.2)*10}px)`;
+    bg.style.filter=`contrast(1.05) saturate(${1.02-.25*ex}) brightness(${1+.18*ex}) blur(${ex*8}px)`;
+    const L=el.querySelectorAll('.ln'); const gap=Math.min(1.1,(s.d-2.2)/Math.max(1,L.length-1));
+    L.forEach((ln,j)=>{const la=a+.55+j*gap; const k=out(seg(t,la,la+.9));
+      const fade=(i==SC.length-1)?1:1-seg(t,e-.7,e-.05);
+      ln.style.opacity=k*fade; ln.style.filter=`blur(${(1-k)*12}px)`; ln.style.letterSpacing=`${(1-k)*6-1}px`; ln.style.transform=`translateY(${(1-k)*18}px)`;});
+    const who=el.querySelector('.who'); who.style.opacity=.85*out(seg(t,a+.3,a+1))*(1-seg(t,e-.7,e-.05));
+    const tg=el.querySelector('.tag'); if(tg){const k=out(seg(t,a+1.4,a+2.3)); tg.style.opacity=k*(1-seg(t,e-.6,e)); tg.style.transform=`translateY(${(1-k)*-14}px) scale(${.96+.04*k})`; tg.style.filter=`blur(${(1-k)*6}px)`;}
+    const src=el.querySelector('.src'); if(src) src.style.opacity=out(seg(t,a+.8,a+1.6))*(1-seg(t,e-.6,e));
     el.querySelectorAll('.bar i').forEach((x,j)=>{x.style.width=(j<i?100:j==i?seg(t,a,e)*100:0)+'%'});
   });
-  // 4 lumina
-  const L=$('#s4'), la=T0+6*BD; vis(L, t>=la-.1&&t<23.35?1:0); L.style.zIndex=30;
-  const on=seg(t,la+1.15,la+1.55);
-  L.querySelector('.bg').style.filter = REAL_SWITCH ? 'none' : `brightness(${.28+.72*on}) saturate(${.5+.5*on}) hue-rotate(${(1-on)*-25}deg)`;
-  L.querySelector('.bg').style.transform=`scale(${1.12-.08*seg(t,la,23.2)})`;
-  if(REAL_SWITCH){$('#s4on').style.opacity=on}
-  vis(L.querySelector('.flash'), on*(1-seg(t,la+1.6,la+2.6))*0.9+on*.25);
-  const ck=seg(t,la+1.0,la+1.5); const c=L.querySelector('.click'); c.style.opacity=ck>0&&ck<1?1-ck:0; c.style.transform=`scale(${.5+1.6*ck})`;
-  rise($('#l1'),t,la+.15,.45); rise($('#l2'),t,la+1.6,.45);
-  // 5 buget
-  const S5=$('#s5'); vis(S5, t>=23.2&&t<26.15?out(seg(t,23.2,23.5)):0); S5.style.zIndex=31;
-  rise($('#p1'),t,23.35,.4,40);
-  const n=Math.round(3570*out(seg(t,23.55,24.7))); $('#pn').textContent='~'+n.toLocaleString('ro-RO');
-  rise($('#p2'),t,23.55,.4,60); rise($('#p3'),t,24.6,.4,40);
-  // 6 cta
-  const S6=$('#s6'); vis(S6, t>=26.0?out(seg(t,26.0,26.3)):0); S6.style.zIndex=32;
-  rise($('#c0'),t,26.1,.4,30); rise($('#c1'),t,26.25,.45); rise($('#c2'),t,26.8,.45); pop($('#c3'),t,27.5,.5); rise($('#c4'),t,28.0,.45,30);
+  const tfm=Math.sin(Math.PI*seg(t,T_FINAL-.6,T_FINAL+1.2));
+  vis($('#mist'), .06+.55*Math.max(mist,tfm));
+  $('#mist').style.transform=`translate(${Math.sin(t*.35)*80}px,${Math.cos(t*.27)*60}px) scale(${1.05+.05*Math.sin(t*.4)})`;
+  $$('#motes i').forEach((m,i)=>{const d=MOTES[i]; const y=((d[1]-t*d[3])%1980+1980)%1980-30, x=d[0]+Math.sin(t*.5+d[4])*30;
+    m.style.transform=`translate(${x}px,${y}px)`; m.style.opacity=d[5]*(.55+.45*Math.sin(t*1.3+d[4]))*(t<T_FINAL?1:1-seg(t,T_FINAL,T_FINAL+1));});
+  vis($('#flash'), 0);
+  // „decoflair.ro” sare din subtitrare în final
+  const tf=T_FINAL, fk=seg(t,tf-.5,tf+.9); const fly=$('#fly');
+  fly.style.opacity = out(seg(t,tf-1.3,tf-.6))*(t<tf+.9?1:1-seg(t,tf+.9,tf+1.2));
+  fly.style.transform=`translateY(${-485*ease(fk)}px) scale(${1+ .6*ease(fk)})`; fly.style.letterSpacing=`${ease(seg(t,tf+.2,tf+.9))*8}px`; fly.style.filter=`blur(${ease(seg(t,tf+.4,tf+1.1))*8}px)`;
+  // final 2030
+  const S=$('#s9'); vis(S, t>=tf?1:0);
+  const T=t-tf;
+  vis($('#glow'), out(seg(T,0,1.2))*(.85+.15*Math.sin(t*2.2)));
+  $('#beam').style.transform=`translateX(${-200+2200*seg(T,.3,2.4)}px) rotate(18deg)`;
+  $$('#parts i').forEach((p,i)=>{const d=PARTS[i]; const k=ease(seg(T,0,1.6)); const ang=d[3]+T*.35;
+    const rx=540+Math.cos(ang)*d[2], ry=930+Math.sin(ang)*d[2]*.42;
+    const x=d[0]+(rx-d[0])*k, y=d[1]+(ry-d[1])*k; p.style.transform=`translate(${x}px,${y}px)`; p.style.opacity=d[5]*out(seg(T,0,.4))*(1-.6*seg(T,3.2,4.8));});
+  const rk=expo(seg(T,.6,1.9)); const R=80+720*rk; const ring=$('#ring');
+  ring.style.width=ring.style.height=R+'px'; ring.style.margin=`${-R/2}px 0 0 ${-R/2}px`; ring.style.opacity=(1-rk)*.9+.08;
+  const R2=60+560*expo(seg(T,.8,2.3)); const r2=$('#ring2'); r2.style.width=r2.style.height=R2+'px'; r2.style.margin=`${-R2/2}px 0 0 ${-R2/2}px`; r2.style.opacity=.6*(1-seg(T,1.3,2.7));
+  const sk2=out(seg(T,.3,1.1)); const site=$('#site');
+  site.style.opacity=sk2; site.style.letterSpacing=`${(1-sk2)*30}px`; site.style.filter=`blur(${(1-sk2)*10}px) drop-shadow(0 0 26px rgba(35,64,255,.55))`;
+  site.style.backgroundPosition=`${100-100*seg(T,.8,3.2)}% 0`;
+  const fl=seg(T,1.6,2.4); vis($('#flare'), Math.sin(Math.PI*fl)); $('#flare').style.transform=`scaleX(${.3+fl})`;
+  rise($('#wm5'),t,tf+1.2,.5,20); rise($('#tag1'),t,tf+1.8,.5,30); rise($('#tag2'),t,tf+2.3,.5,20); rise($('#foot'),t,tf+2.8,.5,20);
 };
 """
 
 
-def beat_html(i, b):
-    bars = "".join("<span><i></i></span>" for _ in BEATS)
-    return f"""<div class="sc" id="b{i}">
-  <div class="bg" style="background-image:url('{b['a']}');background-position:{b['pos']}"></div>
-  <div class="shade"></div>
-  <div class="macro" style="background-image:url('{b['m']}')"></div>
-  <div class="bar">{bars}</div>
-  <div class="num"><b>{b['n']}</b> / 06</div>
-  <div class="bt serif">{b['t']}</div>
-  <div class="bb">{b['b']}</div>
-  <div class="card"><img src="{b['pr']}" alt=""><div><div class="k">de la</div><div class="v">{b['p']} <small>lei</small></div><div class="c">{b['code']} · decoflair.ro</div></div></div>
-</div>"""
+def words(line):
+    out = []
+    for w in line.split(" "):
+        hl = w.startswith("*")
+        w = w.replace("*", "")
+        out.append(f'<span class="w{" hl" if hl else ""}">{w}</span>')
+    return f'<span class="ln">{"".join(out)}</span>'
+
+
+def scene_html(i, s):
+    bars = "".join("<span><i></i></span>" for _ in SCENES)
+    tag = ""
+    if s["tag"]:
+        n, p, st = s["tag"]
+        if p:
+            tag = f'<div class="tag"><div class="n">{n}</div><div class="p">{p}</div>{f"<div class=s>✓ {st}</div>" if st else ""}</div>'
+        else:
+            tag = f'<div class="tag solo"><div class="n">{n}</div></div>'
+    return f"""<div class="sc" id="sc{i}"><div class="bg" style="background-image:url('{s['img']}');background-position:{s['pos']}"></div><div class="vig"></div>
+  <div class="bar">{bars}</div><div class="wm"><i></i>DECO &amp; FLAIR</div>{tag}
+  <div class="who"><b></b>CAMERA</div>{f'<div class="src">{s["src"]}</div>' if s.get("src") else ""}<div class="cap">{"".join(words(l) for l in s['lines'])}</div></div>"""
 
 
 def page(v):
     V = VARIANTS[v]
-    beats = "\n".join(beat_html(i, b) for i, b in enumerate(BEATS))
-    s4on = f'<div class="bg" id="s4on" style="background-image:url(\'{HOL_ON}\');opacity:0"></div>' if REAL_SWITCH else ""
+    parts = "".join(f'<i style="width:{p[4]}px;height:{p[4]}px"></i>' for p in PARTS)
+    motes = "".join(f'<i style="width:{m[2]}px;height:{m[2]}px"></i>' for m in MOTES)
+    sc = "\n".join(scene_html(i, s) for i, s in enumerate(SCENES))
     return f"""<!doctype html><html lang="ro"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Manrope:wght@500;600;700;800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@800&display=block" rel="stylesheet">
 <style>{CSS}</style></head><body>
-<div class="sc" id="s1">
-  <div class="bg" id="before" style="background-image:url('{BEFORE}');background-position:30% 50%"></div>
-  <div class="bg" id="after" style="background-image:url('{AFTER}');background-position:30% 50%"></div>
-  <div class="shade"></div>
-  <div class="line" id="ln"><div class="knob">⇆</div></div>
-  <div class="wm"><i></i>DECO &amp; FLAIR</div>
-  <div id="hk"><div class="big serif" id="h1" style="top:330px">Aceeași<br>cameră.</div>
-  <div class="small" id="h1b" style="position:absolute;left:72px;top:600px;font-size:44px;font-weight:700">Fără renovare. Fără praf.</div></div>
-  <div class="big serif" id="h2" style="top:330px;opacity:0">Doar 6<br>detalii.</div>
-  <div class="small" id="h2b" style="position:absolute;left:72px;top:600px;font-size:44px;font-weight:700;opacity:0">Uite care 👇</div>
-  <div class="tag" id="tagB" style="left:72px;top:1330px;background:rgba(0,0,0,.55);color:#fff">Înainte</div>
-  <div class="tag" id="tagA" style="right:150px;top:1330px;background:var(--gold);color:#141412;opacity:0">După</div>
+{sc}
+<div class="sc" id="s9" style="z-index:40"><div id="glow"></div><div id="beam"></div><div id="ring2"></div><div id="ring"></div><div id="parts">{parts}</div>
+  <div id="wm5" style="opacity:0"><div class="wm"><i></i>DECO &amp; FLAIR</div></div>
+  <div id="site">decoflair.ro</div><div id="flare"></div>
+  <div id="tag1" style="opacity:0">Camera care vorbește pentru tine.</div>
+  <div id="tag2" style="opacity:0">Profile decorative de interior · din stoc</div>
+  <div id="foot" style="opacity:0">{V['foot']}</div>
 </div>
-{beats}
-<div class="sc" id="s4"><div class="bg" style="background-image:url('{HOL_OFF}')"></div>{s4on}<div class="flash"></div><div class="shade"></div>
-  <div class="click"></div>
-  <div class="big serif" id="l1" style="top:330px;font-size:104px">Și la final…</div>
-  <div class="big serif" id="l2" style="top:470px;font-size:104px;color:var(--gold)">aprinzi lumina.</div>
-</div>
-<div class="sc" id="s5"><div class="solid"></div>
-  <div class="ctr" style="top:420px"><div class="kick" id="p1">Living 4 × 5 m · exemplu real</div>
-  <div class="price" id="p2" style="margin-top:40px"><span id="pn">~0</span><br><span style="font-size:90px;letter-spacing:0">lei</span></div>
-  <div class="small" id="p3" style="margin-top:50px">cornișă LED + plinte + 3 chenare<br>prețuri decoflair.ro · noiembrie 2026<br><span style="color:var(--gold)">fără bandă LED, adeziv și manoperă</span></div></div>
-</div>
-<div class="sc" id="s6"><div class="solid"></div>
-  <div class="ctr" style="top:330px">
-   <div class="wm" id="c0" style="position:static;margin-bottom:60px"><i></i>DECO &amp; FLAIR</div>
-   <div class="serif" id="c1" style="font-size:112px;line-height:1">{V['l1']}</div>
-   <div class="small" id="c2" style="margin-top:30px;font-size:52px;line-height:1.2;color:#fff;font-weight:700">{V['l2']}</div>
-   <div class="btn" id="c3">{V['site']}</div>
-   <div class="small" id="c4" style="margin-top:40px">{V['sub']}<br><span style="color:var(--gold)">Livrare 1–2 zile · consultanță gratuită</span></div>
-  </div>
-</div>
-<script>const BEATS={json.dumps([{k: b[k] for k in ('n','t')} for b in BEATS])};const REAL_SWITCH={str(REAL_SWITCH).lower()};{JS}
-setT(0);</script>
-</body></html>"""
+<div id="fly">decoflair.ro</div><div id="mist"></div><div id="motes">{motes}</div><div id="flash"></div><div id="grain"></div>
+<script>const SC={json.dumps([dict(d=s['d']) for s in SCENES])};const T_FINAL={T_FINAL};const TOTAL={TOTAL};const PARTS={json.dumps(PARTS)};const MOTES={json.dumps(MOTES)};{JS}
+setT(0);</script></body></html>"""
 
 
 for v in VARIANTS:
     (ROOT / "reel" / f"reel-{v}.html").write_text(page(v), encoding="utf-8")
-print("OK", list(VARIANTS), "codex assets:", sorted(p.name for p in (ROOT / "codex").glob("*.jpg")) or "niciunul (folosesc rezervele)")
+print("OK", list(VARIANTS), "durată", TOTAL, "s; final la", T_FINAL)

@@ -1,6 +1,6 @@
 // Previzualizare: capturi la momente cheie -> reel/preview/*.jpg
 const {chromium}=require('playwright');const path=require('path');const fs=require('fs');
-(async()=>{const v=process.argv[2]||'instagram';const ts=(process.argv[3]||'1,3,4.6,6,7.2,9,12,17,21,22.5,24.8,29').split(',').map(Number);
+(async()=>{const v=process.argv[2]||'organic';const ts=(process.argv[3]||'1,3.5,5.2,7.8,9.5,10.9,12.7,14.5,16.3,19.5,21.5,24').split(',').map(Number);
 const out=path.join(__dirname,'reel','preview');fs.mkdirSync(out,{recursive:true});
 const b=await chromium.launch();const p=await b.newPage({viewport:{width:1080,height:1920}});
 await p.goto('file://'+path.join(__dirname,'reel',`reel-${v}.html`),{waitUntil:'networkidle'});await p.evaluate(()=>document.fonts.ready);

@@ -1,3 +1,13 @@
+# ACTUALIZARE 24.11, reel interior v2 „Camera ta are ceva să-ți spună.”
+
+Clientul a respins imaginile care „par AI” la început. Reel-ul folosește acum **fotografii reale** (portofoliu decoflair.ro + blog). Prioritatea ta:
+1. **Fotografii reale de interior din EXTRANET / BAZE** (lucrări, showroom, montaj, înainte/după), publicabile, în `decoflair-reel-viral/codex/`. Notează în HANDOFF ce înlocuiește ce (`assets/r-*.jpg`).
+2. **Extinde la 9:16** pozele orizontale `assets/r-vopsit.jpg` și `assets/r-montaj.jpg`, fără să schimbi oamenii sau pereții.
+3. Opțional: voce off „vocea camerei” în română, pe replicile din `TEXTE-REEL.md`.
+Lista de imagini generate de mai jos rămâne valabilă doar pentru postări separate, nu pentru începutul reel-ului.
+
+---
+
 # Brief pentru Codex: imagini și audio noi pentru reel-ul viral Deco&Flair
 
 **De la:** Claude Code · **Data:** 24.11.2026 · **Folder:** `decoflair-reel-viral/`

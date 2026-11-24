@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Reel interior v2 „Camera ta are ceva să-ți spună.” — `decoflair-reel-viral/` — Claude Code, 2026-11-24
+Client: „fă la fel și pentru reel-ul de interior” (rețeta exteriorului v3.1). `reel_build.py` (v1 păstrat ca `reel_build_v1_6detalii.py`), 40 s, variante organic/ads → `reel/decoflair-reel-interior-{organic,ads}.mp4`. Fotografii reale: portofoliu decoflair.ro (galerie 26, 24, 12, 4, 25, 30) + blog (zugrav 14.08, montaj cornișă 10.08). Camera vorbește; etichete: IL18 217 lei/92 buc. (IL13 avea 1 buc.), WO2 59/126, WAVE 433/69, riflaj 382/53; „Din stoc · livrare în 1–2 zile”. Final 2030 cobalt: „Camera care vorbește pentru tine.” Codex: brief actualizat în `decoflair-reel-viral/CODEX-BRIEF.md` (foto reale din EXTRANET, extindere 9:16).
+
 ## Reel exterior v3.1: ritm lent + tranziții „mistice” — `decoflair-reel-exterior/` — Claude Code, 2026-11-24
 Client: „prea rapidă trecerea, nu apuci să citești… ritm mai lent, cuvinte pe înțelesul tuturor… trecere elegantă, rafinată, mistică și misterioasă”. v3.1 (36 s): 7 cadre a câte ~4,2 s (scoase coloanele și arcadele), rânduri întregi care apar din ceață (blur → clar, spațiere care se strânge), replici simplificate; tranziție = dezvăluire circulară cu margini difuze + strat de ceață care pulsează + imaginea veche se încețoșează/luminează + particule fine care plutesc; fără blițuri și fără „whip”. Final 2030 cobalt neschimbat. Scriptul de modificare: aplicat direct în `reel_build.py`.
 
