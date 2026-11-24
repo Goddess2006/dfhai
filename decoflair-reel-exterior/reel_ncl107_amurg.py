@@ -2,6 +2,7 @@
 
 import argparse
 from pathlib import Path
+import re
 import subprocess
 import tempfile
 
@@ -45,9 +46,31 @@ def overlay(path, final):
     image.save(path)
 
 
-def export(ffmpeg, footage, output):
+def require_native_dimensions(ffmpeg, footage):
+    probe = subprocess.run([
+        ffmpeg, "-hide_banner", "-i", str(footage),
+        "-map", "0:v:0", "-frames:v", "1", "-f", "null", "-"
+    ], capture_output=True, text=True, check=True)
+    stream = re.search(r"Video:[^\n]*?\b(\d{2,5})x(\d{2,5})\b", probe.stderr)
+    if not stream:
+        raise ValueError("Dimensiunile fluxului video nu au putut fi citite.")
+    width, height = map(int, stream.groups())
+    if (width, height) != SIZE:
+        raise ValueError(
+            f"Sursa are {width} × {height}. Modul nativ cere o sursă de 1080 × 1920."
+        )
+
+
+def export(ffmpeg, footage, output, native=False):
+    if native:
+        require_native_dimensions(ffmpeg, footage)
+    base = "setpts=PTS-STARTPTS,fps=30,"
+    if not native:
+        base += ("scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
+                 "crop=1080:1920,unsharp=5:5:0.28:5:5:0,")
     output.mkdir(parents=True, exist_ok=True)
-    target = output/"decoflair-ncl107-amurg-ads-15s.mp4"
+    suffix = "-nativ" if native else ""
+    target = output/f"decoflair-ncl107-amurg-ads-15s{suffix}.mp4"
     with tempfile.TemporaryDirectory() as workspace:
         work = Path(workspace)
         opening, closing, music = (work/name for name in ("open.png", "close.png", "music.wav"))
@@ -56,8 +79,7 @@ def export(ffmpeg, footage, output):
         soundtrack(music)
         # The base is moving footage throughout, including behind the call to action.
         graph = (
-            "[0:v]setpts=PTS-STARTPTS,fps=30,scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-            "crop=1080:1920,unsharp=5:5:0.28:5:5:0,setsar=1[film];"
+            f"[0:v]{base}setsar=1[film];"
             "[1:v]format=rgba,fade=t=out:st=2.4:d=0.32:alpha=1[hook];"
             f"[2:v]format=rgba,fade=t=in:st={CTA_START}:d=0.38:alpha=1[cta];"
             "[film][hook]overlay=enable='lt(t,2.73)'[intro];"
@@ -75,7 +97,7 @@ def export(ffmpeg, footage, output):
         ],check=True)
     subprocess.run([
         ffmpeg,"-hide_banner","-loglevel","error","-y","-ss","8.8","-i",str(target),
-        "-frames:v","1","-q:v","2",str(output/"coperta-ncl107-amurg.jpg")
+        "-frames:v","1","-q:v","2",str(output/f"coperta-ncl107-amurg{suffix}.jpg")
     ],check=True)
 
 
@@ -84,5 +106,6 @@ if __name__ == "__main__":
     parser.add_argument("footage", type=Path)
     parser.add_argument("--ffmpeg", default="ffmpeg")
     parser.add_argument("--output", type=Path, default=ROOT/"reel")
+    parser.add_argument("--native", action="store_true", help="Cere o sursă de 1080 × 1920 și păstrează dimensiunile.")
     args = parser.parse_args()
-    export(args.ffmpeg,args.footage,args.output)
+    export(args.ffmpeg,args.footage,args.output,native=args.native)

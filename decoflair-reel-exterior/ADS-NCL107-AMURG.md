@@ -44,6 +44,14 @@ Cu Pillow și FFmpeg, din rădăcina repository-ului:
 python3 decoflair-reel-exterior/reel_ncl107_amurg.py decoflair-reel-exterior/assets/ncl107-amurg-footage.mp4
 ```
 
+### Export dintr-o sursă nativă
+
+Versiunea fără watermark necesită un clip-sursă curat, generat sau filmat nativ la 1080 × 1920. După verificarea sursei, opțiunea `--native` păstrează dimensiunile și folosește nume de fișiere separate. Sursa HeyGen existentă este respinsă de acest mod.
+
+```sh
+python3 decoflair-reel-exterior/reel_ncl107_amurg.py --native /cale/catre/clipul-sursa-curat.mp4
+```
+
 <details>
 <summary>Promptul pentru clipul-sursă</summary>
 
