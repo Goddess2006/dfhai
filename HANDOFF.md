@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Seria „Dorință” (reels noi, alte produse) — `decoflair-reels-dorinta/` — Claude Code, 2026-11-24
+Client: reels noi cu alte produse, fără aspect AI, ambient cald, care să trezească dorința de a cumpăra, construite pe modelul celor mai bune 10 reclame din lume, împreună cu Codex. Motor comun `engine.py` (derivat din reel-ul de exterior v3.1: ritm lent, tranziții prin ceață) cu **paleta și sigla originală Deco&Flair** (logo-deco-wide.png, auriu #C2A15E/#E2CB94 pe cărbune #141210); configurări în `configs/`. (1) `lux`: „Haute couture pentru pereți”, cu fotografii reale de catalog D&G (panou 3×3 m 6.534 lei), Roberto Cavalli (panou 3.630; rolă de la 1.064), Emiliana (484 lei/rolă); livrare la comandă ≈14 zile. (2) `craciun`: „Casa în care se întorc toți”, cu portofoliu decoflair.ro: IL18 217/92 buc., R15 413/5 buc., WO2 59/126 buc.; de oprit după ~15.12. Video: `reel/decoflair-{lux,craciun}-{organic,ads}.mp4` (32,8 s). Repere + principii: `README.md`; texte/ads/UTM: `TEXTE.md`. **PENTRU CODEX: `decoflair-reels-dorinta/CODEX-BRIEF.md`** (revizie creativă, foto reale din EXTRANET, mărire 2× Real-ESRGAN, sunet, următorul reel).
+
 ## Reel interior v2 „Camera ta are ceva să-ți spună.” — `decoflair-reel-viral/` — Claude Code, 2026-11-24
 Client: „fă la fel și pentru reel-ul de interior” (rețeta exteriorului v3.1). `reel_build.py` (v1 păstrat ca `reel_build_v1_6detalii.py`), 40 s, variante organic/ads → `reel/decoflair-reel-interior-{organic,ads}.mp4`. Fotografii reale: portofoliu decoflair.ro (galerie 26, 24, 12, 4, 25, 30) + blog (zugrav 14.08, montaj cornișă 10.08). Camera vorbește; etichete: IL18 217 lei/92 buc. (IL13 avea 1 buc.), WO2 59/126, WAVE 433/69, riflaj 382/53; „Din stoc · livrare în 1–2 zile”. Final 2030 cobalt: „Camera care vorbește pentru tine.” Codex: brief actualizat în `decoflair-reel-viral/CODEX-BRIEF.md` (foto reale din EXTRANET, extindere 9:16).
 
