@@ -1,0 +1,118 @@
+<style>
+.df-cs{--df-ink:#2b2622;--df-muted:#6b625a;--df-line:#e6ded3;--df-soft:#f7f3ee;--df-accent:#8a6a3b;max-width:860px;margin:0 auto;color:var(--df-ink);font-size:15.5px;line-height:1.75;text-align:left}
+.df-cs *{box-sizing:border-box}
+.df-cs img{display:block;max-width:100%;height:auto}
+.df-cs .df-cs-lead{font-size:19px;line-height:1.6;margin:0 0 14px}
+.df-cs h2{font-size:20px;line-height:1.35;font-weight:600;margin:40px 0 12px;padding-top:18px;border-top:1px solid var(--df-line);text-transform:none}
+.df-cs h3{font-size:16px;font-weight:600;margin:0 0 6px}
+.df-cs p{margin:0 0 14px}
+.df-cs a{color:var(--df-accent);text-decoration:underline;text-underline-offset:2px}
+.df-cs strong{font-weight:600}
+.df-cs .df-cs-cta{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.df-cs .df-cs-btn{display:inline-block;background:var(--df-ink);color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;font-weight:600;font-size:15px;line-height:1.3}
+.df-cs .df-cs-btn:hover{background:var(--df-accent);color:#fff}
+.df-cs .df-cs-btn.df-cs-ghost{background:transparent;color:var(--df-ink);border:1px solid var(--df-ink)}
+.df-cs .df-cs-btn.df-cs-ghost:hover{background:var(--df-ink);color:#fff}
+.df-cs .df-cs-hero{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:10px;margin:22px 0 6px}
+.df-cs .df-cs-hero figure{margin:0;overflow:hidden;border-radius:10px;background:var(--df-soft)}
+.df-cs .df-cs-hero img{width:100%;height:360px;object-fit:cover}
+.df-cs .df-cs-split{display:grid;grid-template-columns:1fr 280px;gap:26px;align-items:start}
+.df-cs .df-cs-split img{width:100%;height:360px;object-fit:cover;border-radius:10px}
+.df-cs .df-cs-steps{counter-reset:s;list-style:none;padding:0;margin:6px 0 16px}
+.df-cs .df-cs-steps li{counter-increment:s;position:relative;padding:0 0 0 48px;margin:0 0 18px;min-height:34px}
+.df-cs .df-cs-steps li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--df-ink);color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;font-size:15px}
+.df-cs .df-cs-steps li strong{display:block;font-size:16px;margin:0 0 2px}
+.df-cs .df-cs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:6px 0 14px}
+.df-cs .df-cs-grid.df-cs-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.df-cs .df-cs-item{background:var(--df-soft);border:1px solid var(--df-line);border-radius:10px;padding:16px 18px}
+.df-cs .df-cs-item p{margin:0;font-size:14.5px;line-height:1.65}
+.df-cs .df-cs-item h3::before{content:"✓";display:inline-block;color:var(--df-accent);margin-right:8px;font-weight:700}
+.df-cs .df-cs-item.df-cs-has-img{padding:0;overflow:hidden;background:#fff}
+.df-cs .df-cs-item.df-cs-has-img img{width:100%;height:210px;object-fit:cover}
+.df-cs .df-cs-item.df-cs-has-img .df-cs-body{padding:14px 18px 16px}
+.df-cs .df-cs-item.df-cs-has-img h3::before{content:none}
+.df-cs .df-cs-quote{border-left:3px solid var(--df-accent);padding:4px 0 4px 18px;margin:28px 0;font-size:18px;line-height:1.6}
+.df-cs .df-cs-quote p{margin:0}
+.df-cs .df-cs-box{background:var(--df-soft);border:1px solid var(--df-line);border-radius:12px;padding:22px 24px;margin:10px 0 14px}
+.df-cs .df-cs-box h2{border:0;margin:0 0 8px;padding:0}
+.df-cs .df-cs-box p{margin:0 0 6px}
+@media (max-width:640px){
+.df-cs .df-cs-lead{font-size:17.5px}
+.df-cs h2{font-size:18px;margin-top:32px}
+.df-cs .df-cs-hero{grid-template-columns:1fr 1fr}
+.df-cs .df-cs-hero figure:first-child{grid-column:1 / -1}
+.df-cs .df-cs-hero img{height:220px}
+.df-cs .df-cs-hero figure:first-child img{height:280px}
+.df-cs .df-cs-split{grid-template-columns:1fr}
+.df-cs .df-cs-split img{height:240px}
+.df-cs .df-cs-grid,.df-cs .df-cs-grid.df-cs-three{grid-template-columns:1fr}
+.df-cs .df-cs-quote{font-size:16.5px}
+.df-cs .df-cs-box{padding:18px}
+.df-cs .df-cs-btn{flex:1 1 100%;text-align:center}
+}
+</style>
+
+<div class="df-cs">
+
+<p class="df-cs-lead">Un spațiu reușit nu se construiește din produse alese la întâmplare, ci din decizii bine gândite. <strong>Consultanța Deco &amp; Flair</strong> vă ajută să alegeți profilele, panourile și finisajele potrivite, astfel încât interiorul sau fațada să arate exact așa cum v-ați imaginat.</p>
+<p>Echipa noastră cunoaște în detaliu materialele, producătorii, tendințele internaționale și particularitățile proiectelor din România. Vă oferim recomandări clare, de la idee până la montaj.</p>
+<div class="df-cs-cta">
+<a class="df-cs-btn" href="tel:+40765740280">Programați o sesiune: 0765 740 280</a>
+<a class="df-cs-btn df-cs-ghost" href="mailto:office@decoflair.ro?subject=Programare%20consultan%C8%9B%C4%83">Scrieți-ne</a>
+</div>
+
+<div class="df-cs-hero">
+<figure><img src="https://decoflair.ro/image/catalog/galerie/26.jpg" alt="Living elegant cu iluminat ascuns în cornișă și pereți cu panouri decorative" loading="lazy"></figure>
+<figure><img src="https://decoflair.ro/image/catalog/galerie/27.jpg" alt="Birou cu pereți decorați cu ramele din profile clasice" loading="lazy"></figure>
+<figure><img src="https://decoflair.ro/image/catalog/galerie/16.jpg" alt="Living clasic cu profile decorative pe pereți și uși" loading="lazy"></figure>
+</div>
+
+<h2>Ce înseamnă consultanța Deco &amp; Flair</h2>
+<div class="df-cs-split">
+<div>
+<p>Nu ne limităm la a vă arăta mostre și a vă recomanda produse. Construim împreună un ansamblu coerent de forme, texturi și culori, care să exprime stilul dumneavoastră.</p>
+<p>Fiecare element decorativ, de la ancadramente și cornișe până la riflaje și panouri 3D, este gândit să se integreze firesc în arhitectura spațiului, fie că este vorba despre o locuință, un spațiu comercial sau o clădire istorică.</p>
+<p>Plecați de la noi cu o imagine clară a proiectului: ce produse se potrivesc, în ce cantități, cum se combină și cum se montează corect.</p>
+</div>
+<img src="https://decoflair.ro/image/catalog/galerie/13.jpg" alt="Cornișă decorativă cu iluminat LED ascuns la îmbinarea peretelui cu tavanul" loading="lazy">
+</div>
+
+<h2>Cum vă ghidăm</h2>
+<ol class="df-cs-steps">
+<li><strong>Analizăm spațiul și ideile dumneavoastră</strong>Pornim de la planuri, fotografii sau o vizită la fața locului și discutăm despre stilul dorit, buget și termene.</li>
+<li><strong>Alegem materialele și finisajele</strong>Recomandăm profilele, panourile și tapetul potrivite, cu accent pe durabilitate și pe efectul vizual.</li>
+<li><strong>Propunem paleta cromatică și stilul</strong>Combinații de culori și detalii adaptate arhitecturii interioare sau exterioare: clasic, modern, minimalist, industrial sau contemporan.</li>
+<li><strong>Vă arătăm rezultatul înainte de montaj</strong>Prin mostre, exemple de îmbinare a pieselor și, la cerere, o <a href="https://decoflair.ro/randare-3d">randare 3D</a> a spațiului.</li>
+<li><strong>Calculăm necesarul și vă trimitem oferta</strong>Lista de produse, cantitățile, accesoriile de montaj recomandate și costul livrării.</li>
+</ol>
+
+<h2>Unde are loc consultanța</h2>
+<div class="df-cs-grid">
+<div class="df-cs-item df-cs-has-img"><img src="https://decoflair.ro/image/catalog/galerie/32.jpg" alt="Hol cu profile decorative și ramă de perete în jurul unui tablou" loading="lazy"><div class="df-cs-body"><h3>În showroom</h3><p>Vedeți și atingeți mostrele, comparați finisajele și discutați cu un consultant despre fiecare detaliu.</p></div></div>
+<div class="df-cs-item df-cs-has-img"><img src="https://decoflair.ro/image/catalog/galerie/31.jpg" alt="Perete cu ramele decorative în spațiu de zi luminos" loading="lazy"><div class="df-cs-body"><h3>La locația dumneavoastră</h3><p>Venim la fața locului, analizăm spațiul și facem recomandările direct pe proiect.</p></div></div>
+</div>
+<p>Sesiunile de consultanță în showroom sau la locația clientului sunt un serviciu premium și se fac cu programare. Detaliile privind durata și costul vi le comunicăm la programare.</p>
+
+<h2>De ce aleg clienții Deco &amp; Flair</h2>
+<div class="df-cs-grid df-cs-three">
+<div class="df-cs-item"><h3>Experiență</h3><p>Cunoaștem piața, producătorii, materialele și detaliile care fac diferența.</p></div>
+<div class="df-cs-item"><h3>Proiecte cu identitate</h3><p>Nu doar spații frumoase, ci spații care spun ceva despre cei care le locuiesc.</p></div>
+<div class="df-cs-item"><h3>Orice stil</h3><p>Clasic, modern, minimalist, industrial sau contemporan, în interior și în exterior.</p></div>
+<div class="df-cs-item"><h3>Produse premium</h3><p>Materiale durabile, cu impact vizual, de la producători recunoscuți.</p></div>
+<div class="df-cs-item"><h3>Alegeri sigure</h3><p>Evitați comenzile greșite și economisiți timp și bani încă de la început.</p></div>
+<div class="df-cs-item"><h3>De la idee la montaj</h3><p>Vă însoțim pe tot parcursul proiectului, inclusiv cu recomandări de montaj.</p></div>
+</div>
+
+<div class="df-cs-quote"><p>Fiecare proiect este tratat ca o operă de artă: cu atenție, rigoare și rafinament.</p></div>
+
+<div class="df-cs-box">
+<h2>Programați o sesiune de consultanță</h2>
+<p>Sunați-ne la <a href="tel:+40765740280">0765 740 280</a> sau scrieți-ne la <a href="mailto:office@decoflair.ro">office@decoflair.ro</a>, de luni până vineri, între 07:30 și 16:00. Pentru o discuție cât mai utilă, pregătiți câteva fotografii ale spațiului și dimensiunile aproximative.</p>
+<div class="df-cs-cta">
+<a class="df-cs-btn" href="tel:+40765740280">Sunați acum</a>
+<a class="df-cs-btn df-cs-ghost" href="https://decoflair.ro/randare-3d">Randare 3D</a>
+<a class="df-cs-btn df-cs-ghost" href="https://decoflair.ro/produse-personalizate">Produse personalizate</a>
+</div>
+</div>
+
+</div>

@@ -65,3 +65,10 @@ Păstrat: mesajul de deschidere, informațiile necesare pentru reclamație, răs
 Fișier de publicat: `produse-personalizate.html` (stil scopat `.df-pp`). Admin → Catalog → Informații → „Produse personalizate” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
 Textul vechi (repetitiv, două introduceri) a fost condensat: intro + butoane „Cereți o ofertă” / telefon, Ce putem realiza (3 carduri), Materiale și execuție (Chiajna, EPS 120/150/200), Cum lucrăm (5 pași, execuție 7–10 zile lucrătoare ca pe Plata și livrare), ce trebuie trimis pentru ofertă, notă legală (fără drept de retragere, cu garanție de conformitate), caseta finală de ofertă. Telefon 0765 740 280.
 Imagini (adăugate ulterior): 11 fotografii deja existente pe server, din `image/catalog/category/` și `image/catalog/categorii produse/exterior/` (fronton, termosistem 2, cheie de boltă, brâuri, solbanc2, butaforie, capiteluri, ancadramente, arcade, cornișă5, coloane). Nu trebuie urcat nimic; dacă imaginile sunt redenumite sau șterse din catalog, pagina trebuie actualizată. Galeria „Inspirație” trimite către categoriile de exterior corespunzătoare.
+
+# Consultanță premium — decoflair.ro
+
+Fișier de publicat: `consultanta-premium.html` (stil scopat `.df-cs`). Admin → Catalog → Informații → „Consultanță” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Mesajul original păstrat, condensat: intro + butoane (telefon 0765 740 280 / e-mail), colaj 3 imagini, Ce înseamnă consultanța (cu imagine), Cum vă ghidăm (5 pași), Unde are loc (showroom / la locație, carduri cu imagini; serviciu premium, cost și durată comunicate la programare), De ce Deco & Flair (6 carduri), casetă de programare cu linkuri spre Randare 3D și Produse personalizate.
+Imagini: 7 fotografii din portofoliu, deja pe server (`image/catalog/galerie/` 26, 27, 16, 13, 32, 31), 900×1200, < 160 KB.
+De confirmat: existența showroom-ului (pe Contact apare doar depozitul/punctul de ridicare) și faptul că sesiunea este cu plată.
