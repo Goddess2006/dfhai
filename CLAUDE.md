@@ -11,3 +11,5 @@ Lucrezi în `/home/dfh/workspace`, același codebase cu Codex. Branch-ul de lucr
 7. `git push origin main`
 
 Dacă push-ul este respins, `git pull --rebase origin main` și push din nou. Rămâi pe `main`. Nu comite secrete.
+
+Documentație și date sursă (baze DistribNet, imagini catalog produse, date suplimentare): `/home/dfh/workspace/BAZE` — vezi `BAZE.md`. Folderul e în `.gitignore`: se citește local, nu se comite.

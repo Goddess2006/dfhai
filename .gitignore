@@ -10,3 +10,7 @@ __pycache__/
 
 # Generated deployment package
 black-friday/release/
+
+# Documentație și date sursă locale (baze DistribNet, clienți, imagini catalog) — se citesc din
+# /home/dfh/workspace/BAZE pe calculatorul de lucru; NU se urcă pe GitHub (date confidențiale, fișiere mari)
+BAZE/

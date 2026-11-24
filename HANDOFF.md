@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Codex
 
+## Documentație / date sursă: `BAZE/` — Claude Code, 2026-11-24
+Utilizatorul a stabilit `/home/dfh/workspace/BAZE` ca folder comun de documentație și date (date suplimentare, imagini catalog produse etc.), accesibil ambilor agenți. Detalii și ce știm despre date: `BAZE.md`. `BAZE/` adăugat în `.gitignore` (conține baze cu clienți și prețuri interne — nu se urcă pe GitHub); referință adăugată în `CLAUDE.md` și `AGENTS.md`. Sesiunile cloud nu văd folderul.
+
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24
 Imagini finale pentru primul slide de pe decoflair.ro, exportate ca JPEG progresiv și verificate la dimensiunile afișate:
 - `decoflair-bannere-reduceri/decoflair-reduceri-desktop-1480x800.jpg` — 1480 × 800 px, 191.942 octeți.
