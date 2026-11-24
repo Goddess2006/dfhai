@@ -10,6 +10,6 @@ for(let i=0;i<n;i++){await p.evaluate(t=>setT(t),i/FPS);
  await p.screenshot({path:path.join(frames,String(i).padStart(5,'0')+'.jpg'),type:'jpeg',quality:94});}
 await b.close();
 execFileSync('ffmpeg',['-y','-loglevel','error','-framerate',String(FPS),'-i',path.join(frames,'%05d.jpg'),
- '-c:v','libx264','-pix_fmt','yuv420p','-preset','slow','-crf','18','-movflags','+faststart',path.join(dir,'decoflair-reel-exterior-'+V+'.mp4')]);
+ '-c:v','libx264','-pix_fmt','yuv420p','-preset','slow','-crf','23','-maxrate','9M','-bufsize','18M','-movflags','+faststart',path.join(dir,'decoflair-reel-exterior-'+V+'.mp4')]);
 fs.rmSync(frames,{recursive:true,force:true});
 console.log('frames',n,'seconds',total.toFixed(1));})();
