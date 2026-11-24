@@ -1,5 +1,7 @@
 # NCL107 · Fațada la amurg
 
+[Versiunea actuală cu fațade fotografiate și cadre reale la amurg](ADS-NCL107-FOTO.md)
+
 **Varianta refăcută la 1080 × 1920 nativ, fără watermark** · [Spot 3D și link direct pentru reclamă](amurg-3d/README.md)
 
 [Spot Ads de 15 secunde](reel/decoflair-ncl107-amurg-ads-15s.mp4) · [Copertă](reel/coperta-ncl107-amurg.jpg)
