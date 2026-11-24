@@ -28,7 +28,29 @@
 .df-pp .df-pp-box h2{border:0;margin:0 0 8px;padding:0}
 .df-pp .df-pp-box p{margin:0 0 6px}
 .df-pp .df-pp-small{font-size:13.5px;color:var(--df-muted)}
+.df-pp img{display:block;max-width:100%;height:auto}
+.df-pp .df-pp-hero{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:10px;margin:22px 0 6px}
+.df-pp .df-pp-hero figure,.df-pp .df-pp-gal figure{margin:0;overflow:hidden;border-radius:10px;background:var(--df-soft)}
+.df-pp .df-pp-hero img{width:100%;height:340px;object-fit:cover}
+.df-pp .df-pp-item.df-pp-has-img{padding:0;overflow:hidden;background:#fff}
+.df-pp .df-pp-item.df-pp-has-img img{width:100%;height:190px;object-fit:cover}
+.df-pp .df-pp-item.df-pp-has-img .df-pp-body{padding:14px 18px 16px}
+.df-pp .df-pp-split{display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start}
+.df-pp .df-pp-split img{width:100%;height:300px;object-fit:cover;border-radius:10px}
+.df-pp .df-pp-gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:6px 0 8px}
+.df-pp .df-pp-gal img{width:100%;height:200px;object-fit:cover;transition:transform .3s}
+.df-pp .df-pp-gal a:hover img{transform:scale(1.04)}
+.df-pp .df-pp-gal figcaption{font-size:13px;padding:7px 10px;color:var(--df-ink);background:#fff;border-top:1px solid var(--df-line)}
+.df-pp .df-pp-gal a{text-decoration:none;color:inherit;display:block}
 @media (max-width:640px){
+.df-pp .df-pp-hero{grid-template-columns:1fr 1fr}
+.df-pp .df-pp-hero figure:first-child{grid-column:1 / -1}
+.df-pp .df-pp-hero img{height:220px}
+.df-pp .df-pp-hero figure:first-child img{height:260px}
+.df-pp .df-pp-split{grid-template-columns:1fr}
+.df-pp .df-pp-split img{height:220px}
+.df-pp .df-pp-gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+.df-pp .df-pp-gal img{height:150px}
 .df-pp .df-pp-lead{font-size:17.5px}
 .df-pp h2{font-size:18px;margin-top:32px}
 .df-pp .df-pp-grid,.df-pp .df-pp-grid.df-pp-three{grid-template-columns:1fr}
@@ -47,16 +69,27 @@
 <a class="df-pp-btn df-pp-ghost" href="tel:+40765740280">Sunați: 0765 740 280</a>
 </div>
 
+<div class="df-pp-hero">
+<figure><img src="https://decoflair.ro/image/catalog/category/fronton.jpg" alt="Fronton și ancadrament decorativ la fereastră, fațadă albă" loading="lazy"></figure>
+<figure><img src="https://decoflair.ro/image/catalog/category/termosistem%202.jpg" alt="Fațadă cu cornișe și ancadramente decorative din polistiren" loading="lazy"></figure>
+<figure><img src="https://decoflair.ro/image/catalog/category/cheie%20de%20bolta.jpg" alt="Cheie de boltă și ancadrament decorativ la fereastră" loading="lazy"></figure>
+</div>
+
 <h2>Ce putem realiza</h2>
 <div class="df-pp-grid df-pp-three">
-<div class="df-pp-item"><h3>Profile clasice</h3><p>Cornișe, brâuri și ancadramente reproduse după modele existente sau desenate de la zero.</p></div>
-<div class="df-pp-item"><h3>Linii moderne</h3><p>Elemente cu geometrie simplă și curată, pentru fațade contemporane.</p></div>
-<div class="df-pp-item"><h3>Detalii speciale</h3><p>Coloane, capiteluri, chei de boltă, frontoane și ornamente pentru proiecte unice sau de restaurare.</p></div>
+<div class="df-pp-item df-pp-has-img"><img src="https://decoflair.ro/image/catalog/category/brauri.jpg" alt="Brâuri și cornișe decorative clasice pe fațadă" loading="lazy"><div class="df-pp-body"><h3>Profile clasice</h3><p>Cornișe, brâuri și ancadramente reproduse după modele existente sau desenate de la zero.</p></div></div>
+<div class="df-pp-item df-pp-has-img"><img src="https://decoflair.ro/image/catalog/category/solbanc2.jpg" alt="Ancadrament modern cu solbanc, linii drepte" loading="lazy"><div class="df-pp-body"><h3>Linii moderne</h3><p>Elemente cu geometrie simplă și curată, pentru fațade contemporane.</p></div></div>
+<div class="df-pp-item df-pp-has-img"><img src="https://decoflair.ro/image/catalog/category/butaforie.jpg" alt="Ornament decorativ sculptat pentru fațadă" loading="lazy"><div class="df-pp-body"><h3>Detalii speciale</h3><p>Coloane, capiteluri, chei de boltă, frontoane și ornamente pentru proiecte unice sau de restaurare.</p></div></div>
 </div>
 
 <h2>Materiale și execuție</h2>
+<div class="df-pp-split">
+<div>
 <p>Produsele personalizate pentru exterior sunt fabricate în unitatea noastră de producție din <strong>Chiajna, jud. Ilfov</strong>, din <strong>polistiren expandat de înaltă densitate</strong> (EPS 120, EPS 150 sau EPS 200, în funcție de dimensiuni și de locul de montaj), tratat pentru rezistență la intemperii. Finisajele se aplică prin tehnologii moderne, pentru un aspect uniform și durabil.</p>
 <p>Vă recomandăm densitatea și finisajul potrivite fiecărui element, astfel încât piesa să fie ușor de montat și să își păstreze forma în timp.</p>
+</div>
+<img src="https://decoflair.ro/image/catalog/category/capitelii.jpg" alt="Coloane cu capiteluri decorative la intrarea unei case" loading="lazy">
+</div>
 
 <h2>Cum lucrăm</h2>
 <ol class="df-pp-steps">
@@ -75,6 +108,15 @@
 <li>localitatea în care se face livrarea;</li>
 <li>termenul dorit pentru finalizarea lucrării.</li>
 </ul>
+
+<h2>Inspirație</h2>
+<p>Câteva dintre elementele pe care le putem adapta sau reproduce la dimensiunile proiectului dumneavoastră:</p>
+<div class="df-pp-gal">
+<figure><a href="https://decoflair.ro/profile-decorative-exterior/ancadramente-ferestre"><img src="https://decoflair.ro/image/catalog/categorii%20produse/exterior/decoflair_ancadramente_ferestre_usi.jpg" alt="Ancadrament decorativ pentru ușă" loading="lazy"><figcaption>Ancadramente</figcaption></a></figure>
+<figure><a href="https://decoflair.ro/profile-decorative-exterior/arcade-decorative-din-polistiren-exterior"><img src="https://decoflair.ro/image/catalog/categorii%20produse/exterior/decoflair_arcade_decorative.jpg" alt="Arcadă decorativă cu pilaștri" loading="lazy"><figcaption>Arcade</figcaption></a></figure>
+<figure><a href="https://decoflair.ro/profile-decorative-exterior/cornisa-decorativa-exterior"><img src="https://decoflair.ro/image/catalog/category/cornisa5.jpg" alt="Cornișă decorativă de exterior" loading="lazy"><figcaption>Cornișe</figcaption></a></figure>
+<figure><a href="https://decoflair.ro/profile-decorative-exterior/coloane-decorative-exterior"><img src="https://decoflair.ro/image/catalog/category/coloane.jpg" alt="Coloane decorative albe" loading="lazy"><figcaption>Coloane</figcaption></a></figure>
+</div>
 
 <div class="df-pp-quote"><p>Dumneavoastră imaginați, noi proiectăm și executăm. Viziunea dumneavoastră devine detaliu arhitectural.</p></div>
 
