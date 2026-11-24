@@ -265,3 +265,31 @@ Mobil, cu ambientul generat pentru desktop ca referință
 > Use case: photorealistic-natural. Reframe the referenced architecture photograph as a 3:4 vertical editorial photograph for the mobile version of the same Deco & Flair campaign. Reference image is the identical fictional family house, identity and architecture to preserve. Camera moves slightly closer toward the timber entrance, taking a portrait crop from a slightly adjusted angle, in the same late-afternoon light. Keep the exact warm limestone beige wall texture, terracotta tile roof, dark brown gutters and the continuous stepped eave cornice, the exact shallow segmental arch clad in raised ivory trim, brown timber door and black hanging lantern. Include the first dark bronze rectangular window and its layered ivory surround and projecting sill on the right, with the same realistic scale and geometry. Crop the second window out if needed. Show enough framing above to read the cornice and the clay eaves. Including a portion of the front steps and planting at the bottom is fine. Feature the decorative trim in the upper and middle part of the frame. Keep the architecture plausible, do not add new wings, windows, columns, flooring or arches. Clean, highly realistic architectural photography, true color, slight texture, no graphics, no text, no logo, no border, no people.
 
 </details>
+
+## Colecție de bannere Deco & Flair România 2027 — Codex, 2026-11-24
+Livrare în `decoflair-creative-2027/`, cu cinci perechi interior și cinci perechi exterior. Fiecare pereche conține JPEG progresiv pentru desktop (1480 × 800 px) și mobil (900 × 1200 px), cu mesaj de categorie, fără ofertă sau procente. `decoflair-creative-2027/GHID.md` mapează cele 20 de fișiere la categoriile site-ului și la textele alternative propuse.
+
+Cadre generate acum cu ImageGen: livingul cu chenare, livingul cu scafă LED, casa verde cu ancadramente și casa urbană cu brâu și colțare. Restul provin din biblioteca de inspirație versionată `decoflair-inspiratie-50/imagini/`: `interior/04-dining-rozeta.png`, `interior/05-hol-plinta.png`, `panouri-3d/21-valuri-living.png`, `exterior/14-intrare-pilastri.png`, `exterior/15-cornisa-acoperis.png` și `exterior/19-gard-capace.png`. Toate sunt imagini de inspirație. Fonturi Cormorant Garamond și Montserrat din `etichete-mostre/premium/assets/`.
+
+Verificate cele 20 de dimensiuni și fișiere JPEG unice, lizibilitatea pe mobil la 360 px, destinațiile din navigația site-ului și integritatea arhivei de livrare.
+
+<details>
+<summary>Prompturile ImageGen</summary>
+
+Interior, chenare
+
+> Photorealistic architectural editorial, landscape 4:3. Contemporary reachable Romanian family apartment in Cluj envisioned for 2027, modeled as a bright quiet living room in a typical renovated building. Mineral sage walls with beautifully proportioned shallow tone-on-tone rectangular applied decorative wall moulding panels clearly visible behind and around a low natural flax sofa, matte smoked oak herringbone, compact walnut side table, warm cream rug, discreet rust knit accent, and clean side-window daylight across the raised edges. Architecturally coherent, subtle, tactile, lived-in but meticulously composed. Show the feature wall and sofa in the central two-thirds, all key profiles centered horizontally with ample safe room for portrait reframe. Aim camera level at the wall and show crown and floor where natural. No text, graphic design, borders, brand, render aesthetic; finished editorial photograph.
+
+Interior, scafe LED
+
+> Photorealistic high-end interiors photograph, landscape 4:3. Contemporary Romanian apartment living/dining room with warm umber limewash and neutral soft upholstery, walnut and a little brushed brass. The defining feature is a single understated projecting painted ceiling coving profile with INDIRECT LED: the source is concealed in the coving, light washes the ceiling gently, no visible strip, no neon, no fake halo. Show exactly how the shadow reveal and moulding meet at the inner corner. A modest room with Romanian residential proportions, elegant and credible for 2027. Late afternoon into dusk with balanced ambient light. Center the inside ceiling angle and a coherent piece of furniture horizontally for portrait crop. Large clear surfaces and spatial depth. No text, graphic design, borders, brand, or artificial graphics.
+
+Exterior, ancadramente
+
+> Editorial architectural photo landscape 4:3 of a contemporary Romanian home envisioned for 2027. A compact detached house at the edge of a town on the Transylvanian plateau, with soft muted sage-olive limewashed plaster, ecru raised flat window surrounds and projecting sills, a clean linear stepped eave cornice, simple natural timber front door with square lintel, and dark matte clay tile gable roof. Two regular-sized shaded windows, realistic Romanian proportions, reachably elegant. Ground-level three-quarter view, convincing straight lines and junctions, side-lit early summer morning, natural local planting, low fence barely hinted. Center the two windows and decorated wall so a portrait crop around their visual rhythm works. Maintain a distinct square-corner geometry. No arches, no stucco excess, no columns, no luxury villa, no text, graphics, border, branding or people. Realistic photograph.
+
+Exterior, profile de fațadă
+
+> High-end editorial architecture photograph landscape 4:3. A renewed interwar row house on a Romanian street, circa 2027 as a design inspiration, with subtle Bucharest architectural character and a modest two-level scale. Muted warm off-white stucco and shallow ivory decorative belt course between floors; one stepped cornice aligned under the shallow eaves; aligned vertical windows in dark wood with restrained precisely executed raised frames; clearly defined lightly rusticated corner block elements. One lower window with normal wall beneath it and clean window ledge. Modern refurbishment within the building's original understated rhythm; gray stone base and simple sidewalk, foliage soft at the edge. Center on the rendered corner and both levels so the lines and profiles remain visible in a portrait crop. Side daylight in calm late afternoon, beautifully realistic stone, wall, and wood textures. Real camera, no text, no graphics, no borders, no people, no signage, no ornate palace.
+
+</details>
