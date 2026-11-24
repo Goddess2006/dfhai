@@ -1,7 +1,14 @@
 # Handoff
 
 Ultima actualizare: 2026-11-24
-Agent: Codex
+Agent: Claude Code
+
+## Skill-uri de content + automatizare marketing — Claude Code, 2026-11-24
+Cerere: skill-uri pentru content site, imagini/video de produs pentru FB/IG/TikTok, newsletter și un proces automat pentru solopreneur. Totul în `.claude/skills/` (se încarcă automat în sesiunile Claude Code pe acest repo) + `.agents/product-marketing.md` (context de brand citit de skill-urile de marketing). Detalii, surse, costuri și procesul săptămânal: `AUTOMATIZARE-CONTENT.md`.
+- Scrise pentru Deco&Flair: `decoflair-catalog` (`scripts/catalog.py`: sitemap public → 998 produse, JSON-LD preț/stoc, poze 1500 px; testat), `decoflair-media-gen` (`scripts/fal_run.py`: orice model fal.ai prin Queue API, referințe locale ca data URI; `--dry-run` testat, generare reală netestată — lipsește `FAL_KEY`), `decoflair-social-pipeline`, `decoflair-newsletter` (`scripts/brevo.py`: liste, draft, test, programare; `send-now` cere `--yes`; netestat live — lipsește `BREVO_API_KEY`).
+- Preluate (MIT): 16 skill-uri din coreyhaines31/marketingskills @8fd2fca și ai-ad-prompt-guide din Creatify-AI/ai-ad-prompt-guide @115b398.
+- Site: OpenCart + Journal, Meta Pixel, TikTok Pixel, GA4; newsletter-ul din site e modulul Journal.
+- De făcut de proprietar: conturi/chei fal.ai, Brevo (domeniu SPF/DKIM/DMARC), Postiz; cheile doar ca variabile de mediu.
 
 ## Documentație / date sursă: `BAZE/` și `EXTRANET/` — Claude Code, 2026-11-24
 Adăugat și `/home/dfh/workspace/EXTRANET` (aceleași reguli: local, în `.gitignore`, descris în `BAZE.md`; conținutul trebuie inventariat la prima sesiune locală).
