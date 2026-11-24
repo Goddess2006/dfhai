@@ -5,7 +5,7 @@ Agent: Claude Code
 
 ## Termeni și condiții decoflair.ro — `decoflair-termeni-conditii/` — Claude Code, 2026-11-24
 Text nou, complet, pentru pagina /termeni-si-conditii (information_id=3, OpenCart + Journal3): `termeni-si-conditii.html`, fragment HTML gata de lipit în editorul de cod sursă, stil scopat `.df-tc`, cuprins cu ancore, 23 de secțiuni, responsive (verificat injectat în pagina live, desktop 1366 și mobil 390, fără scroll orizontal).
-Sediu social nou: Str. Renului nr. 3, Sector 2, București. Depozit/retururi: Str. Comerțului f.n., Domnești, Ilfov 077040. J2026031505008, RO54681700.
+Sediu social nou: Str. Renului nr. 3, Sector 2, București. Telefon afișat: 0765 740 280. Fără dată de actualizare în antet (la cererea utilizatorului). Depozit/retururi: Str. Comerțului f.n., Domnești, Ilfov 077040. J2026031505008, RO54681700.
 Actualizat legislativ la 24.11.2026: OUG 34/2014 + OUG 18/2026 (buton „Retrageți-vă din contract aici” → /formular-retur), OUG 140/2021, OG 21/1992 (preț minim 30 de zile la reduceri), OG 38/2015 (SAL; platforma ODR/SOL închisă 20.07.2025), GDPR/L190/2018, RO e-Factura. Dreptul la reparare (Dir. 2024/1799) încă netranspus în RO.
 Adresa veche (Făurei nr. 1, Sector 1) apare încă pe /contact, /politica-retur, subsol și în setările magazinului — de corectat (lista în README).
 
