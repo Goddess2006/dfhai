@@ -48,3 +48,9 @@ Rescrisă după inventarul real al cookie-urilor (scanare Playwright, 24.11.2026
 
 ## PROBLEMĂ DE CONFORMITATE (de reparat tehnic)
 Toate cookie-urile de statistică și marketing (GA, Clarity, Meta, TikTok, Bing UET) se setează **la prima încărcare, înainte de „Accepta toate”**. Încalcă art. 4 alin. (5) din Legea 506/2004 și GDPR. De făcut: în GTM-N6S3P2XC activat Consent Mode v2 (default denied pentru analytics_storage, ad_storage, ad_user_data, ad_personalization), toate tag-urile (GA4, Meta, TikTok, Clarity, UET) declanșate doar după consimțământ; scoase eventualele coduri puse direct în tema Journal3 / modulele OpenCart, în afara GTM; bannerul să trimită update de consimțământ către GTM. Apoi retestat cu browser curat.
+
+# Plata și livrare — decoflair.ro
+
+Fișier de publicat: `plata-si-livrare.html` (stil scopat `.df-pl`). Admin → Catalog → Informații → „Plata și livrare” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Păstrate datele existente (metode de plată, termene 1–2 / 3–5 / 14 / 7–10 zile, tarife 150 lei FAN Courier și 242 lei flotă, km suplimentari, validare telefonică). Adăugate: NETOPIA, IBAN pentru OP, facturare + RO e-Factura, termen legal max. 30 de zile, ridicare gratuită din depozit (adresă, program), verificarea coletului, transferul riscului, anularea la întârziere cu restituire în 14 zile, contact cu datele noi.
+De confirmat: tarifele includ TVA; „Visa sau Mastercard”; termenul de recontactare „o zi lucrătoare”; termenele de interior se aplică și pentru tapet/adezivi/accesorii.
