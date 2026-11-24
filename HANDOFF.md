@@ -1,7 +1,12 @@
 # Handoff
 
-Ultima actualizare: 2026-11-18
-Agent: Codex
+Ultima actualizare: 2026-11-24
+Agent: Claude Code
+
+## Blog „Tendințe design interior 2027” — `decoflair-blog-tendinte-2027/` — Claude Code, 2026-11-24
+Articol ghid (~3.700 cuvinte) gata de lipit în Journal Blog (OpenCart 3/DevCart): `out/articol-opencart.html` (Content, modul cod; fără H1, tema pune titlul), `out/previzualizare.html`, `SETARI-OPENCART.md` (toate câmpurile ca în formularul Blog Post + tabel cuvinte cheie Semrush RO + pași după publicare). Imagini: 14 JPG 1200 px din `decoflair-inspiratie-50` (AI, etichetate ca randări de inspirație), generate cu `build_images.py`, de urcat în `image/catalog/Blog/tendinte-2027/` (`out/imagini-de-urcat.zip`); cover 1200×800 pentru câmpul Image.
+Conținut: Pe scurt, cuprins cu ancore, culoarea anului 2027 (Benjamin Moore Webster Green HC-130, 14.10.2026; WGSN×Coloro Luminous Blue; Behr Grounded; Valspar Cottage Door; Glidden Artifact; Pantone 2027 încă neanunțat la 24.11 → DE ACTUALIZAT la anunțul din decembrie), 10 tendințe cu carduri de produs (28 produse reale, prețuri cu TVA la 24.11.2026), tabel, buget living 4×5 m (3.572,79 lei), 5 pași, secțiune sărbători, FAQ cu microdate FAQPage, surse, autor. Toate cele 82 de URL-uri verificate 200. Telefon/WhatsApp 0765 740 280.
+Reproducere: `python3 build_images.py && python3 build.py`.
 
 ## Skill UI/UX din ghidul Clean Code Culture — Codex, 2026-11-18
 Cererea clarificată a utilizatorului: doar instalarea skill-urilor din PDF, fără construirea unui website. Instalat `ui-ux-pro-max` din sursa oficială `nextlevelbuilder/ui-ux-pro-max-skill`, calea `.claude/skills/ui-ux-pro-max`, prin helper-ul skill-installer, cu verificarea sursei înaintea instalării.
