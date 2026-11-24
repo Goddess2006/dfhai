@@ -24,24 +24,22 @@ def asset(fallback, codex=None):
 
 # fiecare scenă: imagine reală, poziție, replici (cuvinte; *cuvânt* = evidențiat), etichetă produs (opțional)
 # date produs verificate pe decoflair.ro la 24.11.2026
-D = 2.6
 SCENES = [
-    dict(img=asset("r-conac.jpg", "r01-conac-9x16.jpg"), pos="50% 50%", lines=["Psst. *Da,* tu.", "Sunt *casa.* Am ceva să-ți spun."], tag=None, d=2.8, src="foto reală · portofoliu decoflair.ro"),
-    dict(img=asset("r-schele.jpg", "r02-schele-9x16.jpg"), pos="62% 50%", lines=["Acum o lună eram doar", "*schele* și polistiren."], tag=("ÎNAINTE", "", ""), d=2.3, src="foto reală"),
-    dict(img=asset("r-coloane.jpg"), pos="30% 50%", lines=["Coloanele? Le-au urcat", "*de mână.* Sunt ușoare."], tag=("Coloane decorative", "polistiren + rășină", ""), d=2.3, src="foto reală"),
-    dict(img=asset("r-ancadramente.jpg", "r03-ancadramente-9x16.jpg"), pos="45% 50%", lines=["Mi-au pus *ancadramente.*", "Ferestrele mele au *sprâncene.*"], tag=("Ancadrament NA102", "de la 71 lei", "1.733 în stoc"), d=2.4, src="foto reală"),
-    dict(img=asset("cx-ncl107.jpg"), pos="50% 50%", lines=["Colțurile mele erau *ciupite.*", "Acum par din *piatră.*"], tag=("Colțar NCL107", "248 lei/buc", "2.135 în stoc"), d=2.4, src=""),
-    dict(img=asset("r-arcade.jpg", "r05-arcade-9x16.jpg"), pos="40% 50%", lines=["Secretul? *Rășină* și", "*nisip cuarțos.* Nu-mi pasă de *îngheț.*"], tag=("Rezistă la îngheț și UV", "", ""), d=2.5, src="foto reală"),
-    dict(img=asset("cx-nc104.jpg"), pos="50% 30%", lines=["O *cornișă* nouă…", "și am întinerit *zece ani.*"], tag=("Cornișă NC104", "194 lei", "185 în stoc"), d=2.3, src=""),
-    dict(img=asset("cx-st105.jpg"), pos="50% 50%", lines=["Și gardul a cerut", "*același tratament.*"], tag=("Capac gard ST105", "200 lei", "18 în stoc"), d=2.3, src=""),
-    dict(img=asset("cx-seara.jpg", "r07-vecini-9x16.jpg"), pos="50% 50%", lines=["Vecinii mă întreabă", "de unde m-am *aranjat.*", "Le-am zis:"], tag=("Din stoc", "livrare în 3–5 zile", ""), d=2.9, src=""),
+    dict(img=asset("r-conac.jpg", "r01-conac-9x16.jpg"), pos="50% 50%", lines=["Psst… *tu.*", "Sunt *casa* ta. Ascultă-mă puțin."], tag=None, d=4.4, src="foto reală · portofoliu decoflair.ro"),
+    dict(img=asset("r-schele.jpg", "r02-schele-9x16.jpg"), pos="62% 50%", lines=["Acum o lună eram doar", "*schele* și polistiren."], tag=("ÎNAINTE", "", ""), d=4.2, src="foto reală"),
+    dict(img=asset("r-ancadramente.jpg", "r03-ancadramente-9x16.jpg"), pos="45% 50%", lines=["Mi-au pus *ancadramente.*", "Acum arăt *îngrijită.*"], tag=("Ancadrament NA102", "de la 71 lei", "1.733 în stoc"), d=4.2, src="foto reală"),
+    dict(img=asset("cx-ncl107.jpg"), pos="50% 50%", lines=["Colțurile mele erau *ciupite.*", "Acum par din *piatră.*"], tag=("Colțar NCL107", "248 lei/buc", "2.135 în stoc"), d=4.2, src=""),
+    dict(img=asset("cx-nc104.jpg"), pos="50% 30%", lines=["O *cornișă* sub acoperiș…", "și parcă am *întinerit.*"], tag=("Cornișă NC104", "194 lei", "185 în stoc"), d=4.2, src=""),
+    dict(img=asset("cx-st105.jpg"), pos="50% 50%", lines=["Până și *gardul*", "arată ca nou."], tag=("Capac gard ST105", "200 lei", "18 în stoc"), d=4.0, src=""),
+    dict(img=asset("cx-seara.jpg", "r07-vecini-9x16.jpg"), pos="50% 50%", lines=["Vecinii mă întreabă", "de unde m-am *aranjat.*", "Le-am zis:"], tag=("Din stoc", "livrare în 3–5 zile", ""), d=5.0, src=""),
 ]
 T_FINAL = sum(s["d"] for s in SCENES)
-TOTAL = round(T_FINAL + 5.2, 2)
+TOTAL = round(T_FINAL + 5.8, 2)
 
 VARIANTS = {"organic": dict(foot="Link în bio"), "ads": dict(foot="")}
 
 random.seed(21)
+MOTES = [[round(random.random()*1080,1), round(random.random()*1920,1), round(random.uniform(2,6),1), round(random.uniform(12,40),1), round(random.random()*6.28,2), round(random.uniform(.15,.55),2)] for _ in range(70)]
 PARTS = []
 for i in range(170):
     ang = random.random() * math.tau
@@ -56,11 +54,14 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family
 .bg{position:absolute;inset:-40px;background-size:cover;background-repeat:no-repeat;filter:contrast(1.06) saturate(1.05)}
 .vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.7))}
 #grain{position:absolute;inset:-200px;background:url(../assets/grain.png);background-size:540px 960px;opacity:.10;mix-blend-mode:overlay;z-index:60;pointer-events:none}
+#mist{position:absolute;inset:-300px;z-index:52;pointer-events:none;opacity:0;background:radial-gradient(ellipse 55% 35% at 30% 40%,rgba(235,240,255,.75),rgba(235,240,255,0) 70%),radial-gradient(ellipse 50% 30% at 75% 62%,rgba(200,210,255,.6),rgba(200,210,255,0) 70%),radial-gradient(ellipse 70% 45% at 50% 50%,rgba(255,255,255,.35),rgba(255,255,255,0) 70%);filter:blur(30px)}
+#motes{position:absolute;inset:0;z-index:53;pointer-events:none}
+#motes i{position:absolute;left:0;top:0;border-radius:50%;background:#F4F1FF;box-shadow:0 0 12px rgba(160,175,255,.9)}
 #flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:55;pointer-events:none}
 /* subtitrare cinetică */
 .cap{position:absolute;left:60px;right:60px;top:1060px;text-align:center;z-index:5}
-.ln{display:block;margin:0 auto 14px;font-size:68px;line-height:1.12;font-weight:800;letter-spacing:-1px;text-shadow:0 4px 24px rgba(0,0,0,.65)}
-.w{display:inline-block;margin:0 .14em;opacity:0;white-space:nowrap}
+.ln{display:block;margin:0 auto 18px;font-size:72px;line-height:1.14;font-weight:800;letter-spacing:-1px;text-shadow:0 4px 30px rgba(0,0,0,.75);opacity:0}
+.w{display:inline-block;margin:0 .13em;white-space:nowrap}
 .w.hl{background:var(--co);color:#fff;padding:0 .18em;border-radius:10px;text-shadow:none;box-shadow:0 10px 40px rgba(35,64,255,.55)}
 .who{position:absolute;left:0;right:0;top:985px;text-align:center;font-size:24px;letter-spacing:8px;font-weight:800;color:var(--bone);opacity:.85;z-index:5}
 .src{position:absolute;right:60px;top:330px;font-size:18px;letter-spacing:3px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;z-index:6}
@@ -112,28 +113,38 @@ const ST=[];{let a=0;SC.forEach(s=>{ST.push(a);a+=s.d});}
 window.setT=function(t){
   // granulație de film animată
   $('#grain').style.transform=`translate(${(Math.floor(t*24)*37)%200-100}px,${(Math.floor(t*24)*53)%200-100}px)`;
-  let flash=0;
+  let mist=0;
   SC.forEach((s,i)=>{const a=ST[i], e=a+s.d, el=$('#sc'+i);
-    const on=t>=a&&t<e+(i==SC.length-1?.6:0); vis(el,on?1:0);
+    const start=i==0?0:a-.6, end=(i==SC.length-1)? e+1.0 : e+.8;
+    const on=t>=start&&t<end; el.style.display=on?'block':'none'; el.style.opacity=1; el.style.zIndex=i+1;
+    if(!on) return;
     const lt=t-a;
-    // mișcare de cameră: push lent + mică deriva; intrare cu „whip” scurt
-    const whip=1-out(seg(lt,0,.28));
-    el.querySelector('.bg').style.transform=`translateX(${whip*(i%2?-160:160)}px) scale(${1.10+.06*seg(lt,0,s.d)})`;
-    el.querySelector('.bg').style.filter=`contrast(1.06) saturate(1.05) blur(${whip*10}px)`;
-    if(i>0&&lt>=0) flash=Math.max(flash, 1-seg(lt,0,.12));
-    // cuvinte
-    const ws=el.querySelectorAll('.w'); const n=ws.length; const span=Math.min(s.d-.75, n*.2);
-    ws.forEach((w,j)=>{const wa=a+.22+j*(span/n); const k=seg(t,wa,wa+.16);
-      w.style.opacity=cl(k*2); w.style.transform=`translateY(${(1-out(k))*26}px) scale(${.8+.2*back(k)})`;});
-    rise(el.querySelector('.who'),t,a+.1,.3,10);
-    const tg=el.querySelector('.tag'); if(tg){const k=seg(t,a+.55,a+.95); tg.style.opacity=cl(k*2); tg.style.transform=`rotate(${(1-back(k))*-8-2}deg) scale(${.6+.4*back(k)})`;}
+    if(i>0){const k=ease(seg(t,a-.6,a+.8)); const R=-35+175*k;
+      el.style.webkitMaskImage=el.style.maskImage=k>=1?'none':`radial-gradient(circle at 50% 44%, #000 ${R}%, rgba(0,0,0,0) ${R+32}%)`;
+      mist=Math.max(mist, Math.sin(Math.PI*seg(t,a-.7,a+1.0)));}
+    const ex=seg(t,e-.6,e+.8);
+    const bg=el.querySelector('.bg');
+    bg.style.transform=`scale(${1.06+.08*seg(lt,-0.6,s.d+.8)}) translate(${Math.sin((t+i)*.25)*12}px,${Math.cos((t+i)*.2)*10}px)`;
+    bg.style.filter=`contrast(1.05) saturate(${1.02-.25*ex}) brightness(${1+.18*ex}) blur(${ex*8}px)`;
+    const L=el.querySelectorAll('.ln'); const gap=Math.min(1.1,(s.d-2.2)/Math.max(1,L.length-1));
+    L.forEach((ln,j)=>{const la=a+.55+j*gap; const k=out(seg(t,la,la+.9));
+      const fade=(i==SC.length-1)?1:1-seg(t,e-.7,e-.05);
+      ln.style.opacity=k*fade; ln.style.filter=`blur(${(1-k)*12}px)`; ln.style.letterSpacing=`${(1-k)*6-1}px`; ln.style.transform=`translateY(${(1-k)*18}px)`;});
+    const who=el.querySelector('.who'); who.style.opacity=.85*out(seg(t,a+.3,a+1))*(1-seg(t,e-.7,e-.05));
+    const tg=el.querySelector('.tag'); if(tg){const k=out(seg(t,a+1.4,a+2.3)); tg.style.opacity=k*(1-seg(t,e-.6,e)); tg.style.transform=`translateY(${(1-k)*-14}px) scale(${.96+.04*k})`; tg.style.filter=`blur(${(1-k)*6}px)`;}
+    const src=el.querySelector('.src'); if(src) src.style.opacity=out(seg(t,a+.8,a+1.6))*(1-seg(t,e-.6,e));
     el.querySelectorAll('.bar i').forEach((x,j)=>{x.style.width=(j<i?100:j==i?seg(t,a,e)*100:0)+'%'});
   });
-  vis($('#flash'), flash*.55);
+  const tfm=Math.sin(Math.PI*seg(t,T_FINAL-.6,T_FINAL+1.2));
+  vis($('#mist'), .06+.55*Math.max(mist,tfm));
+  $('#mist').style.transform=`translate(${Math.sin(t*.35)*80}px,${Math.cos(t*.27)*60}px) scale(${1.05+.05*Math.sin(t*.4)})`;
+  $$('#motes i').forEach((m,i)=>{const d=MOTES[i]; const y=((d[1]-t*d[3])%1980+1980)%1980-30, x=d[0]+Math.sin(t*.5+d[4])*30;
+    m.style.transform=`translate(${x}px,${y}px)`; m.style.opacity=d[5]*(.55+.45*Math.sin(t*1.3+d[4]))*(t<T_FINAL?1:1-seg(t,T_FINAL,T_FINAL+1));});
+  vis($('#flash'), 0);
   // „decoflair.ro” sare din subtitrare în final
-  const tf=T_FINAL, fk=seg(t,tf-.55,tf+.35); const fly=$('#fly');
-  fly.style.opacity = t<tf-.55?0 : t<tf+.35 ? 1 : 1-seg(t,tf+.35,tf+.5);
-  fly.style.transform=`translateY(${-485*ease(fk)}px) scale(${1+ .6*ease(fk)})`; fly.style.letterSpacing=`${ease(seg(t,tf-.1,tf+.35))*8}px`; fly.style.filter=`blur(${ease(seg(t,tf,tf+.35))*8}px)`;
+  const tf=T_FINAL, fk=seg(t,tf-.5,tf+.9); const fly=$('#fly');
+  fly.style.opacity = out(seg(t,tf-1.3,tf-.6))*(t<tf+.9?1:1-seg(t,tf+.9,tf+1.2));
+  fly.style.transform=`translateY(${-485*ease(fk)}px) scale(${1+ .6*ease(fk)})`; fly.style.letterSpacing=`${ease(seg(t,tf+.2,tf+.9))*8}px`; fly.style.filter=`blur(${ease(seg(t,tf+.4,tf+1.1))*8}px)`;
   // final 2030
   const S=$('#s9'); vis(S, t>=tf?1:0);
   const T=t-tf;
@@ -180,6 +191,7 @@ def scene_html(i, s):
 def page(v):
     V = VARIANTS[v]
     parts = "".join(f'<i style="width:{p[4]}px;height:{p[4]}px"></i>' for p in PARTS)
+    motes = "".join(f'<i style="width:{m[2]}px;height:{m[2]}px"></i>' for m in MOTES)
     sc = "\n".join(scene_html(i, s) for i, s in enumerate(SCENES))
     return f"""<!doctype html><html lang="ro"><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@800&display=block" rel="stylesheet">
@@ -192,8 +204,8 @@ def page(v):
   <div id="tag2" style="opacity:0">Profile de exterior · din stoc</div>
   <div id="foot" style="opacity:0">{V['foot']}</div>
 </div>
-<div id="fly">decoflair.ro</div><div id="flash"></div><div id="grain"></div>
-<script>const SC={json.dumps([dict(d=s['d']) for s in SCENES])};const T_FINAL={T_FINAL};const TOTAL={TOTAL};const PARTS={json.dumps(PARTS)};{JS}
+<div id="fly">decoflair.ro</div><div id="mist"></div><div id="motes">{motes}</div><div id="flash"></div><div id="grain"></div>
+<script>const SC={json.dumps([dict(d=s['d']) for s in SCENES])};const T_FINAL={T_FINAL};const TOTAL={TOTAL};const PARTS={json.dumps(PARTS)};const MOTES={json.dumps(MOTES)};{JS}
 setT(0);</script></body></html>"""
 
 
