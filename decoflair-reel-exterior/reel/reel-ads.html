@@ -1,0 +1,153 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Manrope:wght@500;600;700;800&display=block" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#1F3A2F;--cr:#F4EEE4;--gold:#D6BC84;--ink:#141412;--ice:#DCE8F2}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0c0f12;font-family:Manrope,sans-serif;color:#fff}
+.sc{position:absolute;inset:0;overflow:hidden;opacity:0}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 45%,rgba(0,0,0,.66) 70%,rgba(0,0,0,.8) 100%)}
+.serif{font-family:'Cormorant Garamond',serif;font-weight:600}
+.wm{position:absolute;top:210px;left:72px;font-size:22px;letter-spacing:6px;font-weight:700;display:flex;align-items:center;gap:14px}
+.wm i{display:block;width:3px;height:26px;background:#9E1F2A}
+.big{position:absolute;left:72px;right:150px;font-size:116px;line-height:.98;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+.sub{position:absolute;left:72px;right:150px;font-size:46px;line-height:1.2;font-weight:700;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+#snow{position:absolute;inset:0;pointer-events:none;z-index:50}
+#snow i{position:absolute;border-radius:50%;background:#fff;filter:blur(1px)}
+/* erou */
+.studio{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#f6f3ee 0%,#e7e1d8 55%,#cfc6b9 100%)}
+.hero{position:absolute;left:440px;top:600px;width:600px;height:880px;background-size:contain;background-repeat:no-repeat;background-position:center;mix-blend-mode:multiply}
+.sec{position:absolute;right:150px;top:1080px;width:250px;height:250px;background:#fff center/contain no-repeat;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.dark{color:var(--ink);text-shadow:none}
+.pill{position:absolute;left:72px;padding:14px 26px;border-radius:40px;background:var(--g);color:#fff;font-size:34px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap}
+.chip{position:absolute;left:72px;display:flex;gap:16px;align-items:stretch}
+.chip div{background:#fff;color:var(--ink);border-radius:22px;padding:14px 24px;box-shadow:0 12px 34px rgba(0,0,0,.2)}
+.chip .k{font-size:20px;letter-spacing:3px;text-transform:uppercase;color:#7A5B22;font-weight:800}
+.chip .v{font-size:54px;font-weight:800;line-height:1.05}
+.chip .v small{font-size:26px}
+.chip .stk{background:var(--g);color:#fff}
+.chip .stk .k{color:var(--gold)}
+/* final touch */
+.ft-n{position:absolute;top:282px;text-shadow:0 2px 14px rgba(0,0,0,.6);left:72px;font-size:28px;letter-spacing:5px;font-weight:800;color:var(--gold);text-transform:uppercase}
+.ft-t{position:absolute;top:355px;left:72px;right:150px;font-size:112px;line-height:1;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+.ft-s{position:absolute;top:485px;left:72px;right:150px;font-size:44px;font-weight:700;text-shadow:0 4px 26px rgba(0,0,0,.6)}
+.pcard{position:absolute;left:72px;top:1120px;display:flex;align-items:center;gap:22px;background:rgba(244,238,228,.97);color:var(--ink);border-radius:26px;padding:14px 30px 14px 14px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.pcard .im{width:170px;height:170px;border-radius:16px;background:#fff center/cover no-repeat}
+.pcard .k{font-size:20px;letter-spacing:3px;text-transform:uppercase;color:#7A5B22;font-weight:800}
+.pcard .v{font-size:56px;font-weight:800;line-height:1.05}
+.pcard .v small{font-size:26px}
+.pcard .c{font-size:22px;color:#3d5c4d;font-weight:800}
+/* urgență + cta */
+.cold{filter:saturate(.55) brightness(.7) hue-rotate(-8deg)}
+.solid{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#2E5244 0%,#1F3A2F 55%,#122219 100%)}
+.btn{display:inline-block;margin-top:34px;padding:22px 40px;border:3px solid var(--gold);border-radius:60px;font-size:42px;font-weight:800}
+.badge{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.35);border-radius:50px;padding:14px 26px;font-size:34px;font-weight:800;margin-top:22px}
+</style></head><body>
+<div class="sc" id="s1" style="z-index:5"><div class="bg" style="background-image:url('../assets/a-colt.jpg');background-position:50% 40%"></div><div class="shade"></div>
+  <div class="wm"><i></i>DECO &amp; FLAIR</div>
+  <div id="hk"><div class="big serif" id="h1" style="top:320px">Prima zăpadă<br>vine.</div>
+  <div class="sub" id="h1b" style="top:620px">Fațada ta e gata? ❄️</div></div>
+  <div id="pb"><div class="big serif" id="p1" style="top:320px;opacity:0">Muchii ciupite.<br>Colțuri strâmbe.</div>
+  <div class="sub" id="p2" style="top:630px;opacity:0;color:var(--gold)">Le ascunde un singur profil.</div></div>
+</div>
+<div class="sc" id="s3" style="z-index:4"><div class="studio"></div>
+  <div class="hero" id="hero" style="background-image:url('../assets/p-ncl107-hero-crop.jpg')"></div>
+  <div class="dark" style="position:absolute;left:72px;top:300px;font-size:28px;letter-spacing:5px;font-weight:800;color:#7A5B22;text-transform:uppercase" id="hn">NCL107 · 300/300 × 30 × 1000 mm</div>
+  <div class="big serif dark" id="ht" style="top:345px;font-size:100px">Colțarul care<br>termină casa.</div>
+  <div class="pill p" style="top:690px;left:72px">Debitat în L</div><div class="pill p" style="top:790px;left:72px">Ascunde muchiile imperfecte</div><div class="pill p" style="top:890px;left:72px">Rășină + nisip cuarțos</div><div class="pill p" style="top:990px;left:72px">Rezistă la îngheț și UV</div>
+  <div class="bg" id="hamb" style="background-image:url('../assets/a-colt.jpg');background-position:50% 40%;clip-path:inset(50% 0 50% 0)"><div class="shade"></div>
+    <div class="big serif" id="hon" style="top:320px;opacity:0">Așa arată<br>pe casă.</div></div>
+  <div class="chip" id="hchip" style="top:1130px;opacity:0"><div><div class="k">de la</div><div class="v">248 <small>lei/buc</small></div></div><div class="stk"><div class="k">în stoc acum</div><div class="v">2.135 <small>buc.</small></div></div></div>
+</div>
+<div class="sc" id="f0"><div class="bg" style="background-image:url('../assets/a-vila.jpg');background-position:50% 40%"></div><div class="shade"></div>
+  <div class="ft-n">Final touch 1/4</div><div class="ft-t serif">Ancadramente</div><div class="ft-s">Ferestre cu prezență</div>
+  <div class="pcard"><div class="im" style="background-image:url('../assets/p-na102-main.jpg')"></div><div><div class="k">de la · NA102</div><div class="v">71 <small>lei</small></div><div class="c">✓ 1.733 buc. în stoc</div></div></div></div><div class="sc" id="f1"><div class="bg" style="background-image:url('../assets/a-solbanc.jpg');background-position:50% 60%"></div><div class="shade"></div>
+  <div class="ft-n">Final touch 2/4</div><div class="ft-t serif">Solbanc</div><div class="ft-s">Pervaz care închide perfect</div>
+  <div class="pcard"><div class="im" style="background-image:url('../assets/p-ns110-closeup.jpg')"></div><div><div class="k">de la · NS110</div><div class="v">118 <small>lei</small></div><div class="c">✓ 265 buc. în stoc</div></div></div></div><div class="sc" id="f2"><div class="bg" style="background-image:url('../assets/a-intrare.jpg');background-position:50% 30%"></div><div class="shade"></div>
+  <div class="ft-n">Final touch 3/4</div><div class="ft-t serif">Cheie de boltă</div><div class="ft-s">Accentul de deasupra</div>
+  <div class="pcard"><div class="im" style="background-image:url('../assets/p-ncb104-main.jpg')"></div><div><div class="k">de la · NCB104</div><div class="v">87 <small>lei</small></div><div class="c">✓ 519 buc. în stoc</div></div></div></div><div class="sc" id="f3"><div class="bg" style="background-image:url('../assets/a-cornisa.jpg');background-position:50% 30%"></div><div class="shade"></div>
+  <div class="ft-n">Final touch 4/4</div><div class="ft-t serif">Cornișă</div><div class="ft-s">Linia clară sub acoperiș</div>
+  <div class="pcard"><div class="im" style="background-image:url('../assets/p-nc104-main.jpg')"></div><div><div class="k">de la · NC104</div><div class="v">194 <small>lei</small></div><div class="c">✓ 185 buc. în stoc</div></div></div></div>
+<div class="sc" id="s5"><div class="bg" style="background-image:url('../assets/a-vila.jpg');background-position:50% 45%"></div>
+  <div id="glow" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 62%,rgba(255,180,90,.35),rgba(255,180,90,0) 55%);mix-blend-mode:screen"></div><div class="shade"></div>
+  <div class="big serif" id="u1" style="top:320px">Ultimul final<br>touch al anului.</div>
+  <div class="sub" id="u2" style="top:590px"><span class="badge">📦 Din stoc · livrare în 3–5 zile</span></div>
+  <div class="sub" id="u3" style="top:700px"><span class="badge">🏠 Ridicare din Domnești, Ilfov</span></div>
+  <div class="sub" id="u4" style="top:830px;color:var(--gold);font-size:56px">Casa gata de sărbători.</div>
+</div>
+<div class="sc" id="s6"><div class="solid"></div>
+  <div style="position:absolute;left:72px;right:150px;top:300px">
+   <div class="wm" id="c0" style="position:static;margin-bottom:56px"><i></i>DECO &amp; FLAIR</div>
+   <div class="serif" id="c1" style="font-size:108px;line-height:1">Profile de exterior<br>din stoc.</div>
+   <div id="c2" style="margin-top:30px;font-size:50px;line-height:1.2;font-weight:700">Comandă acum.<br>Din stoc.</div>
+   <div class="btn" id="c3">decoflair.ro</div>
+   <div id="c5" style="display:flex;gap:14px;margin-top:44px"><div style="width:130px;height:130px;border-radius:18px;background:#fff url(../assets/p-ncl107-hero.jpg) center/cover no-repeat"></div><div style="width:130px;height:130px;border-radius:18px;background:#fff url(../assets/p-na102-main.jpg) center/cover no-repeat"></div><div style="width:130px;height:130px;border-radius:18px;background:#fff url(../assets/p-ns110-closeup.jpg) center/cover no-repeat"></div><div style="width:130px;height:130px;border-radius:18px;background:#fff url(../assets/p-ncb104-main.jpg) center/cover no-repeat"></div><div style="width:130px;height:130px;border-radius:18px;background:#fff url(../assets/p-nc104-main.jpg) center/cover no-repeat"></div></div>
+   <div id="c4" style="margin-top:36px;font-size:34px;line-height:1.4;font-weight:600;color:rgba(255,255,255,.88)">decoflair.ro · Consultanță gratuită<br>0765 740 280</div>
+  </div>
+</div>
+<div id="snow"><i style="width:6.9px;height:6.9px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:3.7px;height:3.7px"></i><i style="width:8.9px;height:8.9px"></i><i style="width:4.9px;height:4.9px"></i><i style="width:6.3px;height:6.3px"></i><i style="width:4.9px;height:4.9px"></i><i style="width:4.5px;height:4.5px"></i><i style="width:8.9px;height:8.9px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:7.2px;height:7.2px"></i><i style="width:5.8px;height:5.8px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:4.0px;height:4.0px"></i><i style="width:5.3px;height:5.3px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:8.7px;height:8.7px"></i><i style="width:6.5px;height:6.5px"></i><i style="width:8.7px;height:8.7px"></i><i style="width:8.4px;height:8.4px"></i><i style="width:3.6px;height:3.6px"></i><i style="width:5.0px;height:5.0px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:5.2px;height:5.2px"></i><i style="width:3.5px;height:3.5px"></i><i style="width:3.1px;height:3.1px"></i><i style="width:6.2px;height:6.2px"></i><i style="width:4.0px;height:4.0px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:4.6px;height:4.6px"></i><i style="width:8.7px;height:8.7px"></i><i style="width:6.7px;height:6.7px"></i><i style="width:3.5px;height:3.5px"></i><i style="width:4.1px;height:4.1px"></i><i style="width:5.4px;height:5.4px"></i><i style="width:8.4px;height:8.4px"></i><i style="width:5.1px;height:5.1px"></i><i style="width:6.2px;height:6.2px"></i><i style="width:4.5px;height:4.5px"></i><i style="width:3.8px;height:3.8px"></i><i style="width:5.5px;height:5.5px"></i><i style="width:5.6px;height:5.6px"></i><i style="width:7.4px;height:7.4px"></i><i style="width:3.6px;height:3.6px"></i><i style="width:6.4px;height:6.4px"></i><i style="width:6.1px;height:6.1px"></i><i style="width:7.2px;height:7.2px"></i><i style="width:8.0px;height:8.0px"></i><i style="width:3.4px;height:3.4px"></i><i style="width:7.0px;height:7.0px"></i><i style="width:5.4px;height:5.4px"></i><i style="width:6.1px;height:6.1px"></i><i style="width:6.3px;height:6.3px"></i><i style="width:3.4px;height:3.4px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:3.5px;height:3.5px"></i><i style="width:6.8px;height:6.8px"></i><i style="width:5.7px;height:5.7px"></i><i style="width:6.2px;height:6.2px"></i><i style="width:4.9px;height:4.9px"></i><i style="width:5.1px;height:5.1px"></i><i style="width:4.1px;height:4.1px"></i><i style="width:6.0px;height:6.0px"></i><i style="width:5.1px;height:5.1px"></i><i style="width:3.3px;height:3.3px"></i><i style="width:3.5px;height:3.5px"></i><i style="width:4.8px;height:4.8px"></i><i style="width:8.8px;height:8.8px"></i><i style="width:3.0px;height:3.0px"></i><i style="width:3.0px;height:3.0px"></i><i style="width:4.8px;height:4.8px"></i><i style="width:7.3px;height:7.3px"></i><i style="width:7.3px;height:7.3px"></i><i style="width:7.4px;height:7.4px"></i><i style="width:7.8px;height:7.8px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:6.4px;height:6.4px"></i><i style="width:7.8px;height:7.8px"></i><i style="width:7.4px;height:7.4px"></i><i style="width:7.4px;height:7.4px"></i><i style="width:7.6px;height:7.6px"></i><i style="width:7.5px;height:7.5px"></i><i style="width:7.0px;height:7.0px"></i><i style="width:5.8px;height:5.8px"></i><i style="width:3.1px;height:3.1px"></i><i style="width:4.3px;height:4.3px"></i><i style="width:8.7px;height:8.7px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:5.7px;height:5.7px"></i><i style="width:3.0px;height:3.0px"></i><i style="width:8.4px;height:8.4px"></i><i style="width:5.2px;height:5.2px"></i><i style="width:4.7px;height:4.7px"></i><i style="width:5.2px;height:5.2px"></i><i style="width:8.6px;height:8.6px"></i><i style="width:7.5px;height:7.5px"></i><i style="width:5.8px;height:5.8px"></i><i style="width:6.9px;height:6.9px"></i><i style="width:4.2px;height:4.2px"></i><i style="width:5.7px;height:5.7px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:5.5px;height:5.5px"></i><i style="width:8.8px;height:8.8px"></i><i style="width:4.6px;height:4.6px"></i><i style="width:8.2px;height:8.2px"></i><i style="width:6.5px;height:6.5px"></i><i style="width:8.8px;height:8.8px"></i><i style="width:8.6px;height:8.6px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:3.8px;height:3.8px"></i><i style="width:6.1px;height:6.1px"></i><i style="width:4.8px;height:4.8px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:6.0px;height:6.0px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:7.8px;height:7.8px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:6.0px;height:6.0px"></i><i style="width:3.9px;height:3.9px"></i><i style="width:3.4px;height:3.4px"></i><i style="width:8.6px;height:8.6px"></i><i style="width:7.0px;height:7.0px"></i><i style="width:4.7px;height:4.7px"></i><i style="width:5.1px;height:5.1px"></i><i style="width:5.2px;height:5.2px"></i><i style="width:5.5px;height:5.5px"></i><i style="width:8.5px;height:8.5px"></i><i style="width:8.7px;height:8.7px"></i><i style="width:3.0px;height:3.0px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:5.6px;height:5.6px"></i><i style="width:7.9px;height:7.9px"></i><i style="width:7.7px;height:7.7px"></i><i style="width:3.2px;height:3.2px"></i><i style="width:4.6px;height:4.6px"></i><i style="width:4.4px;height:4.4px"></i><i style="width:7.0px;height:7.0px"></i><i style="width:7.4px;height:7.4px"></i></div>
+<script>const SNOW=[[349.74, 289.63, 6.91, 67.24, 3.37, 0.57], [62.64, 974.28, 3.22, 103.36, 0.44, 0.4], [458.48, 1587.56, 3.74, 82.32, 3.94, 0.92], [623.27, 761.63, 8.86, 64.66, 5.39, 0.52], [155.8, 226.16, 4.85, 141.61, 1.13, 0.7], [690.03, 715.0, 6.29, 66.28, 0.37, 0.47], [734.83, 820.98, 4.88, 118.56, 2.85, 0.53], [857.93, 1342.07, 4.46, 117.44, 3.3, 0.88], [787.8, 552.84, 8.88, 71.81, 2.63, 0.8], [164.14, 938.81, 3.24, 126.82, 4.8, 0.69], [945.52, 602.4, 7.17, 119.44, 3.64, 0.62], [907.17, 1813.79, 5.84, 126.42, 0.38, 0.77], [698.9, 1906.74, 7.93, 88.46, 2.42, 0.75], [24.37, 886.45, 4.01, 71.71, 0.37, 0.81], [139.69, 475.42, 5.35, 147.14, 0.51, 0.62], [593.4, 1696.1, 7.92, 146.4, 1.75, 0.6], [387.47, 1697.65, 8.75, 75.09, 1.11, 0.49], [252.0, 931.13, 6.53, 86.27, 0.03, 0.6], [398.79, 1087.38, 8.72, 129.05, 3.24, 0.72], [730.3, 103.67, 8.4, 138.0, 5.49, 0.83], [423.77, 766.04, 3.62, 123.43, 0.39, 0.39], [225.46, 311.62, 5.04, 65.26, 0.0, 0.44], [109.58, 698.13, 3.15, 147.43, 3.86, 0.44], [272.44, 666.99, 5.18, 72.28, 5.33, 0.95], [503.27, 928.96, 3.52, 70.22, 2.15, 0.51], [895.16, 309.96, 3.14, 155.1, 3.32, 0.44], [586.63, 51.92, 6.17, 157.85, 5.42, 0.77], [282.0, 704.06, 4.0, 137.19, 3.34, 0.82], [356.04, 428.24, 7.87, 158.49, 5.35, 0.83], [883.8, 1420.56, 4.36, 111.76, 2.23, 0.37], [30.17, 536.48, 4.56, 129.25, 6.01, 0.62], [1011.98, 1897.03, 8.73, 96.46, 1.38, 0.49], [212.44, 392.4, 6.74, 150.03, 5.28, 0.64], [705.22, 1535.32, 3.51, 126.06, 5.71, 0.82], [810.15, 917.82, 4.07, 138.91, 2.09, 0.83], [1049.39, 760.01, 5.41, 154.68, 4.55, 0.45], [137.2, 290.21, 8.43, 140.65, 0.92, 0.85], [1058.73, 1261.96, 5.1, 114.87, 0.82, 0.36], [1048.56, 1247.38, 6.16, 153.36, 2.72, 0.87], [892.25, 405.2, 4.51, 89.3, 1.51, 0.7], [280.11, 804.5, 3.79, 151.0, 2.22, 0.62], [630.02, 1736.25, 5.52, 151.77, 3.15, 0.67], [565.39, 35.91, 5.64, 78.31, 0.02, 0.83], [186.13, 909.11, 7.35, 115.65, 2.05, 0.66], [599.88, 1505.8, 3.64, 116.03, 1.56, 0.52], [834.04, 974.81, 6.37, 136.0, 5.73, 0.62], [661.53, 970.66, 6.07, 129.27, 2.84, 0.67], [516.28, 1807.68, 7.2, 147.65, 5.92, 0.51], [604.27, 1811.07, 8.04, 73.71, 0.76, 0.62], [78.35, 462.03, 3.44, 126.95, 4.92, 0.89], [166.8, 1374.95, 6.96, 74.3, 5.54, 0.93], [237.15, 1828.81, 5.39, 108.73, 6.22, 0.85], [174.38, 828.52, 6.09, 93.91, 1.23, 0.54], [779.92, 37.41, 6.32, 104.05, 0.11, 0.55], [673.84, 983.54, 3.39, 158.51, 4.95, 0.93], [113.16, 509.88, 3.24, 137.9, 1.7, 0.43], [456.03, 1749.91, 7.91, 85.86, 0.94, 0.9], [616.24, 1344.8, 3.54, 65.75, 4.32, 0.61], [78.21, 1801.63, 6.81, 140.16, 0.53, 0.86], [71.95, 1656.53, 5.72, 93.92, 3.47, 0.91], [289.29, 248.11, 6.16, 83.84, 0.69, 0.45], [54.41, 387.4, 4.87, 90.5, 4.77, 0.52], [540.1, 341.57, 5.08, 61.82, 1.57, 0.36], [791.73, 1058.01, 4.14, 107.48, 5.87, 0.41], [884.43, 829.78, 5.97, 143.46, 2.47, 0.65], [742.76, 1886.29, 5.06, 143.23, 4.44, 0.73], [437.07, 667.3, 3.33, 72.98, 0.44, 0.79], [276.04, 313.43, 3.51, 144.13, 5.47, 0.75], [304.49, 465.05, 4.76, 105.95, 0.99, 0.62], [284.3, 1846.63, 8.84, 114.71, 1.54, 0.93], [334.31, 684.64, 3.01, 98.16, 2.98, 0.65], [217.06, 969.09, 3.03, 86.42, 0.56, 0.59], [45.0, 43.19, 4.83, 83.28, 3.68, 0.67], [810.58, 1262.48, 7.3, 147.91, 2.45, 0.55], [1063.51, 286.97, 7.34, 124.32, 0.27, 0.85], [963.3, 1204.48, 7.4, 141.22, 0.87, 0.66], [544.72, 1603.08, 7.83, 142.64, 3.67, 0.89], [737.53, 1331.19, 4.38, 63.12, 0.84, 0.57], [113.31, 1604.78, 6.35, 122.78, 3.93, 0.76], [528.44, 6.36, 7.79, 134.83, 3.16, 0.67], [712.04, 126.82, 7.42, 85.22, 0.47, 0.51], [787.68, 394.02, 7.44, 157.57, 3.1, 0.58], [517.33, 1312.7, 7.6, 121.7, 4.04, 0.4], [159.22, 487.57, 7.46, 90.44, 3.57, 0.36], [65.51, 516.04, 7.03, 129.22, 4.24, 0.52], [557.86, 892.15, 5.8, 71.85, 5.61, 0.47], [1056.38, 1797.61, 3.11, 105.9, 5.15, 0.93], [485.41, 515.82, 4.26, 154.56, 1.32, 0.7], [153.08, 1006.21, 8.72, 73.26, 5.15, 0.66], [957.81, 1350.41, 4.39, 149.77, 3.05, 0.36], [3.88, 944.06, 5.7, 90.2, 0.88, 0.56], [341.36, 1613.24, 3.01, 135.07, 5.27, 0.42], [1000.51, 1369.01, 8.41, 88.98, 2.34, 0.59], [1078.7, 1131.22, 5.16, 102.81, 1.73, 0.38], [109.85, 1602.58, 4.71, 153.56, 1.57, 0.51], [551.84, 364.51, 5.24, 155.62, 5.55, 0.84], [681.37, 1753.77, 8.64, 114.92, 4.52, 0.38], [790.94, 865.65, 7.52, 124.45, 1.8, 0.38], [1000.92, 244.44, 5.83, 94.37, 1.87, 0.79], [1054.4, 499.52, 6.94, 90.08, 3.5, 0.59], [180.72, 310.38, 4.25, 150.6, 3.12, 0.48], [978.76, 1913.23, 5.7, 73.96, 1.21, 0.4], [369.31, 174.9, 4.43, 85.84, 3.58, 0.88], [809.63, 792.54, 5.48, 112.42, 2.37, 0.55], [67.02, 532.83, 8.81, 72.59, 3.16, 0.73], [931.89, 414.65, 4.63, 84.85, 2.51, 0.62], [1030.26, 1629.47, 8.24, 62.18, 0.2, 0.78], [967.35, 908.68, 6.52, 60.02, 2.46, 0.91], [891.64, 1642.49, 8.83, 84.85, 0.68, 0.44], [564.15, 1309.58, 8.65, 132.17, 4.07, 0.81], [493.91, 1058.88, 3.24, 138.23, 1.46, 0.9], [697.15, 583.26, 3.77, 85.18, 4.0, 0.77], [121.1, 135.08, 6.15, 118.29, 2.44, 0.48], [649.15, 20.09, 4.81, 106.07, 6.02, 0.74], [954.48, 912.58, 4.41, 84.71, 6.03, 0.77], [331.99, 41.83, 5.99, 127.45, 2.64, 0.5], [720.74, 1776.31, 4.36, 63.41, 2.12, 0.6], [737.17, 380.31, 7.78, 133.91, 3.17, 0.47], [1047.45, 598.49, 7.92, 83.08, 1.39, 0.81], [318.53, 1827.7, 5.97, 78.73, 1.4, 0.6], [718.52, 1821.62, 3.88, 99.35, 1.34, 0.93], [153.26, 99.53, 3.36, 99.33, 5.64, 0.88], [791.34, 1915.26, 8.59, 92.92, 1.17, 0.91], [806.01, 61.24, 6.99, 97.86, 2.35, 0.55], [182.8, 5.51, 4.68, 95.15, 6.0, 0.42], [1041.41, 398.21, 5.14, 142.16, 5.16, 0.61], [53.2, 909.05, 5.24, 151.95, 1.21, 0.57], [968.75, 58.14, 5.46, 141.18, 4.81, 0.37], [37.64, 120.15, 8.52, 85.7, 4.69, 0.89], [366.2, 522.84, 8.75, 121.7, 1.65, 0.78], [341.8, 529.21, 3.02, 135.57, 5.76, 0.73], [1018.71, 46.57, 4.4, 107.52, 6.01, 0.92], [417.44, 482.01, 5.58, 109.35, 5.83, 0.46], [866.77, 1417.9, 7.94, 137.28, 3.81, 0.55], [345.11, 694.77, 7.69, 67.9, 1.24, 0.8], [267.09, 124.29, 3.2, 115.26, 2.05, 0.94], [954.15, 1896.62, 4.59, 68.41, 0.61, 0.65], [766.55, 858.17, 4.41, 101.68, 3.9, 0.75], [807.82, 1626.22, 6.99, 72.12, 5.28, 0.53], [612.23, 716.1, 7.43, 79.92, 1.55, 0.5]];const ITEMS=["NA102", "NS110", "NCB104", "NC104"];const REAL_DUSK=false;
+
+const $=s=>document.querySelector(s);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const out=x=>1-Math.pow(1-cl(x),3);
+const back=x=>{x=cl(x);const c1=1.6,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+const vis=(el,o)=>el.style.opacity=o;
+function rise(el,t,a,d=.42,dist=60){const k=out(seg(t,a,a+d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dist}px)`}
+function pop(el,t,a,d=.42){const k=seg(t,a,a+d);el.style.opacity=cl(k*2);el.style.transform=`scale(${.6+.4*back(k)})`}
+function slide(el,t,a,d=.4){const k=out(seg(t,a,a+d));el.style.opacity=cl(k*1.5);el.style.transform=`translateX(${(1-k)*-120}px)`}
+window.TOTAL=25.0;
+const FT0=10.0, FTD=1.8;
+window.setT=function(t){
+  // ninsoare: intensitate pe scene
+  const snowI = t<4.6? .9 : t<10? 0 : t<17.2? .25 : t<20.6? 1 : .55;
+  document.querySelectorAll('#snow i').forEach((f,i)=>{const d=SNOW[i];
+    const y=(d[1]+t*d[3])%2000-40, x=d[0]+Math.sin(t*1.3+d[4])*24;
+    f.style.transform=`translate(${x}px,${y}px)`; f.style.opacity=d[5]*snowI;});
+  // 1 cârlig
+  const S1=$('#s1'); vis(S1,t<4.75?1:0);
+  $('#s1 .bg').style.transform=`scale(${1.18-.1*seg(t,0,4.6)})`;
+  $('#s1 .bg').style.filter=`saturate(${1-.45*seg(t,2.2,2.6)}) brightness(${1-.3*seg(t,2.2,2.6)})`;
+  rise($('#h1'),t,.1,.45); rise($('#h1b'),t,.6,.45);
+  const o1=1-seg(t,2.1,2.35); $('#hk').style.opacity=o1;
+  // 2 problema
+  rise($('#p1'),t,2.4,.4); rise($('#p2'),t,3.3,.45);
+  $('#pb').style.opacity = t<4.5?1:1-seg(t,4.5,4.7);
+  $('#s1').style.clipPath = `circle(${(1-ease(seg(t,4.45,4.8)))*150}% at 50% 45%)`;
+  // 3 erou
+  const S3=$('#s3'); vis(S3,t>=4.4&&t<10.15?1:0);
+  const hk=seg(t,4.6,5.3);
+  $('#hero').style.transform=`translateY(${(1-out(hk))*500}px) rotate(${(1-out(hk))*-14+Math.sin(t*1.1)*1.5}deg) scale(${.9+.1*out(hk)+.03*seg(t,5.3,8.2)})`;
+  $('#hero').style.opacity=cl(hk*2)*(1-seg(t,8.3,8.7));
+  rise($('#hn'),t,4.8,.4,30); rise($('#ht'),t,4.9,.45);
+  __P.forEach((p,i)=>slide(p,t,5.5+i*.45,.38));
+  pop($('#hchip'),t,7.2,.45);
+  ['#hn','#ht'].forEach(s=>{$(s).style.opacity=Math.min(+$(s).style.opacity,1-seg(t,8.3,8.6))});
+  __P.forEach(p=>p.style.opacity=Math.min(+p.style.opacity,1-seg(t,8.3,8.6)));
+  // tranziție: studioul se „deschide” spre casă
+  const am=$('#hamb'); const ak=ease(seg(t,8.4,9.0)); am.style.clipPath=`inset(${(1-ak)*50}% 0 ${(1-ak)*50}% 0)`; am.style.transform=`scale(${1.15-.08*seg(t,8.4,10)})`;
+  rise($('#hon'),t,8.9,.4); $('#hchip').style.top=(1130+(ak*80))+'px';
+  // 4 final touch
+  ITEMS.forEach((it,i)=>{const a=FT0+i*FTD, el=$('#f'+i);
+    vis(el,t>=a-.12&&t<a+FTD+.12?1:0); el.style.zIndex=10+i;
+    const k=ease(seg(t,a-.12,a+.22)); el.style.clipPath = `inset(0 0 0 ${(1-k)*100}%)`;
+    el.querySelector('.bg').style.transform=`scale(${1.16-.1*seg(t,a,a+FTD)}) translateX(${-20+40*seg(t,a,a+FTD)}px)`;
+    rise(el.querySelector('.ft-n'),t,a+.05,.3,24); rise(el.querySelector('.ft-t'),t,a+.08,.35); rise(el.querySelector('.ft-s'),t,a+.3,.35,30);
+    pop(el.querySelector('.pcard'),t,a+.45,.4);
+  });
+  // 5 urgență
+  const S5=$('#s5'); vis(S5,t>=17.1&&t<20.75?out(seg(t,17.1,17.4)):0); S5.style.zIndex=30;
+  const bg5=$('#s5 .bg'); bg5.style.transform=`scale(${1.12-.07*seg(t,17.2,20.6)})`;
+  if(!REAL_DUSK){bg5.style.filter=`saturate(.6) brightness(${.5-.08*seg(t,17.2,20.6)}) hue-rotate(-12deg) contrast(1.05)`}
+  vis($('#glow'), .55+.25*Math.sin(t*3));
+  rise($('#u1'),t,17.35,.4); rise($('#u2'),t,18.1,.4,40); rise($('#u3'),t,18.7,.4,40); rise($('#u4'),t,19.3,.45);
+  // 6 cta
+  const S6=$('#s6'); vis(S6,t>=20.6?out(seg(t,20.6,20.9)):0); S6.style.zIndex=31;
+  rise($('#c0'),t,20.7,.35,30); rise($('#c1'),t,20.85,.45); rise($('#c2'),t,21.5,.45); pop($('#c3'),t,22.1,.45); rise($('#c5'),t,22.4,.45,40); rise($('#c4'),t,22.6,.45,30);
+};
+
+const __P=[...document.querySelectorAll('.pill.p')];
+setT(0);</script>
+</body></html>
