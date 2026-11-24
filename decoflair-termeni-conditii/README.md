@@ -54,3 +54,8 @@ Toate cookie-urile de statistică și marketing (GA, Clarity, Meta, TikTok, Bing
 Fișier de publicat: `plata-si-livrare.html` (stil scopat `.df-pl`). Admin → Catalog → Informații → „Plata și livrare” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
 Păstrate datele existente (metode de plată, termene 1–2 / 3–5 / 14 / 7–10 zile, tarife 150 lei FAN Courier și 242 lei flotă, km suplimentari, validare telefonică). Adăugate: NETOPIA, IBAN pentru OP, facturare + RO e-Factura, termen legal max. 30 de zile, ridicare gratuită din depozit (adresă, program), verificarea coletului, transferul riscului, anularea la întârziere cu restituire în 14 zile, contact cu datele noi.
 De confirmat: tarifele includ TVA; „Visa sau Mastercard”; termenul de recontactare „o zi lucrătoare”; termenele de interior se aplică și pentru tapet/adezivi/accesorii.
+
+# Sugestii și reclamații — decoflair.ro
+
+Fișier de publicat: `sugestii-si-reclamatii.html` (stil scopat `.df-sr`). Admin → Catalog → Informații → „Sugestii și reclamații” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Păstrat: mesajul de deschidere, informațiile necesare pentru reclamație, răspuns în max. 3 zile lucrătoare. Adăugat: telefon 0765 740 280, formularul de retur, adresa poștală (sediul nou), soluționare în max. 30 de zile (aliniat cu T&C) și 15 zile pentru neconformitate (OUG 140/2021), ANPC / SAL / ECC România, protecția datelor. Ton „dumneavoastră”, ca pe celelalte pagini.

@@ -13,6 +13,7 @@ Pagina /politica-de-confidentialitate: `politica-de-confidentialitate.html` (sti
 Pagina /politica-de-utilizare-a-cookie-urilor: `politica-cookie.html` (stil `.df-ck`), rescrisă după scanarea reală a cookie-urilor. ATENȚIE: GA, Clarity, Meta, TikTok și Bing UET se setează înainte de consimțământ → de configurat Consent Mode v2 în GTM-N6S3P2XC (detalii în README). Politica de confidențialitate completată cu Microsoft Advertising.
 Pagina /contact: nu e pagină de informații; `contact-de-completat.md` = fișă câmp cu câmp (Info Blocks 194, Form 20, Settings → Store, Store Locations „Punct ridicare”), sediu nou, tel. 0765 740 280, fax gol. Previzualizare cu valorile aplicate pe pagina live.
 Pagina /plata-si-livrare: `plata-si-livrare.html` (stil `.df-pl`), rescrisă cu datele existente + NETOPIA, IBAN, e-Factura, ridicare din depozit, termen legal 30 zile. Verificat pe pagina live.
+Pagina /sugestii-si-reclamatii: `sugestii-si-reclamatii.html` (stil `.df-sr`), rescrisă; răspuns 3 zile lucrătoare, soluționare max. 30 zile, ANPC/SAL. Verificat pe pagina live.
 Adresa veche (Făurei nr. 1, Sector 1) apare încă pe /contact, /politica-retur, subsol și în setările magazinului — de corectat (lista în README).
 
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24
