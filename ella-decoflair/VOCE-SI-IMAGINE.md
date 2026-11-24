@@ -44,3 +44,11 @@ Alternative: Resemble.ai, PlayHT; local/open-source: XTTS-v2 (calitate mai slab�
 | LED | „led” |
 | ADRo | „a-de-ro” |
 | PU | „poliuretan” (scrie cuvântul întreg în text) |
+
+## 6. Voci sintetice testate (24.11.2026) — NU se folosesc pentru Ella
+| Voce | Rezultat |
+|---|---|
+| Google Translate TTS (gTTS, `ro`) | pronunție românească slabă, ritm sacadat — respinsă de Ella |
+| Meta MMS-TTS `facebook/mms-tts-ron` | voce **bărbătească** (~130 Hz) — nepotrivită |
+| Microsoft Edge TTS `ro-RO-AlinaNeural` | nu merge din cloud (WebSocket blocat de proxy) |
+Variante bune, cu cheie API în `.env`: **ElevenLabs** (clona vocii Ellei — prima alegere), Google Cloud TTS `ro-RO` (Chirp 3 HD / WaveNet, voci feminine), Azure `ro-RO-AlinaNeural` prin REST. Cea mai autentică: Ella își înregistrează replicile pe telefon.
