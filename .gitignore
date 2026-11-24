@@ -15,3 +15,6 @@ black-friday/release/
 # /home/dfh/workspace/BAZE pe calculatorul de lucru; NU se urcă pe GitHub (date confidențiale, fișiere mari)
 BAZE/
 EXTRANET/
+
+# Ella — date biometrice (voce, față): local, nu pe GitHub
+ella-decoflair/media/
