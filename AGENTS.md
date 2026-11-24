@@ -13,3 +13,5 @@ Lucrezi în `/home/dfh/workspace`, același codebase cu Claude Code. Branch-ul d
 Dacă push-ul este respins, `git pull --rebase origin main` și push din nou. Rămâi pe `main`. Nu comite secrete.
 
 Documentație și date sursă: `/home/dfh/workspace/BAZE` (baze DistribNet, imagini catalog produse, date suplimentare) și `/home/dfh/workspace/EXTRANET` — vezi `BAZE.md`. Ambele foldere sunt în `.gitignore`: se citesc local, nu se comit.
+
+Pentru orice reel, postare, reclamă, banner sau alt material creativ, consultă Claude Code la concept și la revizia execuției, conform [fluxului creativ comun](FLUX-CREATIV.md).

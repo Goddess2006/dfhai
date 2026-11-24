@@ -322,3 +322,8 @@ Produse selectate după relevanța pentru fiecare ambient și categorie. Interio
 Verificare: decodare completă pentru cele două exporturi (900 de cadre per clip), inspecție a cadrelor hero, de ambient, produs și final, audio măsurat la −17,4 și −18,1 LUFS. Playwright Chromium a verificat redarea, capitolele, navigarea cu tastatura, salturile la preț și subtotalurile la 320, 390 și 1200 px.
 
 Revizie 24.11.2026: mențiunea despre verificarea prețurilor a fost scoasă din ecranul final al celor două MP4 și din pagina interactivă. Prețurile rămân în cadrele de produs. `postare-interior.txt` și `postare-exterior.txt` includ textele de publicare, linkurile categoriilor și cele cinci fișe din fiecare reel, în ordinea apariției.
+
+## Flux creativ comun Codex și Claude Code — 2026-11-24
+La cererea utilizatorului, toate materialele creative trec prin consultare cu Claude Code la concept și la revizia execuției. Instrucțiunile sunt în `FLUX-CREATIV.md`, cu trimitere din `AGENTS.md` și `CLAUDE.md`. Fiecare piesă are un obiectiv principal și un traseu clar de la idee la acțiune. Urmărim separat vizibilitatea și retenția, urmăritorii, clickurile și comenzile atribuite.
+
+Apelul Claude Code din workspace a fost verificat prin două consultări. Feedback aplicat: produsul trebuie să arate o schimbare vizibilă, feedbackul trebuie să indice modificarea exactă, iar măsurarea stabilește ipoteza înainte de publicare și separă organicul de plătit. Pe exemplul reel-urilor existente, Claude a propus un test în care doar deschiderea se schimbă, cadru de ambient sau o transformare înainte și după. Exemplul rămâne o ipoteză pentru un test viitor.
