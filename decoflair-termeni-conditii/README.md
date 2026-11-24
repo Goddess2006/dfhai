@@ -59,3 +59,8 @@ De confirmat: tarifele includ TVA; „Visa sau Mastercard”; termenul de recont
 
 Fișier de publicat: `sugestii-si-reclamatii.html` (stil scopat `.df-sr`). Admin → Catalog → Informații → „Sugestii și reclamații” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
 Păstrat: mesajul de deschidere, informațiile necesare pentru reclamație, răspuns în max. 3 zile lucrătoare. Adăugat: telefon 0765 740 280, formularul de retur, adresa poștală (sediul nou), soluționare în max. 30 de zile (aliniat cu T&C) și 15 zile pentru neconformitate (OUG 140/2021), ANPC / SAL / ECC România, protecția datelor. Ton „dumneavoastră”, ca pe celelalte pagini.
+
+# Produse personalizate — decoflair.ro
+
+Fișier de publicat: `produse-personalizate.html` (stil scopat `.df-pp`). Admin → Catalog → Informații → „Produse personalizate” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Textul vechi (repetitiv, două introduceri) a fost condensat: intro + butoane „Cereți o ofertă” / telefon, Ce putem realiza (3 carduri), Materiale și execuție (Chiajna, EPS 120/150/200), Cum lucrăm (5 pași, execuție 7–10 zile lucrătoare ca pe Plata și livrare), ce trebuie trimis pentru ofertă, notă legală (fără drept de retragere, cu garanție de conformitate), caseta finală de ofertă. Telefon 0765 740 280.
