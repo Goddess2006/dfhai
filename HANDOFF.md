@@ -10,6 +10,7 @@ Actualizat legislativ la 24.11.2026: OUG 34/2014 + OUG 18/2026 (buton „Retrage
 Pagina /despre-noi: `despre-noi.html` (stil `.df-dn`), text rescris + secțiunea „Date de identificare” cu sediul nou și tel. 0765 740 280; verificat pe pagina live, desktop și mobil. FAQ-ul de sub pagină e modul Journal separat (formularea despre garanție de corectat, vezi README).
 Pagina /politica-retur: `politica-retur.html` (stil `.df-pr`), reorganizată, sediu nou, tel. 0765 740 280, buton de retragere, cost estimat retur agabaritic = tarifele de livrare (150/242 lei). Verificat pe pagina live, desktop și mobil.
 Pagina /politica-de-confidentialitate: `politica-de-confidentialitate.html` (stil `.df-cf`), rescrisă GDPR cu destinatarii reali ai site-ului (Netopia, GA/GTM, reCAPTCHA, Meta, TikTok, Clarity). H1 scos din toate fișierele: tema afișează deja titlul paginii (pe T&C și retur, deja publicate, titlul apărea dublu → de relipit).
+Pagina /politica-de-utilizare-a-cookie-urilor: `politica-cookie.html` (stil `.df-ck`), rescrisă după scanarea reală a cookie-urilor. ATENȚIE: GA, Clarity, Meta, TikTok și Bing UET se setează înainte de consimțământ → de configurat Consent Mode v2 în GTM-N6S3P2XC (detalii în README). Politica de confidențialitate completată cu Microsoft Advertising.
 Adresa veche (Făurei nr. 1, Sector 1) apare încă pe /contact, /politica-retur, subsol și în setările magazinului — de corectat (lista în README).
 
 ## Bannere reduceri Deco & Flair — Codex, 2026-11-24

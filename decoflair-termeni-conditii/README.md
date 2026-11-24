@@ -40,3 +40,11 @@ De verificat: furnizorul de newsletter (nenominalizat) și termenele de păstrar
 
 # Notă titluri (H1)
 Tema Journal3 afișează deja titlul paginii ca H1 („Termeni și condiții Deco&Flair”, „Politica de retur – Deco&Flair” etc.). Fișierele nu mai conțin H1 propriu, ca să nu apară titlul de două ori. Termenii și Politica de retur, deja publicate cu H1, trebuie relipite din versiunea actuală.
+
+# Politica de utilizare a cookie-urilor — decoflair.ro
+
+Fișier de publicat: `politica-cookie.html` (stil scopat `.df-ck`). Admin → Catalog → Informații → „Politica de utilizare a cookie-urilor” → Cod sursă → înlocuiți tot → Salvare → Clear cache.
+Rescrisă după inventarul real al cookie-urilor (scanare Playwright, 24.11.2026): necesare (OCSESSID, language, currency, _GRECAPTCHA, NETOPIA), statistică (Google Analytics G-58RZ7V8D9P / G-264NWLB9C0 prin GTM-N6S3P2XC; Microsoft Clarity), marketing (Meta _fbp, TikTok _ttp/ttcsid, Microsoft Advertising/Bing UET _uetsid/_uetvid). Eliminate serviciile inexistente din textul vechi (Yahoo, Pinterest, LinkedIn, WhatsApp, geolocalizare).
+
+## PROBLEMĂ DE CONFORMITATE (de reparat tehnic)
+Toate cookie-urile de statistică și marketing (GA, Clarity, Meta, TikTok, Bing UET) se setează **la prima încărcare, înainte de „Accepta toate”**. Încalcă art. 4 alin. (5) din Legea 506/2004 și GDPR. De făcut: în GTM-N6S3P2XC activat Consent Mode v2 (default denied pentru analytics_storage, ad_storage, ad_user_data, ad_personalization), toate tag-urile (GA4, Meta, TikTok, Clarity, UET) declanșate doar după consimțământ; scoase eventualele coduri puse direct în tema Journal3 / modulele OpenCart, în afara GTM; bannerul să trimită update de consimțământ către GTM. Apoi retestat cu browser curat.
