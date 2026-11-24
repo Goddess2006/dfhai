@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Seria „Dorință” #3: „Liniște. Și o cameră terminată.” (riflaje + LINEA) — `decoflair-reels-dorinta/` — Claude Code, 2026-11-24
+`configs/riflaje-linea.py` → `reel/decoflair-riflaje-linea-{organic,ads}.mp4` (37,4 s). Fotografii reale: portofoliu (galerie 25, 33, 16), fotografiile riflajului de pe site (macro stejar WA0013, cameră cu tobe Riflaj.jpg, teanc RIFLAJ 5), imaginea oficială a kitului LINEA. Date 24.11.2026: riflaj 382,54 lei/panou, 53 buc., 3,1 kg, se taie cu cutterul, acustică până la +25%; LINEA = FD2 + GT + WD5 ×10, 20–25 m², 2.838,30 lei, −15% inclus, 50 buc. Reper: Apple AirPods + VW „Think Small”. Texte și 2 seturi de reclame (riflaj / LINEA): `TEXTE.md` §3.
+
 ## Seria „Dorință” (reels noi, alte produse) — `decoflair-reels-dorinta/` — Claude Code, 2026-11-24
 Client: reels noi cu alte produse, fără aspect AI, ambient cald, care să trezească dorința de a cumpăra, construite pe modelul celor mai bune 10 reclame din lume, împreună cu Codex. Motor comun `engine.py` (derivat din reel-ul de exterior v3.1: ritm lent, tranziții prin ceață) cu **paleta și sigla originală Deco&Flair** (logo-deco-wide.png, auriu #C2A15E/#E2CB94 pe cărbune #141210); configurări în `configs/`. (1) `lux`: „Haute couture pentru pereți”, cu fotografii reale de catalog D&G (panou 3×3 m 6.534 lei), Roberto Cavalli (panou 3.630; rolă de la 1.064), Emiliana (484 lei/rolă); livrare la comandă ≈14 zile. (2) `craciun`: „Casa în care se întorc toți”, cu portofoliu decoflair.ro: IL18 217/92 buc., R15 413/5 buc., WO2 59/126 buc.; de oprit după ~15.12. Video: `reel/decoflair-{lux,craciun}-{organic,ads}.mp4` (32,8 s). Repere + principii: `README.md`; texte/ads/UTM: `TEXTE.md`. **PENTRU CODEX: `decoflair-reels-dorinta/CODEX-BRIEF.md`** (revizie creativă, foto reale din EXTRANET, mărire 2× Real-ESRGAN, sunet, următorul reel).
 

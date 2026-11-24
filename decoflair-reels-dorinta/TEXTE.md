@@ -33,3 +33,20 @@
 - Lux: clickuri pe `utm_content=reel-haute-couture` + cereri de consultanță (produs scump, decizie lungă).
 - Crăciun: comenzi atribuite `utm_campaign=craciun-2026` + cost per comandă.
 - Organic: rata de vizionare completă și salvări. Fiecare reel: 7 zile, raportare separată organic / plătit.
+
+## 3. „Liniște. Și o cameră terminată.” (`reel/decoflair-riflaje-linea-*.mp4`, 37,4 s)
+**Reper:** Apple AirPods („liniștea ca lux”) + Volkswagen „Think Small” (onestitate: un kit, o cameră, un preț).
+**Cadre (fotografii reale):** living cu riflaj („Ai observat vreodată cum *sună* camera ta?”) → macro stejar („Lemnul cald *înghite* ecoul.”, Riflaj acustic 3D · 382 lei/panou · 53 în stoc) → cameră cu tobe și riflaj („Chiar și aici, sunetul se *îmblânzește.*”, acustică până la 25% mai bună) → teanc de panouri („3,1 kg. Se taie cu *cutterul.*”, fără scule speciale) → cameră cu chenare („Și dacă vrei *toată camera?*”) → living cu plintă, cornișă, brâu („Plintă. Cornișă. Brâu. *Un singur kit.*”, LINEA: FD2 + GT + WD5, câte 10 buc.) → kitul LINEA („O cameră întreagă. *2.838 lei.* Îl găsești pe:”, până la 25 m² · −15% inclus · 50 în stoc) → decoflair.ro · „Liniște. Și o cameră terminată.”
+Afirmațiile tehnice (3,1 kg, cutter, până la 25% acustică, kit pentru 20–25 m², −15%) sunt preluate din paginile de produs decoflair.ro (24.11.2026).
+
+**Instagram / Facebook:**
+> Ai observat vreodată cum sună camera ta? 🎧
+> Riflajele acustice 3D înghit ecoul. 3,1 kg, se taie cu cutterul.
+> Și dacă vrei toată camera: LINEA Room Kit (plintă + cornișă + brâu), 2.838 lei, 15% reducere inclusă.
+> Din stoc · 💬 0765 740 280 · 🔗 link în bio
+>
+> #riflaje #panouriacustice #designinterior #amenajariinterioare #livingmodern #chenaredecorative #decoflair
+
+**Comentariu fixat:** „Câți m² are camera ta? Îți spunem dacă îți ajunge un kit LINEA 📐”
+**Reclamă:** două seturi de anunțuri cu același video: (a) link `https://decoflair.ro/riflaje-acustice-3d?utm_source=meta&utm_medium=paid&utm_campaign=riflaje-linea&utm_content=reel-liniste-riflaj`; (b) link `https://decoflair.ro/linea-room-kit-complet-pentru-o-camer%C4%83?utm_source=meta&utm_medium=paid&utm_campaign=riflaje-linea&utm_content=reel-liniste-linea`. Titlu: „Liniște. Și o cameră terminată.” Text: „Riflaje acustice 3D și LINEA Room Kit: totul pentru o cameră, din stoc.” Buton: „Cumpără acum”.
+**Indicator:** comenzi LINEA atribuite + clickuri pe riflaje (7 zile).

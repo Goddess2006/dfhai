@@ -8,6 +8,7 @@ Cererea clientului: reels noi, cu alte produse de pe decoflair.ro, care **să nu
 |---|---|---|---|
 | **„Haute couture pentru pereți”** (32,8 s) | Tapet Dolce & Gabbana (panou 3×3 m, 6.534 lei), Roberto Cavalli (panou 3.630 lei; rolă de la 1.064 lei), Emiliana (484 lei/rolă) | Filmele de modă Chanel/Dior + ritmul Guinness „Surfer” | `reel/decoflair-lux-{organic,ads}.mp4` |
 | **„Casa în care se întorc toți”** (32,8 s) | Cornișă LED IL18 (217 lei, 92 buc.), rozetă R15 (413 lei, 5 buc.), brâu WO2 (59 lei, 126 buc.) | John Lewis (Crăciun), Edeka „#heimkommen”, Apple „The Surprise” | `reel/decoflair-craciun-{organic,ads}.mp4` |
+| **„Liniște. Și o cameră terminată.”** (37,4 s) | Riflaj acustic 3D (382 lei/panou, 53 buc.), LINEA Room Kit (FD2 + GT + WD5 ×10, 2.838 lei, −15%, 50 buc.) | Apple AirPods (liniștea), Volkswagen „Think Small” | `reel/decoflair-riflaje-linea-{organic,ads}.mp4` |
 
 Rulare: `python3 engine.py configs/<reel>.py && node render.cjs <reel> organic && node render.cjs <reel> ads`. Previzualizare: `node preview.cjs <reel> ads 2,8,15`.
 Reel nou = fișier nou în `configs/` (scene: imagine, încadrare, replici cu `*cuvinte evidențiate*`, etichetă produs, durată).
