@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analiză Magazin Online</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d211f;--muted:#6b706c;--line:#e3dfd6;--soft:#f0ede6;--acc:#1f3a2f;--pos:#1b7a4b;--neg:#b3261e;--warn:#9a6400;--f:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#141716;--card:#1c201e;--ink:#e9ebe8;--muted:#9aa09b;--line:#2e3430;--soft:#232825;--acc:#8cc9a8;--pos:#6fd39d;--neg:#ff8a80;--warn:#e7b555}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--f)}
+header{background:var(--acc);color:#fff;padding:18px 20px}@media (prefers-color-scheme:dark){header{color:#0f1311}}
+header h1{margin:0;font-size:20px}header p{margin:4px 0 0;opacity:.85;font-size:13px}
+main{max-width:1320px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.card h2{font-size:15px;margin:0 0 10px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:7px;padding:7px 12px;cursor:pointer}
+.btn.primary{background:var(--acc);color:#fff;border-color:var(--acc)}@media (prefers-color-scheme:dark){.btn.primary{color:#0f1311}}
+.btn:disabled{opacity:.5;cursor:default}
+label.file{display:inline-flex}label.file input{display:none}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted);margin-right:4px}.dot.live{background:var(--pos);box-shadow:0 0 0 0 var(--pos);animation:p 2s infinite}.dot.off{background:var(--neg)}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(27,122,75,.5)}70%{box-shadow:0 0 0 8px rgba(27,122,75,0)}100%{box-shadow:0 0 0 0 rgba(27,122,75,0)}}
+.mut,.note{color:var(--muted)}.note{font-size:12.5px;margin:8px 0 0}
+.params{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.params label,.cfggrid label{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted)}
+input,select{font:inherit;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+.mchk{display:inline-flex!important;flex-direction:row!important;align-items:center;gap:3px;margin-right:8px;color:var(--ink)!important}
+#pMonths{display:flex;flex-wrap:wrap;gap:2px 0;padding-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi span{display:block;color:var(--muted);font-size:12.5px}.kpi b{display:block;font-size:24px;margin:4px 0 2px;font-variant-numeric:tabular-nums}.kpi small{color:var(--muted)}
+.kpi.pos b{color:var(--pos)}.kpi.neg b{color:var(--neg)}
+.empty{grid-column:1/-1;padding:18px;background:var(--card);border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+.scroll{overflow-x:auto}
+table.t{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.t th,.t td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.t td:nth-child(3){white-space:normal;min-width:160px}
+.t th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--card)}
+.t th.s{cursor:pointer}.n{text-align:right!important}
+.t tr.row{cursor:pointer}.t tr.row:hover,.t tr[data-m]:hover{background:var(--soft)}.t tr[data-m]{cursor:pointer}
+.t tr.sel{background:var(--soft);font-weight:600}.t tr.tot td{font-weight:700;border-top:2px solid var(--line)}
+.t tr.op{background:var(--soft)}.t tr.det>td{background:var(--soft);padding:4px 8px 12px 24px}
+.t.sub{font-size:12.5px;background:var(--card)}.t.sub td:nth-child(2){white-space:normal;min-width:200px}
+td.pos{color:var(--pos)}td.neg{color:var(--neg)}
+.tag{font-style:normal;font-size:11px;border:1px solid var(--line);border-radius:10px;padding:0 6px;color:var(--muted)}.tag.warn{color:var(--warn);border-color:var(--warn)}
+.chip{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--soft);color:var(--ink);border-radius:14px;padding:3px 10px;cursor:pointer;margin:0 6px 6px 0}.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}.chip small{opacity:.7}
+.cfggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+fieldset{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:6px;margin:0}legend{font-weight:600;font-size:13px}
+.chk{flex-direction:row!important;align-items:center;gap:6px}
+.row-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+pre{white-space:pre-wrap;font-size:11.5px;max-height:300px;overflow:auto;background:var(--soft);padding:8px;border-radius:6px}
+details summary{cursor:pointer;font-weight:600}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;transition:.25s;z-index:9;max-width:90vw}#toast.on{transform:translateX(-50%)}
+#busy{position:fixed;top:12px;right:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px 12px;font-size:12.5px;z-index:9}
+@media (max-width:600px){main{padding:10px}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header><h1>Analiză vânzări · Magazin online · preț de listă vs. discount</h1><p>Citește direct baza DistribNet (tabele .dbf) de pe calculatorul tău și se actualizează singur când se modifică baza. Datele nu pleacă nicăieri.</p></header>
+<main>
+<section class="card">
+  <div class="bar">
+    <button type="button" class="btn primary" id="connect">Conectează folderul bazei</button>
+    <button type="button" class="btn" id="syncBtn" hidden>Sincronizează acum</button>
+    <button type="button" class="btn" id="liveBtn" hidden>Oprește sincronizarea</button>
+    <label class="btn file">Încarcă folderul (fără sincronizare)<input type="file" id="dirfiles" webkitdirectory multiple></label>
+    <label class="btn file">Încarcă fișiere .dbf<input type="file" id="files" multiple accept=".dbf,.DBF"></label>
+    <span id="dbState" class="mut"></span><span id="stamp" class="mut"></span>
+  </div>
+  <p class="note" id="noFsa" hidden>Legătura directă cu folderul bazei (și sincronizarea automată) merge în Google Chrome sau Microsoft Edge. Aici poți încărca tabelele .dbf manual.</p>
+  <p class="note">Alege folderul cu baza DistribNet (ex. <code>\\rds.nmc.local\Backup\baze</code> sau <code>BAZE/…</code>). În Chrome/Edge alege „Permite la fiecare vizită” ca să se sincronizeze singur la fiecare deschidere.</p>
+</section>
+
+<section class="card">
+  <h2>Parametri calcul</h2>
+  <div class="params">
+    <label>Agent<input id="pAgent" list="agList"></label>
+    <label>Exclude clienții care conțin<input id="pExcl"></label>
+    <label>An<input id="pYear" type="number" min="2000" max="2100"></label>
+    <label>Discount ipotetic din listă (%)<input id="pDisc" type="number" min="0" max="100" step="0.5"></label>
+    <label>TVA (%)<input id="pTva" type="number" min="0" max="50" step="1"></label>
+    <label>Curs EUR (articole cu preț de listă doar în EUR)<input id="pEur" type="number" min="0" step="0.0001"></label>
+    <label>Linii fără preț în listă (transport, servicii)<select id="pNoList"><option value="exclude">în afara comparației</option><option value="include">incluse la valoarea facturată</option></select></label>
+    <label>Verificare modificări bază (secunde)<input id="pInt" type="number" min="5" step="5"></label>
+    <label style="grid-column:1/-1">Luni<span id="pMonths"></span></label>
+  </div>
+  <p class="note">Agenți găsiți în perioadă (clic pentru a alege):</p><div id="agents"></div><p class="note" id="exclInfo"></p>
+</section>
+
+<div class="kpis" id="kpis"></div>
+
+<section class="card"><h2>Pe luni</h2><div class="scroll" id="months"></div></section>
+
+<section class="card">
+  <div class="bar" style="justify-content:space-between;margin-bottom:8px"><h2 style="margin:0">Facturi <small class="mut" id="invCount"></small></h2>
+    <div class="bar"><input id="q" placeholder="Caută factură, client, listă…" style="min-width:220px"><button type="button" class="btn" id="export" disabled>Export Excel</button></div></div>
+  <div class="scroll" id="inv"></div>
+  <p class="note">Facturat = Σ cantitate × preț facturat, fără TVA. La listă = Σ cantitate × prețul articolului în lista de preț la care s-a facturat (lista de pe linie → de pe factură → a clientului → lista implicită), fără TVA. Diferență = facturat − listă × (1 − discount). Clic pe o factură pentru produse.</p>
+</section>
+
+<section class="card">
+  <details><summary>Setări bază (tabele și câmpuri folosite)</summary>
+  <p class="note">Le-am ales automat după numele câmpurilor DistribNet. Dacă ceva nu e corect, schimbă aici; „Copiază structura bazei” copiază doar numele tabelelor și câmpurilor (fără date), ca să poată fi configurată exact.</p>
+  <div id="cfg"></div></details>
+</section>
+<p class="note">Atenție: prețurile de listă sunt cele din baza de acum (tabelul de prețuri nu păstrează istoricul). Dacă o listă s-a schimbat între timp, facturile vechi sunt comparate cu prețul actual al listei.</p>
+</main>
+<datalist id="agList"><option value="MAGAZIN ONLINE"></datalist>
+<div id="busy" hidden>Calculez…</div>
+<div id="toast" role="status"></div>
+__LIBS__
+<script>
+/*__APP__*/
+</script>
+</body>
+</html>

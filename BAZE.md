@@ -31,3 +31,4 @@ _De completat la prima sesiune locală (cloud-ul nu are acces)._
 
 ## Folosit de
 - `nmc-calculator-oferta/` — foaia NMC Parteneri (prețuri lista 90, clienți) și foaia Borderou livrări (avize / facturi, DL-uri). În browser se conectează la folderul bazei prin „Conectează folderul bazei” (poate fi `BAZE/...` local sau `\\rds.nmc.local\Backup\baze`).
+- `nmc-analiza-online/` — analiza vânzărilor agentului MAGAZIN ONLINE la preț de listă vs. discount (facturi + linii, client.dbf, agenți, preturi.dbf, denumiri liste); sincronizare automată cu folderul bazei.
