@@ -1,9 +1,9 @@
 # Deco & Flair · Reel-uri de cumpărături
 
-| Serie | Clip · 30 s | Copertă | Imagine hero |
-|---|---|---|---|
-| Interior | [MP4](decoflair-interior-reel.mp4) | [JPG](interior-coperta.jpg) | [JPG](interior-hero.jpg) |
-| Exterior | [MP4](decoflair-exterior-reel.mp4) | [JPG](exterior-coperta.jpg) | [JPG](exterior-hero.jpg) |
+| Serie | Clip · 30 s | Copertă | Imagine hero | Text de postare |
+|---|---|---|---|---|
+| Interior | [MP4](decoflair-interior-reel.mp4) | [JPG](interior-coperta.jpg) | [JPG](interior-hero.jpg) | [TXT cu linkuri](postare-interior.txt) |
+| Exterior | [MP4](decoflair-exterior-reel.mp4) | [JPG](exterior-coperta.jpg) | [JPG](exterior-hero.jpg) | [TXT cu linkuri](postare-exterior.txt) |
 
 Clipuri verticale de 1080 × 1920 px, 30 fps, H.264 și AAC stereo. Atmosferele provin din colecția Deco & Flair 2027, cu recadrare verticală din cadrele de ambient. Paginile oficiale de produs furnizează fotografiile, prețurile și disponibilitatea. Coloana `banner` din `catalog.json` indică bannerul corespondent din colecție.
 
@@ -44,4 +44,4 @@ Actualizează în `catalog.json` data, prețul în bani și disponibilitatea. Co
 | Ambient și produs 3 | 12,00–16,80 s |
 | Ambient și produs 4 | 16,80–21,60 s |
 | Ambient și produs 5 | 21,60–26,40 s |
-| Site, consultanță și data prețurilor | 26,40–30,00 s |
+| Site și consultanță | 26,40–30,00 s |

@@ -5,7 +5,7 @@
   const ui = Object.fromEntries([
     "series-title", "chapters", "reel", "product-title", "product-image",
     "product-category", "unit-price", "availability", "buy", "watch-product",
-    "quantity", "minus", "plus", "subtotal", "checked",
+    "quantity", "minus", "plus", "subtotal",
   ].map(id => [id, document.getElementById(id)]));
   const seriesButtons = [...document.querySelectorAll("[data-series]")];
   const names = {interior: "Interioare în detaliu", exterior: "Fațade cu caracter"};
@@ -130,7 +130,5 @@
     ui.quantity.value = String(quantity() + 1);
     updateSubtotal();
   });
-  ui.checked.dateTime = catalog.checked;
-  ui.checked.textContent = catalog.checked.split("-").reverse().join(".");
   showSeries(window.location.hash === "#exterior" ? "exterior" : "interior");
 })();

@@ -227,8 +227,6 @@ def endcard(group):
     draw.text((130, 757), "decoflair.ro", font=font("serif", 95), fill=GOLD, anchor="lt")
     draw.text((130, 918), "Consultanță", font=font("sans", 25), fill=IVORY, anchor="lt")
     draw.text((130, 962), CATALOG["phone"], font=font("bold", 39), fill=IVORY, anchor="lt")
-    day = "-".join(CATALOG["checked"].split("-")[::-1]).replace("-", ".")
-    draw.text((130, 1138), "Prețuri verificate la " + day, font=font("sans", 20), fill=GOLD, anchor="lt")
     frame_mark(draw)
     return canvas
 
