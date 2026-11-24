@@ -19,7 +19,7 @@ IVORY = "#f9f0e3"
 GOLD = "#efca9f"
 
 
-def overlay(path, final):
+def overlay(path, final, recreation=False):
     image = Image.new("RGBA", SIZE, EMPTY)
     vertical = Image.new("L", (1, SIZE[1]))
     opacity = 177 if final else 136
@@ -33,7 +33,11 @@ def overlay(path, final):
     shade.putalpha(ImageChops.multiply(vertical.resize(SIZE), horizontal.resize(SIZE)))
     image.alpha_composite(shade)
     draw = ImageDraw.Draw(image)
-    if final:
+    if final and recreation:
+        draw.line((103, 1230, 208, 1230), fill=GOLD, width=2)
+        draw.text((103, 1255), "Comandă NCL107", font=font("bold", 77), fill=IVORY, anchor="lt")
+        draw.text((105, 1353), "decoflair.ro", font=font("bold", 40), fill=GOLD, anchor="lt")
+    elif final:
         draw.line((103,1110,219,1110), fill=GOLD, width=2)
         draw.text((103,1156), "Comandă NCL107", font=font("bold", 77), fill=IVORY, anchor="lt")
         draw.text((105,1280), "decoflair.ro", font=font("bold", 39), fill=GOLD, anchor="lt")
@@ -61,42 +65,46 @@ def require_native_dimensions(ffmpeg, footage):
         )
 
 
-def export(ffmpeg, footage, output, native=False):
+def export(ffmpeg, footage, output, native=False, recreation=False):
+    native = native or recreation
     if native:
         require_native_dimensions(ffmpeg, footage)
-    base = "setpts=PTS-STARTPTS,fps=30,"
+    fps = "24" if recreation else "30"
+    base = f"setpts=PTS-STARTPTS,fps={fps},"
     if not native:
         base += ("scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
                  "crop=1080:1920,unsharp=5:5:0.28:5:5:0,")
     output.mkdir(parents=True, exist_ok=True)
-    suffix = "-nativ" if native else ""
+    suffix = "-3d" if recreation else "-nativ" if native else ""
+    cta_start = 11.0 if recreation else CTA_START
     target = output/f"decoflair-ncl107-amurg-ads-15s{suffix}.mp4"
     with tempfile.TemporaryDirectory() as workspace:
         work = Path(workspace)
         opening, closing, music = (work/name for name in ("open.png", "close.png", "music.wav"))
         overlay(opening, False)
-        overlay(closing, True)
+        overlay(closing, True, recreation=recreation)
         soundtrack(music)
         # The base is moving footage throughout, including behind the call to action.
         graph = (
             f"[0:v]{base}setsar=1[film];"
             "[1:v]format=rgba,fade=t=out:st=2.4:d=0.32:alpha=1[hook];"
-            f"[2:v]format=rgba,fade=t=in:st={CTA_START}:d=0.38:alpha=1[cta];"
+            f"[2:v]format=rgba,fade=t=in:st={cta_start}:d=0.38:alpha=1[cta];"
             "[film][hook]overlay=enable='lt(t,2.73)'[intro];"
-            f"[intro][cta]overlay=enable='gte(t,{CTA_START})'[out]"
+            f"[intro][cta]overlay=enable='gte(t,{cta_start})'[out]"
         )
         subprocess.run([
             ffmpeg,"-hide_banner","-loglevel","error","-y","-filter_complex_threads","2",
-            "-i",str(footage),"-loop","1","-framerate","30","-i",str(opening),
-            "-loop","1","-framerate","30","-i",str(closing),"-i",str(music),
+            "-i",str(footage),"-loop","1","-framerate",fps,"-i",str(opening),
+            "-loop","1","-framerate",fps,"-i",str(closing),"-i",str(music),
             "-filter_complex",graph,"-map","[out]","-map","3:a","-t",str(DURATION),
             "-c:v","libx264","-preset","fast","-crf","18","-threads","2","-pix_fmt","yuv420p",
             "-bsf:v","h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1",
             "-c:a","aac","-b:a","160k","-af","volume=1.3,alimiter=limit=0.8:level=false",
             "-movflags","+faststart",str(target)
         ],check=True)
+    cover_time = "10.7" if recreation else "8.8"
     subprocess.run([
-        ffmpeg,"-hide_banner","-loglevel","error","-y","-ss","8.8","-i",str(target),
+        ffmpeg,"-hide_banner","-loglevel","error","-y","-ss",cover_time,"-i",str(target),
         "-frames:v","1","-q:v","2",str(output/f"coperta-ncl107-amurg{suffix}.jpg")
     ],check=True)
 
@@ -107,5 +115,7 @@ if __name__ == "__main__":
     parser.add_argument("--ffmpeg", default="ffmpeg")
     parser.add_argument("--output", type=Path, default=ROOT/"reel")
     parser.add_argument("--native", action="store_true", help="Cere o sursă de 1080 × 1920 și păstrează dimensiunile.")
+    parser.add_argument("--recreation", action="store_true",
+                        help="Titluri pentru reconstrucția 3D, cu export nativ implicit.")
     args = parser.parse_args()
-    export(args.ffmpeg,args.footage,args.output,native=args.native)
+    export(args.ffmpeg, args.footage, args.output, native=args.native, recreation=args.recreation)

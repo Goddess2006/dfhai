@@ -1,5 +1,7 @@
 # NCL107 · Fațada la amurg
 
+**Varianta refăcută la 1080 × 1920 nativ, fără watermark** · [Spot 3D și link direct pentru reclamă](amurg-3d/README.md)
+
 [Spot Ads de 15 secunde](reel/decoflair-ncl107-amurg-ads-15s.mp4) · [Copertă](reel/coperta-ncl107-amurg.jpg)
 
 **Text principal**
@@ -46,7 +48,7 @@ python3 decoflair-reel-exterior/reel_ncl107_amurg.py decoflair-reel-exterior/ass
 
 ### Export dintr-o sursă nativă
 
-Versiunea fără watermark necesită un clip-sursă curat, generat sau filmat nativ la 1080 × 1920. După verificarea sursei, opțiunea `--native` păstrează dimensiunile și folosește nume de fișiere separate. Sursa HeyGen existentă este respinsă de acest mod.
+Pentru un alt clip-sursă, folosește un fișier curat, generat sau filmat nativ la 1080 × 1920. După verificarea sursei, opțiunea `--native` păstrează dimensiunile și folosește nume de fișiere separate. Sursa HeyGen existentă este respinsă de acest mod.
 
 ```sh
 python3 decoflair-reel-exterior/reel_ncl107_amurg.py --native /cale/catre/clipul-sursa-curat.mp4
