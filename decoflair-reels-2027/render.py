@@ -244,10 +244,10 @@ def frame_at(group, products, hero, frame):
     return scene(group, products[index], index, local)
 
 
-def write_music(path, group):
+def write_music(path, group, total_frames=TOTAL, accents=None):
     """A soft original instrumental with 100 BPM scene changes and tuned detail accents."""
     rate = 48_000
-    duration = TOTAL / FPS
+    duration = total_frames / FPS
     stereo = [array("f", [0]) * round(duration*rate) for _ in range(2)]
     progression = [(50,57,60,64), (46,53,57,60), (53,60,64,67), (48,55,57,62)]
     if group == "exterior":
@@ -267,7 +267,7 @@ def write_music(path, group):
             stereo[0][first+i] += sample*pan_l
             stereo[1][first+i] += sample*pan_r
 
-    for beat in range(TOTAL//BEAT):
+    for beat in range(total_frames//BEAT):
         chord = progression[(beat//4) % len(progression)]
         moment = beat * (BEAT/FPS)
         if beat % 4 == 0:
@@ -275,8 +275,10 @@ def write_music(path, group):
             for i, note in enumerate(chord[1:]):
                 tone(note, moment+i*.035, 2.10, .073, .22+i*.27, 1.4)
         tone(chord[1+(beat%3)]+12, moment + .03, 0.56, .069 if beat%2 else .045, .3 if beat%2 else .7, 5)
-    for index in range(5):
-        moment = (HERO + index*SCENE + 56)/FPS
+    if accents is None:
+        accents = (HERO + index*SCENE + 56 for index in range(5))
+    for frame in accents:
+        moment = frame/FPS
         tone(79 if group == "interior" else 76, moment, .50, .044, .63, 5.6)
     pcm = array("h")
     for i,(left,right) in enumerate(zip(*stereo)):
