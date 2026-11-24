@@ -10,6 +10,7 @@ Creat 2026-11-24 (Claude Code). Skill-urile stau în `.claude/skills/` din repo,
 | `decoflair-catalog` | citește cele ~1.000 de produse din sitemap-ul public: nume, cod, preț, stoc, poze 1500 px; descarcă pozele ca referință |
 | `decoflair-media-gen` | imagini și video de produs prin fal.ai (o singură cheie pentru toate modelele), cu poza reală de catalog ca referință; formatele pentru fiecare platformă |
 | `decoflair-social-pipeline` | săptămâna de conținut: plan → produse → creative → texte → aprobare → programare (Postiz / Meta Business Suite / TikTok Studio) → raport |
+| `decoflair-blog` | articole SEO pe blog: scriere, imagini, urcare în Image Manager, creare nepublicat în admin (Journal3), publicare la ora programată; script Playwright `opencart_blog.cjs` |
 | `decoflair-newsletter` | newsletter cu build HTML + Brevo API (draft, test, programare), plus fluxurile automate |
 | `.agents/product-marketing.md` | contextul de brand (produse, public, voce, paletă, reguli), citit de toate skill-urile de marketing |
 
@@ -34,6 +35,7 @@ Actualizare: clonează din nou sursa și copiază folderul skill-ului peste cel 
 | Cont **fal.ai** + cheie `FAL_KEY` | imagini și video AI | la consum: cenți/imagine, ~0,3–1,5 $/clip video de 5 s, după model (verifică pe fal.ai) |
 | Cont **Brevo** + cheie `BREVO_API_KEY`, domeniu autentificat (SPF/DKIM/DMARC) | newsletter și fluxuri automate | gratuit 300/zi; Starter de la ~9 €/lună |
 | **Postiz** (cloud sau instalat pe serverul tău) + conectare FB, IG, TikTok, Pinterest | programare din Claude | cloud de la ~29 $/lună; self-host gratuit |
+| Utilizator admin OpenCart dedicat + `DECOFLAIR_ADMIN_URL`, `DECOFLAIR_ADMIN_USER`, `DECOFLAIR_ADMIN_PASS` | urcare și programare articole de blog | — |
 | Cheile în setările environment-ului Claude Code (variabile de mediu) | ca sesiunile să le vadă | — |
 | Opțional: conectorul Brevo MCP în claude.ai | trimitere direct din chat | — |
 
@@ -44,7 +46,7 @@ Actualizare: clonează din nou sursa și copiază folderul skill-ului peste cel 
 | După aprobare | programează în Postiz | — |
 | La 2 săptămâni | newsletter: draft în Brevo + test pe adresa ta | aprobi testul, Claude programează |
 | O dată, apoi automat | fluxuri Brevo: bun venit, coș abandonat, după comandă, reactivare | aprobi textele |
-| Lunar | 2 articole de blog SEO (din întrebările clienților) → reel + carusel + newsletter din fiecare | aprobi articolul, îl urci în OpenCart |
+| Lunar | 2–4 articole de blog SEO: le scriu, le ilustrez, le urc nepublicate și le public singur la data programată; apoi reel + carusel + newsletter din fiecare | aprobi articolul și data |
 | Lunar | audit SEO / produse fără descriere / schema | — |
 
 O sesiune Claude Code programată (scheduled task, de exemplu luni la 07:40) poate porni singură pasul de luni; spune-mi dacă o vrei.

@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Blog decoflair.ro: skill `decoflair-blog` — Claude Code, 2026-11-24
+Cerere: Claude să se logheze în admin, să urce articolele și imaginile și să le programeze. `.claude/skills/decoflair-blog/scripts/opencart_blog.cjs` (Node + Playwright): login în admin OpenCart cu `DECOFLAIR_ADMIN_URL/USER/PASS` din mediu, `capture` (înregistrează cererile AJAX ale editorului Journal3, fără modificări), `list`, `get`, `upload` (filemanager → `image/catalog/blog/<slug>/`), `create` (articol nepublicat), `set-status` (publicare la ora programată, rulat dintr-o sesiune programată), `screenshot`. Adminul NU e la `/admin` (404) — adresa o dă proprietarul. Rutele Journal3 (`journal3/blog_post/all|get|add|edit`, câmp POST `data`) sunt presupuse: se confirmă cu `capture` la prima rulare și se suprascriu în `scripts/endpoints.json`. Testat doar fără cont (sintaxă, mesaj lipsă variabile, screenshot public).
+
 ## Skill-uri de content + automatizare marketing — Claude Code, 2026-11-24
 Cerere: skill-uri pentru content site, imagini/video de produs pentru FB/IG/TikTok, newsletter și un proces automat pentru solopreneur. Totul în `.claude/skills/` (se încarcă automat în sesiunile Claude Code pe acest repo) + `.agents/product-marketing.md` (context de brand citit de skill-urile de marketing). Detalii, surse, costuri și procesul săptămânal: `AUTOMATIZARE-CONTENT.md`.
 - Scrise pentru Deco&Flair: `decoflair-catalog` (`scripts/catalog.py`: sitemap public → 998 produse, JSON-LD preț/stoc, poze 1500 px; testat), `decoflair-media-gen` (`scripts/fal_run.py`: orice model fal.ai prin Queue API, referințe locale ca data URI; `--dry-run` testat, generare reală netestată — lipsește `FAL_KEY`), `decoflair-social-pipeline`, `decoflair-newsletter` (`scripts/brevo.py`: liste, draft, test, programare; `send-now` cere `--yes`; netestat live — lipsește `BREVO_API_KEY`).
