@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181512">
+  <title>Reel-uri de cumpărături · Deco &amp; Flair</title>
+  <link rel="stylesheet" href="player.css">
+  <script defer src="catalog.js"></script>
+  <script defer src="player.js"></script>
+</head>
+<body>
+  <header class="header shell">
+    <a class="wordmark" href="https://decoflair.ro/">Deco &amp; Flair</a>
+    <div class="switch" role="group" aria-label="Alege reel-ul">
+      <button type="button" data-series="interior" aria-pressed="true">Interior</button>
+      <button type="button" data-series="exterior" aria-pressed="false">Exterior</button>
+    </div>
+  </header>
+  <main class="shell layout">
+    <section class="film" aria-labelledby="series-title">
+      <h1 id="series-title">Interioare în detaliu</h1>
+      <video id="reel" controls playsinline preload="metadata" poster="interior-coperta.jpg"
+             src="decoflair-interior-reel.mp4" aria-label="Reel pentru profile decorative de interior">
+        <a href="decoflair-interior-reel.mp4">Descarcă reel-ul de interior</a>
+      </video>
+    </section>
+    <section class="shop" aria-labelledby="product-title">
+      <nav aria-label="Capitolele reel-ului">
+        <div class="chapters" id="chapters"></div>
+      </nav>
+      <article class="product" id="product">
+        <div class="product-photo">
+          <img id="product-image" src="assets/n-produs.jpg" alt="Baghetă decorativă N">
+        </div>
+        <div class="product-info">
+          <p class="category" id="product-category">Chenare</p>
+          <h2 id="product-title">Baghetă decorativă N</h2>
+          <p class="price-line"><strong id="unit-price">30,90 lei</strong><span> / buc. · TVA inclus</span></p>
+          <p class="availability" id="availability">În stoc</p>
+          <div class="actions">
+            <a id="buy" class="buy" href="https://decoflair.ro/brau-decorativn-nomastyl">Deschide produsul <span aria-hidden="true">↗</span></a>
+            <button id="watch-product" type="button" class="watch">Vezi în reel</button>
+          </div>
+        </div>
+      </article>
+      <div class="quantity-area">
+        <div>
+          <label for="quantity">Cantitate</label>
+          <div class="stepper">
+            <button id="minus" type="button" aria-label="Scade cantitatea">−</button>
+            <input type="number" id="quantity" value="1" min="1" max="999" step="1" inputmode="numeric" aria-label="Cantitate în bucăți">
+            <button id="plus" type="button" aria-label="Crește cantitatea">+</button>
+          </div>
+        </div>
+        <div class="subtotal">
+          <span id="subtotal-label">Subtotal orientativ</span>
+          <output id="subtotal" for="quantity" aria-labelledby="subtotal-label" aria-live="polite">30,90 lei</output>
+        </div>
+      </div>
+      <p class="price-note">Prețuri verificate la <time id="checked" datetime="2026-11-24">24.11.2026</time>. Prețul curent este afișat pe pagina produsului. Ambianțele sunt imagini de inspirație.</p>
+    </section>
+  </main>
+  <footer class="shell footer">
+    <a href="https://decoflair.ro/">decoflair.ro</a>
+    <a href="tel:+40765740280">Consultanță · 0765 740 280</a>
+  </footer>
+  <noscript><p class="shell">Activează JavaScript pentru capitole, fișe de produs și calculul subtotalului.</p></noscript>
+</body>
+</html>
