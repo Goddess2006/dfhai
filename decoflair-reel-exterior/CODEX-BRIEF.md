@@ -1,4 +1,7 @@
-# Brief pentru Codex: imagini pentru reel-ul de exterior „Ultimul final touch înainte de prima zăpadă”
+# Brief pentru Codex: imagini pentru reel-ul de exterior v2 „Schița devine casă”
+
+> **ACTUALIZARE 24.11 (v2):** clientul a respins zăpada („prea multă zăpadă”). **NU genera imagini cu zăpadă sau iarnă.** Reel-ul v2 are nevoie doar de imaginea `03-fatada-aurie.jpg` (prioritate 1); restul listei de mai jos este opțional, pentru postări viitoare, și trebuie generat FĂRĂ zăpadă (toamnă târzie, lumină aurie).
+
 
 **De la:** Claude Code · **Data:** 24.11.2026 · **Folder:** `decoflair-reel-exterior/`
 **Cererea utilizatorului:** reel despre profilele de exterior: livrare rapidă, stocuri mari, ultimul „final touch” la fațadă înainte de prima zăpadă și de sărbători. Trebuie să vândă și să poată fi promovat (reclame Meta/TikTok). Inspirat din short-ul NMC „Colțar decorativ fațade” (NCL107), dar **cu focus pe produs, nu pe actor**.
@@ -15,7 +18,8 @@ v1 e randat din imaginile existente (`reel/decoflair-reel-exterior-organic.mp4`,
 ## Lista
 | Fișier | Ce arată | Unde intră în reel |
 |---|---|---|
-| `01-colt-zapada.jpg` | Colțul unei case românești cu **colțare tip bosaje NCL107** ivoire pe tencuială bej-gri, primii fulgi, cer rece, o fereastră caldă alături. Cadru vertical, colțul pe treimea stângă. | Cârligul (0–2 s) |
+| **`03-fatada-aurie.jpg` (PRIORITATE 1)** | Casă românească P+1, fațadă crem, fotografiată frontal, **exact cu profilele din schița reel-ului**: cornișă sub streașină, colțare cu bosaje pe ambele colțuri, ancadramente, solbancuri și chei de boltă la 4 ferestre (2 sus, 2 jos), ușă la mijloc jos. Lumină aurie de după-amiază, fără zăpadă, câteva frunze de toamnă. Înlocuiește vila din momentul „Din schiță. Pe casa ta.” |
+| `01-colt-zapada.jpg` (anulat) | Colțul unei case românești cu **colțare tip bosaje NCL107** ivoire pe tencuială bej-gri, primii fulgi, cer rece, o fereastră caldă alături. Cadru vertical, colțul pe treimea stângă. | Cârligul (0–2 s) |
 | `02-colt-inainte.jpg` | **Același colț, același cadru**, FĂRĂ colțare: muchie de tencuială ciupită, ușor strâmbă, colț lovit, aspect neterminat. Fără zăpadă. | Problema (2–4,5 s) |
 | `02-colt-dupa.jpg` | Același colț, același cadru, CU colțarele NCL107 montate și vopsite, lumină de după-amiază de noiembrie. | „Așa arată pe casă” (8,5–10 s) |
 | `03-fatada-amurg-sarbatori.jpg` | Fațada întreagă a unei case P+1 la amurg albastru, ninsoare ușoară: ancadramente, solbancuri, cornișă și colțare ivoire, ferestre calde, ghirlandă discretă de lumini calde pe streașină. | Urgență / „Casa gata de sărbători” (17–20,5 s) |
