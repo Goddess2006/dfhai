@@ -6,7 +6,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-CODES="na102 na103 na231 na106 na107 na118 na213 na236 na210 na212 na214 na121 rema16 na229 na230 na104 na210 na108 ns162 ns111 ns109 ns166 ns116 ns108 ns112 ns110 ns118 refa12 nc101 na105 nc174 nc103 nc160 nc111 nc104 nc173".upper().split()
+CODES="na102 na103 na231 na106 na107 na118 na213 na236 na210 na212 na214 na121 rema16 na229 na230 na104 na210 na108 ns162 ns111 ns109 ns166 ns116 ns108 ns112 ns110 ns118 refa12 nc101 na105 nc174 nc103 nc160 nc111 nc104 nc173 nc159".upper().split()
 tsv=sys.argv[1]; out=sys.argv[2]
 dims={}
 for l in open(tsv):
