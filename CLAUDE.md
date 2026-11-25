@@ -15,3 +15,5 @@ Dacă push-ul este respins, `git pull --rebase origin main` și push din nou. R�
 Documentație și date sursă: `/home/dfh/workspace/BAZE` (baze DistribNet, imagini catalog produse, date suplimentare) și `/home/dfh/workspace/EXTRANET` — vezi `BAZE.md`. Ambele foldere sunt în `.gitignore`: se citesc local, nu se comit.
 
 Când Codex îți cere o consultare creativă, folosește [fluxul creativ comun](FLUX-CREATIV.md). Oferă feedback editorial concret pe brief sau pe versiunea de lucru și lasă implementarea în seama agentului care a cerut revizia.
+
+Biblioteca comună de imagini cu Codex: [biblioteca-comuna/README.md](biblioteca-comuna/README.md). Include cele 50 de imagini de inspirație Deco&Flair, galeria și prompturile; consult-o înainte de a crea materiale noi.

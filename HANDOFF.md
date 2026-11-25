@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Biblioteca comună cu Claude — Codex, 2026-11-25
+La cererea utilizatorului, cele 50 de imagini existente Deco&Flair sunt înregistrate în `biblioteca-comuna/`: `README.md` pentru navigare și `colectii.json` pentru agenți. Legătura `biblioteca-comuna/decoflair-inspiratie-50` deschide colecția originală, inclusiv galeria, imaginile, planșele de contact și manifestul cu prompturi. Originalele rămân pe căile existente, fără duplicare sau modificare, pentru compatibilitate cu proiectele care le folosesc. Referință permanentă adăugată în `CLAUDE.md` și `AGENTS.md`. Verificat accesul la toate cele 50 de fișiere și concordanța SHA-256 cu manifestul. Operație de catalogare; fără producție de creative noi sau publicare.
+
 ## Film de prezentare Deco&Flair „Detaliile care fac casa.” — `decoflair-film-brand/` — Claude Code, 2026-11-24
 Client: clip de prezentare premium, ≥40 s, cu muzică ambientală, pentru YouTube + site + „carte de vizită”, cu semnătura Deco&Flair, în consultare cu Codex. v1: 16:9 1920×1080, 57,6 s, format 2,39:1, 11 cadre reale (zugrav → montaj → PROPORȚIE / LUMINĂ / TEXTURĂ / CARACTER / PREZENȚĂ → case → final cu sigla aurie, decoflair.ro, „Detaliile care fac casa.”, 0765 740 280). Muzică ORIGINALĂ generată (`music.py`, Re major, pad-uri + pian + reverb, fără Content ID). `out/decoflair-film-prezentare.mp4` (master 62 MB, în .gitignore, livrat în chat) și `out/decoflair-film-prezentare-web.mp4` (14,5 MB, în repo); `out/miniatura.jpg`. YouTube (titlu, descriere, capitole, etichete) + cod de încorporare pentru site: `README.md`. **PENTRU CODEX: `decoflair-film-brand/CODEX-BRIEF.md`** (revizie, imagini HQ din EXTRANET pentru cadrele mărite 2× și pentru deschidere, variantă 9:16 + bumper de 6 s, voce off opțională).
 

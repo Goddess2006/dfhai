@@ -1,0 +1,17 @@
+{
+  "library": "Biblioteca comună Claude Code și Codex",
+  "collections": [
+    {
+      "id": "decoflair-inspiratie-50",
+      "title": "Deco&Flair — 50 de imagini de inspirație",
+      "count": 50,
+      "root": "decoflair-inspiratie-50",
+      "manifest": "decoflair-inspiratie-50/manifest.json",
+      "gallery": "decoflair-inspiratie-50/index.html",
+      "originals": "decoflair-inspiratie-50/imagini",
+      "categories": ["interior", "exterior", "panouri-3d", "riflaje", "produse-detalii"],
+      "is_ai_generated": true,
+      "exact_sku": false
+    }
+  ]
+}
