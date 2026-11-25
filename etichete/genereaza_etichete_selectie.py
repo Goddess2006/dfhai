@@ -14,6 +14,8 @@ for l in open(tsv):
     if not any(k in cat for k in ('Ancadramente','Solbanc','Cornisa')): continue
     m=re.search(r'\b([A-Z]+\d+)\s+(\d+)[xX](\d+)[xX](2000)\s*$',name.strip())
     if m: dims[m.group(1)]=f"{m.group(2)}X{m.group(3)}X2000"
+# Coduri care nu sunt pe site: dimensiuni date de utilizator (2026-11-25)
+dims.update({'NA236':'95X40X2000','NS166':'120X70X2000','NC174':'180X90X2000'})
 items=[]; missing=[]
 for c in dict.fromkeys(CODES):
     (items.append((c,dims[c])) if c in dims else missing.append(c))
