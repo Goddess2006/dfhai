@@ -1,7 +1,10 @@
 # Handoff
 
-Ultima actualizare: 2026-11-24
+Ultima actualizare: 2026-11-25
 Agent: Claude Code
+
+## Plan de creștere ADRO 2027 (+20% vânzări) — Claude Docs — Claude Code, 2026-11-25
+Client: plan de producție, cifre, costuri, investiții și produse noi ca vânzările ADRO să crească cu 20%, semnat de Eduard Pasol (coordonator producție). Document: [Plan de creștere ADRO 2027: +20% vânzări](https://claude.ai/artifact/7PnaN1vM9KhNXKyAy3age6). Țintă 13,3 mil. lei 2027 (2026E ≈11,1; ian–nov 2026 10,63 mil., −16,5%). Punte: profile stoc DIY +0,70, panouri fațadă +0,40, Gama Gard +0,35, custom +0,30, kituri +0,25, adezivi +0,20 mil. lei. Produse noi: Gama Gard + manșon de stâlp, panouri Cărămidă/Piatră/Bosaj, kit „Fereastra completă”, îmbinare lambă-uluc, litere/numere, Modern, soclu armat, jardinieră (pilot). Producție ≈545 t, ≈36–39 oameni + 2–3 sezonieri; investiții faza 1 ≈250.000 lei. Date: capturile de vânzări ale clientului, artifactul „Calculator Cost ADRO” (vânzări pe cod 2025), „Calculator Materii Prime ADRO”, „Plan de business Producție ADRO 2027”, Semrush RO (nov. 2026). DistribNet (`\\rds.nmc.local\backup\baze`) NU e accesibil din cloud: lista „Date de validat” din document trebuie completată local până la 15.12.2026.
 
 ## Film de prezentare Deco&Flair „Detaliile care fac casa.” — `decoflair-film-brand/` — Claude Code, 2026-11-24
 Client: clip de prezentare premium, ≥40 s, cu muzică ambientală, pentru YouTube + site + „carte de vizită”, cu semnătura Deco&Flair, în consultare cu Codex. v1: 16:9 1920×1080, 57,6 s, format 2,39:1, 11 cadre reale (zugrav → montaj → PROPORȚIE / LUMINĂ / TEXTURĂ / CARACTER / PREZENȚĂ → case → final cu sigla aurie, decoflair.ro, „Detaliile care fac casa.”, 0765 740 280). Muzică ORIGINALĂ generată (`music.py`, Re major, pad-uri + pian + reverb, fără Content ID). `out/decoflair-film-prezentare.mp4` (master 62 MB, în .gitignore, livrat în chat) și `out/decoflair-film-prezentare-web.mp4` (14,5 MB, în repo); `out/miniatura.jpg`. YouTube (titlu, descriere, capitole, etichete) + cod de încorporare pentru site: `README.md`. **PENTRU CODEX: `decoflair-film-brand/CODEX-BRIEF.md`** (revizie, imagini HQ din EXTRANET pentru cadrele mărite 2× și pentru deschidere, variantă 9:16 + bumper de 6 s, voce off opțională).
