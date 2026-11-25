@@ -6,6 +6,7 @@ Agent: Claude Code
 ## Etichete ADRo exterior 2000 mm — Claude Code, 2026-11-16
 Folder: `etichete/`. `etichete_adro_2000mm_A4.pdf` = 167 etichete (6 coli A4, 30/coală, 3×10), pe 2 rânduri: sus codul (bold, mare), jos dimensiunile + „mm” (ex. `NA101` / `60X25X2000 mm`), doar ADRo® de pe nmcromania.ro/adro, categoriile Ancadramente, Solbanc, Cornisa decorativa exterior, numai lungime 2000 mm (variantele 1250 excluse; seturile de colțuri/capete excluse). Ordine: ancadramente → solbancuri → cornișe, sortat după cod (NA135/NA136 apar la solbanc, cum sunt încadrate pe site).
 Etichetă 65×28 mm (sub max. 70×30, ca să rămână margini printabile), grilă centrată exact (7,5 mm stânga/dreapta, 8,5 mm sus/jos), contur gri punctat pentru tăiere. Print la 100% / „Actual size”.
+Selecție separată (2026-11-25): `etichete/etichete_adro_selectie_A4.pdf` — 32 etichete pe un singur rând, 67×10 mm (cod bold + dimensiuni + „mm”), 3 coloane, centrate pe A4. Dimensiuni reverificate pe nmcromania.ro/adro în aceeași zi. NA236, NS166, NC174 nu există pe site (nici în sitemap) → neincluse, se așteaptă dimensiunile de la utilizator. NA210 apărea de 2 ori în listă → o singură etichetă. Script: `etichete/genereaza_etichete_selectie.py <all2.tsv> <out.pdf>`.
 Listă: `lista_etichete_adro_2000.csv`. Re-generare: `etichete/genereaza_etichete.py` (citește all.tsv extras din paginile /adro?page=1..13).
 
 ## Calculator ofertă NMC (nmcromania.ro) — Claude Code, 2026-11-16
