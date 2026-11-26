@@ -55,18 +55,19 @@ Fișiere (1080×1920, 26 s): `reel/nmc-black-november-interior-organic.mp4`, `re
 
 ## Cadre (ton și expresii din secțiunea „Colecția Interior” a landing-ului)
 1. Living cu cornișă LED: **„Detaliile care schimbă camera.”** Prețuri speciale doar până pe 30 noiembrie.
-2. Living cu riflaj: **„Mai cald. Mai liniștit.”** Riflaj acustic 3D, stejar deschis: ~~223,31~~ **156,31 lei** · −30%
+2. Living cu riflaj: **„Mai cald. Mai liniștit.”** Riflaj acustic 3D, stejar deschis: **382,54 lei** (preț întreg, fără reducere) · 51 buc. în stoc
 3. Dormitor cu tapet Carrara: **„Efect de marmură. Fără marmură.”** Tapet Carrara Best 82671: ~~665,50~~ **465,85 lei** · −30%
 4. Living cu chenare și cornișă: **„O cameră întreagă, într-un singur gest.”** Kit Linea: plintă FD2 + cornișă GT + brâu WD5, profile Noël & Marquet fabricate în Belgia (fără preț; pe landing apare „Disponibil la comandă”).
 5. Colț cu LED: **„Montaj curat, prin lipire.”** Gata de vopsit.
 6. Perete TV cu chenare: **„Stocuri mari. Livrare imediată.”** Pentru produsele din stoc.
 7. Final: NMC · Black November · Colecția Interior · până pe 30.11 · nmcromania.ro/black-november · 021 319 35 35
 
+**CORECȚIE 26.11:** în prima versiune, riflajul apărea greșit cu 223,31 → 156,31 lei (preț preluat din greșeală de la un produs similar afișat pe pagină). Prețul real e 382,54 lei, fără reducere. Toate prețurile au fost reverificate în blocul principal de preț al fiecărei pagini.
 Prețuri verificate pe nmcromania.ro la 26.11.2026, cu TVA. Fotografiile de interior sunt din portofoliul decoflair.ro și din catalogul tapetului Carrara; macro-ul riflajului e de pe pagina produsului.
 
 ## Descriere (Instagram / Facebook)
 > Detaliile care schimbă camera. ✨ Black November se încheie pe 30 noiembrie.
-> ▫️ Riflaj acustic 3D (stejar deschis): 156,31 lei (în loc de 223,31) · −30%
+> ▫️ Riflaj acustic 3D (stejar deschis): 382,54 lei · 51 buc. în stoc
 > ▫️ Tapet Carrara Best 82671: 465,85 lei (în loc de 665,50) · −30%
 > ▫️ Kit Linea: plintă, cornișă și brâu pentru o cameră întreagă
 > Montaj curat, prin lipire · Gata de vopsit · Livrare imediată pentru produsele din stoc
