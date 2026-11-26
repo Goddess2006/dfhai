@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Reel NMC „Black November · ultimele zile” (de postat 26.11) — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
+Client: reel pentru nmcromania.ro, în tonul NMC, de postat azi, stabilit cu Codex. v1 (26 s, 1080×1920, `build.py`, variante organic/ads → `reel/nmc-black-november-{organic,ads}.mp4`): ton și expresii preluate din landing-ul Black November (lider de piață 20+ ani, producție proprie în România, livrare imediată din stoc, stocuri mari, rezistente la UV/ploaie/îngheț); paleta landing-ului (noapte/ivoire/verde pădure/salvie, fără roz). Prețuri verificate 26.11: NCL107 248,09→173,66; SIDDING PANEL 3 223,31→156,31 (−30%); FUGA PANEL 1 și NC158 fără reducere pe pagină, deci fără preț. Final: nmcromania.ro/black-november · 021 319 35 35. Texte, UTM, oprire promovare pe 30.11: `TEXTE.md`. **Codex: revizie rapidă + foto reale NMC din EXTRANET pentru cadrele 1, 2, 6 → `nmc-reel-bn-final/CODEX-BRIEF.md`.**
+
 ## Biblioteca comună cu Claude — Codex, 2026-11-25
 La cererea utilizatorului, cele 50 de imagini existente Deco&Flair sunt înregistrate în `biblioteca-comuna/`: `README.md` pentru navigare și `colectii.json` pentru agenți. Legătura `biblioteca-comuna/decoflair-inspiratie-50` deschide colecția originală, inclusiv galeria, imaginile, planșele de contact și manifestul cu prompturi. Originalele rămân pe căile existente, fără duplicare sau modificare, pentru compatibilitate cu proiectele care le folosesc. Referință permanentă adăugată în `CLAUDE.md` și `AGENTS.md`. Verificat accesul la toate cele 50 de fișiere și concordanța SHA-256 cu manifestul. Operație de catalogare; fără producție de creative noi sau publicare.
 
