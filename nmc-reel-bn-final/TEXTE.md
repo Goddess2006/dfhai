@@ -45,3 +45,35 @@ Prețuri verificate pe nmcromania.ro azi (26.11.2026), cu TVA. **FUGA PANEL 1 ș
 ## Note
 - Imaginile cu case sunt din `catalog-fatade/` (furnizate de client). Coloanele și fațadele cu ornamente sunt fotografii NMC de pe decoflair.ro. Imaginea cu sidding și produsele sunt de pe nmcromania.ro.
 - Dacă postezi după 30 noiembrie, reel-ul nu mai e valabil.
+
+
+---
+
+# Reel NMC INTERIOR: Black November · Colecția Interior
+
+Fișiere (1080×1920, 26 s): `reel/nmc-black-november-interior-organic.mp4`, `reel/nmc-black-november-interior-ads.mp4`, copertă `reel/coperta-interior.jpg`. Sursă: `build_interior.py` + `render_interior.cjs`.
+
+## Cadre (ton și expresii din secțiunea „Colecția Interior” a landing-ului)
+1. Living cu cornișă LED: **„Detaliile care schimbă camera.”** Prețuri speciale doar până pe 30 noiembrie.
+2. Living cu riflaj: **„Mai cald. Mai liniștit.”** Riflaj acustic 3D, stejar deschis: ~~223,31~~ **156,31 lei** · −30%
+3. Dormitor cu tapet Carrara: **„Efect de marmură. Fără marmură.”** Tapet Carrara Best 82671: ~~665,50~~ **465,85 lei** · −30%
+4. Living cu chenare și cornișă: **„O cameră întreagă, într-un singur gest.”** Kit Linea: plintă FD2 + cornișă GT + brâu WD5, profile Noël & Marquet fabricate în Belgia (fără preț; pe landing apare „Disponibil la comandă”).
+5. Colț cu LED: **„Montaj curat, prin lipire.”** Gata de vopsit.
+6. Perete TV cu chenare: **„Stocuri mari. Livrare imediată.”** Pentru produsele din stoc.
+7. Final: NMC · Black November · Colecția Interior · până pe 30.11 · nmcromania.ro/black-november · 021 319 35 35
+
+Prețuri verificate pe nmcromania.ro la 26.11.2026, cu TVA. Fotografiile de interior sunt din portofoliul decoflair.ro și din catalogul tapetului Carrara; macro-ul riflajului e de pe pagina produsului.
+
+## Descriere (Instagram / Facebook)
+> Detaliile care schimbă camera. ✨ Black November se încheie pe 30 noiembrie.
+> ▫️ Riflaj acustic 3D (stejar deschis): 156,31 lei (în loc de 223,31) · −30%
+> ▫️ Tapet Carrara Best 82671: 465,85 lei (în loc de 665,50) · −30%
+> ▫️ Kit Linea: plintă, cornișă și brâu pentru o cameră întreagă
+> Montaj curat, prin lipire · Gata de vopsit · Livrare imediată pentru produsele din stoc
+> 📞 Consultanță gratuită: 021 319 35 35
+> 👉 nmcromania.ro/black-november
+>
+> #nmcromania #blacknovember #designinterior #riflaje #tapet #profiledecorative #cornisa #plinta #amenajariinterioare
+
+**Comentariu fixat:** „Ce cameră renovați? Spuneți-ne dimensiunile și vă recomandăm profilele potrivite. 021 319 35 35 👇”
+**Promovare:** link `https://www.nmcromania.ro/black-november/?utm_source=meta&utm_medium=paid_social&utm_campaign=black-november&utm_content=reel-interior` · oprire pe 30.11, 23:59.
