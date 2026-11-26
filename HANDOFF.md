@@ -1,7 +1,10 @@
 # Handoff
 
-Ultima actualizare: 2026-11-25
+Ultima actualizare: 2026-11-26
 Agent: Claude Code
+
+## Plan magazine online 2027 (nmcromania.ro + decoflair.ro) — Claude Docs — Claude Code, 2026-11-26
+Client: Elena Botea. Document: [Plan magazine online 2027](https://claude.ai/artifact/K6ULTD9TzHQ5kKXdekK59d). Țintă 4,45 mil. lei ≈ 856.000 € (5,20 lei/€): nmcromania.ro 2,70 mil. (firme 1,3 + persoane fizice 1,3 + newsletter 0,1), decoflair.ro 1,75 mil. (persoane fizice 1,25 + newsletter 0,2 + marketplace 0,3). Date: SBS_NMC_SD_sbs_Romania_2026_11.xlsx (încărcat în chat, necomis) + capturi filtru „Magazin online” (ian–nov 2025 3,66 mil., 2026 1,42 mil., −61%). Model: decoflair.ro = marca de consum, nmcromania.ro = producător/B2B; același preț public; Deco & Flair cumpără de la NMC cu livrare directă, preț de transfer ≈ preț public − 28–30%. Buget marketing ≈371.000 lei + onorariu Synpcare. Următorul pas cerut: planul total NMC Stil Distribution (22,15 mil. lei) pe canale și game, cu anexe.
 
 ## Plan de creștere ADRO 2027 (+20% vânzări) — Claude Docs — Claude Code, 2026-11-25
 Client: plan de producție, cifre, costuri, investiții și produse noi ca vânzările ADRO să crească cu 20%, semnat de Eduard Pasol (coordonator producție). Document: [Plan de creștere ADRO 2027: +20% vânzări](https://claude.ai/artifact/7PnaN1vM9KhNXKyAy3age6). Țintă 13,3 mil. lei 2027 (2026E ≈11,1; ian–nov 2026 10,63 mil., −16,5%). Punte: profile stoc DIY +0,70, panouri fațadă +0,40, Gama Gard +0,35, custom +0,30, kituri +0,25, adezivi +0,20 mil. lei. Produse noi: Gama Gard + manșon de stâlp, panouri Cărămidă/Piatră/Bosaj, kit „Fereastra completă”, îmbinare lambă-uluc, litere/numere, Modern, soclu armat, jardinieră (pilot). Producție ≈545 t, ≈36–39 oameni + 2–3 sezonieri; investiții faza 1 ≈250.000 lei. Date: capturile de vânzări ale clientului, artifactul „Calculator Cost ADRO” (vânzări pe cod 2025), „Calculator Materii Prime ADRO”, „Plan de business Producție ADRO 2027”, Semrush RO (nov. 2026). DistribNet (`\\rds.nmc.local\backup\baze`) NU e accesibil din cloud: lista „Date de validat” din document trebuie completată local până la 15.12.2026.
