@@ -13,9 +13,9 @@ import json
 ROOT = Path(__file__).resolve().parent
 A = "../assets/"
 
-SCENES = [  # interior — prețuri verificate pe nmcromania.ro la 26.11.2026
+SCENES = [  # interior — prețuri verificate pe nmcromania.ro la 26.11.2026 (blocul principal de preț): Carrara 82671 665,50→465,85; riflaj 382,54 FĂRĂ reducere
     ("i-living-led.jpg", "50% 50%", "BLACK NOVEMBER · COLECȚIA INTERIOR", "Detaliile care<br>schimbă camera.", "Prețuri speciale doar<br>până pe 30 noiembrie.", None, 3.6),
-    ("i-riflaj.jpg", "50% 50%", "RIFLAJ ACUSTIC 3D", "Mai cald.<br>Mai liniștit.", "", ("Riflaj acustic 3D", "223,31", "156,31", "p-riflaj.jpg", "panou acustic · stejar deschis"), 3.8),
+    ("i-riflaj.jpg", "50% 50%", "RIFLAJ ACUSTIC 3D", "Mai cald.<br>Mai liniștit.", "", ("Riflaj acustic 3D", "", "382,54", "p-riflaj.jpg", "stejar deschis · 51 buc. în stoc"), 3.8),
     ("i-tapet-camera.jpg", "45% 50%", "TAPET CARRARA BEST", "Efect de marmură.<br>Fără marmură.", "", ("Tapet Carrara Best 82671", "665,50", "465,85", "p-tapet-82671.jpg", "tapet de perete · rolă"), 3.8),
     ("i-chenare.jpg", "50% 50%", "ALEGEREA LUNII · KIT LINEA", "O cameră întreagă,<br>într-un singur gest.", "Plintă FD2 + cornișă GT + brâu WD5.<br>Profile Noël &amp; Marquet, fabricate în Belgia.", None, 3.6),
     ("i-led.jpg", "50% 50%", "PLINTE · CORNIȘE · ROZETE", "Montaj curat,<br>prin lipire.", "Gata de vopsit.", None, 3.3),
@@ -97,8 +97,10 @@ def scene(i, s):
     html += f'<div class="k">{k}</div><div class="t">{t}</div>'
     if card:
         n, old, new, im, dim = card
-        html += (f'<div class="badge">−30%</div><div class="card"><div class="im" style="background-image:url({A}{im})"></div><div>'
-                 f'<div class="n">{n}</div><div class="d">{dim}</div><div class="p"><span class="old">{old} lei</span><span class="new">{new} <small>lei</small></span></div></div></div>')
+        badge = '<div class="badge">−30%</div>' if old else ''
+        oldp = f'<span class="old">{old} lei</span>' if old else ''
+        html += (f'{badge}<div class="card"><div class="im" style="background-image:url({A}{im})"></div><div>'
+                 f'<div class="n">{n}</div><div class="d">{dim}</div><div class="p">{oldp}<span class="new">{new} <small>lei</small></span></div></div></div>')
     elif sub:
         html += f'<div class="s">{sub}</div>'
     return html + '</div>'

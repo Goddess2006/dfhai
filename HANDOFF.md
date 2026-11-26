@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## CORECȚIE preț riflaj în reel-ul NMC interior — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
+Clientul a semnalat prețuri nereale. Cauză: scraperul a luat primul `price-old`/`price-new` din pagină, care aparținea unui produs similar (SIDDING PANEL 3), nu riflajului. Reverificat în blocul principal de preț + JSON-LD: riflaj acustic stejar deschis = **382,54 lei, FĂRĂ reducere** (corectat în video și în TEXTE.md); confirmate corecte: NCL107 248,09→173,66, SIDDING PANEL 3 223,31→156,31, tapet Carrara 82671 665,50→465,85. **Regulă pentru ambii agenți:** prețul se citește doar din blocul de preț de după H1 sau din JSON-LD Product, niciodată din primul `price-new` găsit în pagină.
+
 ## Reel NMC INTERIOR „Black November · Colecția Interior” — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
 Aceeași structură și ton ca reel-ul NMC de exterior (`build_interior.py`, `render_interior.cjs` → `reel/nmc-black-november-interior-{organic,ads}.mp4`, 26 s). Expresii din secțiunea „Colecția Interior” a landing-ului („Detaliile care schimbă camera”, „Montaj curat, prin lipire, gata de vopsit”, Kit Linea „O cameră întreagă, într-un singur gest”). Prețuri verificate 26.11: riflaj acustic stejar deschis 223,31→156,31; tapet Carrara Best 82671 665,50→465,85 (−30%); Linea fără preț („Disponibil la comandă”). Accent 3D A106 (−30%) exclus: e ornament de exterior. Foto: portofoliu decoflair.ro (galerie 26, 25, 16, 24, 30) + catalog Carrara. Texte în `TEXTE.md` (secțiunea INTERIOR).
 
