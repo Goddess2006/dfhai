@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Reel NMC INTERIOR „Black November · Colecția Interior” — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
+Aceeași structură și ton ca reel-ul NMC de exterior (`build_interior.py`, `render_interior.cjs` → `reel/nmc-black-november-interior-{organic,ads}.mp4`, 26 s). Expresii din secțiunea „Colecția Interior” a landing-ului („Detaliile care schimbă camera”, „Montaj curat, prin lipire, gata de vopsit”, Kit Linea „O cameră întreagă, într-un singur gest”). Prețuri verificate 26.11: riflaj acustic stejar deschis 223,31→156,31; tapet Carrara Best 82671 665,50→465,85 (−30%); Linea fără preț („Disponibil la comandă”). Accent 3D A106 (−30%) exclus: e ornament de exterior. Foto: portofoliu decoflair.ro (galerie 26, 25, 16, 24, 30) + catalog Carrara. Texte în `TEXTE.md` (secțiunea INTERIOR).
+
 ## Reel NMC „Black November · ultimele zile” (de postat 26.11) — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
 Client: reel pentru nmcromania.ro, în tonul NMC, de postat azi, stabilit cu Codex. v1 (26 s, 1080×1920, `build.py`, variante organic/ads → `reel/nmc-black-november-{organic,ads}.mp4`): ton și expresii preluate din landing-ul Black November (lider de piață 20+ ani, producție proprie în România, livrare imediată din stoc, stocuri mari, rezistente la UV/ploaie/îngheț); paleta landing-ului (noapte/ivoire/verde pădure/salvie, fără roz). Prețuri verificate 26.11: NCL107 248,09→173,66; SIDDING PANEL 3 223,31→156,31 (−30%); FUGA PANEL 1 și NC158 fără reducere pe pagină, deci fără preț. Final: nmcromania.ro/black-november · 021 319 35 35. Texte, UTM, oprire promovare pe 30.11: `TEXTE.md`. **Codex: revizie rapidă + foto reale NMC din EXTRANET pentru cadrele 1, 2, 6 → `nmc-reel-bn-final/CODEX-BRIEF.md`.**
 
