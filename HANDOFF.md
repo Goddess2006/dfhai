@@ -3,6 +3,9 @@
 Ultima actualizare: 2026-11-24
 Agent: Claude Code
 
+## Bannere „1 Decembrie” — program sărbători, decoflair.ro + nmcromania.ro — `bannere-1-decembrie/` — Claude Code, 2026-11-27
+Client: ambele site-uri nu funcționează pe 30.11 și 1.12; comenzile din perioadă se procesează începând cu 3.12.2026; urare de Ziua României. Formulare folosită: „Pe 30 noiembrie și 1 decembrie nu procesăm comenzi. Comenzile plasate în aceste zile vor fi procesate începând cu 3 decembrie 2026.” + „La mulți ani, România! · 1 Decembrie · Ziua Națională”, cu accent tricolor discret. Stiluri diferite: Deco&Flair (auriu/cărbune, sigla aripii, Cormorant italic, „Ne luăm o scurtă pauză de sărbătoare.”, interior cald), 1480×800 + 900×1200; NMC (paleta landing-ului noapte/ivoire/verde, Inter, direct, cutie „se procesează începând cu 3 decembrie 2026”, 021 319 35 35, fațadă cu ancadramente), 1920×970 + 1080×1350. Plus variante @2x. Rulare: `python3 build.py && node render.cjs`.
+
 ## CORECȚIE preț riflaj în reel-ul NMC interior — `nmc-reel-bn-final/` — Claude Code, 2026-11-26
 Clientul a semnalat prețuri nereale. Cauză: scraperul a luat primul `price-old`/`price-new` din pagină, care aparținea unui produs similar (SIDDING PANEL 3), nu riflajului. Reverificat în blocul principal de preț + JSON-LD: riflaj acustic stejar deschis = **382,54 lei, FĂRĂ reducere** (corectat în video și în TEXTE.md); confirmate corecte: NCL107 248,09→173,66, SIDDING PANEL 3 223,31→156,31, tapet Carrara 82671 665,50→465,85. **Regulă pentru ambii agenți:** prețul se citește doar din blocul de preț de după H1 sau din JSON-LD Product, niciodată din primul `price-new` găsit în pagină.
 
