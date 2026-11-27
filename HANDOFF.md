@@ -1,7 +1,9 @@
 # Handoff
 
-Ultima actualizare: 2026-11-26
+Ultima actualizare: 2026-11-27
 Agent: Claude Code
+
+**Actualizare 2026-11-27:** ținta online ridicată la 5,5 mil. lei (nmcromania.ro 3,40 = PF 1,40 + firme noi 1,30 + portal clienți existenți 0,55 + newsletter 0,15; decoflair.ro 2,10 = PF 1,45 + newsletter 0,25 + marketplace 0,40). Buget marketing online 430.000 lei (nmcromania 185.000, decoflair 245.000), cu split lunar. NMC rămâne 22,15 mil.: DIY 11,30; retail clasic 5,95; online 3,40; Deco & Flair 1,50 (transfer); buget de vânzări lunar pe canale și game în anexa A3. Planul online, planul NMC și prezentarea sunt aliniate.
 
 ## Plan de vânzări 2027 NMC Stil Distribution (22,15 mil. lei) — Claude Docs — Claude Code, 2026-11-26
 Client: Elena Botea. Document: [Plan de vânzări 2027: NMC Stil Distribution](https://claude.ai/artifact/7aJ7cDbmHbD2PVzRTcGBt8), fila „Plan” + fila „Anexe” (A1 gamă × canal, A2 DIY pe lanțuri, A3 lunar, A4 ipoteze). Canale 2027: DIY 11,30; retail clasic 6,90; online nmcromania.ro 2,70; Deco & Flair 1,25 mil. lei. Game: ADRO 13,60 (din planul ADRO); LX 3,65; N&M 2,85; PL 1,65; tavan 0,20; NOMA 0,09; altele 0,11. Valori înainte de discounturi (ca „Total before discount” din SBS). Sursa: SBS_NMC_SD_sbs_Romania_2026_11.xlsx (necomis). Prezentare comună (planul total + planul online, 22 de slide-uri, fără sume Synpcare și fără surse de date, la cererea clientului): [Plan de vânzări 2027 – NMC și magazinele online](https://claude.ai/artifact/LhUNG4GwPXJaW5WqvKBCyA); PDF în `plan-adro-2027/` (ignorat).
